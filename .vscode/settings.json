@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Atents_Popol.sln"
+    "dotnet.defaultSolution": "Atents_Popol_Unity.sln"
 }
