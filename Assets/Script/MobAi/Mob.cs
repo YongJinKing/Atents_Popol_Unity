@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mob : MonoBehaviour
 {
+    //
     //변수 영역
     #region Properties / Field
     //private 변수 영역
