@@ -7,21 +7,36 @@ public class Mob : MonoBehaviour
     //변수 영역
     #region Properties / Field
     //private 변수 영역
-    #region Private
+        #region Private
+    private Animator _myAnim = null;
     //스킬들 저장될 배열
     //private Skill[4] mySkills
-    #endregion
+        #endregion
     //protected 변수 영역
-    #region protected
-
-    #endregion
+        #region protected
+        #endregion
     //Public 변수영역
-    #region public
+        #region public
+    public Animator myAnim
+    {
+        get
+        {
+            if (_myAnim == null)
+            {
+                _myAnim = GetComponent<Animator>();
+                if (_myAnim == null)
+                {
+                    _myAnim = GetComponentInChildren<Animator>();
+                }
+            }
+            return _myAnim;
+        }
+    }
+        #endregion
 
-    #endregion
     //이벤트 함수들 영역
-    #region Event
-    #endregion
+        #region Event
+        #endregion
     #endregion
 
     //public 함수들 영역
