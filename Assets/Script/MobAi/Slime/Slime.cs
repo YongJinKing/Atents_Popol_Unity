@@ -7,11 +7,17 @@ public class Slime : Mob
     //일단 완전 스파게티로 짜보자
     public Transform meleeAttackStartPos;
     public GameObject[] skill = new GameObject[2];
+    public Transform tempTarget;
 
     private void UseSkill1()
     {
         myAnim.SetTrigger("AttackTrigger");
-        skill[0].GetComponent<Skill>().OnUse();
+        skill[0].GetComponent<Skill>().OnUse(tempTarget.transform.position);
+    }
+    private void UseSkill2()
+    {
+        myAnim.SetTrigger("AttackTrigger");
+        skill[1].GetComponent<Skill>().OnUse(tempTarget.transform.position);
     }
 
 
@@ -27,6 +33,10 @@ public class Slime : Mob
         if (Input.GetButtonDown("Jump"))
         {
             UseSkill1();
+        }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            UseSkill2();
         }
     }
 }

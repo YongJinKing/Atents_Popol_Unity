@@ -32,19 +32,28 @@ public class Mob : MonoBehaviour
             return _myAnim;
         }
     }
-        #endregion
+    #endregion
 
     //이벤트 함수들 영역
-        #region Event
-        #endregion
+    #region Event
+    #endregion
+    #endregion
+
+    //private 함수들 영역
+    #region PrivateMethod
+    #endregion
+
+
+    //protected 함수들 영역
+    #region ProtectedMethod
     #endregion
 
     //public 함수들 영역
     #region PublicMethod
     #endregion
 
-    //private 함수들 영역
-    #region PrivateMethod
+    //코루틴 영역
+    #region Coroutine
     #endregion
 
     //이벤트가 일어났을때 실행되는 On~~함수
