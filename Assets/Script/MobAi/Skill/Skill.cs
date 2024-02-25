@@ -10,11 +10,15 @@ public class Skill : MonoBehaviour
     #region Properties / Field
     //private 변수 영역
     #region Private
+
     #endregion
 
     //protected 변수 영역
     #region protected
-
+    //쿨타임용
+    [SerializeField] protected float coolDownTIme;
+    //기본적으로 0보다 작은값을 가짐으로서 쿨타임이 다 돌았음을 표시
+    protected float remainCoolDownTime = -1f;
     #endregion
 
     //Public 변수영역
@@ -44,6 +48,17 @@ public class Skill : MonoBehaviour
     #endregion
 
     #region Coroutine
+    protected IEnumerator CoolDownChecking()
+    {
+        remainCoolDownTime = coolDownTIme;
+        while (remainCoolDownTime > 0)
+        {
+            remainCoolDownTime -= Time.deltaTime;
+            yield return null;
+        }
+
+        yield return null;
+    }
     #endregion
 
 
@@ -52,12 +67,21 @@ public class Skill : MonoBehaviour
     //이 스킬이 사용되었을때
     public void OnUse(Vector3 targetPos)
     {
-        onSkillActivatedEvent?.Invoke(targetPos);
+        //쿨타임이 아직 남아있으면 아예 invoke 자체가 일어나지 않음으로서 쿨타임 구현
+        if (remainCoolDownTime <= 0)
+        {
+            onSkillActivatedEvent?.Invoke(targetPos);
+            StartCoroutine(CoolDownChecking());
+        }
     }
     #endregion
 
 
     //유니티 함수들 영역
     #region MonoBehaviour
+    private void Awake()
+    {
+        
+    }
     #endregion
 }

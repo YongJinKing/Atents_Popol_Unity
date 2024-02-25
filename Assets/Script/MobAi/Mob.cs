@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Mob : MonoBehaviour
 {
@@ -9,8 +10,6 @@ public class Mob : MonoBehaviour
     //private 변수 영역
         #region Private
     private Animator _myAnim = null;
-    //스킬들 저장될 배열
-    //private Skill[4] mySkills
         #endregion
     //protected 변수 영역
         #region protected
@@ -36,6 +35,8 @@ public class Mob : MonoBehaviour
 
     //이벤트 함수들 영역
     #region Event
+    //Skill을 실행시킬 이벤트
+    public UnityEvent[] onSkillUseEvent;
     #endregion
     #endregion
 
