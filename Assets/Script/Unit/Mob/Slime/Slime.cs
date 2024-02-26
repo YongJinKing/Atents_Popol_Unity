@@ -12,12 +12,12 @@ public class Slime : Monster
     private void UseSkill1()
     {
         myAnim.SetTrigger("AttackTrigger");
-        skill[0].GetComponent<Skill>().OnUse(tempTarget.transform.position);
+        skill[0].GetComponent<Skill>().OnSkillStart(tempTarget.transform.position);
     }
     private void UseSkill2()
     {
         myAnim.SetTrigger("AttackTrigger");
-        skill[1].GetComponent<Skill>().OnUse(tempTarget.transform.position);
+        skill[1].GetComponent<Skill>().OnSkillStart(tempTarget.transform.position);
     }
 
 

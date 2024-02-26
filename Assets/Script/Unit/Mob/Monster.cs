@@ -8,12 +8,14 @@ public class Monster : Unit
     //변수 영역
     #region Properties / Field
     //private 변수 영역
-        #region Private
+    #region Private
     private Animator _myAnim = null;
     #endregion
+
     //protected 변수 영역
     #region protected
-        #endregion
+    #endregion
+
     //Public 변수영역
     #region public
     public Animator myAnim
@@ -40,11 +42,11 @@ public class Monster : Unit
     #endregion
     #endregion
 
+
     #region Method
     //private 함수들 영역
     #region PrivateMethod
     #endregion
-
 
     //protected 함수들 영역
     #region ProtectedMethod
@@ -55,9 +57,11 @@ public class Monster : Unit
     #endregion
     #endregion
 
+
     //코루틴 영역
     #region Coroutine
     #endregion
+
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler

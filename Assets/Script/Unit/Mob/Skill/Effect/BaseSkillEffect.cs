@@ -20,18 +20,17 @@ public class BaseSkillEffect : MonoBehaviour
     //Public 변수영역
     #region public
     #endregion
+
     //이벤트 함수들 영역
     #region Event
     #endregion
     #endregion
 
 
-
     #region Method
     //private 함수들 영역
     #region PrivateMethod
     #endregion
-
 
     //protected 함수들 영역
     #region ProtectedMethod
@@ -50,9 +49,6 @@ public class BaseSkillEffect : MonoBehaviour
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
     #endregion
-
-
-
 
 
     //유니티 함수들 영역

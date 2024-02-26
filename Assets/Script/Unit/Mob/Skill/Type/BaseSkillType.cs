@@ -25,16 +25,20 @@ public abstract class BaseSkillType : MonoBehaviour
     //OnSkillActivated로 받아온 타겟의 위치를 저장함
     protected Vector3 targetPos;
     //인스턴타이즈화된 areaOfEffectPrefeb을 저장하는곳
-    [SerializeField] protected GameObject areaOfEffect;
+    [SerializeField] protected GameObject[] areaOfEffect;
+    //areaOfEffect를 최대 몇개까지 만들것이냐를 결정하기 위함
+    //예를들어 투사체 클래스의 경우에는 2개 이상으로 만들면 여러개 발사 할수 있도록
+    [SerializeField] protected int maxIndex;
     #endregion
 
     //Public 변수영역
     #region public
     //스킬이 시작될 위치
-    public Transform attackStartPos;
+    public Transform[] attackStartPos;
     //스킬 공격범위라던가를 설정할 오브젝트 프리펩
     public GameObject areaOfEffectPrefeb;
     #endregion
+
     //이벤트 함수들 영역
     #region Event
     //스킬
@@ -42,22 +46,22 @@ public abstract class BaseSkillType : MonoBehaviour
     #endregion
     #endregion
 
+
     #region Method
     //private 함수들 영역
     #region PrivateMethod
     #endregion
 
-
     //protected 함수들 영역
     #region ProtectedMethod
-    protected void InitAreaOfEffect()
+    protected virtual void InitAreaOfEffect()
     {
-        if (areaOfEffect != null) return;
+        if (areaOfEffect[0] != null) return;
 
-        areaOfEffect = Instantiate(areaOfEffectPrefeb);
-        areaOfEffect.transform.SetParent(attackStartPos.transform, false);
-        areaOfEffect.transform.position = attackStartPos.position;
-        areaOfEffect.SetActive(false);
+        areaOfEffect[0] = Instantiate(areaOfEffectPrefeb);
+        areaOfEffect[0].transform.SetParent(attackStartPos[0].transform, false);
+        areaOfEffect[0].transform.position = attackStartPos[0].position;
+        areaOfEffect[0].SetActive(false);
     }
     #endregion
 
@@ -67,35 +71,10 @@ public abstract class BaseSkillType : MonoBehaviour
     #endregion
 
 
-
     //코루틴 영역
     #region Coroutine
     //히트박스에 들어갔는지 아닌지 체크하는 코루틴
-    protected virtual IEnumerator HitChecking()
-    {
-        areaOfEffect.SetActive(true);
-
-        remainDuration = hitDuration;
-        while (remainDuration >= 0.0f)
-        {
-            remainDuration -= Time.deltaTime;
-
-            Vector3 size = new Vector3(
-            areaOfEffect.transform.position.x * areaOfEffect.transform.lossyScale.x,
-            areaOfEffect.transform.position.y * areaOfEffect.transform.lossyScale.y,
-            areaOfEffect.transform.position.z * areaOfEffect.transform.lossyScale.z
-            );
-            Collider[] tempcol = Physics.OverlapBox(areaOfEffect.transform.position, size, Quaternion.identity, targetMask);
-
-
-            for (int i = 0; i < tempcol.Length; i++)
-            {
-                Debug.Log(tempcol[i].gameObject.name);
-            }
-            yield return null;
-        }
-
-    }
+    protected abstract IEnumerator HitChecking();
     #endregion
 
 
@@ -108,9 +87,6 @@ public abstract class BaseSkillType : MonoBehaviour
         StartCoroutine(HitChecking());
     }
     #endregion
-
-
-
 
 
     //유니티 함수들 영역

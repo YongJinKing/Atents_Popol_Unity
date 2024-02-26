@@ -14,24 +14,22 @@ public class ProjectileSkillType : BaseSkillType
 
     //protected 변수 영역
     #region protected
-
     #endregion
 
     //Public 변수영역
     #region public
     #endregion
+
     //이벤트 함수들 영역
     #region Event
     #endregion
     #endregion
 
 
-
     #region Method
     //private 함수들 영역
     #region PrivateMethod
     #endregion
-
 
     //protected 함수들 영역
     #region ProtectedMethod
@@ -43,23 +41,42 @@ public class ProjectileSkillType : BaseSkillType
     #endregion
 
 
-
     #region Coroutine
     protected override IEnumerator HitChecking()
     {
-        yield return StartCoroutine(base.HitChecking());
+        areaOfEffect[0].SetActive(true);
+
+        remainDuration = hitDuration;
+        while (remainDuration >= 0.0f)
+        {
+            remainDuration -= Time.deltaTime;
+
+            Vector3 size = new Vector3(
+            areaOfEffect[0].transform.position.x * areaOfEffect[0].transform.lossyScale.x,
+            areaOfEffect[0].transform.position.y * areaOfEffect[0].transform.lossyScale.y,
+            areaOfEffect[0].transform.position.z * areaOfEffect[0].transform.lossyScale.z
+            );
+            Collider[] tempcol = Physics.OverlapBox(areaOfEffect[0].transform.position, size, Quaternion.identity, targetMask);
+
+
+            for (int i = 0; i < tempcol.Length; i++)
+            {
+                Debug.Log(tempcol[i].gameObject.name);
+            }
+            yield return null;
+        }
 
         //지속시간이 끝났다.
         //투사체가 제거됨
-        Destroy(areaOfEffect);
-        areaOfEffect = null;
+        Destroy(areaOfEffect[0]);
+        areaOfEffect[0] = null;
         //투사체가 리로드됨
         InitAreaOfEffect();
         yield return null;
     }
 
     //투사체(Projectile)을 이동시키는 함수
-    protected IEnumerator MoveingToPos()
+    protected IEnumerator MovingToPos()
     {
         //어차피 그 방향으로 발사만 시킬것이기 때문에 dist 없이 간다.
         float delta = 0.0f;
@@ -67,8 +84,8 @@ public class ProjectileSkillType : BaseSkillType
         //투사체의 발사를 위해서 부모관계를 없앴다
         if (areaOfEffect != null)
         {
-            areaOfEffect.transform.parent = null;
-            dir = targetPos - areaOfEffect.transform.position;
+            areaOfEffect[0].transform.parent = null;
+            dir = targetPos - areaOfEffect[0].transform.position;
             dir.Normalize();
 
             //지속시간동안 이동
@@ -77,7 +94,7 @@ public class ProjectileSkillType : BaseSkillType
             {
                 delta = Time.deltaTime;
                 // 이동한다.
-                areaOfEffect.transform.Translate(dir * delta);
+                areaOfEffect[0].transform.Translate(dir * delta);
 
                 yield return null;
             }
@@ -91,19 +108,14 @@ public class ProjectileSkillType : BaseSkillType
     #endregion
 
 
-
-
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
     public override void OnSkillActivated(Vector3 targetPos)
     {
         base.OnSkillActivated(targetPos);
-        StartCoroutine(MoveingToPos());
+        StartCoroutine(MovingToPos());
     }
     #endregion
-
-
-
 
 
     //유니티 함수들 영역
