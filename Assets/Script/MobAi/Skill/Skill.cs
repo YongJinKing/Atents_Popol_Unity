@@ -16,7 +16,7 @@ public class Skill : MonoBehaviour
     //protected 변수 영역
     #region protected
     //쿨타임용
-    [SerializeField] protected float coolDownTIme;
+    [SerializeField] protected float coolDownTime;
     //기본적으로 0보다 작은값을 가짐으로서 쿨타임이 다 돌았음을 표시
     protected float remainCoolDownTime = -1f;
     #endregion
@@ -50,7 +50,7 @@ public class Skill : MonoBehaviour
     #region Coroutine
     protected IEnumerator CoolDownChecking()
     {
-        remainCoolDownTime = coolDownTIme;
+        remainCoolDownTime = coolDownTime;
         while (remainCoolDownTime > 0)
         {
             remainCoolDownTime -= Time.deltaTime;
