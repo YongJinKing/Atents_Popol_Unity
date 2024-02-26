@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slime : Mob
+public class Slime : Monster
 {
     //일단 완전 스파게티로 짜보자
     public Transform meleeAttackStartPos;

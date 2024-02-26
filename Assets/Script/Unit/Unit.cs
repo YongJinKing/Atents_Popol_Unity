@@ -3,40 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Mob : MonoBehaviour
+public class Unit : MonoBehaviour
 {
     //변수 영역
     #region Properties / Field
     //private 변수 영역
-        #region Private
-    private Animator _myAnim = null;
-        #endregion
+    #region Private
+    #endregion
     //protected 변수 영역
-        #region protected
-        #endregion
+    #region protected
+    #endregion
     //Public 변수영역
-        #region public
-    public Animator myAnim
-    {
-        get
-        {
-            if (_myAnim == null)
-            {
-                _myAnim = GetComponent<Animator>();
-                if (_myAnim == null)
-                {
-                    _myAnim = GetComponentInChildren<Animator>();
-                }
-            }
-            return _myAnim;
-        }
-    }
+    #region public
     #endregion
 
     //이벤트 함수들 영역
     #region Event
     //Skill을 실행시킬 이벤트
-    public UnityEvent[] onSkillUseEvent;
     #endregion
     #endregion
 
@@ -68,15 +51,13 @@ public class Mob : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     #endregion
-
-
 }
