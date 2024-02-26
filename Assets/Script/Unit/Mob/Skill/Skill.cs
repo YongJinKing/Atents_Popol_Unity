@@ -31,9 +31,12 @@ public class Skill : MonoBehaviour
     #region Event
     //스킬이 실행되면 SkillType클래스에게 정보를 전달한다.
     public UnityEvent<Vector3> onSkillActivatedEvent;
+    //스킬이 사용가능해지면 발생하는 이벤트
+    public UnityEvent onSkillCoolTimeEndEvent;
     #endregion
     #endregion
 
+    #region Method
     //private 함수들 영역
     #region PrivateMethod
     #endregion
@@ -46,6 +49,7 @@ public class Skill : MonoBehaviour
     //public 함수들 영역
     #region PublicMethod
     #endregion
+    #endregion
 
     #region Coroutine
     protected IEnumerator CoolDownChecking()
@@ -57,6 +61,8 @@ public class Skill : MonoBehaviour
             yield return null;
         }
 
+
+        onSkillCoolTimeEndEvent?.Invoke();
         yield return null;
     }
     #endregion
@@ -65,15 +71,23 @@ public class Skill : MonoBehaviour
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
     //이 스킬이 사용되었을때
-    public void OnUse(Vector3 targetPos)
+    public void OnSkillStart(Vector3 targetPos)
     {
         //쿨타임이 아직 남아있으면 아예 invoke 자체가 일어나지 않음으로서 쿨타임 구현
         if (remainCoolDownTime <= 0)
         {
             onSkillActivatedEvent?.Invoke(targetPos);
-            StartCoroutine(CoolDownChecking());
+            //밑은 테스트용으로 씀
+            //OnSkillEnd();
         }
     }
+
+    //스킬이 시전 끝나고 스킬 쿨타임 돌릴때
+    public void OnSkillEnd()
+    {
+        StartCoroutine(CoolDownChecking());
+    }
+
     #endregion
 
 

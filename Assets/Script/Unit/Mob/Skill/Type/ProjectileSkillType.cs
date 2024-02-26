@@ -27,7 +27,7 @@ public class ProjectileSkillType : BaseSkillType
 
 
 
-
+    #region Method
     //private 함수들 영역
     #region PrivateMethod
     #endregion
@@ -39,6 +39,7 @@ public class ProjectileSkillType : BaseSkillType
 
     //public 함수들 영역
     #region PublicMethod
+    #endregion
     #endregion
 
 

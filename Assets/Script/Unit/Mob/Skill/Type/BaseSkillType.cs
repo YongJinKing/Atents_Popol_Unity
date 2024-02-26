@@ -42,6 +42,7 @@ public abstract class BaseSkillType : MonoBehaviour
     #endregion
     #endregion
 
+    #region Method
     //private 함수들 영역
     #region PrivateMethod
     #endregion
@@ -62,6 +63,7 @@ public abstract class BaseSkillType : MonoBehaviour
 
     //public 함수들 영역
     #region PublicMethod
+    #endregion
     #endregion
 
 

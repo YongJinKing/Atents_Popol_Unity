@@ -10,12 +10,12 @@ public class Monster : Unit
     //private 변수 영역
         #region Private
     private Animator _myAnim = null;
-        #endregion
+    #endregion
     //protected 변수 영역
-        #region protected
+    #region protected
         #endregion
     //Public 변수영역
-        #region public
+    #region public
     public Animator myAnim
     {
         get
@@ -36,10 +36,11 @@ public class Monster : Unit
     //이벤트 함수들 영역
     #region Event
     //Skill을 실행시킬 이벤트
-    public UnityEvent[] onSkillUseEvent;
+    public UnityEvent<Vector3>[] onSkillUseEvent;
     #endregion
     #endregion
 
+    #region Method
     //private 함수들 영역
     #region PrivateMethod
     #endregion
@@ -52,6 +53,7 @@ public class Monster : Unit
     //public 함수들 영역
     #region PublicMethod
     #endregion
+    #endregion
 
     //코루틴 영역
     #region Coroutine
@@ -59,20 +61,23 @@ public class Monster : Unit
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
-
+    public void OnSkillCoolTimeEndEvent()
+    {
+        
+    }
     #endregion
 
 
     //유니티 함수들 영역
     #region MonoBehaviour
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         
     }
