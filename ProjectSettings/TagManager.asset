@@ -15,12 +15,12 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player_Body
+  - Player_Avoid
+  - Monster_Body
+  - Monster_Avoid
+  - Ground
+  - Obstacle
   - 
   - 
   - 
