@@ -78,7 +78,7 @@ public class Skill : MonoBehaviour
         {
             onSkillActivatedEvent?.Invoke(targetPos);
             //¹ØÀº Å×½ºÆ®¿ëÀ¸·Î ¾¸
-            //OnSkillEnd();
+            OnSkillEnd();
         }
     }
 

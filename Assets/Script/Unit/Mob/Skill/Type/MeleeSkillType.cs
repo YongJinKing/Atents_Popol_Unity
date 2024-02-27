@@ -44,9 +44,9 @@ public class MeleeSkillType : BaseSkillType
 
 
     #region Coroutine
-    protected override IEnumerator HitChecking()
+    protected override IEnumerator HitChecking(GameObject hitBox)
     {
-        areaOfEffect[0].SetActive(true);
+        hitBox.SetActive(true);
 
         remainDuration = hitDuration;
         while (remainDuration >= 0.0f)
@@ -54,11 +54,11 @@ public class MeleeSkillType : BaseSkillType
             remainDuration -= Time.deltaTime;
 
             Vector3 size = new Vector3(
-            areaOfEffect[0].transform.position.x * areaOfEffect[0].transform.lossyScale.x,
-            areaOfEffect[0].transform.position.y * areaOfEffect[0].transform.lossyScale.y,
-            areaOfEffect[0].transform.position.z * areaOfEffect[0].transform.lossyScale.z
+            hitBox.transform.position.x * hitBox.transform.lossyScale.x,
+            hitBox.transform.position.y * hitBox.transform.lossyScale.y,
+            hitBox.transform.position.z * hitBox.transform.lossyScale.z
             );
-            Collider[] tempcol = Physics.OverlapBox(areaOfEffect[0].transform.position, size, Quaternion.identity, targetMask);
+            Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, size, Quaternion.identity, targetMask);
 
 
             for (int i = 0; i < tempcol.Length; i++)
@@ -68,7 +68,7 @@ public class MeleeSkillType : BaseSkillType
             yield return null;
         }
 
-        areaOfEffect[0].SetActive(false);
+        hitBox.SetActive(false);
         yield return null;
     }
     #endregion
@@ -79,6 +79,11 @@ public class MeleeSkillType : BaseSkillType
     public override void OnSkillActivated(Vector3 targetPos)
     {
         base.OnSkillActivated(targetPos);
+        for (int i = 0; i < maxIndex; i++)
+        {
+            StartCoroutine(HitChecking(areaOfEffect[i]));
+        }
+
     }
     #endregion
 

@@ -56,12 +56,16 @@ public abstract class BaseSkillType : MonoBehaviour
     #region ProtectedMethod
     protected virtual void InitAreaOfEffect()
     {
-        if (areaOfEffect[0] != null) return;
-
-        areaOfEffect[0] = Instantiate(areaOfEffectPrefeb);
-        areaOfEffect[0].transform.SetParent(attackStartPos[0].transform, false);
-        areaOfEffect[0].transform.position = attackStartPos[0].position;
-        areaOfEffect[0].SetActive(false);
+        for (int i = 0; i < maxIndex; i++)
+        {
+            if (areaOfEffect[i] == null)
+            {
+                areaOfEffect[i] = Instantiate(areaOfEffectPrefeb);
+                areaOfEffect[i].transform.SetParent(attackStartPos[i].transform, false);
+                areaOfEffect[i].transform.position = attackStartPos[i].position;
+                areaOfEffect[i].SetActive(false);
+            }
+        }
     }
     #endregion
 
@@ -74,7 +78,7 @@ public abstract class BaseSkillType : MonoBehaviour
     //코루틴 영역
     #region Coroutine
     //히트박스에 들어갔는지 아닌지 체크하는 코루틴
-    protected abstract IEnumerator HitChecking();
+    protected abstract IEnumerator HitChecking(GameObject hitBox);
     #endregion
 
 
@@ -84,7 +88,6 @@ public abstract class BaseSkillType : MonoBehaviour
     public virtual void OnSkillActivated(Vector3 targetPos)
     {
         this.targetPos = targetPos;
-        StartCoroutine(HitChecking());
     }
     #endregion
 

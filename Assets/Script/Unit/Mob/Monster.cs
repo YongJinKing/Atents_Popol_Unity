@@ -9,7 +9,7 @@ public class Monster : Unit
     #region Properties / Field
     //private 변수 영역
     #region Private
-    private Animator _myAnim = null;
+    private Animator _myAnim;
     #endregion
 
     //protected 변수 영역
