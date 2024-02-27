@@ -6,13 +6,12 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    GameObject gameObject;
     public List<Item> items;
 
     [SerializeField]
     private Transform slotParent;
     [SerializeField]
-    private Slot[] slots;
+    public Slot[] slots;
 
 #if UNITY_EDITOR
     private void OnValidate() {
@@ -49,13 +48,6 @@ public class Inventory : MonoBehaviour
     }
 
     
-
-    private void Start() 
-    {
-        int idx = 0;
-        gameObject = transform.GetChild(1).GetChild(idx).GetChild(1).gameObject;
-        Debug.Log(gameObject);
-    }
     
 }
 
