@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Animator myAnim;
     public GameObject WeaponPoint;
-    public Transform myHend;
-    Vector3 dir;
-    float dist;
     bool Fire;
     bool isFireReady;
     float FireDelay;
@@ -16,7 +14,6 @@ public class Player : MonoBehaviour
     void Start()
     {
         equipWeapon = WeaponPoint.transform.GetChild(0).GetComponent<Weapon>();
-        dir = Vector3.up;
         FireDelay = 0;
         Debug.Log($"equipWeapon:{equipWeapon}");
     }
@@ -44,35 +41,9 @@ public class Player : MonoBehaviour
 
         if(Fire && isFireReady)
         {
-            StopAllCoroutines();
-            StartCoroutine("Attect");
-            Debug.Log("누름");
+            myAnim.SetTrigger("Attack");
             equipWeapon.Use();
             FireDelay = 0;
-        }
-    }
-    IEnumerator Attect()
-    {
-        float delta;
-        dist = 150.0f;
-
-        while(true)
-        {
-            delta = Time.deltaTime * 900.0f;
-            if(dist < delta) delta = dist;
-
-            dist -= delta;
-            if(dist > 0.0f)
-            {
-                myHend.Rotate(dir * delta);
-            }
-            else
-            {
-                dir = -dir;
-                Debug.Log(dir);
-                yield break;
-            }
-            yield return null;
         }
     }
 }
