@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    GameObject gameObject;
     public List<Item> items;
 
     [SerializeField]
@@ -17,21 +20,26 @@ public class Inventory : MonoBehaviour
     }
 #endif
 
-    void Awake() {
+    void Awake() 
+    {
         FreshSlot();
     }
 
-    public void FreshSlot() {
+    public void FreshSlot()
+    {
         int i = 0;
-        for (; i < items.Count && i < slots.Length; i++) {
+        for (; i < items.Count && i < slots.Length; i++) 
+        {
             slots[i].item = items[i];
         }
-        for (; i < slots.Length; i++) {
+        for (; i < slots.Length; i++) 
+        {
             slots[i].item = null;
         }
     }
 
-    public void AddItem(Item _item) {
+    public void AddItem(Item _item)
+    {
         if (items.Count < slots.Length) {
             items.Add(_item);
             FreshSlot();
@@ -39,5 +47,15 @@ public class Inventory : MonoBehaviour
             print("슬롯이 가득 차 있습니다.");
         }
     }
+
+    
+
+    private void Start() 
+    {
+        int idx = 0;
+        gameObject = transform.GetChild(1).GetChild(idx).GetChild(1).gameObject;
+        Debug.Log(gameObject);
+    }
+    
 }
 
