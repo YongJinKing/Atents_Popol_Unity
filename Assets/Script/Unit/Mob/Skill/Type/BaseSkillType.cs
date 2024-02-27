@@ -37,6 +37,8 @@ public abstract class BaseSkillType : MonoBehaviour
     public Transform[] attackStartPos;
     //스킬 공격범위라던가를 설정할 오브젝트 프리펩
     public GameObject areaOfEffectPrefeb;
+    //공격이 맞았을때 생성될 이펙트
+    public GameObject hitEffectPrefeb;
     #endregion
 
     //이벤트 함수들 영역
@@ -64,6 +66,19 @@ public abstract class BaseSkillType : MonoBehaviour
                 areaOfEffect[i].transform.SetParent(attackStartPos[i].transform, false);
                 areaOfEffect[i].transform.position = attackStartPos[i].position;
                 areaOfEffect[i].SetActive(false);
+            }
+        }
+    }
+
+    //맞췄을때 이펙트가 나오도록 하는 함수
+    protected virtual void HitEffectPlay(Vector3 hitBoxPos, Vector3 targetPos)
+    {
+        if (hitEffectPrefeb != null)
+        {
+            Ray ray = new Ray(hitBoxPos, targetPos - hitBoxPos);
+            if (Physics.Raycast(ray, out RaycastHit hit, 10f, targetMask))
+            {
+                Instantiate(hitEffectPrefeb, hit.point, Quaternion.identity);
             }
         }
     }

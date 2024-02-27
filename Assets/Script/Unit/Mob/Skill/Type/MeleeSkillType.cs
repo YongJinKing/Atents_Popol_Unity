@@ -49,16 +49,18 @@ public class MeleeSkillType : BaseSkillType
         hitBox.SetActive(true);
 
         remainDuration = hitDuration;
-        while (remainDuration >= 0.0f)
-        {
-            remainDuration -= Time.deltaTime;
 
-            Vector3 size = new Vector3(
+        //OverlapBox에서 쓸 box의 사이즈
+        Vector3 size = new Vector3(
             hitBox.transform.position.x * hitBox.transform.lossyScale.x,
             hitBox.transform.position.y * hitBox.transform.lossyScale.y,
             hitBox.transform.position.z * hitBox.transform.lossyScale.z
             );
-            Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, size, Quaternion.identity, targetMask);
+
+        while (remainDuration >= 0.0f)
+        {
+            remainDuration -= Time.deltaTime;
+            Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, size, hitBox.transform.rotation, targetMask);
 
 
             for (int i = 0; i < tempcol.Length; i++)

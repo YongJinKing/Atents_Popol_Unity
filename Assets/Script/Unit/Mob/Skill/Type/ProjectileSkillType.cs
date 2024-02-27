@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 //투사체를 날리는 형태의 스킬에대한 클래스
 public class ProjectileSkillType : BaseSkillType
@@ -14,12 +15,19 @@ public class ProjectileSkillType : BaseSkillType
 
     //protected 변수 영역
     #region protected
+    [SerializeField] protected LayerMask unpenetrableMask;
     [SerializeField] protected float moveSpeed = 10f;
     [SerializeField] protected float parabolaHeight = 2f;
+    //최대 사거리(xz 평면에서만)
+    [SerializeField] protected float maxDist = 5f;
     #endregion
 
     //Public 변수영역
     #region public
+    //투사체가 부숴졌을때 생성될 이펙트
+    public GameObject destroyEffectPrefeb;
+    //투사체가 관통이 되냐 안되냐를 판정
+    public bool penetrable = false;
     #endregion
 
     //이벤트 함수들 영역
@@ -31,6 +39,20 @@ public class ProjectileSkillType : BaseSkillType
     #region Method
     //private 함수들 영역
     #region PrivateMethod
+    private void DestroyProjectile(GameObject hitBox)
+    {
+        //시도때도 없이 호출되는 함수라서 예외처리를 확실히 해줘야한다.
+        if(hitBox != null)
+        {
+            if(destroyEffectPrefeb != null)
+            {
+                Instantiate(destroyEffectPrefeb, hitBox.transform.position, Quaternion.identity);
+            }
+
+            Destroy(hitBox);
+            hitBox = null;
+        }
+    }
     #endregion
 
     //protected 함수들 영역
@@ -47,44 +69,77 @@ public class ProjectileSkillType : BaseSkillType
     protected override IEnumerator HitChecking(GameObject hitBox)
     {
         hitBox.SetActive(true);
+        //
+        HashSet<Collider> calculatedObject = new HashSet<Collider>();
 
         //발동 시점의 targetPos를 저장하므로 여러번 한다고 쳤을때 targetPos가 바뀌어서 나갈일은 없을 듯?
-        //StartCoroutine(LinearMovingToPos(hitBox, targetPos));
-        StartCoroutine(ParabolaMovingPos(hitBox, targetPos));
+        //람다식으로 DestroyProjectile 함수를 쓰도록 했다.
+        //람다식으로 되있는 부분은 거리가 다되면 오브젝트 제거하도록 한부분이다.
+        StartCoroutine(LinearMovingToPos(hitBox, targetPos, () => DestroyProjectile(hitBox)));
+        //StartCoroutine(ParabolaMovingPos(hitBox, targetPos));
 
         //투사체 각각이 남은시간을 가지고 있어야 하므로 코루틴에다가 remainDuration을 지역변수로 재정의 했다.
         float remainDuration = hitDuration;
-        while (remainDuration >= 0.0f)
-        {
-            remainDuration -= Time.deltaTime;
 
-            Vector3 size = new Vector3(
+        //OverlapBox에서 쓸 box의 사이즈
+        Vector3 size = new Vector3(
             hitBox.transform.position.x * hitBox.transform.lossyScale.x,
             hitBox.transform.position.y * hitBox.transform.lossyScale.y,
             hitBox.transform.position.z * hitBox.transform.lossyScale.z
             );
-            Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, size, Quaternion.identity, targetMask);
+
+        while (remainDuration >= 0.0f && hitBox != null)
+        {
+            remainDuration -= Time.deltaTime;
+            Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, size, hitBox.transform.rotation, targetMask | unpenetrableMask);
 
 
             for (int i = 0; i < tempcol.Length; i++)
             {
-                Debug.Log(tempcol[i].gameObject.name);
+                //Projectile destroy because of ununpenetrableMask
+                if ((1 << tempcol[i].gameObject.layer & unpenetrableMask) != 0)
+                {
+                    DestroyProjectile(hitBox);
+                    break;
+                }
+                //지금껏 충돌 해보지 못한 오브젝트와 충돌했을시
+                //스킬이 맞았다고 이벤트 발생
+                if (!calculatedObject.Contains(tempcol[i]))
+                {
+                    //Debug.Log For check
+                    Debug.Log(tempcol[i].gameObject.name);
+                    //맞췄을때 이펙트를 넣어줌
+                    HitEffectPlay(hitBox.transform.position, tempcol[i].gameObject.transform.position);
+                    if (penetrable)
+                    {
+                        calculatedObject.Add(tempcol[i]);
+                    }
+                    else
+                    {
+                        DestroyProjectile(hitBox);
+                        //i를 바꿔버림으로써 루프에서 나감
+                        i = tempcol.Length;
+                    }
+                    onSkillHitEvent?.Invoke();
+
+                }
             }
             yield return null;
         }
 
         //지속시간이 끝났다.
         //투사체가 제거됨
-        Destroy(hitBox);
-        hitBox = null;
+        //이 부분은 지속시간이 끝나서 제거되는 부분이다.
+        DestroyProjectile(hitBox);
         yield return null;
     }
 
     //투사체(Projectile)을 이동시키는 함수
-    protected IEnumerator LinearMovingToPos(GameObject hitBox, Vector3 targetPos)
+    protected IEnumerator LinearMovingToPos(GameObject hitBox, Vector3 targetPos, UnityAction distEndAct)
     {
         //어차피 그 방향으로 발사만 시킬것이기 때문에 dist 없이 간다.
         float delta = 0.0f;
+        float dist = maxDist;
         Vector3 dir;
         //투사체의 발사를 위해서 부모관계를 없앴다
         if (hitBox != null)
@@ -92,17 +147,23 @@ public class ProjectileSkillType : BaseSkillType
             hitBox.transform.SetParent(null);
             dir = targetPos - hitBox.transform.position;
             dir.Normalize();
+            //xz 평면에서 가는 거리
+            float xzDist = (new Vector3(dir.x, 0, dir.z)).magnitude;
 
             //지속시간동안 이동
             //hitBox가 HitChecking에 의해서 사라지면 그대로 빠져나옴
-            while (hitBox != null)
+            while (hitBox != null && dist >= 0.0f)
             {
                 delta = Time.deltaTime * moveSpeed;
+                //xz 평면안에서 간 거리만큼만 뺀다.
+                dist -= xzDist * delta;
                 // 이동한다.
                 hitBox.transform.Translate(dir * delta, Space.World);
 
                 yield return null;
             }
+            //반복을 나왔으므로 최대 사거리 까지 간것이다.
+            distEndAct?.Invoke();
         }
 
         //어차피 투사체가 삭제되는것은 HitChecking이 담당하므로
