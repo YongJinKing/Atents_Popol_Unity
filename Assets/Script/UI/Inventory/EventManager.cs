@@ -8,47 +8,53 @@ using UnityEngine.UI;
 public class EventManager : MonoBehaviour
 {
     //public GameObject SlotObject;
-    public class SlotList
+    public class Slot
     {
         public GameObject gameObject;
         public bool ChooseSlot;
     }
 
     public GameObject Inventory;
-    private List<SlotList> slotList = new List<SlotList>();
+    private List<Slot> slotList = new List<Slot>();//Slot넣을 리스트 할당
 
 
     private void Start() 
     {
-        for(int i = 0; i < Inventory.GetComponent<Inventory>().slots.Length; i++)
+        for(int i = 0; i < Inventory.GetComponent<Inventory>().slots.Length; i++)//
         {
             int index = i;
             //클래스 생성만
-            SlotList temp = new SlotList();
-
+            Slot temp = new Slot();
             //클래스 초기화
             temp.gameObject = Inventory.transform.GetChild(1).GetChild(i).GetChild(1).gameObject;
             temp.ChooseSlot = false;
             slotList.Add(temp);
             slotList[i].gameObject.GetComponent<Button>().onClick.AddListener(() => btnchoise(index));
         } 
-        
     }
     
+
+    Color AlphaColorChange(int i, float Value)
+    {
+        Color color = slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;//현재 버튼 색깔인자값 전달받기
+        color.a = Value;
+        slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
+        return slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;
+    }
+
+
     void CleanSlots()
     {
         for(int i = 0; i < Inventory.GetComponent<Inventory>().slots.Length; i++)
         {
-            Color color = slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;//현재 버튼 색깔인자값 전달받기
+            AlphaColorChange(i, 0.0f);
             slotList[i].ChooseSlot = false;//점등 X
-            color.a = 0.0f;
-            slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
         } 
     }
 
+
     void btnchoise(int buttonId)
     {
-        
         if(slotList[buttonId].ChooseSlot) 
         {
             CleanSlots();
@@ -62,12 +68,9 @@ public class EventManager : MonoBehaviour
         
         if(slotList[buttonId].ChooseSlot)
         {
-            Color color = slotList[buttonId].gameObject.GetComponent<UnityEngine.UI.Image>().color;
-            color.a = 0.3f;
-            slotList[buttonId].gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
+            AlphaColorChange(buttonId, 0.3f);
         }
     }
-    
 }
 
 
