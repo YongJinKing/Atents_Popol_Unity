@@ -356,8 +356,11 @@ MonoBehaviour:
     m_Bits: 32
   hitDuration: 1
   remainDuration: 0
-  areaOfEffect: {fileID: 0}
-  attackStartPos: {fileID: 1645254549}
+  areaOfEffect:
+  - {fileID: 0}
+  maxIndex: 1
+  attackStartPos:
+  - {fileID: 1645254549}
   areaOfEffectPrefeb: {fileID: 6990741505927336910, guid: 84570a022d420e242b3a53a419dc0612, type: 3}
   onSkillHitEvent:
     m_PersistentCalls:
@@ -376,6 +379,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 623122056}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &138355542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 138355543}
+  m_Layer: 0
+  m_Name: RangedAttackRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &138355543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138355542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 453309624}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &453309624 stripped
 Transform:
@@ -474,6 +508,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &589361204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 589361205}
+  m_Layer: 0
+  m_Name: RangedAttackLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &589361205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589361204}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 453309624}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &623122055
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +601,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onSkillCoolTimeEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &646335527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
@@ -682,12 +750,21 @@ MonoBehaviour:
     m_Bits: 32
   hitDuration: 5
   remainDuration: 0
-  areaOfEffect: {fileID: 0}
-  attackStartPos: {fileID: 1645254549}
+  areaOfEffect:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  maxIndex: 3
+  attackStartPos:
+  - {fileID: 1645254549}
+  - {fileID: 589361205}
+  - {fileID: 138355543}
   areaOfEffectPrefeb: {fileID: 5361790144280171742, guid: 0b7b78f85b8139b4bba3b4e4c6580e79, type: 3}
   onSkillHitEvent:
     m_PersistentCalls:
       m_Calls: []
+  moveSpeed: 10
+  parabolaHeight: 2
 --- !u!4 &1400200423
 Transform:
   m_ObjectHideFlags: 0
@@ -792,6 +869,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4167280743394806330, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1645254549}
+    - targetCorrespondingSourceObject: {fileID: 4167280743394806330, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 589361205}
+    - targetCorrespondingSourceObject: {fileID: 4167280743394806330, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 138355543}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       insertIndex: -1
@@ -835,7 +918,7 @@ GameObject:
   - component: {fileID: 1728390530}
   - component: {fileID: 1728390529}
   - component: {fileID: 1728390528}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -973,7 +1056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0752deb0ededfc445a4d23f3a3b9f594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDownTime: 0
+  coolDownTime: 1
   detectRange: {fileID: 0}
   onSkillActivatedEvent:
     m_PersistentCalls:
@@ -990,6 +1073,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onSkillCoolTimeEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
