@@ -13,10 +13,18 @@ public abstract class AttackSkillType : BaseSkillType
 
     //protected 변수 영역
     #region protected
+    //히트박스가 지속되는 시간
+    [SerializeField] protected float hitDuration;
+    //남은 지속시간을 계산하기 위한 변수 serial은 그냥 값이 줄어드는지 확인하기 위한것으로 수정하려고 만든것이 아니다.
+    [SerializeField] protected float remainDuration;
     #endregion
 
     //Public 변수영역
     #region public
+    //스킬 공격범위라던가를 설정할 오브젝트 프리펩
+    public GameObject areaOfEffectPrefeb;
+    //공격이 맞았을때 생성될 이펙트
+    public GameObject hitEffectPrefeb;
     #endregion
 
     //이벤트 함수들 영역
@@ -32,6 +40,32 @@ public abstract class AttackSkillType : BaseSkillType
 
     //protected 함수들 영역
     #region ProtectedMethod
+    protected virtual void InitAreaOfEffect()
+    {
+        for (int i = 0; i < maxIndex; i++)
+        {
+            if (areaOfEffect[i] == null)
+            {
+                areaOfEffect[i] = Instantiate(areaOfEffectPrefeb);
+                areaOfEffect[i].transform.SetParent(attackStartPos[i].transform, false);
+                areaOfEffect[i].transform.position = attackStartPos[i].position;
+                areaOfEffect[i].SetActive(false);
+            }
+        }
+    }
+
+    //맞췄을때 이펙트가 나오도록 하는 함수
+    protected virtual void HitEffectPlay(Vector3 hitBoxPos, Vector3 targetPos)
+    {
+        if (hitEffectPrefeb != null)
+        {
+            Ray ray = new Ray(hitBoxPos, targetPos - hitBoxPos);
+            if (Physics.Raycast(ray, out RaycastHit hit, 10f, targetMask))
+            {
+                Instantiate(hitEffectPrefeb, hit.point, Quaternion.identity);
+            }
+        }
+    }
     #endregion
 
     //public 함수들 영역
@@ -53,16 +87,9 @@ public abstract class AttackSkillType : BaseSkillType
 
     //유니티 함수들 영역
     #region MonoBehaviour
-    // Start is called before the first frame update
-    void Start()
+    protected virtual void Awake()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        InitAreaOfEffect();
     }
     #endregion
 }
