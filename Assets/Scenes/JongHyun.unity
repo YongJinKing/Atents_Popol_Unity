@@ -362,6 +362,7 @@ MonoBehaviour:
   attackStartPos:
   - {fileID: 1645254549}
   areaOfEffectPrefeb: {fileID: 6990741505927336910, guid: 84570a022d420e242b3a53a419dc0612, type: 3}
+  hitEffectPrefeb: {fileID: 0}
   onSkillHitEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -760,11 +761,18 @@ MonoBehaviour:
   - {fileID: 589361205}
   - {fileID: 138355543}
   areaOfEffectPrefeb: {fileID: 5361790144280171742, guid: 0b7b78f85b8139b4bba3b4e4c6580e79, type: 3}
+  hitEffectPrefeb: {fileID: 0}
   onSkillHitEvent:
     m_PersistentCalls:
       m_Calls: []
+  unpenetrableMask:
+    serializedVersion: 2
+    m_Bits: 0
   moveSpeed: 10
   parabolaHeight: 2
+  maxDist: 5
+  destroyEffectPrefeb: {fileID: 0}
+  penetrable: 0
 --- !u!4 &1400200423
 Transform:
   m_ObjectHideFlags: 0

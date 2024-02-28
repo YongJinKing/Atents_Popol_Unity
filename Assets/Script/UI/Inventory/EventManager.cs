@@ -10,10 +10,12 @@ public class EventManager : MonoBehaviour
     
 
     
-    public GameObject SmithInventory;//인벤토리 오브젝트 할당
-    public GameObject gameCanvas;//게임 캔버스 할당
-    public GameObject MainUI;//메인 UI할당
-    private List<Slot> slotList = new List<Slot>();//Slot넣을 리스트 할당
+
+    public GameObject SmithInventory;//?�벤?�리 ?�브?�트 ?�당
+    public GameObject gameCanvas;//게임 캔버???�당
+    public GameObject MainUI;//메인 UI?�당
+    private List<Slot> slotList = new List<Slot>();//Slot?�을 리스???�당
+
     //private Button moveUI;
 
 
@@ -25,34 +27,36 @@ public class EventManager : MonoBehaviour
     private void Start() 
     {
         for(int i = 0; i < SmithInventory.GetComponent<Inventory>().slots.Length; i++)
-        //리스트에 버튼할당 하는 프로세스
+
         {
             int index = i;
-            //클래스 생성만
+            
             Slot temp = new Slot();
-            //클래스 초기화
+
             temp.gameObject = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(i).GetChild(1).gameObject;
             temp.ChooseSlot = false;
             slotList.Add(temp);
             slotList[i].gameObject.GetComponent<Button>().onClick.AddListener(() => InvenBtnChoise(index));
         } 
-        Button[] MainUIButtonList = MainUI.GetComponentsInChildren<UnityEngine.UI.Button>();//MainUI버튼할당
+
+        Button[] MainUIButtonList = MainUI.GetComponentsInChildren<UnityEngine.UI.Button>();//MainUI버튼?�당
+
         for(int i = 0; i < MainUIButtonList.Length; i++)
         {
             int index = i;
             MainUIButtonList[i].onClick.AddListener(() => MainUiControll(index, MainUIButtonList.Length));
         }
-        gameCanvas.transform.GetChild(2).gameObject.SetActive(true); //시작시 메인화면 On
-        gameCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(false); //시작시 메인화면 On
-        /* moveUI = MainUI.GetComponentInChildren<Button>();
-        Debug.Log(moveUI.gameObject.name); */
+
+        gameCanvas.transform.GetChild(2).gameObject.SetActive(true); //?�작??메인?�면 On
+        gameCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(false); //?�작??메인?�면 On
+
         
     }
     
 
     Color AlphaColorChange(int i, float Value)
     {
-        Color color = slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;//현재 버튼 색깔인자값 전달받기
+        Color color = slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;//?�재 버튼 ?�깔?�자�??�달받기
         color.a = Value;
         slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
         return slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;
@@ -78,7 +82,7 @@ public class EventManager : MonoBehaviour
         for(int i = 0; i < SmithInventory.GetComponent<Inventory>().slots.Length; i++)
         {
             AlphaColorChange(i, 0.0f);
-            slotList[i].ChooseSlot = false;//점등 X
+            slotList[i].ChooseSlot = false;//?�등 X
         } 
     }
 
