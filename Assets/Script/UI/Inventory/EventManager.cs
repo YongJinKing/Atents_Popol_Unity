@@ -5,6 +5,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
+using Unity.VisualScripting;
 
 public class EventManager : MonoBehaviour
 {
@@ -61,7 +63,10 @@ public class EventManager : MonoBehaviour
         gameCanvas.transform.GetChild(2).gameObject.SetActive(true); //
         gameCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(false); //
         
-        
+        //Debug.Log(SmithInventory.transform.GetChild(1).GetChild(0).GetChild(0).gameObject);
+        //Debug.Log(GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject);
+        //Debug.Log(GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject);
+        //smith UI / Main Panel / BuyAndsell / itemDetail / ItemAbility / ItemAbility / Image
         
     }
     
@@ -73,7 +78,7 @@ public class EventManager : MonoBehaviour
         slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
         return slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;
     }
-    
+
     void CleanSlots()
     {
         for(int i = 0; i < SmithInventory.GetComponent<Inventory>().slots.Length; i++)
@@ -87,6 +92,7 @@ public class EventManager : MonoBehaviour
     {
         
         List<Item> itemlist = SmithInventory.GetComponent<Inventory>().items;
+        UnityEngine.UI.Image ItemInSlot = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(buttonId).gameObject.GetComponent<UnityEngine.UI.Image>();
         if(itemlist[buttonId])
         {
             ItemDetailShow(false);
@@ -106,6 +112,7 @@ public class EventManager : MonoBehaviour
             {
                 AlphaColorChange(buttonId, 0.3f);
                 ItemDetailShow(true);
+                ItemDetailChange(itemlist[buttonId]);
             }
         }
         else return;
@@ -153,7 +160,16 @@ public class EventManager : MonoBehaviour
         ItemAbility.SetActive(isShow);
         NpcTalkBollum.SetActive(isShow);
         NpcText.SetActive(isShow);
-        
+    }
+    void ItemDetailChange(Item item)
+    {
+        UnityEngine.UI.Image ItemAbilityImage = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>();
+        TMP_Text ItemAbilityText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>();
+        UnityEngine.UI.Image NpcTalkBollum = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>();
+        TMP_Text NpcText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<TMP_Text>();;
+        List<Item> itemlist = SmithInventory.GetComponent<Inventory>().items;
+        ItemAbilityImage.sprite = item.itemImage;
+
     }
 }
 
