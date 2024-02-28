@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,16 +24,20 @@ public class Skill : MonoBehaviour
 
     //Public 변수영역
     #region public
-    //스킬 아래에 콜라이더를 가진 오브젝트를 넣어서 이 오브젝트에 트리거 되면 스킬 시전 시작
-    //플레이어의 경우 이 오브젝트는 사용하지 않는다
-    public Transform detectRange;
+    //이 반지름으로 구를 생성해서 overlapSphere로 적을 검출한다
+    //AI에서만 사용한다.
+    public float detectRadius;
+    //AI에서만 사용할 마스크
+    public LayerMask targetMask;
     #endregion
     //이벤트 함수들 영역
     #region Event
     //스킬이 실행되면 SkillType클래스에게 정보를 전달한다.
     public UnityEvent<Vector3> onSkillActivatedEvent;
     //스킬이 사용가능해지면 발생하는 이벤트
-    public UnityEvent onSkillCoolTimeEndEvent;
+    public UnityEvent onSkillAvailableEvent;
+    //타겟이 들어왔음을 알려주는 이벤트
+    public UnityEvent onDetectTargetEvent;
     #endregion
     #endregion
 
@@ -62,14 +67,39 @@ public class Skill : MonoBehaviour
         }
 
 
-        onSkillCoolTimeEndEvent?.Invoke();
+        onSkillAvailableEvent?.Invoke();
         yield return null;
+    }
+
+    protected IEnumerator DetectingRange()
+    {
+        while (true)
+        {
+            Collider[] tempcol = Physics.OverlapSphere(transform.position, detectRadius, targetMask);
+
+
+            for (int i = 0; i < tempcol.Length; i++)
+            {
+                if(tempcol[i] != null)
+                {
+                    onDetectTargetEvent?.Invoke();
+                    break;
+                }
+            }
+            yield return null;
+        }
     }
     #endregion
 
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
+    //AI가 사용할 이벤트 함수, collider에 걸리면 이벤트를 invoke할 코루틴을 스타트
+    public void OnDetectSkillRange()
+    {
+        StartCoroutine(DetectingRange());
+    }
+
     //이 스킬이 사용되었을때
     public void OnSkillStart(Vector3 targetPos)
     {

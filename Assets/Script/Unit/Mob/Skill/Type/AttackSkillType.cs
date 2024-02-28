@@ -13,10 +13,17 @@ public abstract class AttackSkillType : BaseSkillType
 
     //protected 변수 영역
     #region protected
+    //타겟이 플레이어면 플레어 레이어로 하고 몬스터면 몬스터 레이어
+    [SerializeField] protected LayerMask targetMask;
     //히트박스가 지속되는 시간
     [SerializeField] protected float hitDuration;
     //남은 지속시간을 계산하기 위한 변수 serial은 그냥 값이 줄어드는지 확인하기 위한것으로 수정하려고 만든것이 아니다.
     [SerializeField] protected float remainDuration;
+    //인스턴타이즈화된 areaOfEffectPrefeb을 저장하는곳
+    [SerializeField] protected GameObject[] areaOfEffect;
+    //areaOfEffect를 최대 몇개까지 만들것이냐를 결정하기 위함
+    //예를들어 투사체 클래스의 경우에는 2개 이상으로 만들면 여러개 발사 할수 있도록
+    [SerializeField] protected int maxIndex;
     #endregion
 
     //Public 변수영역
@@ -25,6 +32,8 @@ public abstract class AttackSkillType : BaseSkillType
     public GameObject areaOfEffectPrefeb;
     //공격이 맞았을때 생성될 이펙트
     public GameObject hitEffectPrefeb;
+    //스킬이 시작될 위치
+    public Transform[] attackStartPos;
     #endregion
 
     //이벤트 함수들 영역
@@ -87,7 +96,7 @@ public abstract class AttackSkillType : BaseSkillType
 
     //유니티 함수들 영역
     #region MonoBehaviour
-    protected virtual void Awake()
+    protected override void Awake()
     {
         InitAreaOfEffect();
     }

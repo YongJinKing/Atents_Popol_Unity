@@ -8,11 +8,12 @@ public class SelfSkillType : BaseSkillType
     #region Properties / Field
     //private 변수 영역
     #region Private
-
     #endregion
 
     //protected 변수 영역
     #region protected
+    //부모의 Unit을 참조할 오브젝트
+    protected Unit selfObject;
     #endregion
 
     //Public 변수영역
@@ -51,16 +52,9 @@ public class SelfSkillType : BaseSkillType
 
     //유니티 함수들 영역
     #region MonoBehaviour
-    // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        selfObject = GetComponentInParent<Unit>();
     }
     #endregion
 }

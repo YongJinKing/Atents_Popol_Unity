@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -351,6 +351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41137f941b9381b43a01e0182cf9674e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSkillHitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   targetMask:
     serializedVersion: 2
     m_Bits: 32
@@ -359,13 +362,10 @@ MonoBehaviour:
   areaOfEffect:
   - {fileID: 0}
   maxIndex: 1
-  attackStartPos:
-  - {fileID: 1645254549}
   areaOfEffectPrefeb: {fileID: 6990741505927336910, guid: 84570a022d420e242b3a53a419dc0612, type: 3}
   hitEffectPrefeb: {fileID: 0}
-  onSkillHitEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  attackStartPos:
+  - {fileID: 1645254549}
 --- !u!4 &128530144
 Transform:
   m_ObjectHideFlags: 0
@@ -586,7 +586,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDownTime: 0
-  detectRange: {fileID: 0}
+  detectRadius: 0
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 0
   onSkillActivatedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -602,7 +605,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onSkillCoolTimeEndEvent:
+  onSkillAvailableEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onDetectTargetEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &646335527 stripped
@@ -622,7 +628,7 @@ GameObject:
   - component: {fileID: 934310767}
   - component: {fileID: 934310766}
   - component: {fileID: 934310765}
-  m_Layer: 5
+  m_Layer: 12
   m_Name: Sandbag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,9 +752,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a51d977329461f4da9c411bf961a1b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSkillHitEvent:
+    m_PersistentCalls:
+      m_Calls: []
   targetMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 4128
   hitDuration: 5
   remainDuration: 0
   areaOfEffect:
@@ -756,15 +765,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   maxIndex: 3
+  areaOfEffectPrefeb: {fileID: 5361790144280171742, guid: 0b7b78f85b8139b4bba3b4e4c6580e79, type: 3}
+  hitEffectPrefeb: {fileID: 0}
   attackStartPos:
   - {fileID: 1645254549}
   - {fileID: 589361205}
   - {fileID: 138355543}
-  areaOfEffectPrefeb: {fileID: 5361790144280171742, guid: 0b7b78f85b8139b4bba3b4e4c6580e79, type: 3}
-  hitEffectPrefeb: {fileID: 0}
-  onSkillHitEvent:
-    m_PersistentCalls:
-      m_Calls: []
   unpenetrableMask:
     serializedVersion: 2
     m_Bits: 0
@@ -1065,7 +1071,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDownTime: 1
-  detectRange: {fileID: 0}
+  detectRadius: 1
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 4096
   onSkillActivatedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1081,9 +1090,24 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onSkillCoolTimeEndEvent:
+  onSkillAvailableEvent:
     m_PersistentCalls:
       m_Calls: []
+  onDetectTargetEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 107099744}
+        m_TargetAssemblyTypeName: Slime, Assembly-CSharp
+        m_MethodName: OnDetectTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 //스킬의 히트박스와 피격박스를 위한 클래스
@@ -16,21 +12,12 @@ public abstract class BaseSkillType : MonoBehaviour
 
     //protected 변수 영역
     #region protected
-    //타겟이 플레이어면 플레어 레이어로 하고 몬스터면 몬스터 레이어
-    [SerializeField] protected LayerMask targetMask;
     //OnSkillActivated로 받아온 타겟의 위치를 저장함
     protected Vector3 targetPos;
-    //인스턴타이즈화된 areaOfEffectPrefeb을 저장하는곳
-    [SerializeField] protected GameObject[] areaOfEffect;
-    //areaOfEffect를 최대 몇개까지 만들것이냐를 결정하기 위함
-    //예를들어 투사체 클래스의 경우에는 2개 이상으로 만들면 여러개 발사 할수 있도록
-    [SerializeField] protected int maxIndex;
     #endregion
 
     //Public 변수영역
     #region public
-    //스킬이 시작될 위치
-    public Transform[] attackStartPos;
     #endregion
 
     //이벤트 함수들 영역
