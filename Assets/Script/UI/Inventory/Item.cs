@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 
 public enum RiggingType
@@ -23,8 +25,12 @@ public class Item : ScriptableObject
 {
     public string itemName;
     public Sprite itemImage;
+    public int itemValue;
+    public String itemDesc;
+    public int durAbility;
     public WeaponType weaponType;
     public RiggingType riggingType;
+    
 }
 
 
