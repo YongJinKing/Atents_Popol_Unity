@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //히트박스가 고정되어있는 근접공격등을 위한 클래스
-public class MeleeSkillType : BaseSkillType
+public class MeleeSkillType : AttackSkillType
 {
     //변수 영역
     #region Properties / Field

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 //투사체를 날리는 형태의 스킬에대한 클래스
-public class ProjectileSkillType : BaseSkillType
+public class ProjectileSkillType : AttackSkillType
 {
     //변수 영역
     #region Properties / Field
@@ -69,7 +69,7 @@ public class ProjectileSkillType : BaseSkillType
     protected override IEnumerator HitChecking(GameObject hitBox)
     {
         hitBox.SetActive(true);
-        //
+        //이미 충돌판정이 끝난 오브젝트들
         HashSet<Collider> calculatedObject = new HashSet<Collider>();
 
         //발동 시점의 targetPos를 저장하므로 여러번 한다고 쳤을때 targetPos가 바뀌어서 나갈일은 없을 듯?
@@ -92,7 +92,6 @@ public class ProjectileSkillType : BaseSkillType
         {
             remainDuration -= Time.deltaTime;
             Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, size, hitBox.transform.rotation, targetMask | unpenetrableMask);
-
 
             for (int i = 0; i < tempcol.Length; i++)
             {
@@ -172,6 +171,7 @@ public class ProjectileSkillType : BaseSkillType
         yield return null;
     }
 
+    //투사체를 포물선으로 이동시키는 함수
     protected IEnumerator ParabolaMovingPos(GameObject hitBox, Vector3 targetPos)
     {
         Vector3 middlePos;

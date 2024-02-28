@@ -92,8 +92,6 @@ public abstract class BaseSkillType : MonoBehaviour
 
     //코루틴 영역
     #region Coroutine
-    //히트박스에 들어갔는지 아닌지 체크하는 코루틴
-    protected abstract IEnumerator HitChecking(GameObject hitBox);
     #endregion
 
 
