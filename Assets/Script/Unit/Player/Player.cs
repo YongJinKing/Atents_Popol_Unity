@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Player : MonoBehaviour
+public class Player : CharacterProperty
 {
-    public Animator myAnim;
+    public UnityEvent<Vector3> clickAct;
     public GameObject WeaponPoint;
+    public LayerMask clickMask;
     bool Fire;
     bool isFireReady;
     float FireDelay;
@@ -21,6 +23,16 @@ public class Player : MonoBehaviour
     {
         GetInput();
         Attack();
+        if(Input.GetMouseButtonDown(1))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if(Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
+            {
+                Debug.Log("클릭");
+                clickAct?.Invoke(hit.point);
+            }
+            
+        }
     }
 
     void GetInput()
