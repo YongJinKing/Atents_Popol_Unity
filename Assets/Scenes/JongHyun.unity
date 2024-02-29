@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -317,6 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSkillUseEvent: []
+  myState: 0
   meleeAttackStartPos: {fileID: 1645254549}
   skill:
   - {fileID: 1968682891}
@@ -356,7 +357,7 @@ MonoBehaviour:
       m_Calls: []
   targetMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 4096
   hitDuration: 1
   remainDuration: 0
   areaOfEffect:
@@ -586,10 +587,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDownTime: 0
-  detectRadius: 0
+  detectRadius: 2
   targetMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   onSkillActivatedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -610,7 +611,19 @@ MonoBehaviour:
       m_Calls: []
   onDetectTargetEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 107099744}
+        m_TargetAssemblyTypeName: Slime, Assembly-CSharp
+        m_MethodName: OnDetectTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &646335527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
@@ -757,7 +770,7 @@ MonoBehaviour:
       m_Calls: []
   targetMask:
     serializedVersion: 2
-    m_Bits: 4128
+    m_Bits: 4096
   hitDuration: 5
   remainDuration: 0
   areaOfEffect:
@@ -1020,7 +1033,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 20}
+  m_LocalScale: {x: 50, y: 1, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1071,7 +1084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDownTime: 1
-  detectRadius: 1
+  detectRadius: 3
   targetMask:
     serializedVersion: 2
     m_Bits: 4096

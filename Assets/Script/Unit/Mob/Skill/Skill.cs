@@ -73,7 +73,8 @@ public class Skill : MonoBehaviour
 
     protected IEnumerator DetectingRange()
     {
-        while (true)
+        bool isDetecting = false;
+        while (!isDetecting)
         {
             Collider[] tempcol = Physics.OverlapSphere(transform.position, detectRadius, targetMask);
 
@@ -83,7 +84,7 @@ public class Skill : MonoBehaviour
                 if(tempcol[i] != null)
                 {
                     onDetectTargetEvent?.Invoke();
-                    break;
+                    isDetecting = true;
                 }
             }
             yield return null;

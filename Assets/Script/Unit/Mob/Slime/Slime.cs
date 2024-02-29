@@ -21,6 +21,7 @@ public class Slime : Monster
         if (s == myState) return;
         myState = s;
 
+        StopAllCoroutines();
         switch (myState)
         {
             //대충 적당히 근거리에서 배회
@@ -48,6 +49,8 @@ public class Slime : Monster
                 break;
             //적에게 접근
             case State.Closing:
+                //detect를 실행하라고 지시
+                skill[0].GetComponent<Skill>().OnDetectSkillRange();
                 StartCoroutine(ClosingToTarget());
                 break;
             //공격
@@ -79,12 +82,21 @@ public class Slime : Monster
     //타겟에게 가까워짐
     private IEnumerator ClosingToTarget()
     {
-        //detect를 실행하라고 지시
-        skill[0].GetComponent<Skill>().OnDetectSkillRange();
+        Vector3 dir;
+
+
+        float delta = 0.0f;
         while (myState == State.Closing)
         {
             //접근하는 반복자
+            dir = tempTarget.position - transform.position;
+            dir = new Vector3(dir.x, 0, dir.z);
+            dir.Normalize();
 
+            delta += Time.deltaTime;
+            transform.Translate(dir * delta * 0.1f);
+
+            yield return null;
         }
         yield return null;
     }
@@ -95,12 +107,18 @@ public class Slime : Monster
     {
         float wanderingTime = 2.0f;
 
+        Vector3 dir = -(tempTarget.position - transform.position);
+        dir = new Vector3(dir.x, 0, dir.z);
+        dir.Normalize();
+
+        float delta = 0.0f;
         while(wanderingTime >= 0.0f)
         {
             wanderingTime -= Time.deltaTime;
 
             //배회하는 코드들
-
+            delta += Time.deltaTime;
+            transform.Translate(dir * delta *0.1f);
 
             yield return null;
         }
