@@ -164,11 +164,23 @@ public class EventManager : MonoBehaviour
     void ItemDetailChange(Item item)
     {
         UnityEngine.UI.Image ItemAbilityImage = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>();
-        TMP_Text ItemAbilityText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>();
+        TMP_Text ItemAbilityText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.GetComponent<TMP_Text>();
         UnityEngine.UI.Image NpcTalkBollum = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>();
-        TMP_Text NpcText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<TMP_Text>();;
+        TMP_Text NpcText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(1).gameObject.GetComponent<TMP_Text>();;
         List<Item> itemlist = SmithInventory.GetComponent<Inventory>().items;
         ItemAbilityImage.sprite = item.itemImage;
+        string EqirType(RiggingType Type)
+        {
+            if(Type == RiggingType.Weapon)
+                name = "공격력 : ";
+            if(Type == RiggingType.Armor)
+                name = "체력 : ";
+            return name;
+        }
+        ItemAbilityText.text = 
+        "이름 : " + item.itemName + "\n\n" + EqirType(item.riggingType)
+         + item.itemValue + "\n\n" + "내구도 : " + item.durAbility;
+        NpcText.text = item.smithTalk;
 
     }
 }
