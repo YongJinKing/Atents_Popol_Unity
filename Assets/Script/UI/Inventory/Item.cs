@@ -8,6 +8,7 @@ using TMPro;
 
 public enum RiggingType
 {
+    None,
     Weapon,
     Armor
 }

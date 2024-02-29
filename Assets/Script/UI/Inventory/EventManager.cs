@@ -15,6 +15,8 @@ public class EventManager : MonoBehaviour
     public GameObject gameCanvas;//게임 
     public GameObject MainUI;//메인 UI
     public GameObject UserPanel;
+
+    public GameObject InvenBtnManager;
     
     private List<Slot> slotList = new List<Slot>();//
 
@@ -36,8 +38,16 @@ public class EventManager : MonoBehaviour
             temp.gameObject = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(i).GetChild(1).gameObject;
             temp.ChooseSlot = false;
             slotList.Add(temp);
-            slotList[i].gameObject.GetComponent<Button>().onClick.AddListener(() => InvenBtnChoise(index));
-        } 
+            slotList[i].gameObject.GetComponent<Button>().onClick.AddListener(() => InvenSlotBtnChoise(index));
+        }
+        Button[] InvenBtnList = InvenBtnManager.GetComponentsInChildren<UnityEngine.UI.Button>();
+        for(int i = 0; i < InvenBtnList.Length; i++)
+        {
+            int index = i;
+            InvenBtnList[i].onClick.AddListener(() => ChangeEqirType(index));
+        }
+
+
         #endregion
         #region MainUIInit
 
@@ -48,9 +58,9 @@ public class EventManager : MonoBehaviour
             MainUIButtonList[i].onClick.AddListener(() => MainUiControll(index, MainUIButtonList.Length));
         }
         
-        #endregion
-        
+        #endregion   
         #region User_PanelInit
+
         Button[] UserPanelBtnList = UserPanel.GetComponentsInChildren<UnityEngine.UI.Button>();
         for(int j = 0; j < UserPanelBtnList.Length; j++)
         {
@@ -70,7 +80,7 @@ public class EventManager : MonoBehaviour
         
     }
     
-    #region ChooseInvenItem
+    #region InventorySystem
     Color AlphaColorChange(int i, float Value)
     {
         Color color = slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;//
@@ -88,7 +98,7 @@ public class EventManager : MonoBehaviour
         }
         ItemDetailShow(false);
     }
-    void InvenBtnChoise(int buttonId)
+    void InvenSlotBtnChoise(int buttonId)
     {
         
         List<Item> itemlist = SmithInventory.GetComponent<Inventory>().items;
@@ -117,6 +127,14 @@ public class EventManager : MonoBehaviour
         }
         else return;
     }
+    void ChangeEqirType(int index)
+    {
+        if(index == 0)
+        {
+            Debug.Log("눌렀니?");
+        }
+    }
+
     #endregion
     #region MainUI
     
