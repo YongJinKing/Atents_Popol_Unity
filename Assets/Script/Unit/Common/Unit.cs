@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Unit : MonoBehaviour
+public class Unit : BattleSystem
 {
     //변수 영역
     #region Properties / Field

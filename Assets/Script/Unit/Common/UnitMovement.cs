@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class PlayerMovement : CharacterProperty
+public class UnitMovement : MonoBehaviour
 {
     Coroutine move = null;
     Coroutine rotate = null;
@@ -18,7 +19,7 @@ public class PlayerMovement : CharacterProperty
         
     }
 
-    public void MoveToPos(Vector3 target)
+    public void MoveToPos(Vector3 target, float Speed, UnityAction startAct, UnityAction endAct)
     {
         if(move != null)
         {
@@ -26,44 +27,53 @@ public class PlayerMovement : CharacterProperty
             move = null;
         }
         
-        move = StartCoroutine(MovingToPos(target));
+        move = StartCoroutine(MovingToPos(target, Speed, startAct, endAct));
     }
 
-    IEnumerator MovingToPos(Vector3 target)
+    IEnumerator MovingToPos(Vector3 target, float Speed, UnityAction startAct, UnityAction endAct)
     {
         Vector3 dir = target - transform.position;
         float dist = dir.magnitude;
         dir.Normalize();
+
         if(rotate != null) StopCoroutine(rotate);
-        rotate = StartCoroutine(Rotating(dir));
-        myAnim.SetBool("run", true);
+        rotate = StartCoroutine(Rotating(dir, Speed));
+
+        //myAnim.SetBool("run", true);
+        startAct?.Invoke();
+
         while(!Mathf.Approximately(dist, 0.0f))
         {
-            float delta = 2.0f * Time.deltaTime;
+            float delta = Speed * Time.deltaTime;
             if(delta > dist) delta = dist;
             dist -= delta;
             transform.Translate(dir * delta, Space.World);
             yield return null;
         }
-        myAnim.SetBool("run", false);
-        
+
+        //myAnim.SetBool("run", false);
+        endAct?.Invoke();
     }
 
-    IEnumerator Rotating(Vector3 dir)
+    IEnumerator Rotating(Vector3 dir,float Speed)
     {
         float angle = Vector3.Angle(transform.forward, dir);
         float rotDir = 1.0f;
+
         if(Vector3.Dot(transform.right, dir) < 0.0f)
         {
             rotDir = -1.0f;
         }
+
         while(!Mathf.Approximately(angle, 0.0f))
         {
-            float delta = 360.0f * Time.deltaTime;
+            float delta = 360.0f * Speed * Time.deltaTime;
+
             if(delta > angle)
             {
                 delta = angle;
             }
+
             angle -= delta;
             transform.Rotate(Vector3.up * rotDir * delta);
             yield return null;

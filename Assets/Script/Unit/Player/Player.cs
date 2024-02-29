@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : CharacterProperty
+public class Player : Unit
 {
-    public UnityEvent<Vector3> clickAct;
+    public UnityEvent<Vector3, float, UnityAction, UnityAction> clickAct;
     public GameObject WeaponPoint;
     public LayerMask clickMask;
     bool Fire;
@@ -19,6 +19,7 @@ public class Player : CharacterProperty
         FireDelay = 0;
         Debug.Log($"equipWeapon:{equipWeapon}");
     }
+
     void Update()
     {
         GetInput();
@@ -28,8 +29,9 @@ public class Player : CharacterProperty
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
             {
-                Debug.Log("클릭");
-                clickAct?.Invoke(hit.point);
+                clickAct?.Invoke(hit.point, battleStat.Speed,
+                    () => myAnim.SetBool("run", true),
+                    () => myAnim.SetBool("run", false));
             }
             
         }

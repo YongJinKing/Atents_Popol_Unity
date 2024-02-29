@@ -139,13 +139,13 @@ public class Slime : Monster
     // Start is called before the first frame update
     void Start()
     {
-        ChangeState(State.Wandering);
+        //ChangeState(State.Wandering);
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
+        
         if (Input.GetButtonDown("Jump"))
         {
             UseSkill1();
@@ -154,6 +154,6 @@ public class Slime : Monster
         {
             UseSkill2();
         }
-        */
+        
     }
 }

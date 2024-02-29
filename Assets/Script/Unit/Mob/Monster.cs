@@ -9,7 +9,6 @@ public class Monster : Unit
     #region Properties / Field
     //private 변수 영역
     #region Private
-    private Animator _myAnim;
     #endregion
 
     //protected 변수 영역
@@ -18,21 +17,6 @@ public class Monster : Unit
 
     //Public 변수영역
     #region public
-    public Animator myAnim
-    {
-        get
-        {
-            if (_myAnim == null)
-            {
-                _myAnim = GetComponent<Animator>();
-                if (_myAnim == null)
-                {
-                    _myAnim = GetComponentInChildren<Animator>();
-                }
-            }
-            return _myAnim;
-        }
-    }
     #endregion
 
     //이벤트 함수들 영역
@@ -65,10 +49,6 @@ public class Monster : Unit
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
-    public void OnSkillCoolTimeEndEvent()
-    {
-        
-    }
     #endregion
 
 
