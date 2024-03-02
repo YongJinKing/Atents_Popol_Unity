@@ -38,6 +38,7 @@ public class Skill : MonoBehaviour
     public UnityEvent onSkillAvailableEvent;
     //타겟이 들어왔음을 알려주는 이벤트
     public UnityEvent onDetectTargetEvent;
+    public UnityEvent<UnityAction<Vector3>> onAddSkillUseEventListener;
     #endregion
     #endregion
 
@@ -84,6 +85,7 @@ public class Skill : MonoBehaviour
                 if(tempcol[i] != null)
                 {
                     onDetectTargetEvent?.Invoke();
+                    onDetectTargetEvent.RemoveAllListeners();
                     isDetecting = true;
                 }
             }
@@ -96,9 +98,11 @@ public class Skill : MonoBehaviour
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
     //AI가 사용할 이벤트 함수, collider에 걸리면 이벤트를 invoke할 코루틴을 스타트
-    public void OnDetectSkillRange()
+    public void OnDetectSkillRange(UnityAction detectAct)
     {
         StartCoroutine(DetectingRange());
+        onAddSkillUseEventListener?.Invoke(OnSkillStart);
+        onDetectTargetEvent.AddListener(detectAct);
     }
 
     //이 스킬이 사용되었을때
@@ -124,9 +128,5 @@ public class Skill : MonoBehaviour
 
     //유니티 함수들 영역
     #region MonoBehaviour
-    private void Awake()
-    {
-        
-    }
     #endregion
 }
