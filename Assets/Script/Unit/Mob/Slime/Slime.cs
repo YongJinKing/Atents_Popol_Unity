@@ -5,18 +5,7 @@ using UnityEngine;
 
 public class Slime : Monster
 {
-    public enum State
-    {
-        Create,
-        Wandering,
-        Closing,
-        Attacking
-    }
-
-    
-    [SerializeField]private State myState;
-
-    public void ChangeState(State s)
+    protected override void ChangeState(State s)
     {
         if (s == myState) return;
         myState = s;
@@ -25,7 +14,7 @@ public class Slime : Monster
         switch (myState)
         {
             //대충 적당히 근거리에서 배회
-            case State.Wandering:
+            case State.Idle:
                 ProcessState();
                 break;
             //적에게 접근
@@ -39,13 +28,13 @@ public class Slime : Monster
         }
     }
     
-    public void ProcessState()
+    protected override void ProcessState()
     {
         switch (myState)
         {
             //대충 적당히 근거리에서 배회
-            case State.Wandering:
-                StartCoroutine(Wanderingtarget());
+            case State.Idle:
+                StartCoroutine(Idletarget());
                 break;
             //적에게 접근
             case State.Closing:
@@ -56,7 +45,7 @@ public class Slime : Monster
             //공격
             case State.Attacking:
                 UseSkill1();
-                ChangeState(State.Wandering);
+                ChangeState(State.Idle);
                 break;
         }
     }
@@ -103,18 +92,18 @@ public class Slime : Monster
 
 
     //일단 특정 거리에서 기다리는 AI
-    private IEnumerator Wanderingtarget()
+    private IEnumerator Idletarget()
     {
-        float wanderingTime = 2.0f;
+        float IdleTime = 2.0f;
 
         Vector3 dir = -(tempTarget.position - transform.position);
         dir = new Vector3(dir.x, 0, dir.z);
         dir.Normalize();
 
         float delta = 0.0f;
-        while(wanderingTime >= 0.0f)
+        while(IdleTime >= 0.0f)
         {
-            wanderingTime -= Time.deltaTime;
+            IdleTime -= Time.deltaTime;
 
             //배회하는 코드들
             delta += Time.deltaTime;
@@ -128,7 +117,7 @@ public class Slime : Monster
     }
 
 
-    //여기가 문제다 wandering을 기다려줘야한다. 어떻게?
+    //여기가 문제다 Idle을 기다려줘야한다. 어떻게?
     //OnDetectSkillRange 함수가 실행되어야지 Detecting이 실행되므로 가능할지도?
     public void OnDetectTarget()
     {
@@ -139,7 +128,7 @@ public class Slime : Monster
     // Start is called before the first frame update
     void Start()
     {
-        //ChangeState(State.Wandering);
+        //ChangeState(State.Idle);
     }
 
     // Update is called once per frame
