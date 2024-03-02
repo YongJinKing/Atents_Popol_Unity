@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 107099743}
   - component: {fileID: 107099742}
   - component: {fileID: 107099744}
+  - component: {fileID: 107099745}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -311,17 +312,56 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107099739}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c8399156555bc343b5c2ff54aafc153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSkillUseEvent: []
-  myState: 0
-  meleeAttackStartPos: {fileID: 1645254549}
-  skill:
-  - {fileID: 1968682891}
-  - {fileID: 623122055}
+  battleStat:
+    Level: 0
+    AP: 0
+    maxHP: 50
+    Exp: 0
+    Speed: 0
+    AttackRange: 0
+    AttackDelay: 0
+  curHP: 0
+  target: {fileID: 934310764}
+  skills:
+  - {fileID: 1968682893}
+  onMovementEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onDetectSkillTargetEvent:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1968682893}
+        m_TargetAssemblyTypeName: Skill, Assembly-CSharp
+        m_MethodName: OnDetectSkillRange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &107099745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107099739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29e8b10f6ac12e14c8e10086c2d9fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills:
+  - {fileID: 1968682893}
+  - {fileID: 623122057}
   tempTarget: {fileID: 934310768}
 --- !u!1 &128530142
 GameObject:
@@ -625,6 +665,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onAddSkillUseEventListener:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &646335527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
@@ -1084,7 +1127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0752deb0ededfc445a4d23f3a3b9f594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolDownTime: 1
+  coolDownTime: 0
   detectRadius: 3
   targetMask:
     serializedVersion: 2
@@ -1109,11 +1152,14 @@ MonoBehaviour:
       m_Calls: []
   onDetectTargetEvent:
     m_PersistentCalls:
+      m_Calls: []
+  onAddSkillUseEventListener:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 107099744}
         m_TargetAssemblyTypeName: Slime, Assembly-CSharp
-        m_MethodName: OnDetectTarget
-        m_Mode: 1
+        m_MethodName: OnAddSkillUseEventListener
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

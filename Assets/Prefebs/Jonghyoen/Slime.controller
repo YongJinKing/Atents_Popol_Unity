@@ -36,7 +36,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: AttackTrigger
+    m_ConditionEvent: t_Attack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7655809316268072087}
@@ -63,7 +63,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2560053566630447247}
-    m_Position: {x: 399.8507, y: 326.75488, z: 0}
+    m_Position: {x: 400, y: 330, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7655809316268072087}
     m_Position: {x: 504.1773, y: 81.90663, z: 0}
@@ -113,7 +113,7 @@ AnimatorController:
   m_Name: Slime
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: AttackTrigger
+  - m_Name: t_Attack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
