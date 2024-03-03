@@ -38,7 +38,8 @@ public class EventManager : MonoBehaviour
 
     private void Start() 
     {
-        
+        #region SmithUIInit
+
         #region SmithInventoryInit
         for(int i = 0; i < SmithInventory.GetComponent<Inventory>().slots.Length; i++)
         {
@@ -74,6 +75,7 @@ public class EventManager : MonoBehaviour
         #endregion   
         #region User_PanelInit
 
+
         Button[] UserPanelBtnList = UserPanel.GetComponentsInChildren<UnityEngine.UI.Button>();
         for(int j = 0; j < UserPanelBtnList.Length; j++)
         {
@@ -82,9 +84,16 @@ public class EventManager : MonoBehaviour
         }
 
         #endregion
+        
+        #endregion
 
-        gameCanvas.transform.GetChild(2).gameObject.SetActive(true); //
-        gameCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(false); //
+        #region UIInit
+        gameCanvas.transform.GetChild(2).gameObject.SetActive(true); //메인 on
+        gameCanvas.transform.GetChild(3).gameObject.SetActive(false); //쇼핑 off
+        gameCanvas.transform.GetChild(4).gameObject.SetActive(false); //수리 off
+        gameCanvas.transform.GetChild(5).gameObject.SetActive(false); //경기 off
+        gameCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(false); //x버튼 off
+        #endregion
         
         //Debug.Log(SmithInventory.transform.GetChild(1).GetChild(0).GetChild(0).gameObject);
         //Debug.Log(GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject);
@@ -92,8 +101,26 @@ public class EventManager : MonoBehaviour
         //smith UI / Main Panel / BuyAndsell / itemDetail / ItemAbility / ItemAbility / Image
         
     }
+    #region MainUI
     
-    #region InventorySystem
+    void ChangeMainUI(int UiLength, bool isShow)
+    {
+        for(int i = 0; i < UiLength-2; i++)
+        {
+            gameCanvas.transform.GetChild(i+2).gameObject.SetActive(false);
+        }
+        gameCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(isShow);
+        ItemDetailShow(false);
+        
+    }
+
+    void MainUiControll(int index, int UiLength)
+    {
+        ChangeMainUI(UiLength, true);
+        gameCanvas.transform.GetChild(index+3).gameObject.SetActive(true);
+    }
+    #endregion
+    #region SmithSystem
     Color AlphaColorChange(int i, float Value)
     {
         Color color = InvenSlotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;//
@@ -165,39 +192,7 @@ public class EventManager : MonoBehaviour
             SmithInventory.GetComponent<Inventory>().FreshSlot(2);
         }
     }
-
-    #endregion
-    #region MainUI
-    
-    void ChangeMainUI(int UiLength, bool isShow)
-    {
-        for(int i = 0; i < UiLength-2; i++)
-        {
-            gameCanvas.transform.GetChild(i+2).gameObject.SetActive(false);
-        }
-        gameCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(isShow);
-        ItemDetailShow(false);
-        
-    }
-
-    void MainUiControll(int index, int UiLength)
-    {
-        ChangeMainUI(UiLength, true);
-        gameCanvas.transform.GetChild(index+3).gameObject.SetActive(true);
-    }
-    #endregion
-    
-    void UserPanelControll(int index, int Length)
-    {
-        if(index == 0)
-        {
-            CleanSlots();
-            ChangeMainUI(Length, false);
-            gameCanvas.transform.GetChild(2).gameObject.SetActive(true); //
-        }
-    }
-
-    void ItemDetailShow(bool isShow)
+void ItemDetailShow(bool isShow)
     {
         GameObject ItemAbility = gameCanvas.transform.GetChild(4).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
         GameObject NpcTalkBollum = gameCanvas.transform.GetChild(4).GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject;
@@ -206,6 +201,7 @@ public class EventManager : MonoBehaviour
         NpcTalkBollum.SetActive(isShow);
         NpcText.SetActive(isShow);
     }
+    
     void ItemDetailChange(Slot slot, int index)//슬롯의 정보를 받아서
     {
 
@@ -230,6 +226,21 @@ public class EventManager : MonoBehaviour
         NpcText.text = slot.InvenDetailSmithTalk;
 
     }
+    #endregion
+    
+    #region UserPanelUI
+    void UserPanelControll(int index, int Length)
+    {
+        if(index == 0)
+        {
+            CleanSlots();
+            ChangeMainUI(Length, false);
+            gameCanvas.transform.GetChild(2).gameObject.SetActive(true); //
+        }
+    }
+    #endregion 
+
+    
 }
 
 
