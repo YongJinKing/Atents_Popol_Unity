@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour
     private Transform slotParent;
     [SerializeField]
     public Slot[] slots;
+    int SlotMode = 0;
 
 #if UNITY_EDITOR
     private void OnValidate() {
@@ -21,19 +22,23 @@ public class Inventory : MonoBehaviour
 
     void Awake() 
     {
-        FreshSlot();
+        FreshSlot(0);
     }
 
-    public void FreshSlot()
+    public void FreshSlot(int index)
     {
-        int i = 0;
-        for (; i < items.Count && i < slots.Length; i++) 
+        Debug.Log(items.Count);
+        if(SlotMode == 0)
         {
-            slots[i].item = items[i];
-        }
-        for (; i < slots.Length; i++) 
-        {
-            slots[i].item = null;
+            int i = 0;
+            for (; i < items.Count && i < slots.Length; i++) 
+            {
+                slots[i].item = items[i];
+            }
+            for (; i < slots.Length; i++) 
+            {
+                slots[i].item = null;
+            }
         }
     }
 
@@ -42,7 +47,7 @@ public class Inventory : MonoBehaviour
         if (items.Count < slots.Length) 
         {
             items.Add(_item);
-            FreshSlot();
+            FreshSlot(0);
         }
         else 
         {

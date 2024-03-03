@@ -109,44 +109,50 @@ public class EventManager : MonoBehaviour
         }
         ItemDetailShow(false);
     }
-    void InvenSlotBtnChoise(int buttonId)
+    void InvenSlotBtnChoise(int index)
     {
         
         List<Item> itemlist = SmithInventory.GetComponent<Inventory>().items;
-        UnityEngine.UI.Image ItemInSlot = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(buttonId).gameObject.GetComponent<UnityEngine.UI.Image>();
-        if(itemlist[buttonId])
+        UnityEngine.UI.Image ItemInSlot = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(index).gameObject.GetComponent<UnityEngine.UI.Image>();
+        if(index >= SmithInventory.transform.GetComponent<Inventory>().items.Count)
+            return;
+        if(itemlist[index])
         {
             ItemDetailShow(false);
-            if(InvenSlotList[buttonId].ChooseSlot) 
-
+            if(InvenSlotList[index].ChooseSlot) 
             {
                 CleanSlots();
                 return;
             }
             else
             {
+                
                 CleanSlots();
-                InvenSlotList[buttonId].ChooseSlot = true;
+                InvenSlotList[index].ChooseSlot = true;
+                
             }
         
-            if(InvenSlotList[buttonId].ChooseSlot)
+            if(InvenSlotList[index].ChooseSlot)
             {
-                AlphaColorChange(buttonId, 0.3f);
+                AlphaColorChange(index, 0.3f);
                 ItemDetailShow(true);
-                ItemDetailChange(itemlist[buttonId]);
+                ItemDetailChange(itemlist[index]);
             }
         }
         else return;
     }
     void ChangeEqirType(int index)
     {
+        int TypeMode = 0;
         if(index == 0)
         {
-            Debug.Log("무기눌렀니?");
+            TypeMode = 1;
+           
         }
         if(index == 1)
         {
-            Debug.Log("방어구눌렀니?");
+            TypeMode = 2;
+           
         }
     }
 

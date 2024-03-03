@@ -19,4 +19,4 @@ MonoBehaviour:
   smithTalk: "\uC774\uB7F0 \uC4F0\uB808\uAE30 \uAC19\uC740\uAC78 \uC65C \uC548\uBC84\uB9AC\uB294\uAC70\uC57C?"
   durAbility: 100
   weaponType: 12
-  riggingType: 1
+  riggingType: 2
