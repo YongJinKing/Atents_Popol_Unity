@@ -312,7 +312,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 107099739}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c8399156555bc343b5c2ff54aafc153, type: 3}
   m_Name: 
@@ -327,15 +327,40 @@ MonoBehaviour:
     AttackDelay: 0
   curHP: 0
   target: {fileID: 934310764}
-  skills:
-  - {fileID: 1968682893}
+  skills: []
   onMovementEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 107099745}
+        m_TargetAssemblyTypeName: UnitMovement, Assembly-CSharp
+        m_MethodName: MoveToPos
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDetectSkillTargetEvent:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1968682893}
+        m_TargetAssemblyTypeName: Skill, Assembly-CSharp
+        m_MethodName: OnDetectSkillRange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 623122057}
         m_TargetAssemblyTypeName: Skill, Assembly-CSharp
         m_MethodName: OnDetectSkillRange
         m_Mode: 0
@@ -356,13 +381,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 107099739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29e8b10f6ac12e14c8e10086c2d9fc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: 02436df86669eff4ca407de9059bc837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skills:
-  - {fileID: 1968682893}
-  - {fileID: 623122057}
-  tempTarget: {fileID: 934310768}
 --- !u!1 &128530142
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +414,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSkillHitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onSkillDisactivatedEvent:
     m_PersistentCalls:
       m_Calls: []
   targetMask:
@@ -628,7 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDownTime: 0
-  detectRadius: 2
+  detectRadius: 6
   targetMask:
     serializedVersion: 2
     m_Bits: 4096
@@ -647,16 +671,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onSkillAvailableEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onDetectTargetEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 107099744}
-        m_TargetAssemblyTypeName: Slime, Assembly-CSharp
-        m_MethodName: OnDetectTarget
-        m_Mode: 1
+      - m_Target: {fileID: 1996032706}
+        m_TargetAssemblyTypeName: MovementSkillType, Assembly-CSharp
+        m_MethodName: OnSkillActivated
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -665,9 +683,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onAddSkillUseEventListener:
+  onAddSkillEventListener:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 107099744}
+        m_TargetAssemblyTypeName: Slime, Assembly-CSharp
+        m_MethodName: OnAddSkillEventListener
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &646335527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
@@ -812,6 +842,9 @@ MonoBehaviour:
   onSkillHitEvent:
     m_PersistentCalls:
       m_Calls: []
+  onSkillDisactivatedEvent:
+    m_PersistentCalls:
+      m_Calls: []
   targetMask:
     serializedVersion: 2
     m_Bits: 4096
@@ -950,6 +983,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1714940574}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1714940575}
   m_SourcePrefab: {fileID: 100100000, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
 --- !u!4 &1714940573 stripped
 Transform:
@@ -977,6 +1013,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1714940575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 646335527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fa64e86aedeb234b926aadd2f7b96f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onAttackStartEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onAttackEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1728390527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1131,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 50, y: 1, z: 50}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1147,18 +1201,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onSkillAvailableEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onDetectTargetEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onAddSkillUseEventListener:
+  onAddSkillEventListener:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 107099744}
         m_TargetAssemblyTypeName: Slime, Assembly-CSharp
-        m_MethodName: OnAddSkillUseEventListener
+        m_MethodName: OnAddSkillEventListener
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1179,7 +1227,7 @@ GameObject:
   - component: {fileID: 1996032705}
   - component: {fileID: 1996032706}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1213,6 +1261,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSkillHitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  onSkillDisactivatedEvent:
     m_PersistentCalls:
       m_Calls: []
   maxDist: 5
