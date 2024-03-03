@@ -119,7 +119,7 @@ public class ProjectileSkillType : AttackSkillType
                         //i를 바꿔버림으로써 루프에서 나감
                         i = tempcol.Length;
                     }
-                    onSkillHitEvent?.Invoke();
+                    onSkillHitEvent?.Invoke(tempcol[i].gameObject);
 
                 }
             }

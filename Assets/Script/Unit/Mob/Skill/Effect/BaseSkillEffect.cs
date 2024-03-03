@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseSkillEffect : MonoBehaviour
+public abstract class BaseSkillEffect : MonoBehaviour
 {
     //변수 영역
     #region Properties / Field
@@ -48,22 +48,12 @@ public class BaseSkillEffect : MonoBehaviour
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
+    public abstract void OnSkillHit(GameObject target);
     #endregion
 
 
     //유니티 함수들 영역
     #region MonoBehaviour
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     #endregion
 
 }

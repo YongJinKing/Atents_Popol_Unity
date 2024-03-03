@@ -48,6 +48,8 @@ public class MeleeSkillType : AttackSkillType
     {
         hitBox.SetActive(true);
 
+        HashSet<Collider> calculatedObject = new HashSet<Collider>();
+
         remainDuration = hitDuration;
 
         //OverlapBox에서 쓸 box의 사이즈
@@ -65,7 +67,18 @@ public class MeleeSkillType : AttackSkillType
 
             for (int i = 0; i < tempcol.Length; i++)
             {
-                Debug.Log(tempcol[i].gameObject.name);
+                //지금껏 충돌 해보지 못한 오브젝트와 충돌했을시
+                //스킬이 맞았다고 이벤트 발생
+                if (!calculatedObject.Contains(tempcol[i]))
+                {
+                    //Debug.Log For check
+                    Debug.Log(tempcol[i].gameObject.name);
+                    //맞췄을때 이펙트를 넣어줌
+                    HitEffectPlay(hitBox.transform.position, tempcol[i].gameObject.transform.position);
+                    calculatedObject.Add(tempcol[i]);
+
+                    onSkillHitEvent?.Invoke(tempcol[i].gameObject);
+                }
             }
             yield return null;
         }

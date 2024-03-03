@@ -38,7 +38,8 @@ public class Skill : MonoBehaviour
     public UnityEvent onSkillAvailableEvent;
     //타겟이 들어왔음을 알려주는 이벤트
     public UnityEvent onDetectTargetEvent;
-    public UnityEvent<UnityAction<Vector3>> onAddSkillUseEventListener;
+    //AI에게 스킬Start와 스킬End를 등록시켜주는 이벤트
+    public UnityEvent<UnityAction<Vector3>, UnityAction, LayerMask> onAddSkillEventListener;
     #endregion
     #endregion
 
@@ -101,7 +102,7 @@ public class Skill : MonoBehaviour
     public void OnDetectSkillRange(UnityAction detectAct)
     {
         StartCoroutine(DetectingRange());
-        onAddSkillUseEventListener?.Invoke(OnSkillStart);
+        onAddSkillEventListener?.Invoke(OnSkillStart, OnSkillEnd, targetMask);
         onDetectTargetEvent.AddListener(detectAct);
     }
 

@@ -60,6 +60,8 @@ public class MovementSkillType : SelfSkillType
             dist -= delta;
 
             selfObject.transform.Translate(dir * delta);
+
+            yield return null;
         }
 
         yield return null;
