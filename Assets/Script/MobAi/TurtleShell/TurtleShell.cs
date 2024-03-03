@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
-public class TurtleShell : MonoBehaviour
+public class TurtleShell : Monster
 {
-    public Transform target;
+    public Transform ptarget;
     public bool isChase;
     NavMeshAgent nav;
     Animator anim;
 
-    public enum State
-    { Idle, Walk, Attack }
 
-    public State myState;
 
     void Start()
     {
@@ -27,21 +25,22 @@ public class TurtleShell : MonoBehaviour
 
     void ChaseStart()
     {
-        ChangeState(State.Walk);
+        ChangeState(State.Closing);
         isChase = true;
     }
 
+
     void Update()
     {
-        if (isChase && nav.enabled)
+        if (isChase && nav.enabled && ptarget != null)
         {
-            nav.SetDestination(target.position);
+            //Vector3 targetPosition = ptarget.position;
+            nav.SetDestination(ptarget.position);
 
             // 몬스터가 목적지에 도착했을 때
             if (nav.remainingDistance <= nav.stoppingDistance && !nav.pathPending)
             {
-                StopMoving();
-                ChangeState(State.Attack);
+                ChangeState(State.Attacking);
             }
         }
     }
@@ -51,21 +50,39 @@ public class TurtleShell : MonoBehaviour
         anim.SetBool("IsMoving", false); // 이동 중지 애니메이션으로 변경
     }
 
-    void ChangeState(State s)
+
+
+    protected override void ChangeState(State s)
     {
         if (myState == s) return;
         myState = s;
         switch (myState)
         {
             case State.Idle:
-                anim.SetBool("IsMoving", false);
+                anim.SetBool("b_IsMoving", false);
                 break;
-            case State.Walk:
-                anim.SetBool("IsMoving", true);
+            case State.Closing:
+                anim.SetBool("b_IsMoving", true);
                 break;
-            case State.Attack:
-                anim.SetTrigger("Attack");
-                anim.SetBool("IsMoving", false);
+            case State.Attacking:
+                anim.SetTrigger("t_Attack");
+                anim.SetBool("b_IsMoving", false);
+                break;
+        }
+    }
+
+    protected override void ProcessState()
+    {
+        switch (myState)
+        {
+            //대충 적당히 근거리에서 배회
+            case State.Idle:
+                break;
+            //적에게 접근
+            case State.Closing:
+                break;
+            //공격
+            case State.Attacking:
                 break;
         }
     }
