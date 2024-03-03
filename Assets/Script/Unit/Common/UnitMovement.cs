@@ -39,9 +39,8 @@ public class UnitMovement : MonoBehaviour
         if(rotate != null) StopCoroutine(rotate);
         rotate = StartCoroutine(Rotating(dir, Speed));
 
-        //myAnim.SetBool("run", true);
         startAct?.Invoke();
-
+        
         while(!Mathf.Approximately(dist, 0.0f))
         {
             float delta = Speed * Time.deltaTime;
@@ -50,12 +49,10 @@ public class UnitMovement : MonoBehaviour
             transform.Translate(dir * delta, Space.World);
             yield return null;
         }
-
-        //myAnim.SetBool("run", false);
         endAct?.Invoke();
     }
 
-    IEnumerator Rotating(Vector3 dir,float Speed)
+    public IEnumerator Rotating(Vector3 dir,float Speed)
     {
         float angle = Vector3.Angle(transform.forward, dir);
         float rotDir = 1.0f;
@@ -77,7 +74,6 @@ public class UnitMovement : MonoBehaviour
             angle -= delta;
             transform.Rotate(Vector3.up * rotDir * delta);
             yield return null;
-
-        }                       
+        }
     }
 }

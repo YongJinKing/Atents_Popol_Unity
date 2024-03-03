@@ -6,30 +6,22 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public enum Type {Melee, Range};
-    public Type type;
-    public int damage;
     public float rate;
     public BoxCollider meleeArea;
     public TrailRenderer trailEffect;
-
-    //             yield return new WaitForSeconds(0.1f);
-    //             meleeArea.enabled = true;
-    //             trailEffect.enabled = true;
-    //             yield return new WaitForSeconds(0.3f);
-    //             meleeArea.enabled = false;
-    //             yield return new WaitForSeconds(0.3f);
-    //             trailEffect.enabled = false;
+    Coroutine Swing = null;
     public void Use()
     {
-        if(type == Type.Melee)
+        if(Swing != null)
         {
-            StopCoroutine("Swing");
-            StartCoroutine("Swing");
+            StopCoroutine(Swing);
+            Swing = null;
         }
+        
+        Swing = StartCoroutine(ToSwing());
     }
     
-    IEnumerator Swing()
+    IEnumerator ToSwing()
     {
         yield return new WaitForSeconds(0.1f);
         meleeArea.enabled = true;

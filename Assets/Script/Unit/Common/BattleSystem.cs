@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,6 +16,7 @@ public struct BattleStat
     public float AttackDelay;
 }
 
+
 public interface IDamage
 {
     public void TakeDamage(uint damage);
@@ -22,11 +24,19 @@ public interface IDamage
 
 public class BattleSystem : CharacterProperty, IDamage
 {
+    UnitMovement Movement;
     [SerializeField] protected BattleStat battleStat;
-    [SerializeField]protected float curHP = 0.0f;
+    [SerializeField] protected float curHP = 0.0f;
     protected float battleTime = 0.0f;
     public event UnityAction deathAlarm;
+    Coroutine rotate = null;
     Transform _target = null;
+
+    protected virtual void Awake()
+    {
+        Movement = GetComponent<UnitMovement>();
+    }
+
     protected Transform myTarget
     {
         get => _target;
@@ -86,7 +96,6 @@ public class BattleSystem : CharacterProperty, IDamage
         this.Exp += Exp;
         if (this.Exp >= 100.0f)
         {
-            //·¹º§¾÷
             LevelUp();
         }
     }
@@ -96,14 +105,17 @@ public class BattleSystem : CharacterProperty, IDamage
         battleStat.Level++;
     }
 
-    public void OnAttack()
+    public void OnAttack(Vector3 target, Weapon equipWeapon)
     {
-        if (myTarget == null) return;
-        BattleSystem bs = myTarget.GetComponent<BattleSystem>();
-        if (bs != null)
-        {
-            bs.TakeDamage(battleStat.AP);
-        }
+        
+        Vector3 dir = target - transform.position;
+        float Speed = 2;
+       
+        equipWeapon.Use();
+        myAnim.SetTrigger("Attack");
+
+        if(rotate != null) StopCoroutine(rotate);
+        rotate = StartCoroutine(Movement.Rotating(dir, Speed));
     }
 
     protected virtual void OnDead()
