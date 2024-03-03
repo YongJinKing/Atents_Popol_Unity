@@ -189,11 +189,12 @@ public class EventManager : MonoBehaviour
         ItemAbilityImage.sprite = item.itemImage;
         string EqirType(RiggingType Type)
         {
+            string Typename = "";
             if(Type == RiggingType.Weapon)
-                name = "공격력 : ";
+                Typename = "공격력 : ";
             if(Type == RiggingType.Armor)
-                name = "체력 : ";
-            return name;
+                Typename = "체력 : ";
+            return Typename;
         }
         ItemAbilityText.text = 
         "이름 : " + item.itemName + "\n\n" + EqirType(item.riggingType)
