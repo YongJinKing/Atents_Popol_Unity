@@ -40,12 +40,7 @@ public class EventManager : MonoBehaviour
             slotList.Add(temp);
             slotList[i].gameObject.GetComponent<Button>().onClick.AddListener(() => InvenSlotBtnChoise(index));
         }
-        Button[] InvenBtnList = InvenBtnManager.GetComponentsInChildren<UnityEngine.UI.Button>();
-        for(int i = 0; i < InvenBtnList.Length; i++)
-        {
-            int index = i;
-            InvenBtnList[i].onClick.AddListener(() => ChangeEqirType(index));
-        }
+        
 
 
         #endregion
@@ -189,11 +184,12 @@ public class EventManager : MonoBehaviour
         ItemAbilityImage.sprite = item.itemImage;
         string EqirType(RiggingType Type)
         {
+            string TypeName = "";
             if(Type == RiggingType.Weapon)
-                name = "공격력 : ";
+                TypeName = "공격력 : ";
             if(Type == RiggingType.Armor)
-                name = "체력 : ";
-            return name;
+                TypeName = "체력 : ";
+            return TypeName;
         }
         ItemAbilityText.text = 
         "이름 : " + item.itemName + "\n\n" + EqirType(item.riggingType)
