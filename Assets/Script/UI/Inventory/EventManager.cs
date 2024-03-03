@@ -18,33 +18,44 @@ public class EventManager : MonoBehaviour
 
     public GameObject InvenBtnManager;
     
-    private List<Slot> slotList = new List<Slot>();//
+    private List<InvenSlot> InvenSlotList = new List<InvenSlot>();//
+    private List<InvenBtn> InvenBtnList = new List<InvenBtn>();//
 
     //private Button moveUI;
 
 
-    public class Slot
+    public class InvenSlot
     {
         public GameObject gameObject;
         public bool ChooseSlot;
     }
+    public class InvenBtn
+    {
+        public GameObject gameObject;
+        public bool ChooseBtn;
+    }
+
     private void Start() 
     {
         #region SmithInventoryInit
         for(int i = 0; i < SmithInventory.GetComponent<Inventory>().slots.Length; i++)
         {
             int index = i;
-            Slot temp = new Slot();
+            InvenSlot temp = new InvenSlot();
             temp.gameObject = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(i).GetChild(1).gameObject;
             temp.ChooseSlot = false;
-            slotList.Add(temp);
-            slotList[i].gameObject.GetComponent<Button>().onClick.AddListener(() => InvenSlotBtnChoise(index));
+            InvenSlotList.Add(temp);
+            InvenSlotList[i].gameObject.GetComponent<Button>().onClick.AddListener(() => InvenSlotBtnChoise(index));
         }
-        Button[] InvenBtnList = InvenBtnManager.GetComponentsInChildren<UnityEngine.UI.Button>();
-        for(int i = 0; i < InvenBtnList.Length; i++)
+
+        for(int i = 0; i < InvenBtnManager.transform.childCount; i++)
         {
             int index = i;
-            InvenBtnList[i].onClick.AddListener(() => ChangeEqirType(index));
+            InvenBtn temp = new InvenBtn();
+            temp.gameObject = InvenBtnManager.transform.GetChild(i).gameObject;
+            temp.ChooseBtn = false;
+            InvenBtnList.Add(temp);
+            InvenBtnList[i].gameObject.GetComponent<Button>().onClick.AddListener(()=>ChangeEqirType(index));
         }
 
 
@@ -83,10 +94,10 @@ public class EventManager : MonoBehaviour
     #region InventorySystem
     Color AlphaColorChange(int i, float Value)
     {
-        Color color = slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;//
+        Color color = InvenSlotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;//
         color.a = Value;
-        slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
-        return slotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;
+        InvenSlotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
+        return InvenSlotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;
     }
 
     void CleanSlots()
@@ -94,7 +105,7 @@ public class EventManager : MonoBehaviour
         for(int i = 0; i < SmithInventory.GetComponent<Inventory>().slots.Length; i++)
         {
             AlphaColorChange(i, 0.0f);
-            slotList[i].ChooseSlot = false;//
+            InvenSlotList[i].ChooseSlot = false;//
         }
         ItemDetailShow(false);
     }
@@ -106,7 +117,7 @@ public class EventManager : MonoBehaviour
         if(itemlist[buttonId])
         {
             ItemDetailShow(false);
-            if(slotList[buttonId].ChooseSlot) 
+            if(InvenSlotList[buttonId].ChooseSlot) 
 
             {
                 CleanSlots();
@@ -115,10 +126,10 @@ public class EventManager : MonoBehaviour
             else
             {
                 CleanSlots();
-                slotList[buttonId].ChooseSlot = true;
+                InvenSlotList[buttonId].ChooseSlot = true;
             }
         
-            if(slotList[buttonId].ChooseSlot)
+            if(InvenSlotList[buttonId].ChooseSlot)
             {
                 AlphaColorChange(buttonId, 0.3f);
                 ItemDetailShow(true);
@@ -131,7 +142,11 @@ public class EventManager : MonoBehaviour
     {
         if(index == 0)
         {
-            Debug.Log("눌렀니?");
+            Debug.Log("무기눌렀니?");
+        }
+        if(index == 1)
+        {
+            Debug.Log("방어구눌렀니?");
         }
     }
 
