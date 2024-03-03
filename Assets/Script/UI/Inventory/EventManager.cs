@@ -143,16 +143,25 @@ public class EventManager : MonoBehaviour
     }
     void ChangeEqirType(int index)
     {
-        int TypeMode = 0;
-        if(index == 0)
+        if(InvenBtnList[index].ChooseBtn)
         {
-            TypeMode = 1;
-           
+            InvenBtnList[index].ChooseBtn = false;
+            SmithInventory.GetComponent<Inventory>().FreshSlot(0);
+            return;
         }
-        if(index == 1)
+        else
         {
-            TypeMode = 2;
-           
+            InvenBtnList[0].ChooseBtn = false;
+            InvenBtnList[1].ChooseBtn = false;
+            InvenBtnList[index].ChooseBtn = true;
+        }
+        if(InvenBtnList[0].ChooseBtn)
+        {
+            SmithInventory.GetComponent<Inventory>().FreshSlot(1);
+        }
+        if(InvenBtnList[1].ChooseBtn)
+        {
+            SmithInventory.GetComponent<Inventory>().FreshSlot(2);
         }
     }
 

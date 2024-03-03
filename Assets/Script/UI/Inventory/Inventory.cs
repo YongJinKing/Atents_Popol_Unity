@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
 
     public void FreshSlot(int index)
     {
-        Debug.Log(items.Count);
+        SlotMode = index;
         if(SlotMode == 0)
         {
             int i = 0;
@@ -36,6 +36,38 @@ public class Inventory : MonoBehaviour
                 slots[i].item = items[i];
             }
             for (; i < slots.Length; i++) 
+            {
+                slots[i].item = null;
+            }
+        }
+        if(SlotMode == 1)
+        {
+            int Count = 0;
+            for (int i = 0; i < items.Count && i < slots.Length; i++) 
+            {
+                if(items[i].riggingType == RiggingType.Weapon)
+                    {
+                        slots[Count].item = items[i];
+                        Count++;
+                    }
+            }
+            for (int i = Count; i < slots.Length; i++) 
+            {
+                slots[i].item = null;
+            }
+        }
+        if(SlotMode == 2)
+        {
+            int Count = 0;
+            for (int i = 0; i < items.Count && i < slots.Length; i++) 
+            {
+                if(items[i].riggingType == RiggingType.Armor)
+                    {
+                        slots[Count].item = items[i];
+                        Count++;
+                    }
+            }
+            for (int i = Count; i < slots.Length; i++) 
             {
                 slots[i].item = null;
             }
