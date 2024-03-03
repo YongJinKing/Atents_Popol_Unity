@@ -955,6 +955,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 84116616}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &84116616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1369,6 +1374,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 105958737}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &105958737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1458,6 +1468,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 116114731}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &116114731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1701,6 +1716,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 158620121}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &158620121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1790,6 +1810,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 172074715}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &172074715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2013,6 +2038,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 184409753}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &184409753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2431,6 +2461,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 203195938}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &203195938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2839,6 +2874,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 265341294}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &265341294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4152,6 +4192,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 350386673}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &350386673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4405,19 +4450,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6dfd00fe12bebed4985da493e79733b2, type: 2}
   - {fileID: 11400000, guid: 6d92562fcb271884199bc18483036544, type: 2}
   - {fileID: 11400000, guid: e92b0ccb403488847b76650d715c31f1, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
-  - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
+  - {fileID: 11400000, guid: e92b0ccb403488847b76650d715c31f1, type: 2}
+  - {fileID: 11400000, guid: e2992714a028e654e8f17e80bbc1de32, type: 2}
+  - {fileID: 11400000, guid: 7739ec726f9564c4b8aaa56ef40c4056, type: 2}
+  - {fileID: 11400000, guid: 7739ec726f9564c4b8aaa56ef40c4056, type: 2}
   slotParent: {fileID: 307812221}
   slots:
   - {fileID: 1836288853}
@@ -4435,6 +4471,7 @@ MonoBehaviour:
   - {fileID: 2012473699}
   - {fileID: 1309758894}
   - {fileID: 1942144909}
+  TypeCount: 0
 --- !u!1 &373094597
 GameObject:
   m_ObjectHideFlags: 0
@@ -4717,6 +4754,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 407102129}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &407102129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4806,6 +4848,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 410633071}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &410633071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4895,6 +4942,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 421690745}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &421690745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6015,6 +6067,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 562569426}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &562569426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6257,6 +6314,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 590944308}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &590944308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6381,6 +6443,7 @@ MonoBehaviour:
   - {fileID: 158620120}
   - {fileID: 1942190621}
   - {fileID: 1248289689}
+  TypeCount: 0
 --- !u!114 &595799790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7041,6 +7104,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 670047274}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &670047274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7797,6 +7865,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 729271406}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &729271406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8616,6 +8689,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 814722012}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &814722012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8782,6 +8860,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 830464645}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &830464645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8947,6 +9030,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 834899656}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &834899656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9323,6 +9411,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 847823774}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &847823774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9412,6 +9505,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 855766972}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &855766972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9654,6 +9752,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 873834885}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &873834885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9896,6 +9999,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 896484349}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &896484349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9985,6 +10093,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 940072602}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &940072602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10434,6 +10547,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 989582570}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &989582570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10734,6 +10852,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 993963029}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &993963029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11935,6 +12058,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1102593501}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1102593501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12238,6 +12366,7 @@ MonoBehaviour:
   MainUI: {fileID: 1189783805}
   UserPanel: {fileID: 98289668}
   InvenBtnManager: {fileID: 65477199}
+  ItemAbility: {fileID: 1113809020}
 --- !u!4 &1117914951
 Transform:
   m_ObjectHideFlags: 0
@@ -14038,6 +14167,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1248289690}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1248289690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14596,6 +14730,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1309758895}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1309758895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15588,6 +15727,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1397130715}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1397130715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16266,6 +16410,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1485555548}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1485555548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16891,6 +17040,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1541051539}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1541051539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16980,6 +17134,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1553276528}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1553276528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17069,6 +17228,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1555865602}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1555865602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17741,6 +17905,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1619760839}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1619760839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18224,6 +18393,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1644910558}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1644910558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18390,6 +18564,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1653818047}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1653818047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18709,6 +18888,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1667645916}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1667645916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19070,6 +19254,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1686240226}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1686240226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19159,6 +19348,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1686828072}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1686828072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20027,6 +20221,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1776442136}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1776442136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20307,7 +20506,7 @@ GameObject:
   - component: {fileID: 1836288851}
   - component: {fileID: 1836288853}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Image0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20383,6 +20582,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1836288851}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!1 &1847071421
 GameObject:
   m_ObjectHideFlags: 0
@@ -20669,6 +20873,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1857228306}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1857228306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21222,6 +21431,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1942144910}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1942144910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21311,6 +21525,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1942190622}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &1942190622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21511,6 +21730,7 @@ MonoBehaviour:
   - {fileID: 410633070}
   - {fileID: 562569425}
   - {fileID: 855766971}
+  TypeCount: 0
 --- !u!114 &1964314319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21952,6 +22172,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 2012473700}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &2012473700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22041,6 +22266,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 2013015376}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &2013015376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23443,6 +23673,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 2125169676}
+  InvenDetailName: 
+  InvenDetailRiggingType: 0
+  InvenDetailValue: 0
+  InvenDetailSmithTalk: 
+  InvenDetailDurAbility: 0
 --- !u!114 &2125169676
 MonoBehaviour:
   m_ObjectHideFlags: 0

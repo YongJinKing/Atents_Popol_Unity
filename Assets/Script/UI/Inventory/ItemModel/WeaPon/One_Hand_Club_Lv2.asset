@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99cd797b2387714f99273d231296af3, type: 3}
   m_Name: One_Hand_Club_Lv2
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: "\uBA54\uC774\uC2A4"
   itemImage: {fileID: 21300000, guid: 4ebc70b29cf84034aa52eafdbca3951d, type: 3}
+  itemValue: 20
+  itemDesc: "\uB05D\uBD80\uBD84\uC5D0 \uB531\uB531\uD55C \uAC15\uCCA0\uC744 \uBC15\uC740
+    \uBA54\uC774\uC2A4\uC774\uB2E4."
+  smithTalk: "\uAF64 \uC88B\uC740 \uBB34\uAE30\uB97C \uAC00\uC9C0\uACE0 \uC788\uAD70!"
+  durAbility: 100
   weaponType: 2
-  riggingType: 0
+  riggingType: 1

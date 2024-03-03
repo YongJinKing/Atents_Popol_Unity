@@ -12,7 +12,9 @@ public class Inventory : MonoBehaviour
     private Transform slotParent;
     [SerializeField]
     public Slot[] slots;
+    public int TypeCount = 0;
     int SlotMode = 0;
+    
 
 #if UNITY_EDITOR
     private void OnValidate() {
@@ -27,13 +29,16 @@ public class Inventory : MonoBehaviour
 
     public void FreshSlot(int index)
     {
+        Debug.Log("언제?");
         SlotMode = index;
         if(SlotMode == 0)
         {
             int i = 0;
+            TypeCount = 0;
             for (; i < items.Count && i < slots.Length; i++) 
             {
                 slots[i].item = items[i];
+                TypeCount++;
             }
             for (; i < slots.Length; i++) 
             {
@@ -42,32 +47,32 @@ public class Inventory : MonoBehaviour
         }
         if(SlotMode == 1)
         {
-            int Count = 0;
+            TypeCount = 0;
             for (int i = 0; i < items.Count && i < slots.Length; i++) 
             {
                 if(items[i].riggingType == RiggingType.Weapon)
                     {
-                        slots[Count].item = items[i];
-                        Count++;
+                        slots[TypeCount].item = items[i];
+                        TypeCount++;
                     }
             }
-            for (int i = Count; i < slots.Length; i++) 
+            for (int i = TypeCount; i < slots.Length; i++) 
             {
                 slots[i].item = null;
             }
         }
         if(SlotMode == 2)
         {
-            int Count = 0;
+            TypeCount = 0;
             for (int i = 0; i < items.Count && i < slots.Length; i++) 
             {
                 if(items[i].riggingType == RiggingType.Armor)
                     {
-                        slots[Count].item = items[i];
-                        Count++;
+                        slots[TypeCount].item = items[i];
+                        TypeCount++;
                     }
             }
-            for (int i = Count; i < slots.Length; i++) 
+            for (int i = TypeCount; i < slots.Length; i++) 
             {
                 slots[i].item = null;
             }

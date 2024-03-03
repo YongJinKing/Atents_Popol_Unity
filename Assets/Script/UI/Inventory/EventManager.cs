@@ -17,6 +17,7 @@ public class EventManager : MonoBehaviour
     public GameObject UserPanel;
 
     public GameObject InvenBtnManager;
+    public GameObject ItemAbility;
     
     private List<InvenSlot> InvenSlotList = new List<InvenSlot>();//
     private List<InvenBtn> InvenBtnList = new List<InvenBtn>();//
@@ -37,6 +38,7 @@ public class EventManager : MonoBehaviour
 
     private void Start() 
     {
+        
         #region SmithInventoryInit
         for(int i = 0; i < SmithInventory.GetComponent<Inventory>().slots.Length; i++)
         {
@@ -112,11 +114,11 @@ public class EventManager : MonoBehaviour
     void InvenSlotBtnChoise(int index)
     {
         
-        List<Item> itemlist = SmithInventory.GetComponent<Inventory>().items;
+        Slot[] SlotList = SmithInventory.GetComponent<Inventory>().slots;
         UnityEngine.UI.Image ItemInSlot = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(index).gameObject.GetComponent<UnityEngine.UI.Image>();
-        if(index >= SmithInventory.transform.GetComponent<Inventory>().items.Count)
+        if(index >= SmithInventory.transform.GetComponent<Inventory>().TypeCount)
             return;
-        if(itemlist[index])
+        if(SlotList[index])
         {
             ItemDetailShow(false);
             if(InvenSlotList[index].ChooseSlot) 
@@ -126,23 +128,22 @@ public class EventManager : MonoBehaviour
             }
             else
             {
-                
                 CleanSlots();
-                InvenSlotList[index].ChooseSlot = true;
-                
+                InvenSlotList[index].ChooseSlot = true;   
             }
         
             if(InvenSlotList[index].ChooseSlot)
             {
                 AlphaColorChange(index, 0.3f);
                 ItemDetailShow(true);
-                ItemDetailChange(itemlist[index]);
+                ItemDetailChange(SlotList[index], index);
             }
         }
         else return;
     }
     void ChangeEqirType(int index)
     {
+        CleanSlots();
         if(InvenBtnList[index].ChooseBtn)
         {
             InvenBtnList[index].ChooseBtn = false;
@@ -186,10 +187,6 @@ public class EventManager : MonoBehaviour
     }
     #endregion
     
-
-
-   
-
     void UserPanelControll(int index, int Length)
     {
         if(index == 0)
@@ -209,14 +206,15 @@ public class EventManager : MonoBehaviour
         NpcTalkBollum.SetActive(isShow);
         NpcText.SetActive(isShow);
     }
-    void ItemDetailChange(Item item)
+    void ItemDetailChange(Slot slot, int index)//슬롯의 정보를 받아서
     {
-        UnityEngine.UI.Image ItemAbilityImage = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>();
+
+        
+        UnityEngine.UI.Image ItemAbilityImage = ItemAbility.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>();
         TMP_Text ItemAbilityText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.GetComponent<TMP_Text>();
         UnityEngine.UI.Image NpcTalkBollum = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>();
-        TMP_Text NpcText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(1).gameObject.GetComponent<TMP_Text>();;
-        List<Item> itemlist = SmithInventory.GetComponent<Inventory>().items;
-        ItemAbilityImage.sprite = item.itemImage;
+        TMP_Text NpcText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(1).gameObject.GetComponent<TMP_Text>();
+        ItemAbilityImage.sprite = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(index).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().sprite;
         string EqirType(RiggingType Type)
         {
             string Typename = "";
@@ -226,10 +224,10 @@ public class EventManager : MonoBehaviour
                 Typename = "체력 : ";
             return Typename;
         }
-        ItemAbilityText.text = 
-        "이름 : " + item.itemName + "\n\n" + EqirType(item.riggingType)
-         + item.itemValue + "\n\n" + "내구도 : " + item.durAbility;
-        NpcText.text = item.smithTalk;
+         ItemAbilityText.text = 
+        "이름 : " + slot.InvenDetailName + "\n\n" + EqirType(slot.InvenDetailRiggingType)
+         + slot.InvenDetailValue + "\n\n" + "내구도 : " + slot.InvenDetailDurAbility;
+        NpcText.text = slot.InvenDetailSmithTalk;
 
     }
 }
