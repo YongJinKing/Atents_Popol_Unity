@@ -24,6 +24,7 @@ public abstract class BaseSkillType : MonoBehaviour
     #region Event
     //스킬
     public UnityEvent<GameObject> onSkillHitEvent;
+    public UnityEvent onSkillDisactivatedEvent;
     #endregion
     #endregion
 
@@ -58,7 +59,7 @@ public abstract class BaseSkillType : MonoBehaviour
 
     public virtual void OnSkillDisactivated()
     {
-
+        onSkillDisactivatedEvent?.Invoke();
     }
     #endregion
 

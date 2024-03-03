@@ -73,7 +73,7 @@ public class Slime : Monster
             //적에게 접근
             case State.Closing:
                 //detect를 실행하라고 지시
-                onDetectSkillTargetEvent[0]?.Invoke(() => ChangeState(State.Attacking));
+                onDetectSkillTargetEvent[1]?.Invoke(() => ChangeState(State.Attacking));
                 StartCoroutine(ClosingToTarget());
                 break;
             //공격

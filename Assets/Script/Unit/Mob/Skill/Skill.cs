@@ -35,9 +35,9 @@ public class Skill : MonoBehaviour
     //스킬이 실행되면 SkillType클래스에게 정보를 전달한다.
     public UnityEvent<Vector3> onSkillActivatedEvent;
     //스킬이 사용가능해지면 발생하는 이벤트
-    public UnityEvent onSkillAvailableEvent;
+    //public UnityEvent onSkillAvailableEvent;
     //타겟이 들어왔음을 알려주는 이벤트
-    public UnityEvent onDetectTargetEvent;
+    protected UnityEvent onDetectTargetEvent;
     //AI에게 스킬Start와 스킬End를 등록시켜주는 이벤트
     public UnityEvent<UnityAction<Vector3>, UnityAction, LayerMask> onAddSkillEventListener;
     #endregion
@@ -69,7 +69,7 @@ public class Skill : MonoBehaviour
         }
 
 
-        onSkillAvailableEvent?.Invoke();
+        //onSkillAvailableEvent?.Invoke();
         yield return null;
     }
 

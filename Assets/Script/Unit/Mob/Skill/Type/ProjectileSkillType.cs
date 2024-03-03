@@ -112,6 +112,7 @@ public class ProjectileSkillType : AttackSkillType
                     if (penetrable)
                     {
                         calculatedObject.Add(tempcol[i]);
+                        onSkillHitEvent?.Invoke(tempcol[i].gameObject);
                     }
                     else
                     {
@@ -119,7 +120,6 @@ public class ProjectileSkillType : AttackSkillType
                         //i를 바꿔버림으로써 루프에서 나감
                         i = tempcol.Length;
                     }
-                    onSkillHitEvent?.Invoke(tempcol[i].gameObject);
 
                 }
             }
