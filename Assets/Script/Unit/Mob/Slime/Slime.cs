@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +12,8 @@ public class Slime : Monster
     #region Properties / Field
     //private 변수 영역
     #region Private
+    private int[] saveSkill;
+    private int countUsedSkill;
     #endregion
 
     //protected 변수 영역
@@ -28,7 +32,7 @@ public class Slime : Monster
     public UnityAction<Vector3> onSkillStartEvent;
     public UnityAction onSkillEndEvent;
     //Skill을 쓰기전 타겟을 detect 하기위한 이벤트 배열(여기에 스킬들 등록)
-    public UnityEvent<UnityAction>[] onDetectSkillTargetEvent;
+    public UnityEvent<UnityAction>[] onCommandDetectSkillTargetEvent;
     #endregion
     #endregion
 
@@ -36,6 +40,28 @@ public class Slime : Monster
     #region Method
     //private 함수들 영역
     #region PrivateMethod
+    private void SkillRandomSet()
+    {
+        //스킬을 다썼으면
+        for(int i = 0; i < onCommandDetectSkillTargetEvent.Length; i++)
+        {
+            saveSkill[i] = UnityEngine.Random.Range(0, onCommandDetectSkillTargetEvent.Length);
+            
+
+            //공통된 게 있으면 다시
+            for(int j = 0; j < i; j++)
+            {
+                if (saveSkill[j] == saveSkill[i])
+                {
+                    saveSkill[i] = UnityEngine.Random.Range(0, onCommandDetectSkillTargetEvent.Length);
+                    j = 0;
+                }
+            }
+        }
+        countUsedSkill = 0;
+
+        Debug.Log(saveSkill[countUsedSkill]);
+    }
     #endregion
 
     //protected 함수들 영역
@@ -46,7 +72,8 @@ public class Slime : Monster
         myState = s;
 
         StopAllCoroutines();
-        switch (myState)
+
+            switch (myState)
         {
             //대충 적당히 근거리에서 배회
             case State.Idle:
@@ -73,14 +100,13 @@ public class Slime : Monster
             //적에게 접근
             case State.Closing:
                 //detect를 실행하라고 지시
-                onDetectSkillTargetEvent[1]?.Invoke(() => ChangeState(State.Attacking));
+                onCommandDetectSkillTargetEvent[saveSkill[countUsedSkill]]?.Invoke(() => ChangeState(State.Attacking));
+                Debug.Log(saveSkill[countUsedSkill]);
                 StartCoroutine(ClosingToTarget());
                 break;
             //공격
             case State.Attacking:
                 myAnim.SetTrigger("t_Attack");
-                onSkillStartEvent?.Invoke(target.transform.position);
-                ChangeState(State.Idle);
                 break;
         }
     }
@@ -108,7 +134,7 @@ public class Slime : Monster
             dir.Normalize();
 
             delta += Time.deltaTime;
-            transform.Translate(dir * delta * 0.1f);
+            transform.Translate(dir * delta * 0.1f, Space.World);
 
             yield return null;
         }
@@ -132,7 +158,7 @@ public class Slime : Monster
 
             //배회하는 코드들
             delta += Time.deltaTime;
-            transform.Translate(dir * delta * 0.1f);
+            transform.Translate(dir * delta * 0.1f, Space.World);
 
             yield return null;
         }
@@ -150,6 +176,24 @@ public class Slime : Monster
         onSkillEndEvent = skillEnd;
         skillMask = mask;
     }
+
+    //공격모션이 스킬을 발동
+    public void OnAttackStartAnim()
+    {
+        onSkillStartEvent?.Invoke(target.transform.position);
+        countUsedSkill++;
+        if (countUsedSkill >= onCommandDetectSkillTargetEvent.Length)
+        {
+            SkillRandomSet();
+        }
+    }
+
+    //공격 모션이 끝남
+    public void OnAttackEndAnim()
+    {
+        onSkillEndEvent?.Invoke();
+        ChangeState(State.Idle);
+    }
     #endregion
 
 
@@ -157,6 +201,9 @@ public class Slime : Monster
     #region MonoBehaviour
     void Start()
     {
+        saveSkill = new int[onCommandDetectSkillTargetEvent.Length];
+        countUsedSkill = 0;
+        SkillRandomSet();
         ProcessState();
     }
 

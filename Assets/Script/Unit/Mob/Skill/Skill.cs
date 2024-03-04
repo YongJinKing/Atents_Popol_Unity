@@ -30,6 +30,7 @@ public class Skill : MonoBehaviour
     //AI에서만 사용할 마스크
     public LayerMask targetMask;
     #endregion
+
     //이벤트 함수들 영역
     #region Event
     //스킬이 실행되면 SkillType클래스에게 정보를 전달한다.
@@ -37,7 +38,7 @@ public class Skill : MonoBehaviour
     //스킬이 사용가능해지면 발생하는 이벤트
     //public UnityEvent onSkillAvailableEvent;
     //타겟이 들어왔음을 알려주는 이벤트
-    protected UnityEvent onDetectTargetEvent;
+    public UnityEvent onDetectTargetEvent;
     //AI에게 스킬Start와 스킬End를 등록시켜주는 이벤트
     public UnityEvent<UnityAction<Vector3>, UnityAction, LayerMask> onAddSkillEventListener;
     #endregion
@@ -99,7 +100,7 @@ public class Skill : MonoBehaviour
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
     //AI가 사용할 이벤트 함수, collider에 걸리면 이벤트를 invoke할 코루틴을 스타트
-    public void OnDetectSkillRange(UnityAction detectAct)
+    public void OnCommandDetectSkillTarget(UnityAction detectAct)
     {
         StartCoroutine(DetectingRange());
         onAddSkillEventListener?.Invoke(OnSkillStart, OnSkillEnd, targetMask);
