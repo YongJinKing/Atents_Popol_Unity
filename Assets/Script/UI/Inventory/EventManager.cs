@@ -8,9 +8,16 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 using System.Security.Cryptography;
+using System;
 
 public class EventManager : MonoBehaviour
 {
+    private enum PopupType
+    {
+        None,
+        Repair,
+        ThrowAway,
+    }
     
     public Sprite[] ButtonImgSprite;
 
@@ -22,12 +29,12 @@ public class EventManager : MonoBehaviour
     public GameObject SmithTypeBtnManager;
     public GameObject SmithItemAbility;
     public GameObject SmithPairAndAwayBtnManager;
-    public GameObject SmithPopupManager;
+    public GameObject PopupManager;
 
     
     private List<InvenSlot> InvenSlotList = new List<InvenSlot>();//
     private List<InvenBtn> InvenBtnList = new List<InvenBtn>();//
-
+    PopupType popupType = PopupType.None;
     //private Button moveUI;
 
 
@@ -44,7 +51,7 @@ public class EventManager : MonoBehaviour
 
     private void Start() 
     {
-        #region SmithUIInit
+     
 
         #region SmithInventoryInit
         for(int i = 0; i < SmithInventory.GetComponent<Inventory>().slots.Length; i++)
@@ -70,11 +77,12 @@ public class EventManager : MonoBehaviour
         Button[] SmithPairAndAwayBtnList = SmithPairAndAwayBtnManager.GetComponentsInChildren<UnityEngine.UI.Button>();
         for(int i = 0; i < SmithPairAndAwayBtnManager.transform.childCount; i++)
         {
-            Debug.Log(SmithPairAndAwayBtnList[0]);
+         
             int index = i;
             SmithPairAndAwayBtnList[i].onClick.AddListener(() => RepairAndAwayPopup(index));
         }
 
+        
 
         #endregion
         #region MainUIInit
@@ -98,9 +106,16 @@ public class EventManager : MonoBehaviour
             UserPanelBtnList[j].onClick.AddListener(() => UserPanelControll(index, gameCanvas.transform.childCount));
         }
 
+
         #endregion
         
-        #endregion
+        Button[] PopupBtnList = PopupManager.GetComponentsInChildren<UnityEngine.UI.Button>();
+        for(int i = 0; i < PopupBtnList.Length; i++)
+        {
+     
+            int index = i;
+            PopupBtnList[i].onClick.AddListener(() => PopupUiControll(index));
+        }
 
         #region UIInit
         gameCanvas.transform.GetChild(2).gameObject.SetActive(true); // 메인 on
@@ -249,17 +264,18 @@ public class EventManager : MonoBehaviour
     }
     void RepairAndAwayPopup(int index)
     {
-        
         gameCanvas.transform.GetChild(6).gameObject.SetActive(true); // 팝업 on
         if(index == 0)
         {
-            SmithPopupManager.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = 
+            PopupManager.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = 
             "아이템을 수리하시겠습니까?";
+            popupType = PopupType.Repair;
         }
         if(index == 1)
         {
-            SmithPairAndAwayBtnManager.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = 
+            PopupManager.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = 
             "아이템을 폐기하시겠습니까?";
+            popupType = PopupType.ThrowAway;
         }
     }
     #endregion 
@@ -298,7 +314,29 @@ public class EventManager : MonoBehaviour
         #endregion
     }
     #endregion
+    #region PopupControll
+    void PopupUiControll(int index)
+    {
     
+        if(index == 0)//yes
+        {
+            if(popupType == PopupType.Repair)
+            {
+                
+            }
+            if(popupType == PopupType.ThrowAway)
+            {
+                
+            }
+        }
+        if(index == 1)//no
+        {
+            popupType = PopupType.None;
+            gameCanvas.transform.GetChild(6).gameObject.SetActive(false); // 팝업 on
+        }
+    }
+
+    #endregion
 }
 
 
