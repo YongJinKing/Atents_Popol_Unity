@@ -960,6 +960,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &84116616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1576,6 +1577,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &105958737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1670,6 +1672,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &116114731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1884,6 +1887,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &121656696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2055,6 +2059,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &123877843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2303,6 +2308,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &148688178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2397,6 +2403,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &158620121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2491,6 +2498,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &172074715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2719,6 +2727,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &184409753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3142,6 +3151,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &203195938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3709,6 +3719,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &265341294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4750,6 +4761,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &313778318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5328,6 +5340,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &350386673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5579,12 +5592,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - {fileID: 11400000, guid: 6dfd00fe12bebed4985da493e79733b2, type: 2}
+  - {fileID: 11400000, guid: 7739ec726f9564c4b8aaa56ef40c4056, type: 2}
+  - {fileID: 11400000, guid: 041ccc81ec8a2f444b297a1c07897852, type: 2}
+  - {fileID: 11400000, guid: 6dfd00fe12bebed4985da493e79733b2, type: 2}
   - {fileID: 11400000, guid: 6d92562fcb271884199bc18483036544, type: 2}
+  - {fileID: 11400000, guid: db92c4c0c162a1741a480e20dd594db4, type: 2}
   - {fileID: 11400000, guid: e92b0ccb403488847b76650d715c31f1, type: 2}
-  - {fileID: 11400000, guid: e92b0ccb403488847b76650d715c31f1, type: 2}
-  - {fileID: 11400000, guid: e2992714a028e654e8f17e80bbc1de32, type: 2}
+  - {fileID: 11400000, guid: 101f3dfe51a11b9469aae4c6a7763026, type: 2}
   - {fileID: 11400000, guid: 7739ec726f9564c4b8aaa56ef40c4056, type: 2}
-  - {fileID: 11400000, guid: 7739ec726f9564c4b8aaa56ef40c4056, type: 2}
+  itemsIndex: 
   slotParent: {fileID: 307812221}
   slots:
   - {fileID: 1836288853}
@@ -5900,6 +5916,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &407102129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5994,6 +6011,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &410633071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6088,6 +6106,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &421690745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6546,6 +6565,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &464604278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7652,6 +7672,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &562569426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7899,6 +7920,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &590944308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8006,6 +8028,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
   - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
   - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
+  itemsIndex: 
   slotParent: {fileID: 1853866219}
   slots:
   - {fileID: 590944307}
@@ -8118,6 +8141,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &602111754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8903,6 +8927,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &670047274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9784,6 +9809,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &729271406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10729,6 +10755,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &814722012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10900,6 +10927,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &830464645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11070,6 +11098,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &834899656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11451,6 +11480,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &847823774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11545,6 +11575,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &855766972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11792,6 +11823,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &873834885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12039,6 +12071,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &896484349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12253,6 +12286,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &940072602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12828,6 +12862,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &989582570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13133,6 +13168,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &993963029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14359,6 +14395,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1096822135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14510,6 +14547,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1102593501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14815,9 +14853,10 @@ MonoBehaviour:
   gameCanvas: {fileID: 1343549771}
   MainUI: {fileID: 1189783805}
   UserPanel: {fileID: 98289668}
-  SmithBtnManager: {fileID: 65477199}
+  SmithTypeBtnManager: {fileID: 65477199}
   SmithItemAbility: {fileID: 1113809020}
-  SmithPairAndAway: {fileID: 1108701086}
+  SmithPairAndAwayBtnManager: {fileID: 1108701086}
+  PopupManager: {fileID: 1290125551}
 --- !u!4 &1117914951
 Transform:
   m_ObjectHideFlags: 0
@@ -16743,6 +16782,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1248289690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17343,6 +17383,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1309758895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17437,6 +17478,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1313282270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18589,6 +18631,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1397130715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19272,6 +19315,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1485555548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19902,6 +19946,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1541051539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19996,6 +20041,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1553276528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20090,6 +20136,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1555865602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20767,6 +20814,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1619760839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21255,6 +21303,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1644910558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21426,6 +21475,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1653818047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21870,6 +21920,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1667645916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22236,6 +22287,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1686240226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22330,6 +22382,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1686828072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23203,6 +23256,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1776442136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23698,6 +23752,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!1 &1847071421
 GameObject:
   m_ObjectHideFlags: 0
@@ -23989,6 +24044,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1857228306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24533,6 +24589,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1899566235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24761,6 +24818,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1942144910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24855,6 +24913,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &1942190622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25038,6 +25097,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
   - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
   - {fileID: 11400000, guid: 76e6e9e663bcb574da768456c1bd8008, type: 2}
+  itemsIndex: 
   slotParent: {fileID: 1333445748}
   slots:
   - {fileID: 116114730}
@@ -25502,6 +25562,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &2012473700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25596,6 +25657,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &2013015376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26099,6 +26161,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &2040495023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27448,6 +27511,7 @@ MonoBehaviour:
   InvenDetailValue: 0
   InvenDetailSmithTalk: 
   InvenDetailDurAbility: 0
+  InvenDetailIndex: 0
 --- !u!114 &2125169676
 MonoBehaviour:
   m_ObjectHideFlags: 0

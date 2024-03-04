@@ -25,12 +25,14 @@ public enum WeaponType
 [CreateAssetMenu]
 public class Item : ScriptableObject
 {
+    
     public string itemName;
     public Sprite itemImage;
     public int itemValue;
     public string itemDesc;
     public string smithTalk;
     public int durAbility;
+    public int itemIndex;
     public WeaponType weaponType;
     public RiggingType riggingType;
     

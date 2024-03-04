@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public List<Item> items;
+    public List<int> itemsIndex = new List<int>();
 
     [SerializeField]
     private Transform slotParent;
@@ -30,6 +31,7 @@ public class Inventory : MonoBehaviour
     public void FreshSlot(int index)
     {
         SlotMode = index;
+        List<int> itemsShowIndex = new List<int>();
         if(SlotMode == 0)
         {
             int i = 0;
@@ -37,8 +39,10 @@ public class Inventory : MonoBehaviour
             for (; i < items.Count && i < slots.Length; i++) 
             {
                 slots[i].item = items[i];
+                itemsShowIndex.Add(i);
                 TypeCount++;
             }
+            
             for (; i < slots.Length; i++) 
             {
                 slots[i].item = null;
@@ -52,6 +56,7 @@ public class Inventory : MonoBehaviour
                 if(items[i].riggingType == RiggingType.Weapon)
                     {
                         slots[TypeCount].item = items[i];
+                        itemsShowIndex.Add(i);
                         TypeCount++;
                     }
             }
@@ -68,6 +73,7 @@ public class Inventory : MonoBehaviour
                 if(items[i].riggingType == RiggingType.Armor)
                     {
                         slots[TypeCount].item = items[i];
+                        itemsShowIndex.Add(i);
                         TypeCount++;
                     }
             }
@@ -76,6 +82,7 @@ public class Inventory : MonoBehaviour
                 slots[i].item = null;
             }
         }
+        itemsIndex = itemsShowIndex;
     }
 
     public void AddItem(Item _item)

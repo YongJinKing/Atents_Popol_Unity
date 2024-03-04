@@ -14,6 +14,7 @@ public class Slot : MonoBehaviour
     public int InvenDetailValue;
     public string InvenDetailSmithTalk;
     public int InvenDetailDurAbility;
+    public int InvenDetailIndex;
 
     private Item _item;
     public Item item 
@@ -29,6 +30,7 @@ public class Slot : MonoBehaviour
                 InvenDetailValue = item.itemValue;
                 InvenDetailDurAbility = item.durAbility;
                 InvenDetailSmithTalk = item.smithTalk;
+
                 image.color = new Color(1, 1, 1, 1);
             } else 
             {

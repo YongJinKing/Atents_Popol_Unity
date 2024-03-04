@@ -34,7 +34,9 @@ public class EventManager : MonoBehaviour
     
     private List<InvenSlot> InvenSlotList = new List<InvenSlot>();//
     private List<InvenBtn> InvenBtnList = new List<InvenBtn>();//
+
     PopupType popupType = PopupType.None;
+    int ChooseSlotIndex = 0;
     //private Button moveUI;
 
 
@@ -101,7 +103,7 @@ public class EventManager : MonoBehaviour
         Button[] UserPanelBtnList = UserPanel.GetComponentsInChildren<UnityEngine.UI.Button>();
         for(int j = 0; j < UserPanelBtnList.Length; j++)
         {
-            Debug.Log(UserPanelBtnList[0]);
+
             int index = j;
             UserPanelBtnList[j].onClick.AddListener(() => UserPanelControll(index, gameCanvas.transform.childCount));
         }
@@ -242,7 +244,7 @@ public class EventManager : MonoBehaviour
     void ItemDetailChange(Slot slot, int index)//슬롯의 정보를 받아서
     {
 
-        
+        ChooseSlotIndex = SmithInventory.GetComponent<Inventory>().itemsIndex[index];
         UnityEngine.UI.Image ItemAbilityImage = SmithItemAbility.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>();
         TMP_Text ItemAbilityText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.GetComponent<TMP_Text>();
         UnityEngine.UI.Image NpcTalkBollum = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>();
@@ -320,20 +322,39 @@ public class EventManager : MonoBehaviour
     
         if(index == 0)//yes
         {
+            Debug.Log(popupType);
             if(popupType == PopupType.Repair)
             {
                 
             }
             if(popupType == PopupType.ThrowAway)
             {
-                
+                SmithInventory.GetComponent<Inventory>().items.RemoveAt(ChooseSlotIndex);
+                CleanSlots();
+                PopupClose();
+                if(InvenBtnList[0].ChooseBtn)
+                {
+                    SmithInventory.GetComponent<Inventory>().FreshSlot(1);
+                }
+                else if(InvenBtnList[1].ChooseBtn)
+                {
+                    SmithInventory.GetComponent<Inventory>().FreshSlot(2);
+                }else
+                {
+                    SmithInventory.GetComponent<Inventory>().FreshSlot(0);
+                }
             }
         }
         if(index == 1)//no
         {
-            popupType = PopupType.None;
-            gameCanvas.transform.GetChild(6).gameObject.SetActive(false); // 팝업 on
+            PopupClose();
         }
+    }
+
+    void PopupClose()
+    {
+        popupType = PopupType.None;
+        gameCanvas.transform.GetChild(6).gameObject.SetActive(false);// 팝업 off
     }
 
     #endregion
