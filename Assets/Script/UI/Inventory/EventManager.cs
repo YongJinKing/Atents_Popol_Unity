@@ -7,17 +7,23 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using System.Security.Cryptography;
 
 public class EventManager : MonoBehaviour
 {
     
+    public Sprite[] ButtonImgSprite;
+
     public GameObject SmithInventory;//
     public GameObject gameCanvas;//게임 
     public GameObject MainUI;//메인 UI
     public GameObject UserPanel;
 
-    public GameObject InvenBtnManager;
-    public GameObject ItemAbility;
+    public GameObject SmithTypeBtnManager;
+    public GameObject SmithItemAbility;
+    public GameObject SmithPairAndAwayBtnManager;
+    public GameObject SmithPopupManager;
+
     
     private List<InvenSlot> InvenSlotList = new List<InvenSlot>();//
     private List<InvenBtn> InvenBtnList = new List<InvenBtn>();//
@@ -51,14 +57,22 @@ public class EventManager : MonoBehaviour
             InvenSlotList[i].gameObject.GetComponent<Button>().onClick.AddListener(() => InvenSlotBtnChoise(index));
         }
 
-        for(int i = 0; i < InvenBtnManager.transform.childCount; i++)
+        for(int i = 0; i < SmithTypeBtnManager.transform.childCount; i++)
         {
             int index = i;
             InvenBtn temp = new InvenBtn();
-            temp.gameObject = InvenBtnManager.transform.GetChild(i).gameObject;
+            temp.gameObject = SmithTypeBtnManager.transform.GetChild(i).gameObject;
             temp.ChooseBtn = false;
             InvenBtnList.Add(temp);
             InvenBtnList[i].gameObject.GetComponent<Button>().onClick.AddListener(()=>ChangeEqirType(index));
+        }
+
+        Button[] SmithPairAndAwayBtnList = SmithPairAndAwayBtnManager.GetComponentsInChildren<UnityEngine.UI.Button>();
+        for(int i = 0; i < SmithPairAndAwayBtnManager.transform.childCount; i++)
+        {
+            Debug.Log(SmithPairAndAwayBtnList[0]);
+            int index = i;
+            SmithPairAndAwayBtnList[i].onClick.AddListener(() => RepairAndAwayPopup(index));
         }
 
 
@@ -79,6 +93,7 @@ public class EventManager : MonoBehaviour
         Button[] UserPanelBtnList = UserPanel.GetComponentsInChildren<UnityEngine.UI.Button>();
         for(int j = 0; j < UserPanelBtnList.Length; j++)
         {
+            Debug.Log(UserPanelBtnList[0]);
             int index = j;
             UserPanelBtnList[j].onClick.AddListener(() => UserPanelControll(index, gameCanvas.transform.childCount));
         }
@@ -88,10 +103,11 @@ public class EventManager : MonoBehaviour
         #endregion
 
         #region UIInit
-        gameCanvas.transform.GetChild(2).gameObject.SetActive(true); //메인 on
-        gameCanvas.transform.GetChild(3).gameObject.SetActive(false); //쇼핑 off
-        gameCanvas.transform.GetChild(4).gameObject.SetActive(false); //수리 off
-        gameCanvas.transform.GetChild(5).gameObject.SetActive(false); //경기 off
+        gameCanvas.transform.GetChild(2).gameObject.SetActive(true); // 메인 on
+        gameCanvas.transform.GetChild(3).gameObject.SetActive(false); // 쇼핑 off
+        gameCanvas.transform.GetChild(4).gameObject.SetActive(false); // 수리 off
+        gameCanvas.transform.GetChild(5).gameObject.SetActive(false); // 경기 off
+        gameCanvas.transform.GetChild(6).gameObject.SetActive(false); // 팝업 off
         gameCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(false); //x버튼 off
         #endregion
         
@@ -174,6 +190,7 @@ public class EventManager : MonoBehaviour
         if(InvenBtnList[index].ChooseBtn)
         {
             InvenBtnList[index].ChooseBtn = false;
+            BtnImage(false,index, "InvenButton");
             SmithInventory.GetComponent<Inventory>().FreshSlot(0);
             return;
         }
@@ -182,17 +199,22 @@ public class EventManager : MonoBehaviour
             InvenBtnList[0].ChooseBtn = false;
             InvenBtnList[1].ChooseBtn = false;
             InvenBtnList[index].ChooseBtn = true;
+            BtnImage(true, index, "InvenButton");
+            
+                
+            
         }
         if(InvenBtnList[0].ChooseBtn)
         {
             SmithInventory.GetComponent<Inventory>().FreshSlot(1);
+            
         }
         if(InvenBtnList[1].ChooseBtn)
         {
             SmithInventory.GetComponent<Inventory>().FreshSlot(2);
         }
     }
-void ItemDetailShow(bool isShow)
+    void ItemDetailShow(bool isShow)
     {
         GameObject ItemAbility = gameCanvas.transform.GetChild(4).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
         GameObject NpcTalkBollum = gameCanvas.transform.GetChild(4).GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject;
@@ -206,7 +228,7 @@ void ItemDetailShow(bool isShow)
     {
 
         
-        UnityEngine.UI.Image ItemAbilityImage = ItemAbility.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>();
+        UnityEngine.UI.Image ItemAbilityImage = SmithItemAbility.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>();
         TMP_Text ItemAbilityText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.GetComponent<TMP_Text>();
         UnityEngine.UI.Image NpcTalkBollum = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>();
         TMP_Text NpcText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(1).gameObject.GetComponent<TMP_Text>();
@@ -224,10 +246,23 @@ void ItemDetailShow(bool isShow)
         "이름 : " + slot.InvenDetailName + "\n\n" + EqirType(slot.InvenDetailRiggingType)
          + slot.InvenDetailValue + "\n\n" + "내구도 : " + slot.InvenDetailDurAbility;
         NpcText.text = slot.InvenDetailSmithTalk;
-
     }
-    #endregion
-    
+    void RepairAndAwayPopup(int index)
+    {
+        
+        gameCanvas.transform.GetChild(6).gameObject.SetActive(true); // 팝업 on
+        if(index == 0)
+        {
+            SmithPopupManager.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = 
+            "아이템을 수리하시겠습니까?";
+        }
+        if(index == 1)
+        {
+            SmithPairAndAwayBtnManager.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = 
+            "아이템을 폐기하시겠습니까?";
+        }
+    }
+    #endregion 
     #region UserPanelUI
     void UserPanelControll(int index, int Length)
     {
@@ -240,6 +275,29 @@ void ItemDetailShow(bool isShow)
     }
     #endregion 
 
+    #region ButtonImage
+    void BtnImage(bool IsClicked, int index, string UiName)
+    {
+
+        #region SmithUI
+        if(UiName == "InvenButton")
+        {
+            for(int i = 0; i < SmithTypeBtnManager.transform.childCount; i++)
+            {
+                SmithTypeBtnManager.transform.GetChild(i).gameObject.GetComponent<UnityEngine.UI.Image>().sprite = ButtonImgSprite[0];
+                SmithTypeBtnManager.transform.GetChild(i).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 10, 0);
+                
+            }
+            
+            if(IsClicked)
+            {
+                SmithTypeBtnManager.transform.GetChild(index).gameObject.GetComponent<UnityEngine.UI.Image>().sprite = ButtonImgSprite[1];
+                SmithTypeBtnManager.transform.GetChild(index).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -5, 0);
+            }
+        }
+        #endregion
+    }
+    #endregion
     
 }
 

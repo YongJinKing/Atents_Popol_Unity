@@ -29,7 +29,6 @@ public class Inventory : MonoBehaviour
 
     public void FreshSlot(int index)
     {
-        Debug.Log("언제?");
         SlotMode = index;
         if(SlotMode == 0)
         {
