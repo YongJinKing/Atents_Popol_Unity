@@ -3,61 +3,62 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class Unit : BattleSystem
 {
-    //º¯¼ö ¿µ¿ª
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Properties / Field
-    //private º¯¼ö ¿µ¿ª
+    //private ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Private
     #endregion
-    //protected º¯¼ö ¿µ¿ª
+    //protected ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region protected
     #endregion
-    //Public º¯¼ö¿µ¿ª
+    //Public ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     #region public
     #endregion
 
-    //ÀÌº¥Æ® ÇÔ¼öµé ¿µ¿ª
+    //ï¿½Ìºï¿½Æ® ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Event
-    //SkillÀ» ½ÇÇà½ÃÅ³ ÀÌº¥Æ®
+    //Skillï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å³ ï¿½Ìºï¿½Æ®
     #endregion
     #endregion
 
-    //private ÇÔ¼öµé ¿µ¿ª
+    //private ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region PrivateMethod
     #endregion
 
 
-    //protected ÇÔ¼öµé ¿µ¿ª
+    //protected ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region ProtectedMethod
     #endregion
 
-    //public ÇÔ¼öµé ¿µ¿ª
+    //public ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region PublicMethod
     #endregion
 
-    //ÄÚ·çÆ¾ ¿µ¿ª
+    //ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½
     #region Coroutine
     #endregion
 
-    //ÀÌº¥Æ®°¡ ÀÏ¾î³µÀ»¶§ ½ÇÇàµÇ´Â On~~ÇÔ¼ö
+    //ï¿½Ìºï¿½Æ®ï¿½ï¿½ ï¿½Ï¾î³µï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ On~~ï¿½Ô¼ï¿½
     #region EventHandler
 
     #endregion
 
 
-    //À¯´ÏÆ¼ ÇÔ¼öµé ¿µ¿ª
+    //ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region MonoBehaviour
     // Start is called before the first frame update
-    void Start()
-    {
+    // void Start()
+    // {
 
-    }
+    // }
 
     // Update is called once per frame
-    void Update()
-    {
+    // void Update()
+    // {
 
-    }
+    // }
     #endregion
 }

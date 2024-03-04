@@ -2,26 +2,36 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : Unit
+public class Player : BattleSystem
 {
-    public UnityEvent<Vector3, float, UnityAction, UnityAction> clickAct;
+    public UnityEvent<Vector3, float> clickAct;
     public UnityEvent<Vector3, Weapon> attackAct;
     public GameObject jointItemR;
     public LayerMask clickMask;
     public LayerMask attackMask;
+    public Rigidbody rigid;
     Weapon equipWeapon;
     float FireDelay = 0;
     bool isFireReady = true;
-    bool isFire = false;
+    
+    public enum state
+    {
+        Fire, Dadge, Idle, Run
+    }
+    public state playerstate;
 
     protected virtual void Start()
     {
+        playerstate = state.Idle;
+        rigid = GetComponent<Rigidbody>();
         equipWeapon = jointItemR.transform.GetChild(0).GetComponent<Weapon>();
-        Debug.Log($"¿þÆù: {equipWeapon}");
     }
+
+    
 
     void Update()
     {
@@ -33,25 +43,38 @@ public class Player : Unit
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
             {
-                Debug.Log(FireDelay);
-                if(Input.GetMouseButtonDown(0) && isFireReady && !isFire)
+                if(Input.GetMouseButtonDown(0) && isFireReady && state.Fire != playerstate)
                 {
                     attackAct?.Invoke(hit.point, equipWeapon);
-                    isFire = true;
+                    playerstate = state.Fire;
                 }
-                else if (Input.GetMouseButtonDown(1) && !myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+
+                else if (Input.GetMouseButtonDown(1) && state.Idle == playerstate)
                 {
-                    clickAct?.Invoke(hit.point, battleStat.Speed,
-                        () => myAnim.SetBool("run", true),
-                        () => myAnim.SetBool("run", false));
+                    playerstate = state.Run;
+                    clickAct?.Invoke(hit.point, battleStat.Speed);
                 }
             }
         }
+        
+        if(Input.GetKeyDown(KeyCode.Space) && state.Fire != playerstate)
+        {
+            myAnim.SetTrigger("Dadge");
+            playerstate = state.Dadge;
+            rigid.AddForce(transform.forward * 10.0f, ForceMode.Impulse);
+            Invoke("setstateIdle", 0.2f);
+        }
+        
 
         if(myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f)
         {
             FireDelay = equipWeapon.rate;
-            isFire = false;
+            playerstate = state.Idle;
         }
+    }
+
+    void setstateIdle()
+    {
+        playerstate = state.Idle;
     }
 }

@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UnitMovement : MonoBehaviour
+public class UnitMovement : CharacterProperty
 {
     Coroutine move = null;
     Coroutine rotate = null;
-    // Start is called before the first frame update
-    void Start()
+    Player player;
+    protected virtual void Awake()
     {
-        
+        player = GetComponent<Player>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         
     }
 
-    public void MoveToPos(Vector3 target, float Speed, UnityAction startAct, UnityAction endAct)
+    public void MoveToPos(Vector3 target, float Speed)
     {
         if(move != null)
         {
@@ -27,10 +27,10 @@ public class UnitMovement : MonoBehaviour
             move = null;
         }
         
-        move = StartCoroutine(MovingToPos(target, Speed, startAct, endAct));
+        move = StartCoroutine(MovingToPos(target, Speed));
     }
 
-    IEnumerator MovingToPos(Vector3 target, float Speed, UnityAction startAct, UnityAction endAct)
+    IEnumerator MovingToPos(Vector3 target, float Speed)
     {
         Vector3 dir = target - transform.position;
         float dist = dir.magnitude;
@@ -39,7 +39,7 @@ public class UnitMovement : MonoBehaviour
         if(rotate != null) StopCoroutine(rotate);
         rotate = StartCoroutine(Rotating(dir, Speed));
 
-        startAct?.Invoke();
+        myAnim.SetBool("run", true);
         
         while(!Mathf.Approximately(dist, 0.0f))
         {
@@ -47,9 +47,16 @@ public class UnitMovement : MonoBehaviour
             if(delta > dist) delta = dist;
             dist -= delta;
             transform.Translate(dir * delta, Space.World);
+            if(player.playerstate == Player.state.Fire || player.playerstate == Player.state.Dadge)
+            {
+                myAnim.SetBool("run", false);
+                yield break;
+            }
             yield return null;
         }
-        endAct?.Invoke();
+
+        myAnim.SetBool("run", false);
+        player.playerstate = Player.state.Idle;
     }
 
     public IEnumerator Rotating(Vector3 dir,float Speed)

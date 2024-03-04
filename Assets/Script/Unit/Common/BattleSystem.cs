@@ -15,8 +15,6 @@ public struct BattleStat
     public float AttackRange;
     public float AttackDelay;
 }
-
-
 public interface IDamage
 {
     public void TakeDamage(uint damage);
