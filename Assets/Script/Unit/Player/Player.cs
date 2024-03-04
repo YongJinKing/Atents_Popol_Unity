@@ -9,16 +9,18 @@ public class Player : Unit
 {
     public UnityEvent<Vector3, float, UnityAction, UnityAction> clickAct;
     public UnityEvent<Vector3, Weapon> attackAct;
-    public GameObject WeaponPoint;
+    public GameObject jointItemR;
     public LayerMask clickMask;
     public LayerMask attackMask;
     Weapon equipWeapon;
     float FireDelay = 0;
     bool isFireReady = true;
     bool isFire = false;
+
     protected virtual void Start()
     {
-        equipWeapon = WeaponPoint.transform.GetChild(0).GetComponent<Weapon>();
+        equipWeapon = jointItemR.transform.GetChild(0).GetComponent<Weapon>();
+        Debug.Log($"¿þÆù: {equipWeapon}");
     }
 
     void Update()
