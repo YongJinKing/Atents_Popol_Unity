@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
+/*
 public class AIPlayer : CharacterMovement
 {
     public NavMeshPath myPath;
@@ -64,3 +66,4 @@ public class AIPlayer : CharacterMovement
         yield return null;
     }
 }
+*/

@@ -373,16 +373,31 @@ MonoBehaviour:
   battleStat:
     Level: 0
     AP: 30
-    maxHP: 0
+    maxHP: 30
     Exp: 0
     Speed: 10
     AttackRange: 1
     AttackDelay: 1
   curHP: 0
+  rotAct:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 756935915}
+        m_TargetAssemblyTypeName: UnitMovement, Assembly-CSharp
+        m_MethodName: Rotate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   clickAct:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 756935911}
+      - m_Target: {fileID: 756935915}
         m_TargetAssemblyTypeName: UnitMovement, Assembly-CSharp
         m_MethodName: MoveToPos
         m_Mode: 0
@@ -424,6 +439,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  dadgeAct:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 756935915}
+        m_TargetAssemblyTypeName: UnitMovement, Assembly-CSharp
+        m_MethodName: Dadge
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   jointItemR: {fileID: 2001779437}
   clickMask:
     serializedVersion: 2
@@ -431,7 +461,7 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 4096
-  rigid: {fileID: 756935916}
+  playerstate: 2
 --- !u!114 &756935915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02436df86669eff4ca407de9059bc837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: 756935916}
 --- !u!54 &756935916
 Rigidbody:
   m_ObjectHideFlags: 0
