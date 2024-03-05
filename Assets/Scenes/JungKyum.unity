@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -380,7 +380,7 @@ MonoBehaviour:
     AP: 30
     maxHP: 30
     Exp: 0
-    Speed: 10
+    Speed: 5
     AttackRange: 1
     AttackDelay: 1
   curHP: 0
@@ -466,6 +466,7 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 4096
+  DadgeDelay: 1
   playerstate: 2
 --- !u!114 &756935915
 MonoBehaviour:

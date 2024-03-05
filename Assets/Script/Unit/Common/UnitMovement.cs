@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using static UnityEngine.GraphicsBuffer;
@@ -65,9 +66,15 @@ public class UnitMovement : CharacterProperty
         endAct?.Invoke();
     }
     
-    public void Dadge(float dadge)
+    public void Dadge(Vector3 target, float dadge)
     {
-        rigid.AddForce(transform.forward * dadge, ForceMode.Impulse);
+        Vector3 dir = target - transform.position;
+        float dist = dir.magnitude;
+        dir.Normalize();
+
+        if (rotate != null) StopCoroutine(rotate);
+        rotate = StartCoroutine(Rotating(dir, 10.0f));
+        rigid.AddForce(dir * dadge, ForceMode.Impulse);
     }
 
     IEnumerator MovingToPos(Vector3 target, float speed, UnityAction startAct, UnityAction endAct)
@@ -98,11 +105,11 @@ public class UnitMovement : CharacterProperty
     {
         while (target != null)
         {
-            //¾Ö´Ï¸ÞÀÌ¼Ç
+            //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
             startAct?.Invoke();
 
             Vector3 dir = target.position - transform.position;
-            //0.5´Â ¿ÀÇÁ¼Â
+            //0.5ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             float dist = dir.magnitude - 0.5f;
             if (dist < 0.0f) dist = 0.0f;
             float delta;
@@ -114,7 +121,7 @@ public class UnitMovement : CharacterProperty
             transform.Translate(dir * delta, Space.World);
             if (Mathf.Approximately(dist, 0.0f))
             {
-                //¾Ö´Ï¸ÞÀÌ¼Ç
+                //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
                 endAct?.Invoke();
             }
 

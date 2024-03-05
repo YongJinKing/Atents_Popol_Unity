@@ -11,13 +11,16 @@ public class Player : BattleSystem
     public UnityEvent<Vector3, float, UnityAction, UnityAction> clickAct;
     public UnityEvent<Vector3, Weapon> attackAct;
     public UnityEvent<UnityAction> stopAct;
-    public UnityEvent<float> dadgeAct;
+    public UnityEvent<Vector3, float> dadgeAct;
     public GameObject jointItemR;
     public LayerMask clickMask;
     public LayerMask attackMask;
     Weapon equipWeapon;
     float FireDelay = 0;
+    public float DadgeDelay = 0;
     bool isFireReady = true;
+    
+    bool isDadgeReady = true;
     
     public enum state
     {
@@ -78,17 +81,14 @@ public class Player : BattleSystem
 
     public void FireToMousePos()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isFireReady)
         {
             stopAct?.Invoke(() => myAnim.SetBool("b_Moving", false));
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
             {
-                if (Input.GetMouseButtonDown(0) && isFireReady)
-                {
-                    ChangeState(state.Fire);
-                    attackAct?.Invoke(hit.point, equipWeapon);
-                }
+                ChangeState(state.Fire);
+                attackAct?.Invoke(hit.point, equipWeapon);
             }
         }
     }
@@ -110,8 +110,7 @@ public class Player : BattleSystem
                             {
                                 myAnim.SetBool("b_Moving", false);
                                 ChangeState(state.Idle);
-                            }
-                            );
+                            });
                         }
                         ChangeState(state.Idle);
                         myAnim.SetBool("b_Moving", false);
@@ -122,15 +121,16 @@ public class Player : BattleSystem
     
     public void DadgeToPos()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isDadgeReady)
         {
-            stopAct?.Invoke(() =>
+            stopAct?.Invoke(() => myAnim.SetBool("b_Moving", false));
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
             {
-                myAnim.SetBool("b_Moving", false);
-            });
-            myAnim.SetTrigger("t_Dadge");
-            ChangeState(state.Dadge);
-            dadgeAct?.Invoke(30.0f);
+                myAnim.SetTrigger("t_Dadge");
+                ChangeState(state.Dadge);
+                dadgeAct?.Invoke(hit.point, 20.0f);
+            }
         }
     }
 
@@ -142,6 +142,7 @@ public class Player : BattleSystem
                 FireDelay = equipWeapon.rate;
                 break;
             case 1:
+                DadgeDelay = 1.0f;
                 break;
         }
         ChangeState(state.Idle);
@@ -153,12 +154,9 @@ public class Player : BattleSystem
     {
         FireDelay -= Time.deltaTime;
         isFireReady = FireDelay < 0;
+        DadgeDelay -= Time.deltaTime;
+        isDadgeReady = DadgeDelay < 0;
 
         ProcessState();
-    }
-
-    void setstateIdle()
-    {
-        ChangeState(state.Idle);
     }
 }
