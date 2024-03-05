@@ -30,12 +30,13 @@ public class Slime : Monster
     //이벤트 함수들 영역
     #region Event
     //Skill을 실행시킬 이벤트
-    public UnityAction<Vector3> onSkillStartEvent;
-    public UnityAction onSkillEndEvent;
+    public UnityAction<Vector3> onSkillStartAct;
+    public UnityAction onSkillEndAct;
     //Skill을 쓰기전 타겟을 detect 하기위한 이벤트 배열(여기에 스킬들 등록)
     public UnityEvent<UnityAction>[] onCommandDetectSkillTargetEvent;
-    public UnityAction<Vector3, float, UnityAction, UnityAction> onMoveToPos;
-    public UnityAction<UnityAction> onStopMove;
+    public UnityEvent<Vector3, float, UnityAction, UnityAction> moveToPosEvent;
+    public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
+    public UnityEvent<UnityAction> stopEvent;
     #endregion
     #endregion
 
@@ -75,8 +76,9 @@ public class Slime : Monster
         myState = s;
 
         StopAllCoroutines();
+        stopEvent?.Invoke(null);
 
-            switch (myState)
+        switch (myState)
         {
             //대충 적당히 근거리에서 배회
             case State.Idle:
@@ -128,20 +130,9 @@ public class Slime : Monster
     {
         Vector3 dir;
 
+        followEvent?.Invoke(target.transform, battleStat.Speed, null, null);
 
-        float delta = 0.0f;
-        while (myState == State.Closing)
-        {
-            //접근하는 반복자
-            dir = target.transform.position - transform.position;
-            dir = new Vector3(dir.x, 0, dir.z);
-            dir.Normalize();
 
-            delta += Time.deltaTime;
-            transform.Translate(dir * delta * 0.1f, Space.World);
-
-            yield return null;
-        }
         yield return null;
     }
 
@@ -156,8 +147,15 @@ public class Slime : Monster
         dir = new Vector3(dir.x, 0, dir.z);
         dir.Normalize();
 
+        //그 방향으로 오프셋 만큼 이동한 뒤에 랜덤한 방향으로 좌표를 찍어서 backStepPos 를 생성
+        Vector3 backStepPos = (transform.position + dir * backStapOffset);
+        float radius = 2.0f;
+        dir = new Vector3 (UnityEngine.Random.Range(0,radius), 0, UnityEngine.Random.Range(0, radius));
+
+        backStepPos = backStepPos + dir;
+
         //이동 이벤트
-        onMoveToPos?.Invoke((dir + transform.position) * 100.0f, battleStat.Speed, null, null);
+        moveToPosEvent?.Invoke(backStepPos, battleStat.Speed, null, null);
 
         //idle 시간 재기
         while (IdleTime >= 0.0f)
@@ -166,7 +164,7 @@ public class Slime : Monster
             yield return null;
         }
         //시간 끝나면 이동 끝냄
-        onStopMove?.Invoke(null);
+        stopEvent?.Invoke(null);
 
         //상태 바꿈
         ChangeState(State.Closing);
@@ -182,15 +180,15 @@ public class Slime : Monster
         UnityAction skillEnd, 
         LayerMask mask)
     {
-        onSkillStartEvent = skillStart;
-        onSkillEndEvent = skillEnd;
+        onSkillStartAct = skillStart;
+        onSkillEndAct = skillEnd;
         skillMask = mask;
     }
 
     //공격모션이 스킬을 발동
     public void OnAttackStartAnim()
     {
-        onSkillStartEvent?.Invoke(target.transform.position);
+        onSkillStartAct?.Invoke(target.transform.position);
         countUsedSkill++;
         if (countUsedSkill >= onCommandDetectSkillTargetEvent.Length)
         {
@@ -201,7 +199,7 @@ public class Slime : Monster
     //공격 모션이 끝남
     public void OnAttackEndAnim()
     {
-        onSkillEndEvent?.Invoke();
+        onSkillEndAct?.Invoke();
         ChangeState(State.Idle);
     }
     #endregion

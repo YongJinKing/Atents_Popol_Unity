@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class MovementSkillType : SelfSkillType
@@ -23,6 +24,7 @@ public class MovementSkillType : SelfSkillType
 
     //이벤트 함수들 영역
     #region Event
+    public UnityEvent<Vector3, float, UnityAction, UnityAction> moveToPosEvent;
     #endregion
     #endregion
 
@@ -52,17 +54,7 @@ public class MovementSkillType : SelfSkillType
         float dist = Mathf.Clamp(dir.magnitude, 0, maxDist);
         dir.Normalize();
 
-        float delta = 0.0f;
-        while(dist >= 0.0f)
-        {
-            delta = Time.deltaTime * moveSpeed;
-            if(delta > dist) delta = dist;
-            dist -= delta;
-
-            selfObject.transform.Translate(dir * delta);
-
-            yield return null;
-        }
+        moveToPosEvent?.Invoke(selfObject.transform.position + dir * maxDist, moveSpeed, null, null);
 
         yield return null;
     }
