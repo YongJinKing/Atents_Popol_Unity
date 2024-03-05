@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public class Player : BattleSystem
 {
     public UnityEvent<Vector3, float, UnityAction, UnityAction> clickAct;
-    public UnityEvent<Vector3, Weapon, UnityAction> attackAct;
+    public UnityEvent<Vector3, Weapon> attackAct;
     public UnityEvent<UnityAction> stopAct;
     public UnityEvent<float> dadgeAct;
     public GameObject jointItemR;
@@ -87,10 +87,7 @@ public class Player : BattleSystem
                 if (Input.GetMouseButtonDown(0) && isFireReady)
                 {
                     ChangeState(state.Fire);
-                    attackAct?.Invoke(hit.point, equipWeapon, () =>
-                    {
-                        ChangeState(state.Idle);
-                    });
+                    attackAct?.Invoke(hit.point, equipWeapon);
                 }
             }
         }
@@ -134,10 +131,22 @@ public class Player : BattleSystem
             myAnim.SetTrigger("t_Dadge");
             ChangeState(state.Dadge);
             dadgeAct?.Invoke(30.0f);
-            
-            Invoke("setstateIdle", 0.2f);
         }
     }
+
+    public void OnEnd(int type)
+    {
+        switch (type)
+        {
+            case 0:
+                FireDelay = equipWeapon.rate;
+                break;
+            case 1:
+                break;
+        }
+        ChangeState(state.Idle);
+    }
+
 
 
     void Update()
@@ -146,12 +155,6 @@ public class Player : BattleSystem
         isFireReady = FireDelay < 0;
 
         ProcessState();
-
-        if(myAnim.GetCurrentAnimatorStateInfo(0).IsName("t_Attack") && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-        {
-            FireDelay = equipWeapon.rate;
-            ChangeState(state.Idle);
-        }
     }
 
     void setstateIdle()

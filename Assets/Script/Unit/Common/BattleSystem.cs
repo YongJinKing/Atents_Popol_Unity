@@ -103,7 +103,7 @@ public class BattleSystem : CharacterProperty, IDamage
         battleStat.Level++;
     }
 
-    public void OnAttack(Vector3 target, Weapon equipWeapon, UnityAction endAct)
+    public void OnAttack(Vector3 target, Weapon equipWeapon)
     {
         
         Vector3 dir = target - transform.position;
@@ -113,14 +113,6 @@ public class BattleSystem : CharacterProperty, IDamage
 
         equipWeapon.Use();
         myAnim.SetTrigger("t_Attack");
-
-        StartCoroutine(Delay(endAct,0.1f));
-    }
-
-    public IEnumerator Delay(UnityAction act , float delayTime)
-    {
-        yield return new WaitForSeconds(delayTime);
-        act?.Invoke();
     }
 
     protected virtual void OnDead()
