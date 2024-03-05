@@ -10,9 +10,9 @@ using Unity.VisualScripting;
 using System.Security.Cryptography;
 using System;
 
-public class EventManager : MonoBehaviour
+public class SmithEventManager : MonoBehaviour
 {
-    private enum PopupType
+    private enum SmithPopupType
     {
         None,
         Repair,
@@ -21,21 +21,22 @@ public class EventManager : MonoBehaviour
     
     public Sprite[] ButtonImgSprite;
 
-    public GameObject SmithInventory;//
+   
     public GameObject gameCanvas;//게임 
     public GameObject MainUI;//메인 UI
     public GameObject UserPanel;
 
+    public GameObject SmithInventory;//
     public GameObject SmithTypeBtnManager;
     public GameObject SmithItemAbility;
     public GameObject SmithPairAndAwayBtnManager;
-    public GameObject PopupManager;
+    public GameObject SmithPopupManager;
 
     
     private List<InvenSlot> InvenSlotList = new List<InvenSlot>();//
     private List<InvenBtn> InvenBtnList = new List<InvenBtn>();//
 
-    PopupType popupType = PopupType.None;
+    SmithPopupType popupType = SmithPopupType.None;
     int ChooseSlotIndex = 0;
     //private Button moveUI;
 
@@ -111,20 +112,22 @@ public class EventManager : MonoBehaviour
 
         #endregion
         
-        Button[] PopupBtnList = PopupManager.GetComponentsInChildren<UnityEngine.UI.Button>();
-        for(int i = 0; i < PopupBtnList.Length; i++)
+        #region SmithPopupInit
+        Button[] SmithPopupBtnList = SmithPopupManager.GetComponentsInChildren<UnityEngine.UI.Button>();
+        for(int i = 0; i < SmithPopupBtnList.Length; i++)
         {
      
             int index = i;
-            PopupBtnList[i].onClick.AddListener(() => PopupUiControll(index));
+            SmithPopupBtnList[i].onClick.AddListener(() => PopupUiControll(index));
         }
+        #endregion
 
         #region UIInit
         gameCanvas.transform.GetChild(2).gameObject.SetActive(true); // 메인 on
         gameCanvas.transform.GetChild(3).gameObject.SetActive(false); // 쇼핑 off
         gameCanvas.transform.GetChild(4).gameObject.SetActive(false); // 수리 off
         gameCanvas.transform.GetChild(5).gameObject.SetActive(false); // 경기 off
-        gameCanvas.transform.GetChild(6).gameObject.SetActive(false); // 팝업 off
+        gameCanvas.transform.GetChild(4).GetChild(1).gameObject.SetActive(false);// 팝업 off
         gameCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(false); //x버튼 off
         #endregion
         
@@ -266,18 +269,32 @@ public class EventManager : MonoBehaviour
     }
     void RepairAndAwayPopup(int index)
     {
-        gameCanvas.transform.GetChild(6).gameObject.SetActive(true); // 팝업 on
+        bool isSelected = false;
+        foreach(InvenSlot i in InvenSlotList)
+        {
+            if(i.ChooseSlot)
+            {
+                isSelected = true;
+                gameCanvas.transform.GetChild(4).GetChild(1).gameObject.SetActive(true);// 팝업 on
+            }
+            
+        }
+
+        if(!isSelected)
+            {
+                return;
+            }
         if(index == 0)
         {
-            PopupManager.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = 
+            SmithPopupManager.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = 
             "아이템을 수리하시겠습니까?";
-            popupType = PopupType.Repair;
+            popupType = SmithPopupType.Repair;
         }
         if(index == 1)
         {
-            PopupManager.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = 
+            SmithPopupManager.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TMP_Text>().text = 
             "아이템을 폐기하시겠습니까?";
-            popupType = PopupType.ThrowAway;
+            popupType = SmithPopupType.ThrowAway;
         }
     }
     #endregion 
@@ -319,15 +336,27 @@ public class EventManager : MonoBehaviour
     #region PopupControll
     void PopupUiControll(int index)
     {
-    
         if(index == 0)//yes
         {
-            Debug.Log(popupType);
-            if(popupType == PopupType.Repair)
+            
+            if(popupType == SmithPopupType.Repair)
             {
-                
+                SmithInventory.GetComponent<Inventory>().items[ChooseSlotIndex].durAbility = 100;
+                CleanSlots();
+                PopupClose();
+                if(InvenBtnList[0].ChooseBtn)
+                {
+                    SmithInventory.GetComponent<Inventory>().FreshSlot(1);
+                }
+                else if(InvenBtnList[1].ChooseBtn)
+                {
+                    SmithInventory.GetComponent<Inventory>().FreshSlot(2);
+                }else
+                {
+                    SmithInventory.GetComponent<Inventory>().FreshSlot(0);
+                }
             }
-            if(popupType == PopupType.ThrowAway)
+            if(popupType == SmithPopupType.ThrowAway)
             {
                 SmithInventory.GetComponent<Inventory>().items.RemoveAt(ChooseSlotIndex);
                 CleanSlots();
@@ -347,14 +376,17 @@ public class EventManager : MonoBehaviour
         }
         if(index == 1)//no
         {
+            /* Item itemAdd = new Item();
+            itemAdd = SmithInventory.GetComponent<Inventory>().items[ChooseSlotIndex];
+            SmithInventory.GetComponent<Inventory>().AddItem(itemAdd); */
             PopupClose();
         }
     }
 
     void PopupClose()
     {
-        popupType = PopupType.None;
-        gameCanvas.transform.GetChild(6).gameObject.SetActive(false);// 팝업 off
+        popupType = SmithPopupType.None;
+        gameCanvas.transform.GetChild(4).GetChild(1).gameObject.SetActive(false);// 팝업 off
     }
 
     #endregion

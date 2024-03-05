@@ -17,6 +17,7 @@ MonoBehaviour:
   itemValue: 0
   itemDesc: 
   smithTalk: 
-  durAbility: 0
+  durAbility: 100
+  itemIndex: 0
   weaponType: 1
   riggingType: 1
