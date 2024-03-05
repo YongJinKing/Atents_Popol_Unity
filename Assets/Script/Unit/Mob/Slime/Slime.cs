@@ -24,6 +24,7 @@ public class Slime : Monster
 
     //Public 변수영역
     #region public
+    public float backStapOffset;
     #endregion
 
     //이벤트 함수들 영역
@@ -33,6 +34,8 @@ public class Slime : Monster
     public UnityAction onSkillEndEvent;
     //Skill을 쓰기전 타겟을 detect 하기위한 이벤트 배열(여기에 스킬들 등록)
     public UnityEvent<UnityAction>[] onCommandDetectSkillTargetEvent;
+    public UnityAction<Vector3, float, UnityAction, UnityAction> onMoveToPos;
+    public UnityAction<UnityAction> onStopMove;
     #endregion
     #endregion
 
@@ -47,13 +50,13 @@ public class Slime : Monster
         {
             saveSkill[i] = UnityEngine.Random.Range(0, onCommandDetectSkillTargetEvent.Length);
             
-
             //공통된 게 있으면 다시
             for(int j = 0; j < i; j++)
             {
                 if (saveSkill[j] == saveSkill[i])
                 {
-                    saveSkill[i] = UnityEngine.Random.Range(0, onCommandDetectSkillTargetEvent.Length);
+                    saveSkill[i] = UnityEngine.Random.Range(0, 
+                        onCommandDetectSkillTargetEvent.Length);
                     j = 0;
                 }
             }
@@ -100,7 +103,8 @@ public class Slime : Monster
             //적에게 접근
             case State.Closing:
                 //detect를 실행하라고 지시
-                onCommandDetectSkillTargetEvent[saveSkill[countUsedSkill]]?.Invoke(() => ChangeState(State.Attacking));
+                onCommandDetectSkillTargetEvent[saveSkill[countUsedSkill]]?.Invoke
+                    (() => ChangeState(State.Attacking));
                 Debug.Log(saveSkill[countUsedSkill]);
                 StartCoroutine(ClosingToTarget());
                 break;
@@ -147,21 +151,24 @@ public class Slime : Monster
     {
         float IdleTime = 2.0f;
 
+        //이동할 좌표 구하기
         Vector3 dir = -(target.transform.position - transform.position);
         dir = new Vector3(dir.x, 0, dir.z);
         dir.Normalize();
 
-        float delta = 0.0f;
+        //이동 이벤트
+        onMoveToPos?.Invoke((dir + transform.position) * 100.0f, battleStat.Speed, null, null);
+
+        //idle 시간 재기
         while (IdleTime >= 0.0f)
         {
             IdleTime -= Time.deltaTime;
-
-            //배회하는 코드들
-            delta += Time.deltaTime;
-            transform.Translate(dir * delta * 0.1f, Space.World);
-
             yield return null;
         }
+        //시간 끝나면 이동 끝냄
+        onStopMove?.Invoke(null);
+
+        //상태 바꿈
         ChangeState(State.Closing);
         yield return null;
     }
@@ -170,7 +177,10 @@ public class Slime : Monster
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
-    public void OnAddSkillEventListener(UnityAction<Vector3> skillStart, UnityAction skillEnd, LayerMask mask)
+    public void OnAddSkillEventListener(
+        UnityAction<Vector3> skillStart, 
+        UnityAction skillEnd, 
+        LayerMask mask)
     {
         onSkillStartEvent = skillStart;
         onSkillEndEvent = skillEnd;

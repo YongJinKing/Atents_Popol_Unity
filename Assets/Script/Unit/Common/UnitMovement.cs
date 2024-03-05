@@ -2,28 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEngine.GraphicsBuffer;
 
 public class UnitMovement : CharacterProperty
 {
     Coroutine move = null;
     Coroutine rotate = null;
-    Player player;
-    protected virtual void Awake()
-    {
-        player = GetComponent<Player>();
-    }
-
-
-    public void MoveToPos(Vector3 target, float Speed)
-    {
-        if (move != null)
-        {
-            StopCoroutine(move);
-            move = null;
-        }
-
-        move = StartCoroutine(MovingToPos(target, Speed));
-    }
+    Coroutine follow = null;
+    
 
     public void MoveToPos(Vector3 target, float Speed, UnityAction startAct, UnityAction endAct)
     {
@@ -35,6 +21,27 @@ public class UnitMovement : CharacterProperty
 
         move = StartCoroutine(MovingToPos(target, Speed, startAct, endAct));
     }
+
+    public void FollowTarget(Transform target, float Speed, UnityAction startAct, UnityAction endAct)
+    {
+        if (follow != null)
+        {
+            StopCoroutine(follow);
+            follow = null;
+        }
+
+        follow = StartCoroutine(FollowingTarget(target, Speed, startAct, endAct));
+    }
+
+    public void Rotate(Vector3 dir, float speed)
+    {
+        if (rotate != null)
+        {
+            StopCoroutine(rotate);
+            rotate = null;
+        }
+        rotate = StartCoroutine(Rotating(dir, speed));
+    }
     
     public void StopMove(UnityAction endAct)
     {
@@ -43,52 +50,29 @@ public class UnitMovement : CharacterProperty
             StopCoroutine(move);
             move = null;
         }
+        if(follow != null)
+        {
+            StopCoroutine(follow);
+            follow = null;
+        }
+        
         endAct.Invoke();
     }
 
-    IEnumerator MovingToPos(Vector3 target, float Speed)
-    {
-        Vector3 dir = target - transform.position;
-        float dist = dir.magnitude;
-        dir.Normalize();
-
-        if(rotate != null) StopCoroutine(rotate);
-        rotate = StartCoroutine(Rotating(dir, Speed));
-
-        myAnim.SetBool("run", true);
-        
-        while(!Mathf.Approximately(dist, 0.0f))
-        {
-            float delta = Speed * Time.deltaTime;
-            if(delta > dist) delta = dist;
-            dist -= delta;
-            transform.Translate(dir * delta, Space.World);
-            if(player.playerstate == Player.state.Fire || player.playerstate == Player.state.Dadge)
-            {
-                myAnim.SetBool("run", false);
-                yield break;
-            }
-            yield return null;
-        }
-
-        myAnim.SetBool("run", false);
-        player.playerstate = Player.state.Idle;
-    }
-
-    IEnumerator MovingToPos(Vector3 target, float Speed, UnityAction startAct, UnityAction endAct)
+    IEnumerator MovingToPos(Vector3 target, float speed, UnityAction startAct, UnityAction endAct)
     {
         Vector3 dir = target - transform.position;
         float dist = dir.magnitude;
         dir.Normalize();
 
         if (rotate != null) StopCoroutine(rotate);
-        rotate = StartCoroutine(Rotating(dir, Speed));
+        rotate = StartCoroutine(Rotating(dir, speed));
 
         startAct?.Invoke();
 
         while (!Mathf.Approximately(dist, 0.0f))
         {
-            float delta = Speed * Time.deltaTime;
+            float delta = speed * Time.deltaTime;
             if (delta > dist) delta = dist;
             dist -= delta;
             transform.Translate(dir * delta, Space.World);
@@ -96,6 +80,41 @@ public class UnitMovement : CharacterProperty
             yield return null;
         }
 
+        endAct?.Invoke();
+    }
+
+    public IEnumerator FollowingTarget(Transform target, float speed, UnityAction startAct, UnityAction endAct)
+    {
+        while (target != null)
+        {
+            //애니메이션
+            startAct?.Invoke();
+
+            Vector3 dir = target.position - transform.position;
+            //0.5는 오프셋
+            float dist = dir.magnitude - 0.5f;
+            if (dist < 0.0f) dist = 0.0f;
+            float delta;
+
+
+            dir.Normalize();
+            delta = speed * Time.deltaTime;
+            if (delta > dist) delta = dist;
+            transform.Translate(dir * delta, Space.World);
+            if (Mathf.Approximately(dist, 0.0f))
+            {
+                //애니메이션
+                endAct?.Invoke();
+            }
+
+            float angle = Vector3.Angle(transform.forward, dir);
+            float rotDir = Vector3.Dot(transform.right, dir) < 0.0f ? -1.0f : 1.0f;
+            delta = speed * 90.0f * Time.deltaTime;
+            if (delta > angle) delta = angle;
+            transform.Rotate(Vector3.up * rotDir * delta);
+
+            yield return null;
+        }
         endAct?.Invoke();
     }
 

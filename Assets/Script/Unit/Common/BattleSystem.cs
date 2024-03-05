@@ -22,18 +22,13 @@ public interface IDamage
 
 public class BattleSystem : CharacterProperty, IDamage
 {
-    UnitMovement Movement;
     [SerializeField] protected BattleStat battleStat;
     [SerializeField] protected float curHP = 0.0f;
     protected float battleTime = 0.0f;
     public event UnityAction deathAlarm;
-    Coroutine rotate = null;
     Transform _target = null;
 
-    protected virtual void Awake()
-    {
-        Movement = GetComponent<UnitMovement>();
-    }
+    public UnityAction<Vector3, float> rotAct;
 
     protected Transform myTarget
     {
@@ -110,10 +105,9 @@ public class BattleSystem : CharacterProperty, IDamage
         float Speed = 2;
        
         equipWeapon.Use();
-        myAnim.SetTrigger("Attack");
+        myAnim.SetTrigger("t_Attack");
 
-        if(rotate != null) StopCoroutine(rotate);
-        rotate = StartCoroutine(Movement.Rotating(dir, Speed));
+        rotAct(dir, Speed);
     }
 
     protected virtual void OnDead()
