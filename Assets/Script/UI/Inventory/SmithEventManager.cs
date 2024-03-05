@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 using System.Security.Cryptography;
 using System;
 
-public class SmithEventManager : MonoBehaviour
+public class EventManager : MonoBehaviour
 {
     private enum SmithPopupType
     {
@@ -336,6 +336,7 @@ public class SmithEventManager : MonoBehaviour
     #region PopupControll
     void PopupUiControll(int index)
     {
+        Debug.Log(ChooseSlotIndex);
         if(index == 0)//yes
         {
             
