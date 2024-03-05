@@ -14,20 +14,36 @@ public class UnitMovement : CharacterProperty
     }
 
 
-    void Update()
-    {
-        
-    }
-
     public void MoveToPos(Vector3 target, float Speed)
     {
-        if(move != null)
+        if (move != null)
         {
             StopCoroutine(move);
             move = null;
         }
-        
+
         move = StartCoroutine(MovingToPos(target, Speed));
+    }
+
+    public void MoveToPos(Vector3 target, float Speed, UnityAction startAct, UnityAction endAct)
+    {
+        if (move != null)
+        {
+            StopCoroutine(move);
+            move = null;
+        }
+
+        move = StartCoroutine(MovingToPos(target, Speed, startAct, endAct));
+    }
+    
+    public void StopMove(UnityAction endAct)
+    {
+        if (move != null)
+        {
+            StopCoroutine(move);
+            move = null;
+        }
+        endAct.Invoke();
     }
 
     IEnumerator MovingToPos(Vector3 target, float Speed)
@@ -57,6 +73,30 @@ public class UnitMovement : CharacterProperty
 
         myAnim.SetBool("run", false);
         player.playerstate = Player.state.Idle;
+    }
+
+    IEnumerator MovingToPos(Vector3 target, float Speed, UnityAction startAct, UnityAction endAct)
+    {
+        Vector3 dir = target - transform.position;
+        float dist = dir.magnitude;
+        dir.Normalize();
+
+        if (rotate != null) StopCoroutine(rotate);
+        rotate = StartCoroutine(Rotating(dir, Speed));
+
+        startAct?.Invoke();
+
+        while (!Mathf.Approximately(dist, 0.0f))
+        {
+            float delta = Speed * Time.deltaTime;
+            if (delta > dist) delta = dist;
+            dist -= delta;
+            transform.Translate(dir * delta, Space.World);
+
+            yield return null;
+        }
+
+        endAct?.Invoke();
     }
 
     public IEnumerator Rotating(Vector3 dir,float Speed)
