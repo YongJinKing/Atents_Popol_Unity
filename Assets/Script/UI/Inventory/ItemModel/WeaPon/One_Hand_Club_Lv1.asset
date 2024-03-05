@@ -20,5 +20,6 @@ MonoBehaviour:
   smithTalk: "\uBCC4 \uBCFC\uC77C \uC5C6\uB294 \uBB3C\uAC74\uC774\uB85C\uAD70. \uC218\uB9AC\uD560\uBE60\uC5D4
     \uADF8\uB0E5 \uBC84\uB9AC\uB294\uAC8C \uC5B4\uB54C?"
   durAbility: 100
+  itemIndex: 0
   weaponType: 2
   riggingType: 1

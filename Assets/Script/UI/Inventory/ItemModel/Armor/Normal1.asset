@@ -19,6 +19,7 @@ MonoBehaviour:
     \uAC11\uC637\uC774\uB2E4."
   smithTalk: "\uC73C\uC73D...\uC774\uAC8C \uBB54 \uB0C4\uC0C8\uC57C \uADF8\uB0E5
     \uBC84\uB9AC\uC9C0 \uADF8\uB798?"
-  durAbility: 100
+  durAbility: 50
+  itemIndex: 0
   weaponType: 11
   riggingType: 2

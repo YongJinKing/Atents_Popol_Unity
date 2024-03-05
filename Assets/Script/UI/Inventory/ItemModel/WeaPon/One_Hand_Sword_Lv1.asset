@@ -17,6 +17,7 @@ MonoBehaviour:
   itemValue: 10
   itemDesc: "\uB179\uC2AC\uC5B4\uC11C \uC798 \uC548\uC0AC\uC6A9\uD558\uB294 \uAC80\uC774\uB2E4."
   smithTalk: "\uC774\uB7F0\uAC80\uC744 \uC65C\uC4F0\uB294\uAC74\uC9C0 \uBAA8\uB974\uACA0\uAD70..."
-  durAbility: 100
+  durAbility: 70
+  itemIndex: 0
   weaponType: 1
   riggingType: 1
