@@ -10,7 +10,7 @@ public class CharacterMovement : BattleSystem
     Coroutine rotate = null;
     Coroutine attack = null;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         //GetComponent<Picking>().clickAct += MoveToPos;
         //GetComponent<Picking>().clickAct.AddListener(MoveToPos);

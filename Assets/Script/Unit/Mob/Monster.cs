@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Monster : Unit
+public abstract class Monster : BattleSystem
 {
     public enum State
     {

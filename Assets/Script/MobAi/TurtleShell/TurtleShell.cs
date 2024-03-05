@@ -13,8 +13,10 @@ public class TurtleShell : Monster
 
 
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
 

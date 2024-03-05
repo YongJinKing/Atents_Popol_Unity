@@ -9,12 +9,12 @@ using UnityEngine.Events;
 public class Player : BattleSystem
 {
     public UnityEvent<Vector3, float, UnityAction, UnityAction> clickAct;
-    public UnityEvent<Vector3, Weapon> attackAct;
+    public UnityEvent<Vector3, Weapon, UnityAction> attackAct;
     public UnityEvent<UnityAction> stopAct;
+    public UnityEvent<float> dadgeAct;
     public GameObject jointItemR;
     public LayerMask clickMask;
     public LayerMask attackMask;
-    public Rigidbody rigid;
     Weapon equipWeapon;
     float FireDelay = 0;
     bool isFireReady = true;
@@ -23,7 +23,7 @@ public class Player : BattleSystem
     {
         Fire, Dadge, Idle, Run
     }
-    protected state playerstate;
+    [SerializeField]protected state playerstate;
 
     protected void ChangeState(state s)
     {
@@ -59,6 +59,7 @@ public class Player : BattleSystem
                 DadgeToPos();
                 break;
             case state.Run:
+                MoveToMousePos();
                 FireToMousePos();
                 DadgeToPos();
                 break;
@@ -67,10 +68,11 @@ public class Player : BattleSystem
 
 
 
-    protected virtual void Start()
+    protected override void Start()
     {
-        playerstate = state.Idle;
-        rigid = GetComponent<Rigidbody>();
+        base.Start();
+        ChangeState(state.Idle);
+        
         equipWeapon = jointItemR.transform.GetChild(0).GetComponent<Weapon>();
     }
 
@@ -84,8 +86,11 @@ public class Player : BattleSystem
             {
                 if (Input.GetMouseButtonDown(0) && isFireReady)
                 {
-                    attackAct?.Invoke(hit.point, equipWeapon);
                     ChangeState(state.Fire);
+                    attackAct?.Invoke(hit.point, equipWeapon, () =>
+                    {
+                        ChangeState(state.Idle);
+                    });
                 }
             }
         }
@@ -99,14 +104,20 @@ public class Player : BattleSystem
             if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
             {
                 ChangeState(state.Run);
-                clickAct?.Invoke(hit.point, battleStat.Speed, () => myAnim.SetBool("run", true),
+                clickAct?.Invoke(hit.point, battleStat.Speed, () => myAnim.SetBool("b_Moving", true),
                     () =>
                     {
-                        if (playerstate == Player.state.Fire || playerstate == Player.state.Dadge)
+                        if (playerstate == state.Fire || playerstate == state.Dadge)
                         {
-                            stopAct?.Invoke(() => myAnim.SetBool("run", false));
-                            ChangeState(state.Idle);
+                            stopAct?.Invoke(() => 
+                            {
+                                myAnim.SetBool("b_Moving", false);
+                                ChangeState(state.Idle);
+                            }
+                            );
                         }
+                        ChangeState(state.Idle);
+                        myAnim.SetBool("b_Moving", false);
                     });
             }
         }
@@ -116,9 +127,14 @@ public class Player : BattleSystem
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            myAnim.SetTrigger("Dadge");
+            stopAct?.Invoke(() =>
+            {
+                myAnim.SetBool("b_Moving", false);
+            });
+            myAnim.SetTrigger("t_Dadge");
             ChangeState(state.Dadge);
-            rigid.AddForce(transform.forward * 10.0f, ForceMode.Impulse);
+            dadgeAct?.Invoke(30.0f);
+            
             Invoke("setstateIdle", 0.2f);
         }
     }
@@ -129,16 +145,12 @@ public class Player : BattleSystem
         FireDelay -= Time.deltaTime;
         isFireReady = FireDelay < 0;
 
-        ProcessState();        
-        
-        
-        
-        
+        ProcessState();
 
-        if(myAnim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f)
+        if(myAnim.GetCurrentAnimatorStateInfo(0).IsName("t_Attack") && myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
         {
             FireDelay = equipWeapon.rate;
-            playerstate = state.Idle;
+            ChangeState(state.Idle);
         }
     }
 

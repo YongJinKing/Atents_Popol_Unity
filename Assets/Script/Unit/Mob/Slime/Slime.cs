@@ -209,7 +209,7 @@ public class Slime : Monster
 
     //유니티 함수들 영역
     #region MonoBehaviour
-    void Start()
+    protected override void Start()
     {
         saveSkill = new int[onCommandDetectSkillTargetEvent.Length];
         countUsedSkill = 0;

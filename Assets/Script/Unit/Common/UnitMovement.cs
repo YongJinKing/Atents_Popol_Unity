@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.Events;
 using static UnityEngine.GraphicsBuffer;
@@ -9,7 +10,12 @@ public class UnitMovement : CharacterProperty
     Coroutine move = null;
     Coroutine rotate = null;
     Coroutine follow = null;
-    
+    public Rigidbody rigid;
+
+    private void Start()
+    {
+        rigid = GetComponent<Rigidbody>();
+    }
 
     public void MoveToPos(Vector3 target, float Speed, UnityAction startAct, UnityAction endAct)
     {
@@ -56,7 +62,12 @@ public class UnitMovement : CharacterProperty
             follow = null;
         }
         
-        endAct.Invoke();
+        endAct?.Invoke();
+    }
+    
+    public void Dadge(float dadge)
+    {
+        rigid.AddForce(transform.forward * dadge, ForceMode.Impulse);
     }
 
     IEnumerator MovingToPos(Vector3 target, float speed, UnityAction startAct, UnityAction endAct)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,7 +29,11 @@ public class BattleSystem : CharacterProperty, IDamage
     public event UnityAction deathAlarm;
     Transform _target = null;
 
-    public UnityAction<Vector3, float> rotAct;
+    public UnityEvent<Vector3, float> rotAct;
+    protected virtual void Start()
+    {
+        curHP = battleStat.maxHP;
+    }
 
     protected Transform myTarget
     {
@@ -98,16 +103,24 @@ public class BattleSystem : CharacterProperty, IDamage
         battleStat.Level++;
     }
 
-    public void OnAttack(Vector3 target, Weapon equipWeapon)
+    public void OnAttack(Vector3 target, Weapon equipWeapon, UnityAction endAct)
     {
         
         Vector3 dir = target - transform.position;
         float Speed = 2;
-       
+
+        rotAct?.Invoke(dir, Speed);
+
         equipWeapon.Use();
         myAnim.SetTrigger("t_Attack");
 
-        rotAct(dir, Speed);
+        StartCoroutine(Delay(endAct,0.1f));
+    }
+
+    public IEnumerator Delay(UnityAction act , float delayTime)
+    {
+        yield return new WaitForSeconds(delayTime);
+        act?.Invoke();
     }
 
     protected virtual void OnDead()
