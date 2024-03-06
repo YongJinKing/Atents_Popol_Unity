@@ -10,7 +10,7 @@ public class Player : BattleSystem
 {
     public UnityEvent<Vector3, float, UnityAction<float>> clickAct;
     public UnityEvent<Vector3, Weapon> attackAct;
-    public UnityEvent<UnityAction> stopAct;
+    public UnityEvent<UnityAction<float>> stopAct;
     public UnityEvent<Vector3, float> dadgeAct;
     public GameObject jointItemR;
     public LayerMask clickMask;
@@ -48,8 +48,6 @@ public class Player : BattleSystem
 
     protected void ProcessState()
     {
-
-
         switch (playerstate)
         {
             case state.Fire:
@@ -83,7 +81,8 @@ public class Player : BattleSystem
     {
         if (Input.GetMouseButtonDown(0) && isFireReady)
         {
-            stopAct?.Invoke(() => myAnim.SetBool("b_Moving", false));
+            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
             {
@@ -97,21 +96,22 @@ public class Player : BattleSystem
     {
         if (Input.GetMouseButtonDown(1))
         {
+            ChangeState(state.Run);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
             {
-                ChangeState(state.Run);
+                
                 clickAct?.Invoke(hit.point, battleStat.Speed, (float temp) => 
                 {
                     myAnim.SetFloat("Move", temp);
+
                     if (playerstate == state.Fire || playerstate == state.Dadge)
                     {
-                        stopAct?.Invoke(() =>
-                        {
-                            ChangeState(state.Idle);
-                        });
+                        stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
                     }
-                    if(temp < 0.1f)
+
+
+                    if(temp < 0.05f)
                     {
                         ChangeState(state.Idle);
                     }
@@ -124,7 +124,7 @@ public class Player : BattleSystem
     {
         if (Input.GetKeyDown(KeyCode.Space) && isDadgeReady)
         {
-            stopAct?.Invoke(() => myAnim.SetBool("b_Moving", false));
+            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
             {

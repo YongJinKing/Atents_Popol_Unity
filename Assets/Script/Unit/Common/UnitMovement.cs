@@ -12,12 +12,15 @@ public class UnitMovement : CharacterProperty
     Coroutine rotate = null;
     Coroutine follow = null;
     public Rigidbody rigid;
+    float tempSpeed = 0;
 
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
     }
 
+
+    //Player
     public void MoveToPos(Vector3 target, float Speed, UnityAction<float> blendAct)
     {
         if (move != null)
@@ -29,6 +32,9 @@ public class UnitMovement : CharacterProperty
         move = StartCoroutine(MovingToPos(target, Speed, blendAct));
     }
 
+
+
+    //Moster
     public void MoveToPos(Vector3 target, float Speed, UnityAction startAct, UnityAction endAct)
     {
         if (move != null)
@@ -50,6 +56,7 @@ public class UnitMovement : CharacterProperty
 
         follow = StartCoroutine(FollowingTarget(target, Speed, startAct, endAct));
     }
+
 
     public void Rotate(Vector3 dir, float speed)
     {
@@ -76,6 +83,24 @@ public class UnitMovement : CharacterProperty
         
         endAct?.Invoke();
     }
+
+    //Player Stop
+    public void StopMove(UnityAction<float> endAct)
+    {
+        if (move != null)
+        {
+            StopCoroutine(move);
+            move = null;
+        }
+        if(follow != null)
+        {
+            StopCoroutine(follow);
+            follow = null;
+        }
+        
+        tempSpeed = 0;
+        endAct?.Invoke(0.0f);
+    }
     
     public void Dadge(Vector3 target, float dadge)
     {
@@ -96,28 +121,34 @@ public class UnitMovement : CharacterProperty
 
         if (rotate != null) StopCoroutine(rotate);
         rotate = StartCoroutine(Rotating(dir, speed));
-
-        float tempSpeed = 0f;
+        float delta;
+        
         while (!Mathf.Approximately(dist, 0.0f))
         {
-            if(dist < 0.1f)
+            if(dist <= 0.2f)
             {
-                tempSpeed = Mathf.Lerp(tempSpeed, 0, 10.0f * Time.deltaTime);
+                tempSpeed = Mathf.Lerp(tempSpeed, 0, Time.deltaTime * 10.0f);
             }
             else
             {
-                tempSpeed = Mathf.Lerp(tempSpeed, speed, 10.0f * Time.deltaTime);
+                tempSpeed = Mathf.Lerp(tempSpeed, 1, Time.deltaTime * 10.0f);
             }
 
-            blendAct?.Invoke(tempSpeed / speed);
+            blendAct?.Invoke(tempSpeed);
 
-            float delta = tempSpeed * Time.deltaTime;
+            delta = tempSpeed * Time.deltaTime * speed;
             if (delta > dist) delta = dist;
             dist -= delta;
             transform.Translate(dir * delta, Space.World);
-
             yield return null;
         }
+        while (tempSpeed >= 0.01f)
+        {
+            tempSpeed = Mathf.Lerp(tempSpeed, 0, Time.deltaTime * 10.0f);
+            blendAct?.Invoke(tempSpeed);
+            yield return null;
+        }
+        tempSpeed = 0;
     }
 
     IEnumerator MovingToPos(Vector3 target, float speed, UnityAction startAct, UnityAction endAct)
