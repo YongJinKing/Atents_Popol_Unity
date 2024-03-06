@@ -102,12 +102,11 @@ public class UnitMovement : CharacterProperty
         {
             if(dist < 0.1f)
             {
-                tempSpeed = Mathf.Lerp(tempSpeed, 0, Time.deltaTime);
-             
+                tempSpeed = Mathf.Lerp(tempSpeed, 0, 10.0f * Time.deltaTime);
             }
             else
             {
-                tempSpeed = Mathf.Lerp(tempSpeed, speed, Time.deltaTime);
+                tempSpeed = Mathf.Lerp(tempSpeed, speed, 10.0f * Time.deltaTime);
             }
 
             blendAct?.Invoke(tempSpeed / speed);
