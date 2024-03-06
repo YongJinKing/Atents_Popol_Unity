@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 using System.Security.Cryptography;
 using System;
 
-public class EventManager : MonoBehaviour
+public class SmithEventManager : MonoBehaviour
 {
     private enum SmithPopupType
     {
@@ -22,15 +22,13 @@ public class EventManager : MonoBehaviour
     public Sprite[] ButtonImgSprite;
 
    
-    public GameObject gameCanvas;//게임 
-    public GameObject MainUI;//메인 UI
-    public GameObject UserPanel;
-
+    public GameObject SmithUI;
     public GameObject SmithInventory;//
     public GameObject SmithTypeBtnManager;
     public GameObject SmithItemAbility;
     public GameObject SmithPairAndAwayBtnManager;
     public GameObject SmithPopupManager;
+    public GameObject SmithMainImage;
 
     
     private List<InvenSlot> InvenSlotList = new List<InvenSlot>();//
@@ -88,30 +86,7 @@ public class EventManager : MonoBehaviour
         
 
         #endregion
-        #region MainUIInit
-
-        Button[] MainUIButtonList = MainUI.GetComponentsInChildren<UnityEngine.UI.Button>();//MainUI버튼
-        for(int i = 0; i < MainUIButtonList.Length; i++)
-        {
-            int index = i;
-            MainUIButtonList[i].onClick.AddListener(() => MainUiControll(index, MainUIButtonList.Length));
-        }
-        
-        #endregion   
-        #region User_PanelInit
-
-
-        Button[] UserPanelBtnList = UserPanel.GetComponentsInChildren<UnityEngine.UI.Button>();
-        for(int j = 0; j < UserPanelBtnList.Length; j++)
-        {
-
-            int index = j;
-            UserPanelBtnList[j].onClick.AddListener(() => UserPanelControll(index, gameCanvas.transform.childCount));
-        }
-
-
-        #endregion
-        
+         
         #region SmithPopupInit
         Button[] SmithPopupBtnList = SmithPopupManager.GetComponentsInChildren<UnityEngine.UI.Button>();
         for(int i = 0; i < SmithPopupBtnList.Length; i++)
@@ -123,12 +98,8 @@ public class EventManager : MonoBehaviour
         #endregion
 
         #region UIInit
-        gameCanvas.transform.GetChild(2).gameObject.SetActive(true); // 메인 on
-        gameCanvas.transform.GetChild(3).gameObject.SetActive(false); // 쇼핑 off
-        gameCanvas.transform.GetChild(4).gameObject.SetActive(false); // 수리 off
-        gameCanvas.transform.GetChild(5).gameObject.SetActive(false); // 경기 off
-        gameCanvas.transform.GetChild(4).GetChild(1).gameObject.SetActive(false);// 팝업 off
-        gameCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(false); //x버튼 off
+        
+        ItemDetailShow(false);
         #endregion
         
         //Debug.Log(SmithInventory.transform.GetChild(1).GetChild(0).GetChild(0).gameObject);
@@ -137,25 +108,7 @@ public class EventManager : MonoBehaviour
         //smith UI / Main Panel / BuyAndsell / itemDetail / ItemAbility / ItemAbility / Image
         
     }
-    #region MainUI
     
-    void ChangeMainUI(int UiLength, bool isShow)
-    {
-        for(int i = 0; i < UiLength-2; i++)
-        {
-            gameCanvas.transform.GetChild(i+2).gameObject.SetActive(false);
-        }
-        gameCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(isShow);
-        ItemDetailShow(false);
-        
-    }
-
-    void MainUiControll(int index, int UiLength)
-    {
-        ChangeMainUI(UiLength, true);
-        gameCanvas.transform.GetChild(index+3).gameObject.SetActive(true);
-    }
-    #endregion
     #region SmithSystem
     Color AlphaColorChange(int i, float Value)
     {
@@ -165,7 +118,7 @@ public class EventManager : MonoBehaviour
         return InvenSlotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;
     }
 
-    void CleanSlots()
+    public void CleanSlots()
     {
         for(int i = 0; i < SmithInventory.GetComponent<Inventory>().slots.Length; i++)
         {
@@ -236,9 +189,9 @@ public class EventManager : MonoBehaviour
     }
     void ItemDetailShow(bool isShow)
     {
-        GameObject ItemAbility = gameCanvas.transform.GetChild(4).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
-        GameObject NpcTalkBollum = gameCanvas.transform.GetChild(4).GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject;
-        GameObject NpcText = gameCanvas.transform.GetChild(4).GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(1).gameObject;
+        GameObject ItemAbility = SmithMainImage.transform.GetChild(0).gameObject;
+        GameObject NpcTalkBollum = SmithMainImage.transform.GetChild(1).GetChild(0).gameObject;
+        GameObject NpcText = SmithMainImage.transform.GetChild(1).GetChild(1).gameObject;
         ItemAbility.SetActive(isShow);
         NpcTalkBollum.SetActive(isShow);
         NpcText.SetActive(isShow);
@@ -275,7 +228,7 @@ public class EventManager : MonoBehaviour
             if(i.ChooseSlot)
             {
                 isSelected = true;
-                gameCanvas.transform.GetChild(4).GetChild(1).gameObject.SetActive(true);// 팝업 on
+                SmithUI.transform.GetChild(1).gameObject.SetActive(true);// 팝업 on
             }
             
         }
@@ -298,18 +251,6 @@ public class EventManager : MonoBehaviour
         }
     }
     #endregion 
-    #region UserPanelUI
-    void UserPanelControll(int index, int Length)
-    {
-        if(index == 0)
-        {
-            CleanSlots();
-            ChangeMainUI(Length, false);
-            gameCanvas.transform.GetChild(2).gameObject.SetActive(true); //
-        }
-    }
-    #endregion 
-
     #region ButtonImage
     void BtnImage(bool IsClicked, int index, string UiName)
     {
@@ -387,7 +328,7 @@ public class EventManager : MonoBehaviour
     void PopupClose()
     {
         popupType = SmithPopupType.None;
-        gameCanvas.transform.GetChild(4).GetChild(1).gameObject.SetActive(false);// 팝업 off
+        SmithUI.transform.GetChild(1).gameObject.SetActive(false);// 팝업 off
     }
 
     #endregion
