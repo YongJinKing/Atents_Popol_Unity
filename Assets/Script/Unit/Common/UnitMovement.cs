@@ -18,6 +18,17 @@ public class UnitMovement : CharacterProperty
         rigid = GetComponent<Rigidbody>();
     }
 
+    public void MoveToPos(Vector3 target, float Speed, UnityAction<float> blendAct)
+    {
+        if (move != null)
+        {
+            StopCoroutine(move);
+            move = null;
+        }
+
+        move = StartCoroutine(MovingToPos(target, Speed, blendAct));
+    }
+
     public void MoveToPos(Vector3 target, float Speed, UnityAction startAct, UnityAction endAct)
     {
         if (move != null)
@@ -77,6 +88,39 @@ public class UnitMovement : CharacterProperty
         rigid.AddForce(dir * dadge, ForceMode.Impulse);
     }
 
+    IEnumerator MovingToPos(Vector3 target, float speed, UnityAction<float> blendAct) 
+    {
+        Vector3 dir = target - transform.position;
+        float dist = dir.magnitude;
+        dir.Normalize();
+
+        if (rotate != null) StopCoroutine(rotate);
+        rotate = StartCoroutine(Rotating(dir, speed));
+
+        float tempSpeed = 0f;
+        while (!Mathf.Approximately(dist, 0.0f))
+        {
+            if(dist < 0.1f)
+            {
+                tempSpeed = Mathf.Lerp(tempSpeed, 0, Time.deltaTime);
+             
+            }
+            else
+            {
+                tempSpeed = Mathf.Lerp(tempSpeed, speed, Time.deltaTime);
+            }
+
+            blendAct?.Invoke(tempSpeed / speed);
+
+            float delta = tempSpeed * Time.deltaTime;
+            if (delta > dist) delta = dist;
+            dist -= delta;
+            transform.Translate(dir * delta, Space.World);
+
+            yield return null;
+        }
+    }
+
     IEnumerator MovingToPos(Vector3 target, float speed, UnityAction startAct, UnityAction endAct)
     {
         Vector3 dir = target - transform.position;
@@ -90,7 +134,11 @@ public class UnitMovement : CharacterProperty
 
         while (!Mathf.Approximately(dist, 0.0f))
         {
-            float delta = speed * Time.deltaTime;
+            float tempSpeed = 0f;
+
+            tempSpeed = Mathf.Lerp(tempSpeed, speed, Time.deltaTime);
+
+            float delta = tempSpeed * Time.deltaTime;
             if (delta > dist) delta = dist;
             dist -= delta;
             transform.Translate(dir * delta, Space.World);

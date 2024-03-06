@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 public class Player : BattleSystem
 {
-    public UnityEvent<Vector3, float, UnityAction, UnityAction> clickAct;
+    public UnityEvent<Vector3, float, UnityAction<float>> clickAct;
     public UnityEvent<Vector3, Weapon> attackAct;
     public UnityEvent<UnityAction> stopAct;
     public UnityEvent<Vector3, float> dadgeAct;
@@ -101,20 +101,21 @@ public class Player : BattleSystem
             if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
             {
                 ChangeState(state.Run);
-                clickAct?.Invoke(hit.point, battleStat.Speed, () => myAnim.SetBool("b_Moving", true),
-                    () =>
+                clickAct?.Invoke(hit.point, battleStat.Speed, (float temp) => 
+                {
+                    myAnim.SetFloat("Move", temp);
+                    if (playerstate == state.Fire || playerstate == state.Dadge)
                     {
-                        if (playerstate == state.Fire || playerstate == state.Dadge)
+                        stopAct?.Invoke(() =>
                         {
-                            stopAct?.Invoke(() => 
-                            {
-                                myAnim.SetBool("b_Moving", false);
-                                ChangeState(state.Idle);
-                            });
-                        }
+                            ChangeState(state.Idle);
+                        });
+                    }
+                    if(temp < 0.1f)
+                    {
                         ChangeState(state.Idle);
-                        myAnim.SetBool("b_Moving", false);
-                    });
+                    }
+                });
             }
         }
     }
