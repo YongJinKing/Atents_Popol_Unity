@@ -10,6 +10,9 @@ using Unity.VisualScripting;
 using System.Security.Cryptography;
 using System;
 
+
+
+
 public class ColosseumEventManager : MonoBehaviour
 {
 
@@ -31,6 +34,8 @@ public class ColosseumEventManager : MonoBehaviour
 
     int BossMonsterDisplayer;
     bool[] isClearBoss = new bool[System.Enum.GetValues(typeof(BossMonsterType)).Length];
+    public List<GameObject> Slime_Lv1SkillList = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,20 +71,32 @@ public class ColosseumEventManager : MonoBehaviour
         HideBoss.transform.gameObject.SetActive(false);
         if(B == BossMonsterType.Slime_Lv1 && ClearCheck)
         {
-            DisplayState(Obj_Slime_Lv1, "슬라임", "가죽", "콜로세움에서 전투용으로 키운 슬라임이다.");
+            DisplayState(Obj_Slime_Lv1, "슬라임", "가죽", "콜로세움에서 전투용으로 키운 슬라임이다.", Slime_Lv1SkillList);
         }
         else if(!ClearCheck)
         {
             HideBoss.transform.gameObject.SetActive(true);
         }
     }
-    void DisplayState(GameObject boss, string Bossname, string BossArmor, string BossDesc)
+    void DisplayState(GameObject boss, string Bossname, string BossArmor, string BossDesc, List<GameObject> SkilList)
     {
         Instantiate(boss,BossState.transform.GetChild(0));
         BossState.transform.GetChild(1).GetChild(0).gameObject.GetComponent<TMP_Text>().text = //보스 어빌리티
         $"보스 이름 : {Bossname}\n\n방어 타입 : {BossArmor}\n\n 스킬 :\n\n패시브 :";
         BossState.transform.GetChild(1).GetChild(1).gameObject.GetComponent<TMP_Text>().text = // 보스 설명
         $"설명 :\n{BossDesc}";
+        int i = 0;
+        for(; i < SkilList.Count; i++)
+        {
+            BossState.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().sprite = 
+            SkilList[i].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillSprite;
+        }
+        for(; i <  BossState.transform.GetChild(1).GetChild(0).GetChild(0).childCount; i++)
+        {
+            Color color = BossState.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().color;
+            color.a = 0.0f;
+            BossState.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
+        }
     }
 
     void ColoBtnManager(int index)

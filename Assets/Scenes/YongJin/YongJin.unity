@@ -26631,6 +26631,10 @@ MonoBehaviour:
   Obj_Slime_Lv1: {fileID: 8067053097644805660, guid: 8302b58f85fe0774d8e10aace507794b, type: 3}
   HideBoss: {fileID: 55611057}
   BossStage: {fileID: 290284841}
+  Slime_Lv1SkillList:
+  - {fileID: 4646925998173811814, guid: 7c639f93cf5c78e428ddf4b55bd3f8f5, type: 3}
+  - {fileID: 5739973765553620509, guid: d04892cccb5839242a0c28abea23ae47, type: 3}
+  - {fileID: 1092484363904416478, guid: 243718ac3304cda40a945ce364596d69, type: 3}
 --- !u!4 &1899092838
 Transform:
   m_ObjectHideFlags: 0
