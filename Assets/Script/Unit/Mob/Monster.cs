@@ -36,6 +36,8 @@ public abstract class Monster : BattleSystem
     //detect¶û ¿¬°áÀ» ¾î¶»°Ô ÇÒÁö ¸ô¶ó¼­ ÀÏ´Ü ³öµÒ
     //public UnityEvent<Vector3>[] onSkillUseEvent;
     public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent;
+    public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
+    public UnityEvent<UnityAction> stopEvent;
     public UnityAction<Vector3> onSkillStartAct;
     public UnityAction onSkillEndAct;
     #endregion

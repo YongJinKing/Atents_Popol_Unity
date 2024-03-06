@@ -27,8 +27,6 @@ public class Slime : Monster
 
     //이벤트 함수들 영역
     #region Event
-    public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
-    public UnityEvent<UnityAction> stopEvent;
     #endregion
     #endregion
 
