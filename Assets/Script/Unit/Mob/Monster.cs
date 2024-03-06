@@ -18,7 +18,7 @@ public abstract class Monster : BattleSystem
 
     //protected 변수 영역
     #region protected
-    protected State myState;
+    [SerializeField]protected State myState;
     #endregion
 
     //Public 변수영역

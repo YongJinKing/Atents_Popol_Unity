@@ -125,6 +125,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  myState: 0
   target: {fileID: 0}
   skills:
   - {fileID: 4438531222778012845}
@@ -146,49 +147,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   backStapOffset: 5
-  onCommandDetectSkillTargetEvent:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4438531222778012845}
-        m_TargetAssemblyTypeName: Skill, Assembly-CSharp
-        m_MethodName: OnCommandDetectSkillTarget
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6846226738856845446}
-        m_TargetAssemblyTypeName: Skill, Assembly-CSharp
-        m_MethodName: OnCommandDetectSkillTarget
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2597314438508396557}
-        m_TargetAssemblyTypeName: Skill, Assembly-CSharp
-        m_MethodName: OnCommandDetectSkillTarget
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   followEvent:
     m_PersistentCalls:
       m_Calls:
@@ -335,7 +293,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1092484363904416478, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: m_Name
-      value: ProjectileFire
+      value: FireThere
       objectReference: {fileID: 0}
     - target: {fileID: 2404160537552930468, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -379,7 +337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: uiSkillStatus.uiSkillName
-      value: 
+      value: FireThere
       objectReference: {fileID: 0}
     - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: uiSkillStatus.uiSkillSprite

@@ -88,15 +88,19 @@ public class Skill : MonoBehaviour
     protected IEnumerator DetectingRange()
     {
         bool isDetecting = false;
+
+        Debug.Log("detecting corutine start");
+
         while (!isDetecting)
         {
             Collider[] tempcol = Physics.OverlapSphere(transform.position, detectRadius, targetMask);
-
 
             for (int i = 0; i < tempcol.Length; i++)
             {
                 if(tempcol[i] != null)
                 {
+                    Debug.Log(tempcol[i]);
+                    Debug.Log(onDetectTargetEvent == null);
                     onDetectTargetEvent?.Invoke();
                     onDetectTargetEvent.RemoveAllListeners();
                     isDetecting = true;
@@ -104,6 +108,8 @@ public class Skill : MonoBehaviour
             }
             yield return null;
         }
+
+        Debug.Log("detecting corutine end");
     }
     #endregion
 
@@ -113,9 +119,9 @@ public class Skill : MonoBehaviour
     //AI가 사용할 이벤트 함수, collider에 걸리면 이벤트를 invoke할 코루틴을 스타트
     public void OnCommandDetectSkillTarget(UnityAction detectAct)
     {
-        StartCoroutine(DetectingRange());
         onAddSkillEventListener?.Invoke(OnSkillStart, OnSkillEnd, targetMask);
         onDetectTargetEvent.AddListener(detectAct);
+        StartCoroutine(DetectingRange());
     }
 
     //이 스킬이 사용되었을때

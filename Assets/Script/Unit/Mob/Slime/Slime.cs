@@ -102,8 +102,9 @@ public class Slime : Monster
             //적에게 접근
             case State.Closing:
                 //detect를 실행하라고 지시
-                skills[saveSkill[countUsedSkill]].OnCommandDetectSkillTarget(() => ChangeState(State.Attacking));
-                Debug.Log(saveSkill[countUsedSkill]);
+                //skills[saveSkill[countUsedSkill]].OnCommandDetectSkillTarget(() => ChangeState(State.Attacking));
+                skills[1].OnCommandDetectSkillTarget(() => ChangeState(State.Attacking));
+                //Debug.Log(saveSkill[countUsedSkill]);
                 StartCoroutine(ClosingToTarget());
                 break;
             //공격
