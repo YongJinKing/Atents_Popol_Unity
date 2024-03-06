@@ -78,7 +78,7 @@ public class ColosseumEventManager : MonoBehaviour
         Instantiate(boss,BossState.transform.GetChild(0));
         BossState.transform.GetChild(1).GetChild(0).gameObject.GetComponent<TMP_Text>().text = //보스 어빌리티
         $"보스 이름 : {Bossname}\n\n방어 타입 : {BossArmor}\n\n 스킬 :\n\n패시브 :";
-        BossState.transform.GetChild(1).GetChild(1).gameObject.GetComponent<TMP_Text>().text =
+        BossState.transform.GetChild(1).GetChild(1).gameObject.GetComponent<TMP_Text>().text = // 보스 설명
         $"설명 :\n{BossDesc}";
     }
 
@@ -89,6 +89,8 @@ public class ColosseumEventManager : MonoBehaviour
         {
             if(BossMonsterDisplayer > 1)
             {
+                if(BossState.transform.GetChild(0).childCount != 0)
+                    Destroy(BossState.transform.GetChild(0).GetChild(0).gameObject);
                 BossMonsterDisplayer--;
                 ChangeDisplay();
             }
@@ -97,6 +99,8 @@ public class ColosseumEventManager : MonoBehaviour
         {
             if(BossMonsterDisplayer < System.Enum.GetValues(typeof(BossMonsterType)).Length)
             {
+                if(BossState.transform.GetChild(0).childCount != 0)
+                    Destroy(BossState.transform.GetChild(0).GetChild(0).gameObject);
                 BossMonsterDisplayer++;
                 ChangeDisplay();
             }
