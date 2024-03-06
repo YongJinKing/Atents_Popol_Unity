@@ -18,7 +18,9 @@ public abstract class Monster : BattleSystem
 
     //protected 변수 영역
     #region protected
-    [SerializeField]protected State myState;
+    protected State myState;
+    //스킬이 타겟팅하는 레이어를 받아온다.
+    protected LayerMask skillMask;
     #endregion
 
     //Public 변수영역
@@ -34,6 +36,8 @@ public abstract class Monster : BattleSystem
     //detect랑 연결을 어떻게 할지 몰라서 일단 놔둠
     //public UnityEvent<Vector3>[] onSkillUseEvent;
     public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent;
+    public UnityAction<Vector3> onSkillStartAct;
+    public UnityAction onSkillEndAct;
     #endregion
     #endregion
 
@@ -62,6 +66,15 @@ public abstract class Monster : BattleSystem
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
+    public void OnAddSkillEventListener(
+        UnityAction<Vector3> skillStart,
+        UnityAction skillEnd,
+        LayerMask mask)
+    {
+        onSkillStartAct = skillStart;
+        onSkillEndAct = skillEnd;
+        skillMask = mask;
+    }
     #endregion
 
 

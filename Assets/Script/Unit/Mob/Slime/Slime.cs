@@ -18,8 +18,6 @@ public class Slime : Monster
 
     //protected 변수 영역
     #region protected
-    //스킬이 타겟팅하는 레이어를 받아온다.
-    protected LayerMask skillMask;
     #endregion
 
     //Public 변수영역
@@ -29,9 +27,6 @@ public class Slime : Monster
 
     //이벤트 함수들 영역
     #region Event
-    //Skill을 실행시킬 이벤트
-    public UnityAction<Vector3> onSkillStartAct;
-    public UnityAction onSkillEndAct;
     public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
     public UnityEvent<UnityAction> stopEvent;
     #endregion
@@ -170,15 +165,6 @@ public class Slime : Monster
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
-    public void OnAddSkillEventListener(
-        UnityAction<Vector3> skillStart, 
-        UnityAction skillEnd, 
-        LayerMask mask)
-    {
-        onSkillStartAct = skillStart;
-        onSkillEndAct = skillEnd;
-        skillMask = mask;
-    }
 
     //공격모션이 스킬을 발동
     public void OnAttackStartAnim()
