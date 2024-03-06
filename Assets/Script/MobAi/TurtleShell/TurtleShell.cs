@@ -31,7 +31,7 @@ public class TurtleShell : Monster
     }
     void StopMoving()
     {
-        myAnim.SetBool("IsMoving", false); // ÀÌµ¿ ÁßÁö ¾Ö´Ï¸ÞÀÌ¼ÇÀ¸·Î º¯°æ
+        myAnim.SetBool("IsMoving", false); // ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 
 
@@ -62,11 +62,11 @@ public class TurtleShell : Monster
     {
         switch (myState)
         {
-            //´ëÃæ Àû´çÈ÷ ±Ù°Å¸®¿¡¼­ ¹èÈ¸
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù°Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
             case State.Idle:
                 {
-                    float dist = 2.0f
-                    //ÁÂÇ¥ ±¸ÇØ¼­
+                    float dist = 2.0f;
+                    //ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½Ø¼ï¿½
                     Vector3 dir = new Vector3(1,1,1);
                     dir.Normalize();
                     
@@ -76,7 +76,7 @@ public class TurtleShell : Monster
 
                     targetPos = targetPos + temp;
 
-                    //ÁÂÇ¥·Î °£´Ù
+                    //ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     onMovementEvent?.Invoke(targetPos, 
                         battleStat.Speed, 
                         () => myAnim.SetBool("b_IsMoving", true),
@@ -85,7 +85,7 @@ public class TurtleShell : Monster
                     StartCoroutine(DelayChangeState(State.Closing, 3f));
                 }
                 break;
-            //Àû¿¡°Ô Á¢±Ù
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             case State.Closing:
                 {
                     followEvent?.Invoke(
@@ -99,7 +99,7 @@ public class TurtleShell : Monster
                         });
                 }
                 break;
-            //°ø°Ý
+            //ï¿½ï¿½ï¿½ï¿½
             case State.Attacking:
                 break;
         }
