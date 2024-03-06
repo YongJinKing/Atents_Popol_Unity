@@ -4,6 +4,15 @@ using System.Drawing;
 using UnityEngine;
 using UnityEngine.Events;
 
+
+[System.Serializable]
+public struct uiMonsterSkillStatus
+{
+    public Sprite uiSkillSprite;
+    public string uiSkillName;
+    public string uiSkillDesc;
+}
+
 //스킬이 실행됬을때 처음으로 실행되는 클래스
 public class Skill : MonoBehaviour
 {
@@ -29,6 +38,8 @@ public class Skill : MonoBehaviour
     public float detectRadius;
     //AI에서만 사용할 마스크
     public LayerMask targetMask;
+    //UI 용
+    public uiMonsterSkillStatus uiSkillStatus;
     #endregion
 
     //이벤트 함수들 영역

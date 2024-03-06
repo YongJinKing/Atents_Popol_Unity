@@ -13,7 +13,7 @@ public class SelfSkillType : BaseSkillType
     //protected 변수 영역
     #region protected
     //부모의 Unit을 참조할 오브젝트
-    protected Unit selfObject;
+    protected BattleSystem selfObject;
     #endregion
 
     //Public 변수영역
@@ -54,7 +54,7 @@ public class SelfSkillType : BaseSkillType
     #region MonoBehaviour
     protected override void Awake()
     {
-        selfObject = GetComponentInParent<Unit>();
+        selfObject = GetComponentInParent<BattleSystem>();
     }
     #endregion
 }

@@ -32,9 +32,6 @@ public class Slime : Monster
     //Skill을 실행시킬 이벤트
     public UnityAction<Vector3> onSkillStartAct;
     public UnityAction onSkillEndAct;
-    //Skill을 쓰기전 타겟을 detect 하기위한 이벤트 배열(여기에 스킬들 등록)
-    public UnityEvent<UnityAction>[] onCommandDetectSkillTargetEvent;
-    public UnityEvent<Vector3, float, UnityAction, UnityAction> moveToPosEvent;
     public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
     public UnityEvent<UnityAction> stopEvent;
     #endregion
@@ -47,9 +44,9 @@ public class Slime : Monster
     private void SkillRandomSet()
     {
         //스킬을 다썼으면
-        for(int i = 0; i < onCommandDetectSkillTargetEvent.Length; i++)
+        for(int i = 0; i < skills.Length; i++)
         {
-            saveSkill[i] = UnityEngine.Random.Range(0, onCommandDetectSkillTargetEvent.Length);
+            saveSkill[i] = UnityEngine.Random.Range(0, skills.Length);
             
             //공통된 게 있으면 다시
             for(int j = 0; j < i; j++)
@@ -57,7 +54,7 @@ public class Slime : Monster
                 if (saveSkill[j] == saveSkill[i])
                 {
                     saveSkill[i] = UnityEngine.Random.Range(0, 
-                        onCommandDetectSkillTargetEvent.Length);
+                        skills.Length);
                     j = 0;
                 }
             }
@@ -105,8 +102,7 @@ public class Slime : Monster
             //적에게 접근
             case State.Closing:
                 //detect를 실행하라고 지시
-                onCommandDetectSkillTargetEvent[saveSkill[countUsedSkill]]?.Invoke
-                    (() => ChangeState(State.Attacking));
+                skills[saveSkill[countUsedSkill]].OnCommandDetectSkillTarget(() => ChangeState(State.Attacking));
                 Debug.Log(saveSkill[countUsedSkill]);
                 StartCoroutine(ClosingToTarget());
                 break;
@@ -128,8 +124,6 @@ public class Slime : Monster
     #region Coroutine
     private IEnumerator ClosingToTarget()
     {
-        Vector3 dir;
-
         followEvent?.Invoke(target.transform, battleStat.Speed, null, null);
 
 
@@ -155,7 +149,7 @@ public class Slime : Monster
         backStepPos = backStepPos + dir;
 
         //이동 이벤트
-        moveToPosEvent?.Invoke(backStepPos, battleStat.Speed, null, null);
+        onMovementEvent?.Invoke(backStepPos, battleStat.Speed, null, null);
 
         //idle 시간 재기
         while (IdleTime >= 0.0f)
@@ -190,7 +184,7 @@ public class Slime : Monster
     {
         onSkillStartAct?.Invoke(target.transform.position);
         countUsedSkill++;
-        if (countUsedSkill >= onCommandDetectSkillTargetEvent.Length)
+        if (countUsedSkill >= skills.Length)
         {
             SkillRandomSet();
         }
@@ -209,7 +203,7 @@ public class Slime : Monster
     #region MonoBehaviour
     protected override void Start()
     {
-        saveSkill = new int[onCommandDetectSkillTargetEvent.Length];
+        saveSkill = new int[skills.Length];
         countUsedSkill = 0;
         SkillRandomSet();
         ProcessState();
