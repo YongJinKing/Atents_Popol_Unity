@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8714bfa89c610134c9128017b2cb0115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ColosseumEventManager: {fileID: 0}
 --- !u!114 &3928898841845441391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +179,7 @@ GameObject:
   - component: {fileID: 738329141013294052}
   - component: {fileID: 7167801943140222523}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SlotButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,8 +7,10 @@ using TMPro;
 
 public class SkillSlot : MonoBehaviour
 {
+    public GameObject ColosseumEventManager;
     public void SlotBomb()
     {
+        
         Destroy(gameObject);
     }
 }
