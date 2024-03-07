@@ -105,7 +105,7 @@ public class ColosseumEventManager : MonoBehaviour
         if(BossState.transform.GetChild(0).childCount != 0)
             Destroy(BossState.transform.GetChild(0).GetChild(0).gameObject);
         BossMonsterDisplayer += isMinus;
-
+        CleanSkillBtn();
         ChangeDisplay();
 
     }
@@ -154,15 +154,14 @@ public class ColosseumEventManager : MonoBehaviour
             Debug.Log(SkillList.Count);
             BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().sprite = 
             SkillList[i].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillSprite;
-            Color color = BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().color;
-            color.a = 1.0f;
-            BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().color = color;
+            
+            BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().color = 
+            AlphaColorChange(1.0f, BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().color);
         }
         for(; i < BossAbility.transform.GetChild(0).childCount; i++)
         {   
-            Color color = BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().color;
-            color.a = 0.0f;
-            BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().color = color;
+            BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().color = 
+            AlphaColorChange(0.0f, BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().color);
         }
     }
     void SkillSlotBtnChoose(int index)
@@ -184,7 +183,8 @@ public class ColosseumEventManager : MonoBehaviour
         
         if(SkillBtnList[index].ChooseBtn)
         {
-            AlphaColorChange(index, 0.3f);
+            SkillBtnList[index].gameObject.GetComponent<Image>().color = 
+            AlphaColorChange(0.3f, SkillBtnList[index].gameObject.GetComponent<Image>().color);
         }
     }
 
@@ -194,16 +194,17 @@ public class ColosseumEventManager : MonoBehaviour
         for(int i = 0; i < SkillBtnList.Count; i++)
         {
             SkillBtnList[i].ChooseBtn = false;
-            AlphaColorChange(i, 0.0f);
+            SkillBtnList[i].gameObject.GetComponent<Image>().color = 
+            AlphaColorChange(0.0f, SkillBtnList[i].gameObject.GetComponent<Image>().color);
         }
     }
 
-    Color AlphaColorChange(int i, float Value)
+   Color AlphaColorChange(float Value, Color Objcolor)
     {
-        Color color = SkillBtnList[i].gameObject.GetComponent<Image>().color;//
+        Color color = Objcolor;//
         color.a = Value;
-        SkillBtnList[i].gameObject.GetComponent<Image>().color = color;
-        return SkillBtnList[i].gameObject.GetComponent<Image>().color;
+        Objcolor = color;
+        return Objcolor;
     }
     
     
