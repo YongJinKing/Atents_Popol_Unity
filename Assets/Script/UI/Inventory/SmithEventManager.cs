@@ -1,14 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
-using System.Security.Cryptography;
-using System;
 
 public class SmithEventManager : MonoBehaviour
 {

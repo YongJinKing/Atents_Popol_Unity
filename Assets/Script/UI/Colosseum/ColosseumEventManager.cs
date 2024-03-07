@@ -1,26 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 using Unity.VisualScripting;
-using System.Security.Cryptography;
-using System;
+
+
+
 
 
 
 
 public class ColosseumEventManager : MonoBehaviour
 {
-
+    
+    UnityAction SlotDesTroyAll;
     public GameObject ColoBtn;
     public GameObject BossState;
     public GameObject Obj_Slime_Lv1;
     public GameObject HideBoss;
     public GameObject BossStage;
+    public GameObject SkillSlot;
     enum BossMonsterType
     {
         None,
@@ -81,6 +82,8 @@ public class ColosseumEventManager : MonoBehaviour
     void DisplayState(GameObject boss, string Bossname, string BossArmor, string BossDesc, List<GameObject> SkilList)
     {
         Instantiate(boss,BossState.transform.GetChild(0));
+       
+        
         BossState.transform.GetChild(1).GetChild(0).gameObject.GetComponent<TMP_Text>().text = //보스 어빌리티
         $"보스 이름 : {Bossname}\n\n방어 타입 : {BossArmor}\n\n 스킬 :\n\n패시브 :";
         BossState.transform.GetChild(1).GetChild(1).gameObject.GetComponent<TMP_Text>().text = // 보스 설명
@@ -88,6 +91,10 @@ public class ColosseumEventManager : MonoBehaviour
         int i = 0;
         for(; i < SkilList.Count; i++)
         {
+
+            GameObject obj = Instantiate(SkillSlot, BossState.transform.GetChild(1).GetChild(0).GetChild(0));
+            SkillSlot Sk = obj.GetComponent<SkillSlot>();
+            SlotDesTroyAll += Sk.SlotBomb;
             BossState.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().sprite = 
             SkilList[i].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillSprite;
         }
@@ -108,6 +115,8 @@ public class ColosseumEventManager : MonoBehaviour
             {
                 if(BossState.transform.GetChild(0).childCount != 0)
                     Destroy(BossState.transform.GetChild(0).GetChild(0).gameObject);
+                SlotDesTroyAll?.Invoke();
+                SlotDesTroyAll = null;
                 BossMonsterDisplayer--;
                 ChangeDisplay();
             }
@@ -118,6 +127,8 @@ public class ColosseumEventManager : MonoBehaviour
             {
                 if(BossState.transform.GetChild(0).childCount != 0)
                     Destroy(BossState.transform.GetChild(0).GetChild(0).gameObject);
+                SlotDesTroyAll?.Invoke();
+                SlotDesTroyAll = null;
                 BossMonsterDisplayer++;
                 ChangeDisplay();
             }
