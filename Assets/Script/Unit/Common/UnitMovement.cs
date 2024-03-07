@@ -107,10 +107,11 @@ public class UnitMovement : CharacterProperty
         Vector3 dir = target - transform.position;
         float dist = dir.magnitude;
         dir.Normalize();
-        Debug.Log(dir);
+
         if (rotate != null) StopCoroutine(rotate);
         rotate = StartCoroutine(Rotating(dir, 10.0f));
-        rigid.AddForce(dir * dadge, ForceMode.Impulse);
+        Debug.Log(dadge);
+        rigid.AddForce(dir * dadge);
     }
 
     IEnumerator MovingToPos(Vector3 target, float speed, UnityAction<float> blendAct) 

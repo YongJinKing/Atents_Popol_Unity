@@ -25,7 +25,7 @@ public class Player : BattleSystem
     Vector3 dadgeVec;
 
     bool isDadgeReady = true;
-    
+    public float dadgePw;
     public enum state
     {
         Fire, Dadge, Idle, Run
@@ -102,14 +102,11 @@ public class Player : BattleSystem
             clickAct?.Invoke(hit.point, battleStat.Speed, (float temp) => 
             {
                 myAnim.SetFloat("Move", temp);
-
-                /*if (playerstate == state.Fire || playerstate == state.Dadge)
-                {
-                    stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-                }*/
-
-
-                if(temp < 0.05f)
+                // if (playerstate == state.Fire || playerstate == state.Dadge)
+                // {
+                //     stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));  
+                // }
+                if(temp < 0.05f && playerstate != state.Dadge && playerstate != state.Fire)
                 {
                     ChangeState(state.Idle);
                 }
@@ -131,25 +128,11 @@ public class Player : BattleSystem
     {
         if (Input.GetKeyDown(KeyCode.Space) && isDadgeReady)
         {
+            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             hit = GetRaycastHit();
             ChangeState(state.Dadge);
             myAnim.SetTrigger("t_Dadge");
-            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-            /*rotAct?.Invoke(hit.point, battleStat.Speed);*/
-            dadgeAct?.Invoke(hit.point, 20.0f);
-        }
-    }
-
-
-    public void OnStart(int type)
-    {
-        switch (type)
-        {
-            case 0:
-                break;
-            case 1:
-                //dadgeAct?.Invoke(hit.point, 20.0f);
-                break;
+            dadgeAct?.Invoke(hit.point, dadgePw);
         }
     }
 
@@ -161,9 +144,7 @@ public class Player : BattleSystem
                 FireDelay = equipWeapon.rate;
                 break;
             case 1:
-                myAnim.SetTrigger("t_EndDadge");
-                myAnim.ResetTrigger("t_Dadge");
-                DadgeDelay = 1.0f;
+                DadgeDelay = 0.0f;
                 break;
         }
         ChangeState(state.Idle);
