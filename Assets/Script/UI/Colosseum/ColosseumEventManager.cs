@@ -23,10 +23,10 @@ public class ColosseumEventManager : MonoBehaviour
     public GameObject BossStage;
     public GameObject SkillSlot;
     public GameObject BossAbility;
-    public GameObject Popup;
+    public GameObject SkillPopup;
 
     public GameObject Obj_Slime_Lv1;
-    public GameObject Obj_Slime_Lv2;
+    public GameObject Obj_TurtleShell_Lv1;
     enum BossMonsterType
     {
         None,
@@ -46,8 +46,9 @@ public class ColosseumEventManager : MonoBehaviour
 
     int BossMonsterDisplayer;
     bool[] isClearBoss = new bool[System.Enum.GetValues(typeof(BossMonsterType)).Length];
+    private List<GameObject> BossMonsterSkillList = new List<GameObject>();
     public List<GameObject> Slime_Lv1SkillList = new List<GameObject>();
-    public List<GameObject> Slime_Lv2SkillList = new List<GameObject>();
+    public List<GameObject> TurtleShell_Lv1SkillList = new List<GameObject>();
     private List<SkillBtn> SkillBtnList = new List<SkillBtn>();
 
     // Start is called before the first frame update
@@ -57,7 +58,7 @@ public class ColosseumEventManager : MonoBehaviour
         isClearBoss[1] = true;
         BossMonsterDisplayer = 1;
         HideBoss.transform.gameObject.SetActive(false);
-        Popup.transform.gameObject.SetActive(false);
+        SkillPopup.transform.gameObject.SetActive(false);
         ChangeDisplay();
 
         Button[] ColoBtnList = ColoBtn.GetComponentsInChildren<UnityEngine.UI.Button>();//MainUI버튼
@@ -117,7 +118,7 @@ public class ColosseumEventManager : MonoBehaviour
                 DisplayBossMonster(BossMonsterType.Slime_Lv1, isClearBoss[0]);
                 break;
             case 2:
-                DisplayBossMonster(BossMonsterType.Slime_Lv2, isClearBoss[1]);
+                DisplayBossMonster(BossMonsterType.TurtleShell_Lv1, isClearBoss[1]);
                 break;
             case 3:
                 DisplayBossMonster(BossMonsterType.Slime_Lv2, isClearBoss[2]);
@@ -132,9 +133,9 @@ public class ColosseumEventManager : MonoBehaviour
         {
             DisplayState(Obj_Slime_Lv1, "슬라임", "가죽", "콜로세움에서 전투용으로 키운 슬라임이다.", Slime_Lv1SkillList);
         }
-        else if(B == BossMonsterType.Slime_Lv2 && ClearCheck)
+        else if(B == BossMonsterType.TurtleShell_Lv1 && ClearCheck)
         {
-            DisplayState(Obj_Slime_Lv2, "거부깅", "판금", "콜로세움에서 전투용으로 키운 거부깅이다.", Slime_Lv2SkillList);
+            DisplayState(Obj_TurtleShell_Lv1, "거부깅", "판금", "콜로세움에서 전투용으로 키운 거부깅이다.", TurtleShell_Lv1SkillList);
         }
         else if(!ClearCheck)
         {
@@ -143,6 +144,7 @@ public class ColosseumEventManager : MonoBehaviour
     }
     void DisplayState(GameObject boss, string Bossname, string BossArmor, string BossDesc, List<GameObject> SkillList)
     {
+        BossMonsterSkillList = SkillList;
         Instantiate(boss,BossState.transform.GetChild(0));
         BossState.transform.GetChild(1).GetChild(0).gameObject.GetComponent<TMP_Text>().text = //보스 어빌리티
         $"보스 이름 : {Bossname}\n\n방어 타입 : {BossArmor}\n\n 스킬 :\n\n패시브 :";
@@ -151,7 +153,6 @@ public class ColosseumEventManager : MonoBehaviour
         int i = 0;
         for(; i < SkillList.Count; i++)
         {
-            Debug.Log(SkillList.Count);
             BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().sprite = 
             SkillList[i].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillSprite;
             
@@ -166,6 +167,7 @@ public class ColosseumEventManager : MonoBehaviour
     }
     void SkillSlotBtnChoose(int index)
     {
+        SkillPopup.transform.gameObject.SetActive(false);
         if(BossAbility.transform.GetChild(0).GetChild(index).GetChild(0).gameObject.GetComponent<Image>().sprite == null)
         {
             return;
@@ -185,17 +187,30 @@ public class ColosseumEventManager : MonoBehaviour
         {
             SkillBtnList[index].gameObject.GetComponent<Image>().color = 
             AlphaColorChange(0.3f, SkillBtnList[index].gameObject.GetComponent<Image>().color);
+            SkillPopup.transform.gameObject.SetActive(true);
+            SkillDetailPopup(index);
         }
+    }
+    void SkillDetailPopup(int index)
+    {
+        SkillPopup.transform.GetChild(0).GetComponent<Image>().sprite =
+        BossMonsterSkillList[index].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillSprite;
+        SkillPopup.transform.GetChild(1).GetComponent<TMP_Text>().text =
+        BossMonsterSkillList[index].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillName;
+        SkillPopup.transform.GetChild(2).GetComponent<TMP_Text>().text =
+        BossMonsterSkillList[index].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillDesc;
     }
 
 
     void CleanSkillBtn()
     {
+        SkillPopup.transform.gameObject.SetActive(false);
         for(int i = 0; i < SkillBtnList.Count; i++)
         {
             SkillBtnList[i].ChooseBtn = false;
             SkillBtnList[i].gameObject.GetComponent<Image>().color = 
             AlphaColorChange(0.0f, SkillBtnList[i].gameObject.GetComponent<Image>().color);
+
         }
     }
 
