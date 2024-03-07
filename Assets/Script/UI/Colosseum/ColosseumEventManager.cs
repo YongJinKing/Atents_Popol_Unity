@@ -22,6 +22,7 @@ public class ColosseumEventManager : MonoBehaviour
     public GameObject HideBoss;
     public GameObject BossStage;
     public GameObject SkillSlot;
+    public GameObject BossAbility;
     enum BossMonsterType
     {
         None,
@@ -33,9 +34,16 @@ public class ColosseumEventManager : MonoBehaviour
         TurtleShell_Lv3,
     }
 
+    public class SkillBtn
+    {
+        public GameObject gameObject;
+        public bool ChooseBtn;
+    }
+
     int BossMonsterDisplayer;
     bool[] isClearBoss = new bool[System.Enum.GetValues(typeof(BossMonsterType)).Length];
     public List<GameObject> Slime_Lv1SkillList = new List<GameObject>();
+    private List<SkillBtn> SkillBtnList = new List<SkillBtn>();
 
     // Start is called before the first frame update
     void Start()
@@ -88,8 +96,8 @@ public class ColosseumEventManager : MonoBehaviour
         $"보스 이름 : {Bossname}\n\n방어 타입 : {BossArmor}\n\n 스킬 :\n\n패시브 :";
         BossState.transform.GetChild(1).GetChild(1).gameObject.GetComponent<TMP_Text>().text = // 보스 설명
         $"설명 :\n{BossDesc}";
-        int i = 0;
-        for(; i < SkilList.Count; i++)
+        
+        for(int i = 0; i < SkilList.Count; i++)
         {
 
             GameObject obj = Instantiate(SkillSlot, BossState.transform.GetChild(1).GetChild(0).GetChild(0));
@@ -98,14 +106,53 @@ public class ColosseumEventManager : MonoBehaviour
             BossState.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().sprite = 
             SkilList[i].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillSprite;
         }
-        for(; i <  BossState.transform.GetChild(1).GetChild(0).GetChild(0).childCount; i++)
+
+        for(int i = 0; i < BossAbility.transform.GetChild(0).childCount; i++)
         {
-            Color color = BossState.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().color;
-            color.a = 0.0f;
-            BossState.transform.GetChild(1).GetChild(0).GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
+            int index = i;
+            SkillBtn temp = new SkillBtn();
+            temp.gameObject = BossAbility.transform.GetChild(0).GetChild(i).GetChild(1).gameObject;
+            temp.ChooseBtn = false;
+            SkillBtnList.Add(temp);
+            SkillBtnList[i].gameObject.GetComponent<Button>().onClick.AddListener(()=>SkillSlotBtnChoose(index));
+        }
+    }
+    void SkillSlotBtnChoose(int index)
+    {
+        if(SkillBtnList[index].ChooseBtn)
+        {
+            CleanSkillBtn();
+            return;
+        }
+        else
+        {
+            CleanSkillBtn();
+            SkillBtnList[index].ChooseBtn = true;   
+        }
+        
+        if(SkillBtnList[index].ChooseBtn)
+        {
+            AlphaColorChange(index, 0.3f);
         }
     }
 
+
+    void CleanSkillBtn()
+    {
+        for(int i = 0; i < BossAbility.transform.GetChild(0).childCount; i++)
+        {
+            AlphaColorChange(i, 0.0f);
+            SkillBtnList[i].ChooseBtn = false;//
+        }
+    }
+
+    Color AlphaColorChange(int i, float Value)
+    {
+        Color color = SkillBtnList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;//
+        color.a = Value;
+        SkillBtnList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
+        return SkillBtnList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;
+    }
     void ColoBtnManager(int index)
     {
         
