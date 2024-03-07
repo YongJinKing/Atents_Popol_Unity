@@ -12,8 +12,8 @@ public class UnitMovement : CharacterProperty
     Coroutine rotate = null;
     Coroutine follow = null;
     public Rigidbody rigid;
-    float tempSpeed = 0;
 
+    float tempSpeed = 0;
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
@@ -97,8 +97,8 @@ public class UnitMovement : CharacterProperty
             StopCoroutine(follow);
             follow = null;
         }
-        
-        tempSpeed = 0;
+
+        tempSpeed = 0f;
         endAct?.Invoke(0.0f);
     }
     
@@ -107,7 +107,7 @@ public class UnitMovement : CharacterProperty
         Vector3 dir = target - transform.position;
         float dist = dir.magnitude;
         dir.Normalize();
-
+        Debug.Log(dir);
         if (rotate != null) StopCoroutine(rotate);
         rotate = StartCoroutine(Rotating(dir, 10.0f));
         rigid.AddForce(dir * dadge, ForceMode.Impulse);
@@ -164,11 +164,7 @@ public class UnitMovement : CharacterProperty
 
         while (!Mathf.Approximately(dist, 0.0f))
         {
-            float tempSpeed = 0f;
-
-            tempSpeed = Mathf.Lerp(tempSpeed, speed, Time.deltaTime);
-
-            float delta = tempSpeed * Time.deltaTime;
+            float delta = speed * Time.deltaTime;
             if (delta > dist) delta = dist;
             dist -= delta;
             transform.Translate(dir * delta, Space.World);
@@ -234,7 +230,7 @@ public class UnitMovement : CharacterProperty
             }
 
             angle -= delta;
-            transform.Rotate(Vector3.up * rotDir * delta);
+            transform.Rotate(Vector3.up * rotDir * delta, Space.World);
             yield return null;
         }
     }

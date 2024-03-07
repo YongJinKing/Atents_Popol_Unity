@@ -89,8 +89,6 @@ public class Skill : MonoBehaviour
     {
         bool isDetecting = false;
 
-        Debug.Log("detecting corutine start");
-
         while (!isDetecting)
         {
             Collider[] tempcol = Physics.OverlapSphere(transform.position, detectRadius, targetMask);
@@ -99,8 +97,6 @@ public class Skill : MonoBehaviour
             {
                 if(tempcol[i] != null)
                 {
-                    Debug.Log(tempcol[i]);
-                    Debug.Log(onDetectTargetEvent == null);
                     onDetectTargetEvent?.Invoke();
                     onDetectTargetEvent.RemoveAllListeners();
                     isDetecting = true;
@@ -109,7 +105,6 @@ public class Skill : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("detecting corutine end");
     }
     #endregion
 
