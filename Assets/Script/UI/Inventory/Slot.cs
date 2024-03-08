@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Slot : MonoBehaviour
 {
     [SerializeField] 
-    public UnityEngine.UI.Image image;
+    public Image image;
     public string InvenDetailName;
     public RiggingType InvenDetailRiggingType;
     public int InvenDetailValue;

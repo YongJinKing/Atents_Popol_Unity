@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e99cd797b2387714f99273d231296af3, type: 3}
-  m_Name: One_Hand_Sword_Lv1
+  m_Name: Plate2
   m_EditorClassIdentifier: 
-  itemName: "\uB179\uC2A8 \uAC80"
-  itemImage: {fileID: 21300000, guid: c278ec36abbc540489a08ba8765cd092, type: 3}
-  itemValue: 20
-  itemDesc: "\uB179\uC2AC\uC5B4\uC11C \uC798 \uC548\uC0AC\uC6A9\uD558\uB294 \uAC80\uC774\uB2E4."
-  smithTalk: "\uC774\uB7F0\uAC80\uC744 \uC65C\uC4F0\uB294\uAC74\uC9C0 \uBAA8\uB974\uACA0\uAD70..."
+  itemName: "\uAF64 \uC88B\uC740 \uD310\uAE08 \uAC11\uC637"
+  itemImage: {fileID: 21300000, guid: 131ae7d5c3bf62f4ca9d47f57e1ef952, type: 3}
+  itemValue: 250
+  itemDesc: "\uD3C9\uBC94\uD55C \uD310\uAE08\uC73C\uB85C \uB9CC\uB4E0 \uAC11\uC637\uC774\uB2E4."
+  smithTalk: "\uC81C\uBC95 \uAD1C\uCC2E\uC740 \uAC11\uC637\uC774\uAD70!"
   durAbility: 100
-  weaponType: 1
-  riggingType: 1
+  weaponType: 13
+  riggingType: 2

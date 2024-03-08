@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 10399581d9d41a44bb8984ec628263dd
+guid: 8d5bf84da883afc4aa0fe0671151faaa
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,6 +8,11 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: BaseMat_Armor
+    second: {fileID: 2100000, guid: 22e7fb49e2b49e0418ef97b61b1c8db5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BaseMat_Armor1
     second: {fileID: 2100000, guid: 22e7fb49e2b49e0418ef97b61b1c8db5, type: 2}
   materials:
     materialImportMode: 1

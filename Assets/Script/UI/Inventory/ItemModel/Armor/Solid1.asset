@@ -10,14 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e99cd797b2387714f99273d231296af3, type: 3}
-  m_Name: Normal2
+  m_Name: Solid1
   m_EditorClassIdentifier: 
   itemName: "\uC624\uB798\uB41C \uACBD\uAC11 \uAC11\uC637"
-  itemImage: {fileID: 21300000, guid: 28b103e16acf21b45afc90eb7afb7e42, type: 3}
-  itemValue: 30
+  itemImage: {fileID: 21300000, guid: 17790c504822a7041b2cb232729c9b19, type: 3}
+  itemValue: 70
   itemDesc: "\uC624\uB798\uB41C \uACBD\uAC11\uC73C\uB85C \uB9CC\uB4E0 \uAC11\uC637\uC774\uB2E4."
   smithTalk: "\uC774\uB7F0 \uC4F0\uB808\uAE30 \uAC19\uC740\uAC78 \uC65C \uC548\uBC84\uB9AC\uB294\uAC70\uC57C?"
-  durAbility: 60
-  itemIndex: 0
+  durAbility: 100
   weaponType: 12
   riggingType: 2
