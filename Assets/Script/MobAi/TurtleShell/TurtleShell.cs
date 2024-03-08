@@ -97,10 +97,13 @@ public class TurtleShell : Monster
                             myAnim.SetBool("b_IsMoving", false);
                             ChangeState(State.Attacking);
                         });
+                    skills[0].OnCommandDetectSkillTarget(() => ChangeState(State.Attacking));
                 }
                 break;
             //����
             case State.Attacking:
+                onSkillStartAct?.Invoke(target.transform.position);
+                StartCoroutine(DelayChangeState(State.Idle, 2.0f));
                 break;
         }
     }

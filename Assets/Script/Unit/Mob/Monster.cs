@@ -18,7 +18,7 @@ public abstract class Monster : BattleSystem
 
     //protected 변수 영역
     #region protected
-    protected State myState;
+    [SerializeField]protected State myState;
     //스킬이 타겟팅하는 레이어를 받아온다.
     protected LayerMask skillMask;
     #endregion
