@@ -96,7 +96,7 @@ public class Slime : Monster
             case State.Closing:
                 //detect를 실행하라고 지시
                 //skills[saveSkill[countUsedSkill]].OnCommandDetectSkillTarget(() => ChangeState(State.Attacking));
-                skills[1].OnCommandDetectSkillTarget(() => ChangeState(State.Attacking));
+                skills[saveSkill[countUsedSkill]].OnCommandDetectSkillTarget(() => ChangeState(State.Attacking));
                 //Debug.Log(saveSkill[countUsedSkill]);
                 StartCoroutine(ClosingToTarget());
                 break;
@@ -137,10 +137,17 @@ public class Slime : Monster
 
         //그 방향으로 오프셋 만큼 이동한 뒤에 랜덤한 방향으로 좌표를 찍어서 backStepPos 를 생성
         Vector3 backStepPos = (transform.position + dir * backStapOffset);
-        float radius = 2.0f;
-        dir = new Vector3 (UnityEngine.Random.Range(0,radius), 0, UnityEngine.Random.Range(0, radius));
+        Vector3 backStepDir = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360f), 0) * dir;
+        backStepDir.Normalize();
 
-        backStepPos = backStepPos + dir;
+        float dist = UnityEngine.Random.Range(2f, 5f);
+
+        while(Vector3.Dot(dir, backStepDir) < 0)
+        {
+            backStepDir = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360f), 0) * dir;
+        }
+
+        backStepPos = backStepPos + backStepDir * dist;
 
         //이동 이벤트
         onMovementEvent?.Invoke(backStepPos, battleStat.Speed, null, null);
@@ -156,6 +163,26 @@ public class Slime : Monster
 
         //상태 바꿈
         ChangeState(State.Closing);
+        yield return null;
+    }
+
+    protected IEnumerator FindTarget()
+    {
+        Collider[] tempcol;
+
+        bool isFindTarget = false;
+        while (!isFindTarget)
+        {
+            tempcol = Physics.OverlapSphere(transform.position, 200, skillMask);
+
+            if (tempcol != null)
+            {
+                target = tempcol[0].gameObject;
+                isFindTarget = true;
+            }
+        yield return null;
+        }
+
         yield return null;
     }
     #endregion

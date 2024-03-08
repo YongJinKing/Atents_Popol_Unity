@@ -119,6 +119,8 @@ public class Skill : MonoBehaviour
         StartCoroutine(DetectingRange());
     }
 
+    //public void OnRequestSkill()
+
     //이 스킬이 사용되었을때
     public void OnSkillStart(Vector3 targetPos)
     {
