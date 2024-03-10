@@ -19,6 +19,10 @@ public class UnitMovement : CharacterProperty
         rigid = GetComponent<Rigidbody>();
     }
 
+    void Update()
+    {
+        
+    }
 
     //Player
     public void MoveToPos(Vector3 target, float Speed, UnityAction<float> blendAct)
@@ -30,6 +34,24 @@ public class UnitMovement : CharacterProperty
         }
 
         move = StartCoroutine(MovingToPos(target, Speed, blendAct));
+    }
+
+    //Player Stop
+    public void StopMove(UnityAction<float> endAct)
+    {
+        if (move != null)
+        {
+            StopCoroutine(move);
+            move = null;
+        }
+        if(follow != null)
+        {
+            StopCoroutine(follow);
+            follow = null;
+        }
+
+        tempSpeed = 0f;
+        endAct?.Invoke(0.0f);
     }
 
 
@@ -84,45 +106,29 @@ public class UnitMovement : CharacterProperty
         endAct?.Invoke();
     }
 
-    //Player Stop
-    public void StopMove(UnityAction<float> endAct)
-    {
-        if (move != null)
-        {
-            StopCoroutine(move);
-            move = null;
-        }
-        if(follow != null)
-        {
-            StopCoroutine(follow);
-            follow = null;
-        }
-
-        tempSpeed = 0f;
-        endAct?.Invoke(0.0f);
-    }
     
+    //Player Roll
     public void Dadge(Vector3 target, float dadge)
     {
         Vector3 dir = target - transform.position;
-        float dist = dir.magnitude;
         dir.Normalize();
-
+        
         if (rotate != null) StopCoroutine(rotate);
         rotate = StartCoroutine(Rotating(dir, 10.0f));
-        Debug.Log(dadge);
         rigid.AddForce(dir * dadge);
     }
 
+    //Player Move
     IEnumerator MovingToPos(Vector3 target, float speed, UnityAction<float> blendAct) 
     {
         Vector3 dir = target - transform.position;
         float dist = dir.magnitude;
+        float delta;
         dir.Normalize();
 
         if (rotate != null) StopCoroutine(rotate);
         rotate = StartCoroutine(Rotating(dir, speed));
-        float delta;
+        
         
         while (!Mathf.Approximately(dist, 0.0f))
         {
@@ -134,20 +140,22 @@ public class UnitMovement : CharacterProperty
             {
                 tempSpeed = Mathf.Lerp(tempSpeed, 1, Time.deltaTime * 10.0f);
             }
-
+            
             blendAct?.Invoke(tempSpeed);
+            
+            yield return null;
 
             delta = tempSpeed * Time.deltaTime * speed;
             if (delta > dist) delta = dist;
             dist -= delta;
-            transform.Translate(dir * delta, Space.World);
-            yield return null;
+            transform.position += dir * delta;
+            yield return new WaitForFixedUpdate ();
         }
         while (tempSpeed >= 0.01f)
         {
             tempSpeed = Mathf.Lerp(tempSpeed, 0, Time.deltaTime * 10.0f);
             blendAct?.Invoke(tempSpeed);
-            yield return null;
+            yield return new WaitForFixedUpdate ();
         }
         tempSpeed = 0;
     }

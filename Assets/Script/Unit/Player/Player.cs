@@ -20,6 +20,7 @@ public class Player : BattleSystem
     float FireDelay = 0;
     public float DadgeDelay = 0;
     bool isFireReady = true;
+    bool isClick;
 
     RaycastHit hit = default(RaycastHit);
     Vector3 dadgeVec;
@@ -81,15 +82,31 @@ public class Player : BattleSystem
         equipWeapon = jointItemR.transform.GetChild(0).GetComponent<Weapon>();
     }
 
+    public RaycastHit GetRaycastHit()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
+        {
+            isClick = true;
+            Debug.Log(isClick);
+            return hit;
+        }
+        isClick = false;
+        return hit;
+    }
+
     public void FireToMousePos()
     {
         if (Input.GetMouseButtonDown(0) && isFireReady)
         {
             hit = GetRaycastHit();
 
-            ChangeState(state.Fire);
-            attackAct?.Invoke(hit.point, equipWeapon);
-            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+            if(isClick)
+            {
+                ChangeState(state.Fire);
+                attackAct?.Invoke(hit.point, equipWeapon);
+                stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+            }
         }
     }
 
@@ -98,41 +115,33 @@ public class Player : BattleSystem
         if (Input.GetMouseButtonDown(1))
         {
             hit = GetRaycastHit();
-            ChangeState(state.Run);
-            clickAct?.Invoke(hit.point, battleStat.Speed, (float temp) => 
+            if(isClick)
             {
-                myAnim.SetFloat("Move", temp);
-                // if (playerstate == state.Fire || playerstate == state.Dadge)
-                // {
-                //     stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));  
-                // }
-                if(temp < 0.05f && playerstate != state.Dadge && playerstate != state.Fire)
+                ChangeState(state.Run);
+                clickAct?.Invoke(hit.point, battleStat.Speed, (float temp) => 
                 {
-                    ChangeState(state.Idle);
-                }
-            });
+                    myAnim.SetFloat("Move", temp);
+                    if(temp < 0.05f && playerstate != state.Dadge && playerstate != state.Fire)
+                    {
+                        ChangeState(state.Idle);
+                    }
+                });
+            }
         }
-    }
-
-    public RaycastHit GetRaycastHit()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
-        {
-            return hit;
-        }
-        return hit;
     }
 
     public void DadgeToPos()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isDadgeReady)
         {
-            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             hit = GetRaycastHit();
-            ChangeState(state.Dadge);
-            myAnim.SetTrigger("t_Dadge");
-            dadgeAct?.Invoke(hit.point, dadgePw);
+            if(isClick)
+            {
+                stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+                ChangeState(state.Dadge);
+                myAnim.SetTrigger("t_Dadge");
+                dadgeAct?.Invoke(hit.point, dadgePw);
+            }
         }
     }
 
@@ -144,13 +153,11 @@ public class Player : BattleSystem
                 FireDelay = equipWeapon.rate;
                 break;
             case 1:
-                DadgeDelay = 0.0f;
+                DadgeDelay = 1.0f;
                 break;
         }
         ChangeState(state.Idle);
     }
-
-
 
     void Update()
     {

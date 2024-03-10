@@ -536,7 +536,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   DadgeDelay: 1
-  dadgePw: 0
+  dadgePw: 50
   playerstate: 2
 --- !u!114 &756935915
 MonoBehaviour:
