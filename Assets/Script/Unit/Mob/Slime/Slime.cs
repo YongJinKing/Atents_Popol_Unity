@@ -90,6 +90,7 @@ public class Slime : Monster
         {
             //대충 적당히 근거리에서 배회
             case State.Idle:
+                skills[saveSkill[countUsedSkill]].OnRequestSkillInfo();
                 StartCoroutine(IdleProcessing());
                 break;
             //적에게 접근
@@ -128,6 +129,9 @@ public class Slime : Monster
     //일단 특정 거리에서 기다리는 AI
     private IEnumerator IdleProcessing()
     {
+        //먼저 타겟을 찾는다.
+        yield return StartCoroutine(FindTarget());
+
         float IdleTime = 2.0f;
 
         //이동할 좌표 구하기
@@ -168,6 +172,12 @@ public class Slime : Monster
 
     protected IEnumerator FindTarget()
     {
+        if (skillMask == 0)
+        {
+            Debug.Log("Can`t find SkillMask");
+            yield break;
+        }
+
         Collider[] tempcol;
 
         bool isFindTarget = false;
@@ -180,7 +190,7 @@ public class Slime : Monster
                 target = tempcol[0].gameObject;
                 isFindTarget = true;
             }
-        yield return null;
+            yield return null;
         }
 
         yield return null;
@@ -215,9 +225,11 @@ public class Slime : Monster
     #region MonoBehaviour
     protected override void Start()
     {
+        //스킬 랜덤 등록
         saveSkill = new int[skills.Length];
         countUsedSkill = 0;
         SkillRandomSet();
+
         ProcessState();
     }
 

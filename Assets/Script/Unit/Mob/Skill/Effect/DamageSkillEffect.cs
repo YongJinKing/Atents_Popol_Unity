@@ -52,7 +52,7 @@ public class DamageSkillEffect : BaseSkillEffect
         if (damage != null)
         {
             //int myattackPoint = GetComponentInParent<BattleSystem>().battlestat.AP;
-            damage.TakeDamage((uint)power * 2);
+            damage.TakeDamage((uint)power * myBattleSystem.AP);
         }
     }
     #endregion

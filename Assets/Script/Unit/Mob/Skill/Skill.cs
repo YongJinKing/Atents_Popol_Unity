@@ -111,10 +111,15 @@ public class Skill : MonoBehaviour
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
+    public void OnRequestSkillInfo()
+    {
+        onAddSkillEventListener?.Invoke(OnSkillStart, OnSkillEnd, targetMask);
+    }
+
     //AI가 사용할 이벤트 함수, collider에 걸리면 이벤트를 invoke할 코루틴을 스타트
     public void OnCommandDetectSkillTarget(UnityAction detectAct)
     {
-        onAddSkillEventListener?.Invoke(OnSkillStart, OnSkillEnd, targetMask);
+        //onAddSkillEventListener?.Invoke(OnSkillStart, OnSkillEnd, targetMask);
         onDetectTargetEvent.AddListener(detectAct);
         StartCoroutine(DetectingRange());
     }

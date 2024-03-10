@@ -52,6 +52,18 @@ public class BattleSystem : CharacterProperty, IDamage
         }
     }
 
+    public uint AP
+    {
+        get
+        {
+            return this.battleStat.AP;
+        }
+        set
+        {
+            this.battleStat.AP = value;
+        }
+    }
+
     public uint Exp
     {
         get
