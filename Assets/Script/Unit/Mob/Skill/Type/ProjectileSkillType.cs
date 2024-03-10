@@ -259,10 +259,10 @@ public class ProjectileSkillType : AttackSkillType
 
     //유니티 함수들 영역
     #region MonoBehaviour
-    protected override void Awake()
+    protected override void Start()
     {
         areaOfEffect = new GameObject[maxIndex];
-        base.Awake();
+        base.Start();
     }
     #endregion
 }

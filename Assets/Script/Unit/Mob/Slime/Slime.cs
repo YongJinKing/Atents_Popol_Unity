@@ -225,6 +225,8 @@ public class Slime : Monster
     #region MonoBehaviour
     protected override void Start()
     {
+        base.Start();
+
         //스킬 랜덤 등록
         saveSkill = new int[skills.Length];
         countUsedSkill = 0;

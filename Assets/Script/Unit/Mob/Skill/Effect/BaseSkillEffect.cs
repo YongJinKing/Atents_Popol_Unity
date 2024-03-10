@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class BaseSkillEffect : MonoBehaviour
@@ -8,24 +9,13 @@ public abstract class BaseSkillEffect : MonoBehaviour
     #region Properties / Field
     //private 변수 영역
     #region Private
-    private BattleSystem _myBattleSystem;
     #endregion
 
     //protected 변수 영역
     #region protected
     //공격력 * power로 스킬의 배율
     [SerializeField] protected float power;
-    protected BattleSystem myBattleSystem
-    {
-        get 
-        {   
-            if(_myBattleSystem == null)
-            {
-                _myBattleSystem = GetComponentInParent<BattleSystem>();
-            }
-            return _myBattleSystem; 
-        }
-    }
+    protected BattleSystem myBattleSystem;
     #endregion
 
     //Public 변수영역
@@ -65,6 +55,10 @@ public abstract class BaseSkillEffect : MonoBehaviour
 
     //유니티 함수들 영역
     #region MonoBehaviour
+    protected virtual void Start()
+    {
+        myBattleSystem = GetComponentInParent<BattleSystem>();
+    }
     #endregion
 
 }

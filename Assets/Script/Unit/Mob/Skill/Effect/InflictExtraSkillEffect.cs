@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using System.Collections;
+using UnityEngine;
 
-//스킬의 히트박스와 피격박스를 위한 클래스
-public abstract class BaseSkillType : MonoBehaviour
+public class InflictExtraSkillEffect : BaseSkillEffect
 {
     //변수 영역
     #region Properties / Field
@@ -12,19 +11,17 @@ public abstract class BaseSkillType : MonoBehaviour
 
     //protected 변수 영역
     #region protected
-    //OnSkillActivated로 받아온 타겟의 위치를 저장함
-    protected Vector3 targetPos;
+    [SerializeField] LayerMask groundMask;
     #endregion
 
     //Public 변수영역
     #region public
+    public GameObject extraEffectObject;
+    public bool isOnGround = false;
     #endregion
 
     //이벤트 함수들 영역
     #region Event
-    //스킬
-    public UnityEvent<GameObject> onSkillHitEvent;
-    public UnityEvent onSkillDisactivatedEvent;
     #endregion
     #endregion
 
@@ -44,31 +41,34 @@ public abstract class BaseSkillType : MonoBehaviour
     #endregion
 
 
-    //코루틴 영역
     #region Coroutine
     #endregion
 
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
-    //skill 클래스의 이벤트가 발생
-    public virtual void OnSkillActivated(Vector3 targetPos)
+    public override void OnSkillHit(GameObject target)
     {
-        this.targetPos = targetPos;
-    }
+        Vector3 pos = target.transform.position;
 
-    public virtual void OnSkillDisactivated()
-    {
-        onSkillDisactivatedEvent?.Invoke();
+        if (isOnGround)
+        {
+            Ray ray = new Ray(pos, Vector3.down);
+            if(Physics.Raycast(ray, out RaycastHit hit, 1000.0f, groundMask))
+            {
+                pos = hit.point;
+            }
+        }
+
+        if(extraEffectObject != null)
+        {
+            Instantiate<GameObject>(extraEffectObject, pos, Quaternion.identity, GetComponentInParent<BattleSystem>().transform);
+        }
     }
     #endregion
 
 
     //유니티 함수들 영역
     #region MonoBehaviour
-    protected virtual void Start()
-    {
-    }
     #endregion
 }
-

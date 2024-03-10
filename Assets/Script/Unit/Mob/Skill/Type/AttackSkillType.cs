@@ -96,7 +96,7 @@ public abstract class AttackSkillType : BaseSkillType
 
     //유니티 함수들 영역
     #region MonoBehaviour
-    protected override void Awake()
+    protected override void Start()
     {
         InitAreaOfEffect();
     }
