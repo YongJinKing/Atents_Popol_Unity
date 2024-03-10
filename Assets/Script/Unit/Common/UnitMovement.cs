@@ -145,6 +145,7 @@ public class UnitMovement : CharacterProperty
             
             yield return null;
 
+
             delta = tempSpeed * Time.deltaTime * speed;
             if (delta > dist) delta = dist;
             dist -= delta;
@@ -155,7 +156,7 @@ public class UnitMovement : CharacterProperty
         {
             tempSpeed = Mathf.Lerp(tempSpeed, 0, Time.deltaTime * 10.0f);
             blendAct?.Invoke(tempSpeed);
-            yield return new WaitForFixedUpdate ();
+            yield return null;
         }
         tempSpeed = 0;
     }
