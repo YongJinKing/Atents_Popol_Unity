@@ -48,11 +48,15 @@ public class DamageSkillEffect : BaseSkillEffect
     #region EventHandler
     public override void OnSkillHit(GameObject target)
     {
+        Debug.Log(target.name);
         IDamage damage = target.GetComponent<IDamage>();
+
         if (damage != null)
         {
+            Debug.Log(power * myBattleSystem.AP);
+
             //int myattackPoint = GetComponentInParent<BattleSystem>().battlestat.AP;
-            damage.TakeDamage((uint)power * myBattleSystem.AP);
+            damage.TakeDamage((uint)(power * myBattleSystem.AP));
         }
     }
     #endregion

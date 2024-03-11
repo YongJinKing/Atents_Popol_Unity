@@ -54,7 +54,7 @@ public class Slime : Monster
         }
         countUsedSkill = 0;
 
-        Debug.Log(saveSkill[countUsedSkill]);
+        //Debug.Log(saveSkill[countUsedSkill]);
     }
     #endregion
 

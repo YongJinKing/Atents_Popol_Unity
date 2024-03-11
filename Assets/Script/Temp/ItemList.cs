@@ -7,7 +7,6 @@ public interface I_Item
     public Item[] armors
     {
         get => Resources.LoadAll<Item>("UI/ItemModel/Armor");
-        
     }
 
     public Item[] weapons

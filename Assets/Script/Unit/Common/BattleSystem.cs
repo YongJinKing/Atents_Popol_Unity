@@ -14,8 +14,6 @@ public struct BattleStat
     public uint HP;
     public uint Exp;
     public float Speed;
-    public float AttackRange;
-    public float AttackDelay;
 }
 public interface IDamage
 {
@@ -33,8 +31,7 @@ public class BattleSystem : CharacterProperty, IDamage
     public UnityEvent<Vector3, float> rotAct;
     protected virtual void Start()
     {
-        curBattleStat.maxHP = battleStat.maxHP;
-        curBattleStat.HP = battleStat.maxHP;
+        Initialize();
     }
 
     protected Transform myTarget
@@ -58,11 +55,11 @@ public class BattleSystem : CharacterProperty, IDamage
     {
         get
         {
-            return this.battleStat.AP;
+            return this.curBattleStat.AP;
         }
         set
         {
-            this.battleStat.AP = value;
+            this.curBattleStat.AP = value;
         }
     }
 
@@ -85,6 +82,7 @@ public class BattleSystem : CharacterProperty, IDamage
 
     protected void Initialize()
     {
+        curBattleStat = battleStat;
         curBattleStat.HP = battleStat.maxHP;
     }
     public void TakeDamage(uint dmg)
@@ -94,11 +92,7 @@ public class BattleSystem : CharacterProperty, IDamage
         {
             //Die
             OnDead();
-            myAnim.SetTrigger("DeathTrigger");
-        }
-        else
-        {
-            myAnim.SetTrigger("HitTrigger");
+            //myAnim.SetTrigger("DeathTrigger");
         }
     }
 
