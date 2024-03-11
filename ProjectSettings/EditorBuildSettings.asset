@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Data/PlayerDataManager/SampleScene/DataSave 1.unity
+    guid: 27161eb45d8ad6e40b92c3d2cf631e09
+  - enabled: 1
+    path: Assets/Data/PlayerDataManager/SampleScene/DataSave 2.unity
+    guid: 82dab0d39df723f44a504b00062f7379
   m_configObjects: {}
