@@ -6,7 +6,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : BattleSystem
+
+
+public class Player : BattleSystem, I_Effect
 {
     public UnityEvent<Vector3, float, UnityAction<float>> clickAct;
     public UnityEvent<Vector3, Weapon> attackAct;
@@ -15,7 +17,7 @@ public class Player : BattleSystem
     public UnityAction<Vector3> getHitAct;
     public GameObject jointItemR;
     public LayerMask clickMask;
-    public LayerMask attackMask;
+    public GameObject AttackEffect;
     Weapon equipWeapon;
     float FireDelay = 0;
     public float DadgeDelay = 0;
@@ -74,12 +76,21 @@ public class Player : BattleSystem
     }
 
 
-
     protected override void Start()
     {
         base.Start();
         ChangeState(state.Idle);
         equipWeapon = jointItemR.transform.GetChild(0).GetComponent<Weapon>();
+    }
+
+    void Update()
+    {
+        FireDelay -= Time.deltaTime;
+        isFireReady = FireDelay < 0;
+        DadgeDelay -= Time.deltaTime;
+        isDadgeReady = DadgeDelay < 0;
+
+        ProcessState();
     }
 
     public RaycastHit GetRaycastHit()
@@ -104,6 +115,7 @@ public class Player : BattleSystem
             if(isClick)
             {
                 ChangeState(state.Fire);
+                PlayAttackEffect(hit.point, AttackEffect);
                 attackAct?.Invoke(hit.point, equipWeapon);
                 stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             }
@@ -159,13 +171,15 @@ public class Player : BattleSystem
         ChangeState(state.Idle);
     }
 
-    void Update()
-    {
-        FireDelay -= Time.deltaTime;
-        isFireReady = FireDelay < 0;
-        DadgeDelay -= Time.deltaTime;
-        isDadgeReady = DadgeDelay < 0;
 
-        ProcessState();
+    public void PlayAttackEffect(Vector3 hit, GameObject AttackEffect)
+    {
+        Vector3 dir = hit - transform.position;
+        GameObject effect = Instantiate(AttackEffect);
+        
+        effect.transform.position = transform.position;
+
+        effect.transform.rotation = Quaternion.LookRotation(dir);
+        Destroy(effect.gameObject, 0.5f);
     }
 }
