@@ -1,17 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.Events;
 using TMPro;
-using UnityEditor.PackageManager;
 
 public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject GridLine;
     public GameObject SkillPopup;
     public GameObject ColosseumEventObj;
+    private RectTransform SlotPositon;
+    private RectTransform PopupPositon;
     public List<GameObject> BossSkillList = new List<GameObject>();
     GameObject[] SkillSlots;
     
@@ -20,6 +19,10 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         
         if(transform.GetComponent<Image>().color.a != 0.0f)
         {
+           /*  
+            SlotPositon = transform.gameObject.GetComponent<RectTransform>();
+            PopupPositon = SkillPopup.GetComponent<RectTransform>();
+            PopupPositon.anchoredPosition = SlotPositon.anchoredPosition; */
             SkillPopup.SetActive(true);
             transform.GetChild(0).GetComponent<Animator>().SetBool("ChangeColor",true);
             SkillDetailPopup(transform.GetSiblingIndex());
