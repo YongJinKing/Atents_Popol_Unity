@@ -46,10 +46,9 @@ public class ColosseumEventManager : MonoBehaviour
 
     int BossMonsterDisplayer;
     bool[] isClearBoss = new bool[System.Enum.GetValues(typeof(BossMonsterType)).Length];
-    private List<GameObject> BossMonsterSkillList = new List<GameObject>();
+    public List<GameObject> BossMonsterSkillList = new List<GameObject>();
     public List<GameObject> Slime_Lv1SkillList = new List<GameObject>();
     public List<GameObject> TurtleShell_Lv1SkillList = new List<GameObject>();
-    private List<SkillBtn> SkillBtnList = new List<SkillBtn>();
 
     // Start is called before the first frame update
     void Start()
@@ -66,16 +65,6 @@ public class ColosseumEventManager : MonoBehaviour
         {
             int index = i;
             ColoBtnList[i].onClick.AddListener(() => StageBtnManager(index));
-        }
-        for(int i = 0; i < BossAbility.transform.GetChild(0).childCount; i++)
-        {
-            int index = i;
-            SkillBtn temp = new SkillBtn();
-            temp.gameObject = BossAbility.transform.GetChild(0).GetChild(i).GetChild(1).gameObject;
-            temp.ChooseBtn = false;
-            SkillBtnList.Add(temp);
-            SkillBtnList[i].gameObject.GetComponent<Button>().onClick.AddListener(()=>SkillSlotBtnChoose(index));
-
         }
     }
     
@@ -106,7 +95,7 @@ public class ColosseumEventManager : MonoBehaviour
         if(BossState.transform.GetChild(0).childCount != 0)
             Destroy(BossState.transform.GetChild(0).GetChild(0).gameObject);
         BossMonsterDisplayer += isMinus;
-        CleanSkillBtn();
+    /*     CleanSkillBtn(); */
         ChangeDisplay();
 
     }
@@ -153,70 +142,25 @@ public class ColosseumEventManager : MonoBehaviour
         int i = 0;
         for(; i < SkillList.Count; i++)
         {
-            BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().sprite = 
+            
+            BossAbility.transform.GetChild(0).GetChild(i).gameObject.GetComponent<Image>().sprite = 
             SkillList[i].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillSprite;
             
-            BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().color = 
-            AlphaColorChange(1.0f, BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().color);
+            BossAbility.transform.GetChild(0).GetChild(i).gameObject.GetComponent<Image>().color = 
+            AlphaColorChange(1.0f, BossAbility.transform.GetChild(0).GetChild(i).gameObject.GetComponent<Image>().color);
         }
         for(; i < BossAbility.transform.GetChild(0).childCount; i++)
         {   
-            BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().color = 
-            AlphaColorChange(0.0f, BossAbility.transform.GetChild(0).GetChild(i).GetChild(0).gameObject.GetComponent<Image>().color);
+            BossAbility.transform.GetChild(0).GetChild(i).gameObject.GetComponent<Image>().color = 
+            AlphaColorChange(0.0f, BossAbility.transform.GetChild(0).GetChild(i).gameObject.GetComponent<Image>().color);
         }
     }
-    void SkillSlotBtnChoose(int index)
-    {
-        SkillPopup.transform.gameObject.SetActive(false);
-        if(BossAbility.transform.GetChild(0).GetChild(index).GetChild(0).gameObject.GetComponent<Image>().sprite == null)
-        {
-            return;
-        }
-        if(SkillBtnList[index].ChooseBtn)
-        {
-            CleanSkillBtn();
-            return;
-        }
-        else
-        {
-            CleanSkillBtn();
-            SkillBtnList[index].ChooseBtn = true;   
-        }
-        
-        if(SkillBtnList[index].ChooseBtn)
-        {
-            SkillBtnList[index].gameObject.GetComponent<Image>().color = 
-            AlphaColorChange(0.3f, SkillBtnList[index].gameObject.GetComponent<Image>().color);
-            SkillPopup.transform.gameObject.SetActive(true);
-            SkillDetailPopup(index);
-        }
-    }
-    void SkillDetailPopup(int index)
-    {
-        SkillPopup.transform.GetChild(0).GetComponent<Image>().sprite =
-        BossMonsterSkillList[index].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillSprite;
-        SkillPopup.transform.GetChild(1).GetComponent<TMP_Text>().text =
-        BossMonsterSkillList[index].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillName;
-        SkillPopup.transform.GetChild(2).GetComponent<TMP_Text>().text =
-        BossMonsterSkillList[index].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillDesc;
-    }
-
-
-    void CleanSkillBtn()
-    {
-        SkillPopup.transform.gameObject.SetActive(false);
-        for(int i = 0; i < SkillBtnList.Count; i++)
-        {
-            SkillBtnList[i].ChooseBtn = false;
-            SkillBtnList[i].gameObject.GetComponent<Image>().color = 
-            AlphaColorChange(0.0f, SkillBtnList[i].gameObject.GetComponent<Image>().color);
-
-        }
-    }
+  
+   
 
    Color AlphaColorChange(float Value, Color Objcolor)
     {
-        Color color = Objcolor;//
+        Color color = Objcolor;
         color.a = Value;
         Objcolor = color;
         return Objcolor;
