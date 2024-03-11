@@ -143,14 +143,14 @@ public class UnitMovement : CharacterProperty
             
             blendAct?.Invoke(tempSpeed);
             
-            yield return null;
+            
 
 
             delta = tempSpeed * Time.deltaTime * speed;
             if (delta > dist) delta = dist;
             dist -= delta;
             transform.position += dir * delta;
-            yield return new WaitForFixedUpdate ();
+            yield return null;
         }
         while (tempSpeed >= 0.01f)
         {
