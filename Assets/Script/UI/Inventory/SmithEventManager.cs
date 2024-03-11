@@ -23,6 +23,7 @@ public class SmithEventManager : MonoBehaviour
     public GameObject SmithPairAndAwayBtnManager;
     public GameObject SmithPopupManager;
     public GameObject SmithMainImage;
+    public GameObject DontDestroyManager;
 
     
     private List<InvenSlot> InvenSlotList = new List<InvenSlot>();//
@@ -85,7 +86,6 @@ public class SmithEventManager : MonoBehaviour
         Button[] SmithPopupBtnList = SmithPopupManager.GetComponentsInChildren<UnityEngine.UI.Button>();
         for(int i = 0; i < SmithPopupBtnList.Length; i++)
         {
-     
             int index = i;
             SmithPopupBtnList[i].onClick.AddListener(() => PopupUiControll(index));
         }
@@ -123,7 +123,6 @@ public class SmithEventManager : MonoBehaviour
     }
     void InvenSlotBtnChoise(int index)
     {
-        
         Slot[] SlotList = SmithInventory.GetComponent<Inventory>().slots;
         UnityEngine.UI.Image ItemInSlot = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(index).gameObject.GetComponent<UnityEngine.UI.Image>();
         if(index >= SmithInventory.transform.GetComponent<Inventory>().TypeCount)
@@ -224,7 +223,6 @@ public class SmithEventManager : MonoBehaviour
                 isSelected = true;
                 SmithUI.transform.GetChild(1).gameObject.SetActive(true);// 팝업 on
             }
-            
         }
 
         if(!isSelected)
@@ -271,13 +269,13 @@ public class SmithEventManager : MonoBehaviour
     #region PopupControll
     void PopupUiControll(int index)
     {
-        Debug.Log(ChooseSlotIndex);
+
         if(index == 0)//yes
         {
             
             if(popupType == SmithPopupType.Repair)
             {
-                SmithInventory.GetComponent<Inventory>().items[ChooseSlotIndex].durAbility = 100;
+                DontDestroyManager.GetComponent<DataManager>().PlayerInventory[ChooseSlotIndex].durAbility = 100;
                 CleanSlots();
                 PopupClose();
                 if(InvenBtnList[0].ChooseBtn)
@@ -294,7 +292,7 @@ public class SmithEventManager : MonoBehaviour
             }
             if(popupType == SmithPopupType.ThrowAway)
             {
-                SmithInventory.GetComponent<Inventory>().items.RemoveAt(ChooseSlotIndex);
+                DontDestroyManager.GetComponent<DataManager>().PlayerInventory.RemoveAt(ChooseSlotIndex);
                 CleanSlots();
                 PopupClose();
                 if(InvenBtnList[0].ChooseBtn)
@@ -312,9 +310,7 @@ public class SmithEventManager : MonoBehaviour
         }
         if(index == 1)//no
         {
-            /* Item itemAdd = new Item();
-            itemAdd = SmithInventory.GetComponent<Inventory>().items[ChooseSlotIndex];
-            SmithInventory.GetComponent<Inventory>().AddItem(itemAdd); */
+           
             PopupClose();
         }
     }
