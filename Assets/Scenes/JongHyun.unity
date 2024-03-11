@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -361,15 +361,96 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 870632228}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSkillHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DamageSkillEffect, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8747748374390514763, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8747748374390514763, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: battleStat.AP
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6607221240243338189, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 870632229}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+--- !u!1 &870632227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 870632229}
+  - component: {fileID: 870632228}
+  m_Layer: 0
+  m_Name: Damage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &870632228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870632227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cbeedaac4d751b4faafa813db90037b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 1
+--- !u!4 &870632229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870632227}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 884638391}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &884638391 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6607221240243338189, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+  m_PrefabInstance: {fileID: 784856805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &934310764
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +463,7 @@ GameObject:
   - component: {fileID: 934310767}
   - component: {fileID: 934310766}
   - component: {fileID: 934310765}
+  - component: {fileID: 934310769}
   m_Layer: 12
   m_Name: Sandbag
   m_TagString: Untagged
@@ -477,6 +559,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &934310769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934310764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663264c3096d95149ba0416f5c2e6c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleStat:
+    Level: 0
+    AP: 0
+    maxHP: 50
+    Exp: 0
+    Speed: 0
+    AttackRange: 0
+    AttackDelay: 0
+  curHP: 0
+  rotAct:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1728390527
 GameObject:
   m_ObjectHideFlags: 0

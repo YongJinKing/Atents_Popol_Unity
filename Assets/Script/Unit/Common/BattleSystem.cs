@@ -11,6 +11,7 @@ public struct BattleStat
     public uint Level;
     public uint AP;
     public uint maxHP;
+    public uint HP;
     public uint Exp;
     public float Speed;
     public float AttackRange;
@@ -24,7 +25,7 @@ public interface IDamage
 public class BattleSystem : CharacterProperty, IDamage
 {
     [SerializeField] protected BattleStat battleStat;
-    [SerializeField] protected float curHP = 0.0f;
+    [SerializeField] protected BattleStat curBattleStat;
     protected float battleTime = 0.0f;
     public event UnityAction deathAlarm;
     Transform _target = null;
@@ -32,7 +33,8 @@ public class BattleSystem : CharacterProperty, IDamage
     public UnityEvent<Vector3, float> rotAct;
     protected virtual void Start()
     {
-        curHP = battleStat.maxHP;
+        curBattleStat.maxHP = battleStat.maxHP;
+        curBattleStat.HP = battleStat.maxHP;
     }
 
     protected Transform myTarget
@@ -83,12 +85,12 @@ public class BattleSystem : CharacterProperty, IDamage
 
     protected void Initialize()
     {
-        curHP = battleStat.maxHP;
+        curBattleStat.HP = battleStat.maxHP;
     }
     public void TakeDamage(uint dmg)
     {
-        curHP -= dmg;
-        if (curHP <= 0.0f)
+        curBattleStat.HP -= dmg;
+        if (curBattleStat.HP <= 0.0f)
         {
             //Die
             OnDead();
@@ -134,6 +136,6 @@ public class BattleSystem : CharacterProperty, IDamage
 
     public bool IsLive()
     {
-        return curHP > 0.0f;
+        return curBattleStat.HP > 0.0f;
     }
 }
