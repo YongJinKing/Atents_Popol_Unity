@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using TreeEditor;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -208,7 +209,8 @@ public class UnitMovement : CharacterProperty
                 //�ִϸ��̼�
                 endAct?.Invoke();
             }
-
+            dir.y = 0;
+            dir.Normalize();
             float angle = Vector3.Angle(transform.forward, dir);
             float rotDir = Vector3.Dot(transform.right, dir) < 0.0f ? -1.0f : 1.0f;
             delta = speed * 90.0f * Time.deltaTime;

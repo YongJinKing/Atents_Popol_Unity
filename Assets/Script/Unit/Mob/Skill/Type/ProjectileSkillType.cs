@@ -93,6 +93,11 @@ public class ProjectileSkillType : AttackSkillType
             remainDuration -= Time.deltaTime;
             Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, size, hitBox.transform.rotation, targetMask | unpenetrableMask);
 
+            if (isdebuging_Gizmo)
+            {
+                //DebugGizmos(hitBox.transform.position, size);
+            }
+
             for (int i = 0; i < tempcol.Length; i++)
             {
                 //Projectile destroy because of ununpenetrableMask

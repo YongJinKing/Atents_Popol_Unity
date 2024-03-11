@@ -64,6 +64,11 @@ public class MeleeSkillType : AttackSkillType
             remainDuration -= Time.deltaTime;
             Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, size, hitBox.transform.rotation, targetMask);
 
+            if (isdebuging_Gizmo)
+            {
+                //DebugGizmos(hitBox.transform.position, size);
+            }
+
 
             for (int i = 0; i < tempcol.Length; i++)
             {
