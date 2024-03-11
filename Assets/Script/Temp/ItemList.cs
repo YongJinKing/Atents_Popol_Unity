@@ -6,18 +6,13 @@ public interface I_Item
 {
     public Item[] armors
     {
-        get
-        {
-            return Resources.LoadAll<Item>("UI/ItemModel/Armor");
-        }
+        get => Resources.LoadAll<Item>("UI/ItemModel/Armor");
+        
     }
 
     public Item[] weapons
     {
-        get
-        {
-            return Resources.LoadAll<Item>("UI/ItemModel/WeaPon");
-        }
+        get => Resources.LoadAll<Item>("UI/ItemModel/WeaPon");
     }
 }
 
