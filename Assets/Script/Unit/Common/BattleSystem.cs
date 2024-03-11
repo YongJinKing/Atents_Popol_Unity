@@ -14,6 +14,7 @@ public struct BattleStat
     public uint HP;
     public uint Exp;
     public float Speed;
+    public float AttackDelay;
 }
 public interface IDamage
 {
@@ -111,14 +112,13 @@ public class BattleSystem : CharacterProperty, IDamage
         battleStat.Level++;
     }
 
-    public void OnAttack(Vector3 target, Weapon equipWeapon)
+    public void OnAttack(Vector3 target)
     {
         Vector3 dir = target - transform.position;
         float Speed = 2;
 
         rotAct?.Invoke(dir, Speed);
 
-        //equipWeapon.Use();
         myAnim.SetTrigger("t_Attack");
     }
 

@@ -3,19 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class NewBehaviourScript : MonoBehaviour
+public class TempPlayerAnimEvent : MonoBehaviour
 {
-    public UnityEvent<int> Start;
+    public LayerMask enemyMask;
+    public Transform myAttackPoint;
+    public UnityEvent attackAct;
+    public UnityEvent deadAct;
     public UnityEvent<int> End;
-
-    public void OnStart(int i)
-    {
-        Start?.Invoke(i);
-    }
 
     public void OnEnd(int i)
     {
         End?.Invoke(i);
+    }
+
+    public void OnAttack()
+    {
+        Collider[] list = Physics.OverlapBox(myAttackPoint.position, new Vector3(5.0f, 1.0f, 8.3f) / 2, Quaternion.identity, enemyMask);
+    
+        foreach(Collider col in list)
+        {
+            BattleSystem bs = col.GetComponent<BattleSystem>();
+            if(bs != null)
+            {
+                bs.TakeDamage(30);
+            }
+        }
     }
 
 }

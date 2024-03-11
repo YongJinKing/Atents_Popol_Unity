@@ -11,14 +11,13 @@ using UnityEngine.Events;
 public class Player : BattleSystem, I_Effect
 {
     public UnityEvent<Vector3, float, UnityAction<float>> clickAct;
-    public UnityEvent<Vector3, Weapon> attackAct;
+    public UnityEvent<Vector3> attackAct;
     public UnityEvent<UnityAction<float>> stopAct;
     public UnityEvent<Vector3, float> dadgeAct;
     public UnityAction<Vector3> getHitAct;
     public GameObject jointItemR;
     public LayerMask clickMask;
     public GameObject AttackEffect;
-    Weapon equipWeapon;
     float FireDelay = 0;
     public float DadgeDelay = 0;
     bool isFireReady = true;
@@ -80,7 +79,6 @@ public class Player : BattleSystem, I_Effect
     {
         base.Start();
         ChangeState(state.Idle);
-        equipWeapon = jointItemR.transform.GetChild(0).GetComponent<Weapon>();
     }
 
     void Update()
@@ -116,7 +114,7 @@ public class Player : BattleSystem, I_Effect
             {
                 ChangeState(state.Fire);
                 PlayAttackEffect(hit.point, AttackEffect);
-                attackAct?.Invoke(hit.point, equipWeapon);
+                attackAct?.Invoke(hit.point);
                 stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             }
         }
@@ -162,7 +160,7 @@ public class Player : BattleSystem, I_Effect
         switch (type)
         {
             case 0:
-                FireDelay = equipWeapon.rate;
+                FireDelay = battleStat.AttackDelay;
                 break;
             case 1:
                 DadgeDelay = 1.0f;
