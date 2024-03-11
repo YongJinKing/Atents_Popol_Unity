@@ -9,12 +9,10 @@ using UnityEditor.PackageManager;
 
 public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public int index;
     public GameObject GridLine;
     public GameObject SkillPopup;
     public GameObject ColosseumEventObj;
     public List<GameObject> BossSkillList = new List<GameObject>();
-
     GameObject[] SkillSlots;
     
     public void OnPointerEnter(PointerEventData eventData)
@@ -24,7 +22,7 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             SkillPopup.SetActive(true);
             transform.GetChild(0).GetComponent<Animator>().SetBool("ChangeColor",true);
-            SkillDetailPopup(index);
+            SkillDetailPopup(transform.GetSiblingIndex());
         }
     }
 
@@ -35,9 +33,7 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
      void SkillDetailPopup(int SkillIndex)
     {
-
         BossSkillList = ColosseumEventObj.GetComponent<ColosseumEventManager>().BossMonsterSkillList;
-        SkillIndex = index;
         SkillPopup.transform.GetChild(0).GetComponent<Image>().sprite =
         BossSkillList[SkillIndex].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillSprite;
         SkillPopup.transform.GetChild(1).GetComponent<TMP_Text>().text =
