@@ -9,8 +9,10 @@ public class TempPlayerAnimEvent : MonoBehaviour
     public Transform myAttackPoint;
     public UnityEvent attackAct;
     public UnityEvent deadAct;
+    public UnityEvent EffectAct;
+    public UnityEvent SkillAct;
     public UnityEvent<int> End;
-
+    
     public void OnEnd(int i)
     {
         End?.Invoke(i);
@@ -30,4 +32,13 @@ public class TempPlayerAnimEvent : MonoBehaviour
         }
     }
 
+    public void OnAttckEffect()
+    {
+        EffectAct?.Invoke();
+    }
+
+    public void OnSkillEffect()
+    {
+        SkillAct?.Invoke();
+    }
 }

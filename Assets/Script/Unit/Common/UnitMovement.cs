@@ -26,7 +26,7 @@ public class UnitMovement : CharacterProperty
     }
 
     //Player
-    public void MoveToPos(Vector3 target, float Speed, UnityAction<float> blendAct)
+    public void MoveToPos(Vector3 dir, float Speed, UnityAction<float> blendAct)
     {
         if (move != null)
         {
@@ -34,7 +34,7 @@ public class UnitMovement : CharacterProperty
             move = null;
         }
 
-        move = StartCoroutine(MovingToPos(target, Speed, blendAct));
+        move = StartCoroutine(MovingToPos(dir, Speed, blendAct));
     }
 
     //Player Stop
@@ -109,9 +109,8 @@ public class UnitMovement : CharacterProperty
 
     
     //Player Roll
-    public void Dadge(Vector3 target, float dadge)
+    public void Dadge(Vector3 dir, float dadge)
     {
-        Vector3 dir = target - transform.position;
         dir.Normalize();
         
         if (rotate != null) StopCoroutine(rotate);
@@ -120,9 +119,8 @@ public class UnitMovement : CharacterProperty
     }
 
     //Player Move
-    IEnumerator MovingToPos(Vector3 target, float speed, UnityAction<float> blendAct) 
+    IEnumerator MovingToPos(Vector3 dir, float speed, UnityAction<float> blendAct) 
     {
-        Vector3 dir = target - transform.position;
         float dist = dir.magnitude;
         float delta;
         dir.Normalize();

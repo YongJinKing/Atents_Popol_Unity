@@ -4,7 +4,8 @@ using UnityEngine;
 
 public interface I_Effect
 {
-    public void PlayAttackEffect(Vector3 hit, GameObject AttackEffect);
+    public void PlayAttackEffect();
+    public void PlaySkillEffect();
 }
 
 public class DefaultEffect : MonoBehaviour

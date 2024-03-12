@@ -1,24 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Slash : MonoBehaviour
 {
-    public float moveSpeed = 10f; // ¾ÕÀ¸·Î ³¯¾Æ°¡´Â ¼Óµµ
-    public float destroyDelay = 1f; // »ç¶óÁú ½Ã°£
+    public float moveSpeed = 10f; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½ ï¿½Óµï¿½
+    public float destroyDelay = 1f; // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½
 
+    
     void Start()
     {
-        // Rigidbody ÄÄÆ÷³ÍÆ®¸¦ °¡Á®¿É´Ï´Ù.
+        
+        // Rigidbody ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½É´Ï´ï¿½.
         Rigidbody rb = GetComponent<Rigidbody>();
 
-        // Rigidbody°¡ Á¸ÀçÇÏ°í, ÈûÀ» °¡ÇÒ ¼ö ÀÖ´Â °æ¿ì¿¡¸¸ ÈûÀ» °¡ÇÕ´Ï´Ù.
+        // Rigidbodyï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ì¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
         if (rb != null && rb.mass > 0)
         {
             rb.AddForce(transform.forward * moveSpeed, ForceMode.Impulse);
         }
 
-        // destroyDelay ÀÌÈÄ¿¡ ¿ÀºêÁ§Æ®¸¦ ÆÄ±«ÇÕ´Ï´Ù.
+        // destroyDelay ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ä±ï¿½ï¿½Õ´Ï´ï¿½.
         Destroy(gameObject, destroyDelay);
+    }
+
+    void OnTriggerEnter (Collider other)
+    {
+        Debug.Log(other);
+        if(other.gameObject.layer == LayerMask.NameToLayer("Monster_Body"))
+        {
+            BattleSystem bs = other.GetComponent<BattleSystem>();
+            if(bs != null)
+            {
+                bs.TakeDamage(1000);
+            }
+        }
+        
     }
 }

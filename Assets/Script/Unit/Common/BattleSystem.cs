@@ -29,7 +29,6 @@ public class BattleSystem : CharacterProperty, IDamage
     public event UnityAction deathAlarm;
     Transform _target = null;
 
-    public UnityEvent<Vector3, float> rotAct;
     protected virtual void Start()
     {
         Initialize();
@@ -110,16 +109,6 @@ public class BattleSystem : CharacterProperty, IDamage
     public void LevelUp()
     {
         battleStat.Level++;
-    }
-
-    public void OnAttack(Vector3 target)
-    {
-        Vector3 dir = target - transform.position;
-        float Speed = 2;
-
-        rotAct?.Invoke(dir, Speed);
-
-        myAnim.SetTrigger("t_Attack");
     }
 
     protected virtual void OnDead()
