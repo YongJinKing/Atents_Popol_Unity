@@ -25,14 +25,14 @@ public class Inventory : MonoBehaviour
 #endif
     void Awake() 
     {
-        items = DontDestroyManager.GetComponent<DataManager>().PlayerInventory;
+        items = DontDestroyManager.GetComponent<DataManager>().HaveInventory;
         FreshSlot(0);
     }
    
 
     public void FreshSlot(int index)
     {
-        items = DontDestroyManager.GetComponent<DataManager>().PlayerInventory;
+        items = DontDestroyManager.GetComponent<DataManager>().HaveInventory;
         SlotMode = index;
 
         List<int> itemsShowIndex = new List<int>();

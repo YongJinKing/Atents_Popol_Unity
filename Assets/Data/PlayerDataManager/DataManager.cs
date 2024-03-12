@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-//[System.Serializable]
 public class PlayerData
 {
     public int Level = 1;
@@ -13,13 +12,13 @@ public class PlayerData
     public string[] Skill;
     public bool[] clearStage;
     public int PlayerGold;
-    private List<Item> PlayerInven;//치명적인 애러있음
+    public List<Item> PlayerInven;//치명적인 애러있음
 }
 
 
 public class DataManager : MonoBehaviour
 {
-    public List<Item> PlayerInventory;
+    public List<Item> HaveInventory;
     public static DataManager instance;
     public PlayerData playerData = new PlayerData();
 
@@ -42,7 +41,9 @@ public class DataManager : MonoBehaviour
         path = Application.dataPath + "/Data/PlayerSaveFile/";      // json파일 저장 경로
     }
 
-
+    private void Update() {
+        playerData.PlayerInven = HaveInventory;
+    }
     public void SaveData()
     {
         string data = JsonUtility.ToJson(playerData, true);

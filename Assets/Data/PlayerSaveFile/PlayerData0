@@ -4,5 +4,14 @@
     "NowWeapon": "",
     "NowArmor": "",
     "Skill": [],
-    "clearStage": []
+    "clearStage": [],
+    "PlayerGold": 0,
+    "PlayerInven": [
+        {
+            "instanceID": 23446
+        },
+        {
+            "instanceID": 23426
+        }
+    ]
 }

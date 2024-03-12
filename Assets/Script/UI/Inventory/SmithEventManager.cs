@@ -106,10 +106,10 @@ public class SmithEventManager : MonoBehaviour
     #region SmithSystem
     Color AlphaColorChange(int i, float Value)
     {
-        Color color = InvenSlotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;//
+        Color color = InvenSlotList[i].gameObject.GetComponent<Image>().color;//
         color.a = Value;
-        InvenSlotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color = color;
-        return InvenSlotList[i].gameObject.GetComponent<UnityEngine.UI.Image>().color;
+        InvenSlotList[i].gameObject.GetComponent<Image>().color = color;
+        return InvenSlotList[i].gameObject.GetComponent<Image>().color;
     }
 
     public void CleanSlots()
@@ -124,7 +124,7 @@ public class SmithEventManager : MonoBehaviour
     void InvenSlotBtnChoise(int index)
     {
         Slot[] SlotList = SmithInventory.GetComponent<Inventory>().slots;
-        UnityEngine.UI.Image ItemInSlot = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(index).gameObject.GetComponent<UnityEngine.UI.Image>();
+        Image ItemInSlot = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(index).gameObject.GetComponent<Image>();
         if(index >= SmithInventory.transform.GetComponent<Inventory>().TypeCount)
             return;
         if(SlotList[index])
@@ -194,11 +194,11 @@ public class SmithEventManager : MonoBehaviour
     {
 
         ChooseSlotIndex = SmithInventory.GetComponent<Inventory>().itemsIndex[index];
-        UnityEngine.UI.Image ItemAbilityImage = SmithItemAbility.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>();
+        Image ItemAbilityImage = SmithItemAbility.transform.GetChild(0).GetComponent<Image>();
         TMP_Text ItemAbilityText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(1).gameObject.GetComponent<TMP_Text>();
-        UnityEngine.UI.Image NpcTalkBollum = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>();
+        Image NpcTalkBollum = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<Image>();
         TMP_Text NpcText = GameObject.Find("Smith UI").transform.GetChild(0).GetChild(1).GetChild(0).GetChild(1).GetChild(1).gameObject.GetComponent<TMP_Text>();
-        ItemAbilityImage.sprite = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(index).GetChild(0).gameObject.GetComponent<UnityEngine.UI.Image>().sprite;
+        ItemAbilityImage.sprite = SmithInventory.transform.GetChild(1).GetChild(0).GetChild(index).GetChild(0).gameObject.GetComponent<Image>().sprite;
         string EqirType(RiggingType Type)
         {
             string Typename = "";
@@ -252,14 +252,14 @@ public class SmithEventManager : MonoBehaviour
         {
             for(int i = 0; i < SmithTypeBtnManager.transform.childCount; i++)
             {
-                SmithTypeBtnManager.transform.GetChild(i).gameObject.GetComponent<UnityEngine.UI.Image>().sprite = ButtonImgSprite[0];
+                SmithTypeBtnManager.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = ButtonImgSprite[0];
                 SmithTypeBtnManager.transform.GetChild(i).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 10, 0);
                 
             }
             
             if(IsClicked)
             {
-                SmithTypeBtnManager.transform.GetChild(index).gameObject.GetComponent<UnityEngine.UI.Image>().sprite = ButtonImgSprite[1];
+                SmithTypeBtnManager.transform.GetChild(index).gameObject.GetComponent<Image>().sprite = ButtonImgSprite[1];
                 SmithTypeBtnManager.transform.GetChild(index).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -5, 0);
             }
         }
@@ -275,7 +275,7 @@ public class SmithEventManager : MonoBehaviour
             
             if(popupType == SmithPopupType.Repair)
             {
-                DontDestroyManager.GetComponent<DataManager>().PlayerInventory[ChooseSlotIndex].durAbility = 100;
+                DontDestroyManager.GetComponent<DataManager>().HaveInventory[ChooseSlotIndex].durAbility = 100;
                 CleanSlots();
                 PopupClose();
                 if(InvenBtnList[0].ChooseBtn)
@@ -292,7 +292,7 @@ public class SmithEventManager : MonoBehaviour
             }
             if(popupType == SmithPopupType.ThrowAway)
             {
-                DontDestroyManager.GetComponent<DataManager>().PlayerInventory.RemoveAt(ChooseSlotIndex);
+                DontDestroyManager.GetComponent<DataManager>().HaveInventory.RemoveAt(ChooseSlotIndex);
                 CleanSlots();
                 PopupClose();
                 if(InvenBtnList[0].ChooseBtn)
