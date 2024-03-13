@@ -11,6 +11,7 @@ public class MainEventManager : MonoBehaviour
     public GameObject gameCanvas;//게임 
     public GameObject MainUI;//메인 UI
     public GameObject UserPanel;
+    public GameObject DontDestoyedObj;
     public GameObject SmithEvnetManager;
 
 

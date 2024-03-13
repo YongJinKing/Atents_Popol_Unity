@@ -19,6 +19,7 @@ public class PlayerData
 public class DataManager : MonoBehaviour
 {
     public List<Item> HaveInventory;
+    public int PlayerGold = 6000;
     public static DataManager instance;
     public PlayerData playerData = new PlayerData();
 

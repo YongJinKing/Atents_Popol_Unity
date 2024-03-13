@@ -1,6 +1,5 @@
-using System.Collections;
+
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +7,9 @@ public class Inventory : MonoBehaviour
 {
     public List<Item> items;
     public List<int> itemsIndex = new List<int>();
+    public GameObject ModeBtn;
     public GameObject DontDestroyManager;
-
+    
     [SerializeField]
     private Transform slotParent;
     [SerializeField]
@@ -28,14 +28,12 @@ public class Inventory : MonoBehaviour
         items = DontDestroyManager.GetComponent<DataManager>().HaveInventory;
         FreshSlot(0);
     }
-   
-
+    
     public void FreshSlot(int index)
     {
-        items = DontDestroyManager.GetComponent<DataManager>().HaveInventory;
-        SlotMode = index;
-
+        
         List<int> itemsShowIndex = new List<int>();
+        SlotMode = index;
         if(SlotMode == 0)
         {
             int i = 0;

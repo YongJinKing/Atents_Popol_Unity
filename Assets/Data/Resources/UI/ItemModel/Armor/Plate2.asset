@@ -18,6 +18,6 @@ MonoBehaviour:
   itemDesc: "\uD3C9\uBC94\uD55C \uD310\uAE08\uC73C\uB85C \uB9CC\uB4E0 \uAC11\uC637\uC774\uB2E4."
   smithTalk: "\uC81C\uBC95 \uAD1C\uCC2E\uC740 \uAC11\uC637\uC774\uAD70!"
   durAbility: 100
-  SellingPrice: 0
+  SellingPrice: 10000
   weaponType: 13
   riggingType: 2

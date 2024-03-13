@@ -18,5 +18,6 @@ MonoBehaviour:
   itemDesc: 
   smithTalk: 
   durAbility: 100
+  SellingPrice: 10000
   weaponType: 1
   riggingType: 1

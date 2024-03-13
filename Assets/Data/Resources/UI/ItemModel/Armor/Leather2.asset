@@ -19,5 +19,6 @@ MonoBehaviour:
     \uAC11\uC637\uC774\uB2E4."
   smithTalk: "\uC624 \uC774\uAC74 \uAF64 \uC88B\uC740 \uAC00\uC8FD\uC73C\uB85C \uB9CC\uB4E4\uC5C8\uAD70!"
   durAbility: 100
+  SellingPrice: 10000
   weaponType: 11
   riggingType: 2

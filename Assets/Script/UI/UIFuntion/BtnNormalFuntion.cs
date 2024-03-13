@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ButtonSetting : MonoBehaviour
+public class BtnNormalFuntion : MonoBehaviour
 {
     public Sprite[] ButtonSprite;
     

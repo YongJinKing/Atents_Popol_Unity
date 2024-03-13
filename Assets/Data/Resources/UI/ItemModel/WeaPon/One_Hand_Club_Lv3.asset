@@ -18,5 +18,6 @@ MonoBehaviour:
   itemDesc: "\uCD5C\uACE0\uAE09 \uB9DD\uCE58"
   smithTalk: "\uB9DD\uCE58 \uB098\uAC00\uC2E0\uB2E4!"
   durAbility: 60
+  SellingPrice: 100000
   weaponType: 2
   riggingType: 1

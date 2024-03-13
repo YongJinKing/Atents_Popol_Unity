@@ -17,16 +17,19 @@ public class SmithEventManager : MonoBehaviour
    
     public GameObject SmithUI;
     public GameObject SmithInventory;//
-    public GameObject SmithTypeBtnManager;
+    public GameObject SmithModeBtn;
     public GameObject SmithItemAbility;
     public GameObject SmithPairAndAwayBtnManager;
     public GameObject SmithPopupManager;
     public GameObject SmithMainImage;
+    public GameObject ShopEventManager;
+    public GameObject ShopInven;
     public GameObject DontDestroyManager;
+    
 
     
     private List<InvenSlot> InvenSlotList = new List<InvenSlot>();//
-    private List<InvenBtn> InvenBtnList = new List<InvenBtn>();//
+   
 
     SmithPopupType popupType = SmithPopupType.None;
     int ChooseSlotIndex = 0;
@@ -38,11 +41,7 @@ public class SmithEventManager : MonoBehaviour
         public GameObject gameObject;
         public bool ChooseSlot;
     }
-    public class InvenBtn
-    {
-        public GameObject gameObject;
-        public bool ChooseBtn;
-    }
+    
 
     private void Start() 
     {
@@ -59,15 +58,7 @@ public class SmithEventManager : MonoBehaviour
             InvenSlotList[i].gameObject.GetComponent<Button>().onClick.AddListener(() => InvenSlotBtnChoise(index));
         }
 
-        for(int i = 0; i < SmithTypeBtnManager.transform.childCount; i++)
-        {
-            int index = i;
-            InvenBtn temp = new InvenBtn();
-            temp.gameObject = SmithTypeBtnManager.transform.GetChild(i).gameObject;
-            temp.ChooseBtn = false;
-            InvenBtnList.Add(temp);
-            InvenBtnList[i].gameObject.GetComponent<Button>().onClick.AddListener(()=>ChangeEqirType(index));
-        }
+        
 
         Button[] SmithPairAndAwayBtnList = SmithPairAndAwayBtnManager.GetComponentsInChildren<UnityEngine.UI.Button>();
         for(int i = 0; i < SmithPairAndAwayBtnManager.transform.childCount; i++)
@@ -103,19 +94,20 @@ public class SmithEventManager : MonoBehaviour
     }
     
     #region SmithSystem
-    Color AlphaColorChange(int i, float Value)
+    
+    Color AlphaColorChange(float Value, Color Objcolor)
     {
-        Color color = InvenSlotList[i].gameObject.GetComponent<Image>().color;//
+        Color color = Objcolor;
         color.a = Value;
-        InvenSlotList[i].gameObject.GetComponent<Image>().color = color;
-        return InvenSlotList[i].gameObject.GetComponent<Image>().color;
+        Objcolor = color;
+        return Objcolor;
     }
-
     public void CleanSlots()
     {
         for(int i = 0; i < SmithInventory.GetComponent<Inventory>().slots.Length; i++)
         {
-            AlphaColorChange(i, 0.0f);
+            InvenSlotList[i].gameObject.GetComponent<Image>().color =
+            AlphaColorChange(0.0f, InvenSlotList[i].gameObject.GetComponent<Image>().color);
             InvenSlotList[i].ChooseSlot = false;//
         }
         ItemDetailShow(false);
@@ -142,43 +134,15 @@ public class SmithEventManager : MonoBehaviour
         
             if(InvenSlotList[index].ChooseSlot)
             {
-                AlphaColorChange(index, 0.3f);
+                InvenSlotList[index].gameObject.GetComponent<Image>().color =
+                AlphaColorChange(0.3f, InvenSlotList[index].gameObject.GetComponent<Image>().color);
                 ItemDetailShow(true);
                 ItemDetailChange(SlotList[index], index);
             }
         }
         else return;
     }
-    void ChangeEqirType(int index)
-    {
-        CleanSlots();
-        if(InvenBtnList[index].ChooseBtn)
-        {
-            InvenBtnList[index].ChooseBtn = false;
-            BtnImage(false,index, "InvenButton");
-            SmithInventory.GetComponent<Inventory>().FreshSlot(0);
-            return;
-        }
-        else
-        {
-            InvenBtnList[0].ChooseBtn = false;
-            InvenBtnList[1].ChooseBtn = false;
-            InvenBtnList[index].ChooseBtn = true;
-            BtnImage(true, index, "InvenButton");
-            
-                
-            
-        }
-        if(InvenBtnList[0].ChooseBtn)
-        {
-            SmithInventory.GetComponent<Inventory>().FreshSlot(1);
-            
-        }
-        if(InvenBtnList[1].ChooseBtn)
-        {
-            SmithInventory.GetComponent<Inventory>().FreshSlot(2);
-        }
-    }
+   
     void ItemDetailShow(bool isShow)
     {
         GameObject ItemAbility = SmithMainImage.transform.GetChild(0).gameObject;
@@ -242,69 +206,49 @@ public class SmithEventManager : MonoBehaviour
         }
     }
     #endregion 
-    #region ButtonImage
-    void BtnImage(bool IsClicked, int index, string UiName)
-    {
-
-        #region SmithUI
-        if(UiName == "InvenButton")
-        {
-            for(int i = 0; i < SmithTypeBtnManager.transform.childCount; i++)
-            {
-                SmithTypeBtnManager.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = ButtonImgSprite[0];
-                SmithTypeBtnManager.transform.GetChild(i).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 10, 0);
-                
-            }
-            
-            if(IsClicked)
-            {
-                SmithTypeBtnManager.transform.GetChild(index).gameObject.GetComponent<Image>().sprite = ButtonImgSprite[1];
-                SmithTypeBtnManager.transform.GetChild(index).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -5, 0);
-            }
-        }
-        #endregion
-    }
-    #endregion
+    
     #region PopupControll
     void PopupUiControll(int index)
     {
 
         if(index == 0)//yes
         {
-            
+            List<bool> SmithModeBtnList = SmithModeBtn.GetComponent<BtnModeFuntion>().BtnModeCheck;
             if(popupType == SmithPopupType.Repair)
             {
                 DontDestroyManager.GetComponent<DataManager>().HaveInventory[ChooseSlotIndex].durAbility = 100;
                 CleanSlots();
                 PopupClose();
-                if(InvenBtnList[0].ChooseBtn)
+                int BoolIndex = SmithModeBtnList.IndexOf(true);
+                if(BoolIndex != -1)
                 {
-                    SmithInventory.GetComponent<Inventory>().FreshSlot(1);
+                    SmithInventory.GetComponent<Inventory>().FreshSlot(BoolIndex + 1);
+                    ShopInven.GetComponent<Inventory>().FreshSlot(BoolIndex + 1);
                 }
-                else if(InvenBtnList[1].ChooseBtn)
-                {
-                    SmithInventory.GetComponent<Inventory>().FreshSlot(2);
-                }else
+                else
                 {
                     SmithInventory.GetComponent<Inventory>().FreshSlot(0);
+                    ShopInven.GetComponent<Inventory>().FreshSlot(0);
                 }
             }
             if(popupType == SmithPopupType.ThrowAway)
             {
                 DontDestroyManager.GetComponent<DataManager>().HaveInventory.RemoveAt(ChooseSlotIndex);
+
                 CleanSlots();
                 PopupClose();
-                if(InvenBtnList[0].ChooseBtn)
+                int BoolIndex = SmithModeBtnList.IndexOf(true);
+                if(BoolIndex != -1)
                 {
-                    SmithInventory.GetComponent<Inventory>().FreshSlot(1);
+                    SmithInventory.GetComponent<Inventory>().FreshSlot(BoolIndex + 1);
+                    ShopInven.GetComponent<Inventory>().FreshSlot(BoolIndex + 1);
                 }
-                else if(InvenBtnList[1].ChooseBtn)
-                {
-                    SmithInventory.GetComponent<Inventory>().FreshSlot(2);
-                }else
+                else
                 {
                     SmithInventory.GetComponent<Inventory>().FreshSlot(0);
+                    ShopInven.GetComponent<Inventory>().FreshSlot(0);
                 }
+                ShopEventManager.GetComponent<ShopEvenvtManager>().InvenCheck();
             }
         }
         if(index == 1)//no
