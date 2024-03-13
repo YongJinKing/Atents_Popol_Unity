@@ -10,9 +10,13 @@ public class TempPlayerAnimEvent : MonoBehaviour
     public UnityEvent attackAct;
     public UnityEvent deadAct;
     public UnityEvent<int> End;
-
-    //public DefaultEffect effect = new DefaultEffect();
-    
+    GameObject Effectobj;
+    I_Effect i_Effect;
+    void Awake()
+    {
+        Effectobj = transform.parent.GetComponent<Player>().Effectobj;
+        i_Effect = Effectobj.GetComponent<I_Effect>();
+    }
     public void OnEnd(int i)
     {
         End?.Invoke(i);
@@ -34,11 +38,11 @@ public class TempPlayerAnimEvent : MonoBehaviour
 
     public void OnAttckEffect()
     {
-        //I_Effect effect = new I_Effect();
+        i_Effect.PlayAttackEffect();
     }
 
     public void OnSkillEffect()
     {
-
+        i_Effect.PlaySkillEffect();
     }
 }

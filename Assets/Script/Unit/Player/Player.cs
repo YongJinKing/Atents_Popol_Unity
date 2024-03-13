@@ -29,8 +29,7 @@ public class Player : BattleSystem, I_ClickPoint
     public float dadgePw;
     bool isFireReady = true;
     bool isDadgeReady = true;
-
-    public PlayerSkill[] playerSkills = null;
+    public GameObject Effectobj;
     
     Vector3 dir;
     public enum state
