@@ -192,8 +192,6 @@ public class Slime : Monster
             }
             yield return null;
         }
-
-        yield return null;
     }
     #endregion
 

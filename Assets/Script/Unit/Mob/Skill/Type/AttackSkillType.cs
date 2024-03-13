@@ -34,7 +34,6 @@ public abstract class AttackSkillType : BaseSkillType
     public GameObject hitEffectPrefeb;
     //스킬이 시작될 위치
     public Transform[] attackStartPos;
-    public bool isdebuging_Gizmo;
     #endregion
 
     //이벤트 함수들 영역
@@ -80,13 +79,6 @@ public abstract class AttackSkillType : BaseSkillType
 
     //public 함수들 영역
     #region PublicMethod
-    /*
-    public virtual void DebugGizmos(Vector3 hitBoxPos, Vector3 size)
-    {
-        Gizmos.color = Color.green;
-
-    }
-    */
     #endregion
     #endregion
 

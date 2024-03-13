@@ -81,24 +81,13 @@ public class ProjectileSkillType : AttackSkillType
         //투사체 각각이 남은시간을 가지고 있어야 하므로 코루틴에다가 remainDuration을 지역변수로 재정의 했다.
         float remainDuration = hitDuration;
 
-        //Collider tempcollider = hitBox.GetComponent<BoxCollider>();
-
-        //OverlapBox에서 쓸 box의 사이즈
-        Vector3 size = new Vector3(
-            hitBox.transform.position.x * hitBox.transform.lossyScale.x,
-            hitBox.transform.position.y * hitBox.transform.lossyScale.y,
-            hitBox.transform.position.z * hitBox.transform.lossyScale.z
-            );
+        //콜라이더 사이즈를 위해서 콜라이더를 구한다.
+        Collider hitBoxCol = hitBox.GetComponent<Collider>();
 
         while (remainDuration >= 0.0f && hitBox != null)
         {
             remainDuration -= Time.deltaTime;
-            Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, size, hitBox.transform.rotation, targetMask | unpenetrableMask);
-
-            if (isdebuging_Gizmo)
-            {
-                //DebugGizmos(hitBox.transform.position, size);
-            }
+            Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, hitBoxCol.bounds.extents , hitBox.transform.rotation, targetMask | unpenetrableMask);
 
             for (int i = 0; i < tempcol.Length; i++)
             {

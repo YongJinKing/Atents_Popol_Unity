@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 934310766}
   - component: {fileID: 934310765}
   - component: {fileID: 934310769}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Sandbag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,14 +575,18 @@ MonoBehaviour:
     Level: 0
     AP: 0
     maxHP: 50
+    HP: 0
     Exp: 0
     Speed: 0
-    AttackRange: 0
     AttackDelay: 0
-  curHP: 0
-  rotAct:
-    m_PersistentCalls:
-      m_Calls: []
+  curBattleStat:
+    Level: 0
+    AP: 0
+    maxHP: 0
+    HP: 0
+    Exp: 0
+    Speed: 0
+    AttackDelay: 0
 --- !u!1 &1728390527
 GameObject:
   m_ObjectHideFlags: 0
