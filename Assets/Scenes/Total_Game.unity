@@ -249,6 +249,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 1367917012413303499, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: maxDist
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2597314438508396557, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: detectRadius
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3644806297972782553, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -289,8 +297,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4016902258080727839, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: maxDist
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4438531222778012845, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: detectRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6846226738856845446, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: detectRadius
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: maxDist
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1490148576}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSkillHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DamageSkillEffect, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6353289230600608856, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
@@ -538,6 +587,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4642549304430555121, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
   m_PrefabInstance: {fileID: 135261195}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1490148576 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6716068829571539069, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+  m_PrefabInstance: {fileID: 577448339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cbeedaac4d751b4faafa813db90037b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2078882247 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2170147794579880816, guid: 601e8622908f64848bc7206334df98e0, type: 3}

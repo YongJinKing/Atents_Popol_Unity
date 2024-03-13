@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
 using UnityEngine.Events;
-
+using static UnityEditor.PlayerSettings;
 
 [System.Serializable]
 public struct uiMonsterSkillStatus
@@ -150,5 +150,17 @@ public class Skill : MonoBehaviour
 
     //유니티 함수들 영역
     #region MonoBehaviour
+
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        //Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.color = new UnityEngine.Color(0, 1f, 0, 0.2f);
+        Gizmos.DrawSphere(transform.position, detectRadius);
+    }
+#endif
+
+
     #endregion
 }

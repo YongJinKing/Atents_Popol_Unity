@@ -103,6 +103,7 @@ public class Slime : Monster
                 break;
             //공격
             case State.Attacking:
+                //플레이어를 바라보는 이벤트 실행(코루틴으로 하기)
                 myAnim.SetTrigger("t_Attack");
                 break;
         }
