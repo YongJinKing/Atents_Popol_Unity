@@ -17,6 +17,9 @@ public class cameraMove : MonoBehaviour
     public float trackSpeed = 7.0f;
     public Vector2 zoomRange = new Vector2(1, 15);
     public float zoomSpeed = 5.0f;
+    public bool wheelClickRot = true;
+    public float rotationSpeed = 0.1f; // 회전 속도
+    private Vector3 lastMousePosition; // 마우스 이전 위치
 
     public bool raycastDebug = false;
 
@@ -24,6 +27,7 @@ public class cameraMove : MonoBehaviour
     {
         myCam = GetComponentInChildren<Camera>().transform;
         camDist = targetDist = Mathf.Abs(myCam.localPosition.z);
+        transform.rotation = Quaternion.Euler(playerAngle.x, playerAngle.y, 0);
     }
 
     void Update()
@@ -54,5 +58,15 @@ public class cameraMove : MonoBehaviour
 
         //플레이어 트레킹
         transform.position = Vector3.Lerp(transform.position, playerPos.position + playeroffSet, Time.deltaTime * trackSpeed);
+
+        //WheelClick Rotation
+        if (wheelClickRot & Input.GetMouseButton(2))
+        {
+            Vector3 curMousePosition = Input.mousePosition;
+            Vector3 deltaMousePosition = curMousePosition - lastMousePosition;
+            playerAngle.y += deltaMousePosition.x * rotationSpeed;
+            lastMousePosition = curMousePosition;
+        }
+        else { lastMousePosition = Input.mousePosition; }
     }
 }
