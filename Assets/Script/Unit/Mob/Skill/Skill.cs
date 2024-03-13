@@ -132,6 +132,7 @@ public class Skill : MonoBehaviour
         //쿨타임이 아직 남아있으면 아예 invoke 자체가 일어나지 않음으로서 쿨타임 구현
         if (remainCoolDownTime <= 0)
         {
+
             onSkillActivatedEvent?.Invoke(targetPos);
             //밑은 테스트용으로 씀
             OnSkillEnd();

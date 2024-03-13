@@ -241,7 +241,8 @@ GameObject:
   - component: {fileID: 3203241428474560384}
   - component: {fileID: 4992813411647446464}
   - component: {fileID: 5398781113258463859}
-  m_Layer: 0
+  - component: {fileID: 4213027045786129768}
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,42 +294,12 @@ MonoBehaviour:
     Exp: 0
     Speed: 0
     AttackDelay: 0
-  rotAct:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4992813411647446464}
-        m_TargetAssemblyTypeName: UnitMovement, Assembly-CSharp
-        m_MethodName: Rotate
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   clickAct:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4992813411647446464}
         m_TargetAssemblyTypeName: UnitMovement, Assembly-CSharp
         m_MethodName: MoveToPos
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  attackAct:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3203241428474560384}
-        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: OnAttack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -368,11 +339,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  jointItemR: {fileID: 0}
+  rotAct:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4992813411647446464}
+        m_TargetAssemblyTypeName: UnitMovement, Assembly-CSharp
+        m_MethodName: Rotate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  jointItemR: {fileID: 1182184563210911581}
   clickMask:
     serializedVersion: 2
     m_Bits: 16384
   AttackEffect: {fileID: 7925162887021308499, guid: 77c658dd7c8c1164f8bc060efad93442, type: 3}
+  SkillEffect: {fileID: 2701895367126473184, guid: a38782187a3567e4b8d1176b930e63f7, type: 3}
+  rotSpeed: 2
   DadgeDelay: 1
   dadgePw: 80
   playerstate: 2
@@ -416,6 +404,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &4213027045786129768
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8261803422018730252}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &4884952337732984806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -498,6 +507,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8739570400501483433}
   m_SourcePrefab: {fileID: 100100000, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+--- !u!1 &1182184563210911581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6029511613007732923, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+  m_PrefabInstance: {fileID: 4884952337732984806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4002841003399896686 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8378424745406562696, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
@@ -542,6 +556,36 @@ MonoBehaviour:
   deadAct:
     m_PersistentCalls:
       m_Calls: []
+  EffectAct:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3203241428474560384}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: PlayAttackEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  SkillAct:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3203241428474560384}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: PlaySkillEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   End:
     m_PersistentCalls:
       m_Calls:

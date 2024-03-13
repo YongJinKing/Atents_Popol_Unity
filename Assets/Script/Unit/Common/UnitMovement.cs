@@ -141,9 +141,6 @@ public class UnitMovement : CharacterProperty
             }
             
             blendAct?.Invoke(tempSpeed);
-            
-            
-
 
             delta = tempSpeed * Time.deltaTime * speed;
             if (delta > dist) delta = dist;

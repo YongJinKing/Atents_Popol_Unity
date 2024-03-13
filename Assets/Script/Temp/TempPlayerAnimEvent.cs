@@ -9,9 +9,9 @@ public class TempPlayerAnimEvent : MonoBehaviour
     public Transform myAttackPoint;
     public UnityEvent attackAct;
     public UnityEvent deadAct;
-    public UnityEvent EffectAct;
-    public UnityEvent SkillAct;
     public UnityEvent<int> End;
+
+    //public DefaultEffect effect = new DefaultEffect();
     
     public void OnEnd(int i)
     {
@@ -24,21 +24,21 @@ public class TempPlayerAnimEvent : MonoBehaviour
     
         foreach(Collider col in list)
         {
-            BattleSystem bs = col.GetComponent<BattleSystem>();
-            if(bs != null)
+            IDamage iDamege = col.GetComponent<IDamage>();
+            if(iDamege != null)
             {
-                bs.TakeDamage(30);
+                iDamege.TakeDamage(30);
             }
         }
     }
 
     public void OnAttckEffect()
     {
-        EffectAct?.Invoke();
+        //I_Effect effect = new I_Effect();
     }
 
     public void OnSkillEffect()
     {
-        SkillAct?.Invoke();
+
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1265325611146002917}
   - component: {fileID: 8747748374390514763}
   - component: {fileID: 7160683193284734475}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,6 +108,7 @@ MonoBehaviour:
     HP: 0
     Exp: 0
     Speed: 2
+    AttackDelay: 0
   curBattleStat:
     Level: 0
     AP: 0
@@ -115,21 +116,7 @@ MonoBehaviour:
     HP: 0
     Exp: 0
     Speed: 0
-  rotAct:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7160683193284734475}
-        m_TargetAssemblyTypeName: UnitMovement, Assembly-CSharp
-        m_MethodName: Rotate
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+    AttackDelay: 0
   myState: 0
   target: {fileID: 0}
   skills:
@@ -476,6 +463,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: targetMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: uiSkillStatus.uiSkillName
       value: FireThere
       objectReference: {fileID: 0}
@@ -487,6 +478,10 @@ PrefabInstance:
       propertyPath: onAddSkillEventListener.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8747748374390514763}
+    - target: {fileID: 7826091675580535966, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: targetMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 7826091675580535966, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: attackStartPos.Array.data[0]
       value: 
@@ -855,6 +850,10 @@ PrefabInstance:
       value: Dash
       objectReference: {fileID: 0}
     - target: {fileID: 6354985807710237568, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
+      propertyPath: targetMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354985807710237568, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: attackStartPos.Array.data[0]
       value: 
       objectReference: {fileID: 4556994997192371925}
@@ -881,6 +880,10 @@ PrefabInstance:
     - target: {fileID: 6354985807710237568, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
+      propertyPath: targetMask.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: onAddSkillEventListener.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -923,6 +926,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3644806297972782553}
     m_Modifications:
+    - target: {fileID: 5002272567213219421, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
+      propertyPath: targetMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 5002272567213219421, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
       propertyPath: attackStartPos.Array.data[0]
       value: 
@@ -994,6 +1001,10 @@ PrefabInstance:
     - target: {fileID: 7017171036250716022, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
+      propertyPath: targetMask.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
       propertyPath: onAddSkillEventListener.m_PersistentCalls.m_Calls.Array.data[0].m_Target

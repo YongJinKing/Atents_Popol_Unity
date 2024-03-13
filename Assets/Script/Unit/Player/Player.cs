@@ -8,9 +8,12 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
+public interface I_ClickPoint
+{
+    public Vector3 GetRaycastHit();
+}
 
-
-public class Player : BattleSystem, I_Effect
+public class Player : BattleSystem, I_ClickPoint
 {
     public UnityEvent<Vector3, float, UnityAction<float>> clickAct;
     public UnityEvent<UnityAction<float>> stopAct;
@@ -21,15 +24,15 @@ public class Player : BattleSystem, I_Effect
     public GameObject AttackEffect;
     public GameObject SkillEffect;
     public float rotSpeed = 2;
-    float Speed = 2;
     float FireDelay = 0;
     public float DadgeDelay = 0;
-    bool isFireReady = true;
-    bool isClick;
-    Vector3 dir;
-
-    bool isDadgeReady = true;
     public float dadgePw;
+    bool isFireReady = true;
+    bool isDadgeReady = true;
+
+    public PlayerSkill[] playerSkills = null;
+    
+    Vector3 dir;
     public enum state
     {
         Fire, Dadge, Idle, Run, Skill
@@ -99,13 +102,15 @@ public class Player : BattleSystem, I_Effect
         ProcessState();
     }
 
-    public void GetRaycastHit()
+    public Vector3 GetRaycastHit()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
         {
             dir = hit.point - transform.position;
         }
+
+        return dir;
     }
 
     public void FireToMousePos()
@@ -182,15 +187,7 @@ public class Player : BattleSystem, I_Effect
         ChangeState(state.Idle);
     }
 
-    public void PlaySkillEffect()
-    {
-        GameObject effect = Instantiate(SkillEffect);
-        
-        effect.transform.position = transform.position;
-
-        effect.transform.rotation = Quaternion.LookRotation(dir);
-        Destroy(effect.gameObject, 4.0f);
-    }
+    
 
     public void PlayAttackEffect()
     {
@@ -201,6 +198,4 @@ public class Player : BattleSystem, I_Effect
         effect.transform.rotation = Quaternion.LookRotation(dir);
         Destroy(effect.gameObject, 0.5f);
     }
-
-    
 }

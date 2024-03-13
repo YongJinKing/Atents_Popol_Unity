@@ -81,6 +81,8 @@ public class ProjectileSkillType : AttackSkillType
         //투사체 각각이 남은시간을 가지고 있어야 하므로 코루틴에다가 remainDuration을 지역변수로 재정의 했다.
         float remainDuration = hitDuration;
 
+        //Collider tempcollider = hitBox.GetComponent<BoxCollider>();
+
         //OverlapBox에서 쓸 box의 사이즈
         Vector3 size = new Vector3(
             hitBox.transform.position.x * hitBox.transform.lossyScale.x,
@@ -252,7 +254,7 @@ public class ProjectileSkillType : AttackSkillType
     #region EventHandler
     public override void OnSkillActivated(Vector3 targetPos)
     {
-        base.OnSkillActivated(targetPos);
+        base.OnSkillActivated(targetPos + Vector3.up * 1.0f);
         for(int i = 0; i < maxIndex; i++)
         {
             StartCoroutine(HitChecking(areaOfEffect[i]));

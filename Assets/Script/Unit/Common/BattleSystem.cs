@@ -1,4 +1,5 @@
 
+using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -52,6 +53,12 @@ public class BattleSystem : CharacterProperty, IDamage
     {
         get
         {
+            //debuf [] temp = GetComponentinchildren()
+            //int temp ap
+            //for()
+            //ap * TempAnimEvent dsa
+
+            //return ap;
             return this.curBattleStat.AP;
         }
         set
