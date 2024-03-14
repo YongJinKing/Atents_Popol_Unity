@@ -78,7 +78,7 @@ public class ShopEvenvtManager : MonoBehaviour, I_Item
     }
     public void InvenCheck()
     {
-        List<Item> items = DontDestroyManager.GetComponent<DataManager>().HaveInventory;
+        List<Item> items = DontDestroyManager.GetComponent<DataManager>().playerData.PlayerInven;
         for(int i = 0; i < SellingItems.Count; i++)
         {
             for(int j = 0; j < items.Count; j++)

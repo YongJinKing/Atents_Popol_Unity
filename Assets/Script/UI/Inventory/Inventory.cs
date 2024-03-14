@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
 #endif
     void Awake() 
     {
-        items = DontDestroyManager.GetComponent<DataManager>().HaveInventory;
+        items = DontDestroyManager.GetComponent<DataManager>().playerData.PlayerInven;
         FreshSlot(0);
     }
     

@@ -216,7 +216,7 @@ public class SmithEventManager : MonoBehaviour
             List<bool> SmithModeBtnList = SmithModeBtn.GetComponent<BtnModeFuntion>().BtnModeCheck;
             if(popupType == SmithPopupType.Repair)
             {
-                DontDestroyManager.GetComponent<DataManager>().HaveInventory[ChooseSlotIndex].durAbility = 100;
+                DontDestroyManager.GetComponent<DataManager>().playerData.PlayerInven[ChooseSlotIndex].durAbility = 100;
                 CleanSlots();
                 PopupClose();
                 int BoolIndex = SmithModeBtnList.IndexOf(true);
@@ -233,7 +233,7 @@ public class SmithEventManager : MonoBehaviour
             }
             if(popupType == SmithPopupType.ThrowAway)
             {
-                DontDestroyManager.GetComponent<DataManager>().HaveInventory.RemoveAt(ChooseSlotIndex);
+                DontDestroyManager.GetComponent<DataManager>().playerData.PlayerInven.RemoveAt(ChooseSlotIndex);
 
                 CleanSlots();
                 PopupClose();

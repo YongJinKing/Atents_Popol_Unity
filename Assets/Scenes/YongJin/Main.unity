@@ -8291,7 +8291,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   itemsIndex: 
-  ModeBtn: {fileID: 0}
+  ModeBtn: {fileID: 65477199}
   DontDestroyManager: {fileID: 1686734852}
   slotParent: {fileID: 307812221}
   slots:
@@ -16604,54 +16604,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856391174}
   m_CullTransparentMesh: 1
---- !u!1 &857465620
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 857465621}
-  - component: {fileID: 857465622}
-  m_Layer: 0
-  m_Name: Jebal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &857465621
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857465620}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1499747181}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &857465622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 857465620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ba5170c4c642dc448ea3114599190c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slotText: []
-  savefile: 000000
-  delButton: []
-  delCheck: {fileID: 0}
 --- !u!1 &865481134
 GameObject:
   m_ObjectHideFlags: 0
@@ -28767,7 +28719,6 @@ Transform:
   - {fileID: 1117914951}
   - {fileID: 1899092838}
   - {fileID: 1689518004}
-  - {fileID: 857465621}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1500779622
@@ -31669,6 +31620,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77459c4e1a03a3741b007104812b2338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerGold: 6000
+  playerData:
+    Level: 1
+    LvPoint: 0
+    NowWeapon: 
+    NowArmor: 
+    Skill: []
+    clearStage: 
+    PlayerGold: 0
+    PlayerInven:
+    - {fileID: 11400000, guid: f78126c31b15ac24d89544035070af98, type: 2}
+    - {fileID: 11400000, guid: 041ccc81ec8a2f444b297a1c07897852, type: 2}
+    - {fileID: 11400000, guid: f78126c31b15ac24d89544035070af98, type: 2}
+    - {fileID: 11400000, guid: 101f3dfe51a11b9469aae4c6a7763026, type: 2}
   path: 
   fileName: PlayerData
   SlotNum: 0

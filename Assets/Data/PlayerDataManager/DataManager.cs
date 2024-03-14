@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
+
+[Serializable]
 public class PlayerData
 {
     public int Level = 1;
@@ -12,13 +15,13 @@ public class PlayerData
     public string[] Skill;
     public bool[] clearStage;
     public int PlayerGold;
-    public List<Item> PlayerInven;//치명적인 애러있음
+    public List<Item> PlayerInven = new List<Item>();
 }
 
 
 public class DataManager : MonoBehaviour
 {
-    public List<Item> HaveInventory;
+    //public List<Item> HaveInventory;
     public int PlayerGold = 6000;
     public static DataManager instance;
     public PlayerData playerData = new PlayerData();
@@ -43,7 +46,7 @@ public class DataManager : MonoBehaviour
     }
 
     private void Update() {
-        playerData.PlayerInven = HaveInventory;
+        
     }
     public void SaveData()
     {
