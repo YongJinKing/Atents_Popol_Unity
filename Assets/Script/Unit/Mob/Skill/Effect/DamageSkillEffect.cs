@@ -4,37 +4,37 @@ using UnityEngine;
 
 public class DamageSkillEffect : BaseSkillEffect
 {
-    //º¯¼ö ¿µ¿ª
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Properties / Field
-    //private º¯¼ö ¿µ¿ª
+    //private ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Private
 
     #endregion
 
-    //protected º¯¼ö ¿µ¿ª
+    //protected ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region protected
     #endregion
 
-    //Public º¯¼ö¿µ¿ª
+    //Public ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     #region public
     #endregion
 
-    //ÀÌº¥Æ® ÇÔ¼öµé ¿µ¿ª
+    //ï¿½Ìºï¿½Æ® ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Event
     #endregion
     #endregion
 
 
     #region Method
-    //private ÇÔ¼öµé ¿µ¿ª
+    //private ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region PrivateMethod
     #endregion
 
-    //protected ÇÔ¼öµé ¿µ¿ª
+    //protected ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region ProtectedMethod
     #endregion
 
-    //public ÇÔ¼öµé ¿µ¿ª
+    //public ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region PublicMethod
     #endregion
     #endregion
@@ -44,7 +44,7 @@ public class DamageSkillEffect : BaseSkillEffect
     #endregion
 
 
-    //ÀÌº¥Æ®°¡ ÀÏ¾î³µÀ»¶§ ½ÇÇàµÇ´Â On~~ÇÔ¼ö
+    //ï¿½Ìºï¿½Æ®ï¿½ï¿½ ï¿½Ï¾î³µï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ On~~ï¿½Ô¼ï¿½
     #region EventHandler
     public override void OnSkillHit(GameObject target)
     {
@@ -62,7 +62,7 @@ public class DamageSkillEffect : BaseSkillEffect
     #endregion
 
 
-    //À¯´ÏÆ¼ ÇÔ¼öµé ¿µ¿ª
+    //ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region MonoBehaviour
     #endregion
 

@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3900459176456486409}
   - component: {fileID: 6670327257770498480}
   - component: {fileID: 258882103780215799}
-  m_Layer: 3
+  - component: {fileID: 7395085109326994918}
+  m_Layer: 4
   m_Name: Slash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,21 +100,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   destroyDelay: 2
-  onHitAct:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8261803422018730252, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+--- !u!114 &7395085109326994918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2701895367126473184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ab7858c80b86c429ba61260a55ca02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 1000
 --- !u!1 &3486019571294363201
 GameObject:
   m_ObjectHideFlags: 0

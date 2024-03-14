@@ -23,6 +23,5 @@ public class PlayerEffect : MonoBehaviour, I_Effect
     {
         effect = Instantiate<GameObject>(Resources.Load("Skill/Player/" + skill) as GameObject);
         Attackpos(effect);
-        Destroy(effect.gameObject, destroy);
     }
 }
