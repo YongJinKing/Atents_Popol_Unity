@@ -251,10 +251,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3642465875917560104}
-  - component: {fileID: 3203241428474560384}
+  - component: {fileID: 6614664862482569929}
   - component: {fileID: 4992813411647446464}
   - component: {fileID: 5398781113258463859}
-  - component: {fileID: 4213027045786129768}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -279,7 +278,7 @@ Transform:
   - {fileID: 5415144597617751371}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3203241428474560384
+--- !u!114 &6614664862482569929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,17 +287,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8261803422018730252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e33af87a801bd24eaeb585e0087b66c, type: 3}
+  m_Script: {fileID: 11500000, guid: 35ef63eb6ff36a249a9b7fba1fff34b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   battleStat:
     Level: 0
-    AP: 30
-    maxHP: 30
+    AP: 0
+    maxHP: 0
     HP: 0
     Exp: 0
-    Speed: 5
-    AttackDelay: 0.5
+    Speed: 0
+    AttackDelay: 0
   curBattleStat:
     Level: 0
     AP: 0
@@ -416,27 +415,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &4213027045786129768
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8261803422018730252}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &4884952337732984806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -571,7 +549,7 @@ MonoBehaviour:
   End:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3203241428474560384}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnEnd
         m_Mode: 0
