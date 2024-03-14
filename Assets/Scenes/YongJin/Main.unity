@@ -8292,7 +8292,6 @@ MonoBehaviour:
   items: []
   itemsIndex: 
   ModeBtn: {fileID: 65477199}
-  DontDestroyManager: {fileID: 1686734852}
   slotParent: {fileID: 307812221}
   slots:
   - {fileID: 1836288853}
@@ -10827,7 +10826,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7739ec726f9564c4b8aaa56ef40c4056, type: 2}
   itemsIndex: 
   ModeBtn: {fileID: 0}
-  DontDestroyManager: {fileID: 0}
   slotParent: {fileID: 890641080}
   slots:
   - {fileID: 1040788043}
@@ -23281,7 +23279,6 @@ MonoBehaviour:
   items: []
   itemsIndex: 
   ModeBtn: {fileID: 1658295888}
-  DontDestroyManager: {fileID: 1686734852}
   slotParent: {fileID: 960202378}
   slots:
   - {fileID: 15312692}
@@ -31607,7 +31604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1686734853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31615,7 +31612,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686734852}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77459c4e1a03a3741b007104812b2338, type: 3}
   m_Name: 

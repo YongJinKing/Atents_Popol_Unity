@@ -14,7 +14,7 @@ public class Title : MonoBehaviour
         }
         if(index == 1)
         {
-            
+            MenuActive(true, false, false);
         }
     }
     void MenuActive(bool TitleCheck,bool SettingCheck,bool EndCheck)

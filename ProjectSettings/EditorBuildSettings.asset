@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Data/PlayerDataManager/SampleScene/DataSave 1.unity
-    guid: 27161eb45d8ad6e40b92c3d2cf631e09
+    path: Assets/Scenes/YongJin/Title.unity
+    guid: d7aa5529869c5f5469d8e157c6e0d4b9
   - enabled: 1
-    path: Assets/Data/PlayerDataManager/SampleScene/DataSave 2.unity
-    guid: 82dab0d39df723f44a504b00062f7379
+    path: Assets/Scenes/YongJin/Loading.unity
+    guid: 1690afd8a552aa048b1ed2c62d30d29e
+  - enabled: 1
+    path: Assets/Scenes/YongJin/Main.unity
+    guid: 3a7942058d64f9541a7a61cecdcba28a
   m_configObjects: {}

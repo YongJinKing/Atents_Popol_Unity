@@ -41,7 +41,7 @@ public class DataManager : MonoBehaviour
         {
             Destroy(instance.gameObject);
         }
-        //DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
         path = Application.dataPath + "/Data/PlayerSaveFile/";      // json파일 저장 경로
     }
 

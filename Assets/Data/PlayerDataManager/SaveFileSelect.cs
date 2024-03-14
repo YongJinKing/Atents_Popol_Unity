@@ -4,10 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.IO;
+using TMPro;
 
 public class SaveFileSelect : MonoBehaviour
 {
-    public Text[] slotText;
+    public TextMeshProUGUI[] GoldText;
+    public TextMeshProUGUI[] TimeText;
+    public TextMeshProUGUI[] DescText;
+    public GameObject[] CoinIC;
     public bool[] savefile = new bool[3];
 
     public GameObject[] delButton;  //데이터 삭제버튼(임시)
@@ -26,14 +30,21 @@ public class SaveFileSelect : MonoBehaviour
             if (File.Exists(DataManager.instance.path + DataManager.instance.fileName + $"{i}"))	// 슬롯 데이터 존재 유무 확인
             {
                 savefile[i] = true;     // 데이터가 있으면 true값 저장
+                CoinIC[i].SetActive(true);
                 delButton[i].SetActive(true);
                 DataManager.instance.SlotNum = i;
                 DataManager.instance.LoadData();
-                slotText[i].text = DataManager.instance.playerData.Level.ToString();	// 슬롯에 표시할 데이터
+                GoldText[i].text = DataManager.instance.playerData.PlayerGold.ToString();	// 슬롯에 표시할 데이터
+                TimeText[i].text = "PlayTime";   //DataManager.instance.playerData.PlayerGold.ToString();
+                DescText[i].text = "Player.Lv : " + DataManager.instance.playerData.Level.ToString() +
+                                   "\n(추가 예정)";
             }
             else	// 데이터가 없다면
             {
-                slotText[i].text = "비어있음";  //빈 슬롯 텍스트
+                GoldText[i].text = "";
+                TimeText[i].text = "PlayTime";
+                DescText[i].text = "비어있음";  //빈 슬롯 텍스트
+                CoinIC[i].SetActive(false);
                 delButton[i].SetActive(false);
             }
         }

@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
     public List<Item> items;
     public List<int> itemsIndex = new List<int>();
     public GameObject ModeBtn;
-    public GameObject DontDestroyManager;
+    //public GameObject DontDestroyManager;
     
     [SerializeField]
     private Transform slotParent;
@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
 #endif
     void Awake() 
     {
-        items = DontDestroyManager.GetComponent<DataManager>().playerData.PlayerInven;
+        items = DataManager.instance.playerData.PlayerInven;
         FreshSlot(0);
     }
     
