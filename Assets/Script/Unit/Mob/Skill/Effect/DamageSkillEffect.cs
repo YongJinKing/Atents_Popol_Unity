@@ -56,7 +56,7 @@ public class DamageSkillEffect : BaseSkillEffect
             Debug.Log(power * myBattleSystem.AP);
 
             //int myattackPoint = GetComponentInParent<BattleSystem>().battlestat.AP;
-            damage.TakeDamage((uint)(power * myBattleSystem.AP));
+            damage.TakeDamage((int)(power * myBattleSystem.AP));
         }
     }
     #endregion

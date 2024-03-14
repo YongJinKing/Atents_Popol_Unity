@@ -36,13 +36,8 @@ public class TempPlayerAnimEvent : MonoBehaviour
         }
     }
 
-    public void OnAttckEffect()
+    public void OnAttckEffect(string s)
     {
-        i_Effect.PlayAttackEffect();
-    }
-
-    public void OnSkillEffect()
-    {
-        i_Effect.PlaySkillEffect();
+        i_Effect.PlayAttackEffect(s, 0.5f);
     }
 }

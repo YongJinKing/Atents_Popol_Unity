@@ -4,31 +4,25 @@ using UnityEngine;
 
 public interface I_Effect
 {
-    public void PlayAttackEffect();
-    public void PlaySkillEffect();
+    public void PlayAttackEffect(string skill, float destroy);
 }
 
 public class PlayerEffect : MonoBehaviour, I_Effect
 {
-    
-    public void PlayAttackEffect()
+    GameObject effect;
+
+    void Attackpos(GameObject effect)
     {
-        GameObject effect = Instantiate<GameObject>(Resources.Load("Skill/Player/SimpleAttack") as GameObject);
         Vector3 dir = transform.parent.transform.forward;
         effect.transform.position = transform.position;
 
         effect.transform.rotation = Quaternion.LookRotation(dir);
-        Destroy(effect.gameObject, 0.5f);
     }
 
-    public void PlaySkillEffect()
+    public void PlayAttackEffect(string skill, float destroy)
     {
-        GameObject effect = Instantiate<GameObject>(Resources.Load("Skill/Player/Slash") as GameObject);
-        Vector3 dir = transform.parent.transform.forward;
-        effect.transform.position = transform.position;
-
-        effect.transform.rotation = Quaternion.LookRotation(dir);
-        Destroy(effect.gameObject, 4.0f);
+        effect = Instantiate<GameObject>(Resources.Load("Skill/Player/" + skill) as GameObject);
+        Attackpos(effect);
+        Destroy(effect.gameObject, destroy);
     }
-
 }

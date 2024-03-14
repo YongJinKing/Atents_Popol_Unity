@@ -21,8 +21,6 @@ public class Player : BattleSystem, I_ClickPoint
     public UnityEvent<Vector3, float> rotAct;
     public GameObject jointItemR;
     public LayerMask clickMask;
-    public GameObject AttackEffect;
-    public GameObject SkillEffect;
     public float rotSpeed = 2;
     float FireDelay = 0;
     public float DadgeDelay = 0;
@@ -170,6 +168,11 @@ public class Player : BattleSystem, I_ClickPoint
         }
     }
 
+    public void SkillDamage()
+    {
+
+    }
+
     public void OnEnd(int type)
     {
         switch (type)
@@ -184,17 +187,5 @@ public class Player : BattleSystem, I_ClickPoint
                 break;
         }
         ChangeState(state.Idle);
-    }
-
-    
-
-    public void PlayAttackEffect()
-    {
-        GameObject effect = Instantiate(AttackEffect);
-        
-        effect.transform.position = transform.position;
-
-        effect.transform.rotation = Quaternion.LookRotation(dir);
-        Destroy(effect.gameObject, 0.5f);
     }
 }

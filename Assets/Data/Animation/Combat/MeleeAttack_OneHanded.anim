@@ -107303,7 +107303,7 @@ AnimationClip:
   m_Events:
   - time: 0.13333334
     functionName: OnAttckEffect
-    data: 
+    data: SimpleAttack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

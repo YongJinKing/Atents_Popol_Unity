@@ -6,17 +6,17 @@ using UnityEngine.Events;
 [System.Serializable]
 public struct BattleStat
 {
-    public uint Level;
-    public uint AP;
-    public uint maxHP;
-    public uint HP;
-    public uint Exp;
+    public int Level;
+    public int AP;
+    public int maxHP;
+    public int HP;
+    public int Exp;
     public float Speed;
     public float AttackDelay;
 }
 public interface IDamage
 {
-    public void TakeDamage(uint damage);
+    public void TakeDamage(int damage);
 }
 
 public class BattleSystem : CharacterProperty, IDamage
@@ -49,7 +49,7 @@ public class BattleSystem : CharacterProperty, IDamage
         }
     }
 
-    public uint AP
+    public int AP
     {
         get
         {
@@ -67,7 +67,7 @@ public class BattleSystem : CharacterProperty, IDamage
         }
     }
 
-    public uint Exp
+    public int Exp
     {
         get
         {
@@ -89,7 +89,7 @@ public class BattleSystem : CharacterProperty, IDamage
         curBattleStat = battleStat;
         curBattleStat.HP = battleStat.maxHP;
     }
-    public void TakeDamage(uint dmg)
+    public void TakeDamage(int dmg)
     {
         curBattleStat.HP -= dmg;
         if (curBattleStat.HP <= 0.0f)
@@ -101,7 +101,7 @@ public class BattleSystem : CharacterProperty, IDamage
     }
 
     //For Player
-    public void OnGetExp(uint Exp)
+    public void OnGetExp(int Exp)
     {
         this.Exp += Exp;
         if (this.Exp >= 100.0f)

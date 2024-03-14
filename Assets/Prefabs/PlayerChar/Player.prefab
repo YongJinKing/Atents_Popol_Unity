@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1968655463957332197}
+  - component: {fileID: 1730035737290382643}
   m_Layer: 0
   m_Name: EffectPoint
   m_TagString: Untagged
@@ -31,6 +32,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3642465875917560104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1730035737290382643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2219723321589671901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0df368512ea33ac49bd9caf7260049e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4428380982326931278
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,11 +371,10 @@ MonoBehaviour:
   clickMask:
     serializedVersion: 2
     m_Bits: 16384
-  AttackEffect: {fileID: 7925162887021308499, guid: 77c658dd7c8c1164f8bc060efad93442, type: 3}
-  SkillEffect: {fileID: 2701895367126473184, guid: a38782187a3567e4b8d1176b930e63f7, type: 3}
   rotSpeed: 2
   DadgeDelay: 1
   dadgePw: 80
+  Effectobj: {fileID: 2219723321589671901}
   playerstate: 2
 --- !u!114 &4992813411647446464
 MonoBehaviour:
@@ -556,36 +568,6 @@ MonoBehaviour:
   deadAct:
     m_PersistentCalls:
       m_Calls: []
-  EffectAct:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3203241428474560384}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: PlayAttackEffect
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  SkillAct:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3203241428474560384}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: PlaySkillEffect
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   End:
     m_PersistentCalls:
       m_Calls:
