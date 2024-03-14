@@ -203,7 +203,7 @@ public class Slime : Monster
     //공격모션이 스킬을 발동
     public void OnAttackStartAnim()
     {
-        onSkillStartAct?.Invoke(target.transform.position);
+        onSkillStartAct?.Invoke(target.transform.position, null, null);
         countUsedSkill++;
         if (countUsedSkill >= skills.Length)
         {

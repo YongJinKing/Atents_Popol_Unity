@@ -40,6 +40,10 @@ public class Skill : MonoBehaviour
     public LayerMask targetMask;
     //UI 용
     public uiMonsterSkillStatus uiSkillStatus;
+    //선딜레이
+    public float PreDelay;
+    //후딜레이
+    public float PostDelay;
     #endregion
 
     //이벤트 함수들 영역
@@ -51,7 +55,7 @@ public class Skill : MonoBehaviour
     //타겟이 들어왔음을 알려주는 이벤트
     public UnityEvent onDetectTargetEvent;
     //AI에게 스킬Start와 스킬End를 등록시켜주는 이벤트
-    public UnityEvent<UnityAction<Vector3>, UnityAction, LayerMask> onAddSkillEventListener;
+    public UnityEvent<UnityAction<Vector3, UnityAction, UnityAction>, UnityAction, LayerMask> onAddSkillEventListener;
     #endregion
     #endregion
 
@@ -104,7 +108,12 @@ public class Skill : MonoBehaviour
             }
             yield return null;
         }
+    }
 
+    protected IEnumerator ProcessDelay(float delayTime, UnityAction startAct)
+    {
+
+        yield return null;
     }
     #endregion
 
@@ -127,7 +136,7 @@ public class Skill : MonoBehaviour
     //public void OnRequestSkill()
 
     //이 스킬이 사용되었을때
-    public void OnSkillStart(Vector3 targetPos)
+    public void OnSkillStart(Vector3 targetPos, UnityAction startAct, UnityAction endAct)
     {
         //쿨타임이 아직 남아있으면 아예 invoke 자체가 일어나지 않음으로서 쿨타임 구현
         if (remainCoolDownTime <= 0)
@@ -137,6 +146,16 @@ public class Skill : MonoBehaviour
             //밑은 테스트용으로 씀
             OnSkillEnd();
         }
+    }
+
+    public void OnSkillHitCheckStart()
+    {
+
+    }
+
+    public void OnSkillHitCheckEnd()
+    {
+
     }
 
     //스킬이 시전 끝나고 스킬 쿨타임 돌릴때

@@ -38,7 +38,7 @@ public abstract class Monster : BattleSystem
     public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent;
     public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
     public UnityEvent<UnityAction> stopEvent;
-    public UnityAction<Vector3> onSkillStartAct;
+    public UnityAction<Vector3, UnityAction, UnityAction> onSkillStartAct;
     public UnityAction onSkillEndAct;
     #endregion
     #endregion
@@ -69,7 +69,7 @@ public abstract class Monster : BattleSystem
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
     public void OnAddSkillEventListener(
-        UnityAction<Vector3> skillStart,
+        UnityAction<Vector3, UnityAction, UnityAction> skillStart,
         UnityAction skillEnd,
         LayerMask mask)
     {

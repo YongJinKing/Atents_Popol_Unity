@@ -19,11 +19,11 @@ public class TempSlime : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            skills[0].GetComponent<Skill>().OnSkillStart(tempTarget.position);
+            skills[0].GetComponent<Skill>().OnSkillStart(tempTarget.position,null,null);
         }
         if (Input.GetButtonDown("Fire1"))
         {
-            skills[1].GetComponent<Skill>().OnSkillStart(tempTarget.position);
+            skills[1].GetComponent<Skill>().OnSkillStart(tempTarget.position,null,null);
         }
     }
 }
