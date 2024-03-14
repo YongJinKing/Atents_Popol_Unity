@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class BtnModeFuntion : MonoBehaviour
 {
     // Start is called before the first frame update
     public Sprite[] ButtonSprite;
     public List<bool> BtnModeCheck = new List<bool>();
+    public UnityEvent <int> FreshSlot;
+    public UnityEvent CleanSlot;
     public GameObject Inven;
     public GameObject SmithEventManager;
     void Start() 
@@ -51,19 +55,23 @@ public class BtnModeFuntion : MonoBehaviour
     {
         gameObject.transform.GetChild(index).GetComponent<Image>().sprite = ButtonSprite[1];
         gameObject.transform.GetChild(index).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -5, 0);
-        if(Inven)
+        FreshSlot?.Invoke(index+1);
+        CleanSlot?.Invoke();
+        /* if(Inven)
             Inven.GetComponent<Inventory>().FreshSlot(index+1);
         if(SmithEventManager)
-            SmithEventManager.GetComponent<SmithEventManager>().CleanSlots();
+            SmithEventManager.GetComponent<SmithEventManager>().CleanSlots(); */
     }
     void OffModeBtn(int index)
     {
         gameObject.transform.GetChild(index).GetComponent<Image>().sprite = ButtonSprite[0];
         gameObject.transform.GetChild(index).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 10, 0);
-        if(Inven)
+        FreshSlot?.Invoke(0);
+        CleanSlot?.Invoke();
+        /* if(Inven)
             Inven.GetComponent<Inventory>().FreshSlot(0);
         if(SmithEventManager)
-            SmithEventManager.GetComponent<SmithEventManager>().CleanSlots();
+            SmithEventManager.GetComponent<SmithEventManager>().CleanSlots(); */
 
     }
 }

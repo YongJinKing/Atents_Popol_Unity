@@ -1,17 +1,17 @@
 {
-    "Level": 1,
+    "Level": 3,
     "LvPoint": 0,
+    "PlayerGold": 0,
     "NowWeapon": "",
     "NowArmor": "",
     "Skill": [],
     "clearStage": [],
-    "PlayerGold": 0,
-    "PlayerInven": [
+    "PlayerInventory": [
         {
-            "instanceID": 23446
+            "instanceID": 23708
         },
         {
-            "instanceID": 23426
+            "instanceID": 23650
         }
     ]
 }
