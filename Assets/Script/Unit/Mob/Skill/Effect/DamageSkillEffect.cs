@@ -17,6 +17,7 @@ public class DamageSkillEffect : BaseSkillEffect
 
     //Public ��������
     #region public
+    public AttackType Atype;
     #endregion
 
     //�̺�Ʈ �Լ��� ����
@@ -46,17 +47,18 @@ public class DamageSkillEffect : BaseSkillEffect
 
     //�̺�Ʈ�� �Ͼ���� ����Ǵ�?On~~�Լ�
     #region EventHandler
-    public override void OnSkillHit(GameObject target)
+    public override void OnSkillHit(Collider target)
     {
         Debug.Log(target.name);
         IDamage damage = target.GetComponentInParent<IDamage>();
+        IGetDType Dtype = target.GetComponentInParent<IGetDType>();
 
-        if (damage != null)
+        if (damage != null && Dtype != null)
         {
             Debug.Log(power * myBattleSystem.AP);
 
             //int myattackPoint = GetComponentInParent<BattleSystem>().battlestat.AP;
-            damage.TakeDamage((int)(power * myBattleSystem.AP));
+            damage.TakeDamage((int)(power * myBattleSystem.AP), Atype, Dtype.GetDType(target));
         }
     }
     #endregion

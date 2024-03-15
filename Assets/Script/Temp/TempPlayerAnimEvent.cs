@@ -31,7 +31,7 @@ public class TempPlayerAnimEvent : MonoBehaviour
             IDamage iDamege = col.GetComponent<IDamage>();
             if(iDamege != null)
             {
-                iDamege.TakeDamage(30);
+                //iDamege.TakeDamage(30);
             }
         }
     }

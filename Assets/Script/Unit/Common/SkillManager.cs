@@ -10,6 +10,8 @@ public class SkillManager : MonoBehaviour
     GameObject Player;
     Player pl;
     PlayerManager Plm;
+    public AttackType aType;
+
 
     void Start()
     {
@@ -23,9 +25,11 @@ public class SkillManager : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Monster_Body"))
         {
             IDamage iDamage = other.GetComponent<IDamage>();
+            DefenceType dtype = other.GetComponentInParent<IGetDType>().GetDType(other);
+
             if(iDamage != null)
             {
-                Plm.totalDamege(other, pl.AP, Damage);
+                Plm.totalDamege(other, pl.AP, Damage, aType, dtype);
             }
         }
     }
