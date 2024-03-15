@@ -321,10 +321,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
-    - target: {fileID: 2597314438508396557, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
-      propertyPath: detectRadius
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3644806297972782553, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

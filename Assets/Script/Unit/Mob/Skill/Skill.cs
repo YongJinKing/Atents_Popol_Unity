@@ -5,14 +5,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using static UnityEditor.PlayerSettings;
 
-[System.Serializable]
-public struct uiMonsterSkillStatus
-{
-    public Sprite uiSkillSprite;
-    public string uiSkillName;
-    public string uiSkillDesc;
-}
-
 //스킬이 실행됬을때 처음으로 실행되는 클래스
 public class Skill : MonoBehaviour
 {
