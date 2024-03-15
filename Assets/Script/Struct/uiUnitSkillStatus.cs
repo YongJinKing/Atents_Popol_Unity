@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public struct uiMonsterSkillStatus
+public struct uiUnitSkillStatus
 {
     public Sprite uiSkillSprite;
     public string uiSkillName;

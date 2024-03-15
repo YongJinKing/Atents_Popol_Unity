@@ -5,63 +5,63 @@ using UnityEngine;
 using UnityEngine.Events;
 using static UnityEditor.PlayerSettings;
 
-//½ºÅ³ÀÌ ½ÇÇà‰çÀ»¶§ Ã³À½À¸·Î ½ÇÇàµÇ´Â Å¬·¡½º
+//ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
 public class Skill : MonoBehaviour
 {
-    //º¯¼ö ¿µ¿ª
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Properties / Field
-    //private º¯¼ö ¿µ¿ª
+    //private ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Private
 
     #endregion
 
-    //protected º¯¼ö ¿µ¿ª
+    //protected ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region protected
-    //ÄðÅ¸ÀÓ¿ë
+    //ï¿½ï¿½Å¸ï¿½Ó¿ï¿½
     [SerializeField] protected float coolDownTime;
-    //±âº»ÀûÀ¸·Î 0º¸´Ù ÀÛÀº°ªÀ» °¡ÁüÀ¸·Î¼­ ÄðÅ¸ÀÓÀÌ ´Ù µ¹¾ÒÀ½À» Ç¥½Ã
+    //ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¼ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½
     protected float remainCoolDownTime = -1f;
     #endregion
 
-    //Public º¯¼ö¿µ¿ª
+    //Public ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     #region public
-    //ÀÌ ¹ÝÁö¸§À¸·Î ±¸¸¦ »ý¼ºÇØ¼­ overlapSphere·Î ÀûÀ» °ËÃâÇÑ´Ù
-    //AI¿¡¼­¸¸ »ç¿ëÇÑ´Ù.
+    //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ overlapSphereï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½
+    //AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
     public float detectRadius;
-    //AI¿¡¼­¸¸ »ç¿ëÇÒ ¸¶½ºÅ©
+    //AIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å©
     public LayerMask targetMask;
-    //UI ¿ë
-    public uiMonsterSkillStatus uiSkillStatus;
-    //¼±µô·¹ÀÌ
+    //UI ï¿½ï¿½
+    public uiUnitSkillStatus uiSkillStatus;
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public float PreDelay;
-    //ÈÄµô·¹ÀÌ
+    //ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½
     public float PostDelay;
     #endregion
 
-    //ÀÌº¥Æ® ÇÔ¼öµé ¿µ¿ª
+    //ï¿½Ìºï¿½Æ® ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Event
-    //½ºÅ³ÀÌ ½ÇÇàµÇ¸é SkillTypeÅ¬·¡½º¿¡°Ô Á¤º¸¸¦ Àü´ÞÇÑ´Ù.
+    //ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ SkillTypeÅ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
     public UnityEvent<Vector3> onSkillActivatedEvent;
-    //½ºÅ³ÀÌ »ç¿ë°¡´ÉÇØÁö¸é ¹ß»ýÇÏ´Â ÀÌº¥Æ®
+    //ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ë°¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ï´ï¿½ ï¿½Ìºï¿½Æ®
     //public UnityEvent onSkillAvailableEvent;
-    //Å¸°ÙÀÌ µé¾î¿ÔÀ½À» ¾Ë·ÁÁÖ´Â ÀÌº¥Æ®
+    //Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë·ï¿½ï¿½Ö´ï¿½ ï¿½Ìºï¿½Æ®
     public UnityEvent onDetectTargetEvent;
-    //AI¿¡°Ô ½ºÅ³Start¿Í ½ºÅ³End¸¦ µî·Ï½ÃÄÑÁÖ´Â ÀÌº¥Æ®
+    //AIï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³Startï¿½ï¿½ ï¿½ï¿½Å³Endï¿½ï¿½ ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Ìºï¿½Æ®
     public UnityEvent<UnityAction<Vector3, UnityAction, UnityAction>, UnityAction, LayerMask> onAddSkillEventListener;
     #endregion
     #endregion
 
     #region Method
-    //private ÇÔ¼öµé ¿µ¿ª
+    //private ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region PrivateMethod
     #endregion
 
 
-    //protected ÇÔ¼öµé ¿µ¿ª
+    //protected ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region ProtectedMethod
     #endregion
 
-    //public ÇÔ¼öµé ¿µ¿ª
+    //public ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region PublicMethod
     #endregion
     #endregion
@@ -110,14 +110,14 @@ public class Skill : MonoBehaviour
     #endregion
 
 
-    //ÀÌº¥Æ®°¡ ÀÏ¾î³µÀ»¶§ ½ÇÇàµÇ´Â On~~ÇÔ¼ö
+    //ï¿½Ìºï¿½Æ®ï¿½ï¿½ ï¿½Ï¾î³µï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ On~~ï¿½Ô¼ï¿½
     #region EventHandler
     public void OnRequestSkillInfo()
     {
         onAddSkillEventListener?.Invoke(OnSkillStart, OnSkillEnd, targetMask);
     }
 
-    //AI°¡ »ç¿ëÇÒ ÀÌº¥Æ® ÇÔ¼ö, collider¿¡ °É¸®¸é ÀÌº¥Æ®¸¦ invokeÇÒ ÄÚ·çÆ¾À» ½ºÅ¸Æ®
+    //AIï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ® ï¿½Ô¼ï¿½, colliderï¿½ï¿½ ï¿½É¸ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ®ï¿½ï¿½ invokeï¿½ï¿½ ï¿½Ú·ï¿½Æ¾ï¿½ï¿½ ï¿½ï¿½Å¸Æ®
     public void OnCommandDetectSkillTarget(UnityAction detectAct)
     {
         //onAddSkillEventListener?.Invoke(OnSkillStart, OnSkillEnd, targetMask);
@@ -127,15 +127,15 @@ public class Skill : MonoBehaviour
 
     //public void OnRequestSkill()
 
-    //ÀÌ ½ºÅ³ÀÌ »ç¿ëµÇ¾úÀ»¶§
+    //ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½
     public void OnSkillStart(Vector3 targetPos, UnityAction startAct, UnityAction endAct)
     {
-        //ÄðÅ¸ÀÓÀÌ ¾ÆÁ÷ ³²¾ÆÀÖÀ¸¸é ¾Æ¿¹ invoke ÀÚÃ¼°¡ ÀÏ¾î³ªÁö ¾ÊÀ½À¸·Î¼­ ÄðÅ¸ÀÓ ±¸Çö
+        //ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ¿ï¿½ invoke ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ï¾î³ªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¼ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (remainCoolDownTime <= 0)
         {
 
             onSkillActivatedEvent?.Invoke(targetPos);
-            //¹ØÀº Å×½ºÆ®¿ëÀ¸·Î ¾¸
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½×½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             OnSkillEnd();
         }
     }
@@ -150,7 +150,7 @@ public class Skill : MonoBehaviour
 
     }
 
-    //½ºÅ³ÀÌ ½ÃÀü ³¡³ª°í ½ºÅ³ ÄðÅ¸ÀÓ µ¹¸±¶§
+    //ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void OnSkillEnd()
     {
         StartCoroutine(CoolDownChecking());
@@ -159,7 +159,7 @@ public class Skill : MonoBehaviour
     #endregion
 
 
-    //À¯´ÏÆ¼ ÇÔ¼öµé ¿µ¿ª
+    //ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region MonoBehaviour
 
 
