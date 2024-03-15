@@ -44,12 +44,12 @@ public class DamageSkillEffect : BaseSkillEffect
     #endregion
 
 
-    //�̺�Ʈ�� �Ͼ���� ����Ǵ� On~~�Լ�
+    //�̺�Ʈ�� �Ͼ���� ����Ǵ�?On~~�Լ�
     #region EventHandler
     public override void OnSkillHit(GameObject target)
     {
         Debug.Log(target.name);
-        IDamage damage = target.GetComponent<IDamage>();
+        IDamage damage = target.GetComponentInParent<IDamage>();
 
         if (damage != null)
         {
