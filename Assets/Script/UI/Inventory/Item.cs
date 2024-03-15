@@ -22,10 +22,11 @@ public enum WeaponType
     Solid,
     Plate,
 }
+
 [CreateAssetMenu]
+[System.Serializable]
 public class Item : ScriptableObject
 {
-    
     public string itemName;
     public Sprite itemImage;
     public int itemValue;
@@ -35,7 +36,6 @@ public class Item : ScriptableObject
     public int SellingPrice;
     public WeaponType weaponType;
     public RiggingType riggingType;
-    
 }
 
 

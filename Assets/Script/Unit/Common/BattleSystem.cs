@@ -1,5 +1,6 @@
 
 using System.Text;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,7 +17,7 @@ public struct BattleStat
 }
 public interface IDamage
 {
-    public void TakeDamage(int damage);
+    public void TakeDamage(int damage, AttackType Atype, DefenceType Dtype);
 }
 
 public class BattleSystem : CharacterProperty, IDamage
@@ -89,15 +90,74 @@ public class BattleSystem : CharacterProperty, IDamage
         curBattleStat = battleStat;
         curBattleStat.HP = battleStat.maxHP;
     }
-    public void TakeDamage(int dmg)
+    public void TakeDamage(int dmg, AttackType Atype, DefenceType Dtype)
     {
-        curBattleStat.HP -= dmg;
+        int totaldmg;
+        float computed = ComputeCompatibility(Atype, Dtype);
+        totaldmg = (int)((float)dmg * computed);
+
+        curBattleStat.HP -= totaldmg;
         if (curBattleStat.HP <= 0.0f)
         {
             //Die
             OnDead();
             //myAnim.SetTrigger("DeathTrigger");
         }
+    }
+
+    private float ComputeCompatibility(AttackType Atype, DefenceType Dtype)
+    {
+        float computed = 0;
+        switch (Atype)
+        {
+            case AttackType.Slash:
+                switch (Dtype)
+                {
+                    case DefenceType.Leather:
+                        computed = 2.0f;
+                        break;
+                    case DefenceType.HeavyArmor:
+                        computed = 0.5f;
+                        break;
+                    case DefenceType.CompositeArmor:
+                        computed = 1.0f;
+                        break;
+                }
+                break;
+            case AttackType.Blunt:
+                switch (Dtype)
+                {
+                    case DefenceType.Leather:
+                        computed = 0.5f;
+                        break;
+                    case DefenceType.HeavyArmor:
+                        computed = 2.0f;
+                        break;
+                    case DefenceType.CompositeArmor:
+                        computed = 1.0f;
+                        break;
+                }
+                break;
+            case AttackType.Penetration:
+                switch (Dtype)
+                {
+                    case DefenceType.Leather:
+                        computed = 1.0f;
+                        break;
+                    case DefenceType.HeavyArmor:
+                        computed = 0.5f;
+                        break;
+                    case DefenceType.CompositeArmor:
+                        computed = 2.0f;
+                        break;
+                }
+                break;
+            default:
+                computed = 1.0f;
+                break;
+        }
+
+        return computed;
     }
 
     //For Player

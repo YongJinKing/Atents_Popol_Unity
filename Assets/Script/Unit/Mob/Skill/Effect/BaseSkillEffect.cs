@@ -49,7 +49,7 @@ public abstract class BaseSkillEffect : MonoBehaviour
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
-    public abstract void OnSkillHit(GameObject target);
+    public abstract void OnSkillHit(Collider target);
     #endregion
 
 

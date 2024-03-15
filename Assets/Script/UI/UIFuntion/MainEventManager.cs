@@ -46,7 +46,6 @@ public class MainEventManager : MonoBehaviour
         gameCanvas.transform.GetChild(4).gameObject.SetActive(false); // 수리 off
         gameCanvas.transform.GetChild(5).gameObject.SetActive(false); // 경기 off
         gameCanvas.transform.GetChild(6).gameObject.SetActive(false); // 팝업 off
-        gameCanvas.transform.GetChild(4).GetChild(1).gameObject.SetActive(false);// 팝업 off
         gameCanvas.transform.GetChild(1).GetChild(0).gameObject.SetActive(false); //x버튼 off
         #endregion
     }
