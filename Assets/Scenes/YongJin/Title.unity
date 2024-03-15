@@ -3936,7 +3936,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1700499733}
-  - component: {fileID: 1700499734}
   m_Layer: 5
   m_Name: Popup
   m_TagString: Untagged
@@ -3963,18 +3962,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1700499734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700499732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b445fbdf597dc844870ecef8715cbe5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1752860677
 GameObject:
   m_ObjectHideFlags: 0
@@ -4088,7 +4075,11 @@ MonoBehaviour:
     Skill: []
     clearStage: 
     PlayerGold: 0
-    PlayerInven: []
+    PlayerInven:
+    - {fileID: 11400000, guid: 6dfd00fe12bebed4985da493e79733b2, type: 2}
+    - {fileID: 11400000, guid: f78126c31b15ac24d89544035070af98, type: 2}
+    - {fileID: 11400000, guid: 041ccc81ec8a2f444b297a1c07897852, type: 2}
+    - {fileID: 11400000, guid: db92c4c0c162a1741a480e20dd594db4, type: 2}
   path: 
   fileName: PlayerData
   SlotNum: 0

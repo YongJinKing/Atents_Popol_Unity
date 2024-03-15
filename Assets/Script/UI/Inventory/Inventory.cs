@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
     public List<Item> items;
     public List<int> itemsIndex = new List<int>();
     public GameObject ModeBtn;
-    //public GameObject DontDestroyManager;
+    
     
     [SerializeField]
     private Transform slotParent;

@@ -9,7 +9,7 @@ public class UserPanel : MonoBehaviour
     {
         if(index == 0)
         {
-
+            DataManager.instance.SaveData();
         }
         else if(index == 1)
         {

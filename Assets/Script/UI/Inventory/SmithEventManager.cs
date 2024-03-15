@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class SmithEventManager : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class SmithEventManager : MonoBehaviour
     public GameObject SmithMainImage;
     public GameObject ShopEventManager;
     public GameObject ShopInven;
-    public GameObject DontDestroyManager;
+
     
 
     
@@ -216,7 +217,7 @@ public class SmithEventManager : MonoBehaviour
             List<bool> SmithModeBtnList = SmithModeBtn.GetComponent<BtnModeFuntion>().BtnModeCheck;
             if(popupType == SmithPopupType.Repair)
             {
-                DontDestroyManager.GetComponent<DataManager>().playerData.PlayerInven[ChooseSlotIndex].durAbility = 100;
+                DataManager.instance.GetComponent<DataManager>().playerData.PlayerInven[ChooseSlotIndex].durAbility = 100;
                 CleanSlots();
                 PopupClose();
                 int BoolIndex = SmithModeBtnList.IndexOf(true);
@@ -233,8 +234,17 @@ public class SmithEventManager : MonoBehaviour
             }
             if(popupType == SmithPopupType.ThrowAway)
             {
-                DontDestroyManager.GetComponent<DataManager>().playerData.PlayerInven.RemoveAt(ChooseSlotIndex);
-
+                List<Item> List = DataManager.instance.GetComponent<DataManager>().playerData.PlayerInven;
+                int CountItem = 0;
+                for(int i = 0; i < List.Count; i++)
+                {
+                    if(List[i].riggingType == RiggingType.Weapon)
+                        CountItem++;
+                    if(List[i].riggingType == RiggingType.Armor)
+                        CountItem++;
+                }
+                Debug.Log($"ItemCheck : {CountItem}");
+                List.RemoveAt(ChooseSlotIndex);
                 CleanSlots();
                 PopupClose();
                 int BoolIndex = SmithModeBtnList.IndexOf(true);

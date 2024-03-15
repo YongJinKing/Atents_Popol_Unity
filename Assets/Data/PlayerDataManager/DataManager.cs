@@ -31,6 +31,7 @@ public class DataManager : MonoBehaviour
 
     public int SlotNum;
     
+    
     private void Awake()    //싱글톤
     {
         if(instance == null)
@@ -45,9 +46,6 @@ public class DataManager : MonoBehaviour
         path = Application.dataPath + "/Data/PlayerSaveFile/";      // json파일 저장 경로
     }
 
-    private void Update() {
-        
-    }
     public void SaveData()
     {
         string data = JsonUtility.ToJson(playerData, true);
