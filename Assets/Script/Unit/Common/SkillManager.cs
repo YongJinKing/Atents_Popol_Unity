@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SkillManager : MonoBehaviour
+public class SkillManager : PlayerSkill
 {
     public int Damage;
     GameObject Player;

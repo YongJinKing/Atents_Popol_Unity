@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class Slash : PlayerSkill
+public class Slash : MonoBehaviour
 {
     public float moveSpeed = 10f; 
     public float destroyDelay = 1f;
