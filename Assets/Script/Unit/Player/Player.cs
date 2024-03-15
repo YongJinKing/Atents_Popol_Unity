@@ -13,7 +13,7 @@ public interface I_ClickPoint
     public Vector3 GetRaycastHit();
 }
 
-public class Player : BattleSystem, I_ClickPoint
+public class Player : BattleSystem, I_ClickPoint, IGetDType
 {
     public UnityEvent<Vector3, float, UnityAction<float>> clickAct;
     public UnityEvent<UnityAction<float>> stopAct;
@@ -28,6 +28,8 @@ public class Player : BattleSystem, I_ClickPoint
     bool isFireReady = true;
     bool isDadgeReady = true;
     public GameObject Effectobj;
+
+    public DefenceType Dtype;
     
     Vector3 dir;
     public enum state
@@ -187,5 +189,10 @@ public class Player : BattleSystem, I_ClickPoint
                 break;
         }
         ChangeState(state.Idle);
+    }
+
+    public DefenceType GetDType(Collider col)
+    {
+        return Dtype;
     }
 }

@@ -23,7 +23,7 @@ public abstract class BaseSkillType : MonoBehaviour
     //이벤트 함수들 영역
     #region Event
     //스킬
-    public UnityEvent<GameObject> onSkillHitEvent;
+    public UnityEvent<Collider> onSkillHitEvent;
     public UnityEvent onSkillDisactivatedEvent;
     #endregion
     #endregion

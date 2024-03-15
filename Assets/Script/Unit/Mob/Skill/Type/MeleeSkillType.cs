@@ -68,12 +68,12 @@ public class MeleeSkillType : AttackSkillType
                 if (!calculatedObject.Contains(tempcol[i]))
                 {
                     //Debug.Log For check
-                    Debug.Log(tempcol[i].gameObject.name);
+                    //Debug.Log(tempcol[i].gameObject.name);
                     //맞췄을때 이펙트를 넣어줌
                     HitEffectPlay(hitBox.transform.position, tempcol[i].gameObject.transform.position);
                     calculatedObject.Add(tempcol[i]);
 
-                    onSkillHitEvent?.Invoke(tempcol[i].gameObject);
+                    onSkillHitEvent?.Invoke(tempcol[i]);
                 }
             }
             yield return null;

@@ -107,7 +107,7 @@ public class ProjectileSkillType : AttackSkillType
                     HitEffectPlay(hitBox.transform.position, tempcol[i].gameObject.transform.position);
 
                     //맞췄으니 효과 적용용으로 히트 이벤트 발생
-                    onSkillHitEvent?.Invoke(tempcol[i].gameObject);
+                    onSkillHitEvent?.Invoke(tempcol[i]);
 
                     if (penetrable)
                     {
