@@ -31,13 +31,13 @@ public class BoolBehaviour : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
-    public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
-    {
-        animator.SetBool("b_isAttacking", true);
-    }
+    //public override void OnStateMachineEnter(Animator animator, int stateMachinePathHash)
+    //{
+    //    animator.SetBool("b_isAttacking", true);
+    //}
 
-    public override void OnStateMachineExit(Animator animator, int stateMachinePathHash)
-    {
-        animator.SetBool("b_isAttacking", false);
-    }
+    //public override void OnStateMachineExit(Animator animator, int stateMachinePathHash)
+    //{
+    //    animator.SetBool("b_isAttacking", false);
+    //}
 }
