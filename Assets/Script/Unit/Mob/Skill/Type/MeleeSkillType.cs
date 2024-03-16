@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //히트박스가 고정되어있는 근접공격등을 위한 클래스
-public class MeleeSkillType : AttackSkillType
+public class MeleeSkillType : HitCheckSkillType
 {
     //변수 영역
     #region Properties / Field
     //private 변수 영역
     #region Private
-    //공격이 지속되는 시간
+    private bool isSkillActivated;
     #endregion
 
     //protected 변수 영역
@@ -55,7 +55,7 @@ public class MeleeSkillType : AttackSkillType
         //콜라이더 사이즈를 위해서 콜라이더를 구한다.
         Collider hitBoxCol = hitBox.GetComponent<Collider>();
 
-        while (remainDuration >= 0.0f)
+        while (remainDuration >= 0.0f && isSkillActivated)
         {
             remainDuration -= Time.deltaTime;
             Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, hitBoxCol.bounds.extents , hitBox.transform.rotation, targetMask);
@@ -90,11 +90,20 @@ public class MeleeSkillType : AttackSkillType
     public override void OnSkillActivated(Vector3 targetPos)
     {
         base.OnSkillActivated(targetPos);
+    }
+
+    public override void OnSkillHitCheckStartEventHandler()
+    {
+        isSkillActivated = true;
         for (int i = 0; i < maxIndex; i++)
         {
             StartCoroutine(HitChecking(areaOfEffect[i]));
         }
+    }
 
+    public override void OnSkillHitCheckEndEventHandler()
+    {
+        isSkillActivated = false;
     }
     #endregion
 

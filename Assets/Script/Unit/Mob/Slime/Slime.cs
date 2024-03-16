@@ -96,15 +96,23 @@ public class Slime : Monster
             //적에게 접근
             case State.Closing:
                 //detect를 실행하라고 지시
-                //skills[saveSkill[countUsedSkill]].OnCommandDetectSkillTarget(() => ChangeState(State.Attacking));
                 skills[saveSkill[countUsedSkill]].OnCommandDetectSkillTarget(() => ChangeState(State.Attacking));
                 //Debug.Log(saveSkill[countUsedSkill]);
                 StartCoroutine(ClosingToTarget());
                 break;
             //공격
             case State.Attacking:
-                //플레이어를 바라보는 이벤트 실행(코루틴으로 하기)
-                myAnim.SetTrigger("t_Attack");
+                //attackStart Animation needed
+
+                //Skill Start hitCheck after delayMotion
+                onSkillStartAct?.Invoke(target.transform.position,
+                    () => myAnim.SetTrigger("t_Attack"),
+                    null);
+                countUsedSkill++;
+                if (countUsedSkill >= skills.Length)
+                {
+                    SkillRandomSet();
+                }
                 break;
         }
     }
@@ -214,7 +222,7 @@ public class Slime : Monster
     //공격 모션이 끝남
     public void OnAttackEndAnim()
     {
-        onSkillEndAct?.Invoke();
+        onSkillHitCheckEndAct?.Invoke();
         ChangeState(State.Idle);
     }
     #endregion

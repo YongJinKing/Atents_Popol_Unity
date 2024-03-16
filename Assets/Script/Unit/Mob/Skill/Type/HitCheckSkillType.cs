@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public abstract class AttackSkillType : BaseSkillType
+public abstract class HitCheckSkillType : BaseSkillType
 {
     //변수 영역
     #region Properties / Field
@@ -18,7 +19,7 @@ public abstract class AttackSkillType : BaseSkillType
     //히트박스가 지속되는 시간
     [SerializeField] protected float hitDuration;
     //남은 지속시간을 계산하기 위한 변수 serial은 그냥 값이 줄어드는지 확인하기 위한것으로 수정하려고 만든것이 아니다.
-    [SerializeField] protected float remainDuration;
+    protected float remainDuration;
     //인스턴타이즈화된 areaOfEffectPrefeb을 저장하는곳
     [SerializeField] protected GameObject[] areaOfEffect;
     //areaOfEffect를 최대 몇개까지 만들것이냐를 결정하기 위함
@@ -38,6 +39,7 @@ public abstract class AttackSkillType : BaseSkillType
 
     //이벤트 함수들 영역
     #region Event
+    public UnityEvent<Collider> onSkillHitEvent;
     #endregion
     #endregion
 
@@ -91,6 +93,10 @@ public abstract class AttackSkillType : BaseSkillType
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
+    public abstract void OnSkillHitCheckStartEventHandler();
+    public virtual void OnSkillHitCheckEndEventHandler()
+    {
+    }
     #endregion
 
 

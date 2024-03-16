@@ -39,7 +39,8 @@ public abstract class Monster : BattleSystem
     public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
     public UnityEvent<UnityAction> stopEvent;
     public UnityAction<Vector3, UnityAction, UnityAction> onSkillStartAct;
-    public UnityAction onSkillEndAct;
+    public UnityAction onSkillHitCheckStartAct;
+    public UnityAction onSkillHitCheckEndAct;
     #endregion
     #endregion
 
@@ -70,12 +71,19 @@ public abstract class Monster : BattleSystem
     #region EventHandler
     public void OnAddSkillEventListener(
         UnityAction<Vector3, UnityAction, UnityAction> skillStart,
-        UnityAction skillEnd,
+        UnityAction skillHitCheckStart,
+        UnityAction skillHitCheckEnd,
         LayerMask mask)
     {
         onSkillStartAct = skillStart;
-        onSkillEndAct = skillEnd;
+        onSkillHitCheckStartAct = skillHitCheckStart;
+        onSkillHitCheckEndAct = skillHitCheckEnd;
         skillMask = mask;
+    }
+
+    public virtual void OnSkillEndEventListener()
+    {
+
     }
     #endregion
 

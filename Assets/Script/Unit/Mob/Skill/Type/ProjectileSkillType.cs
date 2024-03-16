@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 //투사체를 날리는 형태의 스킬에대한 클래스
-public class ProjectileSkillType : AttackSkillType
+public class ProjectileSkillType : HitCheckSkillType
 {
     //변수 영역
     #region Properties / Field
@@ -244,7 +244,11 @@ public class ProjectileSkillType : AttackSkillType
     public override void OnSkillActivated(Vector3 targetPos)
     {
         base.OnSkillActivated(targetPos + Vector3.up * 1.0f);
-        for(int i = 0; i < maxIndex; i++)
+    }
+
+    public override void OnSkillHitCheckStartEventHandler()
+    {
+        for (int i = 0; i < maxIndex; i++)
         {
             StartCoroutine(HitChecking(areaOfEffect[i]));
             //발사 시키고 없앤다

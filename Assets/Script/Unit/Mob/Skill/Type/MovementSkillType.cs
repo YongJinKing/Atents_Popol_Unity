@@ -24,7 +24,10 @@ public class MovementSkillType : SelfSkillType
 
     //이벤트 함수들 영역
     #region Event
+    //For use UnitMovement Class
     public UnityEvent<Vector3, float, UnityAction, UnityAction> moveToPosEvent;
+    //When End Move
+    public UnityEvent onMoveEndEvent;
     #endregion
     #endregion
 
@@ -50,11 +53,9 @@ public class MovementSkillType : SelfSkillType
         Vector3 dir = targetPos - selfObject.transform.position;
         //XZ 평면에서의 움직임만을 본다.
         dir = new Vector3(dir.x, 0, dir.z);
-        //타겟과의 거리가 maxDist 보다 멀면 Clamp 최소치는 0
-        float dist = Mathf.Clamp(dir.magnitude, 0, maxDist);
         dir.Normalize();
 
-        moveToPosEvent?.Invoke(selfObject.transform.position + dir * maxDist, moveSpeed, null, null);
+        moveToPosEvent?.Invoke(selfObject.transform.position + dir * maxDist, moveSpeed, null, () => onMoveEndEvent?.Invoke());
 
         yield return null;
     }

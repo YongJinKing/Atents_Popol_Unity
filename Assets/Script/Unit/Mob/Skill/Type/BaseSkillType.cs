@@ -23,8 +23,7 @@ public abstract class BaseSkillType : MonoBehaviour
     //이벤트 함수들 영역
     #region Event
     //스킬
-    public UnityEvent<Collider> onSkillHitEvent;
-    public UnityEvent onSkillDisactivatedEvent;
+    public UnityEvent onSkillEndEvent;
     #endregion
     #endregion
 
@@ -55,11 +54,6 @@ public abstract class BaseSkillType : MonoBehaviour
     public virtual void OnSkillActivated(Vector3 targetPos)
     {
         this.targetPos = targetPos;
-    }
-
-    public virtual void OnSkillDisactivated()
-    {
-        onSkillDisactivatedEvent?.Invoke();
     }
     #endregion
 

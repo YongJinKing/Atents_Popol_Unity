@@ -12,7 +12,7 @@ public class Skill : MonoBehaviour
     #region Properties / Field
     //private ���� ����
     #region Private
-
+    private Vector3 targetPos;
     #endregion
 
     //protected ���� ����
@@ -33,21 +33,23 @@ public class Skill : MonoBehaviour
     //UI ��
     public uiUnitSkillStatus uiSkillStatus;
     //��������
-    public float PreDelay;
+    public float preDelay;
     //�ĵ�����
-    public float PostDelay;
+    public float postDelay;
     #endregion
 
     //�̺�Ʈ �Լ��� ����
     #region Event
     //��ų�� ����Ǹ� SkillTypeŬ�������� ������ �����Ѵ�.
     public UnityEvent<Vector3> onSkillActivatedEvent;
+    public UnityEvent onSkillHitCheckStartEvent;
+    public UnityEvent onSkillHitCheckEndEvent;
     //��ų�� ��밡�������� �߻��ϴ� �̺�Ʈ
     //public UnityEvent onSkillAvailableEvent;
     //Ÿ���� �������� �˷��ִ� �̺�Ʈ
     public UnityEvent onDetectTargetEvent;
     //AI���� ��ųStart�� ��ųEnd�� ��Ͻ����ִ� �̺�Ʈ
-    public UnityEvent<UnityAction<Vector3, UnityAction, UnityAction>, UnityAction, LayerMask> onAddSkillEventListener;
+    public UnityEvent<UnityAction<Vector3, UnityAction, UnityAction>,UnityAction ,UnityAction, LayerMask> onAddSkillEventListener;
     #endregion
     #endregion
 
@@ -102,10 +104,10 @@ public class Skill : MonoBehaviour
         }
     }
 
-    protected IEnumerator ProcessDelay(float delayTime, UnityAction startAct)
+    protected IEnumerator ProcessDelay(float delayTime, UnityAction act)
     {
-
-        yield return null;
+        yield return new WaitForSeconds(delayTime);
+        act?.Invoke();
     }
     #endregion
 
@@ -114,7 +116,7 @@ public class Skill : MonoBehaviour
     #region EventHandler
     public void OnRequestSkillInfo()
     {
-        onAddSkillEventListener?.Invoke(OnSkillStart, OnSkillEnd, targetMask);
+        onAddSkillEventListener?.Invoke(OnSkillStart, OnSkillHitCheckStart,  OnSkillEnd, targetMask);
     }
 
     //AI�� ����� �̺�Ʈ �Լ�, collider�� �ɸ��� �̺�Ʈ�� invoke�� �ڷ�ƾ�� ��ŸƮ
@@ -133,21 +135,28 @@ public class Skill : MonoBehaviour
         //��Ÿ���� ���� ���������� �ƿ� invoke ��ü�� �Ͼ�� �������μ� ��Ÿ�� ����
         if (remainCoolDownTime <= 0)
         {
-
-            onSkillActivatedEvent?.Invoke(targetPos);
-            //���� �׽�Ʈ������ ��
+            this.targetPos = targetPos;
+            //preDelayTime Process
+            StartCoroutine(ProcessDelay(preDelay,
+                () => 
+                {
+                    startAct?.Invoke();
+                    onSkillActivatedEvent?.Invoke(targetPos);
+                }
+                ));
+            //For Testcode
             OnSkillEnd();
         }
     }
 
     public void OnSkillHitCheckStart()
     {
-
+        onSkillHitCheckStartEvent?.Invoke();
     }
 
     public void OnSkillHitCheckEnd()
     {
-
+        onSkillHitCheckEndEvent?.Invoke();
     }
 
     //��ų�� ���� ������ ��ų ��Ÿ�� ������
