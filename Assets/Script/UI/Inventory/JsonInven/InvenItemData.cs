@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ItemData
 {
-    public int id;
-    public string name;
-    public string sprite_name;
-    public string desc;
+    public int index;
+    public string Inven_itemName;
+    public string Inven_spriteName;
+    public string Inven_itemDesc;
     
 }

@@ -1,15 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class UserPanel : MonoBehaviour
 {
+    public GameObject Canvas;
+    public GameObject MainUi;
     public GameObject UserPanelPopup;
     public void PressedBtn(int index)
     {
         if(index == 0)
         {
-            DataManager.instance.SaveData();
+            for(int i = 2; i < Canvas.transform.childCount; i++)
+            {
+                Canvas.transform.GetChild(i).gameObject.SetActive(false);
+            }
+            MainUi.gameObject.SetActive(true);
+            transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+            
         }
         else if(index == 1)
         {
