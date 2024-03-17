@@ -7,6 +7,7 @@ public class TempAnimEvent : MonoBehaviour
 {
     public UnityEvent onAttackStartEvent;
     public UnityEvent onAttackEndEvent;
+    public UnityEvent onAttackAnimEndEvent;
 
     public void OnAttackStart()
     {
@@ -16,5 +17,10 @@ public class TempAnimEvent : MonoBehaviour
     public void OnAttackEnd()
     {
         onAttackEndEvent?.Invoke();
+    }
+
+    public void OnAttackAnimEnd()
+    {
+        onAttackAnimEndEvent?.Invoke();
     }
 }

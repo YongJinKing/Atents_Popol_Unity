@@ -22,8 +22,6 @@ public abstract class BaseSkillType : MonoBehaviour
 
     //이벤트 함수들 영역
     #region Event
-    //스킬
-    public UnityEvent onSkillEndEvent;
     #endregion
     #endregion
 

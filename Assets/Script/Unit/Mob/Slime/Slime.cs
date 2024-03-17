@@ -53,8 +53,6 @@ public class Slime : Monster
             }
         }
         countUsedSkill = 0;
-
-        //Debug.Log(saveSkill[countUsedSkill]);
     }
     #endregion
 
@@ -80,6 +78,22 @@ public class Slime : Monster
                 break;
             //공격
             case State.Attacking:
+                
+                Vector3 dir = target.transform.position - transform.position;
+                dir = new Vector3(dir.x, 0, dir.z);
+                dir.Normalize();
+
+                /*
+                float angle = Vector3.Angle(transform.forward, dir);
+                float rotDir = 1.0f;
+                if (Vector3.Dot(transform.right, dir) < 0.0f)
+                {
+                    rotDir = -1.0f;
+                }
+                transform.Rotate(Vector3.up * rotDir * angle, Space.World);
+                */
+
+                rotateEvent?.Invoke(dir, 1.0f);
                 ProcessState();
                 break;
         }
@@ -96,30 +110,33 @@ public class Slime : Monster
             //적에게 접근
             case State.Closing:
                 //detect를 실행하라고 지시
-                skills[saveSkill[countUsedSkill]].OnCommandDetectSkillTarget(() => ChangeState(State.Attacking));
+                skills[saveSkill[countUsedSkill]].OnCommandDetectSkillTarget(
+                    () => 
+                    {
+                        ChangeState(State.Attacking); 
+                    });
                 //Debug.Log(saveSkill[countUsedSkill]);
                 StartCoroutine(ClosingToTarget());
                 break;
             //공격
             case State.Attacking:
-                //attackStart Animation needed
-                //myAnim.Setbool("b_isSkill", true);
-                //myAnim.SetTrigger("t_Skill");
+                myAnim.SetBool("b_isSkillProgress", true);
+                myAnim.SetTrigger("t_SkillStart");
                 //myAnim.SetTrigger("t_ChannelingSkill");
                 //Skill Start hitCheck after delayMotion
                 onSkillStartAct?.Invoke(target.transform.position,
-                    () => myAnim.SetTrigger("t_Attack"),
-                    null,   //myAnim.SetTrigger("t_AttackEnd")
+                    () => myAnim.SetTrigger("t_AttackStart"),
+                    () => myAnim.SetTrigger("t_AttackEnd"),
                     () =>
                     {
-                        //myAnim.SetBool("b_isSkill", false);
+                        myAnim.SetBool("b_isSkillProgress", false);
+                        countUsedSkill++;
+                        if (countUsedSkill >= skills.Length)
+                        {
+                            SkillRandomSet();
+                        }
                         ChangeState(State.Idle);
                     });
-                countUsedSkill++;
-                if (countUsedSkill >= skills.Length)
-                {
-                    SkillRandomSet();
-                }
                 break;
         }
     }
@@ -219,11 +236,6 @@ public class Slime : Monster
     public void OnAttackStartAnim()
     {
         onSkillHitCheckStartAct?.Invoke();
-        countUsedSkill++;
-        if (countUsedSkill >= skills.Length)
-        {
-            SkillRandomSet();
-        }
     }
 
     //공격 모션중에 히트박스 가 끝남

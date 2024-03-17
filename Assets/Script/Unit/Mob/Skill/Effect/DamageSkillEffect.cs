@@ -53,12 +53,18 @@ public class DamageSkillEffect : BaseSkillEffect
         IDamage damage = target.GetComponentInParent<IDamage>();
         IGetDType Dtype = target.GetComponentInParent<IGetDType>();
 
-        if (damage != null && Dtype != null)
+        if (damage != null)
         {
             Debug.Log($"Dmg : {power * myBattleSystem.AP}\nAtype : {Atype}");
-
-            //int myattackPoint = GetComponentInParent<BattleSystem>().battlestat.AP;
-            damage.TakeDamage((int)(power * myBattleSystem.AP), Atype, Dtype.GetDType(target));
+            
+            if(Dtype != null)
+            {
+                damage.TakeDamage((int)(power * myBattleSystem.AP), Atype, Dtype.GetDType(target));
+            }
+            else
+            {
+                damage.TakeDamage((int)(power * myBattleSystem.AP), Atype, DefenceType.HeavyArmor);
+            }
         }
     }
     #endregion
