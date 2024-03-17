@@ -1,0 +1,122 @@
+[
+   {
+      "index":100,
+      "Inven_itemName":"오래된 가죽 갑옷",
+      "Inven_itemValue":50,
+      "Inven_durAbility":100,
+      "Inven_smithTalk":"으윽...이게 뭔 냄새야 그냥 버리지 그래?",
+      "Inven_itemDesc":"허름한 가죽으로 만들어진 갑옷이다.",
+      "Inven_RiggingType":"방어구",
+      "Inven_WeaponType":"가죽"
+   },
+   {
+      "index":101,
+      "Inven_itemName":"녹슨 한손 검",
+      "Inven_itemValue":20,
+      "Inven_durAbility":100,
+      "Inven_smithTalk":"이런검을 왜쓰는건지 모르겠군…",
+      "Inven_itemDesc":"녹슬어서 잘 안사용하는 검이다.",
+      "Inven_RiggingType":"무기",
+      "Inven_WeaponType":"검"
+   },
+   {
+      "index":1000,
+      "Inven_itemName":"한손 검_Lv1",
+      "Inven_itemValue":20,
+      "Inven_durAbility":100,
+      "Inven_smithTalk":"한손 검_Lv1이군!",
+      "Inven_itemDesc":"한손 검_Lv1이다.",
+      "Inven_RiggingType":"무기",
+      "Inven_WeaponType":"검"
+   },
+   {
+      "index":1001,
+      "Inven_itemName":"한손 검_Lv2",
+      "Inven_itemValue":40,
+      "Inven_durAbility":100,
+      "Inven_smithTalk":"한손 검_Lv2이군!",
+      "Inven_itemDesc":"한손 검_Lv2이다.",
+      "Inven_RiggingType":"무기",
+      "Inven_WeaponType":"검"
+   },
+   {
+      "index":1002,
+      "Inven_itemName":"한손 검_Lv3",
+      "Inven_itemValue":60,
+      "Inven_durAbility":100,
+      "Inven_smithTalk":"한손 검_Lv3이군!",
+      "Inven_itemDesc":"한손 검_Lv3이다.",
+      "Inven_RiggingType":"무기",
+      "Inven_WeaponType":"검"
+   },
+   {
+      "index":1003,
+      "Inven_itemName":"한손 검_Lv4",
+      "Inven_itemValue":80,
+      "Inven_durAbility":100,
+      "Inven_smithTalk":"한손 검_Lv4이군!",
+      "Inven_itemDesc":"한손 검_Lv4이다.",
+      "Inven_RiggingType":"무기",
+      "Inven_WeaponType":"검"
+   },
+   {
+      "index":1004,
+      "Inven_itemName":"한손 검_Lv5",
+      "Inven_itemValue":100,
+      "Inven_durAbility":100,
+      "Inven_smithTalk":"한손 검_Lv5이군!",
+      "Inven_itemDesc":"한손 검_Lv5이다.",
+      "Inven_RiggingType":"무기",
+      "Inven_WeaponType":"검"
+   },
+   {
+      "index":1005,
+      "Inven_itemName":"한손 둔기_Lv1",
+      "Inven_itemValue":20,
+      "Inven_durAbility":100,
+      "Inven_smithTalk":"한손 둔기_Lv1이군!",
+      "Inven_itemDesc":"한손 둔기_Lv1이다.",
+      "Inven_RiggingType":"무기",
+      "Inven_WeaponType":"둔기"
+   },
+   {
+      "index":1006,
+      "Inven_itemName":"한손 둔기_Lv2",
+      "Inven_itemValue":40,
+      "Inven_durAbility":100,
+      "Inven_smithTalk":"한손 둔기_Lv2이군!",
+      "Inven_itemDesc":"한손 둔기_Lv2이다.",
+      "Inven_RiggingType":"무기",
+      "Inven_WeaponType":"둔기"
+   },
+   {
+      "index":1007,
+      "Inven_itemName":"한손 둔기_Lv3",
+      "Inven_itemValue":60,
+      "Inven_durAbility":100,
+      "Inven_smithTalk":"한손 둔기_Lv3이군!",
+      "Inven_itemDesc":"한손 둔기_Lv3이다.",
+      "Inven_RiggingType":"무기",
+      "Inven_WeaponType":"둔기"
+   },
+   {
+      "index":1008,
+      "Inven_itemName":"한손 둔기_Lv4",
+      "Inven_itemValue":80,
+      "Inven_durAbility":100,
+      "Inven_smithTalk":"한손 둔기_Lv4이군!",
+      "Inven_itemDesc":"한손 둔기_Lv4이다.",
+      "Inven_RiggingType":"무기",
+      "Inven_WeaponType":"둔기"
+   },
+   {
+      "index":1009,
+      "Inven_itemName":"한손 둔기_Lv5",
+      "Inven_itemValue":100,
+      "Inven_durAbility":100,
+      "Inven_smithTalk":"한손 둔기_Lv5이군!",
+      "Inven_itemDesc":"한손 둔기_Lv5이다.",
+      "Inven_RiggingType":"무기",
+      "Inven_WeaponType":"둔기"
+   }
+]
