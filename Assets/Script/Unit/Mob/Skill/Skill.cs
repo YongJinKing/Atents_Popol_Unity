@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 using static UnityEditor.PlayerSettings;
 
 //��ų�� ���������� ó������ ����Ǵ� Ŭ����
@@ -33,9 +34,9 @@ public class Skill : MonoBehaviour
     //UI ��
     public uiUnitSkillStatus uiSkillStatus;
     //��������
-    public float preDelay;
+    public float preDelay = 0;
     //�ĵ�����
-    public float postDelay;
+    public float postDelay = 0;
     #endregion
 
     //�̺�Ʈ �Լ��� ����
@@ -44,12 +45,15 @@ public class Skill : MonoBehaviour
     public UnityEvent<Vector3> onSkillActivatedEvent;
     public UnityEvent onSkillHitCheckStartEvent;
     public UnityEvent onSkillHitCheckEndEvent;
+    private UnityAction middleAct;
+    private UnityAction endAct;
     //��ų�� ��밡�������� �߻��ϴ� �̺�Ʈ
     //public UnityEvent onSkillAvailableEvent;
     //Ÿ���� �������� �˷��ִ� �̺�Ʈ
     public UnityEvent onDetectTargetEvent;
     //AI���� ��ųStart�� ��ųEnd�� ��Ͻ����ִ� �̺�Ʈ
-    public UnityEvent<UnityAction<Vector3, UnityAction, UnityAction>,UnityAction ,UnityAction, LayerMask> onAddSkillEventListener;
+    public UnityEvent<UnityAction<Vector3, UnityAction, UnityAction, UnityAction>,UnityAction ,UnityAction, UnityAction> onAddSkillEvent;
+    public UnityEvent<LayerMask> onAddSkillLayerEvent;
     #endregion
     #endregion
 
@@ -116,13 +120,13 @@ public class Skill : MonoBehaviour
     #region EventHandler
     public void OnRequestSkillInfo()
     {
-        onAddSkillEventListener?.Invoke(OnSkillStart, OnSkillHitCheckStart,  OnSkillEnd, targetMask);
+        onAddSkillEvent?.Invoke(OnSkillStart, OnSkillHitCheckStart,  OnSkillHitCheckEnd, OnSkillAnimEnd);
+        onAddSkillLayerEvent?.Invoke(targetMask);
     }
 
     //AI�� ����� �̺�Ʈ �Լ�, collider�� �ɸ��� �̺�Ʈ�� invoke�� �ڷ�ƾ�� ��ŸƮ
     public void OnCommandDetectSkillTarget(UnityAction detectAct)
     {
-        //onAddSkillEventListener?.Invoke(OnSkillStart, OnSkillEnd, targetMask);
         onDetectTargetEvent.AddListener(detectAct);
         StartCoroutine(DetectingRange());
     }
@@ -130,7 +134,7 @@ public class Skill : MonoBehaviour
     //public void OnRequestSkill()
 
     //�� ��ų�� ���Ǿ�����
-    public void OnSkillStart(Vector3 targetPos, UnityAction startAct, UnityAction endAct)
+    public void OnSkillStart(Vector3 targetPos, UnityAction startAct, UnityAction middleAct, UnityAction endAct)
     {
         //��Ÿ���� ���� ���������� �ƿ� invoke ��ü�� �Ͼ�� �������μ� ��Ÿ�� ����
         if (remainCoolDownTime <= 0)
@@ -144,8 +148,8 @@ public class Skill : MonoBehaviour
                     onSkillActivatedEvent?.Invoke(targetPos);
                 }
                 ));
-            //For Testcode
-            OnSkillEnd();
+            this.middleAct = middleAct;
+            this.endAct = endAct;
         }
     }
 
@@ -159,12 +163,22 @@ public class Skill : MonoBehaviour
         onSkillHitCheckEndEvent?.Invoke();
     }
 
-    //��ų�� ���� ������ ��ų ��Ÿ�� ������
-    public void OnSkillEnd()
+    //use for afterdelay
+    public void OnSkillAnimEnd()
     {
-        StartCoroutine(CoolDownChecking());
+        middleAct?.Invoke();
+        StartCoroutine(ProcessDelay(postDelay,
+            () => 
+            {
+                OnSkillEnd();
+            }));
     }
 
+    public void OnSkillEnd()
+    {
+        endAct?.Invoke();
+        StartCoroutine(CoolDownChecking());
+    }
     #endregion
 
 

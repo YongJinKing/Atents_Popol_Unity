@@ -94,10 +94,13 @@ public class MeleeSkillType : HitCheckSkillType
 
     public override void OnSkillHitCheckStartEventHandler()
     {
-        isSkillActivated = true;
-        for (int i = 0; i < maxIndex; i++)
+        if (!isSkillActivated)
         {
-            StartCoroutine(HitChecking(areaOfEffect[i]));
+            isSkillActivated = true;
+            for (int i = 0; i < maxIndex; i++)
+            {
+                StartCoroutine(HitChecking(areaOfEffect[i]));
+            }
         }
     }
 

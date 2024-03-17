@@ -38,9 +38,10 @@ public abstract class Monster : BattleSystem
     public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent;
     public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
     public UnityEvent<UnityAction> stopEvent;
-    public UnityAction<Vector3, UnityAction, UnityAction> onSkillStartAct;
-    public UnityAction onSkillHitCheckStartAct;
-    public UnityAction onSkillHitCheckEndAct;
+    protected UnityAction<Vector3, UnityAction, UnityAction, UnityAction> onSkillStartAct;
+    protected UnityAction onSkillHitCheckStartAct;
+    protected UnityAction onSkillHitCheckEndAct;
+    protected UnityAction onSkillAnimEnd;
     #endregion
     #endregion
 
@@ -70,20 +71,20 @@ public abstract class Monster : BattleSystem
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
     public void OnAddSkillEventListener(
-        UnityAction<Vector3, UnityAction, UnityAction> skillStart,
+        UnityAction<Vector3, UnityAction, UnityAction, UnityAction> skillStart,
         UnityAction skillHitCheckStart,
         UnityAction skillHitCheckEnd,
-        LayerMask mask)
+        UnityAction skillAnimEnd)
     {
         onSkillStartAct = skillStart;
         onSkillHitCheckStartAct = skillHitCheckStart;
         onSkillHitCheckEndAct = skillHitCheckEnd;
-        skillMask = mask;
+        onSkillAnimEnd = skillAnimEnd;
     }
 
-    public virtual void OnSkillEndEventListener()
+    public void OnAddSkillMaskEventListener(LayerMask mask)
     {
-
+        skillMask = mask;
     }
     #endregion
 

@@ -103,11 +103,18 @@ public class Slime : Monster
             //공격
             case State.Attacking:
                 //attackStart Animation needed
-
+                //myAnim.Setbool("b_isSkill", true);
+                //myAnim.SetTrigger("t_Skill");
+                //myAnim.SetTrigger("t_ChannelingSkill");
                 //Skill Start hitCheck after delayMotion
                 onSkillStartAct?.Invoke(target.transform.position,
                     () => myAnim.SetTrigger("t_Attack"),
-                    null);
+                    null,   //myAnim.SetTrigger("t_AttackEnd")
+                    () =>
+                    {
+                        //myAnim.SetBool("b_isSkill", false);
+                        ChangeState(State.Idle);
+                    });
                 countUsedSkill++;
                 if (countUsedSkill >= skills.Length)
                 {
@@ -211,7 +218,7 @@ public class Slime : Monster
     //공격모션이 스킬을 발동
     public void OnAttackStartAnim()
     {
-        onSkillStartAct?.Invoke(target.transform.position, null, null);
+        onSkillHitCheckStartAct?.Invoke();
         countUsedSkill++;
         if (countUsedSkill >= skills.Length)
         {
@@ -219,14 +226,18 @@ public class Slime : Monster
         }
     }
 
-    //공격 모션이 끝남
+    //공격 모션중에 히트박스 가 끝남
     public void OnAttackEndAnim()
     {
         onSkillHitCheckEndAct?.Invoke();
-        ChangeState(State.Idle);
+    }
+
+    //Attack Animation End
+    public void OnSkillAnimEnd()
+    {
+        onSkillAnimEnd?.Invoke();
     }
     #endregion
-
 
     //유니티 함수들 영역
     #region MonoBehaviour
@@ -240,22 +251,6 @@ public class Slime : Monster
         SkillRandomSet();
 
         ProcessState();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            UseSkill1();
-        }
-        if (Input.GetButtonDown("Fire1"))
-        {
-            UseSkill2();
-        }
-        */
     }
     #endregion
 }
