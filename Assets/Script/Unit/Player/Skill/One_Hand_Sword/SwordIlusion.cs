@@ -6,18 +6,19 @@ public class SwordIlusion : MonoBehaviour
 {
     public float delay;
     public int hitCount;
-    float nowDelay;
-    public SphereCollider col;
+    float nowDelay = -0.3f;
+    SphereCollider col;
+    public float destroy;
 
     private void Start()
     {
-        col = GetComponentInChildren<SphereCollider>();
-        Destroy(this.gameObject, 4f);
+        col = GetComponent<SphereCollider>();
+        Destroy(this.gameObject, destroy);
     }
     void Update()
     {
         nowDelay += Time.deltaTime;
-        if (nowDelay >= delay && hitCount*2 >= 0)
+        if (nowDelay >= delay && hitCount * 2 >= 0)
         {
             if (col.enabled)
             {

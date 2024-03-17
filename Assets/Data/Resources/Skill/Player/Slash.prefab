@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6670327257770498480}
   - component: {fileID: 258882103780215799}
   - component: {fileID: 7395085109326994918}
+  - component: {fileID: 1504074448842141560}
   m_Layer: 4
   m_Name: Slash
   m_TagString: Untagged
@@ -117,6 +118,20 @@ MonoBehaviour:
     uiSkillName: Slash
     uiSkillDesc: "\uAC08\uB77C\uC9C4 \uB300\uC9C0"
   Damage: 1000
+  aType: 0
+--- !u!114 &1504074448842141560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2701895367126473184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cbffb9fa74b744a848c13deb37dc66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitVFX: {fileID: 6670327230592393191, guid: c896a6fa2419f5d45abd5757233c7a03, type: 3}
 --- !u!1 &3486019571294363201
 GameObject:
   m_ObjectHideFlags: 0
