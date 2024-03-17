@@ -97,7 +97,7 @@ public class BattleSystem : CharacterProperty, IDamage
         totaldmg = (int)((float)dmg * computed);
 
         Debug.Log($"total : {totaldmg}");
-
+        
         curBattleStat.HP -= totaldmg;
         if (curBattleStat.HP <= 0.0f)
         {
