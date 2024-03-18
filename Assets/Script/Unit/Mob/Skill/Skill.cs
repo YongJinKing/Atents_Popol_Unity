@@ -2,6 +2,15 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
+public struct AnimationClips
+{
+    public AnimationClip attackReady;
+    public AnimationClip attackStart;
+    public AnimationClip attackEnd;
+    public bool isLoop;
+}
+
 public class Skill : MonoBehaviour
 {
     #region Properties / Field
@@ -20,6 +29,7 @@ public class Skill : MonoBehaviour
     public uiUnitSkillStatus uiSkillStatus;
     public float preDelay = 0;
     public float postDelay = 0;
+    public AnimationClips clips;
     #endregion
 
 

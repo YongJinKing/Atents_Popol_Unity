@@ -38,6 +38,7 @@ public class TempPlayerAnimEvent : MonoBehaviour
 
     public void OnAttckEffect(string s)
     {
+        GetComponent<Animator>().GetLayerWeight(1);
         i_Effect.PlayAttackEffect(s, 0.5f);
     }
 }
