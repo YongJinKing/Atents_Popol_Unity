@@ -10,21 +10,19 @@ using UnityEngine.Events;
 public class BtnNormalFuntion : MonoBehaviour
 {
     public Sprite[] ButtonSprite;
+    public int btnChildCount;
     public UnityEvent<int> BtnAct;
 
-    void Start()
+    private void OnEnable() 
     {
         Button[] BtnList = transform.GetComponentsInChildren<Button>();
+        btnChildCount = BtnList.Length;
         for(int i = 0; i < BtnList.Length; i++)
         {
-            Debug.Log(BtnList[i].name);
-        }
-        /* for(int i = 0; i < transform.childCount; i++)
-        {
             int index = i;
-            Debug.Log(BtnList[index].name);
             BtnList[i].onClick.AddListener(() => PressedBtn(index));
-        } */
+            
+        }    
     }
     public void ButtonPointerDown(GameObject gameObject)
     {

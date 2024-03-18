@@ -10,6 +10,7 @@ public class UserPanel : MonoBehaviour
     public GameObject UserPanelPopup;
     public void PressedBtn(int index)
     {
+        
         if(index == 0)
         {
             for(int i = 2; i < Canvas.transform.childCount; i++)

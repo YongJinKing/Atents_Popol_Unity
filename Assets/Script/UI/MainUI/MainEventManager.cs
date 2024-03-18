@@ -35,7 +35,7 @@ public class MainEventManager : MonoBehaviour
         }
         UserPanel.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
     }
-    void MainUiControll(int index)
+    public void MainUiControll(int index)
     {
         ChangeMainUI();
         gameCanvas.transform.GetChild(index+3).gameObject.SetActive(true);

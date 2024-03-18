@@ -9,10 +9,10 @@ public class UIInventory : MonoBehaviour
 {
     public GameObject[] arrEmpty;
     public GameObject smithUi;
-    private List<UIItem> items;
+    public List<UIItem> items;
 
     private GameObject prefab;
-    
+    int Slotindex;
     public Transform empty;
 
 
@@ -25,6 +25,9 @@ public class UIInventory : MonoBehaviour
 
         this.AddItem(100);
         this.AddItem(1000);
+        this.AddItem(1001);
+
+        this.RemoveItem(1000);
     }
 
     public void AddItem(int id) 
@@ -39,10 +42,43 @@ public class UIInventory : MonoBehaviour
         this.items.Add(uiItem);
         var data = ItemDataManager.GetInstance().dicItemDatas[id];
         string spName = data.Inven_spriteName;
-        Debug.Log(spName);
+
         Sprite sp = Resources.Load<Sprite>($"UI/UIItem/{spName}");
    
         uiItem.Init(id, sp, 1);
         
     }
+    private void RemoveItem(int id) 
+    { 
+        var uiItem = this.items.Find(x => x.id == id);
+        if (uiItem != null) {
+            for (int i = 0; i < this.arrEmpty.Length; i++) 
+            {
+                
+                var go = this.arrEmpty[i];
+                if (go.transform.childCount > 0) 
+                {
+                    var child = go.transform.GetChild(0);
+                    if (child != null) 
+                    {
+                        var target = child.GetComponent<UIItem>();
+                        if (target.id == id) 
+                        {
+                            Destroy(target.gameObject);
+                            this.items.RemoveAt(i);
+                            ChangePararnts(i);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    void ChangePararnts(int index)
+    {
+
+    }
+
 }
+
