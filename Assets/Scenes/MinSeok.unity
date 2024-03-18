@@ -531,8 +531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a837e0f8b1f08964dbe7017f32f96ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj1: {fileID: 7925162887021308499, guid: 77c658dd7c8c1164f8bc060efad93442, type: 3}
-  obj2: {fileID: 2701895367126473184, guid: a38782187a3567e4b8d1176b930e63f7, type: 3}
+  obj1: {fileID: 5557313780678953903, guid: 7ff1fa07214fc9841bb03e5cd77914f9, type: 3}
+  obj2: {fileID: 584521339683418355, guid: fb00de08af38bbf42ab84deaa4939899, type: 3}
   obj3: {fileID: 1987686987067703903, guid: af45540bdda452349ab1ba3ad89d25ea, type: 3}
 --- !u!65 &2043809411
 BoxCollider:
