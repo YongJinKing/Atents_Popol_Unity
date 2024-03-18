@@ -170,11 +170,6 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         }
     }
 
-    public void SkillDamage()
-    {
-
-    }
-
     public void OnEnd(int type)
     {
         switch (type)
