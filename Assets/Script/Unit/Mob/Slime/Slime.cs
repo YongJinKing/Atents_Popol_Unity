@@ -70,6 +70,14 @@ public class Slime : Monster
         {
             //대충 적당히 근거리에서 배회
             case State.Idle:
+                if (saveSkill[countUsedSkill] == 1)
+                {
+                    myAnim.SetBool("b_LoopSkill", true);
+                }
+                else
+                {
+                    myAnim.SetBool("b_LoopSkill", false);
+                }
                 ProcessState();
                 break;
             //적에게 접근
@@ -78,20 +86,9 @@ public class Slime : Monster
                 break;
             //공격
             case State.Attacking:
-                
                 Vector3 dir = target.transform.position - transform.position;
                 dir = new Vector3(dir.x, 0, dir.z);
                 dir.Normalize();
-
-                /*
-                float angle = Vector3.Angle(transform.forward, dir);
-                float rotDir = 1.0f;
-                if (Vector3.Dot(transform.right, dir) < 0.0f)
-                {
-                    rotDir = -1.0f;
-                }
-                transform.Rotate(Vector3.up * rotDir * angle, Space.World);
-                */
 
                 rotateEvent?.Invoke(dir, 1.0f);
                 ProcessState();

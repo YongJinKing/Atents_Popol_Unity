@@ -677,7 +677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6211561605684765679, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 3.5763335
+      value: 3.576334
       objectReference: {fileID: 0}
     - target: {fileID: -6211561605684765679, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -685,39 +685,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6051369011138926796, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 41.799324
+      value: 20.844429
       objectReference: {fileID: 0}
     - target: {fileID: -6051369011138926796, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: -79.29167
+      objectReference: {fileID: 0}
+    - target: {fileID: -6051369011138926796, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 3.8495533
       objectReference: {fileID: 0}
     - target: {fileID: -3121232340395980880, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -3.5529873e-15
+      value: -0.12473121
       objectReference: {fileID: 0}
     - target: {fileID: -3121232340395980880, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 1.5724736e-14
+      value: 1.9961085
       objectReference: {fileID: 0}
     - target: {fileID: -3121232340395980880, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -9.674543
+      value: -17.60719
       objectReference: {fileID: 0}
     - target: {fileID: -2584759193488090360, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 78.95162
+      value: 65.75478
       objectReference: {fileID: 0}
     - target: {fileID: -2584759193488090360, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -33.323616
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -2584759193488090360, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 236.67639
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2239921948836965481, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -8.23224e-16
+      value: -2.2082522e-15
       objectReference: {fileID: 0}
     - target: {fileID: -2239921948836965481, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -725,11 +729,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2239921948836965481, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 50.26832
+      value: 57.858025
       objectReference: {fileID: 0}
     - target: {fileID: -1311130036596572777, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 3.5763335
+      value: 3.576334
       objectReference: {fileID: 0}
     - target: {fileID: -1311130036596572777, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -737,15 +741,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 601554024543423895, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -8.0103194e-15
+      value: 3.7927864
       objectReference: {fileID: 0}
     - target: {fileID: 601554024543423895, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 1.3029066e-15
+      value: 9.2596035
       objectReference: {fileID: 0}
     - target: {fileID: 601554024543423895, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -20.50537
+      value: -25.660547
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_Name
@@ -753,7 +757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2114192090312465905, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 54.473083
+      value: 34.03937
       objectReference: {fileID: 0}
     - target: {fileID: 2114192090312465905, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -909,7 +913,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 723301138617635520, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 723301138617635520, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: onMoveEndEvent.m_PersistentCalls.m_Calls.Array.size
@@ -988,6 +992,10 @@ PrefabInstance:
       value: Dash
       objectReference: {fileID: 0}
     - target: {fileID: 6354985807710237568, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
+      propertyPath: hitDuration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354985807710237568, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: attackStartPos.Array.data[0]
       value: 
       objectReference: {fileID: 4556994997192371925}
@@ -1013,7 +1021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: onSkillActivatedEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: onSkillHitCheckEndEvent.m_PersistentCalls.m_Calls.Array.size
