@@ -15,28 +15,28 @@ public interface I_ClickPoint
 
 public class Player : BattleSystem, I_ClickPoint, IGetDType
 {
+    public GameObject Effectobj;
+    public LayerMask clickMask;
+    public DefenceType Dtype;
+    public PlayerDetaManager playerdata;
     public UnityEvent<Vector3, float, UnityAction<float>> clickAct;
     public UnityEvent<UnityAction<float>> stopAct;
     public UnityEvent<Vector3, float> dadgeAct;
     public UnityEvent<Vector3, float> rotAct;
-    public LayerMask clickMask;
     public float rotSpeed = 2;
-    float FireDelay = 0;
     public float DadgeDelay = 0;
     public float dadgePw;
+    float FireDelay = 0;
     bool isFireReady = true;
     bool isDadgeReady = true;
-    public GameObject Effectobj;
-
-    public DefenceType Dtype;
-    
     Vector3 dir;
+
     public enum state
     {
         Fire, Dadge, Idle, Run, Skill , Death
     }
-    [SerializeField]protected state playerstate;
 
+    [SerializeField]protected state playerstate;
     protected void ChangeState(state s)
     {
         if (playerstate == s) return;
@@ -90,6 +90,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
 
     protected override void Start()
     {
+        playerdata = new PlayerDetaManager();
         base.Start();
         ChangeState(state.Idle);
     }
@@ -131,13 +132,15 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         }
     }
 
+
+
     public void MoveToMousePos()
     {
         if (Input.GetMouseButtonDown(1))
         {
             GetRaycastHit();
             ChangeState(state.Run);
-            clickAct?.Invoke(dir, battleStat.Speed, (float temp) => 
+            clickAct?.Invoke(dir, playerdata.playerstatdata.Character_MoveSpeed, (float temp) => 
             {
                 myAnim.SetFloat("Move", temp);
                 if(temp < 0.05f && playerstate != state.Dadge && playerstate != state.Fire && playerstate != state.Skill)
@@ -171,6 +174,16 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
             
             rotAct?.Invoke(dir, rotSpeed);
         }
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            rotSpeed = 3.0f;
+            GetRaycastHit();
+            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+            ChangeState(state.Skill);
+            myAnim.SetTrigger("t_WSkill");
+            
+            rotAct?.Invoke(dir, rotSpeed);
+        }
     }
 
     public void OnEnd(int type)
@@ -178,7 +191,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         switch (type)
         {
             case 0:
-                FireDelay = battleStat.AttackDelay;
+                FireDelay = playerdata.playerstatdata.Character_AttackSpeed;
                 break;
             case 1:
                 DadgeDelay = 1.0f;
@@ -236,5 +249,14 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
             Time.timeScale = slowTime;
             yield return null;
         }
+    }
+
+    protected override void LevelUp()
+    {
+        var plstat = playerdata.playerstatdata;
+        var plLvstat = playerdata.dicPlayerLevelData[++plstat.Character_CurrentLevel];
+
+        plstat.Character_AttackPower += plLvstat.AttackPower;
+        plstat.Character_Hp += plLvstat.Hp;
     }
 }

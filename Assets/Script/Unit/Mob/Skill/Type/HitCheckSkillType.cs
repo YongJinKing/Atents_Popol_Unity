@@ -5,39 +5,39 @@ using UnityEngine.Events;
 
 public abstract class HitCheckSkillType : BaseSkillType
 {
-    //º¯¼ö ¿µ¿ª
+    //ë³€ìˆ˜ ì˜ì—­
     #region Properties / Field
-    //private º¯¼ö ¿µ¿ª
+    //private ë³€ìˆ˜ ì˜ì—­
     #region Private
 
     #endregion
 
-    //protected º¯¼ö ¿µ¿ª
+    //protected ë³€ìˆ˜ ì˜ì—­
     #region protected
-    //Å¸°ÙÀÌ ÇÃ·¹ÀÌ¾î¸é ÇÃ·¹¾î ·¹ÀÌ¾î·Î ÇÏ°í ¸ó½ºÅÍ¸é ¸ó½ºÅÍ ·¹ÀÌ¾î
+    //íƒ€ê²Ÿì´ í”Œë ˆì´ì–´ë©´ í”Œë ˆì–´ ë ˆì´ì–´ë¡œ í•˜ê³  ëª¬ìŠ¤í„°ë©´ ëª¬ìŠ¤í„° ë ˆì´ì–´
     [SerializeField] protected LayerMask targetMask;
-    //È÷Æ®¹Ú½º°¡ Áö¼ÓµÇ´Â ½Ã°£
+    //íˆíŠ¸ë°•ìŠ¤ê°€ ì§€ì†ë˜ëŠ” ì‹œê°„
     [SerializeField] protected float hitDuration;
-    //³²Àº Áö¼Ó½Ã°£À» °è»êÇÏ±â À§ÇÑ º¯¼ö serialÀº ±×³É °ªÀÌ ÁÙ¾îµå´ÂÁö È®ÀÎÇÏ±â À§ÇÑ°ÍÀ¸·Î ¼öÁ¤ÇÏ·Á°í ¸¸µç°ÍÀÌ ¾Æ´Ï´Ù.
+    //ë‚¨ì€ ì§€ì†ì‹œê°„ì„ ê³„ì‚°í•˜ê¸° ìœ„í•œ ë³€ìˆ˜ serialì€ ê·¸ëƒ¥ ê°’ì´ ì¤„ì–´ë“œëŠ”ì§€ í™•ì¸í•˜ê¸° ìœ„í•œê²ƒìœ¼ë¡œ ìˆ˜ì •í•˜ë ¤ê³  ë§Œë“ ê²ƒì´ ì•„ë‹ˆë‹¤.
     protected float remainDuration;
-    //ÀÎ½ºÅÏÅ¸ÀÌÁîÈ­µÈ areaOfEffectPrefebÀ» ÀúÀåÇÏ´Â°÷
+    //ì¸ìŠ¤í„´íƒ€ì´ì¦ˆí™”ëœ areaOfEffectPrefebì„ ì €ì¥í•˜ëŠ”ê³³
     [SerializeField] protected GameObject[] areaOfEffect;
-    //areaOfEffect¸¦ ÃÖ´ë ¸î°³±îÁö ¸¸µé°ÍÀÌ³Ä¸¦ °áÁ¤ÇÏ±â À§ÇÔ
-    //¿¹¸¦µé¾î Åõ»çÃ¼ Å¬·¡½ºÀÇ °æ¿ì¿¡´Â 2°³ ÀÌ»óÀ¸·Î ¸¸µé¸é ¿©·¯°³ ¹ß»ç ÇÒ¼ö ÀÖµµ·Ï
+    //areaOfEffectë¥¼ ìµœëŒ€ ëª‡ê°œê¹Œì§€ ë§Œë“¤ê²ƒì´ëƒë¥¼ ê²°ì •í•˜ê¸° ìœ„í•¨
+    //ì˜ˆë¥¼ë“¤ì–´ íˆ¬ì‚¬ì²´ í´ë˜ìŠ¤ì˜ ê²½ìš°ì—ëŠ” 2ê°œ ì´ìƒìœ¼ë¡œ ë§Œë“¤ë©´ ì—¬ëŸ¬ê°œ ë°œì‚¬ í• ìˆ˜ ìˆë„ë¡
     [SerializeField] protected int maxIndex;
     #endregion
 
-    //Public º¯¼ö¿µ¿ª
+    //Public ë³€ìˆ˜ì˜ì—­
     #region public
-    //½ºÅ³ °ø°İ¹üÀ§¶ó´ø°¡¸¦ ¼³Á¤ÇÒ ¿ÀºêÁ§Æ® ÇÁ¸®Æé
+    //ìŠ¤í‚¬ ê³µê²©ë²”ìœ„ë¼ë˜ê°€ë¥¼ ì„¤ì •í•  ì˜¤ë¸Œì íŠ¸ í”„ë¦¬í©
     public GameObject areaOfEffectPrefeb;
-    //°ø°İÀÌ ¸Â¾ÒÀ»¶§ »ı¼ºµÉ ÀÌÆåÆ®
+    //ê³µê²©ì´ ë§ì•˜ì„ë•Œ ìƒì„±ë  ì´í™íŠ¸
     public GameObject hitEffectPrefeb;
-    //½ºÅ³ÀÌ ½ÃÀÛµÉ À§Ä¡
+    //ìŠ¤í‚¬ì´ ì‹œì‘ë  ìœ„ì¹˜
     public Transform[] attackStartPos;
     #endregion
 
-    //ÀÌº¥Æ® ÇÔ¼öµé ¿µ¿ª
+    //ì´ë²¤íŠ¸ í•¨ìˆ˜ë“¤ ì˜ì—­
     #region Event
     public UnityEvent<Collider> onSkillHitEvent;
     #endregion
@@ -45,11 +45,11 @@ public abstract class HitCheckSkillType : BaseSkillType
 
 
     #region Method
-    //private ÇÔ¼öµé ¿µ¿ª
+    //private í•¨ìˆ˜ë“¤ ì˜ì—­
     #region PrivateMethod
     #endregion
 
-    //protected ÇÔ¼öµé ¿µ¿ª
+    //protected í•¨ìˆ˜ë“¤ ì˜ì—­
     #region ProtectedMethod
     protected virtual void InitAreaOfEffect()
     {
@@ -65,7 +65,7 @@ public abstract class HitCheckSkillType : BaseSkillType
         }
     }
 
-    //¸ÂÃèÀ»¶§ ÀÌÆåÆ®°¡ ³ª¿Àµµ·Ï ÇÏ´Â ÇÔ¼ö
+    //ë§ì·„ì„ë•Œ ì´í™íŠ¸ê°€ ë‚˜ì˜¤ë„ë¡ í•˜ëŠ” í•¨ìˆ˜
     protected virtual void HitEffectPlay(Vector3 hitBoxPos, Vector3 targetPos)
     {
         if (hitEffectPrefeb != null)
@@ -79,19 +79,19 @@ public abstract class HitCheckSkillType : BaseSkillType
     }
     #endregion
 
-    //public ÇÔ¼öµé ¿µ¿ª
+    //public í•¨ìˆ˜ë“¤ ì˜ì—­
     #region PublicMethod
     #endregion
     #endregion
 
 
     #region Coroutine
-    //È÷Æ®¹Ú½º¿¡ µé¾î°¬´ÂÁö ¾Æ´ÑÁö Ã¼Å©ÇÏ´Â ÄÚ·çÆ¾
+    //íˆíŠ¸ë°•ìŠ¤ì— ë“¤ì–´ê°”ëŠ”ì§€ ì•„ë‹Œì§€ ì²´í¬í•˜ëŠ” ì½”ë£¨í‹´
     protected abstract IEnumerator HitChecking(GameObject hitBox);
     #endregion
 
 
-    //ÀÌº¥Æ®°¡ ÀÏ¾î³µÀ»¶§ ½ÇÇàµÇ´Â On~~ÇÔ¼ö
+    //ì´ë²¤íŠ¸ê°€ ì¼ì–´ë‚¬ì„ë•Œ ì‹¤í–‰ë˜ëŠ” On~~í•¨ìˆ˜
     #region EventHandler
     public abstract void OnSkillHitCheckStartEventHandler();
     public virtual void OnSkillHitCheckEndEventHandler()
@@ -100,7 +100,7 @@ public abstract class HitCheckSkillType : BaseSkillType
     #endregion
 
 
-    //À¯´ÏÆ¼ ÇÔ¼öµé ¿µ¿ª
+    //ìœ ë‹ˆí‹° í•¨ìˆ˜ë“¤ ì˜ì—­
     #region MonoBehaviour
     protected override void Start()
     {

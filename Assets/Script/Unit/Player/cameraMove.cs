@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class cameraMove : MonoBehaviour
 {
-    //Empty¿ÀºêÁ§Æ®¿¡ ½ºÅ©¸³Æ®¸¦ Àû¿ë½ÃÅ°°í ÀÚ³à·Î Ä«¸Ş¶ó¸¦ ³Ö¾î »ç¿ë
+    //Emptyì˜¤ë¸Œì íŠ¸ì— ìŠ¤í¬ë¦½íŠ¸ë¥¼ ì ìš©ì‹œí‚¤ê³  ìë…€ë¡œ ì¹´ë©”ë¼ë¥¼ ë„£ì–´ ì‚¬ìš©
 
     public LayerMask crashMask;
 
@@ -18,8 +18,8 @@ public class cameraMove : MonoBehaviour
     public Vector2 zoomRange = new Vector2(1, 15);
     public float zoomSpeed = 5.0f;
     public bool wheelClickRot = true;
-    public float rotationSpeed = 0.1f; // È¸Àü ¼Óµµ
-    private Vector3 lastMousePosition; // ¸¶¿ì½º ÀÌÀü À§Ä¡
+    public float rotationSpeed = 0.1f; // íšŒì „ ì†ë„
+    private Vector3 lastMousePosition; // ë§ˆìš°ìŠ¤ ì´ì „ ìœ„ì¹˜
 
     public bool raycastDebug = false;
 
@@ -32,11 +32,11 @@ public class cameraMove : MonoBehaviour
 
     void Update()
     {
-        //½ºÅ©·Ñ ÁÜ
+        //ìŠ¤í¬ë¡¤ ì¤Œ
         targetDist -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         targetDist = Mathf.Clamp(targetDist, zoomRange.x, zoomRange.y);
 
-        //Ä«¸Ş¶ó º® Ãæµ¹ °¨Áö
+        //ì¹´ë©”ë¼ ë²½ ì¶©ëŒ ê°ì§€
         float offSet = 0.5f;
         Vector3 rayoffSet = new Vector3(0, -1, 0);
         if (Physics.Raycast(new Ray(transform.position + rayoffSet, -transform.forward),
@@ -52,11 +52,11 @@ public class cameraMove : MonoBehaviour
             Debug.DrawRay(transform.position + rayoffSet, -transform.forward.normalized * zoomRange.y, Color.green);
         }
 
-        //Ä«¸Ş¶ó ÀÌµ¿
+        //ì¹´ë©”ë¼ ì´ë™
         camDist = Mathf.Lerp(camDist, targetDist, Time.deltaTime * zoomSpeed);
         transform.rotation = Quaternion.Euler(playerAngle.x, playerAngle.y, 0);
 
-        //ÇÃ·¹ÀÌ¾î Æ®·¹Å·
+        //í”Œë ˆì´ì–´ íŠ¸ë ˆí‚¹
         transform.position = Vector3.Lerp(transform.position, playerPos.position + playeroffSet, Time.deltaTime * trackSpeed);
 
         //WheelClick Rotation

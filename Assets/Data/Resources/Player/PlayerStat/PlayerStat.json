@@ -1,0 +1,18 @@
+[
+   {
+      "index":10000,
+      "Character_Type":0,
+      "Character_Name":10000,
+      "Character_Hp":500,
+      "Character_MoveSpeed":5,
+      "Character_AttackSpeed":0.5,
+      "Character_EnergyGage":100,
+      "Character_AttackPower":20,
+      "Character_AttackDist":10,
+      "Character_CurrentExp":0,
+      "Character_CurrentLevel":1,
+      "Character_MaxLevel":30,
+      "LevelUp_Effect":null,
+      "LevelUp_Sound":null
+   }
+]

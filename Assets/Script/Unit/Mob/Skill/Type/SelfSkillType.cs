@@ -4,38 +4,38 @@ using UnityEngine;
 
 public class SelfSkillType : BaseSkillType
 {
-    //º¯¼ö ¿µ¿ª
+    //ë³€ìˆ˜ ì˜ì—­
     #region Properties / Field
-    //private º¯¼ö ¿µ¿ª
+    //private ë³€ìˆ˜ ì˜ì—­
     #region Private
     #endregion
 
-    //protected º¯¼ö ¿µ¿ª
+    //protected ë³€ìˆ˜ ì˜ì—­
     #region protected
-    //ºÎ¸ğÀÇ UnitÀ» ÂüÁ¶ÇÒ ¿ÀºêÁ§Æ®
+    //ë¶€ëª¨ì˜ Unitì„ ì°¸ì¡°í•  ì˜¤ë¸Œì íŠ¸
     protected BattleSystem selfObject;
     #endregion
 
-    //Public º¯¼ö¿µ¿ª
+    //Public ë³€ìˆ˜ì˜ì—­
     #region public
     #endregion
 
-    //ÀÌº¥Æ® ÇÔ¼öµé ¿µ¿ª
+    //ì´ë²¤íŠ¸ í•¨ìˆ˜ë“¤ ì˜ì—­
     #region Event
     #endregion
     #endregion
 
 
     #region Method
-    //private ÇÔ¼öµé ¿µ¿ª
+    //private í•¨ìˆ˜ë“¤ ì˜ì—­
     #region PrivateMethod
     #endregion
 
-    //protected ÇÔ¼öµé ¿µ¿ª
+    //protected í•¨ìˆ˜ë“¤ ì˜ì—­
     #region ProtectedMethod
     #endregion
 
-    //public ÇÔ¼öµé ¿µ¿ª
+    //public í•¨ìˆ˜ë“¤ ì˜ì—­
     #region PublicMethod
     #endregion
     #endregion
@@ -45,12 +45,12 @@ public class SelfSkillType : BaseSkillType
     #endregion
 
 
-    //ÀÌº¥Æ®°¡ ÀÏ¾î³µÀ»¶§ ½ÇÇàµÇ´Â On~~ÇÔ¼ö
+    //ì´ë²¤íŠ¸ê°€ ì¼ì–´ë‚¬ì„ë•Œ ì‹¤í–‰ë˜ëŠ” On~~í•¨ìˆ˜
     #region EventHandler
     #endregion
 
 
-    //À¯´ÏÆ¼ ÇÔ¼öµé ¿µ¿ª
+    //ìœ ë‹ˆí‹° í•¨ìˆ˜ë“¤ ì˜ì—­
     #region MonoBehaviour
     protected override void Start()
     {

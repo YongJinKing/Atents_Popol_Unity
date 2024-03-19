@@ -22,14 +22,15 @@ public class SkillManager : PlayerSkill
 
     void OnTriggerEnter(Collider other)
     {
+        var playerstat = pl.playerdata.playerstatdata;
         if(other.gameObject.layer == LayerMask.NameToLayer("Monster_Body"))
         {
             IDamage iDamage = other.GetComponent<IDamage>();
             DefenceType dtype = other.GetComponentInParent<IGetDType>().GetDType(other);
-
+            
             if(iDamage != null)
             {
-                Plm.totalDamege(other, pl.AP, Damage, aType, dtype);
+                Plm.totalDamege(other, playerstat.Character_AttackPower, Damage, aType, dtype);
             }
         }
     }

@@ -90,6 +90,7 @@ public class BattleSystem : CharacterProperty, IDamage
         curBattleStat = battleStat;
         curBattleStat.HP = battleStat.maxHP;
     }
+    
     public void TakeDamage(int dmg, AttackType Atype, DefenceType Dtype)
     {
         int totaldmg;
@@ -171,7 +172,7 @@ public class BattleSystem : CharacterProperty, IDamage
         }
     }
 
-    public void LevelUp()
+    protected virtual void LevelUp()
     {
         battleStat.Level++;
     }
