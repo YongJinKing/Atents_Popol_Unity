@@ -13,6 +13,7 @@ public class DamageSkillEffect : BaseSkillEffect
 
     //protected ���� ����
     #region protected
+    [SerializeField] protected float power;
     #endregion
 
     //Public ��������

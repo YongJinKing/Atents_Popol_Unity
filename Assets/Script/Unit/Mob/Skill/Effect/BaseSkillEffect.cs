@@ -14,7 +14,6 @@ public abstract class BaseSkillEffect : MonoBehaviour
     //protected 변수 영역
     #region protected
     //공격력 * power로 스킬의 배율
-    [SerializeField] protected float power;
     protected BattleSystem myBattleSystem;
     #endregion
 
