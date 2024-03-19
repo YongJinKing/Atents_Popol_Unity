@@ -103,7 +103,6 @@ public class BattleSystem : CharacterProperty, IDamage
         {
             //Die
             OnDead();
-            //myAnim.SetTrigger("DeathTrigger");
         }
     }
 

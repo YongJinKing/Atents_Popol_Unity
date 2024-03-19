@@ -19,7 +19,6 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
     public UnityEvent<UnityAction<float>> stopAct;
     public UnityEvent<Vector3, float> dadgeAct;
     public UnityEvent<Vector3, float> rotAct;
-    public GameObject jointItemR;
     public LayerMask clickMask;
     public float rotSpeed = 2;
     float FireDelay = 0;
@@ -34,7 +33,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
     Vector3 dir;
     public enum state
     {
-        Fire, Dadge, Idle, Run, Skill
+        Fire, Dadge, Idle, Run, Skill , Death
     }
     [SerializeField]protected state playerstate;
 
@@ -54,6 +53,8 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
             case state.Run:
                 break;
             case state.Skill:
+                break;
+            case state.Death:
                 break;
         }
     }
@@ -80,6 +81,8 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
                 FireToMousePos();
                 DadgeToPos();
                 Skill();
+                break;
+            case state.Death:
                 break;
         }
     }
@@ -182,6 +185,9 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
                 break;
             case 2:
                 break;
+            case 3:
+                Invoke("SetActiveFalse", 1.0f);
+                return;
         }
         ChangeState(state.Idle);
     }
@@ -189,5 +195,46 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
     public DefenceType GetDType(Collider col)
     {
         return Dtype;
+    }
+
+    protected override void OnDead()
+    {
+        stopAct?.Invoke(null);
+        StartCoroutine(TimeControl());
+        myAnim.SetTrigger("t_Death");
+        ChangeState(state.Death);
+    }
+
+    private void SetActiveFalse()
+    {
+        gameObject.SetActive(false);
+    }
+
+    IEnumerator TimeControl()
+    {
+        float slowTime = 0.5f;
+        while(!Mathf.Approximately(slowTime, 0.1f))
+        {
+            Time.timeScale = slowTime;
+            slowTime -= Time.deltaTime * 1.5f;
+            if (slowTime < 0.1f)
+            {
+                slowTime = 0.1f;
+            }
+            yield return null;
+        }
+        yield return new WaitForSecondsRealtime(1.0f);
+
+        slowTime = 0.5f;
+        while (slowTime < 1.0f)
+        {
+            slowTime += Time.deltaTime;
+            if(slowTime > 1.0f)
+            {
+                slowTime = 1.0f;
+            }
+            Time.timeScale = slowTime;
+            yield return null;
+        }
     }
 }

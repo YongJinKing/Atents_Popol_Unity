@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -178,7 +178,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8261803422018730252, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1324776931}
   m_SourcePrefab: {fileID: 100100000, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
 --- !u!4 &203216173 stripped
 Transform:
@@ -295,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8747748374390514763, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: battleStat.AP
-      value: 2
+      value: 20000
       objectReference: {fileID: 0}
     - target: {fileID: 8747748374390514763, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: battleStat.maxHP
@@ -462,6 +465,10 @@ PrefabInstance:
       propertyPath: playerPos
       value: 
       objectReference: {fileID: 203216173}
+    - target: {fileID: 7356268427517669075, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9164841429843295199, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
       propertyPath: m_Name
       value: StrongArm
@@ -601,6 +608,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 577448340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1324776926 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8261803422018730252, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+  m_PrefabInstance: {fileID: 135261195}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1324776931
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324776926}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.17
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.75, z: -0.027959675}
 --- !u!1 &2078882247 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2170147794579880816, guid: 601e8622908f64848bc7206334df98e0, type: 3}
