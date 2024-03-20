@@ -13,10 +13,9 @@ public class UIItem : MonoBehaviour
     public int id;
     
 
-    string ItemName;
-    
-    string ItemDesc;
-    string ItemRigging;
+    public string ItemName;
+    public string ItemDesc;
+    public int ItemRigging;
 
     public void Init(int id, Sprite icon, int amount)
     {
@@ -26,10 +25,10 @@ public class UIItem : MonoBehaviour
         var ItemData = ItemDataManager.GetInstance().dicItemDatas[id];
         var NameData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_itemName];
         var DescData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_itemDesc];
-        var RiggingData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_riggingType];
+        
         this.ItemName = NameData.String_Desc;
         this.ItemDesc = DescData.String_Desc;
-        this.ItemRigging = RiggingData.String_Desc;
+        this.ItemRigging = ItemData.Inven_riggingType;
         
         ColorChage(1.0f);
     }
@@ -38,7 +37,7 @@ public class UIItem : MonoBehaviour
         this.id = 0;
         this.ItemName = "";
         this.ItemDesc = "";
-        this.ItemRigging = "";
+        this.ItemRigging = 0;
         ColorChage(0.0f);
     }
     void ColorChage(float Value)

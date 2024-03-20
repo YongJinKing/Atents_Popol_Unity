@@ -32,10 +32,9 @@ public class UIInventory : MonoBehaviour
 
     public void AddItem(int id) 
     {
+        
         var ItemData = ItemDataManager.GetInstance().dicItemDatas[id];
         var SpriteData = ItemDataManager.GetInstance().dicResouseTable[ItemData.Inven_spriteName];
-        
-        
         
         string spName = SpriteData.ImageResourceName;
         
@@ -87,7 +86,22 @@ public class UIInventory : MonoBehaviour
         {
             for(int i = 0; i < items.Count; i++)
             {
-             
+                BackUpIdList.Add(items[i].id);
+                if(items[i].ItemRigging == 0)
+                {
+                    IdList.Add(items[i].id);
+                }
+            }
+        }
+        else if(Mode == 2)
+        {
+            for(int i = 0; i < items.Count; i++)
+            {
+                BackUpIdList.Add(items[i].id);
+                if(items[i].ItemRigging == 1)
+                {
+                    IdList.Add(items[i].id);
+                }
             }
         }
         
@@ -96,11 +110,16 @@ public class UIInventory : MonoBehaviour
             GridLine.transform.GetChild(i).GetComponent<UIItem>().InitAll();
         }
         this.items = new List<UIItem>();
+        
         for(int i = 0; i < IdList.Count; i++)
         {
             AddItem(IdList[i]);
-            BackUpIdList = new List<int>();
+            if(Mode == 0)
+                BackUpIdList = new List<int>();
         }
+        
+        
+        
     }
 
     

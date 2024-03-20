@@ -7,8 +7,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5000,
       "Inven_itemDesc":5000,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1001,
@@ -18,8 +18,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5001,
       "Inven_itemDesc":5001,
-      "Inven_riggingType":13001,
-      "Inven_weaponType":13107
+      "Inven_riggingType":1,
+      "Inven_weaponType":10
    },
    {
       "index":1100,
@@ -29,8 +29,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5100,
       "Inven_itemDesc":5100,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1101,
@@ -40,8 +40,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5101,
       "Inven_itemDesc":5101,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1102,
@@ -51,8 +51,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5102,
       "Inven_itemDesc":5102,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1103,
@@ -62,8 +62,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5103,
       "Inven_itemDesc":5103,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1104,
@@ -73,8 +73,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5104,
       "Inven_itemDesc":5104,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1105,
@@ -84,8 +84,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5105,
       "Inven_itemDesc":5105,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1106,
@@ -95,8 +95,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5106,
       "Inven_itemDesc":5106,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1107,
@@ -106,8 +106,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5107,
       "Inven_itemDesc":5107,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1108,
@@ -117,8 +117,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5108,
       "Inven_itemDesc":5108,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1109,
@@ -128,8 +128,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5109,
       "Inven_itemDesc":5109,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1200,
@@ -139,8 +139,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5200,
       "Inven_itemDesc":5200,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1201,
@@ -150,8 +150,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5201,
       "Inven_itemDesc":5201,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1202,
@@ -161,8 +161,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5202,
       "Inven_itemDesc":5202,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1203,
@@ -172,8 +172,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5203,
       "Inven_itemDesc":5203,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1204,
@@ -183,8 +183,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5204,
       "Inven_itemDesc":5204,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1205,
@@ -194,8 +194,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5205,
       "Inven_itemDesc":5205,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1206,
@@ -205,8 +205,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5206,
       "Inven_itemDesc":5206,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1207,
@@ -216,8 +216,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5207,
       "Inven_itemDesc":5207,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1208,
@@ -227,8 +227,8 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5208,
       "Inven_itemDesc":5208,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    },
    {
       "index":1209,
@@ -238,7 +238,7 @@
       "Inven_durAbility":100,
       "Inven_smithTalk":5209,
       "Inven_itemDesc":5209,
-      "Inven_riggingType":13000,
-      "Inven_weaponType":13100
+      "Inven_riggingType":0,
+      "Inven_weaponType":0
    }
 ]
