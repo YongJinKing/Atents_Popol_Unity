@@ -27,6 +27,7 @@ public class BtnModeFuntion : MonoBehaviour
         if(PrevIndex == index)
         {
             CleanBtn(-1);
+            ModeAction?.Invoke(0);
             return;
         }
         else
@@ -39,7 +40,7 @@ public class BtnModeFuntion : MonoBehaviour
     }
     void CleanBtn(int PrevIdxSetting)
     {
-        ModeAction?.Invoke(0);
+        
         for(int i = 0; i < BtnParents.transform.childCount; i++)
         {
             BtnFunctionList[i].GetComponent<Image>().sprite = BtnImage[0];

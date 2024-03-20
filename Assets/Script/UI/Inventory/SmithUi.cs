@@ -52,6 +52,14 @@ public class SmithUi : MonoBehaviour
         }
         PrevIndex = PrevIdxSetting;
     }
+    public void CleanSlot()
+    {
+        for(int i = 0; i < GridLine.transform.childCount; i++)
+        {
+            ImgColorChange(0.0f, i);
+        }
+    }
+
     void ImgColorChange(float Value, int index)
     {
         Color color = GridLine.transform.GetChild(index).GetChild(2).GetComponent<Image>().color;

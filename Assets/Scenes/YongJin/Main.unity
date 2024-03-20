@@ -408,7 +408,9 @@ MonoBehaviour:
   txtCount: {fileID: 1533668320}
   btn: {fileID: 2086327453}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &25030088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,7 +948,9 @@ MonoBehaviour:
   txtCount: {fileID: 974191875}
   btn: {fileID: 1665684403}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!1 &55611057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,7 +1279,19 @@ MonoBehaviour:
   BtnParents: {fileID: 65477199}
   ModeAction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 364417961}
+        m_TargetAssemblyTypeName: UIInventory, Assembly-CSharp
+        m_MethodName: ChangeSlot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &66987401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1502,7 +1518,9 @@ MonoBehaviour:
   txtCount: {fileID: 1069822775}
   btn: {fileID: 2119902581}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &89641852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4402,7 +4420,9 @@ MonoBehaviour:
   txtCount: {fileID: 1892360255}
   btn: {fileID: 1312472651}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &303100262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7718,7 +7738,9 @@ MonoBehaviour:
   txtCount: {fileID: 1682878930}
   btn: {fileID: 162980178}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &534211254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9181,7 +9203,9 @@ MonoBehaviour:
   txtCount: {fileID: 35574708}
   btn: {fileID: 1570222062}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &623104373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9352,7 +9376,9 @@ MonoBehaviour:
   txtCount: {fileID: 1234868795}
   btn: {fileID: 973041560}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &638448564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9524,7 +9550,9 @@ MonoBehaviour:
   txtCount: {fileID: 2040184525}
   btn: {fileID: 1691138875}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &651648369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10290,7 +10318,9 @@ MonoBehaviour:
   txtCount: {fileID: 822666084}
   btn: {fileID: 1625618932}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &712347510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10581,7 +10611,9 @@ MonoBehaviour:
   txtCount: {fileID: 488131023}
   btn: {fileID: 1489355246}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &724287943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11166,7 +11198,9 @@ MonoBehaviour:
   txtCount: {fileID: 150067838}
   btn: {fileID: 1479043836}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &754355676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12954,7 +12988,9 @@ MonoBehaviour:
   txtCount: {fileID: 406320236}
   btn: {fileID: 965672902}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &853831135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13786,7 +13822,9 @@ MonoBehaviour:
   txtCount: {fileID: 1369445289}
   btn: {fileID: 2010384858}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &933870617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16586,7 +16624,9 @@ MonoBehaviour:
   txtCount: {fileID: 836512419}
   btn: {fileID: 1160508151}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &1108247575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18392,7 +18432,9 @@ MonoBehaviour:
   txtCount: {fileID: 825639845}
   btn: {fileID: 923946249}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &1200847998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20508,7 +20550,9 @@ MonoBehaviour:
   txtCount: {fileID: 2134000868}
   btn: {fileID: 359269494}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &1287263514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21211,7 +21255,9 @@ MonoBehaviour:
   txtCount: {fileID: 1207753885}
   btn: {fileID: 1441240655}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &1345478260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23269,7 +23315,9 @@ MonoBehaviour:
   txtCount: {fileID: 813973941}
   btn: {fileID: 559260794}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &1503502181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24628,7 +24676,9 @@ MonoBehaviour:
   txtCount: {fileID: 539024965}
   btn: {fileID: 155442592}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &1617725289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27203,7 +27253,9 @@ MonoBehaviour:
   txtCount: {fileID: 1019469045}
   btn: {fileID: 570433055}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &1797540432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28436,7 +28488,9 @@ MonoBehaviour:
   txtCount: {fileID: 1802512461}
   btn: {fileID: 1240875460}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &1852420141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30123,7 +30177,9 @@ MonoBehaviour:
   txtCount: {fileID: 1066018527}
   btn: {fileID: 724115327}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &1987215008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31446,7 +31502,9 @@ MonoBehaviour:
   txtCount: {fileID: 2073113956}
   btn: {fileID: 356734427}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &2068099467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31689,7 +31747,9 @@ MonoBehaviour:
   txtCount: {fileID: 107925353}
   btn: {fileID: 1948704422}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &2070830500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33145,7 +33205,9 @@ MonoBehaviour:
   txtCount: {fileID: 1642334044}
   btn: {fileID: 1657568253}
   id: 0
-  isSelected: 0
+  ItemName: 
+  ItemDesc: 
+  ItemRigging: 0
 --- !u!114 &2135526085
 MonoBehaviour:
   m_ObjectHideFlags: 0
