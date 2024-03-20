@@ -8,8 +8,7 @@ using UnityEngine.Events;
 public struct BattleStat
 {
     public int Level;
-    public int AP;
-    public int maxHP;
+    public int ATK;
     public int HP;
     public int Exp;
     public float Speed;
@@ -49,22 +48,49 @@ public class BattleSystem : CharacterProperty, IDamage
             }
         }
     }
-
-    public int AP
+    public float Speed
     {
         get
         {
-            //debuf [] temp = GetComponentinchildren()
-            //int temp ap
-            //for()
-            //ap * TempAnimEvent dsa
-
-            //return ap;
-            return this.curBattleStat.AP;
+            return this.curBattleStat.Speed;
         }
         set
         {
-            this.curBattleStat.AP = value;
+            this.curBattleStat.Speed = value;
+        }
+    }
+    public int HP
+    {
+        get
+        {
+            return this.curBattleStat.HP;
+        }
+        set
+        {
+            this.curBattleStat.HP = value;
+        }
+    }
+    public int Lavel
+    {
+        get
+        {
+            return this.curBattleStat.Level;
+        }
+        set
+        {
+            this.curBattleStat.Level = value;
+        }
+    }
+
+    public int ATK
+    {
+        get
+        {
+            return this.curBattleStat.ATK;
+        }
+        set
+        {
+            this.curBattleStat.ATK = value;
         }
     }
 
@@ -88,7 +114,7 @@ public class BattleSystem : CharacterProperty, IDamage
     protected void Initialize()
     {
         curBattleStat = battleStat;
-        curBattleStat.HP = battleStat.maxHP;
+        curBattleStat.HP = battleStat.HP;
     }
     
     public void TakeDamage(int dmg, AttackType Atype, DefenceType Dtype)

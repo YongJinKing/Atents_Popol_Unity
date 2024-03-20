@@ -18,7 +18,6 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
     public GameObject Effectobj;
     public LayerMask clickMask;
     public DefenceType Dtype;
-    public PlayerDetaManager playerdata;
     public UnityEvent<Vector3, float, UnityAction<float>> clickAct;
     public UnityEvent<UnityAction<float>> stopAct;
     public UnityEvent<Vector3, float> dadgeAct;
@@ -90,7 +89,6 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
 
     protected override void Start()
     {
-        playerdata = new PlayerDetaManager();
         base.Start();
         ChangeState(state.Idle);
     }
@@ -140,7 +138,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         {
             GetRaycastHit();
             ChangeState(state.Run);
-            clickAct?.Invoke(dir, playerdata.playerstatdata.Character_MoveSpeed, (float temp) => 
+            clickAct?.Invoke(dir, battleStat.Speed, (float temp) => 
             {
                 myAnim.SetFloat("Move", temp);
                 if(temp < 0.05f && playerstate != state.Dadge && playerstate != state.Fire && playerstate != state.Skill)
@@ -191,7 +189,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         switch (type)
         {
             case 0:
-                FireDelay = playerdata.playerstatdata.Character_AttackSpeed;
+                FireDelay = battleStat.AttackDelay;
                 break;
             case 1:
                 DadgeDelay = 1.0f;
@@ -251,12 +249,12 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         }
     }
 
-    protected override void LevelUp()
+    /*protected override void LevelUp()
     {
         var plstat = playerdata.playerstatdata;
         var plLvstat = playerdata.dicPlayerLevelData[++plstat.Character_CurrentLevel];
 
         plstat.Character_AttackPower += plLvstat.AttackPower;
         plstat.Character_Hp += plLvstat.Hp;
-    }
+    }*/
 }

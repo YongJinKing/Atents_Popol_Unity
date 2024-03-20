@@ -22,7 +22,6 @@ public class SkillManager : PlayerSkill
 
     void OnTriggerEnter(Collider other)
     {
-        var playerstat = pl.playerdata.playerstatdata;
         if(other.gameObject.layer == LayerMask.NameToLayer("Monster_Body"))
         {
             IDamage iDamage = other.GetComponent<IDamage>();
@@ -30,7 +29,7 @@ public class SkillManager : PlayerSkill
             
             if(iDamage != null)
             {
-                Plm.totalDamege(other, playerstat.Character_AttackPower, Damage, aType, dtype);
+                Plm.totalDamege(other, pl.ATK, Damage, aType, dtype); ;
             }
         }
     }

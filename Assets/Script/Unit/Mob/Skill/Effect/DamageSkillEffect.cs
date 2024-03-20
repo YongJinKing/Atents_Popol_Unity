@@ -56,15 +56,15 @@ public class DamageSkillEffect : BaseSkillEffect
 
         if (damage != null)
         {
-            Debug.Log($"Dmg : {power * myBattleSystem.AP}\nAtype : {Atype}");
+            Debug.Log($"Dmg : {power * myBattleSystem.ATK}\nAtype : {Atype}");
             
             if(Dtype != null)
             {
-                damage.TakeDamage((int)(power * myBattleSystem.AP), Atype, Dtype.GetDType(target));
+                damage.TakeDamage((int)(power * myBattleSystem.ATK), Atype, Dtype.GetDType(target));
             }
             else
             {
-                damage.TakeDamage((int)(power * myBattleSystem.AP), Atype, DefenceType.HeavyArmor);
+                damage.TakeDamage((int)(power * myBattleSystem.ATK), Atype, DefenceType.HeavyArmor);
             }
         }
     }
