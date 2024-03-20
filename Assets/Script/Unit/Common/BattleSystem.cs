@@ -11,8 +11,11 @@ public struct BattleStat
     public int ATK;
     public int HP;
     public int Exp;
+    public int MaxExp;
+    public int EnergyGage;
     public float Speed;
     public float AttackDelay;
+    
 }
 public interface IDamage
 {
@@ -46,6 +49,28 @@ public class BattleSystem : CharacterProperty, IDamage
                     bs.deathAlarm += TargetDead;
                 }
             }
+        }
+    }
+    public int MaxExp
+    {
+        get
+        {
+            return this.curBattleStat.MaxExp;
+        }
+        set
+        {
+            this.curBattleStat.MaxExp = value;
+        }
+    }
+    public int EnergyGage
+    {
+        get
+        {
+            return this.curBattleStat.EnergyGage;
+        }
+        set
+        {
+            this.curBattleStat.EnergyGage = value;
         }
     }
     public float Speed
