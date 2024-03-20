@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6546184829970665284}
   - component: {fileID: 4708500531702141872}
   - component: {fileID: 8060570460367818096}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BaseGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4386289962144189664}
   - component: {fileID: 5968584334198773381}
   - component: {fileID: 9124563745403151641}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: WalkableGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2170147794579880816}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5852270090204868439}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Colosseum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7570776042088721899}
   - component: {fileID: 1672907636620948051}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ColosseumCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,6 +315,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7639331209684527813, guid: 26ae892dd9023ee43a783e41ad5a5932, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: -3477821731311062464, guid: 26ae892dd9023ee43a783e41ad5a5932, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -322,6 +326,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 26ae892dd9023ee43a783e41ad5a5932, type: 3}
       propertyPath: m_Name
       value: ColosseumRetopol
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 26ae892dd9023ee43a783e41ad5a5932, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8144394004440419581, guid: 26ae892dd9023ee43a783e41ad5a5932, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8835409689826365435, guid: 26ae892dd9023ee43a783e41ad5a5932, type: 3}
       propertyPath: m_Materials.Array.data[0]
