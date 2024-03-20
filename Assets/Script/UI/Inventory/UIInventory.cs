@@ -4,81 +4,106 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.U2D;
 using UnityEngine.EventSystems;
+using System.Data.Common;
 
 public class UIInventory : MonoBehaviour
 {
-    public GameObject[] arrEmpty;
     public GameObject smithUi;
     public List<UIItem> items;
-
+    public GameObject GridLine;
+    public List<int> BackUpIdList;
     private GameObject prefab;
     int Slotindex;
-    public Transform empty;
+    int InvenMode = 0;
 
 
     void Start()
     {
-        ItemDataManager.GetInstance().LoadDatas();
-      
+        ItemDataManager.GetInstance().InvenItemLoadDatas();
         this.prefab = Resources.Load<GameObject>("UI/UIItem/Empty");
         this.items = new List<UIItem>();
-
-        this.AddItem(100);
+        BackUpIdList = new List<int>();
         this.AddItem(1000);
         this.AddItem(1001);
-
-        this.RemoveItem(1000);
+        this.AddItem(1100);
+        
+      
     }
 
     public void AddItem(int id) 
     {
-        var parent = this.arrEmpty[this.items.Count];
-        var go = Instantiate<GameObject>(this.prefab, parent.transform) ;
-        var uiItem = go.GetComponent<UIItem>();
-        uiItem.btn.onClick.AddListener(() => 
-        {
-            smithUi.GetComponent<SmithUi>().ChooseSlot(uiItem.id);
-        });
-        this.items.Add(uiItem);
-        var data = ItemDataManager.GetInstance().dicItemDatas[id];
-        string spName = data.Inven_spriteName;
-
-        Sprite sp = Resources.Load<Sprite>($"UI/UIItem/{spName}");
-   
-        uiItem.Init(id, sp, 1);
+        var ItemData = ItemDataManager.GetInstance().dicItemDatas[id];
+        var SpriteData = ItemDataManager.GetInstance().dicResouseTable[ItemData.Inven_spriteName];
         
-    }
-    private void RemoveItem(int id) 
-    { 
-        var uiItem = this.items.Find(x => x.id == id);
-        if (uiItem != null) {
-            for (int i = 0; i < this.arrEmpty.Length; i++) 
+        
+        
+        string spName = SpriteData.ImageResourceName;
+        
+        
+        Sprite sp = Resources.Load<Sprite>($"UI/UIItem/{spName}");
+        
+        for(int i = 0; i < GridLine.transform.childCount; i++)
+        {
+            if(GridLine.transform.GetChild(i).GetComponent<UIItem>().id == 0)
             {
-                
-                var go = this.arrEmpty[i];
-                if (go.transform.childCount > 0) 
-                {
-                    var child = go.transform.GetChild(0);
-                    if (child != null) 
-                    {
-                        var target = child.GetComponent<UIItem>();
-                        if (target.id == id) 
-                        {
-                            Destroy(target.gameObject);
-                            this.items.RemoveAt(i);
-                            ChangePararnts(i);
-                            break;
-                        }
-                    }
-                }
+                Slotindex = i;
+                this.items.Add(GridLine.transform.GetChild(Slotindex).GetComponent<UIItem>());
+                GridLine.transform.GetChild(Slotindex).GetComponent<UIItem>().Init(id, sp, 1);
+                break;
+            }
+        }
+    }
+    
+    public void RemoveItem(int id) 
+    { 
+        var data = ItemDataManager.GetInstance().dicItemDatas[id];
+        
+        for(int i = 0; i < GridLine.transform.childCount; i++)
+        {
+            if(GridLine.transform.GetChild(i).GetComponent<UIItem>().id == id)
+            {
+                Slotindex = i;
+                this.items.RemoveAt(Slotindex);
+                FreshSlot(InvenMode);
+                break; 
             }
         }
     }
 
-    void ChangePararnts(int index)
+    public void ChangeSlot(int index)
     {
-
+        InvenMode = index;
+        FreshSlot(InvenMode);
     }
+    public void FreshSlot(int Mode)
+    {
+        List<int> IdList = BackUpIdList;
+        if(Mode == 0)
+        {
+            for(int i = 0; i < items.Count; i++)
+                IdList.Add(items[i].id);
+        }
+        else if(Mode == 1)
+        {
+            for(int i = 0; i < items.Count; i++)
+            {
+             
+            }
+        }
+        
+        for(int i = 0; i < GridLine.transform.childCount; i++)
+        {
+            GridLine.transform.GetChild(i).GetComponent<UIItem>().InitAll();
+        }
+        this.items = new List<UIItem>();
+        for(int i = 0; i < IdList.Count; i++)
+        {
+            AddItem(IdList[i]);
+            BackUpIdList = new List<int>();
+        }
+    }
+
+    
 
 }
 

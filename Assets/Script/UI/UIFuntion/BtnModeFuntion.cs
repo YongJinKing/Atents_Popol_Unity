@@ -4,74 +4,48 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using TMPro;
 
 public class BtnModeFuntion : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Sprite[] ButtonSprite;
-    public List<bool> BtnModeCheck = new List<bool>();
-    public UnityEvent <int> FreshSlot;
-    public UnityEvent CleanSlot;
-    public GameObject Inven;
-    public GameObject SmithEventManager;
-    void Start() 
+    public Sprite[] BtnImage;
+    public GameObject BtnParents;
+    public UnityEvent<int> ModeAction;
+    int PrevIndex = -1;
+    Button[] BtnFunctionList;
+    private void Start() 
     {
-        Button[] ModeChildButton = transform.GetComponentsInChildren<Button>();
-        for(int i = 0; i < ModeChildButton.Length; i++)
-        {         
+        BtnFunctionList = BtnParents.GetComponentsInChildren<Button>();
+        for(int i = 0; i < BtnFunctionList.Length; i++)
+        {
             int index = i;
-            BtnModeCheck.Add(false);
-            ModeChildButton[i].onClick.AddListener(() => PressedBtnMode(index));
+            BtnFunctionList[i].onClick.AddListener(() => ChooseBtn(index));
         }
     }
-
-    
-
-    void PressedBtnMode(int index)
+    public void ChooseBtn(int index)
     {
-        if(BtnModeCheck[index])
+        if(PrevIndex == index)
         {
-            BtnModeCheck[index] = false;
-            OffModeBtn(index); 
+            CleanBtn(-1);
+            return;
         }
         else
         {
-            ClearBtn();
-            BtnModeCheck[index] = true;
-            OnModeBtn(index);
+            CleanBtn(index);
+            BtnFunctionList[index].GetComponent<Image>().sprite = BtnImage[1];
+            BtnFunctionList[index].transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -5, 0);
+            ModeAction?.Invoke(index + 1);
         }
     }
-
-    void ClearBtn()
+    void CleanBtn(int PrevIdxSetting)
     {
-        for(int i = 0; i < transform.childCount; i++)
+        ModeAction?.Invoke(0);
+        for(int i = 0; i < BtnParents.transform.childCount; i++)
         {
-            BtnModeCheck[i] = false;
-            OffModeBtn(i);    
+            BtnFunctionList[i].GetComponent<Image>().sprite = BtnImage[0];
+            BtnFunctionList[i].transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 10, 0);
         }
+        PrevIndex = PrevIdxSetting;
     }
 
-    void OnModeBtn(int index)
-    {
-        gameObject.transform.GetChild(index).GetComponent<Image>().sprite = ButtonSprite[1];
-        gameObject.transform.GetChild(index).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -5, 0);
-        FreshSlot?.Invoke(index+1);
-        CleanSlot?.Invoke();
-        /* if(Inven)
-            Inven.GetComponent<Inventory>().FreshSlot(index+1);
-        if(SmithEventManager)
-            SmithEventManager.GetComponent<SmithEventManager>().CleanSlots(); */
-    }
-    void OffModeBtn(int index)
-    {
-        gameObject.transform.GetChild(index).GetComponent<Image>().sprite = ButtonSprite[0];
-        gameObject.transform.GetChild(index).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 10, 0);
-        FreshSlot?.Invoke(0);
-        CleanSlot?.Invoke();
-        /* if(Inven)
-            Inven.GetComponent<Inventory>().FreshSlot(0);
-        if(SmithEventManager)
-            SmithEventManager.GetComponent<SmithEventManager>().CleanSlots(); */
-
-    }
 }

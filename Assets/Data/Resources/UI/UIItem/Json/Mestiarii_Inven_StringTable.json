@@ -1,0 +1,1592 @@
+[
+   {
+      "index":1000,
+      "String_Type":0,
+      "String_Desc":"초보자 무기"
+   },
+   {
+      "index":1001,
+      "String_Type":0,
+      "String_Desc":"초보자 방어구"
+   },
+   {
+      "index":1100,
+      "String_Type":1,
+      "String_Desc":"한 손검 Lv_1"
+   },
+   {
+      "index":1101,
+      "String_Type":1,
+      "String_Desc":"한 손검 Lv_2"
+   },
+   {
+      "index":1102,
+      "String_Type":1,
+      "String_Desc":"한 손검 Lv_3"
+   },
+   {
+      "index":1103,
+      "String_Type":1,
+      "String_Desc":"한 손검 Lv_4"
+   },
+   {
+      "index":1104,
+      "String_Type":1,
+      "String_Desc":"한 손검 Lv_5"
+   },
+   {
+      "index":1105,
+      "String_Type":1,
+      "String_Desc":"한 손검 Lv_6"
+   },
+   {
+      "index":1106,
+      "String_Type":1,
+      "String_Desc":"한 손검 Lv_7"
+   },
+   {
+      "index":1107,
+      "String_Type":1,
+      "String_Desc":"한 손검 Lv_8"
+   },
+   {
+      "index":1108,
+      "String_Type":1,
+      "String_Desc":"한 손검 Lv_9"
+   },
+   {
+      "index":1109,
+      "String_Type":1,
+      "String_Desc":"한 손검 Lv_10"
+   },
+   {
+      "index":1200,
+      "String_Type":2,
+      "String_Desc":"양 손검 Lv_1"
+   },
+   {
+      "index":1201,
+      "String_Type":2,
+      "String_Desc":"양 손검 Lv_2"
+   },
+   {
+      "index":1202,
+      "String_Type":2,
+      "String_Desc":"양 손검 Lv_3"
+   },
+   {
+      "index":1203,
+      "String_Type":2,
+      "String_Desc":"양 손검 Lv_4"
+   },
+   {
+      "index":1204,
+      "String_Type":2,
+      "String_Desc":"양 손검 Lv_5"
+   },
+   {
+      "index":1205,
+      "String_Type":2,
+      "String_Desc":"양 손검 Lv_6"
+   },
+   {
+      "index":1206,
+      "String_Type":2,
+      "String_Desc":"양 손검 Lv_7"
+   },
+   {
+      "index":1207,
+      "String_Type":2,
+      "String_Desc":"양 손검 Lv_8"
+   },
+   {
+      "index":1208,
+      "String_Type":2,
+      "String_Desc":"양 손검 Lv_9"
+   },
+   {
+      "index":1209,
+      "String_Type":2,
+      "String_Desc":"양 손검 Lv_10"
+   },
+   {
+      "index":1300,
+      "String_Type":3,
+      "String_Desc":"한손 둔기 Lv_1"
+   },
+   {
+      "index":1301,
+      "String_Type":3,
+      "String_Desc":"한손 둔기 Lv_2"
+   },
+   {
+      "index":1302,
+      "String_Type":3,
+      "String_Desc":"한손 둔기 Lv_3"
+   },
+   {
+      "index":1303,
+      "String_Type":3,
+      "String_Desc":"한손 둔기 Lv_4"
+   },
+   {
+      "index":1304,
+      "String_Type":3,
+      "String_Desc":"한손 둔기 Lv_5"
+   },
+   {
+      "index":1305,
+      "String_Type":3,
+      "String_Desc":"한손 둔기 Lv_6"
+   },
+   {
+      "index":1306,
+      "String_Type":3,
+      "String_Desc":"한손 둔기 Lv_7"
+   },
+   {
+      "index":1307,
+      "String_Type":3,
+      "String_Desc":"한손 둔기 Lv_8"
+   },
+   {
+      "index":1308,
+      "String_Type":3,
+      "String_Desc":"한손 둔기 Lv_9"
+   },
+   {
+      "index":1309,
+      "String_Type":3,
+      "String_Desc":"한손 둔기 Lv_10"
+   },
+   {
+      "index":1400,
+      "String_Type":4,
+      "String_Desc":"두손 둔기 Lv_1"
+   },
+   {
+      "index":1401,
+      "String_Type":4,
+      "String_Desc":"두손 둔기 Lv_2"
+   },
+   {
+      "index":1402,
+      "String_Type":4,
+      "String_Desc":"두손 둔기 Lv_3"
+   },
+   {
+      "index":1403,
+      "String_Type":4,
+      "String_Desc":"두손 둔기 Lv_4"
+   },
+   {
+      "index":1404,
+      "String_Type":4,
+      "String_Desc":"두손 둔기 Lv_5"
+   },
+   {
+      "index":1405,
+      "String_Type":4,
+      "String_Desc":"두손 둔기 Lv_6"
+   },
+   {
+      "index":1406,
+      "String_Type":4,
+      "String_Desc":"두손 둔기 Lv_7"
+   },
+   {
+      "index":1407,
+      "String_Type":4,
+      "String_Desc":"두손 둔기 Lv_8"
+   },
+   {
+      "index":1408,
+      "String_Type":4,
+      "String_Desc":"두손 둔기 Lv_9"
+   },
+   {
+      "index":1409,
+      "String_Type":4,
+      "String_Desc":"두손 둔기 Lv_10"
+   },
+   {
+      "index":1500,
+      "String_Type":5,
+      "String_Desc":"창 Lv_1"
+   },
+   {
+      "index":1501,
+      "String_Type":5,
+      "String_Desc":"창 Lv_2"
+   },
+   {
+      "index":1502,
+      "String_Type":5,
+      "String_Desc":"창 Lv_3"
+   },
+   {
+      "index":1503,
+      "String_Type":5,
+      "String_Desc":"창 Lv_4"
+   },
+   {
+      "index":1504,
+      "String_Type":5,
+      "String_Desc":"창 Lv_5"
+   },
+   {
+      "index":1505,
+      "String_Type":5,
+      "String_Desc":"창 Lv_6"
+   },
+   {
+      "index":1506,
+      "String_Type":5,
+      "String_Desc":"창 Lv_7"
+   },
+   {
+      "index":1507,
+      "String_Type":5,
+      "String_Desc":"창 Lv_8"
+   },
+   {
+      "index":1508,
+      "String_Type":5,
+      "String_Desc":"창 Lv_9"
+   },
+   {
+      "index":1509,
+      "String_Type":5,
+      "String_Desc":"창 Lv_10"
+   },
+   {
+      "index":1600,
+      "String_Type":6,
+      "String_Desc":"단검 Lv_1"
+   },
+   {
+      "index":1601,
+      "String_Type":6,
+      "String_Desc":"단검 Lv_2"
+   },
+   {
+      "index":1602,
+      "String_Type":6,
+      "String_Desc":"단검 Lv_3"
+   },
+   {
+      "index":1603,
+      "String_Type":6,
+      "String_Desc":"단검 Lv_4"
+   },
+   {
+      "index":1604,
+      "String_Type":6,
+      "String_Desc":"단검 Lv_5"
+   },
+   {
+      "index":1605,
+      "String_Type":6,
+      "String_Desc":"단검 Lv_6"
+   },
+   {
+      "index":1606,
+      "String_Type":6,
+      "String_Desc":"단검 Lv_7"
+   },
+   {
+      "index":1607,
+      "String_Type":6,
+      "String_Desc":"단검 Lv_8"
+   },
+   {
+      "index":1608,
+      "String_Type":6,
+      "String_Desc":"단검 Lv_9"
+   },
+   {
+      "index":1609,
+      "String_Type":6,
+      "String_Desc":"단검 Lv_10"
+   },
+   {
+      "index":1700,
+      "String_Type":7,
+      "String_Desc":"투창용 창 Lv_1"
+   },
+   {
+      "index":1701,
+      "String_Type":7,
+      "String_Desc":"투창용 창 Lv_2"
+   },
+   {
+      "index":1702,
+      "String_Type":7,
+      "String_Desc":"투창용 창 Lv_3"
+   },
+   {
+      "index":1703,
+      "String_Type":7,
+      "String_Desc":"투창용 창 Lv_4"
+   },
+   {
+      "index":1704,
+      "String_Type":7,
+      "String_Desc":"투창용 창 Lv_5"
+   },
+   {
+      "index":1705,
+      "String_Type":7,
+      "String_Desc":"투창용 창 Lv_6"
+   },
+   {
+      "index":1706,
+      "String_Type":7,
+      "String_Desc":"투창용 창 Lv_7"
+   },
+   {
+      "index":1707,
+      "String_Type":7,
+      "String_Desc":"투창용 창 Lv_8"
+   },
+   {
+      "index":1708,
+      "String_Type":7,
+      "String_Desc":"투창용 창 Lv_9"
+   },
+   {
+      "index":1709,
+      "String_Type":7,
+      "String_Desc":"투창용 창 Lv_10"
+   },
+   {
+      "index":3000,
+      "String_Type":20,
+      "String_Desc":"가죽 방어구 Lv_1"
+   },
+   {
+      "index":3001,
+      "String_Type":20,
+      "String_Desc":"가죽 방어구 Lv_2"
+   },
+   {
+      "index":3002,
+      "String_Type":20,
+      "String_Desc":"가죽 방어구 Lv_3"
+   },
+   {
+      "index":3003,
+      "String_Type":20,
+      "String_Desc":"가죽 방어구 Lv_4"
+   },
+   {
+      "index":3004,
+      "String_Type":20,
+      "String_Desc":"가죽 방어구 Lv_5"
+   },
+   {
+      "index":3005,
+      "String_Type":20,
+      "String_Desc":"가죽 방어구 Lv_6"
+   },
+   {
+      "index":3006,
+      "String_Type":20,
+      "String_Desc":"가죽 방어구 Lv_7"
+   },
+   {
+      "index":3007,
+      "String_Type":20,
+      "String_Desc":"가죽 방어구 Lv_8"
+   },
+   {
+      "index":3008,
+      "String_Type":20,
+      "String_Desc":"가죽 방어구 Lv_9"
+   },
+   {
+      "index":3009,
+      "String_Type":20,
+      "String_Desc":"가죽 방어구 Lv_10"
+   },
+   {
+      "index":3100,
+      "String_Type":21,
+      "String_Desc":"경갑 방어구 Lv_1"
+   },
+   {
+      "index":3101,
+      "String_Type":21,
+      "String_Desc":"경갑 방어구 Lv_2"
+   },
+   {
+      "index":3102,
+      "String_Type":21,
+      "String_Desc":"경갑 방어구 Lv_3"
+   },
+   {
+      "index":3103,
+      "String_Type":21,
+      "String_Desc":"경갑 방어구 Lv_4"
+   },
+   {
+      "index":3104,
+      "String_Type":21,
+      "String_Desc":"경갑 방어구 Lv_5"
+   },
+   {
+      "index":3105,
+      "String_Type":21,
+      "String_Desc":"경갑 방어구 Lv_6"
+   },
+   {
+      "index":3106,
+      "String_Type":21,
+      "String_Desc":"경갑 방어구 Lv_7"
+   },
+   {
+      "index":3107,
+      "String_Type":21,
+      "String_Desc":"경갑 방어구 Lv_8"
+   },
+   {
+      "index":3108,
+      "String_Type":21,
+      "String_Desc":"경갑 방어구 Lv_9"
+   },
+   {
+      "index":3109,
+      "String_Type":21,
+      "String_Desc":"경갑 방어구 Lv_10"
+   },
+   {
+      "index":3200,
+      "String_Type":22,
+      "String_Desc":"판금 방어구 Lv_1"
+   },
+   {
+      "index":3201,
+      "String_Type":22,
+      "String_Desc":"판금 방어구 Lv_2"
+   },
+   {
+      "index":3202,
+      "String_Type":22,
+      "String_Desc":"판금 방어구 Lv_3"
+   },
+   {
+      "index":3203,
+      "String_Type":22,
+      "String_Desc":"판금 방어구 Lv_4"
+   },
+   {
+      "index":3204,
+      "String_Type":22,
+      "String_Desc":"판금 방어구 Lv_5"
+   },
+   {
+      "index":3205,
+      "String_Type":22,
+      "String_Desc":"판금 방어구 Lv_6"
+   },
+   {
+      "index":3206,
+      "String_Type":22,
+      "String_Desc":"판금 방어구 Lv_7"
+   },
+   {
+      "index":3207,
+      "String_Type":22,
+      "String_Desc":"판금 방어구 Lv_8"
+   },
+   {
+      "index":3208,
+      "String_Type":22,
+      "String_Desc":"판금 방어구 Lv_9"
+   },
+   {
+      "index":3209,
+      "String_Type":22,
+      "String_Desc":"판금 방어구 Lv_10"
+   },
+   {
+      "index":5000,
+      "String_Type":40,
+      "String_Desc":"처음에 지급되는 초보자 무기이다."
+   },
+   {
+      "index":5001,
+      "String_Type":40,
+      "String_Desc":"처음에 지급되는 초보자 방어구이다."
+   },
+   {
+      "index":5100,
+      "String_Type":41,
+      "String_Desc":"한 손검 Lv_1이다."
+   },
+   {
+      "index":5101,
+      "String_Type":41,
+      "String_Desc":"한 손검 Lv_2이다."
+   },
+   {
+      "index":5102,
+      "String_Type":41,
+      "String_Desc":"한 손검 Lv_3이다."
+   },
+   {
+      "index":5103,
+      "String_Type":41,
+      "String_Desc":"한 손검 Lv_4이다."
+   },
+   {
+      "index":5104,
+      "String_Type":41,
+      "String_Desc":"한 손검 Lv_5이다."
+   },
+   {
+      "index":5105,
+      "String_Type":41,
+      "String_Desc":"한 손검 Lv_6이다."
+   },
+   {
+      "index":5106,
+      "String_Type":41,
+      "String_Desc":"한 손검 Lv_7이다."
+   },
+   {
+      "index":5107,
+      "String_Type":41,
+      "String_Desc":"한 손검 Lv_8이다."
+   },
+   {
+      "index":5108,
+      "String_Type":41,
+      "String_Desc":"한 손검 Lv_9이다."
+   },
+   {
+      "index":5109,
+      "String_Type":41,
+      "String_Desc":"한 손검 Lv_10이다."
+   },
+   {
+      "index":5200,
+      "String_Type":42,
+      "String_Desc":"양 손검 Lv_1이다."
+   },
+   {
+      "index":5201,
+      "String_Type":42,
+      "String_Desc":"양 손검 Lv_2이다."
+   },
+   {
+      "index":5202,
+      "String_Type":42,
+      "String_Desc":"양 손검 Lv_3이다."
+   },
+   {
+      "index":5203,
+      "String_Type":42,
+      "String_Desc":"양 손검 Lv_4이다."
+   },
+   {
+      "index":5204,
+      "String_Type":42,
+      "String_Desc":"양 손검 Lv_5이다."
+   },
+   {
+      "index":5205,
+      "String_Type":42,
+      "String_Desc":"양 손검 Lv_6이다."
+   },
+   {
+      "index":5206,
+      "String_Type":42,
+      "String_Desc":"양 손검 Lv_7이다."
+   },
+   {
+      "index":5207,
+      "String_Type":42,
+      "String_Desc":"양 손검 Lv_8이다."
+   },
+   {
+      "index":5208,
+      "String_Type":42,
+      "String_Desc":"양 손검 Lv_9이다."
+   },
+   {
+      "index":5209,
+      "String_Type":42,
+      "String_Desc":"양 손검 Lv_10이다."
+   },
+   {
+      "index":5300,
+      "String_Type":43,
+      "String_Desc":"한손 둔기 Lv_1이다."
+   },
+   {
+      "index":5301,
+      "String_Type":43,
+      "String_Desc":"한손 둔기 Lv_2이다."
+   },
+   {
+      "index":5302,
+      "String_Type":43,
+      "String_Desc":"한손 둔기 Lv_3이다."
+   },
+   {
+      "index":5303,
+      "String_Type":43,
+      "String_Desc":"한손 둔기 Lv_4이다."
+   },
+   {
+      "index":5304,
+      "String_Type":43,
+      "String_Desc":"한손 둔기 Lv_5이다."
+   },
+   {
+      "index":5305,
+      "String_Type":43,
+      "String_Desc":"한손 둔기 Lv_6이다."
+   },
+   {
+      "index":5306,
+      "String_Type":43,
+      "String_Desc":"한손 둔기 Lv_7이다."
+   },
+   {
+      "index":5307,
+      "String_Type":43,
+      "String_Desc":"한손 둔기 Lv_8이다."
+   },
+   {
+      "index":5308,
+      "String_Type":43,
+      "String_Desc":"한손 둔기 Lv_9이다."
+   },
+   {
+      "index":5309,
+      "String_Type":43,
+      "String_Desc":"한손 둔기 Lv_10이다."
+   },
+   {
+      "index":5400,
+      "String_Type":44,
+      "String_Desc":"양손 둔기 Lv_1이다."
+   },
+   {
+      "index":5401,
+      "String_Type":44,
+      "String_Desc":"양손 둔기 Lv_2이다."
+   },
+   {
+      "index":5402,
+      "String_Type":44,
+      "String_Desc":"양손 둔기 Lv_3이다."
+   },
+   {
+      "index":5403,
+      "String_Type":44,
+      "String_Desc":"양손 둔기 Lv_4이다."
+   },
+   {
+      "index":5404,
+      "String_Type":44,
+      "String_Desc":"양손 둔기 Lv_5이다."
+   },
+   {
+      "index":5405,
+      "String_Type":44,
+      "String_Desc":"양손 둔기 Lv_6이다."
+   },
+   {
+      "index":5406,
+      "String_Type":44,
+      "String_Desc":"양손 둔기 Lv_7이다."
+   },
+   {
+      "index":5407,
+      "String_Type":44,
+      "String_Desc":"양손 둔기 Lv_8이다."
+   },
+   {
+      "index":5408,
+      "String_Type":44,
+      "String_Desc":"양손 둔기 Lv_9이다."
+   },
+   {
+      "index":5409,
+      "String_Type":44,
+      "String_Desc":"양손 둔기 Lv_10이다."
+   },
+   {
+      "index":5500,
+      "String_Type":45,
+      "String_Desc":"창 Lv_1이다."
+   },
+   {
+      "index":5501,
+      "String_Type":45,
+      "String_Desc":"창 Lv_2이다."
+   },
+   {
+      "index":5502,
+      "String_Type":45,
+      "String_Desc":"창 Lv_3이다."
+   },
+   {
+      "index":5503,
+      "String_Type":45,
+      "String_Desc":"창 Lv_4이다."
+   },
+   {
+      "index":5504,
+      "String_Type":45,
+      "String_Desc":"창 Lv_5이다."
+   },
+   {
+      "index":5505,
+      "String_Type":45,
+      "String_Desc":"창 Lv_6이다."
+   },
+   {
+      "index":5506,
+      "String_Type":45,
+      "String_Desc":"창 Lv_7이다."
+   },
+   {
+      "index":5507,
+      "String_Type":45,
+      "String_Desc":"창 Lv_8이다."
+   },
+   {
+      "index":5508,
+      "String_Type":45,
+      "String_Desc":"창 Lv_9이다."
+   },
+   {
+      "index":5509,
+      "String_Type":45,
+      "String_Desc":"창 Lv_10이다."
+   },
+   {
+      "index":5600,
+      "String_Type":46,
+      "String_Desc":"단검 Lv_1이다."
+   },
+   {
+      "index":5601,
+      "String_Type":46,
+      "String_Desc":"단검 Lv_2이다."
+   },
+   {
+      "index":5602,
+      "String_Type":46,
+      "String_Desc":"단검 Lv_3이다."
+   },
+   {
+      "index":5603,
+      "String_Type":46,
+      "String_Desc":"단검 Lv_4이다."
+   },
+   {
+      "index":5604,
+      "String_Type":46,
+      "String_Desc":"단검 Lv_5이다."
+   },
+   {
+      "index":5605,
+      "String_Type":46,
+      "String_Desc":"단검 Lv_6이다."
+   },
+   {
+      "index":5606,
+      "String_Type":46,
+      "String_Desc":"단검 Lv_7이다."
+   },
+   {
+      "index":5607,
+      "String_Type":46,
+      "String_Desc":"단검 Lv_8이다."
+   },
+   {
+      "index":5608,
+      "String_Type":46,
+      "String_Desc":"단검 Lv_9이다."
+   },
+   {
+      "index":5609,
+      "String_Type":46,
+      "String_Desc":"단검 Lv_10이다."
+   },
+   {
+      "index":5700,
+      "String_Type":47,
+      "String_Desc":"투차용 창 Lv_1이다."
+   },
+   {
+      "index":5701,
+      "String_Type":47,
+      "String_Desc":"투차용 창 Lv_2이다."
+   },
+   {
+      "index":5702,
+      "String_Type":47,
+      "String_Desc":"투차용 창 Lv_3이다."
+   },
+   {
+      "index":5703,
+      "String_Type":47,
+      "String_Desc":"투차용 창 Lv_4이다."
+   },
+   {
+      "index":5704,
+      "String_Type":47,
+      "String_Desc":"투차용 창 Lv_5이다."
+   },
+   {
+      "index":5705,
+      "String_Type":47,
+      "String_Desc":"투차용 창 Lv_6이다."
+   },
+   {
+      "index":5706,
+      "String_Type":47,
+      "String_Desc":"투차용 창 Lv_7이다."
+   },
+   {
+      "index":5707,
+      "String_Type":47,
+      "String_Desc":"투차용 창 Lv_8이다."
+   },
+   {
+      "index":5708,
+      "String_Type":47,
+      "String_Desc":"투차용 창 Lv_9이다."
+   },
+   {
+      "index":5709,
+      "String_Type":47,
+      "String_Desc":"투차용 창 Lv_10이다."
+   },
+   {
+      "index":7000,
+      "String_Type":60,
+      "String_Desc":"가죽 방어구 Lv_1이다."
+   },
+   {
+      "index":7001,
+      "String_Type":60,
+      "String_Desc":"가죽 방어구 Lv_2이다."
+   },
+   {
+      "index":7002,
+      "String_Type":60,
+      "String_Desc":"가죽 방어구 Lv_3이다."
+   },
+   {
+      "index":7003,
+      "String_Type":60,
+      "String_Desc":"가죽 방어구 Lv_4이다."
+   },
+   {
+      "index":7004,
+      "String_Type":60,
+      "String_Desc":"가죽 방어구 Lv_5이다."
+   },
+   {
+      "index":7005,
+      "String_Type":60,
+      "String_Desc":"가죽 방어구 Lv_6이다."
+   },
+   {
+      "index":7006,
+      "String_Type":60,
+      "String_Desc":"가죽 방어구 Lv_7이다."
+   },
+   {
+      "index":7007,
+      "String_Type":60,
+      "String_Desc":"가죽 방어구 Lv_8이다."
+   },
+   {
+      "index":7008,
+      "String_Type":60,
+      "String_Desc":"가죽 방어구 Lv_9이다."
+   },
+   {
+      "index":7009,
+      "String_Type":60,
+      "String_Desc":"가죽 방어구 Lv_10이다."
+   },
+   {
+      "index":7100,
+      "String_Type":61,
+      "String_Desc":"경갑 방어구 Lv_1이다."
+   },
+   {
+      "index":7101,
+      "String_Type":61,
+      "String_Desc":"경갑 방어구 Lv_2이다."
+   },
+   {
+      "index":7102,
+      "String_Type":61,
+      "String_Desc":"경갑 방어구 Lv_3이다."
+   },
+   {
+      "index":7103,
+      "String_Type":61,
+      "String_Desc":"경갑 방어구 Lv_4이다."
+   },
+   {
+      "index":7104,
+      "String_Type":61,
+      "String_Desc":"경갑 방어구 Lv_5이다."
+   },
+   {
+      "index":7105,
+      "String_Type":61,
+      "String_Desc":"경갑 방어구 Lv_6이다."
+   },
+   {
+      "index":7106,
+      "String_Type":61,
+      "String_Desc":"경갑 방어구 Lv_7이다."
+   },
+   {
+      "index":7107,
+      "String_Type":61,
+      "String_Desc":"경갑 방어구 Lv_8이다."
+   },
+   {
+      "index":7108,
+      "String_Type":61,
+      "String_Desc":"경갑 방어구 Lv_9이다."
+   },
+   {
+      "index":7109,
+      "String_Type":61,
+      "String_Desc":"경갑 방어구 Lv_10이다."
+   },
+   {
+      "index":7200,
+      "String_Type":62,
+      "String_Desc":"판금 방어구 Lv_1이다."
+   },
+   {
+      "index":7201,
+      "String_Type":62,
+      "String_Desc":"판금 방어구 Lv_2이다."
+   },
+   {
+      "index":7202,
+      "String_Type":62,
+      "String_Desc":"판금 방어구 Lv_3이다."
+   },
+   {
+      "index":7203,
+      "String_Type":62,
+      "String_Desc":"판금 방어구 Lv_4이다."
+   },
+   {
+      "index":7204,
+      "String_Type":62,
+      "String_Desc":"판금 방어구 Lv_5이다."
+   },
+   {
+      "index":7205,
+      "String_Type":62,
+      "String_Desc":"판금 방어구 Lv_6이다."
+   },
+   {
+      "index":7206,
+      "String_Type":62,
+      "String_Desc":"판금 방어구 Lv_7이다."
+   },
+   {
+      "index":7207,
+      "String_Type":62,
+      "String_Desc":"판금 방어구 Lv_8이다."
+   },
+   {
+      "index":7208,
+      "String_Type":62,
+      "String_Desc":"판금 방어구 Lv_9이다."
+   },
+   {
+      "index":7209,
+      "String_Type":62,
+      "String_Desc":"판금 방어구 Lv_10이다."
+   },
+   {
+      "index":10000,
+      "String_Type":80,
+      "String_Desc":"초보자 무기로군!"
+   },
+   {
+      "index":10001,
+      "String_Type":80,
+      "String_Desc":"초보자 방어구로군!"
+   },
+   {
+      "index":10100,
+      "String_Type":81,
+      "String_Desc":"한 손검 Lv_1이군!"
+   },
+   {
+      "index":10101,
+      "String_Type":81,
+      "String_Desc":"한 손검 Lv_2이군!"
+   },
+   {
+      "index":10102,
+      "String_Type":81,
+      "String_Desc":"한 손검 Lv_3이군!"
+   },
+   {
+      "index":10103,
+      "String_Type":81,
+      "String_Desc":"한 손검 Lv_4이군!"
+   },
+   {
+      "index":10104,
+      "String_Type":81,
+      "String_Desc":"한 손검 Lv_5이군!"
+   },
+   {
+      "index":10105,
+      "String_Type":81,
+      "String_Desc":"한 손검 Lv_6이군!"
+   },
+   {
+      "index":10106,
+      "String_Type":81,
+      "String_Desc":"한 손검 Lv_7이군!"
+   },
+   {
+      "index":10107,
+      "String_Type":81,
+      "String_Desc":"한 손검 Lv_8이군!"
+   },
+   {
+      "index":10108,
+      "String_Type":81,
+      "String_Desc":"한 손검 Lv_9이군!"
+   },
+   {
+      "index":10109,
+      "String_Type":81,
+      "String_Desc":"한 손검 Lv_10이군!"
+   },
+   {
+      "index":10200,
+      "String_Type":82,
+      "String_Desc":"양 손검 Lv_1이군!"
+   },
+   {
+      "index":10201,
+      "String_Type":82,
+      "String_Desc":"양 손검 Lv_2이군!"
+   },
+   {
+      "index":10202,
+      "String_Type":82,
+      "String_Desc":"양 손검 Lv_3이군!"
+   },
+   {
+      "index":10203,
+      "String_Type":82,
+      "String_Desc":"양 손검 Lv_4이군!"
+   },
+   {
+      "index":10204,
+      "String_Type":82,
+      "String_Desc":"양 손검 Lv_5이군!"
+   },
+   {
+      "index":10205,
+      "String_Type":82,
+      "String_Desc":"양 손검 Lv_6이군!"
+   },
+   {
+      "index":10206,
+      "String_Type":82,
+      "String_Desc":"양 손검 Lv_7이군!"
+   },
+   {
+      "index":10207,
+      "String_Type":82,
+      "String_Desc":"양 손검 Lv_8이군!"
+   },
+   {
+      "index":10208,
+      "String_Type":82,
+      "String_Desc":"양 손검 Lv_9이군!"
+   },
+   {
+      "index":10209,
+      "String_Type":82,
+      "String_Desc":"양 손검 Lv_10이군!"
+   },
+   {
+      "index":10300,
+      "String_Type":83,
+      "String_Desc":"한손 둔기 Lv_1이군!"
+   },
+   {
+      "index":10301,
+      "String_Type":83,
+      "String_Desc":"한손 둔기 Lv_2이군!"
+   },
+   {
+      "index":10302,
+      "String_Type":83,
+      "String_Desc":"한손 둔기 Lv_3이군!"
+   },
+   {
+      "index":10303,
+      "String_Type":83,
+      "String_Desc":"한손 둔기 Lv_4이군!"
+   },
+   {
+      "index":10304,
+      "String_Type":83,
+      "String_Desc":"한손 둔기 Lv_5이군!"
+   },
+   {
+      "index":10305,
+      "String_Type":83,
+      "String_Desc":"한손 둔기 Lv_6이군!"
+   },
+   {
+      "index":10306,
+      "String_Type":83,
+      "String_Desc":"한손 둔기 Lv_7이군!"
+   },
+   {
+      "index":10307,
+      "String_Type":83,
+      "String_Desc":"한손 둔기 Lv_8이군!"
+   },
+   {
+      "index":10308,
+      "String_Type":83,
+      "String_Desc":"한손 둔기 Lv_9이군!"
+   },
+   {
+      "index":10309,
+      "String_Type":83,
+      "String_Desc":"한손 둔기 Lv_10이군!"
+   },
+   {
+      "index":10400,
+      "String_Type":84,
+      "String_Desc":"양손 둔기 Lv_1이군!"
+   },
+   {
+      "index":10401,
+      "String_Type":84,
+      "String_Desc":"양손 둔기 Lv_2이군!"
+   },
+   {
+      "index":10402,
+      "String_Type":84,
+      "String_Desc":"양손 둔기 Lv_3이군!"
+   },
+   {
+      "index":10403,
+      "String_Type":84,
+      "String_Desc":"양손 둔기 Lv_4이군!"
+   },
+   {
+      "index":10404,
+      "String_Type":84,
+      "String_Desc":"양손 둔기 Lv_5이군!"
+   },
+   {
+      "index":10405,
+      "String_Type":84,
+      "String_Desc":"양손 둔기 Lv_6이군!"
+   },
+   {
+      "index":10406,
+      "String_Type":84,
+      "String_Desc":"양손 둔기 Lv_7이군!"
+   },
+   {
+      "index":10407,
+      "String_Type":84,
+      "String_Desc":"양손 둔기 Lv_8이군!"
+   },
+   {
+      "index":10408,
+      "String_Type":84,
+      "String_Desc":"양손 둔기 Lv_9이군!"
+   },
+   {
+      "index":10409,
+      "String_Type":84,
+      "String_Desc":"양손 둔기 Lv_10이군!"
+   },
+   {
+      "index":10500,
+      "String_Type":85,
+      "String_Desc":"창 Lv_1이군!"
+   },
+   {
+      "index":10501,
+      "String_Type":85,
+      "String_Desc":"창 Lv_2이군!"
+   },
+   {
+      "index":10502,
+      "String_Type":85,
+      "String_Desc":"창 Lv_3이군!"
+   },
+   {
+      "index":10503,
+      "String_Type":85,
+      "String_Desc":"창 Lv_4이군!"
+   },
+   {
+      "index":10504,
+      "String_Type":85,
+      "String_Desc":"창 Lv_5이군!"
+   },
+   {
+      "index":10505,
+      "String_Type":85,
+      "String_Desc":"창 Lv_6이군!"
+   },
+   {
+      "index":10506,
+      "String_Type":85,
+      "String_Desc":"창 Lv_7이군!"
+   },
+   {
+      "index":10507,
+      "String_Type":85,
+      "String_Desc":"창 Lv_8이군!"
+   },
+   {
+      "index":10508,
+      "String_Type":85,
+      "String_Desc":"창 Lv_9이군!"
+   },
+   {
+      "index":10509,
+      "String_Type":85,
+      "String_Desc":"창 Lv_10이군!"
+   },
+   {
+      "index":10600,
+      "String_Type":86,
+      "String_Desc":"단검 Lv_1이군!"
+   },
+   {
+      "index":10601,
+      "String_Type":86,
+      "String_Desc":"단검 Lv_2이군!"
+   },
+   {
+      "index":10602,
+      "String_Type":86,
+      "String_Desc":"단검 Lv_3이군!"
+   },
+   {
+      "index":10603,
+      "String_Type":86,
+      "String_Desc":"단검 Lv_4이군!"
+   },
+   {
+      "index":10604,
+      "String_Type":86,
+      "String_Desc":"단검 Lv_5이군!"
+   },
+   {
+      "index":10605,
+      "String_Type":86,
+      "String_Desc":"단검 Lv_6이군!"
+   },
+   {
+      "index":10606,
+      "String_Type":86,
+      "String_Desc":"단검 Lv_7이군!"
+   },
+   {
+      "index":10607,
+      "String_Type":86,
+      "String_Desc":"단검 Lv_8이군!"
+   },
+   {
+      "index":10608,
+      "String_Type":86,
+      "String_Desc":"단검 Lv_9이군!"
+   },
+   {
+      "index":10609,
+      "String_Type":86,
+      "String_Desc":"단검 Lv_10이군!"
+   },
+   {
+      "index":10700,
+      "String_Type":87,
+      "String_Desc":"투창용 창 Lv_1이군!"
+   },
+   {
+      "index":10701,
+      "String_Type":87,
+      "String_Desc":"투창용 창 Lv_2이군!"
+   },
+   {
+      "index":10702,
+      "String_Type":87,
+      "String_Desc":"투창용 창 Lv_3이군!"
+   },
+   {
+      "index":10703,
+      "String_Type":87,
+      "String_Desc":"투창용 창 Lv_4이군!"
+   },
+   {
+      "index":10704,
+      "String_Type":87,
+      "String_Desc":"투창용 창 Lv_5이군!"
+   },
+   {
+      "index":10705,
+      "String_Type":87,
+      "String_Desc":"투창용 창 Lv_6이군!"
+   },
+   {
+      "index":10706,
+      "String_Type":87,
+      "String_Desc":"투창용 창 Lv_7이군!"
+   },
+   {
+      "index":10707,
+      "String_Type":87,
+      "String_Desc":"투창용 창 Lv_8이군!"
+   },
+   {
+      "index":10708,
+      "String_Type":87,
+      "String_Desc":"투창용 창 Lv_9이군!"
+   },
+   {
+      "index":10709,
+      "String_Type":87,
+      "String_Desc":"투창용 창 Lv_10이군!"
+   },
+   {
+      "index":12000,
+      "String_Type":100,
+      "String_Desc":"가죽 방어구 Lv_1이군!"
+   },
+   {
+      "index":12001,
+      "String_Type":100,
+      "String_Desc":"가죽 방어구 Lv_2이군!"
+   },
+   {
+      "index":12002,
+      "String_Type":100,
+      "String_Desc":"가죽 방어구 Lv_3이군!"
+   },
+   {
+      "index":12003,
+      "String_Type":100,
+      "String_Desc":"가죽 방어구 Lv_4이군!"
+   },
+   {
+      "index":12004,
+      "String_Type":100,
+      "String_Desc":"가죽 방어구 Lv_5이군!"
+   },
+   {
+      "index":12005,
+      "String_Type":100,
+      "String_Desc":"가죽 방어구 Lv_6이군!"
+   },
+   {
+      "index":12006,
+      "String_Type":100,
+      "String_Desc":"가죽 방어구 Lv_7이군!"
+   },
+   {
+      "index":12007,
+      "String_Type":100,
+      "String_Desc":"가죽 방어구 Lv_8이군!"
+   },
+   {
+      "index":12008,
+      "String_Type":100,
+      "String_Desc":"가죽 방어구 Lv_9이군!"
+   },
+   {
+      "index":12009,
+      "String_Type":100,
+      "String_Desc":"가죽 방어구 Lv_10이군!"
+   },
+   {
+      "index":12100,
+      "String_Type":101,
+      "String_Desc":"경갑 방어구 Lv_1이군!"
+   },
+   {
+      "index":12101,
+      "String_Type":101,
+      "String_Desc":"경갑 방어구 Lv_2이군!"
+   },
+   {
+      "index":12102,
+      "String_Type":101,
+      "String_Desc":"경갑 방어구 Lv_3이군!"
+   },
+   {
+      "index":12103,
+      "String_Type":101,
+      "String_Desc":"경갑 방어구 Lv_4이군!"
+   },
+   {
+      "index":12104,
+      "String_Type":101,
+      "String_Desc":"경갑 방어구 Lv_5이군!"
+   },
+   {
+      "index":12105,
+      "String_Type":101,
+      "String_Desc":"경갑 방어구 Lv_6이군!"
+   },
+   {
+      "index":12106,
+      "String_Type":101,
+      "String_Desc":"경갑 방어구 Lv_7이군!"
+   },
+   {
+      "index":12107,
+      "String_Type":101,
+      "String_Desc":"경갑 방어구 Lv_8이군!"
+   },
+   {
+      "index":12108,
+      "String_Type":101,
+      "String_Desc":"경갑 방어구 Lv_9이군!"
+   },
+   {
+      "index":12109,
+      "String_Type":101,
+      "String_Desc":"경갑 방어구 Lv_10이군!"
+   },
+   {
+      "index":12200,
+      "String_Type":102,
+      "String_Desc":"판금 방어구 Lv_1이군!"
+   },
+   {
+      "index":12201,
+      "String_Type":102,
+      "String_Desc":"판금 방어구 Lv_2이군!"
+   },
+   {
+      "index":12202,
+      "String_Type":102,
+      "String_Desc":"판금 방어구 Lv_3이군!"
+   },
+   {
+      "index":12203,
+      "String_Type":102,
+      "String_Desc":"판금 방어구 Lv_4이군!"
+   },
+   {
+      "index":12204,
+      "String_Type":102,
+      "String_Desc":"판금 방어구 Lv_5이군!"
+   },
+   {
+      "index":12205,
+      "String_Type":102,
+      "String_Desc":"판금 방어구 Lv_6이군!"
+   },
+   {
+      "index":12206,
+      "String_Type":102,
+      "String_Desc":"판금 방어구 Lv_7이군!"
+   },
+   {
+      "index":12207,
+      "String_Type":102,
+      "String_Desc":"판금 방어구 Lv_8이군!"
+   },
+   {
+      "index":12208,
+      "String_Type":102,
+      "String_Desc":"판금 방어구 Lv_9이군!"
+   },
+   {
+      "index":12209,
+      "String_Type":102,
+      "String_Desc":"판금 방어구 Lv_10이군!"
+   },
+   {
+      "index":13000,
+      "String_Type":120,
+      "String_Desc":"무기"
+   },
+   {
+      "index":13001,
+      "String_Type":120,
+      "String_Desc":"방어구"
+   },
+   {
+      "index":13100,
+      "String_Type":121,
+      "String_Desc":"한손 검"
+   },
+   {
+      "index":13101,
+      "String_Type":121,
+      "String_Desc":"양손 검"
+   },
+   {
+      "index":13102,
+      "String_Type":121,
+      "String_Desc":"한손 둔기"
+   },
+   {
+      "index":13103,
+      "String_Type":121,
+      "String_Desc":"양손 둔기"
+   },
+   {
+      "index":13104,
+      "String_Type":121,
+      "String_Desc":"창"
+   },
+   {
+      "index":13105,
+      "String_Type":121,
+      "String_Desc":"단검"
+   },
+   {
+      "index":13106,
+      "String_Type":121,
+      "String_Desc":"투창용창"
+   },
+   {
+      "index":13107,
+      "String_Type":121,
+      "String_Desc":"가죽"
+   },
+   {
+      "index":13108,
+      "String_Type":121,
+      "String_Desc":"경갑"
+   },
+   {
+      "index":13109,
+      "String_Type":121,
+      "String_Desc":"판금"
+   }
+]

@@ -12,6 +12,7 @@ public class BtnNormalFuntion : MonoBehaviour
     public Sprite[] ButtonSprite;
     public int btnChildCount;
     public UnityEvent<int> BtnAct;
+    public UnityEvent PointerBtnAct;
 
     private void OnEnable() 
     {
@@ -28,6 +29,8 @@ public class BtnNormalFuntion : MonoBehaviour
     {
         gameObject.transform.GetComponent<Image>().sprite = ButtonSprite[1];
         gameObject.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -5, 0);
+        PointerBtnAct?.Invoke();
+        
     }
     public void ButtonPointerUp(GameObject gameObject)
     {

@@ -9,6 +9,8 @@ public class ItemDataManager
 {
     private static ItemDataManager instance;
     public Dictionary<int, ItemData> dicItemDatas;
+    public Dictionary<int, StringTable> dicStringTable;
+    public Dictionary<int, ImageResourceTable> dicResouseTable;
 
     private ItemDataManager()
     {
@@ -21,14 +23,20 @@ public class ItemDataManager
             ItemDataManager.instance = new ItemDataManager();
         return ItemDataManager.instance;
     }
-    public void LoadDatas()
+    public void InvenItemLoadDatas()
     {
-        var json = Resources.Load<TextAsset>("UI/UIItem/InvenItemData").text;
-        var arrItemDatas = JsonConvert.DeserializeObject<ItemData[]>(json);
-        /* foreach(var data in arrItemDatas)
+        var Mestiarii_InvenItemJson = Resources.Load<TextAsset>("UI/UIItem/Json/Mestiarii_Inven_ItemTable").text;
+        var Mestiarii_StringTableJson = Resources.Load<TextAsset>("UI/UIItem/Json/Mestiarii_Inven_StringTable").text;
+        var Mestiarii_ImageResourceTable = Resources.Load<TextAsset>("UI/UIItem/Json/Mestiarii_Inven_ImageResourceTable").text;
+        var arrItemDatas = JsonConvert.DeserializeObject<ItemData[]>(Mestiarii_InvenItemJson);
+        var arrStringDatas = JsonConvert.DeserializeObject<StringTable[]>(Mestiarii_StringTableJson);
+        var arrResourceDatas = JsonConvert.DeserializeObject<ImageResourceTable[]>(Mestiarii_ImageResourceTable);
+        /* foreach(var data in arrStringDatas)
         {
-            Debug.LogFormat("{0}, {1}, {2} ",data.index, data.Inven_itemName, data.Inven_itemDesc);
+            Debug.LogFormat("{0}, {1}, {2} ",data.index, data.String_Type, data.String_Desc);
         } */
         this.dicItemDatas = arrItemDatas.ToDictionary(x => x.index);
+        this.dicStringTable = arrStringDatas.ToDictionary(x => x.index);
+        this.dicResouseTable = arrResourceDatas.ToDictionary(x => x.index);
     }
 }

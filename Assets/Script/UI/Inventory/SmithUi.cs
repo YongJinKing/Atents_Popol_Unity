@@ -13,49 +13,52 @@ public class SmithUi : MonoBehaviour
     public GameObject Inventory;
     int Slotindex;
     int smithFuntion;
+    Button[] SlotBtnFunctionList ;
+    int PrevIndex = -1;
     
-    public void ChooseSlot(int id)
+    private void Start() 
     {
-        Slotindex = 0;
-        for(int i = 0; i < GridLine.transform.childCount; i++)
+        SlotBtnFunctionList = GridLine.GetComponentsInChildren<Button>();
+        for(int i = 0; i < SlotBtnFunctionList.Length; i++)
         {
-            if(GridLine.transform.GetChild(i).GetChild(0).GetComponent<UIItem>().id
-            == id)
-            {
-                Slotindex = i;
-                break;
-            }
-            Slotindex = -1;
+            int index = i;
+            SlotBtnFunctionList[i].onClick.AddListener(() => ChooseSlot(index));
         }
-        var go = GridLine.transform.GetChild(Slotindex).GetChild(0);
-        if(Slotindex == -1)
-            return;
-        if(go.GetComponent<UIItem>().isSelected) 
+    }
+    public void ChooseSlot(int index)
+    {
+        int id = GridLine.transform.GetChild(index).GetComponent<UIItem>().id;
+        if(PrevIndex == index)
         {
-            go.GetComponent<UIItem>().isSelected = false;
-            go.GetChild(2).
-            GetComponent<Image>().color =
-            AlphaColorChange(0.0f, go.GetChild(2).
-            GetComponent<Image>().color);
+            CleanSlot(-1);
+            return;
         }
         else
-            go.GetComponent<UIItem>().isSelected = true;
-        if(go.GetComponent<UIItem>().isSelected)
         {
-            go.GetChild(2).
-            GetComponent<Image>().color =
-            AlphaColorChange(0.3f, go.GetChild(2).
-            GetComponent<Image>().color);
+            if(id > 0)
+            {
+                CleanSlot(index);
+                ImgColorChange(0.3f, index);
+            }
+            else
+                return;
         }
     }
-    Color AlphaColorChange(float Value, Color Objcolor)
+    void CleanSlot(int PrevIdxSetting)
     {
-        Color color = Objcolor;
-        color.a = Value;
-        Objcolor = color;
-        return Objcolor;
+        for(int i = 0; i < GridLine.transform.childCount; i++)
+        {
+            ImgColorChange(0.0f, i);
+        }
+        PrevIndex = PrevIdxSetting;
     }
-
+    void ImgColorChange(float Value, int index)
+    {
+        Color color = GridLine.transform.GetChild(index).GetChild(2).GetComponent<Image>().color;
+        color.a = Value;
+        GridLine.transform.GetChild(index).GetChild(2).GetComponent<Image>().color = color;
+    }
+    
     public void PressedPopupBtn(int index)
     {
         if(Slotindex > 0)
@@ -66,9 +69,10 @@ public class SmithUi : MonoBehaviour
                 ModeText = "수리";
             else if(index == 0)
                 ModeText = "폐기";
-            /* Popup.transform.GetChild(0).GetComponent<TMP_Text>().text =
-            $"아이템을 {ModeText}하시겠습니까?"; */
+            Popup.transform.GetChild(0).GetComponent<TMP_Text>().text =
+            $"아이템을 {ModeText}하시겠습니까?";
             smithFuntion = index + 1;
+            
         }
         else
             return;

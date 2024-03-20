@@ -5,8 +5,8 @@ using UnityEngine;
 public class ItemData
 {
     public int index;
-    public string Inven_itemName;
-    public string Inven_spriteName;
-    public string Inven_itemDesc;
-    
+    public int Inven_itemName;
+    public int Inven_spriteName;
+    public int Inven_itemDesc;
+    public int Inven_riggingType;
 }
