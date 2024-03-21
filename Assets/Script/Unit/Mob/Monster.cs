@@ -45,6 +45,7 @@ public abstract class Monster : BattleSystem
     protected UnityAction onSkillHitCheckStartAct;
     protected UnityAction onSkillHitCheckEndAct;
     protected UnityAction onSkillAnimEnd;
+    protected UnityAction onDeadAct;
     #endregion
     #endregion
 
@@ -90,8 +91,9 @@ public abstract class Monster : BattleSystem
         onSkillAnimEnd = skillAnimEnd;
     }
 
-    public void OnAddSkillMaskEventListener(LayerMask mask)
+    public void OnAddSkillEvent2Listener(UnityAction skillForceEnd ,LayerMask mask)
     {
+        onDeadAct = skillForceEnd;
         skillMask = mask;
     }
     #endregion

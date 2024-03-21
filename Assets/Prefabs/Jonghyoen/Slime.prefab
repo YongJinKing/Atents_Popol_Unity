@@ -104,18 +104,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleStat:
     Level: 0
-    AP: 2
-    maxHP: 50
-    HP: 0
-    Exp: 0
+    ATK: 0
+    HP: 50
+    Exp: 10
+    MaxExp: 0
+    EnergyGage: 0
     Speed: 4
     AttackDelay: 0
   curBattleStat:
     Level: 0
-    AP: 0
-    maxHP: 0
+    ATK: 0
     HP: 0
     Exp: 0
+    MaxExp: 0
+    EnergyGage: 0
     Speed: 0
     AttackDelay: 0
   myState: 0
@@ -475,7 +477,15 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: detectRadius
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: onAddSkillEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
@@ -495,12 +505,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8747748374390514763}
     - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8747748374390514763}
+    - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: onAddSkillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: onAddSkillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnAddSkillEventListener
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnAddSkillEvent2Listener
       objectReference: {fileID: 0}
     - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: onAddSkillLayerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -555,6 +577,10 @@ PrefabInstance:
       value: Monster, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Monster, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: onAddSkillLayerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Monster, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -571,6 +597,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: onAddSkillLayerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
@@ -581,6 +611,10 @@ PrefabInstance:
     - target: {fileID: 2518363497238359752, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: onSkillHitCheckStartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955446051305678790, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: power
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7826091675580535966, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: attackStartPos.Array.data[0]
@@ -1016,6 +1050,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: onAddSkillLayerEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1036,12 +1074,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8747748374390514763}
     - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8747748374390514763}
+    - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: onAddSkillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: onAddSkillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnAddSkillEventListener
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnAddSkillEvent2Listener
       objectReference: {fileID: 0}
     - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: onAddSkillLayerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1096,6 +1146,10 @@ PrefabInstance:
       value: Monster, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Monster, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: onAddSkillLayerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Monster, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -1109,6 +1163,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: onAddSkillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7112845369712226649, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
@@ -1224,6 +1282,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
       propertyPath: onAddSkillLayerEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1240,12 +1302,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8747748374390514763}
     - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8747748374390514763}
+    - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
       propertyPath: onAddSkillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
       propertyPath: onAddSkillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnAddSkillEventListener
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnAddSkillEvent2Listener
       objectReference: {fileID: 0}
     - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
       propertyPath: onAddSkillLayerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1300,6 +1374,10 @@ PrefabInstance:
       value: Monster, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Monster, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
       propertyPath: onAddSkillLayerEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Monster, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -1313,6 +1391,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
       propertyPath: onAddSkillEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
+      propertyPath: onAddSkillEvent2.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8330523083550905499, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}

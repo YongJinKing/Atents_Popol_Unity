@@ -7,6 +7,7 @@ public class Skill : MonoBehaviour
     #region Properties / Field
     #region Private
     private Vector3 targetPos;
+    private bool isForceEnd = false;
     #endregion
 
     #region protected
@@ -35,7 +36,7 @@ public class Skill : MonoBehaviour
     public UnityAction onDetectTargetAct;
 
     public UnityEvent<UnityAction<Vector3, UnityAction, UnityAction, UnityAction>,UnityAction ,UnityAction, UnityAction> onAddSkillEvent;
-    public UnityEvent<LayerMask> onAddSkillLayerEvent;
+    public UnityEvent<UnityAction,LayerMask> onAddSkillEvent2;
     #endregion
     #endregion
 
@@ -101,7 +102,7 @@ public class Skill : MonoBehaviour
     public void OnRequestSkillInfo()
     {
         onAddSkillEvent?.Invoke(OnSkillStart, OnSkillHitCheckStart,  OnSkillHitCheckEnd, OnSkillAnimEnd);
-        onAddSkillLayerEvent?.Invoke(targetMask);
+        onAddSkillEvent2?.Invoke(OnSkillForceEnd, targetMask);
     }
 
     public void OnCommandDetectSkillTarget(UnityAction detectAct)
@@ -141,19 +142,29 @@ public class Skill : MonoBehaviour
     //use for afterdelay
     public void OnSkillAnimEnd()
     {
-        middleAct?.Invoke();
-        onSkillHitCheckEndEvent?.Invoke();
-        StartCoroutine(ProcessDelay(postDelay,
-            () => 
-            {
-                OnSkillEnd();
-            }));
+        if (!isForceEnd)
+        {
+            middleAct?.Invoke();
+            onSkillHitCheckEndEvent?.Invoke();
+            StartCoroutine(ProcessDelay(postDelay,
+                () =>
+                {
+                    OnSkillEnd();
+                }));
+        }
     }
 
     public void OnSkillEnd()
     {
         endAct?.Invoke();
         StartCoroutine(CoolDownChecking());
+    }
+
+    public void OnSkillForceEnd()
+    {
+        StopAllCoroutines();
+        isForceEnd = true;
+        onSkillHitCheckEndEvent?.Invoke();
     }
     #endregion
 
