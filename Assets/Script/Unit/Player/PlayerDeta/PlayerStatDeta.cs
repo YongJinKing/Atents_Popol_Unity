@@ -28,3 +28,9 @@ public class PlayerLevelStat
     public int Hp;
     public int Total_Hp;
 }
+
+public class PlayerLv
+{
+    public int Exp;
+    public int Level;
+}

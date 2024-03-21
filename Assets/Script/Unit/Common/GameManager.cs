@@ -21,7 +21,13 @@ public class GameManager : MonoBehaviour
 
     void LoadPlayerStat()
     {
+        var plLv = playerdata.playerlv;
         var playerstat = playerdata.playerstatdata;
+        if(plLv != null)
+        {
+            playerstat.Character_CurrentExp = plLv.Exp;
+            playerstat.Character_CurrentLevel = plLv.Level;
+        }
         pl.ATK = playerstat.Character_AttackPower;
         pl.HP = playerstat.Character_Hp;
         pl.Exp = playerstat.Character_CurrentExp;
@@ -54,6 +60,16 @@ public class GameManager : MonoBehaviour
             {
                 playerstat.Character_CurrentLevel++;
             }
+            playerdata.SavePlayerProgress();
+        }
+    }
+
+    public void EndGame()
+    {
+        var filePath = "Assets/Resources/Player/PlayerStat/Playerlv.json";
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
         }
     }
 }
