@@ -48,5 +48,13 @@ public class BtnModeFuntion : MonoBehaviour
         }
         PrevIndex = PrevIdxSetting;
     }
+    public void CleanBtn()
+    {
+        for(int i = 0; i < BtnParents.transform.childCount; i++)
+        {
+            BtnFunctionList[i].GetComponent<Image>().sprite = BtnImage[0];
+            BtnFunctionList[i].transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 10, 0);
+        }
+    }
 
 }

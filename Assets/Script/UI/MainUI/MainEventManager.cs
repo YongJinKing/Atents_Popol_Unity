@@ -29,6 +29,7 @@ public class MainEventManager : MonoBehaviour
     
     void ChangeMainUI()
     {
+        
         for(int i = 2; i < gameCanvas.transform.childCount; i++)
         {
             gameCanvas.transform.GetChild(i).gameObject.SetActive(false);

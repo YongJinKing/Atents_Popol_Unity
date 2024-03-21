@@ -5,7 +5,7 @@
       "Inven_spriteName":1000,
       "Inven_itemValue":50,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5000,
+      "Inven_smithTalk":10000,
       "Inven_itemDesc":5000,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -16,7 +16,7 @@
       "Inven_spriteName":1001,
       "Inven_itemValue":50,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5001,
+      "Inven_smithTalk":10001,
       "Inven_itemDesc":5001,
       "Inven_riggingType":1,
       "Inven_weaponType":10
@@ -27,7 +27,7 @@
       "Inven_spriteName":1100,
       "Inven_itemValue":20,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5100,
+      "Inven_smithTalk":10100,
       "Inven_itemDesc":5100,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -38,7 +38,7 @@
       "Inven_spriteName":1101,
       "Inven_itemValue":40,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5101,
+      "Inven_smithTalk":10101,
       "Inven_itemDesc":5101,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -49,7 +49,7 @@
       "Inven_spriteName":1102,
       "Inven_itemValue":60,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5102,
+      "Inven_smithTalk":10102,
       "Inven_itemDesc":5102,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -60,7 +60,7 @@
       "Inven_spriteName":1103,
       "Inven_itemValue":80,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5103,
+      "Inven_smithTalk":10103,
       "Inven_itemDesc":5103,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -71,7 +71,7 @@
       "Inven_spriteName":1104,
       "Inven_itemValue":100,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5104,
+      "Inven_smithTalk":10104,
       "Inven_itemDesc":5104,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -82,7 +82,7 @@
       "Inven_spriteName":1105,
       "Inven_itemValue":120,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5105,
+      "Inven_smithTalk":10105,
       "Inven_itemDesc":5105,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -93,7 +93,7 @@
       "Inven_spriteName":1106,
       "Inven_itemValue":140,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5106,
+      "Inven_smithTalk":10106,
       "Inven_itemDesc":5106,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -104,7 +104,7 @@
       "Inven_spriteName":1107,
       "Inven_itemValue":160,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5107,
+      "Inven_smithTalk":10107,
       "Inven_itemDesc":5107,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -115,7 +115,7 @@
       "Inven_spriteName":1108,
       "Inven_itemValue":180,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5108,
+      "Inven_smithTalk":10108,
       "Inven_itemDesc":5108,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -126,7 +126,7 @@
       "Inven_spriteName":1109,
       "Inven_itemValue":200,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5109,
+      "Inven_smithTalk":10109,
       "Inven_itemDesc":5109,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -137,7 +137,7 @@
       "Inven_spriteName":1200,
       "Inven_itemValue":30,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5200,
+      "Inven_smithTalk":10110,
       "Inven_itemDesc":5200,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -148,7 +148,7 @@
       "Inven_spriteName":1201,
       "Inven_itemValue":60,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5201,
+      "Inven_smithTalk":10111,
       "Inven_itemDesc":5201,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -159,7 +159,7 @@
       "Inven_spriteName":1202,
       "Inven_itemValue":90,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5202,
+      "Inven_smithTalk":10112,
       "Inven_itemDesc":5202,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -170,7 +170,7 @@
       "Inven_spriteName":1203,
       "Inven_itemValue":120,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5203,
+      "Inven_smithTalk":10113,
       "Inven_itemDesc":5203,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -181,7 +181,7 @@
       "Inven_spriteName":1204,
       "Inven_itemValue":150,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5204,
+      "Inven_smithTalk":10114,
       "Inven_itemDesc":5204,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -192,7 +192,7 @@
       "Inven_spriteName":1205,
       "Inven_itemValue":180,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5205,
+      "Inven_smithTalk":10115,
       "Inven_itemDesc":5205,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -203,7 +203,7 @@
       "Inven_spriteName":1206,
       "Inven_itemValue":210,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5206,
+      "Inven_smithTalk":10116,
       "Inven_itemDesc":5206,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -214,7 +214,7 @@
       "Inven_spriteName":1207,
       "Inven_itemValue":240,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5207,
+      "Inven_smithTalk":10117,
       "Inven_itemDesc":5207,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -225,7 +225,7 @@
       "Inven_spriteName":1208,
       "Inven_itemValue":270,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5208,
+      "Inven_smithTalk":10118,
       "Inven_itemDesc":5208,
       "Inven_riggingType":0,
       "Inven_weaponType":0
@@ -236,7 +236,7 @@
       "Inven_spriteName":1209,
       "Inven_itemValue":300,
       "Inven_durAbility":100,
-      "Inven_smithTalk":5209,
+      "Inven_smithTalk":10119,
       "Inven_itemDesc":5209,
       "Inven_riggingType":0,
       "Inven_weaponType":0

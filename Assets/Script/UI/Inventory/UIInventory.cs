@@ -13,9 +13,8 @@ public class UIInventory : MonoBehaviour
     public List<UIItem> items;
     public GameObject GridLine;
     public List<int> BackUpIdList;
-    private GameObject prefab;
     public UnityEvent CleanSlot;
-    int Slotindex;
+    
     int InvenMode = 0;
     
 
@@ -23,7 +22,6 @@ public class UIInventory : MonoBehaviour
     void Start()
     {
         ItemDataManager.GetInstance().InvenItemLoadDatas();
-        this.prefab = Resources.Load<GameObject>("UI/UIItem/Empty");
         this.items = new List<UIItem>();
         BackUpIdList = new List<int>();
         FreshSlot(0);
@@ -36,44 +34,34 @@ public class UIInventory : MonoBehaviour
 
     public void AddItem(int id) 
     {
-        
-        var ItemData = ItemDataManager.GetInstance().dicItemDatas[id];
-        var SpriteData = ItemDataManager.GetInstance().dicResouseTable[ItemData.Inven_spriteName];
-        
-        string spName = SpriteData.ImageResourceName;
-        
-        
-        Sprite sp = Resources.Load<Sprite>($"UI/UIItem/{spName}");
-        
         for(int i = 0; i < GridLine.transform.childCount; i++)
         {
             if(GridLine.transform.GetChild(i).GetComponent<UIItem>().id == 0)
             {
-                Slotindex = i;
-                this.items.Add(GridLine.transform.GetChild(Slotindex).GetComponent<UIItem>());
-                GridLine.transform.GetChild(Slotindex).GetComponent<UIItem>().Init(id, sp, 1);
+                this.items.Add(GridLine.transform.GetChild(i).GetComponent<UIItem>());
+                GridLine.transform.GetChild(i).GetComponent<UIItem>().Init(id);
                 break;
             }
         }
     }
     
-    public void RemoveItem(int id) 
+    public void RemoveItem(int index) 
     { 
-        var data = ItemDataManager.GetInstance().dicItemDatas[id];
-        
-        for(int i = 0; i < GridLine.transform.childCount; i++)
+        int id;
+        id = items[index].id;
+        items.RemoveAt(index);
+        for(int i = 0; i < BackUpIdList.Count; i++)
         {
-            if(GridLine.transform.GetChild(i).GetComponent<UIItem>().id == id)
+            if(BackUpIdList[i] == i)
             {
-                Slotindex = i;
-                this.items.RemoveAt(Slotindex);
-                FreshSlot(InvenMode);
-                break; 
+                BackUpIdList.RemoveAt(i);
+                break;
             }
         }
+        ChangeMode(InvenMode);   
     }
 
-    public void ChangeSlot(int index)
+    public void ChangeMode(int index)
     {
         InvenMode = index;
         CleanSlot?.Invoke();
@@ -128,7 +116,6 @@ public class UIInventory : MonoBehaviour
                 }
             }
         }
-        
         for(int i = 0; i < GridLine.transform.childCount; i++)
         {
             GridLine.transform.GetChild(i).GetComponent<UIItem>().InitAll();
