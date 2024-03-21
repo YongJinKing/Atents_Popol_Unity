@@ -99,6 +99,7 @@ public class SmithUi : MonoBehaviour
         {
             ImgColorChange(0.0f, i);
         }
+        PrevIndex = -1;
     }
 
     void ImgColorChange(float Value, int index)
@@ -140,6 +141,7 @@ public class SmithUi : MonoBehaviour
                 BtnAct2?.Invoke(SlotIndex);                
             }
             Popup.transform.gameObject.SetActive(false);
+            ItemDetailShow();
         }
         else
             Popup.transform.gameObject.SetActive(false);
