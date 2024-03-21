@@ -374,6 +374,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 470413963921441455, guid: aef191f63944a8c42993f543110f020a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470413963921441455, guid: aef191f63944a8c42993f543110f020a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659951250809936675, guid: aef191f63944a8c42993f543110f020a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659951250809936675, guid: aef191f63944a8c42993f543110f020a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2713075137123792809, guid: aef191f63944a8c42993f543110f020a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d1debd018f9877c408ca2c35857bb8c2, type: 3}
+    - target: {fileID: 2819922584798490375, guid: aef191f63944a8c42993f543110f020a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819922584798490375, guid: aef191f63944a8c42993f543110f020a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2837750096839849727, guid: aef191f63944a8c42993f543110f020a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -454,14 +482,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4166595774182784400, guid: aef191f63944a8c42993f543110f020a, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4343348529543970204, guid: aef191f63944a8c42993f543110f020a, type: 3}
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8941851213458844394, guid: aef191f63944a8c42993f543110f020a, type: 3}
+    - target: {fileID: 5175583391168047652, guid: aef191f63944a8c42993f543110f020a, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511590847895406282, guid: aef191f63944a8c42993f543110f020a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c890dd06d4a350946ab11e4778bf47d8, type: 3}
+      objectReference: {fileID: 21300000, guid: 1a5d8785d80a4ee42a2a4c8632436dc0, type: 3}
+    - target: {fileID: 7776846182538671666, guid: aef191f63944a8c42993f543110f020a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 54f8589e2ef2f7a4e875a51ae49b1e7b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
