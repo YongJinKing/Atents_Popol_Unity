@@ -28,7 +28,6 @@ public class BattleSystem : CharacterProperty, IDamage
     [SerializeField] protected BattleStat curBattleStat;
     protected float battleTime = 0.0f;
     public UnityAction<int> deathAlarm;
-    Transform _target = null;
 
     protected virtual void Start()
     {

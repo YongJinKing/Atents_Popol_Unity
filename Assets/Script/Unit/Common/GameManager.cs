@@ -1,5 +1,7 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -29,7 +31,7 @@ public class GameManager : MonoBehaviour
         var plLvstat = playerdata.dicPlayerLevelData[playerstat.Character_CurrentLevel];
         pl.ATK += plLvstat.Total_AttackPower;
         pl.HP += plLvstat.Total_Hp;
-        pl.MaxExp += plLvstat.Total_Exp;
+        pl.MaxExp = plLvstat.Total_Exp;
     }
     // Update is called once per frame
     void Update()
@@ -39,13 +41,19 @@ public class GameManager : MonoBehaviour
 
     public void OnGameEnd(int UnitType)
     {
-        if(UnitType == 0)
+        var playerstat = playerdata.playerstatdata;
+        if (UnitType == 0)
         {
 
         }
         else
         {
             pl.Exp += Ms.Exp;
+            playerstat.Character_CurrentExp += Ms.Exp;
+            if(playerstat.Character_CurrentExp > pl.MaxExp)
+            {
+                playerstat.Character_CurrentLevel++;
+            }
         }
     }
 }
