@@ -27,7 +27,7 @@ public class BattleSystem : CharacterProperty, IDamage
     [SerializeField] protected BattleStat battleStat;
     [SerializeField] protected BattleStat curBattleStat;
     protected float battleTime = 0.0f;
-    public event UnityAction deathAlarm;
+    public UnityAction<int> deathAlarm;
     Transform _target = null;
 
     protected virtual void Start()
@@ -35,22 +35,6 @@ public class BattleSystem : CharacterProperty, IDamage
         Initialize();
     }
 
-    protected Transform myTarget
-    {
-        get => _target;
-        set 
-        {
-            _target = value;
-            if(_target != null)
-            {
-                BattleSystem bs = _target.GetComponent<BattleSystem>();
-                if(bs != null)
-                {
-                    bs.deathAlarm += TargetDead;
-                }
-            }
-        }
-    }
     public int MaxExp
     {
         get
@@ -131,15 +115,11 @@ public class BattleSystem : CharacterProperty, IDamage
         }
     }
 
-    void TargetDead()
-    {
-        StopAllCoroutines();
-    }
-
     protected void Initialize()
     {
         curBattleStat = battleStat;
         curBattleStat.HP = battleStat.HP;
+        deathAlarm += GameObject.Find("GameManager").GetComponent<GameManager>().OnGameEnd;
     }
     
     public void TakeDamage(int dmg, AttackType Atype, DefenceType Dtype)
@@ -230,8 +210,6 @@ public class BattleSystem : CharacterProperty, IDamage
 
     protected virtual void OnDead()
     {
-        deathAlarm?.Invoke();
-        GetComponent<Collider>().enabled = false;
     }
 
     public bool IsLive()

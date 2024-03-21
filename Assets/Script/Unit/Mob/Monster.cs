@@ -58,6 +58,11 @@ public abstract class Monster : BattleSystem
     #region ProtectedMethod
     protected abstract void ChangeState(State s);
     protected abstract void ProcessState();
+    protected override void OnDead()
+    {
+        deathAlarm?.Invoke(1);
+        ChangeState(State.Death);
+    }
     #endregion
 
     //public 함수들 영역

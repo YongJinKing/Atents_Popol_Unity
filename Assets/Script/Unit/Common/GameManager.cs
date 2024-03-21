@@ -5,12 +5,15 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject Monster;
     public PlayerDetaManager playerdata;
     Player pl;
+    Monster Ms;
     void Start()
     {
         playerdata = new PlayerDetaManager();
         pl = Player.GetComponent<Player>();
+        Ms = Monster.GetComponent<Monster>();
         LoadPlayerStat();
     }
 
@@ -23,7 +26,7 @@ public class GameManager : MonoBehaviour
         pl.Lavel = playerstat.Character_CurrentLevel;
         pl.EnergyGage = playerstat.Character_EnergyGage;
         
-        var plLvstat = playerdata.dicPlayerLevelData[pl.Lavel];
+        var plLvstat = playerdata.dicPlayerLevelData[playerstat.Character_CurrentLevel];
         pl.ATK += plLvstat.Total_AttackPower;
         pl.HP += plLvstat.Total_Hp;
         pl.MaxExp += plLvstat.Total_Exp;
@@ -32,5 +35,17 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnGameEnd(int UnitType)
+    {
+        if(UnitType == 0)
+        {
+
+        }
+        else
+        {
+            pl.Exp += Ms.Exp;
+        }
     }
 }

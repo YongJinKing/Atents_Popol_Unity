@@ -168,7 +168,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
             GetRaycastHit();
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             ChangeState(state.Skill);
-            myAnim.SetTrigger("t_Skill");
+            myAnim.SetTrigger("t_QSkill");
             
             rotAct?.Invoke(dir, rotSpeed);
         }
@@ -210,6 +210,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
 
     protected override void OnDead()
     {
+        deathAlarm?.Invoke(0);
         stopAct?.Invoke(null);
         StartCoroutine(TimeControl());
         myAnim.SetTrigger("t_Death");

@@ -94,6 +94,9 @@ public class Slime : Monster
                 ProcessState();
                 break;
             case State.Death:
+                onSkillHitCheckEndAct?.Invoke();
+                onSkillAnimEnd?.Invoke();
+                Debug.Log("Monster Death");
                 break;
         }
     }
