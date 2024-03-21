@@ -1,0 +1,32 @@
+[
+   {
+      "Index":30000,
+      "Skill_NumOfHitBox":1,
+      "Skill_HitBox":0,
+      "Skill_Unpenetrable":14,
+      "Skill_hitDuration":10,
+      "Skill_LongRangeAttackSpeed":10,
+      "Skill_LongRangeAttackDist":20,
+      "Skill_Penetrable":"FALSE",
+      "Skill_AffectOption1":20002,
+      "Skill_AffectOption2":0,
+      "Skill_AffectOption3":0,
+      "Skill_AffectOption4":0,
+      "Skill_AffectOption5":0
+   },
+   {
+      "Index":30001,
+      "Skill_NumOfHitBox":3,
+      "Skill_HitBox":0,
+      "Skill_Unpenetrable":14,
+      "Skill_hitDuration":10,
+      "Skill_LongRangeAttackSpeed":10,
+      "Skill_LongRangeAttackDist":20,
+      "Skill_Penetrable":"FALSE",
+      "Skill_AffectOption1":20001,
+      "Skill_AffectOption2":0,
+      "Skill_AffectOption3":0,
+      "Skill_AffectOption4":0,
+      "Skill_AffectOption5":0
+   }
+]

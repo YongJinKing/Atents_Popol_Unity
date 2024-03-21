@@ -7,7 +7,8 @@ public abstract class Monster : BattleSystem
     {
         Idle,
         Closing,
-        Attacking
+        Attacking,
+        Death
     }
 
     //변수 영역
@@ -39,6 +40,7 @@ public abstract class Monster : BattleSystem
     public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
     public UnityEvent<Vector3, float> rotateEvent;
     public UnityEvent<UnityAction> stopEvent;
+
     protected UnityAction<Vector3, UnityAction, UnityAction, UnityAction> onSkillStartAct;
     protected UnityAction onSkillHitCheckStartAct;
     protected UnityAction onSkillHitCheckEndAct;

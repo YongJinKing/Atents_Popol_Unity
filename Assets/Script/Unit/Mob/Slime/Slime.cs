@@ -93,6 +93,8 @@ public class Slime : Monster
                 rotateEvent?.Invoke(dir, 1.0f);
                 ProcessState();
                 break;
+            case State.Death:
+                break;
         }
     }
     protected override void ProcessState()
@@ -134,6 +136,8 @@ public class Slime : Monster
                         }
                         ChangeState(State.Idle);
                     });
+                break;
+            case State.Death:
                 break;
         }
     }
