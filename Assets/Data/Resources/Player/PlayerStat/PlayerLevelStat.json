@@ -240,7 +240,7 @@
       "AttackPower":30,
       "Total_AttackPower":500,
       "Hp":60,
-      "Total_Hp":1.000
+      "Total_Hp":1000
    },
    {
       "Level":28,
@@ -249,7 +249,7 @@
       "AttackPower":30,
       "Total_AttackPower":530,
       "Hp":60,
-      "Total_Hp":1.060
+      "Total_Hp":1060
    },
    {
       "Level":29,
@@ -258,7 +258,7 @@
       "AttackPower":30,
       "Total_AttackPower":560,
       "Hp":60,
-      "Total_Hp":1.120
+      "Total_Hp":1120
    },
    {
       "Level":30,
@@ -267,6 +267,6 @@
       "AttackPower":30,
       "Total_AttackPower":590,
       "Hp":60,
-      "Total_Hp":1.180
+      "Total_Hp":1180
    }
 ]

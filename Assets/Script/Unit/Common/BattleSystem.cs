@@ -107,11 +107,11 @@ public class BattleSystem : CharacterProperty, IDamage
     {
         get
         {
-            return this.battleStat.Exp;
+            return this.curBattleStat.Exp;
         }
         set
         {
-            this.battleStat.Exp = value;
+            this.curBattleStat.Exp = value;
         }
     }
 

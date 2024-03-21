@@ -14,6 +14,7 @@ public class PlayerDetaManager
     public PlayerDetaManager()
     {
         LoadPlayerStatDatas();
+        LoadLevelDatas();
     }
 
     // public PlayerDetaManager GetInstance()
@@ -22,7 +23,7 @@ public class PlayerDetaManager
     //         PlayerDetaManager.instance = new PlayerDetaManager();
     //     return PlayerDetaManager.instance;
     // }
-    
+
     public void LoadPlayerStatDatas()
     {
         var json = Resources.Load<TextAsset>("Player/PlayerStat/PlayerStat").text;
