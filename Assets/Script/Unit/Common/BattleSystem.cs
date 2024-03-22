@@ -118,7 +118,11 @@ public class BattleSystem : CharacterProperty, IDamage
     {
         curBattleStat = battleStat;
         curBattleStat.HP = battleStat.HP;
-        deathAlarm += GameObject.Find("GameManager").GetComponent<GameManager>().OnGameEnd;
+        GameObject obj;
+        if ((obj = GameObject.Find("GameManager")) != null)
+        {
+            deathAlarm += obj.GetComponent<GameManager>().OnGameEnd;
+        }
     }
     
     public void TakeDamage(int dmg, AttackType Atype, DefenceType Dtype)
