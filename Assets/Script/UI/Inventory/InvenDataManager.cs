@@ -83,6 +83,7 @@ public class InvenDataManager : MonoBehaviour
         else
             FreshSlot(InvenMode);
     }
+    
     void BackUpItem()
     {
         for(int i = 0; i < transform.GetChild(0).childCount; i++)
