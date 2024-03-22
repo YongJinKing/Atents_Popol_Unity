@@ -9,6 +9,8 @@ public class UserPanel : MonoBehaviour
     public GameObject Canvas;
     public GameObject MainUi;
     public UnityEvent<int> BtnAct;
+    public UnityEvent<int> CleanBtnAct;
+    public UnityEvent<int> FreshBtnAct;
 
     public GameObject UserPanelPopup;
     public void PressedBtn(int index)
@@ -28,6 +30,8 @@ public class UserPanel : MonoBehaviour
         else 
         {
             PopupDetail(index-1, true);
+            CleanBtnAct?.Invoke(-1);
+            FreshBtnAct?.Invoke(0);
         }
     }
     void PopupDetail(int index, bool Onpopup)
