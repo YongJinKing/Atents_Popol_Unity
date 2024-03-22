@@ -15,7 +15,6 @@ public struct BattleStat
     public int EnergyGage;
     public float Speed;
     public float AttackDelay;
-    
 }
 public interface IDamage
 {
@@ -34,6 +33,23 @@ public class BattleSystem : CharacterProperty, IDamage
         Initialize();
     }
 
+    public BattleStat battlestat
+    {
+        //get { return battleStat; }
+        set { battleStat = value; }
+    }
+    public int MaxHP
+    {
+        get
+        {
+            return this.battleStat.HP;
+        }
+        set
+        {
+            this.battleStat.HP = value;
+        }
+    }
+    
     public int MaxExp
     {
         get
@@ -56,6 +72,18 @@ public class BattleSystem : CharacterProperty, IDamage
             this.curBattleStat.EnergyGage = value;
         }
     }
+    public int MaxEnergyGage
+    {
+        get
+        {
+            return this.battleStat.EnergyGage;
+        }
+        set
+        {
+            this.battleStat.EnergyGage = value;
+        }
+    }
+
     public float Speed
     {
         get
@@ -67,11 +95,6 @@ public class BattleSystem : CharacterProperty, IDamage
             this.curBattleStat.Speed = value;
         }
     }
-    public int MaxHP
-    {
-        get { return this.battleStat.HP; }
-    }
-
     public int HP
     {
         get
@@ -122,7 +145,6 @@ public class BattleSystem : CharacterProperty, IDamage
     protected void Initialize()
     {
         curBattleStat = battleStat;
-        curBattleStat.HP = battleStat.HP;
         GameObject obj;
         if ((obj = GameObject.Find("GameManager")) != null)
         {

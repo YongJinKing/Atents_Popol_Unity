@@ -23,6 +23,7 @@ public class HealthBar : MonoBehaviour
 
     public void ChangeHpSlider()
     {
+
         myHpSlider.value = pl.HP / pl.MaxHP;
     }
 }

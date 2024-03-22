@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     void LoadPlayerStat()
     {
+        BattleStat bs = default;
+
         var plLv = playerdata.playerlv;
         var playerstat = playerdata.playerstatdata;
         if(plLv != null)
@@ -29,15 +31,17 @@ public class GameManager : MonoBehaviour
             playerstat.Character_CurrentLevel = plLv.Level;
         }
         pl.ATK = playerstat.Character_AttackPower;
-        pl.HP = playerstat.Character_Hp;
+        pl.MaxHP = playerstat.Character_Hp;
         pl.Exp = playerstat.Character_CurrentExp;
         pl.Lavel = playerstat.Character_CurrentLevel;
         pl.EnergyGage = playerstat.Character_EnergyGage;
         
         var plLvstat = playerdata.dicPlayerLevelData[playerstat.Character_CurrentLevel];
         pl.ATK += plLvstat.Total_AttackPower;
-        pl.HP += plLvstat.Total_Hp;
+        pl.MaxHP += plLvstat.Total_Hp;
         pl.MaxExp = plLvstat.Total_Exp;
+
+        pl.battlestat = bs;
     }
     // Update is called once per frame
     void Update()
