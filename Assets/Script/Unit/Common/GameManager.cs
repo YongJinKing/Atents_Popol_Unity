@@ -56,9 +56,14 @@ public class GameManager : MonoBehaviour
         {
             pl.Exp += Ms.Exp;
             playerstat.Character_CurrentExp += Ms.Exp;
-            if(playerstat.Character_CurrentExp > pl.MaxExp)
+            if(playerstat.Character_CurrentExp >= pl.MaxExp)
             {
                 playerstat.Character_CurrentLevel++;
+                if (playerstat.Character_CurrentLevel >= 30)
+                {
+                    playerstat.Character_CurrentLevel = 30;
+                }
+                
             }
             playerdata.SavePlayerProgress();
         }

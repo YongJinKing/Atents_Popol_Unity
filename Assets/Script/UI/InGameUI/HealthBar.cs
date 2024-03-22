@@ -6,10 +6,13 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider myHpSlider;
+    GameObject Player;
+    Player pl;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Player = GameObject.Find("Player");
+        pl = Player.GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -18,8 +21,8 @@ public class HealthBar : MonoBehaviour
         
     }
 
-    public void ChangeHpSlider(float v)
+    public void ChangeHpSlider()
     {
-        myHpSlider.value = v;
+        myHpSlider.value = pl.HP / pl.MaxHP;
     }
 }
