@@ -22,9 +22,9 @@ public class SkillManager : PlayerSkill
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Monster_Body"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Monster_Body"))
         {
-            IDamage iDamage = other.GetComponent<IDamage>();
+            IDamage iDamage = other.GetComponentInParent<IDamage>();
             DefenceType dtype = other.GetComponentInParent<IGetDType>().GetDType(other);
             
             if(iDamage != null)

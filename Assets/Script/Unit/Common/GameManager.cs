@@ -11,12 +11,17 @@ public class GameManager : MonoBehaviour
     public PlayerDetaManager playerdata;
     Player pl;
     Monster Ms;
-    void Start()
+
+    private void Awake()
     {
-        playerdata = new PlayerDetaManager();
         pl = Player.GetComponent<Player>();
+        playerdata = new PlayerDetaManager();
         Ms = Monster.GetComponent<Monster>();
         LoadPlayerStat();
+    }
+    void Start()
+    {
+
     }
 
     void LoadPlayerStat()
@@ -30,16 +35,18 @@ public class GameManager : MonoBehaviour
             playerstat.Character_CurrentExp = plLv.Exp;
             playerstat.Character_CurrentLevel = plLv.Level;
         }
-        pl.ATK = playerstat.Character_AttackPower;
-        pl.MaxHP = playerstat.Character_Hp;
-        pl.Exp = playerstat.Character_CurrentExp;
-        pl.Lavel = playerstat.Character_CurrentLevel;
-        pl.EnergyGage = playerstat.Character_EnergyGage;
-        
+        bs.ATK = playerstat.Character_AttackPower;
+        bs.HP = playerstat.Character_Hp;
+        bs.Exp = playerstat.Character_CurrentExp;
+        bs.Level = playerstat.Character_CurrentLevel;
+        bs.EnergyGage = playerstat.Character_EnergyGage;
+        bs.Speed = playerstat.Character_MoveSpeed;
+        bs.AttackDelay = playerstat.Character_AttackSpeed;
+
         var plLvstat = playerdata.dicPlayerLevelData[playerstat.Character_CurrentLevel];
-        pl.ATK += plLvstat.Total_AttackPower;
-        pl.MaxHP += plLvstat.Total_Hp;
-        pl.MaxExp = plLvstat.Total_Exp;
+        bs.ATK += plLvstat.Total_AttackPower;
+        bs.HP += plLvstat.Total_Hp;
+        bs.MaxExp = plLvstat.Total_Exp;
 
         pl.battlestat = bs;
     }

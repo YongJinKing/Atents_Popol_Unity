@@ -163,8 +163,9 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
 
     public void Skill()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if(Input.GetKeyDown(KeyCode.Q) && curBattleStat.EnergyGage >= 20)
         {
+            curBattleStat.EnergyGage -= 20;
             GetRaycastHit();
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             ChangeState(state.Skill);
@@ -172,8 +173,9 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
             
             rotAct?.Invoke(dir, rotSpeed);
         }
-        if(Input.GetKeyDown(KeyCode.W))
+        if(Input.GetKeyDown(KeyCode.W) && curBattleStat.EnergyGage >= 40)
         {
+            curBattleStat.EnergyGage -= 40;
             rotSpeed = 3.0f;
             GetRaycastHit();
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-   int totalDmg;
-   public void totalDamege(Collider other, int Pldmg, int skillDamage, AttackType A_type, DefenceType Dtype)
-   {
-      IDamage iDamage = other.GetComponent<IDamage>();
-      totalDmg = Pldmg * skillDamage;
-      iDamage.TakeDamage(totalDmg, A_type, Dtype);
-   }
+    int totalDmg;
+    public void totalDamege(Collider other, int Pldmg, int skillDamage, AttackType A_type, DefenceType Dtype)
+    {
+        
+        IDamage iDamage = other.GetComponentInParent<IDamage>();
+        totalDmg = Pldmg * skillDamage;
+        iDamage.TakeDamage(totalDmg, A_type, Dtype);
+    }
 }

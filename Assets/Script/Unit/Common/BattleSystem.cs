@@ -35,7 +35,7 @@ public class BattleSystem : CharacterProperty, IDamage
 
     public BattleStat battlestat
     {
-        //get { return battleStat; }
+        get { return battleStat; }
         set { battleStat = value; }
     }
     public int MaxHP
@@ -154,10 +154,12 @@ public class BattleSystem : CharacterProperty, IDamage
     
     public void TakeDamage(int dmg, AttackType Atype, DefenceType Dtype)
     {
+        
         int totaldmg;
         float computed = ComputeCompatibility(Atype, Dtype);
         totaldmg = (int)((float)dmg * computed);
-
+        Debug.Log("BattleSystem.TakeDamage");
+        Debug.Log($"Atype : {Atype}, Dtype: {Dtype}");
         Debug.Log($"total : {totaldmg}");
         
         curBattleStat.HP -= totaldmg;
