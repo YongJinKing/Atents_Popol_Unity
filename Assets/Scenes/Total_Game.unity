@@ -131,6 +131,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: battleStat.Speed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: battleStat.AttackDelay
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3642465875917560104, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -200,9 +208,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 26653372638042489, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1367917012413303499, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: maxDist
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1402577964287128827, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2597314438508396557, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: detectRadius
@@ -259,6 +275,10 @@ PrefabInstance:
     - target: {fileID: 4438531222778012845, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: detectRadius
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742843832705409648, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6846226738856845446, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: detectRadius
@@ -473,6 +493,10 @@ PrefabInstance:
       propertyPath: playerPos
       value: 
       objectReference: {fileID: 203216173}
+    - target: {fileID: 7356268427517669075, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
+      propertyPath: slowTime
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7356268427517669075, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
       propertyPath: m_Enabled
       value: 0
