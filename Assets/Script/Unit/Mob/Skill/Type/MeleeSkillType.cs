@@ -8,6 +8,7 @@ public class MeleeSkillType : HitCheckSkillType
 {
     //변수 영역
     #region Properties / Field
+
     //private 변수 영역
     #region Private
     private bool isSkillActivated;

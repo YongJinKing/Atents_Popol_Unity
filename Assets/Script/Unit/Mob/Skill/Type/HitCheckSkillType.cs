@@ -10,17 +10,32 @@ public abstract class HitCheckSkillType : BaseSkillType
     #endregion
 
     #region protected
-    [SerializeField] protected LayerMask targetMask;
-    [SerializeField] protected float hitDuration = 10;
+    [SerializeField] protected LayerMask _targetMask;
+    [SerializeField] protected float _hitDuration = 10;
     protected float remainDuration;
     [SerializeField] protected GameObject[] areaOfEffect;
-    [SerializeField] protected int maxIndex;
+    [SerializeField] protected int _maxIndex;
     #endregion
 
     #region public
     public GameObject areaOfEffectPrefeb;
     public GameObject hitEffectPrefeb;
     public Transform[] attackStartPos;
+    public int maxIndex
+    {
+        get { return _maxIndex; }
+        set { _maxIndex = value; }
+    }
+    public float hitDuration
+    {
+        get { return _hitDuration; }
+        set { _hitDuration = value; }
+    }
+    public LayerMask targetMask
+    {
+        get { return _targetMask; }
+        set { _targetMask = value; }
+    }
     #endregion
 
     #region Event

@@ -70,14 +70,6 @@ public class Slime : Monster
         {
             //대충 적당히 근거리에서 배회
             case State.Idle:
-                if (saveSkill[countUsedSkill] == 1)
-                {
-                    myAnim.SetBool("b_LoopSkill", true);
-                }
-                else
-                {
-                    myAnim.SetBool("b_LoopSkill", false);
-                }
                 ProcessState();
                 break;
             //적에게 접근
@@ -106,6 +98,14 @@ public class Slime : Monster
         {
             //대충 적당히 근거리에서 배회
             case State.Idle:
+                if (saveSkill[countUsedSkill] == 1)
+                {
+                    myAnim.SetBool("b_LoopSkill", true);
+                }
+                else
+                {
+                    myAnim.SetBool("b_LoopSkill", false);
+                }
                 skills[saveSkill[countUsedSkill]].OnRequestSkillInfo();
                 StartCoroutine(IdleProcessing());
                 break;

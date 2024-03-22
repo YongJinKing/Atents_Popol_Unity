@@ -27,6 +27,7 @@ public abstract class Monster : BattleSystem
     //Public 변수영역
     #region public
     public GameObject target;
+    public Transform[] attackStartPos;
     //일단 임시로
     public Skill[] skills;
     #endregion

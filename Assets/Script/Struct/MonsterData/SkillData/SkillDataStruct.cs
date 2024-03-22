@@ -48,6 +48,10 @@ public struct SkillProjectileTypeDataStruct
     public int Skill_AffectOption3;
     public int Skill_AffectOption4;
     public int Skill_AffectOption5;
+    public int Skill_HitBoxStartPos1;
+    public int Skill_HitBoxStartPos2;
+    public int Skill_HitBoxStartPos3;
+    public int Skill_HitBoxStartPos4;
 }
 
 public struct SkillDamageAffectDataStruct
