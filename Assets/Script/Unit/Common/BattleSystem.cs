@@ -67,6 +67,11 @@ public class BattleSystem : CharacterProperty, IDamage
             this.curBattleStat.Speed = value;
         }
     }
+    public int MaxHP
+    {
+        get { return this.battleStat.HP; }
+    }
+
     public int HP
     {
         get
