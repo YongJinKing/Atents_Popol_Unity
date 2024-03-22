@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class EnergyBar : MonoBehaviour
 {
-    public Slider myHpSlider;
+    public Slider myEnergySlider;
     GameObject Player;
     Player pl;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +22,9 @@ public class HealthBar : MonoBehaviour
         
     }
 
-    public void ChangeHpSlider()
+    public void ChangeEnergySlider()
     {
-        myHpSlider.value = pl.HP / pl.MaxHP;
+        myEnergySlider.value = pl.EnergyGage;
+
     }
 }
