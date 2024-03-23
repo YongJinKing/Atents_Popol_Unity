@@ -243,7 +243,7 @@ public class ProjectileSkillType : HitCheckSkillType
     #region EventHandler
     public override void OnSkillActivated(Vector3 targetPos)
     {
-        base.OnSkillActivated(targetPos + Vector3.up * 1.0f);
+        base.OnSkillActivated(targetPos + Vector3.up * 0.5f);
     }
 
     public override void OnSkillHitCheckStartEventHandler()

@@ -122,6 +122,7 @@ MonoBehaviour:
     AttackDelay: 0
   myState: 0
   target: {fileID: 0}
+  attackStartPos: []
   skills:
   - {fileID: 4438531222778012845}
   - {fileID: 6846226738856845446}
@@ -617,6 +618,18 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7826091675580535966, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: _maxIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826091675580535966, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: _targetMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 7826091675580535966, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
+      propertyPath: areaOfEffectPrefeb
+      value: 
+      objectReference: {fileID: 5557313780678953903, guid: 7ff1fa07214fc9841bb03e5cd77914f9, type: 3}
+    - target: {fileID: 7826091675580535966, guid: 4c2bd6baddbd804469b65d4681d0898a, type: 3}
       propertyPath: attackStartPos.Array.data[0]
       value: 
       objectReference: {fileID: 4556994997192371925}
@@ -1026,8 +1039,16 @@ PrefabInstance:
       value: Dash
       objectReference: {fileID: 0}
     - target: {fileID: 6354985807710237568, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
+      propertyPath: _maxIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354985807710237568, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: hitDuration
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354985807710237568, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
+      propertyPath: _targetMask.m_Bits
+      value: 1024
       objectReference: {fileID: 0}
     - target: {fileID: 6354985807710237568, guid: adf3e7a04ac2ceb49a7f4840e0e9b663, type: 3}
       propertyPath: attackStartPos.Array.data[0]
@@ -1221,6 +1242,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3644806297972782553}
     m_Modifications:
+    - target: {fileID: 5002272567213219421, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
+      propertyPath: _maxIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002272567213219421, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
+      propertyPath: _targetMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 5002272567213219421, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
+      propertyPath: areaOfEffectPrefeb
+      value: 
+      objectReference: {fileID: 5557313780678953903, guid: 7ff1fa07214fc9841bb03e5cd77914f9, type: 3}
     - target: {fileID: 5002272567213219421, guid: cca445d7910e05e44ae85fd36e1b59b1, type: 3}
       propertyPath: attackStartPos.Array.data[0]
       value: 

@@ -88,7 +88,7 @@ public class Slime : Monster
             case State.Death:
                 onDeadAct?.Invoke();
                 Debug.Log("Monster Death");
-                //myAnim.SetTrigger("Dead");
+                myAnim.SetTrigger("t_Death");
                 break;
         }
     }
