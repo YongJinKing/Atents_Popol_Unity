@@ -5,16 +5,5 @@
     "NowArmor": "",
     "Skill": [],
     "clearStage": [],
-    "PlayerGold": 24556,
-    "PlayerInven": [
-        {
-            "instanceID": 23492
-        },
-        {
-            "instanceID": 23638
-        },
-        {
-            "instanceID": 24182
-        }
-    ]
+    "PlayerGold": 0
 }
