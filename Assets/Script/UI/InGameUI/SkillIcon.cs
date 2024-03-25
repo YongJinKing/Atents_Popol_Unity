@@ -4,33 +4,63 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SkillIcon : MonoBehaviour, IPointerClickHandler
+public class SkillIcon : MonoBehaviour
 {
-    public Image myImage;
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        StartCoroutine(CoolTime(3.0f));
-    }
+    public Image qSkillImage;
+    public Image wSkillImage;
+    public Image eSkillImage;
+    public Image rSkillImage;
 
-    IEnumerator CoolTime(float t)
-    {
-        float playTime = 0.0f;
-        while(playTime < t)
-        {
-            playTime += Time.deltaTime;
-            myImage.fillAmount = playTime / t;
-            yield return null;
-        }
-    }
-    // Start is called before the first frame update
+    private Dictionary<KeyCode, Image> skillImages;
+    private Dictionary<KeyCode, Coroutine> cooldownCoroutines;
+
+
     void Start()
     {
-        
+        skillImages = new Dictionary<KeyCode, Image>()
+        {
+            { KeyCode.Q, qSkillImage },
+            { KeyCode.W, wSkillImage },
+            { KeyCode.E, eSkillImage },
+            { KeyCode.R, rSkillImage }
+        };
+
+        cooldownCoroutines = new Dictionary<KeyCode, Coroutine>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        foreach (var kvp in skillImages)
+        {
+            if (Input.GetKeyDown(kvp.Key) && !cooldownCoroutines.ContainsKey(kvp.Key))
+            {
+                StartCooldown(kvp.Key);
+            }
+        }
+    }
+
+    void StartCooldown(KeyCode key)
+    {
+        if (cooldownCoroutines.ContainsKey(key))
+        {
+            StopCoroutine(cooldownCoroutines[key]);
+        }
+
+        cooldownCoroutines[key] = StartCoroutine(CoolTime(key, 3.0f)); // 3.0f는 쿨타임 시간입니다.
+    }
+
+    IEnumerator CoolTime(KeyCode key, float cooldownTime)
+    {
+        Image skillImage = skillImages[key];
+        float playTime = 0.0f;
+
+        while (playTime < cooldownTime)
+        {
+            playTime += Time.deltaTime;
+            skillImage.fillAmount = playTime / cooldownTime;
+            yield return null;
+        }
+
+        cooldownCoroutines.Remove(key);
     }
 }
