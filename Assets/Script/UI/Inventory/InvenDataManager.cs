@@ -30,6 +30,8 @@ public class InvenDataManager : MonoBehaviour
         this.AddItem(1000);
         this.AddItem(1001);
         this.AddItem(1100);
+        this.AddItem(1101);
+        this.AddItem(1102);
     }
     public void AddItem(int id) 
     {

@@ -95,7 +95,6 @@ public class ColosseumEventManager : MonoBehaviour
         if(BossState.transform.GetChild(0).childCount != 0)
             Destroy(BossState.transform.GetChild(0).GetChild(0).gameObject);
         BossMonsterDisplayer += isMinus;
-    /*     CleanSkillBtn(); */
         ChangeDisplay();
 
     }
