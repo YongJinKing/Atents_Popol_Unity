@@ -29,12 +29,14 @@ public class GameManager : MonoBehaviour
         BattleStat bs = default;
 
         var plLv = playerdata.playerlv;
-        var playerstat = playerdata.playerstatdata;
+        var playerstat = playerdata.dicPlayerData[10000];
         if(plLv != null)
         {
             playerstat.Character_CurrentExp = plLv.Exp;
             playerstat.Character_CurrentLevel = plLv.Level;
         }
+
+
         bs.ATK = playerstat.Character_AttackPower;
         bs.HP = playerstat.Character_Hp;
         bs.Exp = playerstat.Character_CurrentExp;
@@ -43,10 +45,9 @@ public class GameManager : MonoBehaviour
         bs.Speed = playerstat.Character_MoveSpeed;
         bs.AttackDelay = playerstat.Character_AttackSpeed;
 
-        var plLvstat = playerdata.dicPlayerLevelData[playerstat.Character_CurrentLevel];
+        var plLvstat = playerdata.dicPlayerLevelData[bs.Level];
         bs.ATK += plLvstat.Total_AttackPower;
         bs.HP += plLvstat.Total_Hp;
-        bs.MaxExp = plLvstat.Total_Exp;
 
         pl.battlestat = bs;
     }
@@ -58,7 +59,8 @@ public class GameManager : MonoBehaviour
 
     public void OnGameEnd(int UnitType)
     {
-        var playerstat = playerdata.playerstatdata;
+        var playerstat = playerdata.dicPlayerData[10000];
+        var plLvstat = playerdata.dicPlayerLevelData[++pl.Lavel];
         if (UnitType == 0)
         {
 
@@ -67,14 +69,13 @@ public class GameManager : MonoBehaviour
         {
             pl.Exp += Ms.Exp;
             playerstat.Character_CurrentExp += Ms.Exp;
-            if(playerstat.Character_CurrentExp >= pl.MaxExp)
+            if(playerstat.Character_CurrentExp >= plLvstat.Total_Exp)
             {
                 playerstat.Character_CurrentLevel++;
                 if (playerstat.Character_CurrentLevel >= 30)
                 {
                     playerstat.Character_CurrentLevel = 30;
                 }
-                
             }
             playerdata.SavePlayerProgress();
         }
