@@ -15,13 +15,12 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         pl = Player.GetComponent<Player>();
-        //playerdata = new PlayerDetaManager();
         Ms = Monster.GetComponent<Monster>();
         LoadPlayerStat();
     }
     void Start()
     {
-
+        PlayerDetaManager.GetInstance().LoadPlayerData();
     }
 
     void LoadPlayerStat()
@@ -77,7 +76,6 @@ public class GameManager : MonoBehaviour
                     playerstat.Character_CurrentLevel = 30;
                 }
             }
-            playerdata.SavePlayerProgress();
         }
     }
 

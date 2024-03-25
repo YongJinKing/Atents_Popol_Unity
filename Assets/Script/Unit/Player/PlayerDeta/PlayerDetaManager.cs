@@ -18,7 +18,7 @@ public class PlayerDetaManager
     {
 
     }
-    public PlayerDetaManager GetInstance()
+    public static PlayerDetaManager GetInstance()
     {
         if(PlayerDetaManager.instance == null)
             PlayerDetaManager.instance = new PlayerDetaManager();
