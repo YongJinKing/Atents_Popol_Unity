@@ -33,20 +33,20 @@ public class PlayerDetaManager
     
         var arrPlayerDatas = JsonConvert.DeserializeObject<PlayerStatDeta[]>(PlayerStatJson);
         var arrPlayerLevel = JsonConvert.DeserializeObject<PlayerLevelStat[]>(PlayerLevelStatJson);
-        var arrStringDatas = JsonConvert.DeserializeObject<UnitStringTable[]>(PlayerLevelStatJson);
-        foreach(var data in arrPlayerDatas)
+        var arrStringDatas = JsonConvert.DeserializeObject<UnitStringTable[]>(UnitStringTable);
+        /* foreach(var data in arrPlayerDatas)
         {
             Debug.LogFormat("{0}, {1}, {2} ",data.index, data.Character_Name, data.Character_Hp);
-        }
+        } */
 
         /* foreach(var data in arrPlayerLevel)
         {
             Debug.LogFormat("{0}, {1}, {2} ",data.Level, data.Exp, data.Total_Exp);
         } */
-       /*  foreach(var data in arrStringDatas)
+        foreach(var data in arrStringDatas)
         {
             Debug.LogFormat("{0}, {1}, {2} ",data.index, data.String_Type, data.String_Desc);
-        } */
+        }
 
         this.dicPlayerData = arrPlayerDatas.ToDictionary(x => x.index);
         this.dicPlayerLevelData = arrPlayerLevel.ToDictionary(x => x.Level);

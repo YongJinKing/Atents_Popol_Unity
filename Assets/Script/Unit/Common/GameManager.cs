@@ -16,14 +16,14 @@ public class GameManager : MonoBehaviour
     {
         pl = Player.GetComponent<Player>();
         Ms = Monster.GetComponent<Monster>();
-        LoadPlayerStat();
+        //LoadPlayerStat();
     }
     void Start()
     {
         PlayerDetaManager.GetInstance().LoadPlayerData();
     }
 
-    void LoadPlayerStat()
+   /*  void LoadPlayerStat()
     {
         BattleStat bs = default;
 
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         bs.HP += plLvstat.Total_Hp;
 
         pl.battlestat = bs;
-    }
+    } */
     // Update is called once per frame
     void Update()
     {
