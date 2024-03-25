@@ -28,6 +28,12 @@ public class PlayerLevelStat
     public int Hp;
     public int Total_Hp;
 }
+public class UnitStringTable
+{
+    public int index;
+    public int String_Type;
+    public string String_Desc;
+}
 
 public class PlayerLv
 {

@@ -8,47 +8,37 @@ using System.IO;
 
 public class PlayerDetaManager
 {
-    // public static PlayerDetaManager instance;
-    //public static PlayerStatDeta playerstatdata;
+    public static PlayerDetaManager instance;
     public Dictionary<int, PlayerStatDeta> dicPlayerData;
     public Dictionary<int, PlayerLevelStat> dicPlayerLevelData;
+    public Dictionary<int, UnitStringTable> dicStringData;
     public PlayerLv playerlv;
-    public PlayerDetaManager()
-    {
-        /*LoadPlayerStatDatas();
-        LoadLevelDatas();
-        LoadPlayerLv();*/
-        LoadPlayerData();
-    }
+   
 
-    /*public PlayerDetaManager GetInstance()
+    public PlayerDetaManager GetInstance()
     {
         if(PlayerDetaManager.instance == null)
             PlayerDetaManager.instance = new PlayerDetaManager();
         return PlayerDetaManager.instance;
-    }*/
+    }
 
     public void LoadPlayerData()
     {
         var PlayerStatJson = Resources.Load<TextAsset>("Player/PlayerStat/PlayerStat").text;
         var PlayerLevelStatJson = Resources.Load<TextAsset>("Player/PlayerStat/PlayerLevelStat").text;
-        var textAsset = Resources.Load<TextAsset>("Player/PlayerStat/Playerlv");
-        if (textAsset != null)
-        {
-            var PlayerLvJson = textAsset.text;
-            var PlayerLvDatas = JsonConvert.DeserializeObject<PlayerLv>(PlayerLvJson);
-            playerlv = PlayerLvDatas;
-        }
-
-
+        var UnitStringTable = Resources.Load<TextAsset>("Player/PlayerStat/Mestiarii_Charactor_StringTable").text;
+    
         var arrPlayerDatas = JsonConvert.DeserializeObject<PlayerStatDeta[]>(PlayerStatJson);
         var arrPlayerLevel = JsonConvert.DeserializeObject<PlayerLevelStat[]>(PlayerLevelStatJson);
-        
-
+        var arrStringDatas = JsonConvert.DeserializeObject<UnitStringTable[]>(PlayerLevelStatJson);
+        /* foreach(var data in arrStringDatas)
+        {
+            Debug.LogFormat("{0}, {1}, {2} ",data.index, data.String_Type, data.String_Desc);
+        } */
 
         this.dicPlayerData = arrPlayerDatas.ToDictionary(x => x.index);
         this.dicPlayerLevelData = arrPlayerLevel.ToDictionary(x => x.Level);
-        
+        this.dicStringData = arrStringDatas.ToDictionary(x => x.index);
     }
 
     /*public void LoadPlayerStatDatas()
@@ -58,7 +48,7 @@ public class PlayerDetaManager
         playerstatdata = arrPlayerDatas[0];
     }*/
 
-   public void LoadPlayerLv()
+ /*   public void LoadPlayerLv()
     {
         var textAsset = Resources.Load<TextAsset>("Player/PlayerStat/Playerlv");
         if (textAsset == null) return;
@@ -77,7 +67,7 @@ public class PlayerDetaManager
         string newDataJson = JsonConvert.SerializeObject(updatedData);
         string filePath = "Assets/Data/Resources/Player/PlayerStat/Playerlv.json";
         File.WriteAllText(filePath, newDataJson);
-    }
+    } */
 
     /*public void LoadLevelDatas()
     {
