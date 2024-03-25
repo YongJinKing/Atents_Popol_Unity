@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         pl = Player.GetComponent<Player>();
-        playerdata = new PlayerDetaManager();
+        //playerdata = new PlayerDetaManager();
         Ms = Monster.GetComponent<Monster>();
         LoadPlayerStat();
     }

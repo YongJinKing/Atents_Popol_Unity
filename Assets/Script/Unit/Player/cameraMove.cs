@@ -69,4 +69,13 @@ public class cameraMove : MonoBehaviour
         }
         else { lastMousePosition = Input.mousePosition; }
     }
+
+
+
+    public void UnitDeath()
+    {
+        //플레이어나 몬스터가 죽었을시에 실행 되는 함수
+
+        Debug.Log("유닛이 사망하였습니다");
+    }
 }
