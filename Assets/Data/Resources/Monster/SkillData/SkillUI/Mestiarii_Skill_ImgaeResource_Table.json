@@ -1,0 +1,18 @@
+[
+   {
+      "index":30000,
+      "Skill_ImageResource":"Stage1_Slime_HeadAttack"
+   },
+   {
+      "index":30001,
+      "Skill_ImageResource":"Stage1_Slime_Dash"
+   },
+   {
+      "index":30002,
+      "Skill_ImageResource":"Stage1_Slime_Mucus"
+   },
+   {
+      "index":30003,
+      "Skill_ImageResource":"Stage1_Slime_MultipleMucus"
+   }
+]
