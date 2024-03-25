@@ -14,7 +14,10 @@ public class PlayerDetaManager
     public Dictionary<int, UnitStringTable> dicStringData;
     public PlayerLv playerlv;
    
+    private PlayerDetaManager()
+    {
 
+    }
     public PlayerDetaManager GetInstance()
     {
         if(PlayerDetaManager.instance == null)
