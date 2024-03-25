@@ -3,6 +3,11 @@ using Newtonsoft.Json;
 
 public class MonsterFactory : MonoBehaviour
 {
+    public static void CreateMonster(int index)
+    {
+
+    }
+
     public static void CreateMonsterSkill(Monster parent ,int index)
     {
         GameObject obj = new GameObject();
@@ -33,6 +38,8 @@ public class MonsterFactory : MonoBehaviour
         AddSkillType(parent, objSkill, data.Skill_Option3);
         AddSkillType(parent, objSkill, data.Skill_Option4);
 
+        objSkill.onAddSkillEvent.AddListener(parent.OnAddSkillEventListener);
+        objSkill.onAddSkillEvent2.AddListener(parent.OnAddSkillEvent2Listener);
 
         objSkill.transform.SetParent(parent.transform);
     }
@@ -40,6 +47,7 @@ public class MonsterFactory : MonoBehaviour
     public static void AddSkillType(Monster monster, Skill parent, int index)
     {
         GameObject obj = new GameObject();
+
 
         switch (index / 10000)
         {
@@ -61,6 +69,9 @@ public class MonsterFactory : MonoBehaviour
                     MovementSkillType move = obj.AddComponent<MovementSkillType>();
                     move.maxDist = data.Skill_ShortRangeAttackDist;
                     move.moveSpeed = data.Skill_ShortRangeAttackSpeed;
+                    move.onMoveEndEvent.AddListener(parent.OnSkillAnimEnd);
+                    move.moveToPosEvent.AddListener(monster.GetComponent<UnitMovement>().MoveToPos);
+                    parent.onSkillActivatedEvent.AddListener(move.OnSkillActivated);
                 }
                 break;
             //MeleeSkillType
@@ -81,6 +92,7 @@ public class MonsterFactory : MonoBehaviour
                     MeleeSkillType melee = obj.AddComponent<MeleeSkillType>();
                     melee.maxIndex = data.Skill_NumOfHitBox;
                     melee.areaOfEffectPrefeb = FindPrefab(data.Skill_HitBox);
+                    melee.attackStartPos[0] = monster.attackStartPos[0];
                     melee.hitDuration = data.Skill_hitDuration;
                     AddSkillAffect(melee, data.Skill_AffectOption1);
                     AddSkillAffect(melee, data.Skill_AffectOption2);
@@ -107,6 +119,20 @@ public class MonsterFactory : MonoBehaviour
                             break;
                         }
                     }
+
+                    ProjectileSkillType projectile = obj.AddComponent<ProjectileSkillType>();
+                    projectile.maxIndex = data.Skill_NumOfHitBox;
+                    projectile.areaOfEffectPrefeb = FindPrefab(data.Skill_HitBox);
+                    projectile.attackStartPos[0] = monster.attackStartPos[0];
+                    projectile.hitDuration = data.Skill_hitDuration;
+                    AddSkillAffect(projectile, data.Skill_AffectOption1);
+                    AddSkillAffect(projectile, data.Skill_AffectOption2);
+                    AddSkillAffect(projectile, data.Skill_AffectOption3);
+                    AddSkillAffect(projectile, data.Skill_AffectOption4);
+                    AddSkillAffect(projectile, data.Skill_AffectOption5);
+                    parent.onSkillActivatedEvent.AddListener(projectile.OnSkillActivated);
+                    parent.onSkillHitCheckStartEvent.AddListener(projectile.OnSkillHitCheckStartEventHandler);
+                    parent.onSkillHitCheckEndEvent.AddListener(projectile.OnSkillHitCheckEndEventHandler);
 
                 }
                 break;
