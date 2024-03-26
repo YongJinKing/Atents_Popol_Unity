@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class UserPanel : MonoBehaviour
 {
@@ -56,7 +57,9 @@ public class UserPanel : MonoBehaviour
     {
         if(index == 0)//Yes
         {
-            
+            SceneLoading.SceneNum(0);   //¸ÞÀÎ¾Ànum
+            DataManager.instance.DataClear();
+            SceneManager.LoadScene(1);
         }
         if(index == 1)//No
         {

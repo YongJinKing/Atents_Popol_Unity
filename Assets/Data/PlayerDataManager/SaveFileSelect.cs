@@ -66,12 +66,13 @@ public class SaveFileSelect : MonoBehaviour
         }
     }
 
-    public void GoGame()	// 게임 씬으로 이동
+    public void GoGame()	// 게임 씬으로 이동    1 Title, 2 Loading, 3 Main
     {
         if (!savefile[DataManager.instance.SlotNum])	// 저장되어있는 데이터가 없으면
         {
             DataManager.instance.SaveData(); // 새로운 데이터 저장
         }
+        SceneLoading.SceneNum(2);
         SceneManager.LoadScene(1);
     }
 

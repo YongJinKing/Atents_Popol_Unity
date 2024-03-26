@@ -927,21 +927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4369f4d867becb94bbd597638c78f89b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BtnAct:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 749628299}
-        m_TargetAssemblyTypeName: Title, Assembly-CSharp
-        m_MethodName: PressedBtn
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &383918600
 GameObject:
   m_ObjectHideFlags: 0
@@ -3831,7 +3816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1690023972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4075,11 +4060,6 @@ MonoBehaviour:
     Skill: []
     clearStage: 
     PlayerGold: 0
-    PlayerInven:
-    - {fileID: 11400000, guid: 6dfd00fe12bebed4985da493e79733b2, type: 2}
-    - {fileID: 11400000, guid: f78126c31b15ac24d89544035070af98, type: 2}
-    - {fileID: 11400000, guid: 041ccc81ec8a2f444b297a1c07897852, type: 2}
-    - {fileID: 11400000, guid: db92c4c0c162a1741a480e20dd594db4, type: 2}
   path: 
   fileName: PlayerData
   SlotNum: 0
