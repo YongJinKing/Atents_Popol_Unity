@@ -5,12 +5,13 @@ using UnityEngine;
 public interface I_Effect
 {
     public void PlayAttackEffect(string skill, float destroy);
+    // public void PlayerMoveEffect();
 }
 
 public class PlayerEffect : MonoBehaviour, I_Effect
 {
     GameObject effect;
-
+    
     void Attackpos(GameObject effect)
     {
         Vector3 dir = transform.parent.transform.forward;
@@ -18,6 +19,13 @@ public class PlayerEffect : MonoBehaviour, I_Effect
 
         effect.transform.rotation = Quaternion.LookRotation(dir);
     }
+
+    // public void PlayerMoveEffect()
+    // {
+    //     particle = GetComponent<ParticleSystem>();
+    //     particle.Play();
+    //     particle.Stop();
+    // }
 
     public void PlayAttackEffect(string skill, float destroy)
     {

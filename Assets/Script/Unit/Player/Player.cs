@@ -15,6 +15,7 @@ public interface I_ClickPoint
 
 public class Player : BattleSystem, I_ClickPoint, IGetDType
 {
+    public ParticleSystem particle;
     public GameObject Effectobj;
     public LayerMask clickMask;
     public DefenceType Dtype;
@@ -44,16 +45,23 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         switch (s)
         {
             case state.Fire:
+            particle.Stop();
                 break;
             case state.Dadge:
+            particle.Stop();
                 break;
             case state.Idle:
+            particle.Stop();    
                 break;
             case state.Run:
+            particle.Play();
+            particle = Instantiate<ParticleSystem>(Resources.Load("Misc_Particle/WalkDust") as ParticleSystem);
                 break;
             case state.Skill:
+            particle.Stop();
                 break;
             case state.Death:
+            particle.Stop();
                 break;
         }
     }
@@ -90,6 +98,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
     protected override void Start()
     {
         base.Start();
+        particle = GetComponent<ParticleSystem>();
         ChangeState(state.Idle);
     }
 
@@ -99,7 +108,8 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         isFireReady = FireDelay < 0;
         DadgeDelay -= Time.deltaTime;
         isDadgeReady = DadgeDelay < 0;
-
+        var emission = particle.emission;
+        emission.rateOverTime = 10f;
         ProcessState();
     }
 
