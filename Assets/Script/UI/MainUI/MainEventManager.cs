@@ -10,8 +10,6 @@ public class MainEventManager : MonoBehaviour
 {
     public GameObject gameCanvas;//게임 
     public GameObject DontDestoyedObj;
-    public GameObject UserPanel;
-
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +21,7 @@ public class MainEventManager : MonoBehaviour
                 gameCanvas.transform.GetChild(i).gameObject.SetActive(false);
             }
             transform.gameObject.SetActive(true);
-            UserPanel.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
+
         #endregion
     }
     
@@ -34,7 +32,6 @@ public class MainEventManager : MonoBehaviour
         {
             gameCanvas.transform.GetChild(i).gameObject.SetActive(false);
         }
-        UserPanel.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
     }
     public void MainUiControll(int index)
     {

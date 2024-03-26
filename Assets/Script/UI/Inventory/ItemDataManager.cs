@@ -28,6 +28,7 @@ public class ItemDataManager
         var Mestiarii_InvenItemJson = Resources.Load<TextAsset>("UI/UIItem/Json/Mestiarii_Inven_ItemTable").text;
         var Mestiarii_StringTableJson = Resources.Load<TextAsset>("UI/UIItem/Json/Mestiarii_Inven_StringTable").text;
         var Mestiarii_ImageResourceTable = Resources.Load<TextAsset>("UI/UIItem/Json/Mestiarii_Inven_ImageResourceTable").text;
+        
         var arrItemDatas = JsonConvert.DeserializeObject<ItemData[]>(Mestiarii_InvenItemJson);
         var arrStringDatas = JsonConvert.DeserializeObject<StringTable[]>(Mestiarii_StringTableJson);
         var arrResourceDatas = JsonConvert.DeserializeObject<ImageResourceTable[]>(Mestiarii_ImageResourceTable);

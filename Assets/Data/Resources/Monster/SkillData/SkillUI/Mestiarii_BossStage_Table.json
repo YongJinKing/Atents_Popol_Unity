@@ -1,0 +1,18 @@
+[
+   {
+      "index":1,
+      "Stage_BossMonster":1000,
+      "Stage_ClearGold":1000,
+      "Stage_ClearEXP":150,
+      "Stage_BossSkill_Image1":30000,
+      "Stage_BossSkill_Image2":30001,
+      "Stage_BossSkill_Image3":30002,
+      "Stage_BossSkill_Image4":30003,
+      "Stage_BossSkill_Image5":0,
+      "Stage_ClearReward1":0,
+      "Stage_ClearReward2":0,
+      "Stage_ClearReward3":0,
+      "Stage_ClearReward4":0,
+      "Stage_ClearReward5":0
+   }
+]

@@ -1,0 +1,10 @@
+[
+   {
+      "index":1000,
+      "Boss_Display_Prefab_Name":"Stage1_Slime"
+   },
+   {
+      "index":1001,
+      "Boss_Display_Prefab_Name":"Stage2_Turtle"
+   }
+]

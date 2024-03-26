@@ -18,36 +18,49 @@ public class UserPanel : MonoBehaviour
         
         if(index == 0)
         {
-            for(int i = 2; i < Canvas.transform.childCount; i++)
+
+            if(!MainUi.gameObject.activeSelf)
             {
-                Canvas.transform.GetChild(i).gameObject.SetActive(false);
+                for(int i = 2; i < Canvas.transform.childCount; i++)
+                {
+                    Canvas.transform.GetChild(i).gameObject.SetActive(false);
+                }
+                MainUi.gameObject.SetActive(true);
+                BtnAct?.Invoke(0);
             }
-            MainUi.gameObject.SetActive(true);
-            transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
-            BtnAct?.Invoke(0);
-            
+            else
+            {
+                ShowPopup(index, true);
+            }
         }
         else 
         {
-            PopupDetail(index-1, true);
+            ShowPopup(index, true);
             CleanBtnAct?.Invoke(-1);
             FreshBtnAct?.Invoke(0);
         }
     }
-    void PopupDetail(int index, bool Onpopup)
+    void ShowPopup(int index, bool Onpopup)
     {
+        for(int i = 0; i < UserPanelPopup.transform.childCount; i++)
+        {
+            UserPanelPopup.transform.GetChild(i).gameObject.SetActive(false);
+        }
         UserPanelPopup.transform.gameObject.SetActive(Onpopup);
-        if(index == 0)
-        {
-            UserPanelPopup.transform.GetChild(index).gameObject.SetActive(Onpopup);
-            UserPanelPopup.transform.GetChild(1).gameObject.SetActive(false);
-        }
-        if(index == 1)
-        {
-            UserPanelPopup.transform.GetChild(index).gameObject.SetActive(Onpopup);
-            UserPanelPopup.transform.GetChild(0).gameObject.SetActive(false);
-        }
+        UserPanelPopup.transform.GetChild(index).gameObject.SetActive(Onpopup);
     }
     public void ClosePopup() =>
         UserPanelPopup.transform.gameObject.SetActive(false);
+
+    public void GoToPopup(int index)
+    {
+        if(index == 0)//Yes
+        {
+            
+        }
+        if(index == 1)//No
+        {
+            UserPanelPopup.gameObject.SetActive(false);
+        }
+    }
 }
