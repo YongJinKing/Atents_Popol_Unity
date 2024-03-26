@@ -72,10 +72,10 @@ public class cameraMove : MonoBehaviour
 
 
 
-    public void UnitDeath()
+    public void UnitDeath(int Unit)
     {
         //플레이어나 몬스터가 죽었을시에 실행 되는 함수
-
+        // Unit = 0 일때 몬스터 Unit = 1 일때 플레이어
         Debug.Log("유닛이 사망하였습니다");
     }
 }

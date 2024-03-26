@@ -60,7 +60,7 @@ public class PlayerDetaManager
         playerstatdata = arrPlayerDatas[0];
     }*/
 
- /*   public void LoadPlayerLv()
+    public void LoadPlayerLv()
     {
         var textAsset = Resources.Load<TextAsset>("Player/PlayerStat/Playerlv");
         if (textAsset == null) return;
@@ -69,17 +69,6 @@ public class PlayerDetaManager
         playerlv = PlayerlvDatas;
     }
 
-    public void SavePlayerProgress()
-    {
-        var updatedData = new
-        {
-            Exp = dicPlayerData[10000].Character_CurrentExp,
-            Level = dicPlayerData[10000].Character_CurrentLevel
-        };
-        string newDataJson = JsonConvert.SerializeObject(updatedData);
-        string filePath = "Assets/Data/Resources/Player/PlayerStat/Playerlv.json";
-        File.WriteAllText(filePath, newDataJson);
-    } */
 
     /*public void LoadLevelDatas()
     {

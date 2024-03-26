@@ -204,6 +204,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         }
         ChangeState(state.Idle);
     }
+    
 
     public DefenceType GetDType(Collider col)
     {

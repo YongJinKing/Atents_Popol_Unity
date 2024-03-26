@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -204,6 +204,10 @@ PrefabInstance:
     - target: {fileID: 1367917012413303499, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: maxDist
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367917012413303499, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: _maxDist
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1402577964287128827, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: m_Layer
@@ -623,8 +627,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cbeedaac4d751b4faafa813db90037b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 1
-  Atype: 0
+  _power: 0
+  _Atype: 0
 --- !u!4 &1099725001
 Transform:
   m_ObjectHideFlags: 0
@@ -669,15 +673,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83368459f82b564b8be2432bc49d40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1324776926}
-  Monster: {fileID: 1965671568}
   deadAct:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 865157517}
         m_TargetAssemblyTypeName: cameraMove, Assembly-CSharp
         m_MethodName: UnitDeath
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -686,6 +688,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Player: {fileID: 1324776926}
+  Monster: {fileID: 1965671568}
 --- !u!4 &1160327996
 Transform:
   m_ObjectHideFlags: 0

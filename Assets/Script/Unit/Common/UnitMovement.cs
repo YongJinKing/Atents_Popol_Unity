@@ -133,11 +133,11 @@ public class UnitMovement : CharacterProperty
         {
             if(dist <= 0.2f)
             {
-                tempSpeed = Mathf.Lerp(tempSpeed, 0, Time.deltaTime * 10.0f);
+                tempSpeed = Mathf.Lerp(tempSpeed, 0, Time.deltaTime * 9.0f);
             }
             else
             {
-                tempSpeed = Mathf.Lerp(tempSpeed, 1, Time.deltaTime * 10.0f);
+                tempSpeed = Mathf.Lerp(tempSpeed, 1, Time.deltaTime * 9.0f);
             }
             
             blendAct?.Invoke(tempSpeed);
@@ -150,7 +150,7 @@ public class UnitMovement : CharacterProperty
         }
         while (tempSpeed >= 0.01f)
         {
-            tempSpeed = Mathf.Lerp(tempSpeed, 0, Time.deltaTime * 10.0f);
+            tempSpeed = Mathf.Lerp(tempSpeed, 0, Time.deltaTime * 9.0f);
             blendAct?.Invoke(tempSpeed);
             yield return null;
         }
