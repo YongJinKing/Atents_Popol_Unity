@@ -56,7 +56,6 @@ public class Durability : MonoBehaviour
         curDurability = Mathf.Clamp(curDurability, minDurability, maxDurability);
         // 내구도 이미지 업데이트
         UpdateDurabilityImage();
-        Debug.Log("Current Durability: " + curDurability);
     }
 
     void UpdateDurabilityImage()

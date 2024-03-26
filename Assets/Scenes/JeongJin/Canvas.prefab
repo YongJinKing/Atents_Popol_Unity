@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 921937104100226874}
+  - component: {fileID: 4552357651778219758}
   - component: {fileID: 7370581831944863802}
   - component: {fileID: 6817998877936997781}
   - component: {fileID: 331016677711500563}
@@ -39,6 +40,22 @@ RectTransform:
   m_AnchoredPosition: {x: 450, y: 75}
   m_SizeDelta: {x: 600, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4552357651778219758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15671076391769837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd3b573a3c511e48b494abb5de6a555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  qSkillImage: {fileID: 8095415396031026898}
+  wSkillImage: {fileID: 5197725647067854580}
+  eSkillImage: {fileID: 4437554821656415910}
+  rSkillImage: {fileID: 2055202009925917239}
 --- !u!222 &7370581831944863802
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -617,7 +634,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4686776598166539388}
-  - component: {fileID: 5198794624474772678}
   m_Layer: 5
   m_Name: SkillIcon (1)
   m_TagString: Untagged
@@ -646,22 +662,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5198794624474772678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128312641164550031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bd3b573a3c511e48b494abb5de6a555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qSkillImage: {fileID: 0}
-  wSkillImage: {fileID: 0}
-  eSkillImage: {fileID: 0}
-  rSkillImage: {fileID: 0}
 --- !u!1 &1192908077830002051
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,12 +711,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea8d02b0ca5bb147b74ac434450f570, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durabilityImage: {fileID: 0}
-  ArmorDurability: {fileID: 0}
+  durabilityImage: {fileID: 7433404366001359276}
+  durabilityBgImage: {fileID: 7967899178250114250}
+  ArmorDurability: {fileID: 1192908077830002051}
   blinkInterval: 0.5
   maxDurability: 100
   minDurability: 0
-  durabilityDecayRate: 5
+  durabilityDecayRate: 6
   curDurability: 0
 --- !u!1 &1511516192707767628
 GameObject:
@@ -802,7 +803,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2665172890555128252}
-  - component: {fileID: 4407987748798776391}
   m_Layer: 5
   m_Name: SkillIcon (4)
   m_TagString: Untagged
@@ -831,22 +831,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4407987748798776391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564090616817547992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bd3b573a3c511e48b494abb5de6a555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qSkillImage: {fileID: 0}
-  wSkillImage: {fileID: 0}
-  eSkillImage: {fileID: 0}
-  rSkillImage: {fileID: 0}
 --- !u!1 &1795722928265988974
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3676026323301650267}
   - component: {fileID: 718301570385953100}
+  - component: {fileID: 1169673571586342365}
   m_Layer: 5
   m_Name: Energy
   m_TagString: Untagged
@@ -927,13 +912,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943504197384237107}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c77607b310bafa4e81154223dd3e730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 6553574990354013749}
   duration: 30
+--- !u!114 &1169673571586342365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943504197384237107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79e554c78d3acfd449bd34243533159f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myEnergySlider: {fileID: 4166595774182784400}
 --- !u!1 &1968545851317048448
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,7 +941,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1890721095376250063}
-  - component: {fileID: 975750783652967246}
   m_Layer: 5
   m_Name: SkillIcon (3)
   m_TagString: Untagged
@@ -972,22 +969,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &975750783652967246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968545851317048448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bd3b573a3c511e48b494abb5de6a555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qSkillImage: {fileID: 0}
-  wSkillImage: {fileID: 0}
-  eSkillImage: {fileID: 0}
-  rSkillImage: {fileID: 0}
 --- !u!1 &1976315383517356120
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,6 +2086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6100178293122680801}
   - component: {fileID: 8587609286954653296}
+  - component: {fileID: 8797236893433005672}
   m_Layer: 5
   m_Name: Hp
   m_TagString: Untagged
@@ -2139,13 +2121,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3979408076795343300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab7899ff299e42947b9ac7fef05cf5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 164237815790909745}
   duration: 10
+--- !u!114 &8797236893433005672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3979408076795343300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b1524063ad062c40b47ba420dd4e969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myHpSlider: {fileID: 5175583391168047652}
 --- !u!1 &4132374836476926770
 GameObject:
   m_ObjectHideFlags: 0
@@ -2588,7 +2583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2614,7 +2609,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8147530571267428159}
-  - component: {fileID: 6013857388277164155}
   m_Layer: 5
   m_Name: SkillIcon (2)
   m_TagString: Untagged
@@ -2643,22 +2637,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6013857388277164155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5188224864578647852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bd3b573a3c511e48b494abb5de6a555, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  qSkillImage: {fileID: 0}
-  wSkillImage: {fileID: 0}
-  eSkillImage: {fileID: 0}
-  rSkillImage: {fileID: 0}
 --- !u!1 &5246699337934279318
 GameObject:
   m_ObjectHideFlags: 0
