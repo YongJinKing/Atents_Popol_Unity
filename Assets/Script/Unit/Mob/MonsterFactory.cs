@@ -1,16 +1,64 @@
 using UnityEngine;
 using Newtonsoft.Json;
-using Unity.VisualScripting;
-using System.Net;
+using System.Collections;
+using System.Collections.Generic;
 
 public class MonsterFactory : MonoBehaviour
 {
     public void CreateMonster(int index)
     {
+        GameObject obj;
+        MonsterDataStruct data = default;
 
+        //load from file
+        var json = Resources.Load<TextAsset>("Monster/Monster_Data").text;
+        var arrDatas = JsonConvert.DeserializeObject<MonsterDataStruct[]>(json);
+        foreach (var Data in arrDatas)
+        {
+            if (Data.Index == index)
+            {
+                data = Data;
+                break;
+            }
+        }
+
+        obj = FindPrefab(data.Character_Prefab);
+        Monster objMon = obj.GetComponent<Monster>();
+
+        BattleStat bs = default;
+        bs.HP = data.Character_Hp;
+        bs.ATK = data.Character_AttackPower;
+        bs.Speed = data.Character_MoveSpeed;
+        objMon.battlestat = bs;
+
+
+        List<Skill> skillList = new List<Skill>();
+        if(data.Skill_Index1 / 10000 > 0)
+        {
+            skillList.Add(CreateMonsterSkill(objMon, data.Skill_Index1));
+            if(data.Skill_Index2 / 10000 > 0)
+            {
+                skillList.Add(CreateMonsterSkill(objMon, data.Skill_Index2));
+                if (data.Skill_Index3 /10000 >0)
+                {
+                    skillList.Add(CreateMonsterSkill(objMon, data.Skill_Index3));
+                    if ((data.Skill_Index4 /10000) > 0)
+                    {
+                        skillList.Add(CreateMonsterSkill(objMon, data.Skill_Index4));
+                    }
+                }
+            }
+        }
+
+        objMon.skills = new Skill[skillList.Count];
+
+        for(int i = 0; i < skillList.Count; i++)
+        {
+            objMon.skills[i] = skillList[i];
+        }
     }
 
-    public void CreateMonsterSkill(Monster parent ,int index)
+    public Skill CreateMonsterSkill(Monster parent ,int index)
     {
         GameObject obj = new GameObject();
         SkillDataStruct data = default;
@@ -45,6 +93,8 @@ public class MonsterFactory : MonoBehaviour
         objSkill.onAddSkillEvent2.AddListener(parent.OnAddSkillEvent2Listener);
 
         obj.transform.SetParent(parent.transform);
+
+        return objSkill;
     }
 
     public void AddSkillType(Monster monster, Skill parent, int index)
