@@ -14,3 +14,15 @@ public class ItemData
     public int Inven_riggingType;
     public int Inven_weaponType;
 }
+public class InvenImageResourceTable
+{
+    public int index;
+    public string ImageResourceName;
+}
+public class InvenStringTable
+{
+    public int index;
+    public string String_Type;
+    public string String_Desc;
+}
+

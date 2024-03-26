@@ -9,8 +9,8 @@ public class ItemDataManager
 {
     private static ItemDataManager instance;
     public Dictionary<int, ItemData> dicItemDatas;
-    public Dictionary<int, StringTable> dicStringTable;
-    public Dictionary<int, ImageResourceTable> dicResouseTable;
+    public Dictionary<int, InvenStringTable> dicStringTable;
+    public Dictionary<int, InvenImageResourceTable> dicResouseTable;
 
     private ItemDataManager()
     {
@@ -30,8 +30,8 @@ public class ItemDataManager
         var Mestiarii_ImageResourceTable = Resources.Load<TextAsset>("UI/UIItem/Json/Mestiarii_Inven_ImageResourceTable").text;
         
         var arrItemDatas = JsonConvert.DeserializeObject<ItemData[]>(Mestiarii_InvenItemJson);
-        var arrStringDatas = JsonConvert.DeserializeObject<StringTable[]>(Mestiarii_StringTableJson);
-        var arrResourceDatas = JsonConvert.DeserializeObject<ImageResourceTable[]>(Mestiarii_ImageResourceTable);
+        var arrStringDatas = JsonConvert.DeserializeObject<InvenStringTable[]>(Mestiarii_StringTableJson);
+        var arrResourceDatas = JsonConvert.DeserializeObject<InvenImageResourceTable[]>(Mestiarii_ImageResourceTable);
         /* foreach(var data in arrStringDatas)
         {
             Debug.LogFormat("{0}, {1}, {2} ",data.index, data.String_Type, data.String_Desc);
