@@ -2,16 +2,16 @@
    {
       "Index":20000,
       "Skill_Power":2,
-      "Skill_AttackType":20001
+      "Skill_AttackType":2
    },
    {
       "Index":20001,
       "Skill_Power":1.5,
-      "Skill_AttackType":20001
+      "Skill_AttackType":2
    },
    {
       "Index":20002,
       "Skill_Power":1,
-      "Skill_AttackType":20003
+      "Skill_AttackType":0
    }
 ]

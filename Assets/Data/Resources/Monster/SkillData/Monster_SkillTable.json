@@ -1,7 +1,7 @@
 [
    {
       "Index":30000,
-      "Skill_Name":"슬라임 박치기",
+      "Skill_Name":10000,
       "Skill_PreDelay":2,
       "Skill_PostDelay":2,
       "Skill_DetectRange":2,
@@ -10,11 +10,12 @@
       "Skill_Option2":0,
       "Skill_Option3":0,
       "Skill_Option4":0,
-      "Skill_DescComponent":10000
+      "Skill_DescComponent":10000,
+      "Skill_IsLoopAttackAnim":false
    },
    {
       "Index":30001,
-      "Skill_Name":"슬라임 돌진",
+      "Skill_Name":10001,
       "Skill_PreDelay":2,
       "Skill_PostDelay":2,
       "Skill_DetectRange":5,
@@ -23,11 +24,12 @@
       "Skill_Option2":20001,
       "Skill_Option3":0,
       "Skill_Option4":0,
-      "Skill_DescComponent":10001
+      "Skill_DescComponent":10001,
+      "Skill_IsLoopAttackAnim":true
    },
    {
       "Index":30002,
-      "Skill_Name":"슬라임 점액 발사",
+      "Skill_Name":10002,
       "Skill_PreDelay":2,
       "Skill_PostDelay":2,
       "Skill_DetectRange":10,
@@ -36,11 +38,12 @@
       "Skill_Option2":0,
       "Skill_Option3":0,
       "Skill_Option4":0,
-      "Skill_DescComponent":10002
+      "Skill_DescComponent":10002,
+      "Skill_IsLoopAttackAnim":false
    },
    {
       "Index":30003,
-      "Skill_Name":"슬라임 다중 점액 발사",
+      "Skill_Name":10003,
       "Skill_PreDelay":3,
       "Skill_PostDelay":3,
       "Skill_DetectRange":10,
@@ -49,6 +52,7 @@
       "Skill_Option2":0,
       "Skill_Option3":0,
       "Skill_Option4":0,
-      "Skill_DescComponent":10003
+      "Skill_DescComponent":10003,
+      "Skill_IsLoopAttackAnim":false
    }
 ]

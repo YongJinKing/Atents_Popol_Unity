@@ -4,6 +4,7 @@
       "Skill_NumOfHitBox":1,
       "Skill_HitBox":0,
       "Skill_Unpenetrable":14,
+      "Skill_TargetMask":10,
       "Skill_hitDuration":10,
       "Skill_LongRangeAttackSpeed":10,
       "Skill_LongRangeAttackDist":20,
@@ -12,13 +13,18 @@
       "Skill_AffectOption2":0,
       "Skill_AffectOption3":0,
       "Skill_AffectOption4":0,
-      "Skill_AffectOption5":0
+      "Skill_AffectOption5":0,
+      "Skill_HitBoxStartPos1":0,
+      "Skill_HitBoxStartPos2":-1,
+      "Skill_HitBoxStartPos3":-1,
+      "Skill_HitBoxStartPos4":-1
    },
    {
       "Index":30001,
       "Skill_NumOfHitBox":3,
       "Skill_HitBox":0,
       "Skill_Unpenetrable":14,
+      "Skill_TargetMask":10,
       "Skill_hitDuration":10,
       "Skill_LongRangeAttackSpeed":10,
       "Skill_LongRangeAttackDist":20,
@@ -27,6 +33,10 @@
       "Skill_AffectOption2":0,
       "Skill_AffectOption3":0,
       "Skill_AffectOption4":0,
-      "Skill_AffectOption5":0
+      "Skill_AffectOption5":0,
+      "Skill_HitBoxStartPos1":0,
+      "Skill_HitBoxStartPos2":1,
+      "Skill_HitBoxStartPos3":2,
+      "Skill_HitBoxStartPos4":-1
    }
 ]
