@@ -1,7 +1,7 @@
 public struct SkillDataStruct
 {
     public int Index;
-    public string Skill_Name;
+    public int Skill_Name;
     public float Skill_PreDelay;
     public float Skill_PostDelay;
     public float Skill_DetectRange;

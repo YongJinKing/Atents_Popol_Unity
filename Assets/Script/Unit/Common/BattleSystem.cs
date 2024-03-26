@@ -142,7 +142,7 @@ public class BattleSystem : CharacterProperty, IDamage
         }
     }
 
-    protected void Initialize()
+    protected virtual void Initialize()
     {
         curBattleStat = battleStat;
         GameObject obj;

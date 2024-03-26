@@ -26,17 +26,17 @@ public class Skill : MonoBehaviour
 
 
     #region Event
-    public UnityEvent<Vector3> onSkillActivatedEvent;
-    public UnityEvent onSkillHitCheckStartEvent;
-    public UnityEvent onSkillHitCheckEndEvent;
+    public UnityEvent<Vector3> onSkillActivatedEvent = new UnityEvent<Vector3>();
+    public UnityEvent onSkillHitCheckStartEvent = new UnityEvent();
+    public UnityEvent onSkillHitCheckEndEvent = new UnityEvent();
     private UnityAction middleAct;
     private UnityAction endAct;
 
     //public UnityEvent onSkillAvailableEvent;
     public UnityAction onDetectTargetAct;
 
-    public UnityEvent<UnityAction<Vector3, UnityAction, UnityAction, UnityAction>,UnityAction ,UnityAction, UnityAction> onAddSkillEvent;
-    public UnityEvent<UnityAction,LayerMask> onAddSkillEvent2;
+    public UnityEvent<UnityAction<Vector3, UnityAction, UnityAction, UnityAction>,UnityAction ,UnityAction, UnityAction> onAddSkillEvent = new UnityEvent<UnityAction<Vector3, UnityAction, UnityAction, UnityAction>, UnityAction, UnityAction, UnityAction>();
+    public UnityEvent<UnityAction,LayerMask> onAddSkillEvent2 = new UnityEvent<UnityAction, LayerMask>();
     #endregion
     #endregion
 

@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PartDefence : MonoBehaviour, IGetDType
+public class PartManager : MonoBehaviour, IGetDType
 {
     public Part[] parts;
+    public Transform[] attackStartPos;
+
 
     public DefenceType GetDType(Collider col)
     {

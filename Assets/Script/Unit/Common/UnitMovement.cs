@@ -20,11 +20,6 @@ public class UnitMovement : CharacterProperty
         rigid = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-        
-    }
-
     //Player
     public void MoveToPos(Vector3 dir, float Speed, UnityAction<float> blendAct)
     {

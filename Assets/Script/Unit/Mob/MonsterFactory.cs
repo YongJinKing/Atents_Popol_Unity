@@ -5,13 +5,13 @@ using System.Collections.Generic;
 
 public class MonsterFactory : MonoBehaviour
 {
-    public void CreateMonster(int index)
+    public GameObject CreateMonster(int index)
     {
-        GameObject obj;
+        GameObject obj = new GameObject();
         MonsterDataStruct data = default;
 
         //load from file
-        var json = Resources.Load<TextAsset>("Monster/Monster_Data").text;
+        var json = Resources.Load<TextAsset>("Monster/Character_Ability_Monster").text;
         var arrDatas = JsonConvert.DeserializeObject<MonsterDataStruct[]>(json);
         foreach (var Data in arrDatas)
         {
@@ -22,8 +22,48 @@ public class MonsterFactory : MonoBehaviour
             }
         }
 
-        obj = FindPrefab(data.Character_Prefab);
-        Monster objMon = obj.GetComponent<Monster>();
+        //예외처리 자리
+        //if(data == default)
+        //{
+        //    return;
+        //}
+
+        
+
+        obj.transform.localScale = new Vector3(3, 3, 3);
+        obj.name = "Slime2";
+        BoxCollider col = obj.AddComponent<BoxCollider>();
+        col.center = new Vector3(0, 0.5f, 0);
+        col.size = new Vector3(0.5f, 1.0f, 0.5f);
+        Rigidbody rigid = obj.AddComponent<Rigidbody>();
+        rigid.useGravity = true;
+        rigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionZ;
+
+        //나중에 Slime을 넣을건지 Turtle을 넣을건지 인덱스 필요
+        Monster objMon = obj.AddComponent<Slime>();
+        UnitMovement objMove = obj.AddComponent<UnitMovement>();
+        Debug.Log(objMon);
+        objMon.onMovementEvent.AddListener(objMove.MoveToPos);
+        objMon.followEvent.AddListener(objMove.FollowTarget);
+        objMon.rotateEvent.AddListener(objMove.Rotate);
+        objMon.stopEvent.AddListener(objMove.StopMove);
+
+        //GameObject prefab = FindPrefab(data.Character_Prefab);
+        GameObject prefab = Instantiate(Resources.Load<GameObject>("Monster/MonsterPrefabs/SlimePrefab"));
+        prefab.transform.SetParent(obj.transform, false);
+        PartManager part = prefab.GetComponent<PartManager>();
+        objMon.attackStartPos = new Transform[part.parts.Length];
+        for (int i = 0; i < part.parts.Length; i++)
+        {
+            objMon.attackStartPos[i] = part.parts[i].col.transform;
+            part.parts[i].col.gameObject.layer = LayerMask.NameToLayer("Monster_Body");
+        }
+        MonsterAnimEvent anim = prefab.GetComponent<MonsterAnimEvent>();
+        anim.onAttackStartEvent.AddListener(objMon.OnAttackStartAnim);
+        anim.onAttackEndEvent.AddListener(objMon.OnAttackEndAnim);
+        anim.onAttackAnimEndEvent.AddListener(objMon.OnSkillAnimEnd);
+
+        
 
         BattleStat bs = default;
         bs.HP = data.Character_Hp;
@@ -56,15 +96,18 @@ public class MonsterFactory : MonoBehaviour
         {
             objMon.skills[i] = skillList[i];
         }
+        skillList.Clear();
+
+        return obj;
     }
 
     public Skill CreateMonsterSkill(Monster parent ,int index)
     {
-        GameObject obj = new GameObject();
+        
         SkillDataStruct data = default;
 
         //load from file
-        var json = Resources.Load<TextAsset>("Monster/SkillData/Monster_SkillData").text;
+        var json = Resources.Load<TextAsset>("Monster/SkillData/Monster_SkillTable").text;
         var arrMonsterSkillDatas = JsonConvert.DeserializeObject<SkillDataStruct[]>(json);
         foreach(var skillData in arrMonsterSkillDatas)
         {
@@ -75,8 +118,16 @@ public class MonsterFactory : MonoBehaviour
             }
         }
 
+        //예외처리 자리
+        //if(data == default)
+        //{
+        //    return;
+        //}
+
+        GameObject obj = new GameObject();
+
         //making skill by recipe
-        obj.name = data.Skill_Name;
+        obj.name = data.Skill_Name.ToString();
         Skill objSkill = obj.AddComponent<Skill>();
         objSkill.preDelay = data.Skill_PreDelay;
         objSkill.postDelay = data.Skill_PostDelay;
@@ -108,7 +159,7 @@ public class MonsterFactory : MonoBehaviour
                 {
                     SkillMovementTypeDataStruct data = default;
                     //load from file
-                    var json = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillType_Movement").text;
+                    var json = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Movement").text;
                     var arrDatas = JsonConvert.DeserializeObject<SkillMovementTypeDataStruct[]>(json);
                     foreach (var Data in arrDatas)
                     {
@@ -123,7 +174,7 @@ public class MonsterFactory : MonoBehaviour
                     move.maxDist = data.Skill_ShortRangeAttackDist;
                     move.moveSpeed = data.Skill_ShortRangeAttackSpeed;
                     move.onMoveEndEvent.AddListener(parent.OnSkillAnimEnd);
-                    move.moveToPosEvent.AddListener(monster.GetComponent<UnitMovement>().MoveToPos);
+                    move.moveToPosEvent.AddListener(GetComponentInParent<UnitMovement>().MoveToPos);
                     parent.onSkillActivatedEvent.AddListener(move.OnSkillActivated);
                 }
                 break;
@@ -132,7 +183,7 @@ public class MonsterFactory : MonoBehaviour
                 {
                     SkillMeleeTypeDataStruct data = default;
                     //load from file
-                    var json = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillType_Melee").text;
+                    var json = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Melee").text;
                     var arrDatas = JsonConvert.DeserializeObject<SkillMeleeTypeDataStruct[]>(json);
                     foreach (var Data in arrDatas)
                     {
@@ -165,7 +216,7 @@ public class MonsterFactory : MonoBehaviour
                 {
                     SkillProjectileTypeDataStruct data = default;
                     //load from file
-                    var json = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillType_Projectile").text;
+                    var json = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Projectile").text;
                     var arrDatas = JsonConvert.DeserializeObject<SkillProjectileTypeDataStruct[]>(json);
                     foreach (var Data in arrDatas)
                     {
@@ -247,6 +298,7 @@ public class MonsterFactory : MonoBehaviour
                 damage.power = data.Skill_Power;
                 damage.Atype = (AttackType)data.Skill_AttackType;
                 parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(damage.OnSkillHit);
+                obj.transform.SetParent(parent.transform);
                 break;
             default:
                 break;

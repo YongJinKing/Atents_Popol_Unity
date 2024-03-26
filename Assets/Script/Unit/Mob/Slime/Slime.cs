@@ -22,7 +22,7 @@ public class Slime : Monster
 
     //Public 변수영역
     #region public
-    public float backStapOffset;
+    public float backStapOffset = 5.0f;
     #endregion
 
     //이벤트 함수들 영역
@@ -144,6 +144,17 @@ public class Slime : Monster
                 break;
         }
     }
+
+    protected override void Initialize()
+    {
+        base.Initialize();
+        //스킬 랜덤 등록
+        saveSkill = new int[skills.Length];
+        countUsedSkill = 0;
+        SkillRandomSet();
+
+        ProcessState();
+    }
     #endregion
 
     //public 함수들 영역
@@ -235,38 +246,13 @@ public class Slime : Monster
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
-
-    //공격모션이 스킬을 발동
-    public void OnAttackStartAnim()
-    {
-        onSkillHitCheckStartAct?.Invoke();
-    }
-
-    //공격 모션중에 히트박스 가 끝남
-    public void OnAttackEndAnim()
-    {
-        onSkillHitCheckEndAct?.Invoke();
-    }
-
-    //Attack Animation End
-    public void OnSkillAnimEnd()
-    {
-        onSkillAnimEnd?.Invoke();
-    }
     #endregion
 
     //유니티 함수들 영역
     #region MonoBehaviour
     protected override void Start()
     {
-        base.Start();
-
-        //스킬 랜덤 등록
-        saveSkill = new int[skills.Length];
-        countUsedSkill = 0;
-        SkillRandomSet();
-
-        ProcessState();
+        //base.Start();
     }
     #endregion
 }

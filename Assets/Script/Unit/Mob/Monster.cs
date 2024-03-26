@@ -37,10 +37,10 @@ public abstract class Monster : BattleSystem
     //Skill을 실행시킬 이벤트 배열
     //detect랑 연결을 어떻게 할지 몰라서 일단 놔둠
     //public UnityEvent<Vector3>[] onSkillUseEvent;
-    public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent;
-    public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
-    public UnityEvent<Vector3, float> rotateEvent;
-    public UnityEvent<UnityAction> stopEvent;
+    public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent = new UnityEvent<Vector3, float, UnityAction, UnityAction>();
+    public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent = new UnityEvent<Transform, float, UnityAction, UnityAction>();
+    public UnityEvent<Vector3, float> rotateEvent = new UnityEvent<Vector3, float>();
+    public UnityEvent<UnityAction> stopEvent = new UnityEvent<UnityAction>();
 
     protected UnityAction<Vector3, UnityAction, UnityAction, UnityAction> onSkillStartAct;
     protected UnityAction onSkillHitCheckStartAct;
@@ -64,7 +64,7 @@ public abstract class Monster : BattleSystem
     {
         deathAlarm?.Invoke(1);
         ChangeState(State.Death);
-        transform.GetComponent<PartDefence>().DisActiveCol();
+        transform.GetComponentInChildren<PartManager>().DisActiveCol();
     }
     #endregion
 
@@ -97,6 +97,25 @@ public abstract class Monster : BattleSystem
     {
         onDeadAct = skillForceEnd;
         skillMask = mask;
+    }
+
+
+    //공격모션이 스킬을 발동
+    public virtual void OnAttackStartAnim()
+    {
+        onSkillHitCheckStartAct?.Invoke();
+    }
+
+    //공격 모션중에 히트박스 가 끝남
+    public virtual void OnAttackEndAnim()
+    {
+        onSkillHitCheckEndAct?.Invoke();
+    }
+
+    //Attack Animation End
+    public virtual void OnSkillAnimEnd()
+    {
+        onSkillAnimEnd?.Invoke();
     }
     #endregion
 
