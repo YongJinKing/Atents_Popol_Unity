@@ -10,7 +10,7 @@ public class DisplayInven : MonoBehaviour
     
     void Update()
     {
-        items = InvenDataManager.GetComponent<InvenDataManager>().ItemList;
+        items = InvenDataManager.GetComponent<Inventory>().ItemList;
         int i = 0;
         for(; i < items.Count; i++)
         {

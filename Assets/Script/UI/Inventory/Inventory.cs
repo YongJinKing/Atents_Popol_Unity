@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class InvenDataManager : MonoBehaviour
+public class Inventory : MonoBehaviour
 {
-    public static InvenDataManager instance;
+    public static Inventory instance;
     public List<UIItem> ItemList;
     public List<int> BackUpIdList;
     public UnityEvent CleanSlot;
