@@ -1,6 +1,6 @@
 public enum DefenceType
 {
-    HeavyArmor,
     Leather,
+    HeavyArmor,
     CompositeArmor
 }

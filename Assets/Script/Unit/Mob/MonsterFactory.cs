@@ -1,14 +1,16 @@
 using UnityEngine;
 using Newtonsoft.Json;
+using Unity.VisualScripting;
+using System.Net;
 
 public class MonsterFactory : MonoBehaviour
 {
-    public static void CreateMonster(int index)
+    public void CreateMonster(int index)
     {
 
     }
 
-    public static void CreateMonsterSkill(Monster parent ,int index)
+    public void CreateMonsterSkill(Monster parent ,int index)
     {
         GameObject obj = new GameObject();
         SkillDataStruct data = default;
@@ -32,6 +34,7 @@ public class MonsterFactory : MonoBehaviour
         objSkill.postDelay = data.Skill_PostDelay;
         objSkill.detectRadius = data.Skill_DetectRange;
         objSkill.targetMask = 1 << data.Skill_TargetMask;
+        objSkill.isLoopAnim = data.Skill_IsLoopAttackAnim;
 
         AddSkillType(parent, objSkill, data.Skill_Option1);
         AddSkillType(parent, objSkill, data.Skill_Option2);
@@ -41,13 +44,12 @@ public class MonsterFactory : MonoBehaviour
         objSkill.onAddSkillEvent.AddListener(parent.OnAddSkillEventListener);
         objSkill.onAddSkillEvent2.AddListener(parent.OnAddSkillEvent2Listener);
 
-        objSkill.transform.SetParent(parent.transform);
+        obj.transform.SetParent(parent.transform);
     }
 
-    public static void AddSkillType(Monster monster, Skill parent, int index)
+    public void AddSkillType(Monster monster, Skill parent, int index)
     {
         GameObject obj = new GameObject();
-
 
         switch (index / 10000)
         {
@@ -66,6 +68,7 @@ public class MonsterFactory : MonoBehaviour
                             break;
                         }
                     }
+                    obj.name = "Movement";
                     MovementSkillType move = obj.AddComponent<MovementSkillType>();
                     move.maxDist = data.Skill_ShortRangeAttackDist;
                     move.moveSpeed = data.Skill_ShortRangeAttackSpeed;
@@ -89,9 +92,12 @@ public class MonsterFactory : MonoBehaviour
                             break;
                         }
                     }
+                    obj.name = "Melee";
                     MeleeSkillType melee = obj.AddComponent<MeleeSkillType>();
                     melee.maxIndex = data.Skill_NumOfHitBox;
                     melee.areaOfEffectPrefeb = FindPrefab(data.Skill_HitBox);
+                    melee.targetMask = 1 << data.Skill_TargetMask;
+                    melee.attackStartPos = new Transform[1];
                     melee.attackStartPos[0] = monster.attackStartPos[0];
                     melee.hitDuration = data.Skill_hitDuration;
                     AddSkillAffect(melee, data.Skill_AffectOption1);
@@ -120,10 +126,34 @@ public class MonsterFactory : MonoBehaviour
                         }
                     }
 
+                    obj.name = "Projectile";
                     ProjectileSkillType projectile = obj.AddComponent<ProjectileSkillType>();
                     projectile.maxIndex = data.Skill_NumOfHitBox;
                     projectile.areaOfEffectPrefeb = FindPrefab(data.Skill_HitBox);
-                    projectile.attackStartPos[0] = monster.attackStartPos[0];
+                    projectile.unPenetrableMask = 1 << data.Skill_Unpenetrable;
+                    projectile.targetMask = 1 << data.Skill_TargetMask;
+                    projectile.moveSpeed = data.Skill_LongRangeAttackSpeed;
+                    projectile.maxDist = data.Skill_LongRangeAttackSpeed;
+                    projectile.attackStartPos = new Transform[data.Skill_NumOfHitBox];
+                    projectile.penetrable = data.Skill_Penetrable;
+
+
+                    switch (data.Skill_NumOfHitBox)
+                    {
+                        case 4:
+                            projectile.attackStartPos[3] = monster.attackStartPos[data.Skill_HitBoxStartPos4];
+                            goto case 3;
+                        case 3:
+                            projectile.attackStartPos[2] = monster.attackStartPos[data.Skill_HitBoxStartPos3];
+                            goto case 2;
+                        case 2:
+                            projectile.attackStartPos[1] = monster.attackStartPos[data.Skill_HitBoxStartPos2];
+                            goto case 1;
+                        case 1:
+                            projectile.attackStartPos[0] = monster.attackStartPos[data.Skill_HitBoxStartPos1];
+                            break;
+                    }
+
                     projectile.hitDuration = data.Skill_hitDuration;
                     AddSkillAffect(projectile, data.Skill_AffectOption1);
                     AddSkillAffect(projectile, data.Skill_AffectOption2);
@@ -133,7 +163,6 @@ public class MonsterFactory : MonoBehaviour
                     parent.onSkillActivatedEvent.AddListener(projectile.OnSkillActivated);
                     parent.onSkillHitCheckStartEvent.AddListener(projectile.OnSkillHitCheckStartEventHandler);
                     parent.onSkillHitCheckEndEvent.AddListener(projectile.OnSkillHitCheckEndEventHandler);
-
                 }
                 break;
             //dont have skill type
@@ -144,18 +173,37 @@ public class MonsterFactory : MonoBehaviour
         obj.transform.SetParent(parent.transform);
     }
 
-    public static void AddSkillAffect(BaseSkillType parent, int index)
+    public void AddSkillAffect(BaseSkillType parent, int index)
     {
-        switch(index / 10000)
+        GameObject obj = new GameObject();
+
+        switch (index / 10000)
         {
             case 1:
+                SkillDamageAffectDataStruct data = default;
+                var json = Resources.Load<TextAsset>("Monster/SkillData/SkillAffect/Monster_SkillAffect_DamageAffect").text;
+                var arrDatas = JsonConvert.DeserializeObject<SkillDamageAffectDataStruct[]>(json);
+                foreach (var Data in arrDatas)
+                {
+                    if (Data.Index == index)
+                    {
+                        data = Data;
+                        break;
+                    }
+                }
+
+                obj.name = "Damage";
+                DamageSkillEffect damage = obj.AddComponent<DamageSkillEffect>();
+                damage.power = data.Skill_Power;
+                damage.Atype = (AttackType)data.Skill_AttackType;
+                parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(damage.OnSkillHit);
                 break;
             default:
                 break;
         }
     }
 
-    public static GameObject FindPrefab(int index)
+    public GameObject FindPrefab(int index)
     {
         switch (index / 10000)
         {

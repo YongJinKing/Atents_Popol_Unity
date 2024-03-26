@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TempAnimEvent : MonoBehaviour
+public class MonsterAnimEvent : MonoBehaviour
 {
     public UnityEvent onAttackStartEvent;
     public UnityEvent onAttackEndEvent;

@@ -64,6 +64,7 @@ public abstract class Monster : BattleSystem
     {
         deathAlarm?.Invoke(1);
         ChangeState(State.Death);
+        transform.GetComponent<PartDefence>().DisActiveCol();
     }
     #endregion
 

@@ -13,12 +13,22 @@ public class DamageSkillEffect : BaseSkillEffect
 
     //protected ���� ����
     #region protected
-    [SerializeField] protected float power;
+    [SerializeField] protected float _power;
+    [SerializeField] protected AttackType _Atype;
     #endregion
 
     //Public ��������
     #region public
-    public AttackType Atype;
+    public float power
+    {
+        get { return _power; }
+        set { _power = value; }
+    }
+    public AttackType Atype
+    {
+        get { return _Atype; }
+        set { _Atype = value; }
+    }
     #endregion
 
     //�̺�Ʈ �Լ��� ����

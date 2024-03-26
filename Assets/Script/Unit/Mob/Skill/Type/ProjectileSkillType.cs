@@ -15,11 +15,11 @@ public class ProjectileSkillType : HitCheckSkillType
 
     //protected 변수 영역
     #region protected
-    [SerializeField] protected LayerMask unpenetrableMask;
-    [SerializeField] protected float moveSpeed = 10f;
+    [SerializeField] protected LayerMask _unPenetrableMask;
+    [SerializeField] protected float _moveSpeed = 10f;
     [SerializeField] protected float parabolaHeight = 2f;
     //최대 사거리(xz 평면에서만)
-    [SerializeField] protected float maxDist = 5f;
+    [SerializeField] protected float _maxDist = 5f;
     #endregion
 
     //Public 변수영역
@@ -28,6 +28,21 @@ public class ProjectileSkillType : HitCheckSkillType
     public GameObject destroyEffectPrefeb;
     //투사체가 관통이 되냐 안되냐를 판정
     public bool penetrable = false;
+    public LayerMask unPenetrableMask
+    {
+        get { return _unPenetrableMask;}
+        set {  _unPenetrableMask = value;}
+    }
+    public float moveSpeed
+    {
+        get { return _moveSpeed; }
+        set { _moveSpeed = value; } 
+    }
+    public float maxDist
+    {
+        get { return _maxDist; }
+        set { _maxDist = value; }
+    }
     #endregion
 
     //이벤트 함수들 영역
@@ -87,12 +102,12 @@ public class ProjectileSkillType : HitCheckSkillType
         while (remainDuration >= 0.0f && hitBox != null)
         {
             remainDuration -= Time.deltaTime;
-            Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, hitBoxCol.bounds.extents , hitBox.transform.rotation, targetMask | unpenetrableMask);
+            Collider[] tempcol = Physics.OverlapBox(hitBox.transform.position, hitBoxCol.bounds.extents , hitBox.transform.rotation, targetMask | unPenetrableMask);
 
             for (int i = 0; i < tempcol.Length; i++)
             {
                 //Projectile destroy because of ununpenetrableMask
-                if ((1 << tempcol[i].gameObject.layer & unpenetrableMask) != 0)
+                if ((1 << tempcol[i].gameObject.layer & unPenetrableMask) != 0)
                 {
                     DestroyProjectile(hitBox);
                     break;

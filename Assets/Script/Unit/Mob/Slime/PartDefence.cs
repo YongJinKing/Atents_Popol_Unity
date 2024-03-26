@@ -21,4 +21,12 @@ public class PartDefence : MonoBehaviour, IGetDType
 
         return type;
     }
+
+    public void DisActiveCol()
+    {
+        foreach(Part part in parts)
+        {
+            part.col.enabled = false;
+        }
+    }
 }
