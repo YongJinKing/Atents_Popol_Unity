@@ -14,7 +14,6 @@ public class SkillIcon : MonoBehaviour
     private Dictionary<KeyCode, Image> skillImages;
     private Dictionary<KeyCode, Coroutine> cooldownCoroutines;
 
-
     void Start()
     {
         skillImages = new Dictionary<KeyCode, Image>()
@@ -26,6 +25,7 @@ public class SkillIcon : MonoBehaviour
         };
 
         cooldownCoroutines = new Dictionary<KeyCode, Coroutine>();
+
     }
 
     void Update()
