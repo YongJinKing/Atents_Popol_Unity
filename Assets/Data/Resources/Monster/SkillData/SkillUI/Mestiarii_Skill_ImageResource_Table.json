@@ -14,5 +14,17 @@
    {
       "index":30003,
       "Skill_ImageResource":"Stage1_Slime_MultipleMucus"
+   },
+   {
+      "index":30100,
+      "Skill_ImageResource":"Stage2_Turtle_HeadAttack"
+   },
+   {
+      "index":30101,
+      "Skill_ImageResource":"Stage2_Turtle_Dash"
+   },
+   {
+      "index":30102,
+      "Skill_ImageResource":"Stage2_Turtle_Mucus"
    }
 ]

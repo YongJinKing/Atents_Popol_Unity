@@ -7,7 +7,6 @@ using System.Linq;
 public class MonsterSkillDataManager
 {
     private static MonsterSkillDataManager instance;
-    
     public Dictionary<int, SkillStringTable> dicStringTable;
     public Dictionary<int, BossDisplayTable> dicDisplayTable;
     public Dictionary<int, BossStageTable> dicStageTable;
@@ -32,7 +31,7 @@ public class MonsterSkillDataManager
     {
         var Mestiarii_BossMonster_Display_Prefab = Resources.Load<TextAsset>("Monster/SkillData/SkillUI/Mestiarii_BossMonster_Display_Prefab").text;
         var Mestiarii_BossStage_Table = Resources.Load<TextAsset>("Monster/SkillData/SkillUI/Mestiarii_BossStage_Table").text;
-        var Mestiarii_Skill_ImgaeResource_Table = Resources.Load<TextAsset>("Monster/SkillData/SkillUI/Mestiarii_Skill_ImgaeResource_Table").text;
+        var Mestiarii_Skill_ImgaeResource_Table = Resources.Load<TextAsset>("Monster/SkillData/SkillUI/Mestiarii_Skill_ImageResource_Table").text;
         var Mestiarii_Monster_SkillStringTable = Resources.Load<TextAsset>("Monster/SkillData/Mestiarii_Monster_SkillStringTable").text;
 
         var arrDisplayDatas = JsonConvert.DeserializeObject<BossDisplayTable[]>(Mestiarii_BossMonster_Display_Prefab);

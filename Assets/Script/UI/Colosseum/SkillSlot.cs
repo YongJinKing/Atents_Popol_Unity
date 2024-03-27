@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -6,42 +7,36 @@ using TMPro;
 
 public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public GameObject GridLine;
     public GameObject SkillPopup;
-    public GameObject ColosseumEventObj;
-    private RectTransform SlotPositon;
-    private RectTransform PopupPositon;
-    public List<GameObject> BossSkillList = new List<GameObject>();
-    GameObject[] SkillSlots;
-    
+    public GameObject ColoUI;
+    Coroutine PopupCheck;
     public void OnPointerEnter(PointerEventData eventData)
     {
-        
-        if(transform.GetComponent<Image>().color.a != 0.0f)
+        if(transform.GetChild(0).GetComponent<Image>().color.a != 0.0f)
         {
-           /*  
-            SlotPositon = transform.gameObject.GetComponent<RectTransform>();
-            PopupPositon = SkillPopup.GetComponent<RectTransform>();
-            PopupPositon.anchoredPosition = SlotPositon.anchoredPosition; */
-            SkillPopup.SetActive(true);
+            PopupCheck = StartCoroutine(OnSkillPopup(transform.GetSiblingIndex()));
             transform.GetChild(0).GetComponent<Animator>().SetBool("ChangeColor",true);
-            SkillDetailPopup(transform.GetSiblingIndex());
         }
+        
     }
-
     public void OnPointerExit(PointerEventData eventData)
     {
+        if(PopupCheck != null)
+        {
+            StopCoroutine(PopupCheck);
+            PopupCheck = null;
+        }
         SkillPopup.SetActive(false);
+        
         transform.GetChild(0).GetComponent<Animator>().SetBool("ChangeColor",false);
     }
-     void SkillDetailPopup(int SkillIndex)
+    IEnumerator OnSkillPopup(int index)
     {
-        BossSkillList = ColosseumEventObj.GetComponent<ColosseumEventManager>().BossMonsterSkillList;
-        SkillPopup.transform.GetChild(0).GetComponent<Image>().sprite =
-        BossSkillList[SkillIndex].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillSprite;
-        SkillPopup.transform.GetChild(1).GetComponent<TMP_Text>().text =
-        BossSkillList[SkillIndex].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillName;
-        SkillPopup.transform.GetChild(2).GetComponent<TMP_Text>().text =
-        BossSkillList[SkillIndex].transform.gameObject.GetComponent<Skill>().uiSkillStatus.uiSkillDesc;
+        yield return new WaitForSeconds(0.5f);
+        SkillPopup.SetActive(true);
+        var stageTableData = MonsterSkillDataManager.GetInstance().dicStageTable[ColoUI.GetComponent<ColoUI>().StageIndex];
+        SkillPopup.transform.Find("Image").GetComponent<Image>().sprite = transform.GetChild(0).GetComponent<Image>().sprite;
+        
+        
     }
 }
