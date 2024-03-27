@@ -39,6 +39,7 @@ public abstract class Monster : BattleSystem
     //public UnityEvent<Vector3>[] onSkillUseEvent;
     public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent = new UnityEvent<Vector3, float, UnityAction, UnityAction>();
     public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent = new UnityEvent<Transform, float, UnityAction, UnityAction>();
+    public UnityEvent<Transform, float, UnityAction, UnityAction> sideMoveEvent = new UnityEvent<Transform, float, UnityAction, UnityAction>();
     public UnityEvent<Vector3, float> rotateEvent = new UnityEvent<Vector3, float>();
     public UnityEvent<UnityAction> stopEvent = new UnityEvent<UnityAction>();
 

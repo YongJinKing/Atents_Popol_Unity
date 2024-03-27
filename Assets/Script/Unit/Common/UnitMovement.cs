@@ -12,6 +12,7 @@ public class UnitMovement : CharacterProperty
     Coroutine move = null;
     Coroutine rotate = null;
     Coroutine follow = null;
+    Coroutine sideMove = null;
     public Rigidbody rigid;
 
     float tempSpeed = 0;
@@ -45,6 +46,11 @@ public class UnitMovement : CharacterProperty
             StopCoroutine(follow);
             follow = null;
         }
+        if(sideMove != null)
+        {
+            StopCoroutine(sideMove);
+            sideMove = null;
+        }
 
         tempSpeed = 0f;
         endAct?.Invoke(0.0f);
@@ -75,6 +81,16 @@ public class UnitMovement : CharacterProperty
         follow = StartCoroutine(FollowingTarget(target, Speed, startAct, endAct));
     }
 
+    public void SideMove(Transform target, float Speed, UnityAction startAct, UnityAction endAct)
+    {
+        if (sideMove != null)
+        {
+            StopCoroutine(sideMove);
+            sideMove = null;
+        }
+        Debug.Log("SideMove");
+        sideMove = StartCoroutine(SideMoving(target, Speed, startAct, endAct));
+    }
 
     public void Rotate(Vector3 dir, float speed)
     {
@@ -97,6 +113,11 @@ public class UnitMovement : CharacterProperty
         {
             StopCoroutine(follow);
             follow = null;
+        }
+        if(sideMove != null)
+        {
+            StopCoroutine(sideMove);
+            sideMove = null;
         }
         
         endAct?.Invoke();
@@ -236,4 +257,46 @@ public class UnitMovement : CharacterProperty
             yield return null;
         }
     }
+
+    IEnumerator SideMoving(Transform target, float speed, UnityAction startAct, UnityAction endAct)
+    {
+        //Debug.Log("SideMoving");
+        while (target != null)
+        {
+            //Animation
+            startAct?.Invoke();
+            //define
+            float delta;
+            float radius = 10;
+            Vector3 dir = target.position - transform.position;
+            dir.y = 0;
+            Vector3 revDir = (-dir.normalized * radius) + dir;
+            revDir.y = 0;
+
+            //Rotate
+            dir.Normalize();
+            float angle = Vector3.Angle(transform.forward, dir);
+            float rotDir = Vector3.Dot(transform.right, dir) < 0.0f ? -1.0f : 1.0f;
+            delta = speed * 90.0f * Time.deltaTime;
+            if (delta > angle) delta = angle;
+            transform.Rotate(Vector3.up * rotDir * delta, Space.World);
+
+
+            //SideMove
+            dir = Vector3.Cross(dir, Vector3.down);
+            dir.y = 0;
+            dir.Normalize();
+            dir = dir + revDir;
+
+            //Debug.Log($"dir : {dir} revDir : {revDir}");
+
+            dir.Normalize();
+            delta = speed * Time.deltaTime;
+            transform.Translate(dir * delta, Space.World);
+
+            yield return null;
+        }
+        endAct?.Invoke();
+    }
+
 }

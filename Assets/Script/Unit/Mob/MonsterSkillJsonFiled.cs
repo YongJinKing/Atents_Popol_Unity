@@ -35,7 +35,7 @@ public struct SkillImageResourceTable
 }
 #endregion
 
-#region aa
+#region SkillTable
 public struct SkillDataTable
 {
     public int Index;
@@ -52,7 +52,7 @@ public struct SkillDataTable
     public bool Skill_IsLoopAttackAnim;
 }
 #endregion
-#region type
+#region Type
 public struct SkillMovementTypeDataTable
 {
     public int Index;

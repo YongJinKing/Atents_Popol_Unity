@@ -180,29 +180,46 @@ public class Slime : Monster
         //먼저 타겟을 찾는다.
         yield return StartCoroutine(FindTarget());
 
-        float IdleTime = 2.0f;
+        float IdleTime = 30.0f;
 
-        //이동할 좌표 구하기
-        Vector3 dir = -(target.transform.position - transform.position);
-        dir = new Vector3(dir.x, 0, dir.z);
-        dir.Normalize();
-
-        //그 방향으로 오프셋 만큼 이동한 뒤에 랜덤한 방향으로 좌표를 찍어서 backStepPos 를 생성
-        Vector3 backStepPos = (transform.position + dir * backStapOffset);
-        Vector3 backStepDir = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360f), 0) * dir;
-        backStepDir.Normalize();
-
-        float dist = UnityEngine.Random.Range(2f, 5f);
-
-        while(Vector3.Dot(dir, backStepDir) < 0)
+        int type = 1;
+        switch (type)
         {
-            backStepDir = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360f), 0) * dir;
+            case 0:
+                {
+                    //이동할 좌표 구하기
+                    Vector3 dir = -(target.transform.position - transform.position);
+                    dir = new Vector3(dir.x, 0, dir.z);
+                    dir.Normalize();
+
+                    //그 방향으로 오프셋 만큼 이동한 뒤에 랜덤한 방향으로 좌표를 찍어서 backStepPos 를 생성
+                    Vector3 backStepPos = (transform.position + dir * backStapOffset);
+                    Vector3 backStepDir = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360f), 0) * dir;
+                    backStepDir.Normalize();
+
+                    float dist = UnityEngine.Random.Range(2f, 5f);
+
+                    while (Vector3.Dot(dir, backStepDir) < 0)
+                    {
+                        backStepDir = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360f), 0) * dir;
+                    }
+
+                    backStepPos = backStepPos + backStepDir * dist;
+
+                    //이동 이벤트
+                    onMovementEvent?.Invoke(backStepPos, battleStat.Speed, null, null);
+
+                }
+                break;
+            case 1:
+                {
+                    sideMoveEvent?.Invoke(target.transform, base.Speed, null, null);
+                }
+                break;
+            default:
+                break;
         }
 
-        backStepPos = backStepPos + backStepDir * dist;
-
-        //이동 이벤트
-        onMovementEvent?.Invoke(backStepPos, battleStat.Speed, null, null);
 
         //idle 시간 재기
         while (IdleTime >= 0.0f)
@@ -210,6 +227,8 @@ public class Slime : Monster
             IdleTime -= Time.deltaTime;
             yield return null;
         }
+
+
         //시간 끝나면 이동 끝냄
         stopEvent?.Invoke(null);
 
@@ -217,6 +236,8 @@ public class Slime : Monster
         ChangeState(State.Closing);
         yield return null;
     }
+
+
 
     protected IEnumerator FindTarget()
     {
@@ -252,7 +273,7 @@ public class Slime : Monster
     #region MonoBehaviour
     protected override void Start()
     {
-        //base.Start();
+        base.Start();
     }
     #endregion
 }

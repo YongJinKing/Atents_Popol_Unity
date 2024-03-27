@@ -104,11 +104,11 @@ public class MonsterFactory : MonoBehaviour
     public Skill CreateMonsterSkill(Monster parent ,int index)
     {
         
-        SkillDataStruct data = default;
+        SkillDataTable data = default;
 
         //load from file
         var json = Resources.Load<TextAsset>("Monster/SkillData/Monster_SkillTable").text;
-        var arrMonsterSkillDatas = JsonConvert.DeserializeObject<SkillDataStruct[]>(json);
+        var arrMonsterSkillDatas = JsonConvert.DeserializeObject<SkillDataTable[]>(json);
         foreach(var skillData in arrMonsterSkillDatas)
         {
             if(skillData.Index == index)
