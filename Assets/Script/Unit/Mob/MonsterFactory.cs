@@ -22,7 +22,7 @@ public class MonsterFactory : MonoBehaviour
             }
         }
 
-        //¿¹¿ÜÃ³¸® ÀÚ¸®
+        //ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½Ú¸ï¿½
         //if(data == default)
         //{
         //    return;
@@ -39,7 +39,7 @@ public class MonsterFactory : MonoBehaviour
         rigid.useGravity = true;
         rigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionZ;
 
-        //³ªÁß¿¡ SlimeÀ» ³ÖÀ»°ÇÁö TurtleÀ» ³ÖÀ»°ÇÁö ÀÎµ¦½º ÇÊ¿ä
+        //ï¿½ï¿½ï¿½ß¿ï¿½ Slimeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Turtleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½
         Monster objMon = obj.AddComponent<Slime>();
         UnitMovement objMove = obj.AddComponent<UnitMovement>();
         Debug.Log(objMon);
@@ -118,7 +118,7 @@ public class MonsterFactory : MonoBehaviour
             }
         }
 
-        //¿¹¿ÜÃ³¸® ÀÚ¸®
+        //ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½Ú¸ï¿½
         //if(data == default)
         //{
         //    return;
@@ -157,10 +157,10 @@ public class MonsterFactory : MonoBehaviour
             //MovementSkillType
             case 1:
                 {
-                    SkillMovementTypeDataStruct data = default;
+                    SkillMovementTypeDataTable data = default;
                     //load from file
                     var json = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Movement").text;
-                    var arrDatas = JsonConvert.DeserializeObject<SkillMovementTypeDataStruct[]>(json);
+                    var arrDatas = JsonConvert.DeserializeObject<SkillMovementTypeDataTable[]>(json);
                     foreach (var Data in arrDatas)
                     {
                         if (Data.Index == index)
@@ -181,10 +181,10 @@ public class MonsterFactory : MonoBehaviour
             //MeleeSkillType
             case 2:
                 {
-                    SkillMeleeTypeDataStruct data = default;
+                    SkillMeleeTypeDataTable data = default;
                     //load from file
                     var json = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Melee").text;
-                    var arrDatas = JsonConvert.DeserializeObject<SkillMeleeTypeDataStruct[]>(json);
+                    var arrDatas = JsonConvert.DeserializeObject<SkillMeleeTypeDataTable[]>(json);
                     foreach (var Data in arrDatas)
                     {
                         if (Data.Index == index)
@@ -214,10 +214,10 @@ public class MonsterFactory : MonoBehaviour
             //ProjectileSkillType
             case 3:
                 {
-                    SkillProjectileTypeDataStruct data = default;
+                    SkillProjectileDetailDataTable data = default;
                     //load from file
                     var json = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Projectile").text;
-                    var arrDatas = JsonConvert.DeserializeObject<SkillProjectileTypeDataStruct[]>(json);
+                    var arrDatas = JsonConvert.DeserializeObject<SkillProjectileDetailDataTable[]>(json);
                     foreach (var Data in arrDatas)
                     {
                         if (Data.Index == index)
@@ -281,9 +281,9 @@ public class MonsterFactory : MonoBehaviour
         switch (index / 10000)
         {
             case 1:
-                SkillDamageAffectDataStruct data = default;
+                SkillDamageAffectDataTable data = default;
                 var json = Resources.Load<TextAsset>("Monster/SkillData/SkillAffect/Monster_SkillAffect_DamageAffect").text;
-                var arrDatas = JsonConvert.DeserializeObject<SkillDamageAffectDataStruct[]>(json);
+                var arrDatas = JsonConvert.DeserializeObject<SkillDamageAffectDataTable[]>(json);
                 foreach (var Data in arrDatas)
                 {
                     if (Data.Index == index)

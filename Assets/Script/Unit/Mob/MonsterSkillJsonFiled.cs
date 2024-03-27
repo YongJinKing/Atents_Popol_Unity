@@ -1,31 +1,17 @@
 
-public class SkillDataTable
-{
-    public int Index;
-    public int Skill_Name;
-    public int Skill_PreDelay;
-    public int Skill_PostDelay;
-    public int Skill_DetectRange;
-    public int Skill_TargetMask;
-    public int Skill_Option1;
-    public int Skill_Option2;
-    public int Skill_Option3;
-    public int Skill_Option4;
-    public int Skill_DescComponent;
-    public bool Skill_IsLoopAttackAnim;
-}
-public class SkillStringTable
+#region UI
+public struct SkillStringTable
 {
     public int index;
     public int String_Type;
     public string String_Desc;
 }
-public class BossDisplayTable
+public struct BossDisplayTable
 {
     public int index;
-    public string PrefebName;
+    public string Boss_Display_Prefab_Name;
 }
-public class BossStageTable
+public struct BossStageTable
 {
     public int index;
     public int Stage_BossMonster;
@@ -42,8 +28,80 @@ public class BossStageTable
     public int Stage_ClearReward4;
     public int Stage_ClearReward5;
 }
-public class SkillImageResourceTable
+public struct SkillImageResourceTable
 {
     public int index;
     public string Skill_ImageResource;
 }
+#endregion
+
+#region aa
+public struct SkillDataTable
+{
+    public int Index;
+    public int Skill_Name;
+    public float Skill_PreDelay;
+    public float Skill_PostDelay;
+    public float Skill_DetectRange;
+    public int Skill_TargetMask;
+    public int Skill_Option1;
+    public int Skill_Option2;
+    public int Skill_Option3;
+    public int Skill_Option4;
+    public int Skill_DescComponent;
+    public bool Skill_IsLoopAttackAnim;
+}
+#endregion
+#region type
+public struct SkillMovementTypeDataTable
+{
+    public int Index;
+    public float Skill_ShortRangeAttackSpeed;
+    public float Skill_ShortRangeAttackDist;
+}
+
+public struct SkillMeleeTypeDataTable
+{
+    public int Index;
+    public int Skill_NumOfHitBox;
+    public int Skill_HitBox;
+    public int Skill_TargetMask;
+    public float Skill_hitDuration;
+    public int Skill_AffectOption1;
+    public int Skill_AffectOption2;
+    public int Skill_AffectOption3;
+    public int Skill_AffectOption4;
+    public int Skill_AffectOption5;
+}
+
+public struct SkillProjectileDetailDataTable
+{
+    public int Index;
+    public int Skill_NumOfHitBox;
+    public int Skill_HitBox;
+    public int Skill_Unpenetrable;
+    public int Skill_TargetMask;
+    public float Skill_hitDuration;
+    public float Skill_LongRangeAttackSpeed;
+    public float Skill_LongRangeAttackDist;
+    public bool Skill_Penetrable;
+    public int Skill_AffectOption1;
+    public int Skill_AffectOption2;
+    public int Skill_AffectOption3;
+    public int Skill_AffectOption4;
+    public int Skill_AffectOption5;
+    public int Skill_HitBoxStartPos1;
+    public int Skill_HitBoxStartPos2;
+    public int Skill_HitBoxStartPos3;
+    public int Skill_HitBoxStartPos4;
+}
+
+#endregion
+#region Affect
+public struct SkillDamageAffectDataTable
+{
+    public int Index;
+    public float Skill_Power;
+    public int Skill_AttackType;
+}
+#endregion
