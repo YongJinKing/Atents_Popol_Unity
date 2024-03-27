@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 815b0f7d442108d46b07ac83eab9caa6
+guid: 99434f7675517934d842dc5bef406c59
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: mixamo.com
+      name: Great Sword Casting
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 18
+      lastFrame: 96
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -106,9 +106,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 99434f7675517934d842dc5bef406c59
-  - fd1903a836494c546bfe926f7d7f837e
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3

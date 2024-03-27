@@ -15,7 +15,7 @@ public interface I_ClickPoint
 
 public class Player : BattleSystem, I_ClickPoint, IGetDType
 {
-    public ParticleSystem particle;
+    ParticleSystem particle;
     public GameObject Effectobj;
     public LayerMask clickMask;
     public DefenceType Dtype;
@@ -41,27 +41,27 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
     {
         if (playerstate == s) return;
         playerstate = s;
+        var emission = particle.emission;
 
         switch (s)
         {
             case state.Fire:
-            particle.Stop();
+                emission.rateOverTime = 0;
                 break;
             case state.Dadge:
-            particle.Stop();
+                emission.rateOverTime = 0;
                 break;
             case state.Idle:
-            particle.Stop();    
+                emission.rateOverTime = 0;
                 break;
             case state.Run:
-            particle.Play();
-            particle = Instantiate<ParticleSystem>(Resources.Load("Misc_Particle/WalkDust") as ParticleSystem);
+                emission.rateOverTime = 30f;
                 break;
             case state.Skill:
-            particle.Stop();
+                emission.rateOverTime = 0;
                 break;
             case state.Death:
-            particle.Stop();
+                emission.rateOverTime = 0;
                 break;
         }
     }
@@ -98,7 +98,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
     protected override void Start()
     {
         base.Start();
-        particle = GetComponent<ParticleSystem>();
+        particle = GetComponentInChildren<ParticleSystem>();
         ChangeState(state.Idle);
     }
 
@@ -108,8 +108,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         isFireReady = FireDelay < 0;
         DadgeDelay -= Time.deltaTime;
         isDadgeReady = DadgeDelay < 0;
-        var emission = particle.emission;
-        emission.rateOverTime = 10f;
+        
         ProcessState();
     }
 
@@ -192,6 +191,17 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
             ChangeState(state.Skill);
             myAnim.SetTrigger("t_WSkill");
             
+            rotAct?.Invoke(dir, rotSpeed);
+        }
+        if (Input.GetKeyDown(KeyCode.E) && curBattleStat.EnergyGage >= 60)
+        {
+            curBattleStat.EnergyGage -= 60;
+            rotSpeed = 3.0f;
+            GetRaycastHit();
+            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+            ChangeState(state.Skill);
+            myAnim.SetTrigger("t_ESkill");
+
             rotAct?.Invoke(dir, rotSpeed);
         }
     }

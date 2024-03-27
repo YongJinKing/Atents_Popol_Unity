@@ -4977,7 +4977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.1
-  hitCount: 28
+  hitCount: 25
   destroy: 3.7
 --- !u!114 &7972128372457490287
 MonoBehaviour:

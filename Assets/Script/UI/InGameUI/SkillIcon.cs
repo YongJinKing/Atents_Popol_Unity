@@ -44,6 +44,7 @@ public class SkillIcon : MonoBehaviour
         if (cooldownCoroutines.ContainsKey(key))
         {
             StopCoroutine(cooldownCoroutines[key]);
+            cooldownCoroutines[key] = null;
         }
 
         cooldownCoroutines[key] = StartCoroutine(CoolTime(key, 3.0f)); // 3.0f는 쿨타임 시간입니다.

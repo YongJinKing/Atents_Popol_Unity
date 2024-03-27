@@ -12,7 +12,6 @@ public class SkillManager : PlayerSkill
     PlayerManager Plm;
     public AttackType aType;
 
-
     void Start()
     {
         Player = GameObject.Find("Player");
@@ -22,6 +21,7 @@ public class SkillManager : PlayerSkill
 
     void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.layer == LayerMask.NameToLayer("Monster_Body"))
         {
             IDamage iDamage = other.GetComponentInParent<IDamage>();

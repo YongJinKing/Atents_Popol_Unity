@@ -8,9 +8,7 @@ public class ScrachCode : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //particle = GetComponent<ParticleSystem>();
-        //particle.Play();
-        //particle.Stop();
+        particle = GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
