@@ -117,6 +117,36 @@ public class cameraMove : MonoBehaviour
 
     public string CinecamState = "CamMove";
     Vector3 originPos;
+
+
+    /*IEnumerator TimeControl() //코루틴 예시 
+    {
+        float slowTime = 0.5f; // 속도를 정할 변수 선언
+        while(!Mathf.Approximately(slowTime, 0.1f)) // slowTime이 0.1과 근사값이 아닐때
+        {
+            Time.timeScale = slowTime; // 현재 시간 속도 = (변수)slowTime
+            slowTime -= Time.deltaTime * 1.5f; // slowTime의 값을 서서히 줄인다.
+            if (slowTime < 0.1f)    // slowTime이 0.1f 보다 적어 질때 
+            {
+                slowTime = 0.1f; // slowTime을 0,1로 고정
+            }
+            yield return null; // Update문으로 만들어 주는 return
+        }
+        yield return new WaitForSecondsRealtime(1.0f); // 느려진 상태로 1초 동안 유지 게임 시간이 아닌 컴퓨터시간
+
+        slowTime = 0.5f; // 시간 속도를 0.5로 만들어줌
+        while (slowTime < 1.0f) //1배속으로 정확 하게 하기 위한 조건문
+        {
+            slowTime += Time.deltaTime; // 초당 slowTime 값을 올림
+            if(slowTime > 1.0f) // slowTime이 1.0을 넘어갔을때
+            {
+                slowTime = 1.0f; // slowTime을 1.0으로 고정
+            }
+            Time.timeScale = slowTime; //프레임 마다 slowTime값으로 타임 스캐일 조정
+            yield return null; // Update문으로 만들어 주는 return
+        }
+    }*/
+
     /*IEnumerator CineCam()
     {
         if (CinecamState == "CamMove")
