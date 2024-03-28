@@ -1,11 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Serialization;
-using TreeEditor;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
-using static UnityEngine.GraphicsBuffer;
 
 public class UnitMovement : CharacterProperty
 {
@@ -88,7 +83,6 @@ public class UnitMovement : CharacterProperty
             StopCoroutine(sideMove);
             sideMove = null;
         }
-        Debug.Log("SideMove");
         sideMove = StartCoroutine(SideMoving(target, Speed, startAct, endAct));
     }
 

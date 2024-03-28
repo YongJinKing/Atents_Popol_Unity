@@ -97,6 +97,7 @@ public abstract class HitCheckSkillType : BaseSkillType
     #region MonoBehaviour
     protected override void Start()
     {
+        areaOfEffect = new GameObject[maxIndex];
         InitAreaOfEffect();
     }
     #endregion

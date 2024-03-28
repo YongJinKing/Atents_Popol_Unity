@@ -4,38 +4,38 @@ using UnityEngine;
 
 public class SelfSkillType : BaseSkillType
 {
-    //변수 영역
+    //변???�역
     #region Properties / Field
-    //private 변수 영역
+    //private 변???�역
     #region Private
     #endregion
 
-    //protected 변수 영역
+    //protected 변???�역
     #region protected
-    //부모의 Unit을 참조할 오브젝트
+    //부모의 Unit??참조???�브?�트
     protected BattleSystem selfObject;
     #endregion
 
-    //Public 변수영역
+    //Public 변?�영??
     #region public
     #endregion
 
-    //이벤트 함수들 영역
+    //?�벤???�수???�역
     #region Event
     #endregion
     #endregion
 
 
     #region Method
-    //private 함수들 영역
+    //private ?�수???�역
     #region PrivateMethod
     #endregion
 
-    //protected 함수들 영역
+    //protected ?�수???�역
     #region ProtectedMethod
     #endregion
 
-    //public 함수들 영역
+    //public ?�수???�역
     #region PublicMethod
     #endregion
     #endregion
@@ -45,12 +45,12 @@ public class SelfSkillType : BaseSkillType
     #endregion
 
 
-    //이벤트가 일어났을때 실행되는 On~~함수
+    //?�벤?��? ?�어?�을???�행?�는 On~~?�수
     #region EventHandler
     #endregion
 
 
-    //유니티 함수들 영역
+    //?�니???�수???�역
     #region MonoBehaviour
     protected override void Start()
     {

@@ -117,7 +117,7 @@ public class ProjectileSkillType : HitCheckSkillType
                 if (!calculatedObject.Contains(tempcol[i]))
                 {
                     //Debug.Log For check
-                    Debug.Log(tempcol[i].gameObject.name);
+                    //Debug.Log(tempcol[i].gameObject.name);
                     //맞췄을때 이펙트를 넣어줌
                     HitEffectPlay(hitBox.transform.position, tempcol[i].gameObject.transform.position);
 
@@ -277,11 +277,6 @@ public class ProjectileSkillType : HitCheckSkillType
 
     //유니티 함수들 영역
     #region MonoBehaviour
-    protected override void Start()
-    {
-        areaOfEffect = new GameObject[maxIndex];
-        base.Start();
-    }
     #endregion
 }
 

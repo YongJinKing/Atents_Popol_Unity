@@ -2,8 +2,9 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
-public class MonsterFactory : MonoBehaviour
+public class MonsterFactory
 {
     public GameObject CreateMonster(int index)
     {
@@ -37,28 +38,57 @@ public class MonsterFactory : MonoBehaviour
         col.size = new Vector3(0.5f, 1.0f, 0.5f);
         Rigidbody rigid = obj.AddComponent<Rigidbody>();
         rigid.useGravity = true;
-        rigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionZ;
+        rigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         //���߿� Slime�� �������� Turtle�� �������� �ε��� �ʿ�
         Monster objMon = obj.AddComponent<Slime>();
+        objMon.onMovementEvent = new UnityEngine.Events.UnityEvent<Vector3, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
+        objMon.followEvent = new UnityEngine.Events.UnityEvent<Transform, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
+        objMon.rotateEvent = new UnityEngine.Events.UnityEvent<Vector3, float>();
+        objMon.sideMoveEvent = new UnityEngine.Events.UnityEvent<Transform, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
+        objMon.stopEvent = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction>();
+
         UnitMovement objMove = obj.AddComponent<UnitMovement>();
-        Debug.Log(objMon);
         objMon.onMovementEvent.AddListener(objMove.MoveToPos);
         objMon.followEvent.AddListener(objMove.FollowTarget);
         objMon.rotateEvent.AddListener(objMove.Rotate);
+        objMon.sideMoveEvent.AddListener(objMove.SideMove);
         objMon.stopEvent.AddListener(objMove.StopMove);
 
         //GameObject prefab = FindPrefab(data.Character_Prefab);
-        GameObject prefab = Instantiate(Resources.Load<GameObject>("Monster/MonsterPrefabs/SlimePrefab"));
+        GameObject prefab = GameObject.Instantiate(Resources.Load<GameObject>("Monster/MonsterPrefabs/SlimePrefab"));
         prefab.transform.SetParent(obj.transform, false);
         PartManager part = prefab.GetComponent<PartManager>();
-        objMon.attackStartPos = new Transform[part.parts.Length];
-        for (int i = 0; i < part.parts.Length; i++)
+        objMon.attackStartPos = new Transform[part.attackStartPos.Length];
+        for (int i = 0; i < part.attackStartPos.Length; i++)
         {
-            objMon.attackStartPos[i] = part.parts[i].col.transform;
-            part.parts[i].col.gameObject.layer = LayerMask.NameToLayer("Monster_Body");
+            objMon.attackStartPos[i] = part.attackStartPos[i];
         }
+        for(int i = 0; i< part.parts.Length; i++)
+        {
+            part.parts[i].col.gameObject.layer = LayerMask.NameToLayer("Monster_Body");
+            switch (i)
+            {
+                case 0:
+                    part.parts[i].type = (DefenceType)data.Character_DetailArmorType1;
+                    break;
+                case 1:
+                    part.parts[i].type = (DefenceType)data.Character_DetailArmorType2;
+                    break;
+                case 2:
+                    part.parts[i].type = (DefenceType)data.Character_DetailArmorType3;
+                    break;
+                case 3:
+                    part.parts[i].type = (DefenceType)data.Character_DetailArmorType4;
+                    break;
+            }
+        }
+
         MonsterAnimEvent anim = prefab.GetComponent<MonsterAnimEvent>();
+        anim.onAttackStartEvent = new UnityEngine.Events.UnityEvent();
+        anim.onAttackEndEvent = new UnityEngine.Events.UnityEvent();
+        anim.onAttackAnimEndEvent = new UnityEngine.Events.UnityEvent();
+
         anim.onAttackStartEvent.AddListener(objMon.OnAttackStartAnim);
         anim.onAttackEndEvent.AddListener(objMon.OnAttackEndAnim);
         anim.onAttackAnimEndEvent.AddListener(objMon.OnSkillAnimEnd);
@@ -107,12 +137,13 @@ public class MonsterFactory : MonoBehaviour
         SkillDataTable data = default;
 
         //load from file
-        var json = Resources.Load<TextAsset>("Monster/SkillData/Monster_SkillTable").text;
+        var json = Resources.Load<TextAsset>("Monster/SkillData/Mestiarii_Monster_SkillTable").text;
         var arrMonsterSkillDatas = JsonConvert.DeserializeObject<SkillDataTable[]>(json);
         foreach(var skillData in arrMonsterSkillDatas)
         {
             if(skillData.Index == index)
             {
+                Debug.Log("Find Index");
                 data = skillData;
                 break;
             }
@@ -135,16 +166,22 @@ public class MonsterFactory : MonoBehaviour
         objSkill.targetMask = 1 << data.Skill_TargetMask;
         objSkill.isLoopAnim = data.Skill_IsLoopAttackAnim;
 
+        objSkill.onSkillActivatedEvent = new UnityEngine.Events.UnityEvent<Vector3>();
+        objSkill.onSkillHitCheckStartEvent = new UnityEngine.Events.UnityEvent();
+        objSkill.onSkillHitCheckEndEvent = new UnityEngine.Events.UnityEvent();
+
         AddSkillType(parent, objSkill, data.Skill_Option1);
         AddSkillType(parent, objSkill, data.Skill_Option2);
         AddSkillType(parent, objSkill, data.Skill_Option3);
         AddSkillType(parent, objSkill, data.Skill_Option4);
 
+        objSkill.onAddSkillEvent = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction<Vector3, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
+        objSkill.onAddSkillEvent2 = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction, bool, LayerMask>();
+
         objSkill.onAddSkillEvent.AddListener(parent.OnAddSkillEventListener);
         objSkill.onAddSkillEvent2.AddListener(parent.OnAddSkillEvent2Listener);
 
-        obj.transform.SetParent(parent.transform);
-
+        obj.transform.SetParent(parent.transform, false);
         return objSkill;
     }
 
@@ -173,8 +210,12 @@ public class MonsterFactory : MonoBehaviour
                     MovementSkillType move = obj.AddComponent<MovementSkillType>();
                     move.maxDist = data.Skill_ShortRangeAttackDist;
                     move.moveSpeed = data.Skill_ShortRangeAttackSpeed;
+
+                    move.onMoveEndEvent = new UnityEngine.Events.UnityEvent();
+                    move.moveToPosEvent = new UnityEngine.Events.UnityEvent<Vector3, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
+
                     move.onMoveEndEvent.AddListener(parent.OnSkillAnimEnd);
-                    move.moveToPosEvent.AddListener(GetComponentInParent<UnitMovement>().MoveToPos);
+                    move.moveToPosEvent.AddListener(monster.GetComponent<UnitMovement>().MoveToPos);
                     parent.onSkillActivatedEvent.AddListener(move.OnSkillActivated);
                 }
                 break;
@@ -198,14 +239,20 @@ public class MonsterFactory : MonoBehaviour
                     melee.maxIndex = data.Skill_NumOfHitBox;
                     melee.areaOfEffectPrefeb = FindPrefab(data.Skill_HitBox);
                     melee.targetMask = 1 << data.Skill_TargetMask;
-                    melee.attackStartPos = new Transform[1];
-                    melee.attackStartPos[0] = monster.attackStartPos[0];
+                    melee.attackStartPos = new Transform[data.Skill_NumOfHitBox];
+                    for(int i = 0; i < data.Skill_NumOfHitBox; i++)
+                    {
+                        melee.attackStartPos[i] = monster.attackStartPos[0];
+                    }
                     melee.hitDuration = data.Skill_hitDuration;
+
+                    melee.onSkillHitEvent = new UnityEngine.Events.UnityEvent<Collider>();
                     AddSkillAffect(melee, data.Skill_AffectOption1);
                     AddSkillAffect(melee, data.Skill_AffectOption2);
                     AddSkillAffect(melee, data.Skill_AffectOption3);
                     AddSkillAffect(melee, data.Skill_AffectOption4);
                     AddSkillAffect(melee, data.Skill_AffectOption5);
+
                     parent.onSkillActivatedEvent.AddListener(melee.OnSkillActivated);
                     parent.onSkillHitCheckStartEvent.AddListener(melee.OnSkillHitCheckStartEventHandler);
                     parent.onSkillHitCheckEndEvent.AddListener(melee.OnSkillHitCheckEndEventHandler);
@@ -256,6 +303,8 @@ public class MonsterFactory : MonoBehaviour
                     }
 
                     projectile.hitDuration = data.Skill_hitDuration;
+
+                    projectile.onSkillHitEvent = new UnityEngine.Events.UnityEvent<Collider>();
                     AddSkillAffect(projectile, data.Skill_AffectOption1);
                     AddSkillAffect(projectile, data.Skill_AffectOption2);
                     AddSkillAffect(projectile, data.Skill_AffectOption3);
@@ -268,10 +317,12 @@ public class MonsterFactory : MonoBehaviour
                 break;
             //dont have skill type
             default:
+                GameObject.Destroy(obj);
+                //Debug.Log($"SkillType Add Fail Index is {index}");
                 return;
         }
 
-        obj.transform.SetParent(parent.transform);
+        obj.transform.SetParent(parent.transform, false);
     }
 
     public void AddSkillAffect(BaseSkillType parent, int index)
@@ -298,11 +349,14 @@ public class MonsterFactory : MonoBehaviour
                 damage.power = data.Skill_Power;
                 damage.Atype = (AttackType)data.Skill_AttackType;
                 parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(damage.OnSkillHit);
-                obj.transform.SetParent(parent.transform);
                 break;
             default:
-                break;
+                GameObject.Destroy(obj);
+                return;
         }
+
+
+        obj.transform.SetParent(parent.transform, false);
     }
 
     public GameObject FindPrefab(int index)
@@ -310,11 +364,11 @@ public class MonsterFactory : MonoBehaviour
         switch (index / 10000)
         {
             case 1:
-                break;
+                return Resources.Load("Skill/Monster/HitBox")as GameObject;
             case 2:
                 break;
             default:
-                return Instantiate(Resources.Load("Skill/Monster/SlimeBall")as GameObject);
+                return Resources.Load("Skill/Monster/SlimeBall")as GameObject;
         }
         return null;
     }

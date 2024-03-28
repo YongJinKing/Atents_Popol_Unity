@@ -22,6 +22,7 @@ public abstract class Monster : BattleSystem
     [SerializeField]protected State myState;
     //스킬이 타겟팅하는 레이어를 받아온다.
     protected LayerMask skillMask;
+    protected bool isLoopAnim;
     #endregion
 
     //Public 변수영역
@@ -37,11 +38,11 @@ public abstract class Monster : BattleSystem
     //Skill을 실행시킬 이벤트 배열
     //detect랑 연결을 어떻게 할지 몰라서 일단 놔둠
     //public UnityEvent<Vector3>[] onSkillUseEvent;
-    public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent = new UnityEvent<Vector3, float, UnityAction, UnityAction>();
-    public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent = new UnityEvent<Transform, float, UnityAction, UnityAction>();
-    public UnityEvent<Transform, float, UnityAction, UnityAction> sideMoveEvent = new UnityEvent<Transform, float, UnityAction, UnityAction>();
-    public UnityEvent<Vector3, float> rotateEvent = new UnityEvent<Vector3, float>();
-    public UnityEvent<UnityAction> stopEvent = new UnityEvent<UnityAction>();
+    public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent;
+    public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
+    public UnityEvent<Transform, float, UnityAction, UnityAction> sideMoveEvent;
+    public UnityEvent<Vector3, float> rotateEvent;
+    public UnityEvent<UnityAction> stopEvent;
 
     protected UnityAction<Vector3, UnityAction, UnityAction, UnityAction> onSkillStartAct;
     protected UnityAction onSkillHitCheckStartAct;
@@ -94,9 +95,10 @@ public abstract class Monster : BattleSystem
         onSkillAnimEnd = skillAnimEnd;
     }
 
-    public void OnAddSkillEvent2Listener(UnityAction skillForceEnd ,LayerMask mask)
+    public void OnAddSkillEvent2Listener(UnityAction skillForceEnd ,bool isLoopAnim,LayerMask mask)
     {
         onDeadAct = skillForceEnd;
+        this.isLoopAnim = isLoopAnim;
         skillMask = mask;
     }
 

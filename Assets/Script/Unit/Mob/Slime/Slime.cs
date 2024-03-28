@@ -98,15 +98,7 @@ public class Slime : Monster
         {
             //대충 적당히 근거리에서 배회
             case State.Idle:
-                if (saveSkill[countUsedSkill] == 1)
-                {
-                    myAnim.SetBool("b_LoopSkill", true);
-                }
-                else
-                {
-                    myAnim.SetBool("b_LoopSkill", false);
-                }
-                skills[saveSkill[countUsedSkill]].OnRequestSkillInfo();
+                
                 StartCoroutine(IdleProcessing());
                 break;
             //적에게 접근
@@ -159,6 +151,10 @@ public class Slime : Monster
 
     //public 함수들 영역
     #region PublicMethod
+    public void TempInit()
+    {
+        Initialize();
+    }
     #endregion
     #endregion
 
@@ -177,10 +173,22 @@ public class Slime : Monster
     //일단 특정 거리에서 기다리는 AI
     private IEnumerator IdleProcessing()
     {
+        skills[saveSkill[countUsedSkill]].OnRequestSkillInfo();
+
+        yield return new WaitForEndOfFrame();
+        if (isLoopAnim)
+        {
+            myAnim.SetBool("b_LoopSkill", true);
+        }
+        else
+        {
+            myAnim.SetBool("b_LoopSkill", false);
+        }
+
         //먼저 타겟을 찾는다.
         yield return StartCoroutine(FindTarget());
 
-        float IdleTime = 30.0f;
+        float IdleTime = 3.0f;
 
         int type = 1;
         switch (type)
