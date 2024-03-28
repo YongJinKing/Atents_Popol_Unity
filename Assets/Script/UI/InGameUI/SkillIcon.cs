@@ -3,65 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
-public class SkillIcon : MonoBehaviour
+
+public class SkillIcon : MonoBehaviour, IPointerClickHandler
 {
-    public Image qSkillImage;
-    public Image wSkillImage;
-    public Image eSkillImage;
-    public Image rSkillImage;
+    public Image myImage;
+    public float uiSkillCoolTime;
 
-    private Dictionary<KeyCode, Image> skillImages;
-    private Dictionary<KeyCode, Coroutine> cooldownCoroutines;
+    private bool isCooling = false;
+    public GameObject objectToThrow; // 바인딩
+
+    GameObject Slash;
+    SkillManager sm;
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (!isCooling)
+        {
+            StartCoroutine(CoolTime(3.0f));
+        }
+    }
 
     void Start()
     {
-        skillImages = new Dictionary<KeyCode, Image>()
-        {
-            { KeyCode.Q, qSkillImage },
-            { KeyCode.W, wSkillImage },
-            { KeyCode.E, eSkillImage },
-            { KeyCode.R, rSkillImage }
-        };
-
-        cooldownCoroutines = new Dictionary<KeyCode, Coroutine>();
-
+        Slash = GameObject.Find("Slash");
+        sm = Slash.GetComponent<SkillManager>();
+        uiUnitSkillStatus uiSkillSprite = new uiUnitSkillStatus();
+        gameObject.GetComponent<SpriteRenderer>().sprite = uiSkillSprite.uiSkillSprite;
     }
 
     void Update()
     {
-        foreach (var kvp in skillImages)
-        {
-            if (Input.GetKeyDown(kvp.Key) && !cooldownCoroutines.ContainsKey(kvp.Key))
-            {
-                StartCooldown(kvp.Key);
-            }
-        }
+        
     }
 
-    void StartCooldown(KeyCode key)
+    IEnumerator CoolTime(float t)
     {
-        if (cooldownCoroutines.ContainsKey(key))
-        {
-            StopCoroutine(cooldownCoroutines[key]);
-            cooldownCoroutines[key] = null;
-        }
-
-        cooldownCoroutines[key] = StartCoroutine(CoolTime(key, 3.0f)); // 3.0f는 쿨타임 시간입니다.
-    }
-
-    IEnumerator CoolTime(KeyCode key, float cooldownTime)
-    {
-        Image skillImage = skillImages[key];
+        isCooling = true;
         float playTime = 0.0f;
-
-        while (playTime < cooldownTime)
+        while (playTime < t)
         {
             playTime += Time.deltaTime;
-            skillImage.fillAmount = playTime / cooldownTime;
+            myImage.fillAmount = playTime / t;
             yield return null;
         }
-
-        cooldownCoroutines.Remove(key);
+        isCooling = false;
     }
 }
