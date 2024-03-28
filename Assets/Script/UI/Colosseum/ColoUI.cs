@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ColoUI : MonoBehaviour
@@ -116,7 +117,8 @@ public class ColoUI : MonoBehaviour
         if(index == 2)//GameStart
         {
             DataManager.instance.StageNum = StageIndex;
-            //scene Change
+            SceneLoading.SceneNum(3);
+            SceneManager.LoadScene(1);
         }
     }
     IEnumerator OnStagePopup()
