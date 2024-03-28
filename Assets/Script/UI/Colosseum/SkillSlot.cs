@@ -34,7 +34,16 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         yield return new WaitForSeconds(0.5f);
         SkillPopup.SetActive(true);
+        Debug.Log(40000 + index + ((ColoUI.GetComponent<ColoUI>().StageIndex - 1) * 100));
         var stageTableData = MonsterSkillDataManager.GetInstance().dicStageTable[ColoUI.GetComponent<ColoUI>().StageIndex];
+        var SkillNameData = MonsterSkillDataManager.GetInstance().dicStringTable[40000 + index + ((ColoUI.GetComponent<ColoUI>().StageIndex - 1) * 100)];
+        var SkillDescData = MonsterSkillDataManager.GetInstance().dicStringTable[50000 + index + ((ColoUI.GetComponent<ColoUI>().StageIndex - 1) * 100)];
+        string SkillNameText = SkillNameData.String_Desc;
+        string SkillDescText = SkillDescData.String_Desc;
+        SkillPopup.transform.Find("SkillName").GetComponent<TMP_Text>().text =
+        SkillNameText;
+        SkillPopup.transform.Find("SkillDesc").GetComponent<TMP_Text>().text =
+        SkillDescText;
         SkillPopup.transform.Find("Image").GetComponent<Image>().sprite = transform.GetChild(0).GetComponent<Image>().sprite;
         
         

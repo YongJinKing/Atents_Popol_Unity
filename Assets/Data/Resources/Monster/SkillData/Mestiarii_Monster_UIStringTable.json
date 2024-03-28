@@ -1,0 +1,102 @@
+[
+   {
+      "index":10000,
+      "String_Type":0,
+      "String_Desc":"슬라임 Lv_1"
+   },
+   {
+      "index":10001,
+      "String_Type":0,
+      "String_Desc":"가시달린 달팽이 Lv_1"
+   },
+   {
+      "index":20000,
+      "String_Type":1,
+      "String_Desc":"콜로세움에서 훈련시킨 경기용 슬라임이다."
+   },
+   {
+      "index":20001,
+      "String_Type":1,
+      "String_Desc":"콜로세움에서 훈련시킨 경기용 달팽이이다."
+   },
+   {
+      "index":30000,
+      "String_Type":2,
+      "String_Desc":"가죽"
+   },
+   {
+      "index":30001,
+      "String_Type":2,
+      "String_Desc":"앞 : 가죽, 뒤 : 판금"
+   },
+   {
+      "index":40000,
+      "String_Type":3,
+      "String_Desc":"슬라임 박치기"
+   },
+   {
+      "index":40001,
+      "String_Type":3,
+      "String_Desc":"슬라임 돌진"
+   },
+   {
+      "index":40002,
+      "String_Type":3,
+      "String_Desc":"슬라임 점액 발사"
+   },
+   {
+      "index":40003,
+      "String_Type":3,
+      "String_Desc":"슬라임 다중 점액 발사"
+   },
+   {
+      "index":40100,
+      "String_Type":3,
+      "String_Desc":"달팽이 돌진"
+   },
+   {
+      "index":40101,
+      "String_Type":3,
+      "String_Desc":"달팽이 가시 발사"
+   },
+   {
+      "index":40102,
+      "String_Type":3,
+      "String_Desc":"달팽이 다중 가시 발사"
+   },
+   {
+      "index":50000,
+      "String_Type":4,
+      "String_Desc":"슬라임이 플레이어에게 박치기를 한다."
+   },
+   {
+      "index":50001,
+      "String_Type":4,
+      "String_Desc":"슬라임이 플레이어를 향해 돌진한다."
+   },
+   {
+      "index":50002,
+      "String_Type":4,
+      "String_Desc":"슬라임이 점액을 발사하여 플레이어의 이동을 방해한다."
+   },
+   {
+      "index":50003,
+      "String_Type":4,
+      "String_Desc":"슬라임이 많은 점액을 발사하여 플레이어의 이동을 방해한다."
+   },
+   {
+      "index":50100,
+      "String_Type":4,
+      "String_Desc":"달팽이가 플레이어를 향해 돌진한다."
+   },
+   {
+      "index":50101,
+      "String_Type":4,
+      "String_Desc":"달팽이가 가시를 발사하여 플레이어에게 데미지를 준다."
+   },
+   {
+      "index":50102,
+      "String_Type":4,
+      "String_Desc":"달팽이가 많은 가시을 발사하여 플레이어에게 큰 데미지를 준다."
+   }
+]

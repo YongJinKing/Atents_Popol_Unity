@@ -1,6 +1,6 @@
 
 #region UI
-public struct SkillStringTable
+public struct UIStringTable
 {
     public int index;
     public int String_Type;
@@ -14,6 +14,9 @@ public struct BossDisplayTable
 public struct BossStageTable
 {
     public int index;
+    public int Stage_BossMonster_Name;
+    public int Stage_BossMonster_Desc;
+    public int Stage_BossMonster_Type;
     public int Stage_BossMonster;
     public int Stage_ClearGold;
     public int Stage_ClearEXP;
@@ -33,6 +36,11 @@ public struct SkillImageResourceTable
     public int index;
     public string Skill_ImageResource;
 }
+
+
+
+
+
 #endregion
 
 #region SkillTable

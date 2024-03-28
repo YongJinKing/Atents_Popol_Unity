@@ -21,14 +21,13 @@ public class PlayerData
 
 public class DataManager : MonoBehaviour
 {
-    //public List<Item> HaveInventory;
+
     public int PlayerGold = 6000;
     public static DataManager instance;
     public PlayerData playerData = new PlayerData();
-
     public string path;
     public string fileName = "PlayerData";
-
+    public int StageNum;
     public int SlotNum;
     
     

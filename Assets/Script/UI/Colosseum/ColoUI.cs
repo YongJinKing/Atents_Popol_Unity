@@ -9,12 +9,14 @@ using UnityEngine.UI;
 public class ColoUI : MonoBehaviour
 {
     public GameObject BossAbility;
+    public GameObject StagePopup;
     public int skillLength = 4;
 
 
     public int StageIndex;
     List<bool> ClearCheck = new List<bool>();
     GameObject BossPrefab;
+    Coroutine CoroutineStagePopup;
     List<Sprite> BossSkillList;
     void Start()
     {
@@ -42,11 +44,24 @@ public class ColoUI : MonoBehaviour
             try
             {
                 var BossSkillData = MonsterSkillDataManager.GetInstance().dicResourceTable[30000 + i + ((index -1) * 100)];
-                var SkillStringTable = MonsterSkillDataManager.GetInstance().dicStringTable;
+                var BossNameData = MonsterSkillDataManager.GetInstance().dicStringTable[stageTableData.Stage_BossMonster_Name];
+                var BossDescData = MonsterSkillDataManager.GetInstance().dicStringTable[stageTableData.Stage_BossMonster_Desc];
+                var BossTypeData = MonsterSkillDataManager.GetInstance().dicStringTable[stageTableData.Stage_BossMonster_Type];
+                string BossNameText = BossNameData.String_Desc;
+                string BossDescText = BossDescData.String_Desc;
+                string BossTypeText = BossTypeData.String_Desc;
+                BossAbility.transform.Find("BossExplain").Find("Ability").Find("BossName").GetComponent<TMP_Text>().text
+                = "보스 이름 : " + BossNameText;
+                BossAbility.transform.Find("BossExplain").Find("Ability").Find("BossType").GetComponent<TMP_Text>().text
+                = "보스 타입 : " + BossTypeText;
+                BossAbility.transform.Find("BossExplain").Find("Ability").Find("BossExplain").GetComponent<TMP_Text>().text
+                = "설명 :\n" + BossDescText;
+                
+
                 if(BossSkillData.index > 0)
                 {
                     BossSkillList.Add(Resources.Load<Sprite>($"UI/Colosseum/MonsterSkill/Stage{index}/{BossSkillData.Skill_ImageResource}"));
-                    var go = BossAbility.transform.Find("BossExplain").GetChild(0).GetChild(0).GetChild(i);
+                    var go = BossAbility.transform.Find("BossExplain").Find("Ability").Find("BossSkill").Find("GridLine").GetChild(i);
                     go.GetChild(0).GetComponent<Image>().sprite
                     = BossSkillList[i];
                     go.gameObject.SetActive(true);
@@ -58,7 +73,7 @@ public class ColoUI : MonoBehaviour
             }
             catch
             {
-                var go = BossAbility.transform.Find("BossExplain").GetChild(0).GetChild(0).GetChild(i);
+                var go = BossAbility.transform.Find("BossExplain").Find("Ability").Find("BossSkill").Find("GridLine").GetChild(i);
                 go.gameObject.SetActive(false);
                 /* Color color = go.GetChild(0).GetComponent<Image>().color;
                 color.a = 0.0f;
@@ -92,12 +107,22 @@ public class ColoUI : MonoBehaviour
             }
             else
             {
+                StagePopup.gameObject.SetActive(true);
+                BossAbility.transform.Find("BossMonster").gameObject.SetActive(false);
+                CoroutineStagePopup = StartCoroutine(OnStagePopup());
                 //현재 보스를 클리어 하세요!
             }
         }
         if(index == 2)//GameStart
         {
-            
+            DataManager.instance.StageNum = StageIndex;
+            //scene Change
         }
+    }
+    IEnumerator OnStagePopup()
+    {
+        yield return new WaitForSeconds(0.5f);
+        StagePopup.gameObject.SetActive(false);
+        BossAbility.transform.Find("BossMonster").gameObject.SetActive(true);
     }
 }
