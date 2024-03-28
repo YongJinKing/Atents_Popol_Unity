@@ -20,16 +20,9 @@ public class PlayerEffect : MonoBehaviour, I_Effect
         effect.transform.rotation = Quaternion.LookRotation(dir);
     }
 
-    // public void PlayerMoveEffect()
-    // {
-    //     particle = GetComponent<ParticleSystem>();
-    //     particle.Play();
-    //     particle.Stop();
-    // }
-
     public void PlayAttackEffect(string skill, float destroy)
     {
-        effect = Instantiate<GameObject>(Resources.Load("Skill/Player/" + skill) as GameObject);
+        effect = Instantiate<GameObject>(Resources.Load("Player/SkillEffect/" + skill) as GameObject);
         Attackpos(effect);
     }
 }

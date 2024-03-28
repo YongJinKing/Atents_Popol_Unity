@@ -491,9 +491,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3581572405989491082, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
+      propertyPath: PlayerCam
+      value: 
+      objectReference: {fileID: 203216173}
+    - target: {fileID: 3581572405989491082, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
       propertyPath: playerPos
       value: 
       objectReference: {fileID: 203216173}
+    - target: {fileID: 3581572405989491082, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
+      propertyPath: MonsterCam
+      value: 
+      objectReference: {fileID: 1965671573}
     - target: {fileID: 7356268427517669075, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
       propertyPath: slowTime
       value: 0.5
@@ -721,6 +729,11 @@ GameObject:
 --- !u!1 &1965671568 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 26653372638042489, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+  m_PrefabInstance: {fileID: 577448339}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1965671573 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3644806297972782553, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
   m_PrefabInstance: {fileID: 577448339}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2078882247 stripped

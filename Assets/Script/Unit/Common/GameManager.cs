@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
         var plLv = PlayerDetaManager.instance.playerlv;
         var playerstat = PlayerDetaManager.instance.dicPlayerData[10000];
-        var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI °¡Á®´Ù »ç¿ë °¡´É
+        var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if(plLv != null)
         {
             playerstat.Character_CurrentExp = plLv.Exp;
@@ -72,11 +72,11 @@ public class GameManager : MonoBehaviour
     public void OnGameEnd(int UnitType)
     {
         var playerstat = PlayerDetaManager.instance.dicPlayerData[10000];
-        if (UnitType == 0)
+        if (UnitType == 0) // í”Œë ˆì´ì–´ê°€ ì£½ì—ˆì„ ë•Œ
         {
 
         }
-        else
+        else // ëª¬ìŠ¤í„°ê°€ ì£½ì—ˆì„ ë•Œ
         {
             pl.Exp += Ms.Exp;
             playerstat.Character_CurrentExp += Ms.Exp;

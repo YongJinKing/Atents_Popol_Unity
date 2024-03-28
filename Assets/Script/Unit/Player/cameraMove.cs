@@ -92,7 +92,7 @@ public class cameraMove : MonoBehaviour
 
         if (isCine)
         {
-            StartCoroutine(CineCam());
+            //StartCoroutine(CineCam());
         }
     }
 
@@ -117,7 +117,7 @@ public class cameraMove : MonoBehaviour
 
     public string CinecamState = "CamMove";
     Vector3 originPos;
-    IEnumerator CineCam()
+    /*IEnumerator CineCam()
     {
         if (CinecamState == "CamMove")
         {
@@ -165,5 +165,5 @@ public class cameraMove : MonoBehaviour
             }
         }
         yield return null;
-    }
+    }*/
 }
