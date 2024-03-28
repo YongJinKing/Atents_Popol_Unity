@@ -323,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8747748374390514763, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: battleStat.HP
-      value: 50
+      value: 500000
       objectReference: {fileID: 0}
     - target: {fileID: 8747748374390514763, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: battleStat.Exp

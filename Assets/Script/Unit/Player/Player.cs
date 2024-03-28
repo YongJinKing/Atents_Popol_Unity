@@ -204,6 +204,15 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
 
             rotAct?.Invoke(dir, rotSpeed);
         }
+
+        // if (Input.GetKeyDown(KeyCode.R) && curBattleStat.EnergyGage >= 60)
+        // {
+        //     curBattleStat.EnergyGage -= 60;
+        //     GetRaycastHit();
+        //     stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+        //     ChangeState(state.Skill);
+        //     myAnim.SetTrigger("t_RSkill");
+        // }
     }
 
     public void OnEnd(int type)

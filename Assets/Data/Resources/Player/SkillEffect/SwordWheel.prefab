@@ -19508,8 +19508,8 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 0}
     uiSkillName: 
     uiSkillDesc: 
-  Damage: 0
-  aType: 0
+  Damage: 200
+  aType: 1
 --- !u!114 &3543373995549375955
 MonoBehaviour:
   m_ObjectHideFlags: 0

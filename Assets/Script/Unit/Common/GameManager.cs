@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
 
         pl.battlestat = bs;
     } 
+    
     // Update is called once per frame
     void Update()
     {
