@@ -14510,7 +14510,6 @@ GameObject:
   - component: {fileID: 1926051839250419970}
   - component: {fileID: 7529887977247351273}
   - component: {fileID: -3264553611434796204}
-  - component: {fileID: 4998783679422508566}
   m_Layer: 0
   m_Name: SlimeBall
   m_TagString: Untagged
@@ -14569,16 +14568,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4fb827a225afca4790829127c83e6e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4998783679422508566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5557313780678953903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b8ff98fe2ab59142aa0f353d1b94df3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10

@@ -36,12 +36,30 @@ public struct SkillImageResourceTable
     public int index;
     public string Skill_ImageResource;
 }
-
-
-
-
-
 #endregion
+
+#region Monster
+public struct MonsterDataStruct
+{
+    public int Index;
+    public int Character_Type;
+    public int Character_Name;
+    public int Character_Hp;
+    public float Character_MoveSpeed;
+    public int Character_AttackPower;
+    public int Character_SkillVisibleRange;
+    public int Skill_Index1;
+    public int Skill_Index2;
+    public int Skill_Index3;
+    public int Skill_Index4;
+    public int Character_DetailArmorType1;
+    public int Character_DetailArmorType2;
+    public int Character_DetailArmorType3;
+    public int Character_DetailArmorType4;
+    public int Character_Prefab;
+}
+#endregion
+
 
 #region SkillTable
 public struct SkillDataTable
@@ -72,7 +90,7 @@ public struct SkillMeleeTypeDataTable
 {
     public int Index;
     public int Skill_NumOfHitBox;
-    public int Skill_HitBox;
+    public int Skill_ObjectEffect;
     public int Skill_TargetMask;
     public float Skill_hitDuration;
     public int Skill_AffectOption1;
@@ -80,13 +98,14 @@ public struct SkillMeleeTypeDataTable
     public int Skill_AffectOption3;
     public int Skill_AffectOption4;
     public int Skill_AffectOption5;
+    public int Skill_HitEffect;
 }
 
 public struct SkillProjectileDetailDataTable
 {
     public int Index;
     public int Skill_NumOfHitBox;
-    public int Skill_HitBox;
+    public int Skill_ObjectEffect;
     public int Skill_Unpenetrable;
     public int Skill_TargetMask;
     public float Skill_hitDuration;
@@ -102,6 +121,8 @@ public struct SkillProjectileDetailDataTable
     public int Skill_HitBoxStartPos2;
     public int Skill_HitBoxStartPos3;
     public int Skill_HitBoxStartPos4;
+    public int Skill_HitEffect;
+    public int Skill_DestroyEffect;
 }
 
 #endregion

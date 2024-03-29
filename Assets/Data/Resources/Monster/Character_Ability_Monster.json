@@ -15,7 +15,7 @@
       "Character_DetailArmorType2":2,
       "Character_DetailArmorType3":0,
       "Character_DetailArmorType4":0,
-      "Character_Prefab":30000
+      "Character_Prefab":10000
    },
    {
       "Index":30001,
@@ -33,6 +33,6 @@
       "Character_DetailArmorType2":0,
       "Character_DetailArmorType3":0,
       "Character_DetailArmorType4":0,
-      "Character_Prefab":30001
+      "Character_Prefab":10001
    }
 ]

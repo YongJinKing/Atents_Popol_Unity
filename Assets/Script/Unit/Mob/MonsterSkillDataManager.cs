@@ -7,10 +7,13 @@ using System.Linq;
 public class MonsterSkillDataManager
 {
     private static MonsterSkillDataManager instance;
+    //UI
     public Dictionary<int, UIStringTable> dicStringTable;
     public Dictionary<int, PrefabTable> dicDisplayTable;
     public Dictionary<int, BossStageTable> dicStageTable;
     public Dictionary<int, SkillImageResourceTable> dicResourceTable;
+
+    //
 
     public static MonsterSkillDataManager GetInstance()
     {

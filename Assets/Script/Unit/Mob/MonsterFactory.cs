@@ -235,7 +235,7 @@ public class MonsterFactory
                     obj.name = "Melee";
                     MeleeSkillType melee = obj.AddComponent<MeleeSkillType>();
                     melee.maxIndex = data.Skill_NumOfHitBox;
-                    melee.areaOfEffectPrefeb = FindPrefab(data.Skill_HitBox);
+                    melee.areaOfEffectPrefeb = FindPrefab(data.Skill_ObjectEffect);
                     melee.targetMask = 1 << data.Skill_TargetMask;
                     melee.attackStartPos = new Transform[data.Skill_NumOfHitBox];
                     for(int i = 0; i < data.Skill_NumOfHitBox; i++)
@@ -275,7 +275,7 @@ public class MonsterFactory
                     obj.name = "Projectile";
                     ProjectileSkillType projectile = obj.AddComponent<ProjectileSkillType>();
                     projectile.maxIndex = data.Skill_NumOfHitBox;
-                    projectile.areaOfEffectPrefeb = FindPrefab(data.Skill_HitBox);
+                    projectile.areaOfEffectPrefeb = FindPrefab(data.Skill_ObjectEffect);
                     projectile.unPenetrableMask = 1 << data.Skill_Unpenetrable;
                     projectile.targetMask = 1 << data.Skill_TargetMask;
                     projectile.moveSpeed = data.Skill_LongRangeAttackSpeed;
