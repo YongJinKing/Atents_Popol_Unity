@@ -6,10 +6,10 @@ public struct UIStringTable
     public int String_Type;
     public string String_Desc;
 }
-public struct BossDisplayTable
+public struct PrefabTable
 {
     public int index;
-    public string Boss_Display_Prefab_Name;
+    public string Prefab_Name;
 }
 public struct BossStageTable
 {
@@ -31,10 +31,10 @@ public struct BossStageTable
     public int Stage_ClearReward4;
     public int Stage_ClearReward5;
 }
-public struct PrefabResourceTable
+public struct SkillImageResourceTable
 {
     public int index;
-    public string PrefabResource;
+    public string Skill_ImageResource;
 }
 
 
