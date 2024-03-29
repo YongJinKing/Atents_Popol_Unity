@@ -36,7 +36,7 @@ public class ColoUI : MonoBehaviour
         
         BossSkillList = new List<Sprite>();
         var stageTableData = MonsterSkillDataManager.GetInstance().dicStageTable[index];
-        var stageBossPrefabData = MonsterSkillDataManager.GetInstance().dicDisplayTable[stageTableData.Stage_BossMonster];
+        var stageBossPrefabData = MonsterSkillDataManager.GetInstance().dicPrefabTable[stageTableData.Stage_BossMonster];
         this.BossPrefab = Resources.Load<GameObject>($"UI/Colosseum/Display/{stageBossPrefabData.Prefab_Name}");
         Instantiate(BossPrefab,BossAbility.transform.Find("BossMonster"));
         for(int i = 0; i < skillLength; i++)
