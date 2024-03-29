@@ -37,7 +37,7 @@ public class ColoUI : MonoBehaviour
         BossSkillList = new List<Sprite>();
         var stageTableData = MonsterSkillDataManager.GetInstance().dicStageTable[index];
         var stageBossPrefabData = MonsterSkillDataManager.GetInstance().dicDisplayTable[stageTableData.Stage_BossMonster];
-        this.BossPrefab = Resources.Load<GameObject>($"UI/Colosseum/Display/{stageBossPrefabData.Boss_Display_Prefab_Name}");
+        this.BossPrefab = Resources.Load<GameObject>($"UI/Colosseum/Display/{stageBossPrefabData.Prefab_Name}");
         Instantiate(BossPrefab,BossAbility.transform.Find("BossMonster"));
         for(int i = 0; i < skillLength; i++)
         {   
@@ -60,7 +60,7 @@ public class ColoUI : MonoBehaviour
 
                 if(BossSkillData.index > 0)
                 {
-                    BossSkillList.Add(Resources.Load<Sprite>($"UI/Colosseum/MonsterSkill/Stage{index}/{BossSkillData.PrefabResource}"));
+                    BossSkillList.Add(Resources.Load<Sprite>($"UI/Colosseum/MonsterSkill/Stage{index}/{BossSkillData.Skill_ImageResource}"));
                     var go = BossAbility.transform.Find("BossExplain").Find("Ability").Find("BossSkill").Find("GridLine").GetChild(i);
                     go.GetChild(0).GetComponent<Image>().sprite
                     = BossSkillList[i];
