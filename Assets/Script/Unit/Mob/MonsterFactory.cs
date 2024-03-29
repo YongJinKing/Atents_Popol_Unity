@@ -7,11 +7,11 @@ public class MonsterFactory
     public GameObject CreateMonster(int index)
     {
         GameObject obj = new GameObject();
-        MonsterDataStruct data = default;
+        MonsterDataTable data = default;
 
         //load from file
         var json = Resources.Load<TextAsset>("Monster/Character_Ability_Monster").text;
-        var arrDatas = JsonConvert.DeserializeObject<MonsterDataStruct[]>(json);
+        var arrDatas = JsonConvert.DeserializeObject<MonsterDataTable[]>(json);
         foreach (var Data in arrDatas)
         {
             if (Data.Index == index)

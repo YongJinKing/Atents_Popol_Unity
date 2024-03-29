@@ -39,7 +39,7 @@ public struct SkillImageResourceTable
 #endregion
 
 #region Monster
-public struct MonsterDataStruct
+public struct MonsterDataTable
 {
     public int Index;
     public int Character_Type;
