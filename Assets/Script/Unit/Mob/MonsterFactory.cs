@@ -361,12 +361,22 @@ public class MonsterFactory
     {
         switch (index / 10000)
         {
+            //Monster/MonsterPrefabs/
             case 1:
-                return Resources.Load("Monster/SkillEffect/HitBox")as GameObject;
+                
+            //Monster/SkillEffect/
             case 2:
+                switch (index)
+                {
+                    case 20000:
+                        return Resources.Load("Monster/SkillEffect/Effect_HitBox") as GameObject;
+                    case 20001:
+                        return Resources.Load("Monster/SkillEffect/Effect_SlimeBall") as GameObject;
+                }
                 break;
             default:
-                return Resources.Load("Monster/SkillEffect/SlimeBall") as GameObject;
+                return null;
+                
         }
         return null;
     }

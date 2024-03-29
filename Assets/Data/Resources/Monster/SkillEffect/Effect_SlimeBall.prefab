@@ -14511,7 +14511,7 @@ GameObject:
   - component: {fileID: 7529887977247351273}
   - component: {fileID: -3264553611434796204}
   m_Layer: 0
-  m_Name: SlimeBall
+  m_Name: Effect_SlimeBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
