@@ -29,7 +29,6 @@ public class ColoUI : MonoBehaviour
             ClearCheck.Add(false);
         }
         ClearCheck[0] = true;
-        ClearCheck[1] = true;
     }
 
     public void DisplayStageBoss(int index)
@@ -61,7 +60,7 @@ public class ColoUI : MonoBehaviour
 
                 if(BossSkillData.index > 0)
                 {
-                    BossSkillList.Add(Resources.Load<Sprite>($"UI/Colosseum/MonsterSkill/Stage{index}/{BossSkillData.Skill_ImageResource}"));
+                    BossSkillList.Add(Resources.Load<Sprite>($"UI/Colosseum/MonsterSkill/Stage{index}/{BossSkillData.PrefabResource}"));
                     var go = BossAbility.transform.Find("BossExplain").Find("Ability").Find("BossSkill").Find("GridLine").GetChild(i);
                     go.GetChild(0).GetComponent<Image>().sprite
                     = BossSkillList[i];
@@ -111,7 +110,7 @@ public class ColoUI : MonoBehaviour
                 StagePopup.gameObject.SetActive(true);
                 BossAbility.transform.Find("BossMonster").gameObject.SetActive(false);
                 CoroutineStagePopup = StartCoroutine(OnStagePopup());
-                //현재 보스를 클리어 하세요!
+                //You should clear this boss
             }
         }
         if(index == 2)//GameStart

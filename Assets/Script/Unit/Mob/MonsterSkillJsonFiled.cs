@@ -31,10 +31,10 @@ public struct BossStageTable
     public int Stage_ClearReward4;
     public int Stage_ClearReward5;
 }
-public struct SkillImageResourceTable
+public struct PrefabResourceTable
 {
     public int index;
-    public string Skill_ImageResource;
+    public string PrefabResource;
 }
 
 

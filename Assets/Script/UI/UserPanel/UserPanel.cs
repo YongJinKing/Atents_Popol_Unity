@@ -9,6 +9,7 @@ public class UserPanel : MonoBehaviour
 {
     public GameObject Canvas;
     public GameObject MainUi;
+    public GameObject BossMonsterObj;
     public UnityEvent<int> BtnAct;
     public UnityEvent<int> CleanBtnAct;
     public UnityEvent<int> FreshBtnAct;
@@ -31,33 +32,38 @@ public class UserPanel : MonoBehaviour
             }
             else
             {
-                ShowPopup(index, true);
+                ShowPopup(index);
             }
         }
         else 
         {
-            ShowPopup(index, true);
+            ShowPopup(index);
             CleanBtnAct?.Invoke(-1);
             FreshBtnAct?.Invoke(0);
         }
     }
-    void ShowPopup(int index, bool Onpopup)
+    void ShowPopup(int index)
     {
         for(int i = 0; i < UserPanelPopup.transform.childCount; i++)
         {
             UserPanelPopup.transform.GetChild(i).gameObject.SetActive(false);
         }
-        UserPanelPopup.transform.gameObject.SetActive(Onpopup);
-        UserPanelPopup.transform.GetChild(index).gameObject.SetActive(Onpopup);
+        UserPanelPopup.transform.gameObject.SetActive(true);
+        BossMonsterObj.transform.gameObject.SetActive(false);
+        UserPanelPopup.transform.GetChild(index).gameObject.SetActive(true);
     }
-    public void ClosePopup() =>
+    public void ClosePopup()
+    {
         UserPanelPopup.transform.gameObject.SetActive(false);
+        BossMonsterObj.transform.gameObject.SetActive(true);
+    }
+        
 
     public void GoToPopup(int index)
     {
         if(index == 0)//Yes
         {
-            SceneLoading.SceneNum(0);   //¸ÞÀÎ¾Ànum
+            SceneLoading.SceneNum(0);   //ï¿½ï¿½ï¿½Î¾ï¿½num
             DataManager.instance.DataClear();
             SceneManager.LoadScene(1);
         }

@@ -45,7 +45,5 @@ public class SkillSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         SkillPopup.transform.Find("SkillDesc").GetComponent<TMP_Text>().text =
         SkillDescText;
         SkillPopup.transform.Find("Image").GetComponent<Image>().sprite = transform.GetChild(0).GetComponent<Image>().sprite;
-        
-        
     }
 }
