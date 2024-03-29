@@ -8,20 +8,22 @@ using System;
 [Serializable]
 public class PlayerData
 {
-    public int Level = 1;
-    public int LvPoint = 0;
+    public int index;
+    public int Character_Hp;
+    public int Character_AttackPower;
+    public int Character_CurrentExp;
+    public int Character_CurrentLevel;
+
     public string NowWeapon;
     public string NowArmor;
     public string[] Skill;
     public bool[] clearStage;
     public int PlayerGold;
-    
 }
 
 
 public class DataManager : MonoBehaviour
 {
-
     public int PlayerGold = 6000;
     public static DataManager instance;
     public PlayerData playerData = new PlayerData();
@@ -45,6 +47,7 @@ public class DataManager : MonoBehaviour
         path = Application.dataPath + "/Data/PlayerSaveFile/";      // json파일 저장 경로
     }
 
+    
     public void SaveData()
     {
         string data = JsonUtility.ToJson(playerData, true);
@@ -66,6 +69,7 @@ public class DataManager : MonoBehaviour
     {
         File.Delete(path + fileName + slotnum.ToString());
     }
+
 }
 
 

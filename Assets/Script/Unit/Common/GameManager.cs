@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         PlayerDetaManager.GetInstance().LoadPlayerData();
-        PlayerDetaManager.GetInstance().LoadPlayerLv();
 
         pl = Player.GetComponent<Player>();
         Ms = Monster.GetComponent<Monster>();
@@ -30,23 +29,18 @@ public class GameManager : MonoBehaviour
 
     void LoadPlayerStat()
     {
-        int NextLevel;
         BattleStat bs = default;
 
-        var plLv = PlayerDetaManager.instance.playerlv;
+        var pldata = DataManager.instance.playerData;
         var playerstat = PlayerDetaManager.instance.dicPlayerData[10000];
         var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ������ ��� ����
-        if(plLv != null)
-        {
-            playerstat.Character_CurrentExp = plLv.Exp;
-            playerstat.Character_CurrentLevel = plLv.Level;
-        }
+        
 
 
         bs.ATK = playerstat.Character_AttackPower;
         bs.HP = playerstat.Character_Hp;
-        bs.Exp = playerstat.Character_CurrentExp;
-        bs.Level = playerstat.Character_CurrentLevel;
+        bs.Exp = pldata.Character_CurrentExp;
+        bs.Level = pldata.Character_CurrentLevel;
         bs.EnergyGage = playerstat.Character_EnergyGage;
         bs.Speed = playerstat.Character_MoveSpeed;
         bs.AttackDelay = playerstat.Character_AttackSpeed;
@@ -54,12 +48,6 @@ public class GameManager : MonoBehaviour
         var plLvstat = PlayerDetaManager.instance.dicPlayerLevelData[bs.Level];
         bs.ATK += plLvstat.Total_AttackPower;
         bs.HP += plLvstat.Total_Hp;
-        NextLevel = ++bs.Level;
-        if(NextLevel <= 30)
-        {
-            bs.MaxExp = PlayerDetaManager.instance.dicPlayerLevelData[NextLevel].Total_Exp;
-        }
-        
 
         pl.battlestat = bs;
     } 
@@ -88,8 +76,8 @@ public class GameManager : MonoBehaviour
                 {
                     playerstat.Character_CurrentLevel = 30;
                 }
-                SavePlayerProgress();
             }
+            SavePlayerProgress();
         }
         deadAct.Invoke(UnitType);
     }

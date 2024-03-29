@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/YongJin/Main.unity
     guid: 3a7942058d64f9541a7a61cecdcba28a
+  - enabled: 1
+    path: Assets/Scenes/Total_Game.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
