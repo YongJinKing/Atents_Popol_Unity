@@ -1,8 +1,6 @@
 using UnityEngine;
 using Newtonsoft.Json;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 
 public class MonsterFactory
 {
@@ -30,7 +28,7 @@ public class MonsterFactory
         //}
 
         
-
+        
         obj.transform.localScale = new Vector3(3, 3, 3);
         obj.name = "Slime2";
         BoxCollider col = obj.AddComponent<BoxCollider>();
@@ -56,7 +54,7 @@ public class MonsterFactory
         objMon.stopEvent.AddListener(objMove.StopMove);
 
         //GameObject prefab = FindPrefab(data.Character_Prefab);
-        GameObject prefab = GameObject.Instantiate(Resources.Load<GameObject>("Monster/MonsterPrefabs/SlimePrefab"));
+        GameObject prefab = GameObject.Instantiate(Resources.Load<GameObject>("Monster/MonsterPrefabs/Prefab_Stage1_Slime"));
         prefab.transform.SetParent(obj.transform, false);
         PartManager part = prefab.GetComponent<PartManager>();
         objMon.attackStartPos = new Transform[part.attackStartPos.Length];
@@ -364,11 +362,11 @@ public class MonsterFactory
         switch (index / 10000)
         {
             case 1:
-                return Resources.Load("Skill/Monster/HitBox")as GameObject;
+                return Resources.Load("Monster/SkillEffect/HitBox")as GameObject;
             case 2:
                 break;
             default:
-                return Resources.Load("Skill/Monster/SlimeBall")as GameObject;
+                return Resources.Load("Monster/SkillEffect/SlimeBall") as GameObject;
         }
         return null;
     }
