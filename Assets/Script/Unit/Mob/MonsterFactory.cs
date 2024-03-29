@@ -4,12 +4,34 @@ using System.Collections.Generic;
 
 public class MonsterFactory
 {
+    private MonsterSkillDataManager monsterDataManager = MonsterSkillDataManager.GetInstance();
+
+    public MonsterFactory() 
+    {
+        monsterDataManager.LoadMonsterMakingDatas();
+    }
+
+    ~MonsterFactory()
+    {
+        monsterDataManager = null;
+    }
+
     public GameObject CreateMonster(int index)
     {
         GameObject obj = new GameObject();
         MonsterDataTable data = default;
 
         //load from file
+        if (monsterDataManager.dicMonsterDataTable.ContainsKey(index))
+        {
+            data = monsterDataManager.dicMonsterDataTable[index];
+        }
+        else
+        {
+            //nullCheck
+        }
+
+        /*
         var json = Resources.Load<TextAsset>("Monster/Character_Ability_Monster").text;
         var arrDatas = JsonConvert.DeserializeObject<MonsterDataTable[]>(json);
         foreach (var Data in arrDatas)
@@ -20,13 +42,7 @@ public class MonsterFactory
                 break;
             }
         }
-
-        //����ó�� �ڸ�
-        //if(data == default)
-        //{
-        //    return;
-        //}
-
+        */
         
         
         obj.transform.localScale = new Vector3(3, 3, 3);
@@ -135,6 +151,15 @@ public class MonsterFactory
         SkillDataTable data = default;
 
         //load from file
+        if (monsterDataManager.dicSkillDataTable.ContainsKey(index))
+        {
+            data = monsterDataManager.dicSkillDataTable[index];
+        }
+        else
+        {
+            //nullCheck
+        }
+        /*
         var json = Resources.Load<TextAsset>("Monster/SkillData/Mestiarii_Monster_SkillTable").text;
         var arrMonsterSkillDatas = JsonConvert.DeserializeObject<SkillDataTable[]>(json);
         foreach(var skillData in arrMonsterSkillDatas)
@@ -146,12 +171,7 @@ public class MonsterFactory
                 break;
             }
         }
-
-        //����ó�� �ڸ�
-        //if(data == default)
-        //{
-        //    return;
-        //}
+        */
 
         GameObject obj = new GameObject();
 
@@ -194,6 +214,15 @@ public class MonsterFactory
                 {
                     SkillMovementTypeDataTable data = default;
                     //load from file
+                    if (monsterDataManager.dicSkillMovementTypeDataTable.ContainsKey(index))
+                    {
+                        data = monsterDataManager.dicSkillMovementTypeDataTable[index];
+                    }
+                    else
+                    {
+                        //nullCheck
+                    }
+                    /*
                     var json = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Movement").text;
                     var arrDatas = JsonConvert.DeserializeObject<SkillMovementTypeDataTable[]>(json);
                     foreach (var Data in arrDatas)
@@ -204,6 +233,8 @@ public class MonsterFactory
                             break;
                         }
                     }
+                    */
+
                     obj.name = "Movement";
                     MovementSkillType move = obj.AddComponent<MovementSkillType>();
                     move.maxDist = data.Skill_ShortRangeAttackDist;
@@ -222,6 +253,15 @@ public class MonsterFactory
                 {
                     SkillMeleeTypeDataTable data = default;
                     //load from file
+                    if (monsterDataManager.dicSkillMeleeTypeDataTable.ContainsKey(index))
+                    {
+                        data = monsterDataManager.dicSkillMeleeTypeDataTable[index];
+                    }
+                    else
+                    {
+                        //nullCheck
+                    }
+                    /*
                     var json = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Melee").text;
                     var arrDatas = JsonConvert.DeserializeObject<SkillMeleeTypeDataTable[]>(json);
                     foreach (var Data in arrDatas)
@@ -232,6 +272,7 @@ public class MonsterFactory
                             break;
                         }
                     }
+                    */
                     obj.name = "Melee";
                     MeleeSkillType melee = obj.AddComponent<MeleeSkillType>();
                     melee.maxIndex = data.Skill_NumOfHitBox;
@@ -261,6 +302,15 @@ public class MonsterFactory
                 {
                     SkillProjectileDetailDataTable data = default;
                     //load from file
+                    if (monsterDataManager.dicSkillProjectileDetailDataTable.ContainsKey(index))
+                    {
+                        data = monsterDataManager.dicSkillProjectileDetailDataTable[index];
+                    }
+                    else
+                    {
+                        //nullCheck
+                    }
+                    /*
                     var json = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Projectile").text;
                     var arrDatas = JsonConvert.DeserializeObject<SkillProjectileDetailDataTable[]>(json);
                     foreach (var Data in arrDatas)
@@ -271,7 +321,7 @@ public class MonsterFactory
                             break;
                         }
                     }
-
+                    */
                     obj.name = "Projectile";
                     ProjectileSkillType projectile = obj.AddComponent<ProjectileSkillType>();
                     projectile.maxIndex = data.Skill_NumOfHitBox;
@@ -331,6 +381,16 @@ public class MonsterFactory
         {
             case 1:
                 SkillDamageAffectDataTable data = default;
+                if (monsterDataManager.dicSkillDamageAffectDataTable.ContainsKey(index))
+                {
+                    data = monsterDataManager.dicSkillDamageAffectDataTable[index];
+                }
+                else
+                {
+                    //nullCheck
+                }
+
+                /*
                 var json = Resources.Load<TextAsset>("Monster/SkillData/SkillAffect/Monster_SkillAffect_DamageAffect").text;
                 var arrDatas = JsonConvert.DeserializeObject<SkillDamageAffectDataTable[]>(json);
                 foreach (var Data in arrDatas)
@@ -341,7 +401,7 @@ public class MonsterFactory
                         break;
                     }
                 }
-
+                */
                 obj.name = "Damage";
                 DamageSkillEffect damage = obj.AddComponent<DamageSkillEffect>();
                 damage.power = data.Skill_Power;
