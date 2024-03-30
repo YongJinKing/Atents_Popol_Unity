@@ -42,12 +42,16 @@ public class MonsterSkillDataManager
     }
     public void LoadSkillUI()
     {
-        var Mestiarii_PrefabTable = Resources.Load<TextAsset>("Monster/SkillData/SkillUI/Mestiarii_BossMonster_Display_Prefab").text;
+        var Mestiarii_PrefabTable = Resources.Load<TextAsset>("Monster/Mestiarii_PrefabTable").text;
         var Mestiarii_BossStage_Table = Resources.Load<TextAsset>("Monster/SkillData/SkillUI/Mestiarii_BossStage_Table").text;
         var Mestiarii_Skill_ImgaeResource_Table = Resources.Load<TextAsset>("Monster/SkillData/SkillUI/Mestiarii_Skill_ImageResource_Table").text;
         var Mestiarii_Monster_SkillStringTable = Resources.Load<TextAsset>("Monster/SkillData/Mestiarii_Monster_UIStringTable").text;
 
         var arrDisplayDatas = JsonConvert.DeserializeObject<PrefabTable[]>(Mestiarii_PrefabTable);
+        foreach(var data in arrDisplayDatas)
+        {
+            Debug.LogFormat($"{data.index}, {data.Prefab_Name}");
+        }
         var arrStageDatas = JsonConvert.DeserializeObject<BossStageTable[]>(Mestiarii_BossStage_Table);
         var arrResourceDatas = JsonConvert.DeserializeObject<SkillImageResourceTable[]>(Mestiarii_Skill_ImgaeResource_Table);
         var arrStringDatas = JsonConvert.DeserializeObject<UIStringTable[]>(Mestiarii_Monster_SkillStringTable);

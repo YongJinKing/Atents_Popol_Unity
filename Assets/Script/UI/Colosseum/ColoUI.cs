@@ -37,8 +37,13 @@ public class ColoUI : MonoBehaviour
         BossSkillList = new List<Sprite>();
         var stageTableData = MonsterSkillDataManager.GetInstance().dicStageTable[index];
         var stageBossPrefabData = MonsterSkillDataManager.GetInstance().dicPrefabTable[stageTableData.Stage_BossMonster];
-        this.BossPrefab = Resources.Load<GameObject>($"UI/Colosseum/Display/{stageBossPrefabData.Prefab_Name}");
-        Instantiate(BossPrefab,BossAbility.transform.Find("BossMonster"));
+        
+        this.BossPrefab = Resources.Load<GameObject>($"Monster/MonsterPrefabs/{stageBossPrefabData.Prefab_Name}");
+        GameObject obj = Instantiate(BossPrefab,BossAbility.transform.Find("BossMonster"));
+        obj.transform.localScale = new Vector3(400,400,400);
+        obj.layer = (int)LayerMask.NameToLayer("UI");
+        ChangeLayerRecursively(obj, obj.layer);
+        
         for(int i = 0; i < skillLength; i++)
         {   
             try
@@ -81,6 +86,15 @@ public class ColoUI : MonoBehaviour
             }
         }
         BossAbility.transform.Find("BossStage").GetComponent<TMP_Text>().text = $"Stage\n{index}";   
+    }
+
+    private void ChangeLayerRecursively(GameObject obj, int layer)
+    {
+        obj.layer = layer;
+        foreach(Transform child in obj.transform)
+        {
+            ChangeLayerRecursively(child.gameObject, layer);
+        }
     }
 
     public void PressedBtn(int index)

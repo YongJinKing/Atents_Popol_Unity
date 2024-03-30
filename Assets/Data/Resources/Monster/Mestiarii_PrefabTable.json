@@ -1,0 +1,10 @@
+[
+  {
+    "index": 10000,
+    "Prefab_Name": "Prefab_Stage1_Slime"
+  },
+  {
+    "index": 10001,
+    "Prefab_Name": "Prefab_Stage2_Turtle"
+  }
+]

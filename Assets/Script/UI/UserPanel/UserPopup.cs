@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UserPopup : MonoBehaviour
 {
-    public bool LRcheck;
-    Vector2 LeftDefalutVector = new Vector2(230, -185);
+    bool LRcheck;
+    Vector2 LeftDefalutVector = new Vector2(190 , -240);
     public void getLRcheck(bool TorF)
     {
         LRcheck = TorF;
