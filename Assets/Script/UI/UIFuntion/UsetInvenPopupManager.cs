@@ -16,7 +16,7 @@ public class UsetInvenPopupManager : MonoBehaviour, IPointerEnterHandler, IPoint
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(transform.GetComponent<RectTransform>().anchoredPosition.x > 300)
+        if(transform.GetComponent<RectTransform>().anchoredPosition.x >= 300)
             LRPosition?.Invoke(true);
         else
             LRPosition?.Invoke(false);
