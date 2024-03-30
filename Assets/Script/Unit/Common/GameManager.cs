@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     void LoadPlayerStat()
     {
+        int NextLevel;
         BattleStat bs = default;
 
         var pldata = DataManager.instance.playerData;
@@ -45,9 +46,14 @@ public class GameManager : MonoBehaviour
         bs.Speed = playerstat.Character_MoveSpeed;
         bs.AttackDelay = playerstat.Character_AttackSpeed;
 
+        NextLevel = bs.Level + 1;
+
         var plLvstat = PlayerDetaManager.instance.dicPlayerLevelData[bs.Level];
         bs.ATK += plLvstat.Total_AttackPower;
         bs.HP += plLvstat.Total_Hp;
+
+        var plLvstat1 = PlayerDetaManager.instance.dicPlayerLevelData[NextLevel];
+        bs.MaxExp = plLvstat1.Total_Exp;
 
         pl.battlestat = bs;
     } 
@@ -55,12 +61,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.F4))
+        {
+            OnGameEnd(1);
+        }
     }
 
     public void OnGameEnd(int UnitType)
     {
-        var playerstat = PlayerDetaManager.instance.dicPlayerData[10000];
+        var playerdata = DataManager.instance.playerData;
         if (UnitType == 0) // 플레이어가 죽었을 때
         {
 
@@ -68,31 +77,25 @@ public class GameManager : MonoBehaviour
         else // 몬스터가 죽었을 때
         {
             pl.Exp += Ms.Exp;
-            playerstat.Character_CurrentExp += Ms.Exp;
-            if(playerstat.Character_CurrentExp >= pl.MaxExp)
-            {
-                playerstat.Character_CurrentLevel++;
-                if (playerstat.Character_CurrentLevel >= 30)
-                {
-                    playerstat.Character_CurrentLevel = 30;
-                }
-            }
-            SavePlayerProgress();
+            playerdata.Character_CurrentExp += Ms.Exp;
+            StartCoroutine(LevelUp());
         }
         deadAct.Invoke(UnitType);
     }
 
-    public void SavePlayerProgress()
+    IEnumerator LevelUp()
     {
-        var playerstat = PlayerDetaManager.instance.dicPlayerData[10000];
-        var updatedData = new
+        var playerdata = DataManager.instance.playerData;
+        while(playerdata.Character_CurrentExp >= PlayerDetaManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel + 1].Total_Exp)
         {
-            Exp = playerstat.Character_CurrentExp,
-            Level = playerstat.Character_CurrentLevel
-        };
-        string newDataJson = JsonConvert.SerializeObject(updatedData);
-        string filePath = "Assets/Data/Resources/Player/PlayerStat/Playerlv.json";
-        File.WriteAllText(filePath, newDataJson);
+            playerdata.Character_CurrentLevel++;
+            if (playerdata.Character_CurrentLevel >= 30)
+            {
+                playerdata.Character_CurrentLevel = 30;
+            }
+            yield return null;
+        }
+        DataManager.instance.SaveData();
     }
 
     public void EndGame()

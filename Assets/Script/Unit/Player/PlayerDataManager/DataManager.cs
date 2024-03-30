@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -16,6 +16,7 @@ public class PlayerData
 
     public string NowWeapon;
     public string NowArmor;
+    
     public string[] Skill;
     public bool[] clearStage;
     public int PlayerGold;

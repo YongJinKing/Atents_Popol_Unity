@@ -1,6 +1,9 @@
 {
-    "Level": 1,
-    "LvPoint": 0,
+    "index": 0,
+    "Character_Hp": 500,
+    "Character_AttackPower": 20,
+    "Character_CurrentExp": 19200,
+    "Character_CurrentLevel": 10,
     "NowWeapon": "",
     "NowArmor": "",
     "Skill": [],

@@ -248,7 +248,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         myAnim.SetTrigger("t_Death");
         ChangeState(state.Death);
     }
-
+    
     private void SetActiveFalse()
     {
         gameObject.SetActive(false);
