@@ -8,6 +8,8 @@ public class CameraShake : MonoBehaviour
     public float one = 1;
     public float two = 2;
 
+    cameraMove camMove;
+
     public void Start()
     {
         myCam = Camera.main;
