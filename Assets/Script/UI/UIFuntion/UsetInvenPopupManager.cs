@@ -11,18 +11,25 @@ public class UsetInvenPopupManager : MonoBehaviour, IPointerEnterHandler, IPoint
     Coroutine MouseControll;
     
     public UnityEvent<bool> LRPosition;//0 : Left 1 : Right
+    public UnityEvent<int> Popup;
     public UnityEvent<Vector2> Event_SlotPosition;
     public GameObject UserInven;
+    
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(transform.GetComponent<RectTransform>().anchoredPosition.x >= 300)
-            LRPosition?.Invoke(true);
-        else
-            LRPosition?.Invoke(false);
-        StartCoroutine(OnPopupControll());
-        StartCoroutine(OnMouseControll());
-        transform.Find("Button").gameObject.SetActive(true);
+        
+        if(UserInven.transform.Find("PlayerAbility").Find("Inventory").GetComponent<DisplayInven>().items.Count > transform.GetSiblingIndex())
+        {
+            if(transform.GetComponent<RectTransform>().anchoredPosition.x >= 300)
+                LRPosition?.Invoke(true);
+            else
+                LRPosition?.Invoke(false);
+            StartCoroutine(OnPopupControll());
+            StartCoroutine(OnMouseControll());
+            transform.Find("Button").gameObject.SetActive(true);
+        }
+        
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -46,11 +53,9 @@ public class UsetInvenPopupManager : MonoBehaviour, IPointerEnterHandler, IPoint
         {
             if(Input.GetMouseButtonDown(1))
             {
-                
-
+                Popup?.Invoke(transform.GetSiblingIndex());
             }
             yield return null;
-        }
-        
+        }   
     }
 }
