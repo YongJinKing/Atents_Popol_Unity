@@ -44,9 +44,9 @@ public class cameraMove : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.F8))
         {
-            UnitDeath(1);
+            UnitDeath(0);
         }
 
         if (!isCine)     //마우스 입력과 관련된 코드
