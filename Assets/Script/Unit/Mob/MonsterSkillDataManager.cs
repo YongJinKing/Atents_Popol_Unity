@@ -64,6 +64,7 @@ public class MonsterSkillDataManager
 
     public void LoadMonsterMakingDatas()
     {
+        var Mestiarii_PrefabTable = Resources.Load<TextAsset>("Monster/Mestiarii_PrefabTable").text;
         var Mestiarii_MonsterDataTable = Resources.Load<TextAsset>("Monster/Character_Ability_Monster").text;
         var Mestiarii_SkillDataTable = Resources.Load<TextAsset>("Monster/SkillData/Mestiarii_Monster_SkillTable").text;
         var Mestiarii_SkillMovementTypeDataTable = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Movement").text;
@@ -71,6 +72,7 @@ public class MonsterSkillDataManager
         var Mestiarii_SkillProjectileDetailDataTable = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Projectile").text;
         var Mestiarii_SkillDamageAffectDataTable = Resources.Load<TextAsset>("Monster/SkillData/SkillAffect/Monster_SkillAffect_DamageAffect").text;
 
+        var arrPrefabDatas = JsonConvert.DeserializeObject<PrefabTable[]>(Mestiarii_PrefabTable);
         var arrMonsterDatas = JsonConvert.DeserializeObject<MonsterDataTable[]>(Mestiarii_MonsterDataTable);
         var arrSkillDatas = JsonConvert.DeserializeObject<SkillDataTable[]>(Mestiarii_SkillDataTable);
         var arrSkillTypeMovementDatas = JsonConvert.DeserializeObject<SkillMovementTypeDataTable[]>(Mestiarii_SkillMovementTypeDataTable);
@@ -78,6 +80,7 @@ public class MonsterSkillDataManager
         var arrSkillTypeProjectileDatas = JsonConvert.DeserializeObject<SkillProjectileDetailDataTable[]>(Mestiarii_SkillProjectileDetailDataTable);
         var arrSkillAffectDamageDatas = JsonConvert.DeserializeObject<SkillDamageAffectDataTable[]>(Mestiarii_SkillDamageAffectDataTable);
 
+        this.dicPrefabTable = arrPrefabDatas.ToDictionary(x => x.index);
         this.dicMonsterDataTable = arrMonsterDatas.ToDictionary(x => x.Index);
         this.dicSkillDataTable = arrSkillDatas.ToDictionary(x => x.Index);
         this.dicSkillMovementTypeDataTable = arrSkillTypeMovementDatas.ToDictionary(x => x.Index);

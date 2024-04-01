@@ -419,25 +419,26 @@ public class MonsterFactory
 
     public GameObject FindPrefab(int index)
     {
+        PrefabTable data = default;
+        if (monsterDataManager.dicPrefabTable.ContainsKey(index))
+        {
+            data = monsterDataManager.dicPrefabTable[index];
+        }
+        else
+        {
+            //nullCheck
+        }
+
         switch (index / 10000)
         {
             //Monster/MonsterPrefabs/
             case 1:
-                
+                return Resources.Load<GameObject>($"Monster/MonsterPrefabs/{data.Prefab_Name}");
             //Monster/SkillEffect/
             case 2:
-                switch (index)
-                {
-                    case 20000:
-                        return Resources.Load("Monster/SkillEffect/Effect_HitBox") as GameObject;
-                    case 20001:
-                        return Resources.Load("Monster/SkillEffect/Effect_SlimeBall") as GameObject;
-                }
-                break;
+                return Resources.Load<GameObject>($"Monster/SkillEffect/{data.Prefab_Name}");
             default:
                 return null;
-                
         }
-        return null;
     }
 }

@@ -18,8 +18,8 @@ public class cameraMove : MonoBehaviour
     public Vector2 zoomRange = new Vector2(1, 15);
     public float zoomSpeed = 5.0f;
     public bool wheelClickRot = true;
-    public float rotationSpeed = 0.1f; // 회전 속도
-    private Vector3 lastMousePosition; // 마우스 이전 위치
+    public float rotationSpeed = 0.1f; // ?�전 ?�도
+    private Vector3 lastMousePosition; // 마우???�전 ?�치
 
     public bool raycastDebug = false;
 
@@ -49,9 +49,9 @@ public class cameraMove : MonoBehaviour
             UnitDeath(1);
         }
 
-        if (!isCine)     //마우스 입력과 관련된 코드
+        if (!isCine)     //마우???�력�?관?�된 코드
         {
-            //스크롤 줌
+            //?�크�?�?
             targetDist -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
             targetDist = Mathf.Clamp(targetDist, zoomRange.x, zoomRange.y);
 
@@ -68,7 +68,7 @@ public class cameraMove : MonoBehaviour
 
         if (isTracking)
         {
-            //카메라 벽 충돌 감지
+            //카메??�?충돌 감�?
             float offSet = 0.5f;
             Vector3 rayoffSet = new Vector3(0, -1, 0);
             if (Physics.Raycast(new Ray(transform.position + rayoffSet, -transform.forward),
@@ -84,12 +84,12 @@ public class cameraMove : MonoBehaviour
                 Debug.DrawRay(transform.position + rayoffSet, -transform.forward.normalized * zoomRange.y, Color.green);
             }
 
-            //카메라 이동
+            //카메???�동
             camDist = Mathf.Lerp(camDist, targetDist, Time.deltaTime * zoomSpeed);
             transform.rotation = Quaternion.Euler(playerAngle.x, playerAngle.y, 0);
             myCam.localPosition = new Vector3(0, 0, -camDist);
 
-            //플레이어 트레킹
+            //?�레?�어 ?�레??
             transform.position = Vector3.Lerp(transform.position, playerPos.position + playeroffSet, Time.deltaTime * trackSpeed);
         }
 
@@ -102,8 +102,8 @@ public class cameraMove : MonoBehaviour
 
     public void UnitDeath(int Unit)
     {
-        //플레이어나 몬스터가 죽었을시에 실행 되는 함수
-        // Unit = 0 일때 몬스터 Unit = 1 일때 플레이어
+        //?�레?�어??몬스?��? 죽었?�시???�행 ?�는 ?�수
+        // Unit = 0 ?�때 몬스??Unit = 1 ?�때 ?�레?�어
         isCine = true;
         isTracking = false;
 
