@@ -125,18 +125,45 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
 
     public void FireToMousePos()
     {
-        if (Input.GetMouseButtonDown(0) && isFireReady)
+        bool Check = AnimCheck("t_Attack");
+
+        if (Input.GetMouseButtonDown(0) && isFireReady && !Check)
         {
-            
             GetRaycastHit();
-            ChangeState(state.Fire);
-            
-            myAnim.SetTrigger("t_Attack");
-            
+
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             
+            myAnim.SetTrigger("t_Attack");
+
+            ChangeState(state.Fire);
+
             rotAct?.Invoke(dir, rotSpeed);
         }
+    }
+
+    bool AnimCheck(string Anim)
+    {
+        // 현재 애니메이션이 체크하고자 하는 애니메이션인지 확인
+        if(myAnim.GetCurrentAnimatorStateInfo(0).IsName(Anim) == true)
+        {
+            // 원하는 애니메이션이라면 플레이 중인지 체크
+            float animTime = myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            if(animTime == 0)
+            {
+                return false;
+                // 플레이 중이 아님
+            }
+            if(animTime > 0 && animTime < 1.0f)
+            {
+                return true;
+                // 애니메이션 플레이 중
+            }
+            else if(animTime >= 1.0f)
+            {
+                // 애니메이션 종료
+            }
+        }
+        return false;
     }
 
 
@@ -228,7 +255,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
             case 2:
                 break;
             case 3:
-                Invoke("SetActiveFalse", 1.0f);
+                SetActiveFalse();
                 return;
         }
         ChangeState(state.Idle);
@@ -239,7 +266,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
     {
         return Dtype;
     }
-
+    
     protected override void OnDead()
     {
         deathAlarm?.Invoke(0);
@@ -251,7 +278,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
     
     private void SetActiveFalse()
     {
-        gameObject.SetActive(false);
+        GetComponent<Player>().enabled = false;
     }
 
     IEnumerator TimeControl()
