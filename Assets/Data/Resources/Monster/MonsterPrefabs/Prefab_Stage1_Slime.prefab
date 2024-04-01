@@ -325,7 +325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_Name
-      value: SlimePrefab
+      value: Prefab_Stage1_Slime
       objectReference: {fileID: 0}
     - target: {fileID: 2114192090312465905, guid: 41da9d027da4d4b40b158d6f9e372d7e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -425,49 +425,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttackStartEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Slime, Assembly-CSharp
-        m_MethodName: OnAttackStartAnim
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onAttackEndEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Slime, Assembly-CSharp
-        m_MethodName: OnAttackEndAnim
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onAttackAnimEndEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Slime, Assembly-CSharp
-        m_MethodName: OnSkillAnimEnd
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &7508939858016464348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,9 +446,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parts:
   - col: {fileID: 4478857143575071932}
-    type: 0
+    type: 1
   - col: {fileID: 1993446802354561616}
-    type: 0
+    type: 2
   attackStartPos:
   - {fileID: 2943087962007387314}
   - {fileID: 6334670871472086410}

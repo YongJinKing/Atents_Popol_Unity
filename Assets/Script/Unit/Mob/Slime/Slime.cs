@@ -151,10 +151,6 @@ public class Slime : Monster
 
     //public 함수들 영역
     #region PublicMethod
-    public void TempInit()
-    {
-        Initialize();
-    }
     #endregion
     #endregion
 
@@ -190,7 +186,7 @@ public class Slime : Monster
 
         float IdleTime = 3.0f;
 
-        int type = 1;
+        int type = UnityEngine.Random.Range(0,2);
         switch (type)
         {
             case 0:

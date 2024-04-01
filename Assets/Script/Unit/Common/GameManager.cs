@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public UnityEvent<int> deadAct;
     public GameObject Player;
-    public GameObject Monster;
+    private GameObject Monster;
     //public PlayerDetaManager playerdata;
 
     Player pl;
@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     {
 
         pl = Player.GetComponent<Player>();
+        MonsterFactory mf = new MonsterFactory();
+        Monster = mf.CreateMonster(30000);
         Ms = Monster.GetComponent<Monster>();
 
         LoadPlayerStat();
