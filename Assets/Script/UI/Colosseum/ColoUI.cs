@@ -23,6 +23,7 @@ public class ColoUI : MonoBehaviour
     {
         MonsterSkillDataManager.GetInstance().LoadSkillUI();
         StageIndex = 1;
+        StagePopup.gameObject.SetActive(false);
         DisplayStageBoss(StageIndex);
         for(int i = 0; i < MonsterSkillDataManager.GetInstance().dicStageTable.Count; i++)
         {
@@ -42,7 +43,7 @@ public class ColoUI : MonoBehaviour
         GameObject obj = Instantiate(BossPrefab,BossAbility.transform.Find("BossMonster"));
         obj.transform.localScale = new Vector3(400,400,400);
         obj.layer = (int)LayerMask.NameToLayer("UI");
-        ChangeLayerRecursively(obj, obj.layer);
+        ChangeLayerRecursively(obj, obj.layer);//child Layer Change
         
         for(int i = 0; i < skillLength; i++)
         {   

@@ -6,7 +6,8 @@ public class UserPopup : MonoBehaviour
 {
     bool LRcheck;
     public GameObject Popup;
-    public GameObject Inventory;
+    public GameObject DisInven;
+    public GameObject InvenManager;
     public GameObject PlayerItem;
     int InvenItemId;
     int SlotNum;
@@ -50,7 +51,7 @@ public class UserPopup : MonoBehaviour
     {
         if(index == 0)
         {
-            InvenItemId = Inventory.GetComponent<Inventory>().ItemList[SlotNum].id;
+            InvenItemId = DisInven.GetComponent<DisplayInven>().items[SlotNum].id;
             var ItemData = ItemDataManager.GetInstance().dicItemDatas[InvenItemId];
             int ItemRigging = ItemData.Inven_riggingType;//0 : weapon, 1 :Armor
             ChangeItem(ItemRigging);
@@ -61,11 +62,21 @@ public class UserPopup : MonoBehaviour
     }
     void ChangeItem(int index)
     {
-        int PlayerItemId;
-        //int temp;
+        
+        int PlayerItemId = 0;
+        
         if(index == 0)
-            PlayerItemId =  PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().id;
+        {
+            PlayerItemId = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().id;
+            PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().Init(InvenItemId);
+        }
         if(index == 1)
-            PlayerItemId =  PlayerItem.transform.Find("Armor").GetComponent<UIItem>().id;
+        {
+            PlayerItemId = PlayerItem.transform.Find("Armor").GetComponent<UIItem>().id;
+            PlayerItem.transform.Find("Armor").GetComponent<UIItem>().Init(InvenItemId);
+        }
+        InvenManager.transform.Find("GridLine").GetChild(SlotNum).GetComponent<UIItem>().Init(PlayerItemId);
+            
+        
     }
 }

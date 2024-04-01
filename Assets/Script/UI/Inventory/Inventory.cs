@@ -27,8 +27,8 @@ public class Inventory : MonoBehaviour
         this.ItemList = new List<UIItem>();
         BackUpIdList = new List<int>();
         FreshSlot(0);
-        this.AddItem(1000);
-        this.AddItem(1001);
+        this.AddItem(3000);
+        this.AddItem(3001);
         this.AddItem(1100);
         this.AddItem(1101);
         this.AddItem(1102);
