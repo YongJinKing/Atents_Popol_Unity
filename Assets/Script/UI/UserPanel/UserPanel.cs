@@ -63,7 +63,7 @@ public class UserPanel : MonoBehaviour
     {
         if(index == 0)//Yes
         {
-            SceneLoading.SceneNum(0);   //���ξ�num
+            SceneLoading.SceneNum(0);
             DataManager.instance.DataClear();
             SceneManager.LoadScene(1);
         }

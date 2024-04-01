@@ -25,24 +25,23 @@ public class PlayerData
 
 public class DataManager : MonoBehaviour
 {
-    public int PlayerGold = 6000;
-    public static DataManager instance;
     public PlayerData playerData = new PlayerData();
     public string path;
     public string fileName = "PlayerData";
     public int StageNum;
     public int SlotNum;
-    
-    
+
+    public static DataManager instance;
+
     private void Awake()    //싱글톤
     {
         if(instance == null)
         {
             instance = this;
         }
-        else if(instance != this)
+        else if(instance != null)
         {
-            Destroy(instance.gameObject);
+            Destroy(gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
         path = Application.dataPath + "/Data/PlayerSaveFile/";      // json파일 저장 경로
