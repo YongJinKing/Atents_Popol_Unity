@@ -88,6 +88,10 @@ public class SaveFileSelect : MonoBehaviour
             playerdata.Character_AttackSpeed = playerstat.Character_AttackSpeed;
             DataManager.instance.SaveData(); // 새로운 데이터 저장
         }
+
+        var plLvstat = PlayerDetaManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel];
+        playerdata.Character_AttackPower += plLvstat.Total_AttackPower;
+        playerdata.Character_Hp += plLvstat.Total_Hp;
         SceneLoading.SceneNum(2);
         SceneManager.LoadScene(1);
     }

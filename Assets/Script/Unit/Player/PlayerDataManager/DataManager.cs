@@ -53,11 +53,6 @@ public class DataManager : MonoBehaviour
 
     public void Start()
     {
-        PlayerDetaManager.GetInstance().LoadPlayerData();
-
-        var plLvstat = PlayerDetaManager.instance.dicPlayerLevelData[playerData.Character_CurrentLevel];
-        playerData.Character_AttackPower += plLvstat.Total_AttackPower;
-        playerData.Character_Hp += plLvstat.Total_Hp;
     }
 
     public void SaveData()

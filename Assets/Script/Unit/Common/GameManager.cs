@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
 
         var pldata = DataManager.instance.playerData;
         //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ������ ��� ����
-
         bs.Exp = pldata.Character_CurrentExp;
         bs.Level = pldata.Character_CurrentLevel;
         bs.ATK = pldata.Character_AttackPower;
