@@ -8,6 +8,8 @@ using TMPro;
 
 public class SaveFileSelect : MonoBehaviour
 {
+    public GameObject RemovePopup;
+    int SelectSlot = 0;
     public TextMeshProUGUI[] GoldText;
     public TextMeshProUGUI[] TimeText;
     public TextMeshProUGUI[] DescText;
@@ -97,25 +99,36 @@ public class SaveFileSelect : MonoBehaviour
     }
 
 
-    //슬롯 선택 창에서 데이터를 지우는 팝업창 임시 함수, 추후 변경 예정
-
-    int selslot;
-    public void DelCheck(int slotnum)
+    public void DelSlot(int index)
     {
-        delCheck.SetActive(true);
-        selslot = --slotnum;
-    }
-
-    public void closeWin()
-    {
-        delCheck.SetActive(false);
-    }
-
-    public void DelSlot()
-    {
-        DataManager.instance.DelData(selslot);
-        savefile[selslot] = false;
-        closeWin();
+        DataManager.instance.DelData(index);
+        savefile[index] = false;
         SlotCheck();
+    }
+
+    public void CancelBtnAct(int index)
+    {
+        if(index != 3)//SaveSlotCancel이 아닐 때
+        {
+            SelectSlot = index;
+            RemovePopup.gameObject.SetActive(true);
+            RemovePopup.transform.Find("PopupBg").Find("Paper").Find("Desc").GetComponent<TMP_Text>().text
+            = $"Slot{index + 1}번을 삭제하시겠습니까?";
+        }
+    }
+    public void SlotRemovePopupYesOrNo(int index)//0 : Yes 1 : No
+    {
+        if(index == 0)
+        {
+            //SelectSlot 활용
+            DelSlot(SelectSlot);
+            RemovePopup.gameObject.SetActive(false);
+        }
+        if(index == 1)
+        {
+            RemovePopup.gameObject.SetActive(false);
+         
+        }
+        
     }
 }
