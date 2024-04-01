@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        PlayerDetaManager.GetInstance().LoadPlayerData();
 
         pl = Player.GetComponent<Player>();
         Ms = Monster.GetComponent<Monster>();
@@ -33,18 +32,15 @@ public class GameManager : MonoBehaviour
         BattleStat bs = default;
 
         var pldata = DataManager.instance.playerData;
-        var playerstat = PlayerDetaManager.instance.dicPlayerData[10000];
-        var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ������ ��� ����
-        
+        //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ������ ��� ����
 
-
-        bs.ATK = playerstat.Character_AttackPower;
-        bs.HP = playerstat.Character_Hp;
         bs.Exp = pldata.Character_CurrentExp;
         bs.Level = pldata.Character_CurrentLevel;
-        bs.EnergyGage = playerstat.Character_EnergyGage;
-        bs.Speed = playerstat.Character_MoveSpeed;
-        bs.AttackDelay = playerstat.Character_AttackSpeed;
+        bs.ATK = pldata.Character_AttackPower;
+        bs.HP = pldata.Character_Hp;
+        bs.EnergyGage = pldata.Character_EnergyGage; // int
+        bs.Speed = pldata.Character_MoveSpeed; // float
+        bs.AttackDelay = pldata.Character_AttackSpeed; // float
 
         NextLevel = bs.Level + 1;
 

@@ -13,6 +13,10 @@ public class PlayerData
     public int Character_AttackPower;
     public int Character_CurrentExp;
     public int Character_CurrentLevel;
+    public int Character_EnergyGage;
+    public float Character_MoveSpeed;
+    public float Character_AttackSpeed;
+
 
     public string NowWeapon;
     public string NowArmor;
@@ -47,7 +51,15 @@ public class DataManager : MonoBehaviour
         path = Application.dataPath + "/Data/PlayerSaveFile/";      // json파일 저장 경로
     }
 
-    
+    public void Start()
+    {
+        PlayerDetaManager.GetInstance().LoadPlayerData();
+
+        var plLvstat = PlayerDetaManager.instance.dicPlayerLevelData[playerData.Character_CurrentLevel];
+        playerData.Character_AttackPower += plLvstat.Total_AttackPower;
+        playerData.Character_Hp += plLvstat.Total_Hp;
+    }
+
     public void SaveData()
     {
         string data = JsonUtility.ToJson(playerData, true);

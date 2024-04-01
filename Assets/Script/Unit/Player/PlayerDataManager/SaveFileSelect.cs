@@ -83,6 +83,9 @@ public class SaveFileSelect : MonoBehaviour
             playerdata.Character_CurrentExp = playerstat.Character_CurrentExp;
             playerdata.Character_Hp = playerstat.Character_Hp;
             playerdata.Character_AttackPower = playerstat.Character_AttackPower;
+            playerdata.Character_EnergyGage = playerstat.Character_EnergyGage;
+            playerdata.Character_MoveSpeed = playerstat.Character_MoveSpeed;
+            playerdata.Character_AttackSpeed = playerstat.Character_AttackSpeed;
             DataManager.instance.SaveData(); // 새로운 데이터 저장
         }
         SceneLoading.SceneNum(2);
