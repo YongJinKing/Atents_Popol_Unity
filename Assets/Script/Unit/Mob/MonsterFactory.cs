@@ -54,8 +54,10 @@ public class MonsterFactory
         rigid.useGravity = true;
         rigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
-        //���߿� Slime�� �������� Turtle�� �������� �ε��� �ʿ�
+        //need exl
+        //Monster objMon = FindAI(index);
         Monster objMon = obj.AddComponent<Slime>();
+
         objMon.onMovementEvent = new UnityEngine.Events.UnityEvent<Vector3, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objMon.followEvent = new UnityEngine.Events.UnityEvent<Transform, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objMon.rotateEvent = new UnityEngine.Events.UnityEvent<Vector3, float>();
@@ -69,8 +71,8 @@ public class MonsterFactory
         objMon.sideMoveEvent.AddListener(objMove.SideMove);
         objMon.stopEvent.AddListener(objMove.StopMove);
 
-        //GameObject prefab = FindPrefab(data.Character_Prefab);
-        GameObject prefab = GameObject.Instantiate(Resources.Load<GameObject>("Monster/MonsterPrefabs/Prefab_Stage1_Slime"));
+        GameObject prefab = GameObject.Instantiate(FindPrefab(data.Character_Prefab));
+        //GameObject prefab = GameObject.Instantiate(Resources.Load<GameObject>("Monster/MonsterPrefabs/Prefab_Stage1_Slime"));
         prefab.transform.SetParent(obj.transform, false);
         PartManager part = prefab.GetComponent<PartManager>();
         objMon.attackStartPos = new Transform[part.attackStartPos.Length];
@@ -277,6 +279,7 @@ public class MonsterFactory
                     MeleeSkillType melee = obj.AddComponent<MeleeSkillType>();
                     melee.maxIndex = data.Skill_NumOfHitBox;
                     melee.areaOfEffectPrefeb = FindPrefab(data.Skill_ObjectEffect);
+                    melee.hitEffectPrefeb = FindPrefab(data.Skill_HitEffect);
                     melee.targetMask = 1 << data.Skill_TargetMask;
                     melee.attackStartPos = new Transform[data.Skill_NumOfHitBox];
                     for(int i = 0; i < data.Skill_NumOfHitBox; i++)
@@ -326,6 +329,8 @@ public class MonsterFactory
                     ProjectileSkillType projectile = obj.AddComponent<ProjectileSkillType>();
                     projectile.maxIndex = data.Skill_NumOfHitBox;
                     projectile.areaOfEffectPrefeb = FindPrefab(data.Skill_ObjectEffect);
+                    projectile.hitEffectPrefeb = FindPrefab(data.Skill_HitEffect);
+                    projectile.destroyEffectPrefeb = FindPrefab(data.Skill_DestroyEffect);
                     projectile.unPenetrableMask = 1 << data.Skill_Unpenetrable;
                     projectile.targetMask = 1 << data.Skill_TargetMask;
                     projectile.moveSpeed = data.Skill_LongRangeAttackSpeed;
@@ -437,6 +442,21 @@ public class MonsterFactory
             //Monster/SkillEffect/
             case 2:
                 return Resources.Load<GameObject>($"Monster/SkillEffect/{data.Prefab_Name}");
+            default:
+                return null;
+        }
+    }
+
+    public Monster FindAI(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                return null;
+            case 2:
+                return null;
+            case 3:
+                return null;
             default:
                 return null;
         }
