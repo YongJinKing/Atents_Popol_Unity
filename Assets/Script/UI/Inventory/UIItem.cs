@@ -20,6 +20,7 @@ public class UIItem : MonoBehaviour
     public int ItemValue;
     public int ItemDuration;
     public string spName;
+    public int WeaponType;
     
 
     public void Init(int id)
@@ -29,9 +30,10 @@ public class UIItem : MonoBehaviour
         var SpriteData = ItemDataManager.GetInstance().dicResouseTable[ItemData.Inven_spriteName];
         var NameData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_itemName];
         var DescData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_itemDesc];
+        
         var SmithData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_smithTalk];
         
-        
+        this.WeaponType = ItemData.Inven_weaponType;
         this.spName = SpriteData.ImageResourceName;
         this.ItemName = NameData.String_Desc;
         this.ItemDesc = DescData.String_Desc;

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UserPopup : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class UserPopup : MonoBehaviour
     public GameObject DisInven;
     public GameObject InvenManager;
     public GameObject PlayerItem;
+    public GameObject PlayerDetailAbility;
+    
     int InvenItemId;
     int SlotNum;
     Vector2 LeftDefalutVector = new Vector2(290 , -240);
@@ -17,8 +21,12 @@ public class UserPopup : MonoBehaviour
     private void Start() 
     {
         ItemDataManager.GetInstance().InvenItemLoadDatas();
-        PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().Init(1000);
-        PlayerItem.transform.Find("Armor").GetComponent<UIItem>().Init(1001);
+        if(PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().id == 0)
+        {
+            PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().Init(1000);
+            PlayerItem.transform.Find("Armor").GetComponent<UIItem>().Init(1001);
+        }
+        
     }
 
     public void getLRcheck(bool TorF)
@@ -76,7 +84,47 @@ public class UserPopup : MonoBehaviour
             PlayerItem.transform.Find("Armor").GetComponent<UIItem>().Init(InvenItemId);
         }
         InvenManager.transform.Find("GridLine").GetChild(SlotNum).GetComponent<UIItem>().Init(PlayerItemId);
-            
-        
+        PlayerAbilityUpdate();
+    }
+    public void PlayerAbilityUpdate()
+    {
+        PlayerDetailAbility.transform.Find("Level").GetComponent<TMP_Text>().text
+        = "레벨 : " + DataManager.instance.playerData.Character_CurrentLevel.ToString();
+        PlayerDetailAbility.transform.Find("Hp").GetComponent<TMP_Text>().text
+        = "체력 : " + DataManager.instance.playerData.Character_Hp.ToString();
+        PlayerDetailAbility.transform.Find("AttackPower").GetComponent<TMP_Text>().text
+        = "공격력 : " + DataManager.instance.playerData.Character_AttackPower.ToString();
+        PlayerDetailAbility.transform.Find("AttackType").GetComponent<TMP_Text>().text 
+        = "공격 타입 : " + WeaponTypeToString(PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType);
+        PlayerDetailAbility.transform.Find("ArmorType").GetComponent<TMP_Text>().text 
+        = "방어 타입 : " + WeaponTypeToString(PlayerItem.transform.Find("Armor").GetComponent<UIItem>().WeaponType);
+    }
+
+    public string WeaponTypeToString(int index)
+    {
+        string Rtstring = "";
+        //0 : 한손 검, 1: 양손 검, 2 : 한손 둔기, 3 : 양손 둔기, 4 : 창, 5 : 단검, 6 : 투창용 창, 10 : 가죽, 11 : 경갑, 12 : 판금
+        if(index == 0)
+            Rtstring = "한손 검";
+        if(index == 1)
+            Rtstring = "양손 검";
+        if(index == 2)
+            Rtstring = "한손 둔기";
+        if(index == 3)
+            Rtstring = "양손 둔기";
+        if(index == 4)
+            Rtstring = "창";
+        if(index == 5)
+            Rtstring = "단검";
+        if(index == 6)
+            Rtstring = "투창용 창";
+        if(index == 10)
+            Rtstring = "가죽";
+        if(index == 11)
+            Rtstring = "경갑";
+        if(index == 12)
+            Rtstring = "판금";
+        return Rtstring;
+
     }
 }
