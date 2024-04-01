@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         MonsterFactory mf = new MonsterFactory();
         Monster = mf.CreateMonster(30000);
         Ms = Monster.GetComponent<Monster>();
-
+        mf = null;
         LoadPlayerStat();
     }
     void Start()

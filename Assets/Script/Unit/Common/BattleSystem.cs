@@ -172,7 +172,7 @@ public class BattleSystem : CharacterProperty, IDamage
 
     private float ComputeCompatibility(AttackType Atype, DefenceType Dtype)
     {
-        float computed = 0;
+        float computed = 1.0f;
         switch (Atype)
         {
             case AttackType.Slash:
