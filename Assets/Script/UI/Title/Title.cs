@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class Title : MonoBehaviour
 {
-    public GameObject TitleMenu;
-    public GameObject SaveSlotMenu;
+    public GameObject Canvas;
     public void PressedBtn(int index)
     {
-        if(index == 0)
+        if(index == 0)//GameStart
         {
-            MenuActive(false, true, false);
+            MenuAct(index+1, false);
         }
-        if(index == 1)
+        if(index == 1)//GameSetting
         {
-            MenuActive(true, false, false);
+            MenuAct(index+1, true);
+        }
+        if(index == 2)//GameEnd
+        {
+            MenuAct(index+1, true);
         }
     }
-    void MenuActive(bool TitleCheck,bool SettingCheck,bool EndCheck)
+    public void MenuAct(int index, bool OnCheck)
     {
-        TitleMenu.transform.gameObject.SetActive(TitleCheck);
-        SaveSlotMenu.transform.gameObject.SetActive(SettingCheck);
+        Canvas.transform.Find("Title").gameObject.SetActive(OnCheck);
+        Canvas.transform.GetChild(index).gameObject.SetActive(true);
     }
+    
 }

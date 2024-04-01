@@ -8,6 +8,7 @@ using TMPro;
 
 public class SaveFileSelect : MonoBehaviour
 {
+    public GameObject Canvas;
     public GameObject RemovePopup;
     int SelectSlot = 0;
     public TextMeshProUGUI[] GoldText;
@@ -115,6 +116,12 @@ public class SaveFileSelect : MonoBehaviour
             RemovePopup.transform.Find("PopupBg").Find("Paper").Find("Desc").GetComponent<TMP_Text>().text
             = $"Slot{index + 1}번을 삭제하시겠습니까?";
         }
+        else
+        {
+            Canvas.transform.Find("Title").gameObject.SetActive(true);
+            Canvas.transform.Find("GameStart").gameObject.SetActive(false);
+        }
+        
     }
     public void SlotRemovePopupYesOrNo(int index)//0 : Yes 1 : No
     {
