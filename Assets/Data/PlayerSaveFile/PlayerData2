@@ -1,0 +1,15 @@
+{
+    "index": 0,
+    "Character_Hp": 500,
+    "Character_AttackPower": 20,
+    "Character_CurrentExp": 0,
+    "Character_CurrentLevel": 1,
+    "Character_EnergyGage": 100,
+    "Character_MoveSpeed": 5.0,
+    "Character_AttackSpeed": 0.5,
+    "NowWeapon": "",
+    "NowArmor": "",
+    "Skill": [],
+    "clearStage": [],
+    "PlayerGold": 0
+}

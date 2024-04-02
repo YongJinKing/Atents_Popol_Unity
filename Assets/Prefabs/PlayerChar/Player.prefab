@@ -569,7 +569,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7258053866339988243, guid: 703b1efc2483c6c42b95d79d869996e9, type: 3}
       propertyPath: m_Name
-      value: Sword_01
+      value: OneHendSword
       objectReference: {fileID: 0}
     - target: {fileID: 7258053866339988243, guid: 703b1efc2483c6c42b95d79d869996e9, type: 3}
       propertyPath: m_IsActive
@@ -709,7 +709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4213627522537898958, guid: 92f8b959128871b40a304c49de4a5fb3, type: 3}
       propertyPath: m_Name
-      value: Sword_02
+      value: TweHendSword
       objectReference: {fileID: 0}
     - target: {fileID: 4213627522537898958, guid: 92f8b959128871b40a304c49de4a5fb3, type: 3}
       propertyPath: m_IsActive
