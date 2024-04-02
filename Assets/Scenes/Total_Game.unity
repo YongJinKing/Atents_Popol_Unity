@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -374,11 +374,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2935028579497330574, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2935028579497330574, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2935028579497330574, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -404,14 +404,6 @@ PrefabInstance:
       propertyPath: MonsterCam
       value: 
       objectReference: {fileID: 993823379}
-    - target: {fileID: 7356268427517669075, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
-      propertyPath: slowTime
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356268427517669075, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9164841429843295199, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
       propertyPath: m_Name
       value: StrongArm

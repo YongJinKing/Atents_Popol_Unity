@@ -31,23 +31,6 @@ public class SkillManager : PlayerSkill
             BattleSystem temp = other.GetComponentInParent<BattleSystem>();
             if (!target.Contains(temp))
             {
-                Debug.Log("hashset check");
-
-                /*
-                target.Add(temp);
-                Debug.Log("rayHit");
-                IDamage iDamage = temp.GetComponentInParent<IDamage>();
-                DefenceType dtype = other.GetComponentInParent<IGetDType>().GetDType(other);
-
-
-                if (iDamage != null)
-                {
-                    Plm.totalDamege(other, pl.ATK, Damage, aType, dtype); ;
-                }
-                */
-
-
-                
                 Ray ray = new Ray(col.bounds.center, other.ClosestPoint(col.bounds.center) - col.bounds.center);
                 StartCoroutine(tempDebuging(ray));
                 if (Physics.Raycast(ray, out RaycastHit hit , 1000.0f, 1 << LayerMask.NameToLayer("Monster_Body")))

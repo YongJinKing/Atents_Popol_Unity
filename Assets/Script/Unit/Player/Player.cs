@@ -33,7 +33,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
 
     public enum state
     {
-        Fire, Dadge, Idle, Run, Skill , Death
+        Fire, Dadge, Idle, Run, Skill
     }
 
     [SerializeField]protected state playerstate;
@@ -58,9 +58,6 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
                 emission.rateOverTime = 30f;
                 break;
             case state.Skill:
-                emission.rateOverTime = 0;
-                break;
-            case state.Death:
                 emission.rateOverTime = 0;
                 break;
         }
@@ -88,8 +85,6 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
                 FireToMousePos();
                 DadgeToPos();
                 Skill();
-                break;
-            case state.Death:
                 break;
         }
     }
@@ -254,9 +249,6 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
                 break;
             case 2:
                 break;
-            case 3:
-                SetActiveFalse();
-                return;
         }
         ChangeState(state.Idle);
     }
@@ -273,14 +265,8 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         stopAct?.Invoke(null);
         StartCoroutine(TimeControl());
         myAnim.SetTrigger("t_Death");
-        ChangeState(state.Death);
     }
     
-    private void SetActiveFalse()
-    {
-        GetComponent<Player>().enabled = false;
-    }
-
     IEnumerator TimeControl()
     {
         float slowTime = 0.5f;

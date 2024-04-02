@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 5607585636577995084}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -177,7 +177,7 @@ MonoBehaviour:
   camDist: 8
   myCam: {fileID: 7506698082515324532}
   playerPos: {fileID: 0}
-  playerAngle: {x: 50, y: 0}
+  playerAngle: {x: 50, y: 180}
   playeroffSet: {x: 0, y: 1.8, z: 0}
   trackSpeed: 7
   zoomRange: {x: 1, y: 15}
@@ -199,9 +199,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9164841429843295199}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc527b6c0cca6e84386d65381f449148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowTime: 1
+  slowTime: 0.5

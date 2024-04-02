@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour
 {
     public UnityEvent<int> deadAct;
@@ -16,7 +18,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
         pl = Player.GetComponent<Player>();
         MonsterFactory mf = new MonsterFactory();
         Monster = mf.CreateMonster(30000);
@@ -45,10 +46,6 @@ public class GameManager : MonoBehaviour
 
         NextLevel = bs.Level + 1;
 
-        var plLvstat = PlayerDetaManager.instance.dicPlayerLevelData[bs.Level];
-        bs.ATK += plLvstat.Total_AttackPower;
-        bs.HP += plLvstat.Total_Hp;
-
         var plLvstat1 = PlayerDetaManager.instance.dicPlayerLevelData[NextLevel];
         bs.MaxExp = plLvstat1.Total_Exp;
 
@@ -66,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void OnGameEnd(int UnitType)
     {
+        pl.enabled = false;
         var playerdata = DataManager.instance.playerData;
         if (UnitType == 0) // 플레이어가 죽었을 때
         {
@@ -78,10 +76,19 @@ public class GameManager : MonoBehaviour
             StartCoroutine(LevelUp());
         }
         deadAct.Invoke(UnitType);
+        StartCoroutine(tempDebug());
+    }
+
+    IEnumerator tempDebug()
+    {
+        yield return new WaitForSeconds(12);
+        SceneLoading.SceneNum(2);
+        SceneManager.LoadScene(1);
     }
 
     IEnumerator LevelUp()
     {
+        var playerstat = PlayerDetaManager.instance.dicPlayerData[10000];
         var playerdata = DataManager.instance.playerData;
         while(playerdata.Character_CurrentExp >= PlayerDetaManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel + 1].Total_Exp)
         {
@@ -91,6 +98,9 @@ public class GameManager : MonoBehaviour
                 playerdata.Character_CurrentLevel = 30;
             }
             yield return null;
+            var plLvstat = PlayerDetaManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel];
+            playerdata.Character_AttackPower = playerstat.Character_AttackPower + plLvstat.Total_AttackPower;
+            playerdata.Character_Hp = playerstat.Character_Hp + plLvstat.Total_Hp;
         }
         DataManager.instance.SaveData();
     }

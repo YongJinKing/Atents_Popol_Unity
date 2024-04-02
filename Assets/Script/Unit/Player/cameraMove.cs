@@ -102,21 +102,23 @@ public class cameraMove : MonoBehaviour
 
     public void UnitDeath(int Unit)
     {
-        //?Œë ˆ?´ì–´??ëª¬ìŠ¤?°ê? ì£½ì—ˆ?„ì‹œ???¤í–‰ ?˜ëŠ” ?¨ìˆ˜
-        // Unit = 0 ?¼ë•Œ ëª¬ìŠ¤??Unit = 1 ?¼ë•Œ ?Œë ˆ?´ì–´
         isCine = true;
         isTracking = false;
 
+
+
         switch (Unit)
         {
-            case 0 : target = MonsterCam;
-                targetDist = 2;
-                playerAngle.x = 0;
-                playeroffSet.y = 1f;
-                break;
-            case 1 : target = PlayerCam;
+            case 0:
+                target = PlayerCam;
                 targetDist = 5;
                 playerAngle.x = 70;
+                playeroffSet.y = 1f;
+                break;
+            case 1 : 
+                target = MonsterCam;
+                targetDist = 2;
+                playerAngle.x = 0;
                 playeroffSet.y = 1f;
                 break;
         }
