@@ -88,11 +88,6 @@ public class MeleeSkillType : HitCheckSkillType
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
-    public override void OnSkillActivated(Vector3 targetPos)
-    {
-        base.OnSkillActivated(targetPos);
-    }
-
     public override void OnSkillHitCheckStartEventHandler()
     {
         if (!isSkillActivated)

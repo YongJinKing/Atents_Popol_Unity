@@ -90,7 +90,7 @@ public class ProjectileSkillType : HitCheckSkillType
         //발동 시점의 targetPos를 저장하므로 여러번 한다고 쳤을때 targetPos가 바뀌어서 나갈일은 없을 듯?
         //람다식으로 DestroyProjectile 함수를 쓰도록 했다.
         //람다식으로 되있는 부분은 거리가 다되면 오브젝트 제거하도록 한부분이다.
-        StartCoroutine(LinearMovingToPos(hitBox, targetPos, () => DestroyProjectile(hitBox)));
+        StartCoroutine(LinearMovingToPos(hitBox, target.position + Vector3.up * 0.5f, () => DestroyProjectile(hitBox)));
         //StartCoroutine(ParabolaMovingPos(hitBox, targetPos));
 
         //투사체 각각이 남은시간을 가지고 있어야 하므로 코루틴에다가 remainDuration을 지역변수로 재정의 했다.
@@ -256,9 +256,9 @@ public class ProjectileSkillType : HitCheckSkillType
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
-    public override void OnSkillActivated(Vector3 targetPos)
+    public override void OnSkillActivated(Transform targetPos)
     {
-        base.OnSkillActivated(targetPos + Vector3.up * 0.5f);
+        base.OnSkillActivated(targetPos);
     }
 
     public override void OnSkillHitCheckStartEventHandler()

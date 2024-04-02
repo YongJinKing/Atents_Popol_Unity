@@ -13,7 +13,7 @@ public abstract class BaseSkillType : MonoBehaviour
     //protected 변수 영역
     #region protected
     //OnSkillActivated로 받아온 타겟의 위치를 저장함
-    protected Vector3 targetPos;
+    protected Transform target;
     #endregion
 
     //Public 변수영역
@@ -49,9 +49,9 @@ public abstract class BaseSkillType : MonoBehaviour
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
     //skill 클래스의 이벤트가 발생
-    public virtual void OnSkillActivated(Vector3 targetPos)
+    public virtual void OnSkillActivated(Transform target)
     {
-        this.targetPos = targetPos;
+        this.target = target;
     }
     #endregion
 

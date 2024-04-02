@@ -1,10 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Slime : Monster
 {
@@ -14,6 +9,9 @@ public class Slime : Monster
     #region Private
     private int[] saveSkill;
     private int countUsedSkill;
+
+    private int[] idleMoveType;
+    private int countIdle = 0;
     #endregion
 
     //protected 변수 영역
@@ -54,6 +52,26 @@ public class Slime : Monster
         }
         countUsedSkill = 0;
     }
+
+    private void IdleProcessRandomSet()
+    {
+        for (int i = 0; i < idleMoveType.Length; i++)
+        {
+            idleMoveType[i] = UnityEngine.Random.Range(0, idleMoveType.Length);
+
+            //공통된 게 있으면 다시
+            for (int j = 0; j < i; j++)
+            {
+                if (idleMoveType[j] == idleMoveType[i])
+                {
+                    idleMoveType[i] = UnityEngine.Random.Range(0,
+                        idleMoveType.Length);
+                    j = 0;
+                }
+            }
+        }
+        countIdle = 0;
+    }
     #endregion
 
     //protected 함수들 영역
@@ -70,6 +88,13 @@ public class Slime : Monster
         {
             //대충 적당히 근거리에서 배회
             case State.Idle:
+                if (countIdle > idleMoveType.Length - 1)
+                {
+                    for (int i = 0; i < idleMoveType.Length; i++)
+                    {
+                        IdleProcessRandomSet();
+                    }
+                }
                 ProcessState();
                 break;
             //적에게 접근
@@ -118,7 +143,7 @@ public class Slime : Monster
                 myAnim.SetTrigger("t_SkillStart");
                 //myAnim.SetTrigger("t_ChannelingSkill");
                 //Skill Start hitCheck after delayMotion
-                onSkillStartAct?.Invoke(target.transform.position,
+                onSkillStartAct?.Invoke(target.transform,
                     () => myAnim.SetTrigger("t_AttackStart"),
                     () => myAnim.SetTrigger("t_AttackEnd"),
                     () =>
@@ -140,12 +165,14 @@ public class Slime : Monster
     protected override void Initialize()
     {
         base.Initialize();
-        //스킬 랜덤 등록
+
         saveSkill = new int[skills.Length];
-        countUsedSkill = 0;
         SkillRandomSet();
 
-        ProcessState();
+        idleMoveType = new int[2];
+        IdleProcessRandomSet();
+
+        ChangeState(State.Idle);
     }
     #endregion
 
@@ -186,8 +213,8 @@ public class Slime : Monster
 
         float IdleTime = 3.0f;
 
-        int type = UnityEngine.Random.Range(0,2);
-        switch (type)
+        //int type = 0;     //UnityEngine.Random.Range(0,2);
+        switch (idleMoveType[countIdle])
         {
             case 0:
                 {
@@ -237,6 +264,7 @@ public class Slime : Monster
         stopEvent?.Invoke(null);
 
         //상태 바꿈
+        ++countIdle;
         ChangeState(State.Closing);
         yield return null;
     }

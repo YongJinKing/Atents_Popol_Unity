@@ -10,6 +10,7 @@ public class UnitMovement : CharacterProperty
     Coroutine sideMove = null;
     public Rigidbody rigid;
 
+    float sideDir = 1.0f;
     float tempSpeed = 0;
     private void Start()
     {
@@ -171,6 +172,11 @@ public class UnitMovement : CharacterProperty
     {
         Vector3 dir = target - transform.position;
         float dist = dir.magnitude;
+        if(Physics.Raycast(transform.position, dir, out RaycastHit hit, dist, 1 << LayerMask.NameToLayer("Obstacle")))
+        {
+            dist = (hit.point - transform.position).magnitude - 1.0f;
+        }
+
         dir.Normalize();
 
         if (rotate != null) StopCoroutine(rotate);
@@ -280,7 +286,14 @@ public class UnitMovement : CharacterProperty
             dir = Vector3.Cross(dir, Vector3.down);
             dir.y = 0;
             dir.Normalize();
-            dir = dir + revDir;
+            dir = (dir * sideDir) + revDir;
+            /*
+            if (Physics.Raycast(transform.position, dir, transform.localScale.x, 1 << LayerMask.NameToLayer("Obstacle")))
+            {
+                sideDir = -sideDir;
+            }
+            */
+            Debug.DrawRay(transform.position, dir);
 
             //Debug.Log($"dir : {dir} revDir : {revDir}");
 
@@ -291,6 +304,14 @@ public class UnitMovement : CharacterProperty
             yield return null;
         }
         endAct?.Invoke();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+        {
+            sideDir = -sideDir;
+        }
     }
 
 }

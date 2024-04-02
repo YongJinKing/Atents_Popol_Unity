@@ -47,9 +47,10 @@ public class MonsterFactory
         
         obj.transform.localScale = new Vector3(3, 3, 3);
         obj.name = "Slime2";
-        BoxCollider col = obj.AddComponent<BoxCollider>();
+        CapsuleCollider col = obj.AddComponent<CapsuleCollider>();
         col.center = new Vector3(0, 0.5f, 0);
-        col.size = new Vector3(0.5f, 1.0f, 0.5f);
+        col.radius = 0.5f;
+        col.height = 1.0f;
         Rigidbody rigid = obj.AddComponent<Rigidbody>();
         rigid.useGravity = true;
         rigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
@@ -186,7 +187,7 @@ public class MonsterFactory
         objSkill.targetMask = 1 << data.Skill_TargetMask;
         objSkill.isLoopAnim = data.Skill_IsLoopAttackAnim;
 
-        objSkill.onSkillActivatedEvent = new UnityEngine.Events.UnityEvent<Vector3>();
+        objSkill.onSkillActivatedEvent = new UnityEngine.Events.UnityEvent<Transform>();
         objSkill.onSkillHitCheckStartEvent = new UnityEngine.Events.UnityEvent();
         objSkill.onSkillHitCheckEndEvent = new UnityEngine.Events.UnityEvent();
 
@@ -195,7 +196,7 @@ public class MonsterFactory
         AddSkillType(parent, objSkill, data.Skill_Option3);
         AddSkillType(parent, objSkill, data.Skill_Option4);
 
-        objSkill.onAddSkillEvent = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction<Vector3, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
+        objSkill.onAddSkillEvent = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction<Transform, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objSkill.onAddSkillEvent2 = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction, bool, LayerMask>();
 
         objSkill.onAddSkillEvent.AddListener(parent.OnAddSkillEventListener);

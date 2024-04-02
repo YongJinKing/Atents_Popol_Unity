@@ -2,7 +2,7 @@
    {
       "Index":30000,
       "Skill_Name":10000,
-      "Skill_PreDelay":2,
+      "Skill_PreDelay":0.2,
       "Skill_PostDelay":2,
       "Skill_DetectRange":2,
       "Skill_TargetMask":10,
@@ -30,7 +30,7 @@
    {
       "Index":30002,
       "Skill_Name":10002,
-      "Skill_PreDelay":2,
+      "Skill_PreDelay":0.2,
       "Skill_PostDelay":2,
       "Skill_DetectRange":10,
       "Skill_TargetMask":10,
@@ -44,7 +44,7 @@
    {
       "Index":30003,
       "Skill_Name":10003,
-      "Skill_PreDelay":3,
+      "Skill_PreDelay":0.3,
       "Skill_PostDelay":3,
       "Skill_DetectRange":10,
       "Skill_TargetMask":10,

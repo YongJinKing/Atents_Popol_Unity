@@ -13,7 +13,7 @@ public class SelfSkillType : BaseSkillType
     //protected 변???�역
     #region protected
     //부모의 Unit??참조???�브?�트
-    protected BattleSystem selfObject;
+    protected BattleSystem selfBS;
     #endregion
 
     //Public 변?�영??
@@ -54,7 +54,7 @@ public class SelfSkillType : BaseSkillType
     #region MonoBehaviour
     protected override void Start()
     {
-        selfObject = GetComponentInParent<BattleSystem>();
+        selfBS = GetComponentInParent<BattleSystem>();
     }
     #endregion
 }

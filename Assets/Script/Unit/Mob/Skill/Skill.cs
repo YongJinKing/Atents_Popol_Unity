@@ -6,7 +6,6 @@ public class Skill : MonoBehaviour
 {
     #region Properties / Field
     #region Private
-    private Vector3 targetPos;
     private bool isForceEnd = false;
     #endregion
 
@@ -26,7 +25,7 @@ public class Skill : MonoBehaviour
 
 
     #region Event
-    public UnityEvent<Vector3> onSkillActivatedEvent;
+    public UnityEvent<Transform> onSkillActivatedEvent;
     public UnityEvent onSkillHitCheckStartEvent;
     public UnityEvent onSkillHitCheckEndEvent;
     private UnityAction middleAct;
@@ -35,7 +34,7 @@ public class Skill : MonoBehaviour
     //public UnityEvent onSkillAvailableEvent;
     public UnityAction onDetectTargetAct;
 
-    public UnityEvent<UnityAction<Vector3, UnityAction, UnityAction, UnityAction>,UnityAction ,UnityAction, UnityAction> onAddSkillEvent;
+    public UnityEvent<UnityAction<Transform, UnityAction, UnityAction, UnityAction>,UnityAction ,UnityAction, UnityAction> onAddSkillEvent;
     public UnityEvent<UnityAction, bool, LayerMask> onAddSkillEvent2;
     #endregion
     #endregion
@@ -93,7 +92,8 @@ public class Skill : MonoBehaviour
 
     protected IEnumerator ProcessDelay(float delayTime, UnityAction act)
     {
-        yield return new WaitForSeconds(delayTime);
+        if(delayTime > 0.0f)
+            yield return new WaitForSeconds(delayTime);
         act?.Invoke();
     }
     #endregion
@@ -111,17 +111,16 @@ public class Skill : MonoBehaviour
         StartCoroutine(DetectingRange());
     }
 
-    public void OnSkillStart(Vector3 targetPos, UnityAction startAct, UnityAction middleAct, UnityAction endAct)
+    public void OnSkillStart(Transform target, UnityAction startAct, UnityAction middleAct, UnityAction endAct)
     {
         if (remainCoolDownTime <= 0)
         {
-            this.targetPos = targetPos;
             //preDelayTime Process
             StartCoroutine(ProcessDelay(preDelay,
                 () => 
                 {
                     startAct?.Invoke();
-                    onSkillActivatedEvent?.Invoke(targetPos);
+                    onSkillActivatedEvent?.Invoke(target);
                 }
                 ));
             this.middleAct = middleAct;

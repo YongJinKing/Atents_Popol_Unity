@@ -1,59 +1,44 @@
-ï»¿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-public class MovementSkillType : SelfSkillType
+public class SideMovementSkillType : SelfSkillType
 {
-    //ë³€ìˆ˜ ì˜ì—­
+    //º¯¼ö ¿µ¿ª
     #region Properties / Field
-    //private ë³€ìˆ˜ ì˜ì—­
+    //private º¯¼ö ¿µ¿ª
     #region Private
     #endregion
 
-    //protected ë³€ìˆ˜ ì˜ì—­
+    //protected º¯¼ö ¿µ¿ª
     #region protected
     #endregion
 
-    //Public ë³€ìˆ˜ì˜ì—­
+    //Public º¯¼ö¿µ¿ª
     #region public
-    //ì´ë™ê°€ëŠ¥í•œ ìµœëŒ€ ê±°ë¦¬
-    public float maxDist = 5.0f;
-    public float moveSpeed = 5.0f;
     #endregion
 
-    //ì´ë²¤íŠ¸ í•¨ìˆ˜ë“¤ ì˜ì—­
+    //ÀÌº¥Æ® ÇÔ¼öµé ¿µ¿ª
     #region Event
     //For use UnitMovement Class
-    public UnityEvent<Vector3, float, UnityAction, UnityAction> moveToPosEvent;
+    public UnityEvent<Transform, float, UnityAction, UnityAction> sideMoveEvent;
     //When End Move
-    public UnityEvent onMoveEndEvent;
+    public UnityEvent<UnityAction> stopEvent;
     #endregion
     #endregion
 
 
     #region Method
-    //private í•¨ìˆ˜ë“¤ ì˜ì—­
+    //private ÇÔ¼öµé ¿µ¿ª
     #region PrivateMethod
     #endregion
 
-    //protected í•¨ìˆ˜ë“¤ ì˜ì—­
+    //protected ÇÔ¼öµé ¿µ¿ª
     #region ProtectedMethod
-    protected void MovePos()
-    {
-        Vector3 dir = target.position - selfBS.transform.position;
-        //XZ í‰ë©´ì—ì„œì˜ ì›€ì§ì„ë§Œì„ ë³¸ë‹¤.
-        dir = new Vector3(dir.x, 0, dir.z);
-        dir.Normalize();
-
-        moveToPosEvent?.Invoke(selfBS.transform.position + dir * maxDist, moveSpeed, null, () => onMoveEndEvent?.Invoke());
-
-        return;
-    }
     #endregion
 
-    //public í•¨ìˆ˜ë“¤ ì˜ì—­
+    //public ÇÔ¼öµé ¿µ¿ª
     #region PublicMethod
     #endregion
     #endregion
@@ -64,7 +49,7 @@ public class MovementSkillType : SelfSkillType
     protected IEnumerator MovingPos()
     {
         Vector3 dir = targetPos - selfObject.transform.position;
-        //XZ í‰ë©´ì—ì„œì˜ ì›€ì§ì„ë§Œì„ ë³¸ë‹¤.
+        //XZ Æò¸é¿¡¼­ÀÇ ¿òÁ÷ÀÓ¸¸À» º»´Ù.
         dir = new Vector3(dir.x, 0, dir.z);
         dir.Normalize();
 
@@ -76,17 +61,22 @@ public class MovementSkillType : SelfSkillType
     #endregion
 
 
-    //ì´ë²¤íŠ¸ê°€ ì¼ì–´ë‚¬ì„ë•Œ ì‹¤í–‰ë˜ëŠ” On~~í•¨ìˆ˜
+    //ÀÌº¥Æ®°¡ ÀÏ¾î³µÀ»¶§ ½ÇÇàµÇ´Â On~~ÇÔ¼ö
     #region EventHandler
     public override void OnSkillActivated(Transform target)
     {
         base.OnSkillActivated(target);
-        MovePos();
+        sideMoveEvent?.Invoke(target, selfBS.Speed, null, null);
+    }
+
+    public void OnSkillHitCheckEndEventHandler()
+    {
+        stopEvent?.Invoke(null);
     }
     #endregion
 
 
-    //ìœ ë‹ˆí‹° í•¨ìˆ˜ë“¤ ì˜ì—­
+    //À¯´ÏÆ¼ ÇÔ¼öµé ¿µ¿ª
     #region MonoBehaviour
     #endregion
 }

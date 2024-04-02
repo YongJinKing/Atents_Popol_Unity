@@ -5,6 +5,7 @@ public abstract class Monster : BattleSystem
 {
     public enum State
     {
+        Create,
         Idle,
         Closing,
         Attacking,
@@ -44,7 +45,7 @@ public abstract class Monster : BattleSystem
     public UnityEvent<Vector3, float> rotateEvent;
     public UnityEvent<UnityAction> stopEvent;
 
-    protected UnityAction<Vector3, UnityAction, UnityAction, UnityAction> onSkillStartAct;
+    protected UnityAction<Transform, UnityAction, UnityAction, UnityAction> onSkillStartAct;
     protected UnityAction onSkillHitCheckStartAct;
     protected UnityAction onSkillHitCheckEndAct;
     protected UnityAction onSkillAnimEnd;
@@ -84,7 +85,7 @@ public abstract class Monster : BattleSystem
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
     public void OnAddSkillEventListener(
-        UnityAction<Vector3, UnityAction, UnityAction, UnityAction> skillStart,
+        UnityAction<Transform, UnityAction, UnityAction, UnityAction> skillStart,
         UnityAction skillHitCheckStart,
         UnityAction skillHitCheckEnd,
         UnityAction skillAnimEnd)
