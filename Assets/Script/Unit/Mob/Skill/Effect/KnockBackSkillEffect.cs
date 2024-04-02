@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class SideMovementSkillType : SelfSkillType
+public class KnockBackSkillEffect : BaseSkillEffect
 {
     //변수 영역
     #region Properties / Field
@@ -13,18 +12,26 @@ public class SideMovementSkillType : SelfSkillType
 
     //protected 변수 영역
     #region protected
+    [SerializeField] protected float _knockBackPower;
+    [SerializeField] protected float _upForcePower;
     #endregion
 
     //Public 변수영역
     #region public
+    public float knockBackPower
+    {
+        get { return _knockBackPower; } 
+        set { _knockBackPower = value;}
+    }
+    public float upForcePower
+    {
+        get { return _upForcePower; }
+        set { _upForcePower = value; }
+    }
     #endregion
 
     //이벤트 함수들 영역
     #region Event
-    //For use UnitMovement Class
-    public UnityEvent<Transform, float, UnityAction, UnityAction> sideMoveEvent;
-    //When End Move
-    public UnityEvent<UnityAction> stopEvent;
     #endregion
     #endregion
 
@@ -50,15 +57,17 @@ public class SideMovementSkillType : SelfSkillType
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
-    public override void OnSkillActivated(Transform target)
+    public override void OnSkillHit(Collider target)
     {
-        base.OnSkillActivated(target);
-        sideMoveEvent?.Invoke(target, selfBS.Speed, null, null);
-    }
+        Rigidbody rb = target.attachedRigidbody;
+        if(rb == null) return;
 
-    public void OnSkillHitCheckEndEventHandler()
-    {
-        stopEvent?.Invoke(null);
+        Vector3 dir = target.transform.position - transform.position;
+        dir.Normalize();
+
+        rb.AddForce(dir * knockBackPower, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * upForcePower, ForceMode.Impulse);
+
     }
     #endregion
 
@@ -66,4 +75,5 @@ public class SideMovementSkillType : SelfSkillType
     //유니티 함수들 영역
     #region MonoBehaviour
     #endregion
+
 }
