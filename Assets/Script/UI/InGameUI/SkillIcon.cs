@@ -6,48 +6,48 @@ using UnityEngine.UI;
 using Unity.VisualScripting;
 
 
-public class SkillIcon : MonoBehaviour, IPointerClickHandler
+public class SkillIcon : MonoBehaviour
 {
     public Image myImage;
-    public float uiSkillCoolTime;
+    public KeyCode skillKey; // 스킬을 사용할 키
 
+    public float maxCoolTime = 3.0f;
+    private float currentCoolTime = 0.0f;
     private bool isCooling = false;
-    public GameObject objectToThrow; // ���ε�
-
-    GameObject Slash;
-    SkillManager sm;
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (!isCooling)
-        {
-            StartCoroutine(CoolTime(3.0f));
-        }
-    }
 
     void Start()
     {
-        Slash = GameObject.Find("Slash");
-        sm = Slash.GetComponent<SkillManager>();
-        uiUnitSkillStatus uiSkillSprite = new uiUnitSkillStatus();
-        gameObject.GetComponent<SpriteRenderer>().sprite = uiSkillSprite.uiSkillSprite;
+        ResetSkillIcon();
     }
 
     void Update()
     {
-        
+        if (isCooling)
+        {
+            currentCoolTime += Time.deltaTime;
+            myImage.fillAmount = 1.0f - (currentCoolTime / maxCoolTime);
+            if (currentCoolTime >= maxCoolTime)
+            {
+                isCooling = false;
+                ResetSkillIcon();
+            }
+        }
+
+        // 키 입력을 감지하여 스킬 사용
+        if (Input.GetKeyDown(skillKey) && !isCooling)
+        {
+            StartCoolTime();
+        }
     }
 
-    IEnumerator CoolTime(float t)
+    void StartCoolTime()
     {
         isCooling = true;
-        float playTime = 0.0f;
-        while (playTime < t)
-        {
-            playTime += Time.deltaTime;
-            myImage.fillAmount = playTime / t;
-            yield return null;
-        }
-        isCooling = false;
+        currentCoolTime = 0.0f;
+    }
+
+    void ResetSkillIcon()
+    {
+        myImage.fillAmount = 1.0f;
     }
 }

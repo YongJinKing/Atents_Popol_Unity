@@ -10,7 +10,9 @@ public class TestIconImage : MonoBehaviour
     void Start()
     {
         var data = Resources.Load("Player/SkillEffect/Slash");
-        transform.GetChild(0).GetChild(1).GetChild(1).GetComponent<Image>().sprite=
+        transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Image>().sprite =
+        data.GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
+        transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Image>().sprite=
         data.GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
     }
 
