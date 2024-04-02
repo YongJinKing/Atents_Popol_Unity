@@ -503,10 +503,10 @@ RectTransform:
   - {fileID: 381106555}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 420, y: -60}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &15959956
 MonoBehaviour:
@@ -589,6 +589,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &15959958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,6 +890,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &25030088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,6 +1405,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!1 &44671688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,6 +2587,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &89641852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2735,10 +2739,10 @@ RectTransform:
   - {fileID: 799015456}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -60}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91073525
 MonoBehaviour:
@@ -2821,6 +2825,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &91073527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3706,6 +3711,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &112481430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4799,6 +4805,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &151503020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5490,6 +5497,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &192744813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6602,10 +6610,10 @@ RectTransform:
   - {fileID: 1955054120}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 420, y: -180}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &241200230
 MonoBehaviour:
@@ -6688,6 +6696,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &241200232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8497,6 +8506,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &303100262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10138,6 +10148,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &343017391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11030,6 +11041,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &369756390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11511,10 +11523,10 @@ RectTransform:
   - {fileID: 1805051930}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 60, y: -180}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &396544994
 MonoBehaviour:
@@ -11597,6 +11609,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &396544996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11699,6 +11712,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &398630859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12699,6 +12713,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &430711862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13704,7 +13719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &463818660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14702,10 +14717,10 @@ RectTransform:
   - {fileID: 1269317422}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -60}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476855439
 MonoBehaviour:
@@ -14788,6 +14803,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &476855441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16172,7 +16188,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -332, y: 0.00012207031}
-  m_SizeDelta: {x: 664, y: -582.0437}
+  m_SizeDelta: {x: 664, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &507918459
 MonoBehaviour:
@@ -16646,6 +16662,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &534211254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16748,6 +16765,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &534626602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17665,6 +17683,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &552414323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17963,6 +17982,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &567485207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18514,6 +18534,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &579505551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19292,6 +19313,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &606985888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19528,6 +19550,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &623104373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19914,6 +19937,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &638448564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20016,6 +20040,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &651648369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21767,6 +21792,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &712347510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21989,6 +22015,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &722544416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22211,6 +22238,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &724287943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22494,9 +22522,9 @@ RectTransform:
   m_Father: {fileID: 1664851907}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &731991227
 MonoBehaviour:
@@ -23366,6 +23394,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &754355676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24389,10 +24418,10 @@ RectTransform:
   - {fileID: 261219492}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 60, y: -60}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &796191084
 MonoBehaviour:
@@ -24417,6 +24446,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &796191085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24987,10 +25017,10 @@ RectTransform:
   - {fileID: 1056279739}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -300}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &803828554
 MonoBehaviour:
@@ -25073,6 +25103,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &803828556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25925,6 +25956,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &835489605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26652,6 +26684,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &850974045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26829,6 +26862,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &853512619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26931,6 +26965,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &853831135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27261,6 +27296,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &867220185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28552,6 +28588,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &921506487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28849,6 +28886,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &924435185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29071,6 +29109,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &933870617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31783,6 +31822,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1049487416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31885,6 +31925,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1052785067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32859,6 +32900,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1074735160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32961,6 +33003,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1080665698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33331,6 +33374,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1108247575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34674,6 +34718,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1139104859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34749,10 +34794,10 @@ RectTransform:
   - {fileID: 1153171830}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 300, y: -180}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1140354083
 MonoBehaviour:
@@ -34835,6 +34880,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1140354085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35177,6 +35223,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1153549905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36120,6 +36167,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1193745042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36222,6 +36270,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1200847998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36458,6 +36507,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1212965599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38354,6 +38404,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1287263514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38554,13 +38605,14 @@ GameObject:
   - component: {fileID: 1304188819}
   - component: {fileID: 1304188821}
   - component: {fileID: 1304188820}
+  - component: {fileID: 1304188822}
   m_Layer: 5
   m_Name: Shop UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1304188819
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38619,6 +38671,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1304188818}
   m_CullTransparentMesh: 1
+--- !u!114 &1304188822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304188818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7287dbf1b139b74a85686bd14763af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1312472649
 GameObject:
   m_ObjectHideFlags: 0
@@ -38878,6 +38942,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1332580285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39326,6 +39391,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1339586153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39703,6 +39769,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1345478260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39805,6 +39872,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1346054112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40132,6 +40200,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1357633744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42802,6 +42871,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1432967878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43281,10 +43351,10 @@ RectTransform:
   - {fileID: 1743485571}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 180, y: -180}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1461036821
 MonoBehaviour:
@@ -43367,6 +43437,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1461036823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43544,6 +43615,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1462342996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44692,6 +44764,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1503502181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45155,6 +45228,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1516319522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45736,6 +45810,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1532270244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46047,6 +46122,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1536430006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46955,6 +47031,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1597419898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48090,6 +48167,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1617725289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48895,6 +48973,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1640975714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49131,6 +49210,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1648419968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49353,6 +49433,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1659628561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49763,6 +49844,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1673735353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50646,6 +50728,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1719084191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51782,6 +51865,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1743232140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52602,6 +52686,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1776731455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52811,10 +52896,10 @@ RectTransform:
   - {fileID: 1775745191}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 420, y: -300}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1781730260
 MonoBehaviour:
@@ -52897,6 +52982,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1781730262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53328,6 +53414,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1794989176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53430,6 +53517,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1797540432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53889,7 +53977,7 @@ RectTransform:
   m_Father: {fileID: 1513249804}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -54347,6 +54435,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1823901098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54449,6 +54538,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1824554379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54701,6 +54791,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1846442291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54937,6 +55028,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1852420141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55146,10 +55238,10 @@ RectTransform:
   - {fileID: 1793959189}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -300}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1855284583
 MonoBehaviour:
@@ -55232,6 +55324,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1855284585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55410,6 +55503,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1868244033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56373,6 +56467,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1910902134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56582,10 +56677,10 @@ RectTransform:
   - {fileID: 83913977}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 540, y: -180}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1919293249
 MonoBehaviour:
@@ -56668,6 +56763,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1919293251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57044,10 +57140,10 @@ RectTransform:
   - {fileID: 1038854740}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 180, y: -300}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1929669028
 MonoBehaviour:
@@ -57130,6 +57226,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1929669030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57441,6 +57538,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1942417014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58757,6 +58855,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &1987215008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59669,6 +59768,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &2018070342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59852,10 +59952,10 @@ RectTransform:
   - {fileID: 333311140}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 60, y: -300}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2034511753
 MonoBehaviour:
@@ -59938,6 +60038,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &2034511755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60586,6 +60687,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &2068099467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60756,6 +60858,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &2070830500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61416,10 +61519,10 @@ RectTransform:
   - {fileID: 712171964}
   m_Father: {fileID: 792765660}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 180, y: -60}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2084696223
 MonoBehaviour:
@@ -61502,6 +61605,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &2084696225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63346,6 +63450,7 @@ MonoBehaviour:
   ItemValue: 0
   ItemDuration: 0
   spName: 
+  WeaponType: 0
 --- !u!114 &2135526085
 MonoBehaviour:
   m_ObjectHideFlags: 0

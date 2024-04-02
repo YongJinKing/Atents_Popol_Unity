@@ -1,7 +1,7 @@
 {
     "index": 0,
-    "Character_Hp": 500,
-    "Character_AttackPower": 20,
+    "Character_Hp": 1280,
+    "Character_AttackPower": 410,
     "Character_CurrentExp": 38400,
     "Character_CurrentLevel": 12,
     "Character_EnergyGage": 100,

@@ -95,9 +95,9 @@ public class UserPopup : MonoBehaviour
         PlayerDetailAbility.transform.Find("AttackPower").GetComponent<TMP_Text>().text
         = "공격력 : " + DataManager.instance.playerData.Character_AttackPower.ToString();
         PlayerDetailAbility.transform.Find("AttackType").GetComponent<TMP_Text>().text 
-        = "공격 타입 : " + WeaponTypeToString(PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType);
+        = "무기 종류 : " + WeaponTypeToString(PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType);
         PlayerDetailAbility.transform.Find("ArmorType").GetComponent<TMP_Text>().text 
-        = "방어 타입 : " + WeaponTypeToString(PlayerItem.transform.Find("Armor").GetComponent<UIItem>().WeaponType);
+        = "방어구 종류 : " + WeaponTypeToString(PlayerItem.transform.Find("Armor").GetComponent<UIItem>().WeaponType);
     }
 
     public string WeaponTypeToString(int index)
