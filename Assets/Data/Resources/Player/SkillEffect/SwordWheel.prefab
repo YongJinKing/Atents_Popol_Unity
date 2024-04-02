@@ -19490,7 +19490,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Radius: 6
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8429795697937341255
 MonoBehaviour:
@@ -19523,6 +19523,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitVFX: {fileID: 6670327230592393191, guid: c896a6fa2419f5d45abd5757233c7a03, type: 3}
+  myCam: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  one: 0.1
+  two: 0.1
 --- !u!114 &489451042998416220
 MonoBehaviour:
   m_ObjectHideFlags: 0

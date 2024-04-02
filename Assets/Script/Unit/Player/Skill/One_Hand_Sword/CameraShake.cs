@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     public Camera myCam;
-    public float one = 1;
-    public float two = 2;
+    public float one = 0.1f;
+    public float two = 0.1f;
 
     cameraMove camMove;
 

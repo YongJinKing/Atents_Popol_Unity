@@ -4875,8 +4875,8 @@ ParticleSystemRenderer:
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
-  m_UseCustomVertexStreams: 0
-  m_VertexStreams: 00010304
+  m_UseCustomVertexStreams: 1
+  m_VertexStreams: 00030409
   m_UseCustomTrailVertexStreams: 0
   m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: -951608786083511892, guid: 7c23d13ff5bdeca4e9fa681863824373, type: 3}
@@ -14544,6 +14544,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HitVFX: {fileID: 6670327230592393191, guid: c896a6fa2419f5d45abd5757233c7a03, type: 3}
+  myCam: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 4096
+  one: 0.1
+  two: 0.1
 --- !u!199 &5540558775326653587
 ParticleSystemRenderer:
   serializedVersion: 6
