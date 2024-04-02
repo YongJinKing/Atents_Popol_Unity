@@ -12,7 +12,7 @@ public class SkillIcon : MonoBehaviour, IPointerClickHandler
     public float uiSkillCoolTime;
 
     private bool isCooling = false;
-    public GameObject objectToThrow; // ¹ÙÀÎµù
+    public GameObject objectToThrow; // ï¿½ï¿½ï¿½Îµï¿½
 
     GameObject Slash;
     SkillManager sm;

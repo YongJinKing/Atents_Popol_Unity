@@ -37,7 +37,7 @@ public class BtnNormalFuntion : MonoBehaviour
     }
     void PressedBtn(int index)
     {
-        Debug.Log(index);
+
         BtnAct?.Invoke(index);
     }
 }

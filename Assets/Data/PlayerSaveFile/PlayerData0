@@ -1,15 +1,23 @@
 {
     "index": 0,
-    "Character_Hp": 1540,
-    "Character_AttackPower": 540,
-    "Character_CurrentExp": 38400,
-    "Character_CurrentLevel": 12,
+    "Character_Hp": 500,
+    "Character_AttackPower": 20,
+    "Character_CurrentExp": 0,
+    "Character_CurrentLevel": 1,
     "Character_EnergyGage": 100,
+    "Weapon_Ability": 0,
+    "Armor_Ability": 0,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
     "NowWeapon": "",
     "NowArmor": "",
     "Skill": [],
     "clearStage": [],
-    "PlayerGold": 0
+    "PlayerGold": 0,
+    "PlayerInven": [
+        1200,
+        1200,
+        1200,
+        1200
+    ]
 }

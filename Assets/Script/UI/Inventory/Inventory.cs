@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
+    
     public List<UIItem> ItemList;
     public List<int> BackUpIdList;
     public UnityEvent CleanSlot;
@@ -21,17 +22,22 @@ public class Inventory : MonoBehaviour
             Destroy(instance.gameObject);
         }
     }
+   
+    public void testtest()
+    {
+        AddItem(1200);
+    }
+    
     void Start()
     {
         ItemDataManager.GetInstance().InvenItemLoadDatas();
         this.ItemList = new List<UIItem>();
         BackUpIdList = new List<int>();
         FreshSlot(0);
-        this.AddItem(3000);
-        this.AddItem(3001);
-        this.AddItem(1100);
-        this.AddItem(1101);
-        this.AddItem(1102);
+        for(int i = 0; i < DataManager.instance.playerData.PlayerInven.Count; i++)
+        {
+            AddItem(DataManager.instance.playerData.PlayerInven[i]);
+        }
     }
     public void AddItem(int id) 
     {
@@ -45,6 +51,7 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
 
     public void DurationCharge(int index)
     {
@@ -142,7 +149,15 @@ public class Inventory : MonoBehaviour
             if(Mode == 0)
                 BackUpIdList = new List<int>();
         }
-        
+           
+    }
+    public void SaveInvenData()
+    {
+        DataManager.instance.playerData.PlayerInven = new List<int>();
+        for(int i = 0; i < ItemList.Count; i++)
+        {
+            DataManager.instance.playerData.PlayerInven.Add(ItemList[i].id);
+        }
     }
    
 }

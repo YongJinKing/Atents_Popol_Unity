@@ -14,6 +14,8 @@ public class PlayerData
     public int Character_CurrentExp;
     public int Character_CurrentLevel;
     public int Character_EnergyGage;
+    public int Weapon_Ability;
+    public int Armor_Ability;
     public float Character_MoveSpeed;
     public float Character_AttackSpeed;
 
@@ -24,6 +26,7 @@ public class PlayerData
     public string[] Skill;
     public bool[] clearStage;
     public int PlayerGold;
+    public List<int> PlayerInven = new List<int>();
 }
 
 

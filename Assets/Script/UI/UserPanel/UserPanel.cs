@@ -14,6 +14,7 @@ public class UserPanel : MonoBehaviour
     public UnityEvent<int> BtnAct;
     public UnityEvent<int> CleanBtnAct;
     public UnityEvent<int> FreshBtnAct;
+    public UnityEvent SaveInvenData;
 
     public GameObject UserPanelPopup;
     public void PressedBtn(int index)
@@ -35,6 +36,8 @@ public class UserPanel : MonoBehaviour
             {
                 ShowPopup(index);
             }
+            SaveInvenData?.Invoke();
+            DataManager.instance.SaveData();
         }
         else 
         {
@@ -42,8 +45,10 @@ public class UserPanel : MonoBehaviour
             CleanBtnAct?.Invoke(-1);
             FreshBtnAct?.Invoke(0);
         }
+        
     }
     void ShowPopup(int index)
+
     {
         for(int i = 0; i < UserPanelPopup.transform.childCount; i++)
         {

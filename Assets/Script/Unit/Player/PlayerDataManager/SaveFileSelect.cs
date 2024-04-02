@@ -62,7 +62,6 @@ public class SaveFileSelect : MonoBehaviour
 
     public void Slot(int number)	// 슬롯 선택
     {
-        Debug.Log(number);
         DataManager.instance.SlotNum = number;
 
         if (savefile[number])   // 데이터가 있다면

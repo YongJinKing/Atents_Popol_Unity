@@ -9,7 +9,7 @@ public class UIItem : MonoBehaviour
 {
     public Image icon;
     public TMP_Text txtCount;
-    public Button btn;
+    
     public int id;
     
 
@@ -34,6 +34,7 @@ public class UIItem : MonoBehaviour
         var SmithData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_smithTalk];
         
         this.WeaponType = ItemData.Inven_weaponType;
+        //0 : 한손 검, 1: 양손 검, 2 : 한손 둔기, 3 : 양손 둔기, 4 : 창, 5 : 단검, 6 : 투창용 창, 10 : 가죽, 11 : 경갑, 12 : 판금
         this.spName = SpriteData.ImageResourceName;
         this.ItemName = NameData.String_Desc;
         this.ItemDesc = DescData.String_Desc;
