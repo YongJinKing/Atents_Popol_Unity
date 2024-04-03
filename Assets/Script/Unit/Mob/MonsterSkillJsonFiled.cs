@@ -111,7 +111,9 @@ public struct SkillProjectileDetailDataTable
     public float Skill_hitDuration;
     public float Skill_LongRangeAttackSpeed;
     public float Skill_LongRangeAttackDist;
+    public float Skill_ParabolaHeight;
     public bool Skill_Penetrable;
+    public bool Skill_IsParabola;
     public int Skill_AffectOption1;
     public int Skill_AffectOption2;
     public int Skill_AffectOption3;
@@ -132,5 +134,12 @@ public struct SkillDamageAffectDataTable
     public int Index;
     public float Skill_Power;
     public int Skill_AttackType;
+}
+
+public struct SkillKnockBackAffectDataTable
+{
+    public int Index;
+    public float Skill_KnockBackPower;
+    public float Skill_KnockUpPower;
 }
 #endregion

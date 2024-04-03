@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class MonsterSkillDataManager
 {
@@ -23,6 +24,7 @@ public class MonsterSkillDataManager
     public Dictionary<int, SkillProjectileDetailDataTable> dicSkillProjectileDetailDataTable;
     //SkillAffect
     public Dictionary<int, SkillDamageAffectDataTable> dicSkillDamageAffectDataTable;
+    public Dictionary<int, SkillKnockBackAffectDataTable> dicSkillKnockBackAffectDataTable;
 
     public static MonsterSkillDataManager GetInstance()
     {
@@ -71,6 +73,7 @@ public class MonsterSkillDataManager
         var Mestiarii_SkillMeleeTypeDataTable = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Melee").text; 
         var Mestiarii_SkillProjectileDetailDataTable = Resources.Load<TextAsset>("Monster/SkillData/SkillType/Monster_SkillDetail_Projectile").text;
         var Mestiarii_SkillDamageAffectDataTable = Resources.Load<TextAsset>("Monster/SkillData/SkillAffect/Monster_SkillAffect_DamageAffect").text;
+        var Mestiarii_SkillKnockBackAffectDataTable = Resources.Load<TextAsset>("Monster/SkillData/SkillAffect/Monster_SkillAffect_KnockBackAffect").text;
 
         var arrPrefabDatas = JsonConvert.DeserializeObject<PrefabTable[]>(Mestiarii_PrefabTable);
         var arrMonsterDatas = JsonConvert.DeserializeObject<MonsterDataTable[]>(Mestiarii_MonsterDataTable);
@@ -79,6 +82,7 @@ public class MonsterSkillDataManager
         var arrSkillTypeMeleeDatas = JsonConvert.DeserializeObject<SkillMeleeTypeDataTable[]>(Mestiarii_SkillMeleeTypeDataTable);
         var arrSkillTypeProjectileDatas = JsonConvert.DeserializeObject<SkillProjectileDetailDataTable[]>(Mestiarii_SkillProjectileDetailDataTable);
         var arrSkillAffectDamageDatas = JsonConvert.DeserializeObject<SkillDamageAffectDataTable[]>(Mestiarii_SkillDamageAffectDataTable);
+        var arrSkillAffectKnockBackDatas = JsonConvert.DeserializeObject<SkillKnockBackAffectDataTable[]>(Mestiarii_SkillKnockBackAffectDataTable);
 
         this.dicPrefabTable = arrPrefabDatas.ToDictionary(x => x.index);
         this.dicMonsterDataTable = arrMonsterDatas.ToDictionary(x => x.Index);
@@ -87,6 +91,7 @@ public class MonsterSkillDataManager
         this.dicSkillMeleeTypeDataTable = arrSkillTypeMeleeDatas.ToDictionary(x => x.Index);
         this.dicSkillProjectileDetailDataTable = arrSkillTypeProjectileDatas.ToDictionary(x => x.Index);
         this.dicSkillDamageAffectDataTable = arrSkillAffectDamageDatas.ToDictionary(x => x.Index);
+        this.dicSkillKnockBackAffectDataTable = arrSkillAffectKnockBackDatas.ToDictionary(x => x.Index);
     }
 }
 

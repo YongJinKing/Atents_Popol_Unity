@@ -17,7 +17,7 @@ public class ProjectileSkillType : HitCheckSkillType
     #region protected
     [SerializeField] protected LayerMask _unPenetrableMask;
     [SerializeField] protected float _moveSpeed = 10f;
-    [SerializeField] protected float parabolaHeight = 2f;
+    [SerializeField] protected float _parabolaHeight = 2f;
     //최대 사거리(xz 평면에서만)
     [SerializeField] protected float _maxDist = 5f;
     #endregion
@@ -43,6 +43,12 @@ public class ProjectileSkillType : HitCheckSkillType
     {
         get { return _maxDist; }
         set { _maxDist = value; }
+    }
+
+    public float parabolaHeight
+    {
+        get { return _parabolaHeight; }
+        set { _parabolaHeight = value; }
     }
     #endregion
 

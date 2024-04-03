@@ -13,7 +13,7 @@ public class KnockBackSkillEffect : BaseSkillEffect
     //protected 변수 영역
     #region protected
     [SerializeField] protected float _knockBackPower;
-    [SerializeField] protected float _upForcePower;
+    [SerializeField] protected float _knockUpPower;
     #endregion
 
     //Public 변수영역
@@ -23,10 +23,10 @@ public class KnockBackSkillEffect : BaseSkillEffect
         get { return _knockBackPower; } 
         set { _knockBackPower = value;}
     }
-    public float upForcePower
+    public float knockUpPower
     {
-        get { return _upForcePower; }
-        set { _upForcePower = value; }
+        get { return _knockUpPower; }
+        set { _knockUpPower = value; }
     }
     #endregion
 
@@ -66,8 +66,7 @@ public class KnockBackSkillEffect : BaseSkillEffect
         dir.Normalize();
 
         rb.AddForce(dir * knockBackPower, ForceMode.Impulse);
-        rb.AddForce(Vector3.up * upForcePower, ForceMode.Impulse);
-
+        rb.AddForce(Vector3.up * knockUpPower, ForceMode.Impulse);
     }
     #endregion
 

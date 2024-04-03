@@ -336,8 +336,10 @@ public class MonsterFactory
                     projectile.targetMask = 1 << data.Skill_TargetMask;
                     projectile.moveSpeed = data.Skill_LongRangeAttackSpeed;
                     projectile.maxDist = data.Skill_LongRangeAttackSpeed;
+                    projectile.parabolaHeight = data.Skill_ParabolaHeight;
                     projectile.attackStartPos = new Transform[data.Skill_NumOfHitBox];
                     projectile.penetrable = data.Skill_Penetrable;
+                    projectile.isParabola = data.Skill_IsParabola;
 
 
                     switch (data.Skill_NumOfHitBox)
@@ -386,33 +388,53 @@ public class MonsterFactory
         switch (index / 10000)
         {
             case 1:
-                SkillDamageAffectDataTable data = default;
-                if (monsterDataManager.dicSkillDamageAffectDataTable.ContainsKey(index))
                 {
-                    data = monsterDataManager.dicSkillDamageAffectDataTable[index];
-                }
-                else
-                {
-                    //nullCheck
-                }
-
-                /*
-                var json = Resources.Load<TextAsset>("Monster/SkillData/SkillAffect/Monster_SkillAffect_DamageAffect").text;
-                var arrDatas = JsonConvert.DeserializeObject<SkillDamageAffectDataTable[]>(json);
-                foreach (var Data in arrDatas)
-                {
-                    if (Data.Index == index)
+                    SkillDamageAffectDataTable data = default;
+                    if (monsterDataManager.dicSkillDamageAffectDataTable.ContainsKey(index))
                     {
-                        data = Data;
-                        break;
+                        data = monsterDataManager.dicSkillDamageAffectDataTable[index];
                     }
+                    else
+                    {
+                        //nullCheck
+                    }
+
+                    /*
+                    var json = Resources.Load<TextAsset>("Monster/SkillData/SkillAffect/Monster_SkillAffect_DamageAffect").text;
+                    var arrDatas = JsonConvert.DeserializeObject<SkillDamageAffectDataTable[]>(json);
+                    foreach (var Data in arrDatas)
+                    {
+                        if (Data.Index == index)
+                        {
+                            data = Data;
+                            break;
+                        }
+                    }
+                    */
+                    obj.name = "Damage";
+                    DamageSkillEffect damage = obj.AddComponent<DamageSkillEffect>();
+                    damage.power = data.Skill_Power;
+                    damage.Atype = (AttackType)data.Skill_AttackType;
+                    parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(damage.OnSkillHit);
                 }
-                */
-                obj.name = "Damage";
-                DamageSkillEffect damage = obj.AddComponent<DamageSkillEffect>();
-                damage.power = data.Skill_Power;
-                damage.Atype = (AttackType)data.Skill_AttackType;
-                parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(damage.OnSkillHit);
+                break;
+            case 2:
+                {
+                    SkillKnockBackAffectDataTable data = default;
+                    if (monsterDataManager.dicSkillKnockBackAffectDataTable.ContainsKey(index))
+                    {
+                        data = monsterDataManager.dicSkillKnockBackAffectDataTable[index];
+                    }
+                    else
+                    {
+                        //nullCheck
+                    }
+                    obj.name = "KnockBack";
+                    KnockBackSkillEffect knockBack = obj.AddComponent<KnockBackSkillEffect>();
+                    knockBack.knockBackPower = data.Skill_KnockBackPower;
+                    knockBack.knockUpPower = data.Skill_KnockUpPower;
+                    parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(knockBack.OnSkillHit);
+                }
                 break;
             default:
                 GameObject.Destroy(obj);
