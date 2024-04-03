@@ -1,23 +1,29 @@
 using System.Collections;
+
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class ShopUi : MonoBehaviour
 {
     public GameObject Contents;
+    public GameObject MoneyPopup;
+    public GameObject BuyPopup;
     string ItemRiggingStr = "";
     int InstanceCount = 0;
+    Coroutine CorMoneyPopup;
     // Start is called before the first frame update
     void Start()
     {
         ItemDataManager.GetInstance().InvenItemLoadDatas();
-        
+        BuyPopup.gameObject.SetActive(false);
+        MoneyPopup.gameObject.SetActive(false);
         foreach(KeyValuePair<int, ItemData> item in ItemDataManager.GetInstance().dicItemDatas)
         {   
             bool Found = ItemDataManager.GetInstance().dicResouseTable[item.Key].ImageResourceName.Contains("Begginer");
-            
             if(!Found)
             {
                 Instantiate(Resources.Load("UI/ShopUi/ItemSlot"),Contents.transform);
@@ -38,18 +44,40 @@ public class ShopUi : MonoBehaviour
                 WeaponTypeToString(Contents.transform.GetChild(InstanceCount).Find("ItemDetail").GetComponent<UIItem>().WeaponType);
                 Contents.transform.GetChild(InstanceCount).Find("ItemDetail").Find("Gold").Find("Text (TMP)").GetComponent<TMP_Text>().text =
                 Contents.transform.GetChild(InstanceCount).Find("ItemDetail").GetComponent<UIItem>().ItemPrice.ToString();
-
-                
                 InstanceCount++;
             }
-            
+            Button[] BuyBtnList = Contents.GetComponentsInChildren<Button>();
+            for(int i = 0; i < BuyBtnList.Length; i++)
+            {
+                int index = i;
+                BuyBtnList[i].onClick.AddListener(() => PressedBuyBtn(index));
+            }    
         }
     }
 
-    public void PressedBuyBtn()
+    public void PressedBuyBtn(int index)
     {
-
+        int ItemPrice = int.Parse(Contents.transform.GetChild(index).Find("ItemDetail").Find("Gold").Find("Text (TMP)").GetComponent<TMP_Text>().text);
+        if(DataManager.instance.playerData.PlayerGold >= ItemPrice)
+        {
+            BuyPopup.gameObject.SetActive(true);
+        }
+        else
+        {
+            MoneyPopup.gameObject.SetActive(true);
+            CorMoneyPopup = StartCoroutine(OnCorMoneyPopup());
+        }
     }
+    IEnumerator OnCorMoneyPopup()
+    {
+        yield return new WaitForSeconds(0.8f);
+        MoneyPopup.gameObject.SetActive(false);
+    }
+    public void BuyPopupYesOrNo()
+    {
+        
+    }
+
     public string WeaponTypeToString(int index)
     {
         string Rtstring = "";

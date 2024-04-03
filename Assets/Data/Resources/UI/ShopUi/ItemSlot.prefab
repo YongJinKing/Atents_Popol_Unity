@@ -469,6 +469,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &7101001303948972029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,9 +490,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ShopUi, Assembly-CSharp
-        m_MethodName: PressedBuyBtn
-        m_Mode: 1
+        m_TargetAssemblyTypeName: ShopItemSlot, Assembly-CSharp
+        m_MethodName: SibilingRtn
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
