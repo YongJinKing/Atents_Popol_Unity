@@ -26,7 +26,14 @@ public class PartManager : MonoBehaviour, IGetDType
 
     public void DisActiveCol()
     {
-        foreach(Part part in parts)
+        StartCoroutine(DisAcivating());
+    }
+
+    private IEnumerator DisAcivating()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        foreach (Part part in parts)
         {
             part.col.enabled = false;
         }
