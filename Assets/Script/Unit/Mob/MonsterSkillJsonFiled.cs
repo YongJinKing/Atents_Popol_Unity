@@ -57,6 +57,8 @@ public struct MonsterDataTable
     public int Character_DetailArmorType3;
     public int Character_DetailArmorType4;
     public int Character_Prefab;
+    public int Character_AIType;
+    public float Character_Scale;
 }
 #endregion
 

@@ -43,9 +43,10 @@ public class MonsterFactory
             }
         }
         */
-        
-        
-        obj.transform.localScale = new Vector3(3, 3, 3);
+
+
+        float scale = data.Character_Scale;
+        obj.transform.localScale = new Vector3(scale, scale, scale);
         obj.name = "Slime2";
         CapsuleCollider col = obj.AddComponent<CapsuleCollider>();
         col.center = new Vector3(0, 0.5f, 0);
@@ -56,8 +57,7 @@ public class MonsterFactory
         rigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
         //need exl
-        //Monster objMon = FindAI(index);
-        Monster objMon = obj.AddComponent<Slime>();
+        Monster objMon = FindAI(obj,data.Character_AIType);
 
         objMon.onMovementEvent = new UnityEngine.Events.UnityEvent<Vector3, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objMon.followEvent = new UnityEngine.Events.UnityEvent<Transform, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
@@ -470,15 +470,15 @@ public class MonsterFactory
         }
     }
 
-    public Monster FindAI(int index)
+    public Monster FindAI(GameObject obj, int index)
     {
         switch (index)
         {
+            case 0:
+                return obj.AddComponent<Slime>();
             case 1:
                 return null;
             case 2:
-                return null;
-            case 3:
                 return null;
             default:
                 return null;

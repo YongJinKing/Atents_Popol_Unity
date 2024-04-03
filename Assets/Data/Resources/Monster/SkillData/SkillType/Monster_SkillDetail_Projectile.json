@@ -46,7 +46,7 @@
     "Skill_HitBoxStartPos4": -1,
     "Skill_HitEffect": 0,
     "Skill_DestroyEffect": 20002
-  }
+  },
   {
     "Index": 30002,
     "Skill_NumOfHitBox": 1,
