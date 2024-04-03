@@ -1,7 +1,8 @@
-using System.Collections;
+
 using System.Collections.Generic;
 
 using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
@@ -16,13 +17,13 @@ public class UsetInvenPopupManager : MonoBehaviour, IPointerEnterHandler, IPoint
     public UnityEvent<bool> LRPosition;//0 : Left 1 : Right
     public UnityEvent<int> Popup;
     public UnityEvent<Vector2> Event_SlotPosition;
-    public GameObject UserInven;
+    public GameObject Inven;
     
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         
-        if(UserInven.transform.Find("PlayerAbility").Find("Inventory").GetComponent<DisplayInven>().items.Count > transform.GetSiblingIndex())
+        if(Inven.transform.Find("PlayerAbility").Find("Inventory").GetComponent<DisplayInven>().items.Count > transform.GetSiblingIndex())
         {
             if(transform.GetComponent<RectTransform>().anchoredPosition.x >= 300)
                 LRPosition?.Invoke(true);
@@ -38,7 +39,7 @@ public class UsetInvenPopupManager : MonoBehaviour, IPointerEnterHandler, IPoint
     public void OnPointerExit(PointerEventData eventData)
     {
         StopAllCoroutines();
-        UserInven.transform.Find("DescPopup").gameObject.SetActive(false);
+        Inven.transform.Find("DescPopup").gameObject.SetActive(false);
         transform.Find("Button").gameObject.SetActive(false);
     }
     
@@ -46,16 +47,16 @@ public class UsetInvenPopupManager : MonoBehaviour, IPointerEnterHandler, IPoint
     {
         var go = transform.GetComponent<UIItem>();
         yield return new WaitForSeconds(0.8f);
-        UserInven.transform.Find("DescPopup").gameObject.SetActive(true);
-        UserInven.transform.Find("DescPopup").Find("Paper").Find("ImgBg").Find("ItemImage").GetComponent<Image>().sprite
+        Inven.transform.Find("DescPopup").gameObject.SetActive(true);
+        Inven.transform.Find("DescPopup").Find("Paper").Find("ImgBg").Find("ItemImage").GetComponent<Image>().sprite
         = go.icon.sprite;
-        UserInven.transform.Find("DescPopup").Find("Paper").Find("ItemName").GetComponent<TMP_Text>().text
+        Inven.transform.Find("DescPopup").Find("Paper").Find("ItemName").GetComponent<TMP_Text>().text
         = go.ItemName;
-        UserInven.transform.Find("DescPopup").Find("Paper").Find("ItemType").GetComponent<TMP_Text>().text
+        Inven.transform.Find("DescPopup").Find("Paper").Find("ItemType").GetComponent<TMP_Text>().text
         = WeaponTypeToString(go.WeaponType);
-        UserInven.transform.Find("DescPopup").Find("Paper").Find("ItemValue").GetComponent<TMP_Text>().text
+        Inven.transform.Find("DescPopup").Find("Paper").Find("ItemValue").GetComponent<TMP_Text>().text
         = RiggingTypeToString(go.ItemRigging) + go.ItemValue.ToString();
-        UserInven.transform.Find("DescPopup").Find("Paper").Find("ItemDesc").GetComponent<TMP_Text>().text
+        Inven.transform.Find("DescPopup").Find("Paper").Find("ItemDesc").GetComponent<TMP_Text>().text
         = go.ItemDesc;
         
 

@@ -125,6 +125,16 @@ public class UserPopup : MonoBehaviour
         if(index == 12)
             Rtstring = "판금";
         return Rtstring;
-
+    }
+    public string RiggingTypeToString(int index)
+    {
+        string Rtstring = "";
+        //0 : 무기 1 : 방어구
+        if(index == 0)
+            Rtstring = "공격력 : ";
+        if(index == 1)
+            Rtstring = "체력 : ";
+       
+        return Rtstring;
     }
 }

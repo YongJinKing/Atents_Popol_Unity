@@ -12,9 +12,15 @@ public class ShopUi : MonoBehaviour
     public GameObject Contents;
     public GameObject MoneyPopup;
     public GameObject BuyPopup;
+    public GameObject DescPopup;
+    public GameObject GridLine;
+    public UnityEvent<int> AddItem;
     string ItemRiggingStr = "";
     int InstanceCount = 0;
+    int ItemPrice;
+    int SelectItem;
     Coroutine CorMoneyPopup;
+    Coroutine CorSlotHL;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,10 +63,11 @@ public class ShopUi : MonoBehaviour
 
     public void PressedBuyBtn(int index)
     {
-        int ItemPrice = int.Parse(Contents.transform.GetChild(index).Find("ItemDetail").Find("Gold").Find("Text (TMP)").GetComponent<TMP_Text>().text);
+        ItemPrice = int.Parse(Contents.transform.GetChild(index).Find("ItemDetail").Find("Gold").Find("Text (TMP)").GetComponent<TMP_Text>().text);
         if(DataManager.instance.playerData.PlayerGold >= ItemPrice)
         {
             BuyPopup.gameObject.SetActive(true);
+            SelectItem = index;
         }
         else
         {
@@ -68,14 +75,50 @@ public class ShopUi : MonoBehaviour
             CorMoneyPopup = StartCoroutine(OnCorMoneyPopup());
         }
     }
+    public void SortRiggingType(int index)
+    {
+        for(int i = 0; i <  Contents.transform.childCount; i++)
+        {
+                Contents.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        if(index == 0)
+        {
+            for(int i = 0; i <  Contents.transform.childCount; i++)
+            {
+                Contents.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+        if(index == 1)
+        {
+            for(int i = 0; i <  Contents.transform.childCount; i++)
+            {
+                if(Contents.transform.GetChild(i).Find("ItemDetail").GetComponent<UIItem>().ItemRigging == 0)
+                    Contents.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+        if(index == 2)
+        {
+            for(int i = 0; i <  Contents.transform.childCount; i++)
+            {
+                if(Contents.transform.GetChild(i).Find("ItemDetail").GetComponent<UIItem>().ItemRigging == 1)
+                    Contents.transform.GetChild(i).gameObject.SetActive(true);
+            }
+        }
+    }
     IEnumerator OnCorMoneyPopup()
     {
         yield return new WaitForSeconds(0.8f);
         MoneyPopup.gameObject.SetActive(false);
     }
-    public void BuyPopupYesOrNo()
+    public void BuyPopupYesOrNo(int index)
     {
+        if(index == 0)
+        {
+            DataManager.instance.playerData.PlayerGold -= ItemPrice;
+            AddItem?.Invoke(Contents.transform.GetChild(SelectItem).Find("ItemDetail").GetComponent<UIItem>().id);
+        }
         
+        BuyPopup.gameObject.SetActive(false);
     }
 
     public string WeaponTypeToString(int index)
@@ -103,6 +146,65 @@ public class ShopUi : MonoBehaviour
         if(index == 12)
             Rtstring = "판금";
         return Rtstring;
+    }
 
+    public string RiggingTypeToString(int index)
+    {
+        string Rtstring = "";
+        //0 : 무기 1 : 방어구
+        if(index == 0)
+            Rtstring = "공격력 : ";
+        if(index == 1)
+            Rtstring = "체력 : ";
+       
+        return Rtstring;
+    }
+    public void OnHighLite(int index, bool OnCheck)
+    {
+        if(GridLine.transform.GetChild(index).GetComponent<UIItem>().id > 0)
+        {
+            GridLine.transform.GetChild(index).Find("Button").gameObject.SetActive(OnCheck);
+            if(OnCheck)
+            {
+                CorSlotHL = StartCoroutine(OnCorSlotHL(index));
+            }  
+            else
+            {
+                StopCoroutine(CorSlotHL);
+                DescPopup.transform.gameObject.SetActive(false);
+                CorSlotHL = null;
+            }
+        }
+        
+            
+    }
+
+    IEnumerator OnCorSlotHL(int index)
+    {
+        var go = GridLine.transform.GetChild(index).GetComponent<UIItem>();
+        yield return new WaitForSeconds(0.8f);
+        DescPopup.transform.gameObject.SetActive(true);
+        transform.Find("Main_Panel").Find("DescPopup").gameObject.SetActive(true);
+        transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ImgBg").Find("ItemImage").GetComponent<Image>().sprite
+        = go.icon.sprite;
+        transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemName").GetComponent<TMP_Text>().text
+        = go.ItemName;
+        transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemType").GetComponent<TMP_Text>().text
+        = WeaponTypeToString(go.WeaponType);
+        transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemValue").GetComponent<TMP_Text>().text
+        = RiggingTypeToString(go.ItemRigging) + go.ItemValue.ToString();
+        transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemDesc").GetComponent<TMP_Text>().text
+        = go.ItemDesc;
+        if(GridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition.x <= 300)
+        {
+            transform.Find("Main_Panel").Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
+            GridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition + new Vector2(290 , -145);
+        }
+        else
+        {
+            transform.Find("Main_Panel").Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
+            GridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition + new Vector2(-310 , -145);
+        }
+        
     }
 }

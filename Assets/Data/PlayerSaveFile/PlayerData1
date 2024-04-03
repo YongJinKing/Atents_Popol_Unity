@@ -13,9 +13,10 @@
     "NowArmor": "",
     "Skill": [],
     "clearStage": [],
-    "PlayerGold": 0,
+    "PlayerGold": 5000,
     "PlayerInven": [
         1200,
-        1200
+        1200,
+        3001
     ]
 }
