@@ -22,6 +22,7 @@ public class SkillManager : PlayerSkill
         Player = GameObject.Find("Player");
         Plm = Player.GetComponent<PlayerManager>();
         pl = Player.GetComponent<Player>();
+        OnBuff();
     }
 
     void OnTriggerEnter(Collider other)
@@ -49,6 +50,22 @@ public class SkillManager : PlayerSkill
             }
         }
     }
+    public int Buff;
+    public int BTime;
+    void OnBuff()
+    {
+        int RialATK = pl.ATK;
+        pl.ATK += (int)(pl.ATK * (Buff/100));
+        StartCoroutine(stopBuff(BTime, RialATK));
+    }
+
+    IEnumerator stopBuff(int BTime, int RialATK)
+    {
+        yield return new WaitForSeconds(BTime);
+        pl.ATK = RialATK;
+    }
+
+
 
     IEnumerator tempDebuging(Ray ray)
     {

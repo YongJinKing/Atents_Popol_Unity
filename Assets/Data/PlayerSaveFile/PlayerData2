@@ -5,11 +5,14 @@
     "Character_CurrentExp": 0,
     "Character_CurrentLevel": 1,
     "Character_EnergyGage": 100,
+    "Weapon_Ability": 0,
+    "Armor_Ability": 0,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
     "NowWeapon": "",
     "NowArmor": "",
     "Skill": [],
     "clearStage": [],
-    "PlayerGold": 0
+    "PlayerGold": 0,
+    "PlayerInven": []
 }

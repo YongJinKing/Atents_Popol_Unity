@@ -19,34 +19,77 @@ public interface I_Skill
     void Do(string Anim);
 }
 
-public class QSkill : CharacterProperty, I_Skill
+public class QSkill : I_Skill
 {
+    private CharacterProperty characterProperty;
+
+    public QSkill(CharacterProperty characterProperty)
+    {
+        this.characterProperty = characterProperty;
+    }
+
     public void Do(string Anim)
     {
-        myAnim.SetTrigger(Anim);
+        if (characterProperty != null && characterProperty.myAnim != null)
+        {
+            characterProperty.myAnim.SetTrigger(Anim);
+        }
     }
 }
-/*public class QSkill : CharacterProperty, I_Skill
+
+public class WSkill : I_Skill
 {
+    private CharacterProperty characterProperty;
+
+    public WSkill(CharacterProperty characterProperty)
+    {
+        this.characterProperty = characterProperty;
+    }
+
     public void Do(string Anim)
     {
-        myAnim.SetTrigger(Anim);
+        if (characterProperty != null && characterProperty.myAnim != null)
+        {
+            characterProperty.myAnim.SetTrigger(Anim);
+        }
     }
 }
-public class QSkill : CharacterProperty, I_Skill
+
+public class ESkill : I_Skill
 {
+    private CharacterProperty characterProperty;
+
+    public ESkill(CharacterProperty characterProperty)
+    {
+        this.characterProperty = characterProperty;
+    }
+
     public void Do(string Anim)
     {
-        myAnim.SetTrigger(Anim);
+        if (characterProperty != null && characterProperty.myAnim != null)
+        {
+            characterProperty.myAnim.SetTrigger(Anim);
+        }
     }
 }
-public class QSkill : CharacterProperty, I_Skill
+
+public class RSkill : I_Skill
 {
+    private CharacterProperty characterProperty;
+
+    public RSkill(CharacterProperty characterProperty)
+    {
+        this.characterProperty = characterProperty;
+    }
+
     public void Do(string Anim)
     {
-        myAnim.SetTrigger(Anim);
+        if (characterProperty != null && characterProperty.myAnim != null)
+        {
+            characterProperty.myAnim.SetTrigger(Anim);
+        }
     }
-}*/
+}
 
 public class Player : BattleSystem, I_ClickPoint, IGetDType
 {
@@ -70,7 +113,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         Fire, Dadge, Idle, Run, Skill
     }
 
-    [SerializeField]protected state playerstate;
+    [SerializeField] protected state playerstate;
     protected void ChangeState(state s)
     {
         if (playerstate == s) return;
@@ -123,10 +166,31 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         }
     }
 
+    public enum E_Skill
+    {
+        QSkill, WSkill, ESkill, RSkill
+    }
 
+    I_Skill QSkill;
+    I_Skill WSkill;
+    I_Skill ESkill;
+    I_Skill RSkill;
+
+    Dictionary<E_Skill, KeyCode> controllKey = new Dictionary<E_Skill, KeyCode>();
     protected override void Start()
     {
+        QSkill = new QSkill(this);
+        WSkill = new WSkill(this);
+        ESkill = new ESkill(this);
+        RSkill = new RSkill(this);
+
+        controllKey[E_Skill.QSkill] = KeyCode.Q;
+        controllKey[E_Skill.WSkill] = KeyCode.W;
+        controllKey[E_Skill.ESkill] = KeyCode.E;
+        controllKey[E_Skill.RSkill] = KeyCode.R;
+
         base.Start();
+
         particle = GetComponentInChildren<ParticleSystem>();
         ChangeState(state.Idle);
     }
@@ -137,7 +201,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         isFireReady = FireDelay < 0;
         DadgeDelay -= Time.deltaTime;
         isDadgeReady = DadgeDelay < 0;
-        
+
         ProcessState();
     }
 
@@ -161,7 +225,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
             GetRaycastHit();
 
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-            
+
             myAnim.SetTrigger("t_Attack");
 
             ChangeState(state.Fire);
@@ -173,21 +237,21 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
     bool AnimCheck(string Anim)
     {
         // 현재 애니메이션이 체크하고자 하는 애니메이션인지 확인
-        if(myAnim.GetCurrentAnimatorStateInfo(0).IsName(Anim) == true)
+        if (myAnim.GetCurrentAnimatorStateInfo(0).IsName(Anim) == true)
         {
             // 원하는 애니메이션이라면 플레이 중인지 체크
             float animTime = myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
-            if(animTime == 0)
+            if (animTime == 0)
             {
                 return false;
                 // 플레이 중이 아님
             }
-            if(animTime > 0 && animTime < 1.0f)
+            if (animTime > 0 && animTime < 1.0f)
             {
                 return true;
                 // 애니메이션 플레이 중
             }
-            else if(animTime >= 1.0f)
+            else if (animTime >= 1.0f)
             {
                 // 애니메이션 종료
             }
@@ -203,10 +267,10 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         {
             GetRaycastHit();
             ChangeState(state.Run);
-            clickAct?.Invoke(dir, battleStat.Speed, (float temp) => 
+            clickAct?.Invoke(dir, battleStat.Speed, (float temp) =>
             {
                 myAnim.SetFloat("Move", temp);
-                if(temp < 0.05f && playerstate != state.Dadge && playerstate != state.Fire && playerstate != state.Skill)
+                if (temp < 0.05f && playerstate != state.Dadge && playerstate != state.Fire && playerstate != state.Skill)
                 {
                     ChangeState(state.Idle);
                 }
@@ -226,49 +290,57 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         }
     }
 
+
+
+
     public void Skill()
     {
-        if(Input.GetKeyDown(KeyCode.Q) && curBattleStat.EnergyGage >= 20)
+
+
+        if (Input.GetKeyDown(controllKey[E_Skill.QSkill]) && curBattleStat.EnergyGage >= 20)
         {
             curBattleStat.EnergyGage -= 20;
             GetRaycastHit();
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             ChangeState(state.Skill);
-            myAnim.SetTrigger("t_QSkill");
-            
+
+            QSkill.Do("t_QSkill");
+
             rotAct?.Invoke(dir, rotSpeed);
         }
-        if(Input.GetKeyDown(KeyCode.W) && curBattleStat.EnergyGage >= 40)
+        if (Input.GetKeyDown(controllKey[E_Skill.WSkill]) && curBattleStat.EnergyGage >= 40)
         {
             curBattleStat.EnergyGage -= 40;
             rotSpeed = 3.0f;
             GetRaycastHit();
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             ChangeState(state.Skill);
-            myAnim.SetTrigger("t_WSkill");
-            
+            WSkill.Do("t_WSkill");
+
             rotAct?.Invoke(dir, rotSpeed);
         }
-        if (Input.GetKeyDown(KeyCode.E) && curBattleStat.EnergyGage >= 60)
+        if (Input.GetKeyDown(controllKey[E_Skill.ESkill]) && curBattleStat.EnergyGage >= 60)
         {
             curBattleStat.EnergyGage -= 60;
             rotSpeed = 3.0f;
             GetRaycastHit();
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             ChangeState(state.Skill);
-            myAnim.SetTrigger("t_ESkill");
-
+            ESkill.Do("t_ESkill");
             rotAct?.Invoke(dir, rotSpeed);
         }
 
-        // if (Input.GetKeyDown(KeyCode.R) && curBattleStat.EnergyGage >= 60)
-        // {
-        //     curBattleStat.EnergyGage -= 60;
-        //     GetRaycastHit();
-        //     stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-        //     ChangeState(state.Skill);
-        //     myAnim.SetTrigger("t_RSkill");
-        // }
+        if (Input.GetKeyDown(controllKey[E_Skill.RSkill]) && curBattleStat.EnergyGage >= 60)
+        {
+            curBattleStat.EnergyGage -= 60;
+            rotSpeed = 3.0f;
+            GetRaycastHit();
+            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+            ChangeState(state.Skill);
+            RSkill.Do("t_RSkill");
+
+            rotAct?.Invoke(dir, rotSpeed);
+        }
     }
 
     public void OnEnd(int type)
@@ -286,13 +358,13 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         }
         ChangeState(state.Idle);
     }
-    
+
 
     public DefenceType GetDType(Collider col)
     {
         return Dtype;
     }
-    
+
     protected override void OnDead()
     {
         deathAlarm?.Invoke(0);
@@ -300,11 +372,11 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         StartCoroutine(TimeControl());
         myAnim.SetTrigger("t_Death");
     }
-    
+
     IEnumerator TimeControl()
     {
         float slowTime = 0.5f;
-        while(!Mathf.Approximately(slowTime, 0.1f))
+        while (!Mathf.Approximately(slowTime, 0.1f))
         {
             Time.timeScale = slowTime;
             slowTime -= Time.deltaTime * 1.5f;
@@ -320,7 +392,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         while (slowTime < 1.0f)
         {
             slowTime += Time.deltaTime;
-            if(slowTime > 1.0f)
+            if (slowTime > 1.0f)
             {
                 slowTime = 1.0f;
             }
@@ -328,6 +400,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
             yield return null;
         }
     }
+
 
     /*protected override void LevelUp()
     {
