@@ -7,11 +7,46 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public interface I_ClickPoint
 {
     public Vector3 GetRaycastHit();
 }
+
+public interface I_Skill
+{
+    void Do(string Anim);
+}
+
+public class QSkill : CharacterProperty, I_Skill
+{
+    public void Do(string Anim)
+    {
+        myAnim.SetTrigger(Anim);
+    }
+}
+/*public class QSkill : CharacterProperty, I_Skill
+{
+    public void Do(string Anim)
+    {
+        myAnim.SetTrigger(Anim);
+    }
+}
+public class QSkill : CharacterProperty, I_Skill
+{
+    public void Do(string Anim)
+    {
+        myAnim.SetTrigger(Anim);
+    }
+}
+public class QSkill : CharacterProperty, I_Skill
+{
+    public void Do(string Anim)
+    {
+        myAnim.SetTrigger(Anim);
+    }
+}*/
 
 public class Player : BattleSystem, I_ClickPoint, IGetDType
 {
@@ -30,7 +65,6 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
     bool isFireReady = true;
     bool isDadgeReady = true;
     Vector3 dir;
-
     public enum state
     {
         Fire, Dadge, Idle, Run, Skill
