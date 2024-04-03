@@ -13,6 +13,7 @@ public class ItemData
     public int Inven_itemDesc;
     public int Inven_riggingType;
     public int Inven_weaponType;
+    public int Inven_ItemPrice;
 }
 public class InvenImageResourceTable
 {

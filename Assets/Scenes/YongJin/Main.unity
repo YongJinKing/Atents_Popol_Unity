@@ -580,7 +580,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 2097562861}
   txtCount: {fileID: 1615018336}
-  btn: {fileID: 381106556}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -590,6 +589,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &15959958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,7 +881,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 275183770}
   txtCount: {fileID: 1533668320}
-  btn: {fileID: 2086327453}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -891,6 +890,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &25030088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1396,7 +1396,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1135731619}
   txtCount: {fileID: 974191875}
-  btn: {fileID: 1665684403}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -1406,6 +1405,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!1 &44671688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2578,7 +2578,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 922435840}
   txtCount: {fileID: 1069822775}
-  btn: {fileID: 2119902581}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -2588,6 +2587,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &89641852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2816,7 +2816,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 431910979}
   txtCount: {fileID: 1448105854}
-  btn: {fileID: 799015457}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -2826,6 +2825,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &91073527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3717,7 +3717,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1593276761}
   txtCount: {fileID: 862934637}
-  btn: {fileID: 1532091329}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -3727,6 +3726,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &112481430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4811,7 +4811,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 223144397}
   txtCount: {fileID: 1366422621}
-  btn: {fileID: 2115165628}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -4821,6 +4820,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &151503020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5636,7 +5636,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 111872192}
   txtCount: {fileID: 568208027}
-  btn: {fileID: 47897223}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -5646,6 +5645,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &192744813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6835,7 +6835,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1283278141}
   txtCount: {fileID: 1469018994}
-  btn: {fileID: 1955054121}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -6845,6 +6844,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &241200232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8645,7 +8645,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1617342003}
   txtCount: {fileID: 1892360255}
-  btn: {fileID: 1312472651}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -8655,6 +8654,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &303100262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10287,7 +10287,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1708603082}
   txtCount: {fileID: 1583227467}
-  btn: {fileID: 236753628}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -10297,6 +10296,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &343017391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11180,7 +11180,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 355854676}
   txtCount: {fileID: 287401811}
-  btn: {fileID: 1428702125}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -11190,6 +11189,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &369756390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11748,7 +11748,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1844827252}
   txtCount: {fileID: 1481227814}
-  btn: {fileID: 1805051931}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -11758,6 +11757,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &396544996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11851,7 +11851,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 775242941}
   txtCount: {fileID: 1616151358}
-  btn: {fileID: 979312367}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -11861,6 +11860,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &398630859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12852,7 +12852,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1722959836}
   txtCount: {fileID: 1393564864}
-  btn: {fileID: 586584455}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -12862,6 +12861,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &430711862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14942,7 +14942,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 495978774}
   txtCount: {fileID: 1577386212}
-  btn: {fileID: 1269317423}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -14952,6 +14951,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &476855441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16801,7 +16801,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 64603508}
   txtCount: {fileID: 1682878930}
-  btn: {fileID: 162980178}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -16811,6 +16810,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &534211254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16904,7 +16904,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1402799609}
   txtCount: {fileID: 491371381}
-  btn: {fileID: 340828184}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -16914,6 +16913,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &534626602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17822,7 +17822,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 2118904257}
   txtCount: {fileID: 537364227}
-  btn: {fileID: 1067781928}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -17832,6 +17831,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &552414323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18121,7 +18121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 685763615}
   txtCount: {fileID: 741951035}
-  btn: {fileID: 120062541}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -18131,6 +18130,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &567485207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18673,7 +18673,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 349893581}
   txtCount: {fileID: 542425438}
-  btn: {fileID: 982104477}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -18683,6 +18682,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &579505551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19452,7 +19452,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1068844841}
   txtCount: {fileID: 491814546}
-  btn: {fileID: 1719554599}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -19462,6 +19461,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &606985888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19689,7 +19689,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1349721947}
   txtCount: {fileID: 35574708}
-  btn: {fileID: 1570222062}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -19699,6 +19698,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &623104373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20076,7 +20076,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 788996263}
   txtCount: {fileID: 1234868795}
-  btn: {fileID: 973041560}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -20086,6 +20085,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &638448564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20179,7 +20179,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1871620951}
   txtCount: {fileID: 2040184525}
-  btn: {fileID: 1691138875}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -20189,6 +20188,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &651648369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21931,7 +21931,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1355206771}
   txtCount: {fileID: 822666084}
-  btn: {fileID: 1625618932}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -21941,6 +21940,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &712347510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22154,7 +22154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 884067340}
   txtCount: {fileID: 278309309}
-  btn: {fileID: 285076852}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -22164,6 +22163,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &722544416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22377,7 +22377,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1533098957}
   txtCount: {fileID: 488131023}
-  btn: {fileID: 1489355246}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -22387,6 +22386,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &724287943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23533,7 +23533,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 451839158}
   txtCount: {fileID: 150067838}
-  btn: {fileID: 1479043836}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -23543,6 +23542,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &754355676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24585,7 +24585,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 816522065}
   txtCount: {fileID: 485010590}
-  btn: {fileID: 261219493}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -24595,6 +24594,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &796191085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25242,7 +25242,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1576443585}
   txtCount: {fileID: 901697024}
-  btn: {fileID: 1056279740}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -25252,6 +25251,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &803828556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26095,7 +26095,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 310366954}
   txtCount: {fileID: 1734659205}
-  btn: {fileID: 1151460281}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -26105,6 +26104,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &835489605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26823,7 +26823,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1372427350}
   txtCount: {fileID: 259884031}
-  btn: {fileID: 1604837492}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -26833,6 +26832,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &850974045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27001,7 +27001,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1529942284}
   txtCount: {fileID: 1114942061}
-  btn: {fileID: 1117340205}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -27011,6 +27010,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &853512619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27104,7 +27104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1894216809}
   txtCount: {fileID: 406320236}
-  btn: {fileID: 965672902}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -27114,6 +27113,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &853831135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27435,7 +27435,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1612354563}
   txtCount: {fileID: 671504448}
-  btn: {fileID: 1335416096}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -27445,6 +27444,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &867220185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28727,7 +28727,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 2085898440}
   txtCount: {fileID: 1852713587}
-  btn: {fileID: 38887943}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -28737,6 +28736,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &921506487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29025,7 +29025,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 476580159}
   txtCount: {fileID: 1629435700}
-  btn: {fileID: 129775361}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -29035,6 +29034,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &924435185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29248,7 +29248,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 872041146}
   txtCount: {fileID: 1369445289}
-  btn: {fileID: 2010384858}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -29258,6 +29257,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &933870617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31961,7 +31961,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1159696052}
   txtCount: {fileID: 1009141028}
-  btn: {fileID: 1729856573}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -31971,6 +31970,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1049487416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32064,7 +32064,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 637419007}
   txtCount: {fileID: 625352242}
-  btn: {fileID: 569528910}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -32074,6 +32073,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1052785067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33039,7 +33039,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 801913979}
   txtCount: {fileID: 80466755}
-  btn: {fileID: 491580639}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -33049,6 +33048,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1074735160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33142,7 +33142,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 250946810}
   txtCount: {fileID: 1562367762}
-  btn: {fileID: 979305924}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -33152,6 +33151,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1080665698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33513,7 +33513,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 2040357398}
   txtCount: {fileID: 836512419}
-  btn: {fileID: 1160508151}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -33523,6 +33522,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1108247575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34857,7 +34857,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 178421714}
   txtCount: {fileID: 730164496}
-  btn: {fileID: 933682038}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -34867,6 +34866,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1139104859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35019,7 +35019,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1324755673}
   txtCount: {fileID: 1753542243}
-  btn: {fileID: 1153171831}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -35029,6 +35028,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1140354085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35362,7 +35362,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 466698031}
   txtCount: {fileID: 961192759}
-  btn: {fileID: 2076684843}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -35372,6 +35371,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1153549905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36306,7 +36306,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1518157579}
   txtCount: {fileID: 1517139077}
-  btn: {fileID: 278506756}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -36316,6 +36315,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1193745042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36409,7 +36409,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1603516951}
   txtCount: {fileID: 825639845}
-  btn: {fileID: 923946249}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -36419,6 +36418,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1200847998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36646,7 +36646,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 759826438}
   txtCount: {fileID: 1407628416}
-  btn: {fileID: 44671690}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -36656,6 +36655,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1212965599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38543,7 +38543,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1878069285}
   txtCount: {fileID: 2134000868}
-  btn: {fileID: 359269494}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -38553,6 +38552,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1287263514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38831,6 +38831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7287dbf1b139b74a85686bd14763af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Contents: {fileID: 507918457}
 --- !u!1 &1312472649
 GameObject:
   m_ObjectHideFlags: 0
@@ -39081,7 +39082,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1019819245}
   txtCount: {fileID: 1764313571}
-  btn: {fileID: 106013396}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -39091,6 +39091,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1332580285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39530,7 +39531,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1967787366}
   txtCount: {fileID: 599971169}
-  btn: {fileID: 443851629}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -39540,6 +39540,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1339586153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39908,7 +39909,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1700903730}
   txtCount: {fileID: 1207753885}
-  btn: {fileID: 1441240655}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -39918,6 +39918,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1345478260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40011,7 +40012,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1829584368}
   txtCount: {fileID: 1116550891}
-  btn: {fileID: 715107180}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -40021,6 +40021,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1346054112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40473,7 +40474,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 673119299}
   txtCount: {fileID: 1558641810}
-  btn: {fileID: 264299580}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -40483,6 +40483,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1357633744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43144,7 +43145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 174443737}
   txtCount: {fileID: 591685101}
-  btn: {fileID: 1983278322}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -43154,6 +43154,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1432967878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43710,7 +43711,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1460424889}
   txtCount: {fileID: 676558842}
-  btn: {fileID: 1743485572}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -43720,6 +43720,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1461036823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43888,7 +43889,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1697185250}
   txtCount: {fileID: 322768145}
-  btn: {fileID: 1254062908}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -43898,6 +43898,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1462342996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45037,7 +45038,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 2101080198}
   txtCount: {fileID: 813973941}
-  btn: {fileID: 559260794}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -45047,6 +45047,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1503502181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45501,7 +45502,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 549260580}
   txtCount: {fileID: 1737497920}
-  btn: {fileID: 40034766}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -45511,6 +45511,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1516319522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46083,7 +46084,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 522536514}
   txtCount: {fileID: 2007029485}
-  btn: {fileID: 1705221915}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -46093,6 +46093,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1532270244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46395,7 +46396,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 2141244442}
   txtCount: {fileID: 444085187}
-  btn: {fileID: 1408101339}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -46405,6 +46405,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1536430006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47304,7 +47305,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1769607860}
   txtCount: {fileID: 2104754520}
-  btn: {fileID: 2077757783}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -47314,6 +47314,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1597419898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48440,7 +48441,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1977809746}
   txtCount: {fileID: 539024965}
-  btn: {fileID: 155442592}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -48450,6 +48450,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1617725289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49246,7 +49247,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 507760508}
   txtCount: {fileID: 771041468}
-  btn: {fileID: 436952790}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -49256,6 +49256,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1640975714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49483,7 +49484,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1433756916}
   txtCount: {fileID: 1058918509}
-  btn: {fileID: 1628451648}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -49493,6 +49493,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1648419968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49706,7 +49707,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1816689916}
   txtCount: {fileID: 871068212}
-  btn: {fileID: 1476532192}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -49716,6 +49716,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1659628561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50117,7 +50118,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 853456538}
   txtCount: {fileID: 193844039}
-  btn: {fileID: 93100421}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -50127,6 +50127,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1673735353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51004,7 +51005,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 275197427}
   txtCount: {fileID: 1398851839}
-  btn: {fileID: 1429781801}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -51014,6 +51014,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1719084191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52141,7 +52142,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 569169225}
   txtCount: {fileID: 455725067}
-  btn: {fileID: 19408020}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -52151,6 +52151,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1743232140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52962,7 +52963,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1273838229}
   txtCount: {fileID: 1896245543}
-  btn: {fileID: 1425594738}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -52972,6 +52972,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1776731455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53258,7 +53259,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 801697029}
   txtCount: {fileID: 745858718}
-  btn: {fileID: 1775745192}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -53268,6 +53268,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1781730262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53690,7 +53691,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 11200544}
   txtCount: {fileID: 972853779}
-  btn: {fileID: 1683968383}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -53700,6 +53700,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1794989176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53793,7 +53794,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1347651367}
   txtCount: {fileID: 1019469045}
-  btn: {fileID: 570433055}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -53803,6 +53803,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1797540432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54711,7 +54712,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1615967375}
   txtCount: {fileID: 1163239536}
-  btn: {fileID: 1888021263}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -54721,6 +54721,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1823901098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54814,7 +54815,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 364368740}
   txtCount: {fileID: 1229593241}
-  btn: {fileID: 1374949694}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -54824,6 +54824,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1824554379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55067,7 +55068,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 903260377}
   txtCount: {fileID: 1918311737}
-  btn: {fileID: 665532501}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -55077,6 +55077,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1846442291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55304,7 +55305,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 660009137}
   txtCount: {fileID: 1802512461}
-  btn: {fileID: 1240875460}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -55314,6 +55314,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1852420141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55600,7 +55601,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 313663922}
   txtCount: {fileID: 965713207}
-  btn: {fileID: 1793959190}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -55610,6 +55610,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1855284585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55779,7 +55780,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1462265422}
   txtCount: {fileID: 4246879}
-  btn: {fileID: 1722697537}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -55789,6 +55789,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1868244033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56744,7 +56745,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 997586360}
   txtCount: {fileID: 778830629}
-  btn: {fileID: 810962761}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -56754,6 +56754,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1910902134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57040,7 +57041,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 705048049}
   txtCount: {fileID: 1799949397}
-  btn: {fileID: 83913978}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -57050,6 +57050,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1919293251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57503,7 +57504,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 395524909}
   txtCount: {fileID: 2130264367}
-  btn: {fileID: 1038854741}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -57513,6 +57513,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1929669030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57815,7 +57816,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 1291092798}
   txtCount: {fileID: 414274564}
-  btn: {fileID: 219376656}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -57825,6 +57825,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1942417014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59132,7 +59133,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 412072846}
   txtCount: {fileID: 1066018527}
-  btn: {fileID: 724115327}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -59142,6 +59142,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &1987215008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60045,7 +60046,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 212814219}
   txtCount: {fileID: 838665432}
-  btn: {fileID: 1383859985}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -60055,6 +60055,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &2018070342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60317,7 +60318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 693967481}
   txtCount: {fileID: 655964126}
-  btn: {fileID: 333311141}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -60327,6 +60327,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &2034511755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60966,7 +60967,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 505913929}
   txtCount: {fileID: 2073113956}
-  btn: {fileID: 356734427}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -60976,6 +60976,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &2068099467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61137,7 +61138,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 628646009}
   txtCount: {fileID: 107925353}
-  btn: {fileID: 1948704422}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -61147,6 +61147,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &2070830500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61884,7 +61885,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 337376224}
   txtCount: {fileID: 2127407168}
-  btn: {fileID: 712171965}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -61894,6 +61894,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &2084696225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63729,7 +63730,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 602233443}
   txtCount: {fileID: 1642334044}
-  btn: {fileID: 1657568253}
   id: 0
   ItemName: 
   ItemDesc: 
@@ -63739,6 +63739,7 @@ MonoBehaviour:
   ItemDuration: 0
   spName: 
   WeaponType: 0
+  ItemPrice: 0
 --- !u!114 &2135526085
 MonoBehaviour:
   m_ObjectHideFlags: 0

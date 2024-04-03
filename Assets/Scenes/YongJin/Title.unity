@@ -930,7 +930,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1985879360}
+        - m_Target: {fileID: 354031017}
           m_TargetAssemblyTypeName: BtnNormalFuntion, Assembly-CSharp
           m_MethodName: ButtonPointerDown
           m_Mode: 2
@@ -946,7 +946,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1985879360}
+        - m_Target: {fileID: 354031017}
           m_TargetAssemblyTypeName: BtnNormalFuntion, Assembly-CSharp
           m_MethodName: ButtonPointerUp
           m_Mode: 2
@@ -1214,7 +1214,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba36c2168c0164744b78b99f5557d5a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ButtonSprite: []
+  ButtonSprite:
+  - {fileID: 21300000, guid: 2be7b70e984b51444aca9c12ae4723a7, type: 3}
+  - {fileID: 21300000, guid: d6a1673a31851fd4395c287261da36e4, type: 3}
   btnChildCount: 0
   BtnAct:
     m_PersistentCalls:
@@ -2339,7 +2341,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1985879360}
+        - m_Target: {fileID: 354031017}
           m_TargetAssemblyTypeName: BtnNormalFuntion, Assembly-CSharp
           m_MethodName: ButtonPointerDown
           m_Mode: 2
@@ -2355,7 +2357,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1985879360}
+        - m_Target: {fileID: 354031017}
           m_TargetAssemblyTypeName: BtnNormalFuntion, Assembly-CSharp
           m_MethodName: ButtonPointerUp
           m_Mode: 2
@@ -5049,6 +5051,8 @@ MonoBehaviour:
     Character_CurrentExp: 0
     Character_CurrentLevel: 0
     Character_EnergyGage: 0
+    Weapon_Ability: 0
+    Armor_Ability: 0
     Character_MoveSpeed: 0
     Character_AttackSpeed: 0
     NowWeapon: 
@@ -5056,6 +5060,7 @@ MonoBehaviour:
     Skill: []
     clearStage: 
     PlayerGold: 0
+    PlayerInven: 
   path: 
   fileName: PlayerData
   StageNum: 0
@@ -5688,17 +5693,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954380819}
   m_CullTransparentMesh: 1
---- !u!114 &1985879360 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 543501462497226120, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
-  m_PrefabInstance: {fileID: 2129963635}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba36c2168c0164744b78b99f5557d5a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2029530563
 GameObject:
   m_ObjectHideFlags: 0
@@ -6035,7 +6029,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1985879360}
+        - m_Target: {fileID: 354031017}
           m_TargetAssemblyTypeName: BtnNormalFuntion, Assembly-CSharp
           m_MethodName: ButtonPointerDown
           m_Mode: 2
@@ -6051,7 +6045,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1985879360}
+        - m_Target: {fileID: 354031017}
           m_TargetAssemblyTypeName: BtnNormalFuntion, Assembly-CSharp
           m_MethodName: ButtonPointerUp
           m_Mode: 2
@@ -6265,63 +6259,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112730920}
   m_CullTransparentMesh: 1
---- !u!1001 &2129963635
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5973772729860977500, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.703511
-      objectReference: {fileID: 0}
-    - target: {fileID: 5973772729860977500, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.099015
-      objectReference: {fileID: 0}
-    - target: {fileID: 5973772729860977500, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 166.74603
-      objectReference: {fileID: 0}
-    - target: {fileID: 5973772729860977500, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5973772729860977500, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5973772729860977500, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5973772729860977500, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5973772729860977500, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5973772729860977500, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5973772729860977500, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7519434208003745175, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
-      propertyPath: m_Name
-      value: BtnManager
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a2dcbf956d8c7fc47b144d424b333f6e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -6330,5 +6267,4 @@ SceneRoots:
   - {fileID: 429818480}
   - {fileID: 741975335}
   - {fileID: 633331269}
-  - {fileID: 2129963635}
   - {fileID: 1782428260}

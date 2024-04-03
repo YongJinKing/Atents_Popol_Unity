@@ -21,6 +21,7 @@ public class UIItem : MonoBehaviour
     public int ItemDuration;
     public string spName;
     public int WeaponType;
+    public int ItemPrice;
     
 
     public void Init(int id)
@@ -42,6 +43,7 @@ public class UIItem : MonoBehaviour
         this.ItemRigging = ItemData.Inven_riggingType;
         this.ItemValue = ItemData.Inven_itemValue;
         this.ItemDuration = ItemData.Inven_durAbility;
+        this.ItemPrice = ItemData.Inven_ItemPrice;
         Sprite sp = Resources.Load<Sprite>($"UI/UIItem/{spName}");
         this.icon.sprite = sp;
         this.txtCount.text = "1";

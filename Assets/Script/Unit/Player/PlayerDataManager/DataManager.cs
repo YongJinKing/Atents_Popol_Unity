@@ -25,7 +25,7 @@ public class PlayerData
     
     public string[] Skill;
     public bool[] clearStage;
-    public int PlayerGold;
+    public int PlayerGold = 0;
     public List<int> PlayerInven = new List<int>();
 }
 
