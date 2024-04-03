@@ -395,6 +395,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WalkDust
       objectReference: {fileID: 0}
+    - target: {fileID: 8819724395480453612, guid: b911d38a65ad3944bae5b69ad58ab90e, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
