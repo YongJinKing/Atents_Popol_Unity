@@ -38,9 +38,12 @@ public class UsetInvenPopupManager : MonoBehaviour, IPointerEnterHandler, IPoint
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        StopAllCoroutines();
-        Inven.transform.Find("DescPopup").gameObject.SetActive(false);
-        transform.Find("Button").gameObject.SetActive(false);
+        if(Inven.transform.Find("PlayerAbility").Find("Inventory").GetComponent<DisplayInven>().items.Count > transform.GetSiblingIndex())
+        {
+            StopAllCoroutines();
+            Inven.transform.Find("DescPopup").gameObject.SetActive(false);
+            transform.Find("Button").gameObject.SetActive(false);
+        }
     }
     
     IEnumerator OnPopupControll()

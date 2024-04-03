@@ -13,8 +13,6 @@ public class SlotHL : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         OnHighLite?.Invoke(transform.GetSiblingIndex(),true);
-       
-        
     }
 
     public void OnPointerExit(PointerEventData eventData)

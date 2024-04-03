@@ -14,6 +14,8 @@ public class PlayerData
     public int Character_CurrentExp;
     public int Character_CurrentLevel;
     public int Character_EnergyGage;
+    public int Weapon_Id;
+    public int Armor_Id;
     public int Weapon_Ability;
     public int Armor_Ability;
     public float Character_MoveSpeed;

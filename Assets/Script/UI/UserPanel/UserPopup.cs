@@ -21,10 +21,17 @@ public class UserPopup : MonoBehaviour
     private void Start() 
     {
         ItemDataManager.GetInstance().InvenItemLoadDatas();
-        if(PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().id == 0)
+        if(DataManager.instance.playerData.Armor_Id == 0 && DataManager.instance.playerData.Weapon_Id == 0)
         {
             PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().Init(1000);
             PlayerItem.transform.Find("Armor").GetComponent<UIItem>().Init(1001);
+            DataManager.instance.playerData.Weapon_Id = 1000;
+            DataManager.instance.playerData.Armor_Id = 1001;
+        }
+        else
+        {
+            PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().Init(DataManager.instance.playerData.Weapon_Id);
+            PlayerItem.transform.Find("Armor").GetComponent<UIItem>().Init(DataManager.instance.playerData.Armor_Id);
         }
         
     }
@@ -77,11 +84,14 @@ public class UserPopup : MonoBehaviour
         {
             PlayerItemId = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().id;
             PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().Init(InvenItemId);
+            DataManager.instance.playerData.Weapon_Id = InvenItemId;
         }
         if(index == 1)
         {
             PlayerItemId = PlayerItem.transform.Find("Armor").GetComponent<UIItem>().id;
             PlayerItem.transform.Find("Armor").GetComponent<UIItem>().Init(InvenItemId);
+            DataManager.instance.playerData.Armor_Id = InvenItemId;
+            
         }
         InvenManager.transform.Find("GridLine").GetChild(SlotNum).GetComponent<UIItem>().Init(PlayerItemId);
         PlayerAbilityUpdate();
@@ -90,14 +100,23 @@ public class UserPopup : MonoBehaviour
     {
         PlayerDetailAbility.transform.Find("Level").GetComponent<TMP_Text>().text
         = "레벨 : " + DataManager.instance.playerData.Character_CurrentLevel.ToString();
+
         PlayerDetailAbility.transform.Find("Hp").GetComponent<TMP_Text>().text
-        = "체력 : " + DataManager.instance.playerData.Character_Hp.ToString();
+        = "체력 : " + (DataManager.instance.playerData.Character_Hp + 
+        PlayerItem.transform.Find("Armor").GetComponent<UIItem>().ItemValue).ToString();
+
         PlayerDetailAbility.transform.Find("AttackPower").GetComponent<TMP_Text>().text
-        = "공격력 : " + DataManager.instance.playerData.Character_AttackPower.ToString();
+        = "공격력 : " + (DataManager.instance.playerData.Character_AttackPower + 
+        PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().ItemValue).ToString();
+
         PlayerDetailAbility.transform.Find("AttackType").GetComponent<TMP_Text>().text 
-        = "무기 종류 : " + WeaponTypeToString(PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType);
+        = "무기 종류 : \n" + WeaponTypeToString(PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType);
+
         PlayerDetailAbility.transform.Find("ArmorType").GetComponent<TMP_Text>().text 
-        = "방어구 종류 : " + WeaponTypeToString(PlayerItem.transform.Find("Armor").GetComponent<UIItem>().WeaponType);
+        = "방어구 종류 : \n" + WeaponTypeToString(PlayerItem.transform.Find("Armor").GetComponent<UIItem>().WeaponType);
+
+        DataManager.instance.playerData.Weapon_Ability = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().ItemValue;
+        DataManager.instance.playerData.Armor_Ability = PlayerItem.transform.Find("Armor").GetComponent<UIItem>().ItemValue;
     }
 
     public string WeaponTypeToString(int index)
@@ -126,15 +145,5 @@ public class UserPopup : MonoBehaviour
             Rtstring = "판금";
         return Rtstring;
     }
-    public string RiggingTypeToString(int index)
-    {
-        string Rtstring = "";
-        //0 : 무기 1 : 방어구
-        if(index == 0)
-            Rtstring = "공격력 : ";
-        if(index == 1)
-            Rtstring = "체력 : ";
-       
-        return Rtstring;
-    }
+    
 }
