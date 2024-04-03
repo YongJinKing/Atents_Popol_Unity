@@ -28,6 +28,7 @@ public class ProjectileSkillType : HitCheckSkillType
     public GameObject destroyEffectPrefeb;
     //투사체가 관통이 되냐 안되냐를 판정
     public bool penetrable = false;
+    public bool isParabola = false;
     public LayerMask unPenetrableMask
     {
         get { return _unPenetrableMask;}
@@ -90,8 +91,14 @@ public class ProjectileSkillType : HitCheckSkillType
         //발동 시점의 targetPos를 저장하므로 여러번 한다고 쳤을때 targetPos가 바뀌어서 나갈일은 없을 듯?
         //람다식으로 DestroyProjectile 함수를 쓰도록 했다.
         //람다식으로 되있는 부분은 거리가 다되면 오브젝트 제거하도록 한부분이다.
-        StartCoroutine(LinearMovingToPos(hitBox, target.position + Vector3.up * 0.5f, () => DestroyProjectile(hitBox)));
-        //StartCoroutine(ParabolaMovingPos(hitBox, targetPos));
+        if (isParabola)
+        {
+            StartCoroutine(ParabolaMovingPos(hitBox, target.position));
+        }
+        else
+        {
+            StartCoroutine(LinearMovingToPos(hitBox, target.position + Vector3.up * 0.5f, () => DestroyProjectile(hitBox)));
+        }
 
         //투사체 각각이 남은시간을 가지고 있어야 하므로 코루틴에다가 remainDuration을 지역변수로 재정의 했다.
         float remainDuration = hitDuration;
@@ -188,9 +195,12 @@ public class ProjectileSkillType : HitCheckSkillType
     //투사체를 포물선으로 이동시키는 함수
     protected IEnumerator ParabolaMovingPos(GameObject hitBox, Vector3 targetPos)
     {
-        Vector3 middlePos;
-        float dist = 0.0f;
-        float delta = 0.0f;
+        Vector3 dir;
+        float halfArrivalTime = 0.0f;
+        float yValue = 0.0f;
+        float gValue = 0.0f;
+
+        dir = hitBox.transform.position;
 
         // 타겟 위치의 바닥을 조준하기 위해 레이를 쐈다
         Ray ray = new Ray(targetPos, Vector3.down);
@@ -198,57 +208,35 @@ public class ProjectileSkillType : HitCheckSkillType
         {
             targetPos = hit.point;
         }
-        //현 위치와 목표위치 중간지점의 좌표
-        middlePos = (targetPos + transform.position) / 2.0f;
-        dist = (middlePos - transform.position).magnitude;
-        //distSecond = (targetPos - middlePos).magnitude;
-        //중간지점의 좌표에서 y좌표를 올림
-        middlePos.y += parabolaHeight;
 
-        Vector3 dir;
+        dir = targetPos - dir;
+        if(dir.magnitude > maxDist)
+        {
+            dir = dir.normalized * maxDist;
+        }
+        dir.y = 0;
+        halfArrivalTime = dir.magnitude / (moveSpeed * 2.0f);
+        yValue = parabolaHeight / halfArrivalTime;
+        gValue = parabolaHeight / (Mathf.Pow(halfArrivalTime, 2));
+        dir.Normalize();
+        
         //투사체의 발사를 위해서 부모관계를 없앴다
         if (hitBox != null)
         {
             hitBox.transform.SetParent(null);
-            dir = middlePos - hitBox.transform.position;
-            dir.Normalize();
-            //Vector3 dirXZ = new Vector3(dir.x, 0, dir.z);
-            //Vector3 dirY = new Vector3(0, dir.y, 0);
 
-            //지속시간동안 이동
-            //hitBox가 HitChecking에 의해서 사라지면 그대로 빠져나옴
-            while (hitBox != null && dist >= 0.01f)
+            while(hitBox != null)
             {
-                delta = Time.deltaTime * moveSpeed;
-                dist -= delta;
-                // 이동한다.
-                hitBox.transform.Translate(dir * delta, Space.World);
+                //LinearMove
+                hitBox.transform.Translate(dir * moveSpeed * Time.deltaTime, Space.World);
+
+                //ParabolaMove
+                yValue -= gValue * Time.deltaTime;
+                hitBox.transform.Translate(Vector3.up * yValue * Time.deltaTime, Space.World);
 
                 yield return null;
             }
         }
-
-        if (hitBox != null)
-        {
-            dir = targetPos - hitBox.transform.position;
-            dir.Normalize();
-            //Vector3 dirXZ = new Vector3(dir.x, 0, dir.z);
-            //Vector3 dirY = new Vector3(0, dir.y, 0);
-
-            //지속시간동안 이동
-            //hitBox가 HitChecking에 의해서 사라지면 그대로 빠져나옴
-            //마지막으로 떨어질때는 그냥 계속 가게 둔다.
-            while (hitBox != null)
-            {
-                delta = Time.deltaTime * moveSpeed;
-                // 이동한다.
-                hitBox.transform.Translate(dir * delta, Space.World);
-
-                yield return null;
-            }
-        }
-
-
         yield return null;
     }
     #endregion
