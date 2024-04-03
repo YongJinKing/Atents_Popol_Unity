@@ -158,7 +158,6 @@ public class cameraMove : MonoBehaviour
             }
             else
             {
-                Time.timeScale = 4f;
                 CinecamState = "GoBack";
             }
             yield return null;
@@ -166,8 +165,8 @@ public class cameraMove : MonoBehaviour
 
         while (CinecamState == "GoBack")
         {
-            myCam.transform.localPosition = Vector3.Lerp(myCam.transform.localPosition, originPos, Time.deltaTime * cineCamSpeed);
-            myCam.transform.localRotation = Quaternion.Lerp(myCam.transform.localRotation, Quaternion.identity, Time.deltaTime * cineCamSpeed);
+            myCam.transform.localPosition = Vector3.Lerp(myCam.transform.localPosition, originPos, Time.deltaTime * cineCamSpeed*4);
+            myCam.transform.localRotation = Quaternion.Lerp(myCam.transform.localRotation, Quaternion.identity, Time.deltaTime * cineCamSpeed*4);
 
             if (Vector3.Distance(myCam.transform.localPosition, originPos) <= 0.01f)
             {
