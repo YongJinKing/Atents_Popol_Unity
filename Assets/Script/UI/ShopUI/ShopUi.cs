@@ -159,29 +159,68 @@ public class ShopUi : MonoBehaviour
        
         return Rtstring;
     }
-    public void OnHighLite(int index, bool OnCheck)
+    public void OnInvenHighLite(int index, bool OnCheck)
     {
         if(GridLine.transform.GetChild(index).GetComponent<UIItem>().id > 0)
         {
             GridLine.transform.GetChild(index).Find("Button").gameObject.SetActive(OnCheck);
             if(OnCheck)
             {
-                CorSlotHL = StartCoroutine(OnCorSlotHL(index));
+                CorSlotHL = StartCoroutine(OnCorInvenSlotHL(0,index));
             }  
             else
             {
-                StopCoroutine(CorSlotHL);
+                if(CorSlotHL != null)
+                {
+                    StopCoroutine(CorSlotHL);
+                    CorSlotHL = null;
+                }
+                    
                 DescPopup.transform.gameObject.SetActive(false);
-                CorSlotHL = null;
+                
             }
         }
+    }
+    public void OnRiggingHighLite(int index, bool OnCheck)
+    {
+        GridLine.transform.GetChild(index).Find("Button").gameObject.SetActive(OnCheck);
+        if(OnCheck)
+        {
+            CorSlotHL = StartCoroutine(OnCorInvenSlotHL(1,index));
+        }  
+        else
+        {
+            if(CorSlotHL != null)
+            {
+                StopCoroutine(CorSlotHL);
+                CorSlotHL = null;
+            }
+            DescPopup.transform.gameObject.SetActive(false);
+         }
         
-            
     }
 
-    IEnumerator OnCorSlotHL(int index)
+    IEnumerator OnCorInvenSlotHL(int type,int index)//0 : grid 1: rigging
     {
-        var go = GridLine.transform.GetChild(index).GetComponent<UIItem>();
+        UIItem go = gameObject.AddComponent<UIItem>();
+        if(type == 0)
+        {
+            go = GridLine.transform.GetChild(index).GetComponent<UIItem>();
+            if(GridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition.x <= 300)
+            {
+                transform.Find("Main_Panel").Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
+                GridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition + new Vector2(290 , -145);
+            }
+            else
+            {
+                transform.Find("Main_Panel").Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
+                GridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition + new Vector2(-310 , -145);
+            }
+        } 
+        if(type == 1)
+        {
+            
+        }
         yield return new WaitForSeconds(0.8f);
         DescPopup.transform.gameObject.SetActive(true);
         transform.Find("Main_Panel").Find("DescPopup").gameObject.SetActive(true);
@@ -195,16 +234,11 @@ public class ShopUi : MonoBehaviour
         = RiggingTypeToString(go.ItemRigging) + go.ItemValue.ToString();
         transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemDesc").GetComponent<TMP_Text>().text
         = go.ItemDesc;
-        if(GridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition.x <= 300)
-        {
-            transform.Find("Main_Panel").Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
-            GridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition + new Vector2(290 , -145);
-        }
-        else
-        {
-            transform.Find("Main_Panel").Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
-            GridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition + new Vector2(-310 , -145);
-        }
+        
+        
+        
         
     }
+    
+
 }

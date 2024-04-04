@@ -7,6 +7,7 @@ public class DisplayInven : MonoBehaviour
     public List<UIItem> items;
     public GameObject GridLine;
     public GameObject InvenDataManager;
+    public GameObject PlayerRiggingType;
     
     void Update()
     {
@@ -20,5 +21,9 @@ public class DisplayInven : MonoBehaviour
         {
             GridLine.transform.GetChild(i).GetComponent<UIItem>().InitAll();
         }
+        PlayerRiggingType.transform.Find("Weapon").GetComponent<UIItem>().
+        Init(InvenDataManager.transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().id);
+        PlayerRiggingType.transform.Find("Armor").GetComponent<UIItem>().
+        Init(InvenDataManager.transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().id);
     }
 }

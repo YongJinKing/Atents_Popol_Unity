@@ -12,30 +12,15 @@ public class UserPopup : MonoBehaviour
     public GameObject InvenManager;
     public GameObject PlayerItem;
     public GameObject PlayerDetailAbility;
+    public UnityEvent EventChangeItem;
+    public UnityEvent<int> EventSlotNum;
     
     int InvenItemId;
     int SlotNum;
     Vector2 LeftDefalutVector = new Vector2(290 , -240);
     Vector2 RightDefalutVector = new Vector2(-310 , -240);
 
-    private void Start() 
-    {
-        ItemDataManager.GetInstance().InvenItemLoadDatas();
-        if(DataManager.instance.playerData.Armor_Id == 0 && DataManager.instance.playerData.Weapon_Id == 0)
-        {
-            PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().Init(1000);
-            PlayerItem.transform.Find("Armor").GetComponent<UIItem>().Init(1001);
-            DataManager.instance.playerData.Weapon_Id = 1000;
-            DataManager.instance.playerData.Armor_Id = 1001;
-        }
-        else
-        {
-            PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().Init(DataManager.instance.playerData.Weapon_Id);
-            PlayerItem.transform.Find("Armor").GetComponent<UIItem>().Init(DataManager.instance.playerData.Armor_Id);
-        }
-        
-    }
-
+   
     public void getLRcheck(bool TorF)
     {
         LRcheck = TorF;
@@ -60,54 +45,36 @@ public class UserPopup : MonoBehaviour
     {
         Popup.gameObject.SetActive(true);
         SlotNum = index;
+        EventSlotNum?.Invoke(index);
     }
 
     public void InvenPopupYesOrNo(int index)
     {
         if(index == 0)
         {
-            InvenItemId = DisInven.GetComponent<DisplayInven>().items[SlotNum].id;
-            var ItemData = ItemDataManager.GetInstance().dicItemDatas[InvenItemId];
-            int ItemRigging = ItemData.Inven_riggingType;//0 : weapon, 1 :Armor
-            ChangeItem(ItemRigging);
-
-
+            EventChangeItem?.Invoke();
         }
         Popup.gameObject.SetActive(false);
     }
-    void ChangeItem(int index)
-    {
-        
-        int PlayerItemId = 0;
-        
-        if(index == 0)
-        {
-            PlayerItemId = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().id;
-            PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().Init(InvenItemId);
-            DataManager.instance.playerData.Weapon_Id = InvenItemId;
-        }
-        if(index == 1)
-        {
-            PlayerItemId = PlayerItem.transform.Find("Armor").GetComponent<UIItem>().id;
-            PlayerItem.transform.Find("Armor").GetComponent<UIItem>().Init(InvenItemId);
-            DataManager.instance.playerData.Armor_Id = InvenItemId;
-            
-        }
-        InvenManager.transform.Find("GridLine").GetChild(SlotNum).GetComponent<UIItem>().Init(PlayerItemId);
-        PlayerAbilityUpdate();
-    }
+    
     public void PlayerAbilityUpdate()
-    {
+    {   
+        PlayerItem.transform.Find("Armor").GetComponent<UIItem>()
+        .Init(InvenManager.transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().id);
+
+        PlayerItem.transform.Find("Weapon").GetComponent<UIItem>()
+        .Init(InvenManager.transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().id);
+
         PlayerDetailAbility.transform.Find("Level").GetComponent<TMP_Text>().text
         = "레벨 : " + DataManager.instance.playerData.Character_CurrentLevel.ToString();
 
         PlayerDetailAbility.transform.Find("Hp").GetComponent<TMP_Text>().text
         = "체력 : " + (DataManager.instance.playerData.Character_Hp + 
-        PlayerItem.transform.Find("Armor").GetComponent<UIItem>().ItemValue).ToString();
+        InvenManager.transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().ItemValue).ToString();
 
         PlayerDetailAbility.transform.Find("AttackPower").GetComponent<TMP_Text>().text
         = "공격력 : " + (DataManager.instance.playerData.Character_AttackPower + 
-        PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().ItemValue).ToString();
+        InvenManager.transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemValue).ToString();
 
         PlayerDetailAbility.transform.Find("AttackType").GetComponent<TMP_Text>().text 
         = "무기 종류 : \n" + WeaponTypeToString(PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType);
