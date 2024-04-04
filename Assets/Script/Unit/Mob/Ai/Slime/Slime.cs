@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Slime : Monster
@@ -12,6 +13,9 @@ public class Slime : Monster
 
     private int[] idleMoveType;
     private int countIdle = 0;
+
+    private Dictionary<string, int> dicBoolAnims = new Dictionary<string, int>();
+    private Dictionary<string, int> dicTriggerAnims = new Dictionary<string, int>();
     #endregion
 
     //protected 변수 영역
@@ -178,6 +182,15 @@ public class Slime : Monster
 
     //public 함수들 영역
     #region PublicMethod
+    public override void CinematicStart()
+    {
+        myAnim.SetBool("b_Cinematic", true);
+    }
+    public override void CinematicEnd()
+    {
+        myAnim.SetBool("b_Cinematic", false);
+        Initialize();
+    }
     #endregion
     #endregion
 
@@ -270,7 +283,6 @@ public class Slime : Monster
     }
 
 
-
     protected IEnumerator FindTarget()
     {
         if (skillMask == 0)
@@ -305,7 +317,15 @@ public class Slime : Monster
     #region MonoBehaviour
     protected override void Start()
     {
-        base.Start();
+        //base.Start();
+
+        dicBoolAnims.Add("isSkillProgress", Animator.StringToHash("b_isSkillProgress"));
+        dicBoolAnims.Add("isLoopSkill", Animator.StringToHash("b_LoopSkill"));
+        dicBoolAnims.Add("isCinematic", Animator.StringToHash("b_Cinematic"));
+        dicTriggerAnims.Add("SkillStart", Animator.StringToHash("t_SkillStart"));
+        dicTriggerAnims.Add("AttackStart", Animator.StringToHash("t_AttackStart"));
+        dicTriggerAnims.Add("AttackEnd", Animator.StringToHash("t_AttackEnd"));
+        dicTriggerAnims.Add("Death", Animator.StringToHash("t_Death"));
     }
     #endregion
 }

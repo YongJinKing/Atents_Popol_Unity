@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -76,15 +75,12 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
 
     //public �Լ��� ����
     #region PublicMethod
-    public virtual void CinematicStart()
-    {
-        //trigger on
-    }
-    public virtual void CinematicEnd()
-    {
-        //trigger off
-        //initial()
-    }
+    public abstract void CinematicStart();
+    //trigger on
+    public abstract void CinematicEnd();
+    //trigger off
+    //initial()
+
     #endregion
     #endregion
 

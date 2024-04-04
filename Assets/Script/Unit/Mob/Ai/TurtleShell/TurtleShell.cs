@@ -108,6 +108,15 @@ public class TurtleShell : Monster
         }
     }
 
+    public override void CinematicStart()
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void CinematicEnd()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private IEnumerator DelayChangeState(State s, float time)
     {
         yield return new WaitForSeconds(time);
