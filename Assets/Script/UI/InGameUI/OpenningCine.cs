@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class OpenningCine : MonoBehaviour
 {
     public GameObject plFace;
     public GameObject moFace;
+
 
     public Vector2 plPos;
     public Vector2 moPos;
@@ -17,14 +19,25 @@ public class OpenningCine : MonoBehaviour
 
     public float shackMag;
 
+    [Space(3)]
+    [Header("VS Txt")]
+    public GameObject VText;
+    public GameObject SText;
+
+    public Vector2 VPos;
+    public Vector2 SPos;
+
+    public Vector2 VEndPos;
+    public Vector2 SEndPos;
+
     byte nowState = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        //plFace = GetComponent<RectTransform>();
-        //moFace = GetComponent<RectTransform>();
-        StartCoroutine(Openning());
+        if (Input.GetKeyDown(KeyCode.F4))
+        {
+            StartCoroutine(Openning());
+        }
     }
 
     IEnumerator Openning()
@@ -36,13 +49,25 @@ public class OpenningCine : MonoBehaviour
             UIMove();
             if (Mathf.Floor(Vector2.Distance(plPos, plEndPos)) == 0)
             {
-                Debug.Log("end");
                 ++nowState;
             }
             yield return null;
         }
-        float length = 0;
+
         while (nowState == 1)
+        {
+            VPos = Vector2.Lerp(VPos, VEndPos, Time.deltaTime * moveSpeed * 2f);
+            SPos = Vector2.Lerp(SPos, SEndPos, Time.deltaTime * moveSpeed * 2f);
+            UIMove();
+            if (Mathf.Floor(Vector2.Distance(VPos, VEndPos)) == 0)
+            {
+                ++nowState;
+            }
+            yield return null;
+        }
+
+        float length = 0;
+        while (nowState == 2)
         {
             float x = Random.Range(-1, 1) * shackMag;
             float y = Random.Range(-1, 1) * shackMag;
@@ -59,22 +84,29 @@ public class OpenningCine : MonoBehaviour
                 plPos = plEndPos;
                 moPos = moEndPos;
                 UIMove();
-                Debug.Log("Shackend");
+
                 plEndPos = new Vector2(-1350, 0);
                 moEndPos = new Vector2(1350, 0);
+                VEndPos = new Vector2(-600, 40);
+                SEndPos = new Vector2(600, -40);
+
                 yield return new WaitForSeconds(1);
                 ++nowState;
             }
             yield return null;
         }
-        while (nowState == 2)
+        while (nowState == 3)
         {
             plPos.x = Mathf.Lerp(plPos.x, plEndPos.x, Time.deltaTime * moveSpeed);
             moPos.x = Mathf.Lerp(moPos.x, moEndPos.x, Time.deltaTime * moveSpeed);
+            VPos = Vector2.Lerp(VPos, VEndPos, Time.deltaTime * moveSpeed * 2f);
+            SPos = Vector2.Lerp(SPos, SEndPos, Time.deltaTime * moveSpeed * 2f);
+            VText.GetComponent<TMP_Text>().alpha -= Time.deltaTime * moveSpeed * 2;
+            SText.GetComponent<TMP_Text>().alpha -= Time.deltaTime * moveSpeed * 2;
             UIMove();
+
             if (Mathf.Floor(Vector2.Distance(plPos, plEndPos)) == 0)
             {
-                Debug.Log("end");
                 ++nowState;
                 StopCoroutine(Openning());
             }
@@ -86,5 +118,8 @@ public class OpenningCine : MonoBehaviour
     {
         plFace.GetComponent<RectTransform>().anchoredPosition = plPos;
         moFace.GetComponent<RectTransform>().anchoredPosition = moPos;
+
+        VText.GetComponent<RectTransform>().anchoredPosition = VPos;
+        SText.GetComponent<RectTransform>().anchoredPosition = SPos;
     }
 }
