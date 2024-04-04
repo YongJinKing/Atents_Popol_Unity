@@ -8,93 +8,27 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
+using static Player;
 
 public interface I_ClickPoint
 {
     public Vector3 GetRaycastHit();
 }
 
-public interface I_Skill
+public enum E_Skill
 {
-    void Do(string Anim);
-}
-
-public class QSkill : I_Skill
-{
-    private CharacterProperty characterProperty;
-
-    public QSkill(CharacterProperty characterProperty)
-    {
-        this.characterProperty = characterProperty;
-    }
-
-    public void Do(string Anim)
-    {
-        if (characterProperty != null && characterProperty.myAnim != null)
-        {
-            characterProperty.myAnim.SetTrigger(Anim);
-        }
-    }
-}
-
-public class WSkill : I_Skill
-{
-    private CharacterProperty characterProperty;
-
-    public WSkill(CharacterProperty characterProperty)
-    {
-        this.characterProperty = characterProperty;
-    }
-
-    public void Do(string Anim)
-    {
-        if (characterProperty != null && characterProperty.myAnim != null)
-        {
-            characterProperty.myAnim.SetTrigger(Anim);
-        }
-    }
-}
-
-public class ESkill : I_Skill
-{
-    private CharacterProperty characterProperty;
-
-    public ESkill(CharacterProperty characterProperty)
-    {
-        this.characterProperty = characterProperty;
-    }
-
-    public void Do(string Anim)
-    {
-        if (characterProperty != null && characterProperty.myAnim != null)
-        {
-            characterProperty.myAnim.SetTrigger(Anim);
-        }
-    }
-}
-
-public class RSkill : I_Skill
-{
-    private CharacterProperty characterProperty;
-
-    public RSkill(CharacterProperty characterProperty)
-    {
-        this.characterProperty = characterProperty;
-    }
-
-    public void Do(string Anim)
-    {
-        if (characterProperty != null && characterProperty.myAnim != null)
-        {
-            characterProperty.myAnim.SetTrigger(Anim);
-        }
-    }
+    QSkill = 0,
+    WSkill = 1,
+    ESkill = 2,
+    RSkill = 3
 }
 
 public class Player : BattleSystem, I_ClickPoint, IGetDType
 {
     ParticleSystem particle;
+    SkillManager sm;
     public GameObject Effectobj;
+    string[] skill;
     public LayerMask clickMask;
     public DefenceType Dtype;
     public UnityEvent<Vector3, float, UnityAction<float>> clickAct;
@@ -107,6 +41,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
     float FireDelay = 0;
     bool isFireReady = true;
     bool isDadgeReady = true;
+    bool Check;
     Vector3 dir;
     public enum state
     {
@@ -124,6 +59,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         {
             case state.Fire:
                 emission.rateOverTime = 0;
+                bool Check = AnimCheck("t_Attack");
                 break;
             case state.Dadge:
                 emission.rateOverTime = 0;
@@ -135,6 +71,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
                 emission.rateOverTime = 30f;
                 break;
             case state.Skill:
+                skill = DataManager.instance.playerData.Skill;
                 emission.rateOverTime = 0;
                 break;
         }
@@ -166,24 +103,11 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         }
     }
 
-    public enum E_Skill
-    {
-        QSkill, WSkill, ESkill, RSkill
-    }
 
-    I_Skill QSkill;
-    I_Skill WSkill;
-    I_Skill ESkill;
-    I_Skill RSkill;
 
     Dictionary<E_Skill, KeyCode> controllKey = new Dictionary<E_Skill, KeyCode>();
     protected override void Start()
     {
-        QSkill = new QSkill(this);
-        WSkill = new WSkill(this);
-        ESkill = new ESkill(this);
-        RSkill = new RSkill(this);
-
         controllKey[E_Skill.QSkill] = KeyCode.Q;
         controllKey[E_Skill.WSkill] = KeyCode.W;
         controllKey[E_Skill.ESkill] = KeyCode.E;
@@ -218,7 +142,7 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
 
     public void FireToMousePos()
     {
-        bool Check = AnimCheck("t_Attack");
+        
 
         if (Input.GetMouseButtonDown(0) && isFireReady && !Check)
         {
@@ -295,51 +219,27 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
 
     public void Skill()
     {
-
-
-        if (Input.GetKeyDown(controllKey[E_Skill.QSkill]) && curBattleStat.EnergyGage >= 20)
+        for(int i = 0; i < 4; i++)
         {
-            curBattleStat.EnergyGage -= 20;
-            GetRaycastHit();
-            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-            ChangeState(state.Skill);
-
-            QSkill.Do("t_QSkill");
-
-            rotAct?.Invoke(dir, rotSpeed);
-        }
-        if (Input.GetKeyDown(controllKey[E_Skill.WSkill]) && curBattleStat.EnergyGage >= 40)
-        {
-            curBattleStat.EnergyGage -= 40;
-            rotSpeed = 3.0f;
-            GetRaycastHit();
-            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-            ChangeState(state.Skill);
-            WSkill.Do("t_WSkill");
-
-            rotAct?.Invoke(dir, rotSpeed);
-        }
-        if (Input.GetKeyDown(controllKey[E_Skill.ESkill]) && curBattleStat.EnergyGage >= 60)
-        {
-            curBattleStat.EnergyGage -= 60;
-            rotSpeed = 3.0f;
-            GetRaycastHit();
-            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-            ChangeState(state.Skill);
-            ESkill.Do("t_ESkill");
-            rotAct?.Invoke(dir, rotSpeed);
-        }
-
-        if (Input.GetKeyDown(controllKey[E_Skill.RSkill]) && curBattleStat.EnergyGage >= 60)
-        {
-            curBattleStat.EnergyGage -= 60;
-            rotSpeed = 3.0f;
-            GetRaycastHit();
-            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-            ChangeState(state.Skill);
-            RSkill.Do("t_RSkill");
-
-            rotAct?.Invoke(dir, rotSpeed);
+            if (Input.GetKeyDown(controllKey[(E_Skill)i]))
+            {
+                ChangeState(state.Skill);
+                GameObject effect = Resources.Load("Player/SkillEffect/" + skill[i]) as GameObject;
+                sm = effect.GetComponent<SkillManager>();
+                if (curBattleStat.EnergyGage >= sm.EnergyGage)
+                {
+                    rotSpeed = 5.0f;
+                    curBattleStat.EnergyGage -= sm.EnergyGage;
+                    GetRaycastHit();
+                    stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+                    myAnim.SetTrigger(skill[i]);
+                    rotAct?.Invoke(dir, rotSpeed);
+                }
+                else
+                {
+                    ChangeState(state.Idle);
+                }
+            }
         }
     }
 
@@ -410,4 +310,9 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         plstat.Character_AttackPower += plLvstat.AttackPower;
         plstat.Character_Hp += plLvstat.Hp;
     }*/
+
+    private void UseSkill(UnityAction animAct)
+    {
+        animAct?.Invoke();
+    }
 }

@@ -14739,8 +14739,11 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 0}
     uiSkillName: EvilList
     uiSkillDesc: 
+  EnergyGage: 5
   Damage: 50
   aType: 1
+  Buff: 0
+  BTime: 0
 --- !u!114 &4446428923367374699
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class SkillManager : PlayerSkill
 {
+    public int EnergyGage;
     public int Damage;
     Collider col;
     GameObject Player;

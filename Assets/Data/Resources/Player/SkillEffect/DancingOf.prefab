@@ -9702,8 +9702,11 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 0}
     uiSkillName: DanceOf
     uiSkillDesc: 
+  EnergyGage: 20
   Damage: 50
   aType: 1
+  Buff: 0
+  BTime: 0
 --- !u!114 &5736089245460070804
 MonoBehaviour:
   m_ObjectHideFlags: 0

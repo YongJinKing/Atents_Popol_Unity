@@ -4863,6 +4863,7 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 0}
     uiSkillName: 
     uiSkillDesc: 
+  EnergyGage: 20
   Damage: 0
   aType: 0
   Buff: 10

@@ -14647,7 +14647,6 @@ GameObject:
   - component: {fileID: 495956671411273139}
   - component: {fileID: 8429795697937341255}
   - component: {fileID: 3543373995549375955}
-  - component: {fileID: 489451042998416220}
   - component: {fileID: 8856199668242290619}
   m_Layer: 0
   m_Name: SwordWheel
@@ -19509,8 +19508,11 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 0}
     uiSkillName: 
     uiSkillDesc: 
-  Damage: 200
+  EnergyGage: 0
+  Damage: 100
   aType: 1
+  Buff: 0
+  BTime: 0
 --- !u!114 &3543373995549375955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19530,18 +19532,6 @@ MonoBehaviour:
     m_Bits: 4096
   one: 0.1
   two: 0.1
---- !u!114 &489451042998416220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5399032899458382669}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e47a81584915404fb39604fd4dae645, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8856199668242290619
 MonoBehaviour:
   m_ObjectHideFlags: 0

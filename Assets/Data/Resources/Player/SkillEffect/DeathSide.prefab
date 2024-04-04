@@ -29345,8 +29345,11 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 0}
     uiSkillName: DeathSide
     uiSkillDesc: 
+  EnergyGage: 80
   Damage: 100
   aType: 1
+  Buff: 0
+  BTime: 0
 --- !u!199 &1552320904146827699
 ParticleSystemRenderer:
   serializedVersion: 6

@@ -4947,8 +4947,11 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 0}
     uiSkillName: ShadowDot
     uiSkillDesc: 
+  EnergyGage: 5
   Damage: 100
   aType: 1
+  Buff: 0
+  BTime: 0
 --- !u!114 &3352596408234033343
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4951,8 +4951,11 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 0}
     uiSkillName: 
     uiSkillDesc: 
-  Damage: 500
+  EnergyGage: 40
+  Damage: 300
   aType: 0
+  Buff: 0
+  BTime: 0
 --- !u!114 &-6820575483922585115
 MonoBehaviour:
   m_ObjectHideFlags: 0
