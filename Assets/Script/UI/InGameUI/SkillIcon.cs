@@ -25,7 +25,7 @@ public class SkillIcon : MonoBehaviour
         if (isCooling)
         {
             currentCoolTime += Time.deltaTime;
-            myImage.fillAmount = 1.0f - (currentCoolTime / maxCoolTime);
+            myImage.fillAmount = 0.0f + (currentCoolTime / maxCoolTime);
             if (currentCoolTime >= maxCoolTime)
             {
                 isCooling = false;
