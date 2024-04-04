@@ -20,12 +20,6 @@ public class BroadCastCamControll : MonoBehaviour
 
     bool flip = false;
 
-    public Transform plFaceCam;
-    public Transform moFaceCam;
-
-    public float plFaceCamOffset;
-    public float moFaceCamOffset;
-
     void Start()
     {
         Collider[] playerColliders = Physics.OverlapSphere(transform.position, 100f, playerLayer);
@@ -54,12 +48,6 @@ public class BroadCastCamControll : MonoBehaviour
 
         plCam.transform.localPosition = plOff;
         moCam.transform.localPosition = moOff;
-
-        plFaceCam.transform.localPosition = new Vector3(0, 0, Vector3.Distance(transform.position, plPos)-plFaceCamOffset);
-        moFaceCam.transform.localPosition = new Vector3(0, 0, -Vector3.Distance(transform.position, moPos)-moFaceCamOffset);
-
-        plFaceCam.transform.LookAt(playerObject.position);
-        moFaceCam.transform.LookAt(monsterObject.position);
 
         float digree = Vector3.Angle(transform.right.normalized, (Vector3.zero - transform.position).normalized);
 
