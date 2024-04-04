@@ -39,6 +39,7 @@ public class ColoUI : MonoBehaviour
         var stageTableData = MonsterSkillDataManager.GetInstance().dicStageTable[index];
         var stageBossPrefabData = MonsterSkillDataManager.GetInstance().dicPrefabTable[stageTableData.Stage_BossMonster];
         
+        Debug.Log(stageBossPrefabData.Prefab_Name);
         this.BossPrefab = Resources.Load<GameObject>($"Monster/MonsterPrefabs/{stageBossPrefabData.Prefab_Name}");
         GameObject obj = Instantiate(BossPrefab,BossAbility.transform.Find("BossMonster"));
         obj.transform.localScale = new Vector3(400,400,400);
