@@ -12,32 +12,32 @@ public abstract class Monster : BattleSystem
         Death
     }
 
-    //º¯¼ö ¿µ¿ª
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Properties / Field
-    //private º¯¼ö ¿µ¿ª
+    //private ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Private
     #endregion
 
-    //protected º¯¼ö ¿µ¿ª
+    //protected ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region protected
     [SerializeField]protected State myState;
-    //½ºÅ³ÀÌ Å¸°ÙÆÃÇÏ´Â ·¹ÀÌ¾î¸¦ ¹Þ¾Æ¿Â´Ù.
+    //ï¿½ï¿½Å³ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ì¾î¸¦ ï¿½Þ¾Æ¿Â´ï¿½.
     protected LayerMask skillMask;
     protected bool isLoopAnim;
     #endregion
 
-    //Public º¯¼ö¿µ¿ª
+    //Public ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     #region public
     public GameObject target;
     public Transform[] attackStartPos;
-    //ÀÏ´Ü ÀÓ½Ã·Î
+    //ï¿½Ï´ï¿½ ï¿½Ó½Ã·ï¿½
     public Skill[] skills;
     #endregion
 
-    //ÀÌº¥Æ® ÇÔ¼öµé ¿µ¿ª
+    //ï¿½Ìºï¿½Æ® ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Event
-    //SkillÀ» ½ÇÇà½ÃÅ³ ÀÌº¥Æ® ¹è¿­
-    //detect¶û ¿¬°áÀ» ¾î¶»°Ô ÇÒÁö ¸ô¶ó¼­ ÀÏ´Ü ³öµÒ
+    //Skillï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å³ ï¿½Ìºï¿½Æ® ï¿½è¿­
+    //detectï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½î¶»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
     //public UnityEvent<Vector3>[] onSkillUseEvent;
     public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent;
     public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
@@ -55,11 +55,11 @@ public abstract class Monster : BattleSystem
 
 
     #region Method
-    //private ÇÔ¼öµé ¿µ¿ª
+    //private ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region PrivateMethod
     #endregion
 
-    //protected ÇÔ¼öµé ¿µ¿ª
+    //protected ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region ProtectedMethod
     protected abstract void ChangeState(State s);
     protected abstract void ProcessState();
@@ -67,22 +67,22 @@ public abstract class Monster : BattleSystem
     {
         deathAlarm?.Invoke(1);
         ChangeState(State.Death);
-        transform.GetComponentInChildren<PartManager>().DisActiveCol();
+        transform.GetComponentInChildren<MonsterPartManager>().DisActiveCol();
     }
     #endregion
 
-    //public ÇÔ¼öµé ¿µ¿ª
+    //public ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region PublicMethod
     #endregion
     #endregion
 
 
-    //ÄÚ·çÆ¾ ¿µ¿ª
+    //ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½
     #region Coroutine
     #endregion
 
 
-    //ÀÌº¥Æ®°¡ ÀÏ¾î³µÀ»¶§ ½ÇÇàµÇ´Â On~~ÇÔ¼ö
+    //ï¿½Ìºï¿½Æ®ï¿½ï¿½ ï¿½Ï¾î³µï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ On~~ï¿½Ô¼ï¿½
     #region EventHandler
     public void OnAddSkillEventListener(
         UnityAction<Transform, UnityAction, UnityAction, UnityAction> skillStart,
@@ -104,13 +104,13 @@ public abstract class Monster : BattleSystem
     }
 
 
-    //°ø°Ý¸ð¼ÇÀÌ ½ºÅ³À» ¹ßµ¿
+    //ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ßµï¿½
     public virtual void OnAttackStartAnim()
     {
         onSkillHitCheckStartAct?.Invoke();
     }
 
-    //°ø°Ý ¸ð¼ÇÁß¿¡ È÷Æ®¹Ú½º °¡ ³¡³²
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½Æ®ï¿½Ú½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public virtual void OnAttackEndAnim()
     {
         onSkillHitCheckEndAct?.Invoke();
@@ -124,7 +124,7 @@ public abstract class Monster : BattleSystem
     #endregion
 
 
-    //À¯´ÏÆ¼ ÇÔ¼öµé ¿µ¿ª
+    //ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region MonoBehaviour
     #endregion
 }

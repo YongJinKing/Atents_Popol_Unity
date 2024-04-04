@@ -75,7 +75,7 @@ public class MonsterFactory
         GameObject prefab = GameObject.Instantiate(FindPrefab(data.Character_Prefab));
         //GameObject prefab = GameObject.Instantiate(Resources.Load<GameObject>("Monster/MonsterPrefabs/Prefab_Stage1_Slime"));
         prefab.transform.SetParent(obj.transform, false);
-        PartManager part = prefab.GetComponent<PartManager>();
+        MonsterPartManager part = prefab.GetComponent<MonsterPartManager>();
         objMon.attackStartPos = new Transform[part.attackStartPos.Length];
         for (int i = 0; i < part.attackStartPos.Length; i++)
         {
