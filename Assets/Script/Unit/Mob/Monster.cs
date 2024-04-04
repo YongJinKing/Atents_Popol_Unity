@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 
 
-public abstract class Monster : BattleSystem, ICinematic
+public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
 {
     public enum State
     {
