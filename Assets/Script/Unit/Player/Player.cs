@@ -1,19 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
-using static Player;
-
-public interface I_ClickPoint
-{
-    public Vector3 GetRaycastHit();
-}
 
 public enum E_Skill
 {
@@ -23,29 +11,37 @@ public enum E_Skill
     RSkill = 3
 }
 
-public class Player : BattleSystem, I_ClickPoint, IGetDType
+public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 {
     ParticleSystem particle;
     SkillManager sm;
+
     public GameObject Effectobj;
-    string[] skill;
+    
     public LayerMask clickMask;
+
     public DefenceType Dtype;
+
     public UnityEvent<Vector3, float, UnityAction<float>> clickAct;
     public UnityEvent<UnityAction<float>> stopAct;
     public UnityEvent<Vector3, float> dadgeAct;
     public UnityEvent<Vector3, float> rotAct;
+
     public float rotSpeed = 2;
     public float DadgeDelay = 0;
     public float dadgePw;
     float FireDelay = 0;
+
     bool isFireReady = true;
     bool isDadgeReady = true;
     bool Check;
+
+    string[] skill;
+
     Vector3 dir;
     public enum state
     {
-        Fire, Dadge, Idle, Run, Skill
+        Fire, Dadge, Idle, Run, Skill, Cinematic
     }
 
     [SerializeField] protected state playerstate;
@@ -74,6 +70,8 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
                 skill = DataManager.instance.playerData.Skill;
                 emission.rateOverTime = 0;
                 break;
+            case state.Cinematic:
+                break;
         }
     }
 
@@ -99,6 +97,8 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
                 FireToMousePos();
                 DadgeToPos();
                 Skill();
+                break;
+            case state.Cinematic:
                 break;
         }
     }
@@ -301,18 +301,15 @@ public class Player : BattleSystem, I_ClickPoint, IGetDType
         }
     }
 
-
-    /*protected override void LevelUp()
+    public void CinematicStart()
     {
-        var plstat = playerdata.playerstatdata;
-        var plLvstat = playerdata.dicPlayerLevelData[++plstat.Character_CurrentLevel];
+        ChangeState(state.Cinematic);
+        myAnim.SetTrigger("t_Taunt");
 
-        plstat.Character_AttackPower += plLvstat.AttackPower;
-        plstat.Character_Hp += plLvstat.Hp;
-    }*/
+    }
 
-    private void UseSkill(UnityAction animAct)
+    public void CinematicEnd()
     {
-        animAct?.Invoke();
+        ChangeState(state.Idle);
     }
 }
