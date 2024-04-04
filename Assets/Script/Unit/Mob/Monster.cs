@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Monster : BattleSystem
+
+
+public abstract class Monster : BattleSystem, ICinematic
 {
     public enum State
     {
@@ -36,7 +39,7 @@ public abstract class Monster : BattleSystem
 
     //�̺�Ʈ �Լ��� ����
     #region Event
-    //Skill�� �����ų �̺�Ʈ �迭
+    //Skill�� ������?�̺�Ʈ �迭
     //detect�� ������ ��� ���� ���� �ϴ� ����
     //public UnityEvent<Vector3>[] onSkillUseEvent;
     public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent;
@@ -73,16 +76,24 @@ public abstract class Monster : BattleSystem
 
     //public �Լ��� ����
     #region PublicMethod
+    public virtual void CinematicStart()
+    {
+        //trigger on
+    }
+    public virtual void CinematicEnd()
+    {
+        //trigger off
+        //initial()
+    }
     #endregion
     #endregion
-
 
     //�ڷ�ƾ ����
     #region Coroutine
     #endregion
 
 
-    //�̺�Ʈ�� �Ͼ���� ����Ǵ� On~~�Լ�
+    //�̺�Ʈ�� �Ͼ���� ����Ǵ�?On~~�Լ�
     #region EventHandler
     public void OnAddSkillEventListener(
         UnityAction<Transform, UnityAction, UnityAction, UnityAction> skillStart,
@@ -104,13 +115,13 @@ public abstract class Monster : BattleSystem
     }
 
 
-    //���ݸ���� ��ų�� �ߵ�
+    //���ݸ����?��ų�� �ߵ�
     public virtual void OnAttackStartAnim()
     {
         onSkillHitCheckStartAct?.Invoke();
     }
 
-    //���� ����߿� ��Ʈ�ڽ� �� ����
+    //���� ����߿�?��Ʈ�ڽ� �� ����
     public virtual void OnAttackEndAnim()
     {
         onSkillHitCheckEndAct?.Invoke();

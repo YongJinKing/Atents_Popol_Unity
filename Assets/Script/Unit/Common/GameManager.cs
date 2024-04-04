@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private GameObject Monster;
     //public PlayerDetaManager playerdata;
 
+
     Player pl;
     Monster Ms;
 
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
         mf = null;
         LoadPlayerStat();
     }
+
     void Start()
     {
     }
@@ -35,7 +37,7 @@ public class GameManager : MonoBehaviour
         BattleStat bs = default;
 
         var pldata = DataManager.instance.playerData;
-        //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ������ ��� ����
+        //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ������ ���?����
         bs.Exp = pldata.Character_CurrentExp;
         bs.Level = pldata.Character_CurrentLevel;
         bs.ATK = pldata.Character_AttackPower;
@@ -65,11 +67,11 @@ public class GameManager : MonoBehaviour
     {
         pl.enabled = false;
         var playerdata = DataManager.instance.playerData;
-        if (UnitType == 0) // 플레이어가 죽었을 때
+        if (UnitType == 0) // ?�레?�어가 죽었????
         {
 
         }
-        else // 몬스터가 죽었을 때
+        else // 몬스?��? 죽었????
         {
             pl.Exp += Ms.Exp;
             playerdata.Character_CurrentExp += Ms.Exp;

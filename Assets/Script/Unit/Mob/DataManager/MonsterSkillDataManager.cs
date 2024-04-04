@@ -11,11 +11,12 @@ public class MonsterSkillDataManager
     //UI
     public Dictionary<int, UIStringTable> dicStringTable;
     public Dictionary<int, PrefabTable> dicPrefabTable;
-    public Dictionary<int, BossStageTable> dicStageTable;
+    
     public Dictionary<int, SkillImageResourceTable> dicResourceTable;
 
     //Monster
     public Dictionary<int, MonsterDataTable> dicMonsterDataTable;
+
     //SkillTable
     public Dictionary<int, SkillDataTable> dicSkillDataTable;
     //SkillDetail
@@ -25,7 +26,8 @@ public class MonsterSkillDataManager
     //SkillAffect
     public Dictionary<int, SkillDamageAffectDataTable> dicSkillDamageAffectDataTable;
     public Dictionary<int, SkillKnockBackAffectDataTable> dicSkillKnockBackAffectDataTable;
-
+    //GameManager
+    public Dictionary<int, BossStageTable> dicStageTable;
     public static MonsterSkillDataManager GetInstance()
     {
         if(MonsterSkillDataManager.instance == null)
