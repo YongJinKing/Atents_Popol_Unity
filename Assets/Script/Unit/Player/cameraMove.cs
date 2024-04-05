@@ -29,7 +29,7 @@ public class cameraMove : MonoBehaviour
     public Transform PlayerCam;
     Transform target;
     public float cineCamSpeed;
-    public bool isCine = false;
+    public static bool isCine = false;
     public bool isTracking = true;
     public string CinecamState = "CamMove";
     public float rotateSpeed;
@@ -39,7 +39,6 @@ public class cameraMove : MonoBehaviour
         //myCam = GetComponentInChildren<Camera>().transform;
         camDist = targetDist = Mathf.Abs(myCam.localPosition.z - camDist);
         transform.rotation = Quaternion.Euler(playerAngle.x, playerAngle.y, 0);
-        Debug.Log("start"+camDist);
     }
 
     void Update()

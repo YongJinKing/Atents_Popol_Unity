@@ -8,7 +8,6 @@ public class OpenningCine : MonoBehaviour
     public GameObject plFace;
     public GameObject moFace;
 
-
     public Vector2 plPos;
     public Vector2 moPos;
 
@@ -18,6 +17,7 @@ public class OpenningCine : MonoBehaviour
     public float moveSpeed;
 
     public float shackMag;
+    public float length = 0;
 
     [Space(3)]
     [Header("VS Txt")]
@@ -30,11 +30,16 @@ public class OpenningCine : MonoBehaviour
     public Vector2 VEndPos;
     public Vector2 SEndPos;
 
-    byte nowState = 0;
+    public GameObject VS_VFX;
+    public GameObject Frame_VFX;
 
+    public float waitTime;
+
+    byte nowState = 0;
+    
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F4))
+        if (Input.GetKeyDown(KeyCode.F6))
         {
             StartCoroutine(Openning());
         }
@@ -42,32 +47,23 @@ public class OpenningCine : MonoBehaviour
 
     IEnumerator Openning()
     {
+        cameraMove.isCine = true;
         while (nowState == 0)
         {
-            plPos.x = Mathf.Lerp(plPos.x, plEndPos.x, Time.deltaTime * moveSpeed);
-            moPos.x = Mathf.Lerp(moPos.x, moEndPos.x, Time.deltaTime * moveSpeed);
+            plPos.x = Mathf.Lerp(plPos.x, plEndPos.x, Time.deltaTime * moveSpeed * 2);
+            moPos.x = Mathf.Lerp(moPos.x, moEndPos.x, Time.deltaTime * moveSpeed * 2);
+
             UIMove();
             if (Mathf.Floor(Vector2.Distance(plPos, plEndPos)) == 0)
             {
+                Instantiate(Frame_VFX, new Vector3(transform.position.x, transform.position.y, transform.position.z - 10), Quaternion.identity);
+                Debug.Log(nowState+" end");
                 ++nowState;
             }
             yield return null;
         }
 
         while (nowState == 1)
-        {
-            VPos = Vector2.Lerp(VPos, VEndPos, Time.deltaTime * moveSpeed * 2f);
-            SPos = Vector2.Lerp(SPos, SEndPos, Time.deltaTime * moveSpeed * 2f);
-            UIMove();
-            if (Mathf.Floor(Vector2.Distance(VPos, VEndPos)) == 0)
-            {
-                ++nowState;
-            }
-            yield return null;
-        }
-
-        float length = 0;
-        while (nowState == 2)
         {
             float x = Random.Range(-1, 1) * shackMag;
             float y = Random.Range(-1, 1) * shackMag;
@@ -84,18 +80,68 @@ public class OpenningCine : MonoBehaviour
                 plPos = plEndPos;
                 moPos = moEndPos;
                 UIMove();
-
-                plEndPos = new Vector2(-1350, 0);
-                moEndPos = new Vector2(1350, 0);
-                VEndPos = new Vector2(-600, 40);
-                SEndPos = new Vector2(600, -40);
-
-                yield return new WaitForSeconds(1);
+                plEndPos.x -= 50;
+                moEndPos.x += 50;
+                length = 0;
                 ++nowState;
             }
             yield return null;
         }
+        while (nowState == 2)
+        {
+            plPos.x = Mathf.Lerp(plPos.x, plEndPos.x, Time.deltaTime * moveSpeed);
+            moPos.x = Mathf.Lerp(moPos.x, moEndPos.x, Time.deltaTime * moveSpeed);
+            UIMove();
+            if (Mathf.Floor(Vector2.Distance(plPos, plEndPos)) == 0)
+            {
+                ++nowState;
+            }
+            yield return null;
+        }
+
         while (nowState == 3)
+        {
+            VPos = Vector2.Lerp(VPos, VEndPos, Time.deltaTime * moveSpeed * 2f);
+            SPos = Vector2.Lerp(SPos, SEndPos, Time.deltaTime * moveSpeed * 2f);
+            UIMove();
+            if (Mathf.Floor(Vector2.Distance(VPos, VEndPos)) == 0)
+            {
+                Instantiate(VS_VFX, new Vector3(transform.position.x,transform.position.y,transform.position.z-10), Quaternion.identity);
+                ++nowState;
+            }
+            yield return null;
+        }
+
+        
+        while (nowState == 4)
+        {
+            float x = Random.Range(-1, 1) * shackMag;
+            float y = Random.Range(-1, 1) * shackMag;
+
+            plPos = new Vector2(plEndPos.x + x, plEndPos.y + y);
+            moPos = new Vector2(moEndPos.x + x, moEndPos.y + y);
+
+            UIMove();
+
+            length += Time.deltaTime;
+
+            if (length >= 0.3f)
+            {
+                plPos = plEndPos;
+                moPos = moEndPos;
+                UIMove();
+
+                plEndPos = new Vector2(-1350, 0);
+                moEndPos = new Vector2(1350, 0);
+                VEndPos = new Vector2(-800, 40);
+                SEndPos = new Vector2(800, -40);
+
+                yield return new WaitForSeconds(waitTime);
+                ++nowState;
+            }
+            yield return null;
+        }
+        while (nowState == 5)
         {
             plPos.x = Mathf.Lerp(plPos.x, plEndPos.x, Time.deltaTime * moveSpeed);
             moPos.x = Mathf.Lerp(moPos.x, moEndPos.x, Time.deltaTime * moveSpeed);
@@ -108,7 +154,9 @@ public class OpenningCine : MonoBehaviour
             if (Mathf.Floor(Vector2.Distance(plPos, plEndPos)) == 0)
             {
                 ++nowState;
+                cameraMove.isCine = false;
                 StopCoroutine(Openning());
+                Destroy(gameObject);
             }
             yield return null;
         }
