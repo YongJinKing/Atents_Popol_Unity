@@ -10,17 +10,25 @@ using UnityEngine.Events;
 public class SmithUi : MonoBehaviour
 {
     
-    public GameObject Popup;
+    public GameObject FuntionPopup;
+    public GameObject CantPopup;
     public GameObject SmithGridLine;
     public GameObject ItemDetail;
     public GameObject ItemAbility;
+    public GameObject RiggigItem;
+    public UnityEvent<int> InvenItemRepair;
+    public UnityEvent<int> RiggingItemRepair;
 
     public UnityEvent<int> BtnAct2;
+    bool RiggingItemSelected= false;
     bool SlotSelected= false;
     int SlotIndex = 0;
+    int RiggingIndex = 0;
     int smithFuntion;
+    int PopupType = 0;
     Button[] SlotBtnFunctionList ;
-    int PrevIndex = -1;
+    int SlotPrevIndex = -1;
+    int RiggingItemPrevIndex = -1;
     
     private void Start() 
     {
@@ -36,11 +44,11 @@ public class SmithUi : MonoBehaviour
     public void ChooseSlot(int index)
     {
         int id = SmithGridLine.transform.GetChild(index).GetComponent<UIItem>().id;
-        if(PrevIndex == index)
+        if(SlotPrevIndex == index)
         {
             CleanSlot(-1);
             SlotSelected = false;
-            ItemDetailShow(SlotSelected, index);
+            ItemDetailShow();
             return;
         }
         else
@@ -48,36 +56,62 @@ public class SmithUi : MonoBehaviour
             if(id > 0)
             {
                 SlotIndex = index;
+                CleanRiggingItem(-1);
+                RiggingItemSelected = false;
                 CleanSlot(index);
-                ImgColorChange(0.3f, index);
+                SlotImgColorChange(0.3f, index);
                 SlotSelected = true;
-                ItemDetailShow(SlotSelected, index);
+                ItemDetailShow(0, index);
             }
             else
                 return;
         }
-        
+    }
+    public void ChooseRiggingItem(int index)
+    {
+        int id = RiggigItem.transform.GetChild(index).GetComponent<UIItem>().id;
+        if(RiggingItemPrevIndex == index)
+        {
+            CleanRiggingItem(-1);
+            RiggingItemSelected = false;
+            ItemDetailShow();
+            return;
+        }
+        else
+        {
+            if(id > 0)
+            {
+                RiggingIndex = index;
+                CleanSlot(-1);
+                CleanRiggingItem(index);
+                RiggingItemImgColorChange(0.3f, index);
+                SlotSelected = false;
+                RiggingItemSelected = true;
+                ItemDetailShow(1, index);
+            }
+        }
     }
     public void ItemDetailShow()
     {
         ItemDetail.transform.GetChild(0).gameObject.SetActive(false);
         ItemDetail.transform.GetChild(1).gameObject.SetActive(false);
     }
-    void ItemDetailShow(bool ShowCheck, int index)
+    void ItemDetailShow(int type, int index)
     {
-        ItemDetail.transform.GetChild(0).gameObject.SetActive(ShowCheck);
-        ItemDetail.transform.GetChild(1).gameObject.SetActive(ShowCheck);
-        if(!ShowCheck)  return;
-        else
-        {
-            UIItem DetailItem = SmithGridLine.transform.GetChild(index).GetComponent<UIItem>();
-            ItemAbility.transform.GetChild(0).GetComponent<Image>().sprite = DetailItem.icon.sprite;
-            ItemAbility.transform.GetChild(1).GetComponent<TMP_Text>().text = "이름 : " + DetailItem.ItemName;
-            ItemAbility.transform.GetChild(2).GetComponent<TMP_Text>().text = "공격력 : " + DetailItem.ItemValue.ToString();
-            ItemAbility.transform.GetChild(3).GetComponent<TMP_Text>().text = "내구도 : " + DetailItem.ItemDuration.ToString();
-            ItemAbility.transform.GetChild(4).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = 
-            DetailItem.ItemSmith;
-        }
+        ItemDetail.transform.GetChild(0).gameObject.SetActive(true);
+        ItemDetail.transform.GetChild(1).gameObject.SetActive(true);
+        UIItem DetailItem = gameObject.AddComponent<UIItem>();
+        if(type == 0)
+            DetailItem = SmithGridLine.transform.GetChild(index).GetComponent<UIItem>();
+        if(type == 1)
+            DetailItem = RiggigItem.transform.GetChild(index).GetComponent<UIItem>();
+        ItemAbility.transform.GetChild(0).GetComponent<Image>().sprite = DetailItem.icon.sprite;
+        ItemAbility.transform.GetChild(1).GetComponent<TMP_Text>().text = "이름 : " + DetailItem.ItemName;
+        ItemAbility.transform.GetChild(2).GetComponent<TMP_Text>().text = "공격력 : " + DetailItem.ItemValue.ToString();
+        ItemAbility.transform.GetChild(3).GetComponent<TMP_Text>().text = "내구도 : " + DetailItem.ItemDuration.ToString();
+        ItemAbility.transform.GetChild(4).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = 
+        DetailItem.ItemSmith;
+        
     }
 
 
@@ -85,41 +119,82 @@ public class SmithUi : MonoBehaviour
     {
         for(int i = 0; i < SmithGridLine.transform.childCount; i++)
         {
-            ImgColorChange(0.0f, i);
+            SlotImgColorChange(0.0f, i);
         }
-        PrevIndex = PrevIdxSetting;
+        SlotPrevIndex = PrevIdxSetting;
     }
-    public void CleanSlot()
+    void CleanRiggingItem(int PrevIdxSetting)
+    {
+        for(int i = 0; i < RiggigItem.transform.childCount; i++)
+        {
+            RiggingItemImgColorChange(0.0f, i);
+        }
+        RiggingItemPrevIndex = PrevIdxSetting;
+    }
+    public void CleanSlotAndRiggingItem()
     {
         for(int i = 0; i < SmithGridLine.transform.childCount; i++)
         {
-            ImgColorChange(0.0f, i);
+            SlotImgColorChange(0.0f, i);
         }
-        PrevIndex = -1;
+        for(int i = 0; i < RiggigItem.transform.childCount; i++)
+        {
+            RiggingItemImgColorChange(0.0f, i);
+        }
+        RiggingItemPrevIndex = -1;
+        SlotPrevIndex = -1;
     }
 
-    void ImgColorChange(float Value, int index)
+    void SlotImgColorChange(float Value, int index)
     {
         Color color = SmithGridLine.transform.GetChild(index).GetChild(2).GetComponent<Image>().color;
         color.a = Value;
         SmithGridLine.transform.GetChild(index).GetChild(2).GetComponent<Image>().color = color;
     }
+    void RiggingItemImgColorChange(float Value, int index)
+    {
+        Color color = RiggigItem.transform.GetChild(index).Find("Button").GetComponent<Image>().color;
+        color.a = Value;
+        RiggigItem.transform.GetChild(index).Find("Button").GetComponent<Image>().color = color;
+    }
     
     public void PressedPopupBtn(int index)
     {
-        
+        PopupType = 0;
+        String ModeText = "";
         if(SlotSelected)
+            PopupType = 1;
+        if(RiggingItemSelected)
+            PopupType = 2;
+        if(PopupType > 0)
         {   
-            String ModeText = "";
-            Popup.transform.gameObject.SetActive(true);
-            if(index == 0)
-                ModeText = "수리";
-            else if(index == 1)
-                ModeText = "폐기";
-            Popup.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text =
-            $"아이템을 {ModeText}하시겠습니까?";
-            smithFuntion = index + 1;
-            
+            if(PopupType == 1)
+            {
+                FuntionPopup.transform.gameObject.SetActive(true);
+                if(index == 0)
+                    ModeText = "수리";
+                else if(index == 1)
+                    ModeText = "폐기";
+                FuntionPopup.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text =
+                $"아이템을 {ModeText}하시겠습니까?";
+                smithFuntion = index + 1;
+            }
+            if(PopupType == 2)
+            {
+                
+                if(index == 0)
+                {
+                    FuntionPopup.transform.gameObject.SetActive(true);
+                    ModeText = "수리";
+                }
+                else if(index == 1)
+                {
+                    StartCoroutine(CantDesPopup());
+                }
+                FuntionPopup.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text =
+                $"아이템을 {ModeText}하시겠습니까?";
+                smithFuntion = index + 1;
+            }
         }
         else
             return;
@@ -130,16 +205,26 @@ public class SmithUi : MonoBehaviour
         {
             if(smithFuntion == 1)
             {
-                SmithGridLine.transform.GetChild(SlotIndex).GetComponent<UIItem>().ItemDuration = 100;
+                if(PopupType == 1)
+                    InvenItemRepair?.Invoke(SlotIndex);
+                if(PopupType == 2)
+                    RiggingItemRepair?.Invoke(RiggingIndex);
             }
             if(smithFuntion == 2)
             {
                 BtnAct2?.Invoke(SlotIndex);                
             }
-            Popup.transform.gameObject.SetActive(false);
+            FuntionPopup.transform.gameObject.SetActive(false);
             ItemDetailShow();
+            CleanSlotAndRiggingItem();
         }
         else
-            Popup.transform.gameObject.SetActive(false);
+            FuntionPopup.transform.gameObject.SetActive(false);
+    }
+    IEnumerator CantDesPopup()
+    {
+        CantPopup.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.8f);
+        CantPopup.gameObject.SetActive(false);
     }
 }

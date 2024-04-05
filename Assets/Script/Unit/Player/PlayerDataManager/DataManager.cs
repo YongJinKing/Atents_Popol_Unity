@@ -27,6 +27,7 @@ public class PlayerData
     public bool[] clearStage;
     public int PlayerGold = 0;
     public List<int> PlayerInven = new List<int>();
+    public List<int> Duration = new List<int>();
 }
 
 

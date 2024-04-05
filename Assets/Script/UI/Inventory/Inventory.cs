@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
    
     public void testtest()
     {
-        AddItem(1200);
+        transform.GetChild(0).transform.GetChild(1).GetComponent<UIItem>().ItemDuration -= 10;
     }
     
     void Start()
@@ -51,14 +51,17 @@ public class Inventory : MonoBehaviour
             }
         }
     }
-
-
-    public void DurationCharge(int index)
+    public void InvenItemRepair(int index)
+    {
+        transform.GetChild(0).GetChild(index).GetComponent<UIItem>().ItemDuration = 100;
+    }
+    public void RiggingItemRepair(int index)
     {
         
-        
-        
     }
+
+
+    
     public void RemoveItem(int index) 
     { 
         int id;

@@ -3,56 +3,144 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class UserPopup : MonoBehaviour
 {
-    bool LRcheck;
-    public GameObject Popup;
-    public GameObject DisInven;
-    public GameObject InvenManager;
+
+    public GameObject UserGridLine;
     public GameObject PlayerItem;
-    public GameObject PlayerDetailAbility;
+    public GameObject DisInven;
     public GameObject Inven;
-    public UnityEvent EventChangeItem;
     
+
+
+    public GameObject RiggingPopup;
+    public GameObject InvenManager;
+    public GameObject PlayerDetailAbility;
+    
+    public UnityEvent EventChangeItem;
     public UnityEvent<int> EventSlotNum;
     
+
+
+
     Coroutine CorRiggingItem;
+    bool LRcheck;
     int InvenItemId;
     int SlotNum;
+    Vector2 SlotVector2;
     Vector2 LeftDefalutVector = new Vector2(290 , -240);
     Vector2 RightDefalutVector = new Vector2(-310 , -240);
 
-    public void OnRiggingItemHighLight(int index, bool Oncheck)
+    public void OnRiggingItemHighLight(int index, bool OnCheck)
     {
-        PlayerItem.transform.GetChild(index).Find("Button").gameObject.SetActive(Oncheck);
-    
+        if(OnCheck)
+        {
+            PlayerItem.transform.GetChild(index).Find("Button").gameObject.SetActive(OnCheck);
+            SlotVector2 = PlayerItem.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition;
+            StartCoroutine(OnPopupControll(1, index));
+        }
+        else
+        {
+            StopAllCoroutines();
+            PlayerItem.transform.GetChild(0).gameObject.SetActive(true);
+            Inven.transform.Find("DescPopup").gameObject.SetActive(false);
+            PlayerItem.transform.GetChild(index).Find("Button").gameObject.SetActive(OnCheck);
+        }
+        
+    }
+    public void OnSlotHighLight(int index, bool OnCheck)
+    {
+        if(OnCheck)
+        {
+            if(DisInven.GetComponent<DisplayInven>().items.Count > index)
+            {
+                UserGridLine.transform.GetChild(index).Find("Button").gameObject.SetActive(OnCheck);
+                if(UserGridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition.x >= 300)
+                    LRcheck = true;
+                else
+                    LRcheck = false;
+                SlotNum = index;
+                SlotVector2 = UserGridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition;
+                StartCoroutine(OnPopupControll(0, index));
+                StartCoroutine(OnMouseControll());
+
+            } 
+        }
+        else
+        {
+            if(Inven.transform.Find("PlayerAbility").Find("Inventory").GetComponent<DisplayInven>().items.Count > index)
+            {
+                StopAllCoroutines();
+                Inven.transform.Find("DescPopup").gameObject.SetActive(false);
+                UserGridLine.transform.GetChild(index).Find("Button").gameObject.SetActive(OnCheck);
+            }
+        }
+          
+    }
+     IEnumerator OnMouseControll()
+    {
+        while(true)
+        {
+            if(Input.GetMouseButtonDown(1))
+            {
+                PopupControll(SlotNum);
+            }
+            yield return null;
+        }   
     }
     
-    public void getLRcheck(bool TorF)
+    IEnumerator OnPopupControll(int type, int index)//0 : gridline 1 : 
     {
-        LRcheck = TorF;
+        yield return new WaitForSeconds(0.8f);
+        UIItem go = gameObject.AddComponent<UIItem>();
+        if(type == 0)
+        {
+            go = UserGridLine.transform.GetChild(index).GetComponent<UIItem>();
+        }
+        if(type == 1)
+        {
+            go = PlayerItem.transform.GetChild(index).GetComponent<UIItem>();
+            PlayerItem.transform.GetChild(0).gameObject.SetActive(false);
+        }
+        Inven.transform.Find("DescPopup").gameObject.SetActive(true);
+        Inven.transform.Find("DescPopup").Find("Paper").Find("ImgBg").Find("ItemImage").GetComponent<Image>().sprite
+        = go.icon.sprite;
+        Inven.transform.Find("DescPopup").Find("Paper").Find("ItemName").GetComponent<TMP_Text>().text
+        = go.ItemName;
+        Inven.transform.Find("DescPopup").Find("Paper").Find("ItemType").GetComponent<TMP_Text>().text
+        = WeaponTypeToString(go.WeaponType);
+        Inven.transform.Find("DescPopup").Find("Paper").Find("ItemValue").GetComponent<TMP_Text>().text
+        = RiggingTypeToString(go.ItemRigging) + go.ItemValue.ToString();
+        Inven.transform.Find("DescPopup").Find("Paper").Find("ItemDesc").GetComponent<TMP_Text>().text
+        = go.ItemDesc;
+
+        MoveInvenDescPopup(type);
     }
-    public void MoveInvenDescPopup(Vector2 SlotVector)
+   
+    public void MoveInvenDescPopup(int type)
     {
         Vector2 vector2 = new Vector2();
-        transform.Find("Inven").Find("DescPopup").GetComponent<RectTransform>().anchorMax =
-        new Vector2(0,1);
-        transform.Find("Inven").Find("DescPopup").GetComponent<RectTransform>().anchorMin =
-        new Vector2(0,1);
-        if(!LRcheck)
-            vector2 = LeftDefalutVector;
-        else
-            vector2 = RightDefalutVector;
+        if(type == 0)
+        {
+            if(!LRcheck)
+                vector2 = LeftDefalutVector;
+            else
+                vector2 = RightDefalutVector;
+        }
+        if(type == 1)
+        {
+            vector2 = new Vector2(1515-755, -655);
+        }
         transform.Find("Inven").Find("DescPopup").GetComponent<RectTransform>().anchoredPosition = 
-        SlotVector + vector2;   
+        SlotVector2 + vector2;   
     }
     
     
     public void PopupControll(int index)
     {
-        Popup.gameObject.SetActive(true);
-        SlotNum = index;
+        RiggingPopup.gameObject.SetActive(true);
         EventSlotNum?.Invoke(index);
     }
 
@@ -62,7 +150,7 @@ public class UserPopup : MonoBehaviour
         {
             EventChangeItem?.Invoke();
         }
-        Popup.gameObject.SetActive(false);
+        RiggingPopup.gameObject.SetActive(false);
     }
     
     public void PlayerAbilityUpdate()
@@ -119,6 +207,17 @@ public class UserPopup : MonoBehaviour
             Rtstring = "경갑";
         if(index == 12)
             Rtstring = "판금";
+        return Rtstring;
+    }
+    public string RiggingTypeToString(int index)
+    {
+        string Rtstring = "";
+        //0 : 무기 1 : 방어구
+        if(index == 0)
+            Rtstring = "공격력 : ";
+        if(index == 1)
+            Rtstring = "체력 : ";
+       
         return Rtstring;
     }
     

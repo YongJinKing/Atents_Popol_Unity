@@ -61,6 +61,25 @@ public class UIItem : MonoBehaviour
         this.ItemDuration = 0;
         ColorChage(0.0f);
     }
+    
+    public void Attached(UIItem uIItem)
+    {
+        this.icon = uIItem.icon;
+        this.txtCount = uIItem.txtCount;
+        this.id = uIItem.id;
+        this.ItemName = uIItem.ItemName;
+        this.ItemDesc= uIItem.ItemDesc;
+        this.ItemSmith = uIItem.ItemSmith;
+        this.ItemRigging = uIItem.ItemRigging;
+        this.ItemValue = uIItem.ItemValue;
+        this.ItemDuration = uIItem.ItemDuration;
+        this.spName = uIItem.spName;
+        this.WeaponType = uIItem.WeaponType;
+        this.ItemPrice = uIItem.ItemPrice;
+        Sprite sp = Resources.Load<Sprite>($"UI/UIItem/{spName}");
+        this.icon.sprite = sp;
+        ColorChage(1.0f);
+    }
     void ColorChage(float Value)
     {
         Color ImgObj = this.icon.color;
@@ -70,4 +89,5 @@ public class UIItem : MonoBehaviour
         TxtObj.a = Value;
         this.txtCount.color = TxtObj;
     }
+
 }
