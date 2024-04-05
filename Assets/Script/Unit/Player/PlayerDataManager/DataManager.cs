@@ -23,7 +23,7 @@ public class PlayerData
     public int WeaponType;
     public int ArmorType;
     
-    public string[] Skill;
+    public string[] Skill = new string[4];
     public bool[] clearStage;
     public int PlayerGold = 0;
     public List<int> PlayerInven = new List<int>();

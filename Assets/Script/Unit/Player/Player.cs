@@ -16,6 +16,8 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     ParticleSystem particle;
     SkillManager sm;
 
+    GameObject effect;
+
     public GameObject Effectobj;
     
     public LayerMask clickMask;
@@ -36,8 +38,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     bool isDadgeReady = true;
     bool Check;
 
-    string[] skill;
-
     Vector3 dir;
     public enum state
     {
@@ -55,7 +55,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         {
             case state.Fire:
                 emission.rateOverTime = 0;
-                bool Check = AnimCheck("t_Attack");
                 break;
             case state.Dadge:
                 emission.rateOverTime = 0;
@@ -67,7 +66,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
                 emission.rateOverTime = 30f;
                 break;
             case state.Skill:
-                skill = DataManager.instance.playerData.Skill;
                 emission.rateOverTime = 0;
                 break;
             case state.Cinematic:
@@ -83,6 +81,16 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
             case state.Skill:
                 break;
             case state.Fire:
+                Check = AnimCheck("t_Attack");
+                if (!Check)
+                {
+                    myAnim.SetTrigger("t_Attack");
+                }
+                else
+                {
+                    ChangeState(state.Idle);
+                }
+                //FireToMousePos();
                 break;
             case state.Dadge:
                 break;
@@ -142,19 +150,15 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
     public void FireToMousePos()
     {
-        
-
-        if (Input.GetMouseButtonDown(0) && isFireReady && !Check)
+        if (Input.GetMouseButtonDown(0) && isFireReady)
         {
             GetRaycastHit();
 
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
 
-            myAnim.SetTrigger("t_Attack");
+            rotAct?.Invoke(dir, rotSpeed);
 
             ChangeState(state.Fire);
-
-            rotAct?.Invoke(dir, rotSpeed);
         }
     }
 
@@ -223,16 +227,28 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         {
             if (Input.GetKeyDown(controllKey[(E_Skill)i]))
             {
-                ChangeState(state.Skill);
-                GameObject effect = Resources.Load("Player/SkillEffect/" + skill[i]) as GameObject;
-                sm = effect.GetComponent<SkillManager>();
+                var plskill = DataManager.instance.playerData;
+                if (!string.IsNullOrWhiteSpace(plskill.Skill[i]))
+                {
+                    Debug.Log(plskill.Skill[i]);
+                    GameObject effect = Resources.Load("Player/SkillEffect/" + plskill.Skill[i]) as GameObject;
+                    sm = effect.GetComponent<SkillManager>();
+                }
+                else
+                {
+                    Debug.Log("현재슬롯에 스킬이 없습니다.");
+                    //스킬 실패 사운드
+                    return;
+                }
+
                 if (curBattleStat.EnergyGage >= sm.EnergyGage)
                 {
+                    ChangeState(state.Skill);
                     rotSpeed = 5.0f;
                     curBattleStat.EnergyGage -= sm.EnergyGage;
                     GetRaycastHit();
                     stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-                    myAnim.SetTrigger(skill[i]);
+                    myAnim.SetTrigger(plskill.Skill[i]);
                     rotAct?.Invoke(dir, rotSpeed);
                 }
                 else
@@ -249,6 +265,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         {
             case 0:
                 FireDelay = battleStat.AttackDelay;
+                Check = false;
                 break;
             case 1:
                 DadgeDelay = 1.0f;

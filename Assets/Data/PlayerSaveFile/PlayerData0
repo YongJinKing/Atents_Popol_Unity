@@ -11,9 +11,14 @@
     "Armor_Ability": 10,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
-    "NowWeapon": "",
-    "NowArmor": "",
-    "Skill": [],
+    "WeaponType": 0,
+    "ArmorType": 0,
+    "Skill": [
+        "",
+        "",
+        "",
+        ""
+    ],
     "clearStage": [],
     "PlayerGold": 0,
     "PlayerInven": []
