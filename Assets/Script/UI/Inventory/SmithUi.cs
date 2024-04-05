@@ -11,14 +11,10 @@ public class SmithUi : MonoBehaviour
 {
     
     public GameObject Popup;
-    public GameObject PopupBtnManager;
-    
     public GameObject SmithGridLine;
-    public GameObject UserGridLine;
     public GameObject ItemDetail;
     public GameObject ItemAbility;
 
-    public UnityEvent BtnAct1;
     public UnityEvent<int> BtnAct2;
     bool SlotSelected= false;
     int SlotIndex = 0;

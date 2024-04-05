@@ -14,6 +14,7 @@ public class ShopUi : MonoBehaviour
     public GameObject BuyPopup;
     public GameObject DescPopup;
     public GameObject GridLine;
+    public GameObject RiggingItem;
     public UnityEvent<int> AddItem;
     string ItemRiggingStr = "";
     int InstanceCount = 0;
@@ -183,7 +184,7 @@ public class ShopUi : MonoBehaviour
     }
     public void OnRiggingHighLite(int index, bool OnCheck)
     {
-        GridLine.transform.GetChild(index).Find("Button").gameObject.SetActive(OnCheck);
+        RiggingItem.transform.GetChild(index).Find("Button").gameObject.SetActive(OnCheck);
         if(OnCheck)
         {
             CorSlotHL = StartCoroutine(OnCorInvenSlotHL(1,index));
@@ -197,7 +198,6 @@ public class ShopUi : MonoBehaviour
             }
             DescPopup.transform.gameObject.SetActive(false);
          }
-        
     }
 
     IEnumerator OnCorInvenSlotHL(int type,int index)//0 : grid 1: rigging
@@ -219,7 +219,9 @@ public class ShopUi : MonoBehaviour
         } 
         if(type == 1)
         {
-            
+            go = RiggingItem.transform.GetChild(index).GetComponent<UIItem>();
+            transform.Find("Main_Panel").Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
+            RiggingItem.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition+ new Vector2(95 , 11);
         }
         yield return new WaitForSeconds(0.8f);
         DescPopup.transform.gameObject.SetActive(true);

@@ -12,15 +12,23 @@ public class UserPopup : MonoBehaviour
     public GameObject InvenManager;
     public GameObject PlayerItem;
     public GameObject PlayerDetailAbility;
+    public GameObject Inven;
     public UnityEvent EventChangeItem;
+    
     public UnityEvent<int> EventSlotNum;
     
+    Coroutine CorRiggingItem;
     int InvenItemId;
     int SlotNum;
     Vector2 LeftDefalutVector = new Vector2(290 , -240);
     Vector2 RightDefalutVector = new Vector2(-310 , -240);
 
-   
+    public void OnRiggingItemHighLight(int index, bool Oncheck)
+    {
+        PlayerItem.transform.GetChild(index).Find("Button").gameObject.SetActive(Oncheck);
+    
+    }
+    
     public void getLRcheck(bool TorF)
     {
         LRcheck = TorF;
@@ -84,6 +92,7 @@ public class UserPopup : MonoBehaviour
 
         DataManager.instance.playerData.Weapon_Ability = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().ItemValue;
         DataManager.instance.playerData.Armor_Ability = PlayerItem.transform.Find("Armor").GetComponent<UIItem>().ItemValue;
+        DataManager.instance.playerData.WeaponType = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType;
     }
 
     public string WeaponTypeToString(int index)

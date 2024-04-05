@@ -3,7 +3,7 @@ using UnityEditor;
 
 public class SceneStartOption
 {
-    [MenuItem("SceneStartOption/시작 씬부터 시작 #F5")]
+    [MenuItem("SceneStartOption/StartInTitle #F5")]
     public static void SetupFromStartScene()
     {
         var pathOfFirstScene = EditorBuildSettings.scenes[0].path;
@@ -12,7 +12,7 @@ public class SceneStartOption
         UnityEditor.EditorApplication.isPlaying = true;
     }
 
-    [MenuItem("SceneStartOption/현재 씬부터 시작 _F5")]
+    [MenuItem("SceneStartOption/StartThisScene _F5")]
     public static void StartFromThisScene()
     {
         EditorSceneManager.playModeStartScene = null;

@@ -20,10 +20,8 @@ public class PlayerData
     public int Armor_Ability;
     public float Character_MoveSpeed;
     public float Character_AttackSpeed;
-
-
-    public string NowWeapon;
-    public string NowArmor;
+    public int WeaponType;
+    public int ArmorType;
     
     public string[] Skill;
     public bool[] clearStage;
