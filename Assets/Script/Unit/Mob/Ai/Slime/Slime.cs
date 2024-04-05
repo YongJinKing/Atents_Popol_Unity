@@ -127,7 +127,6 @@ public class Slime : Monster
         {
             //대충 적당히 근거리에서 배회
             case State.Idle:
-                
                 StartCoroutine(IdleProcessing());
                 break;
             //적에게 접근
@@ -184,11 +183,11 @@ public class Slime : Monster
     #region PublicMethod
     public override void CinematicStart()
     {
-        myAnim.SetBool("b_Cinematic", true);
+        myAnim.SetTrigger("t_CinematicStart");
     }
     public override void CinematicEnd()
     {
-        myAnim.SetBool("b_Cinematic", false);
+        myAnim.SetTrigger("t_CinematicEnd");
         Initialize();
     }
     #endregion
@@ -199,7 +198,9 @@ public class Slime : Monster
     #region Coroutine
     private IEnumerator ClosingToTarget()
     {
-        followEvent?.Invoke(target.transform, battleStat.Speed, null, null);
+        followEvent?.Invoke(target.transform, battleStat.Speed,
+            () => myAnim.SetBool("b_Moving",true),
+            () => myAnim.SetBool("b_Moving", false));
 
 
         yield return null;
@@ -212,14 +213,7 @@ public class Slime : Monster
         skills[saveSkill[countUsedSkill]].OnRequestSkillInfo();
 
         yield return new WaitForEndOfFrame();
-        if (isLoopAnim)
-        {
-            myAnim.SetBool("b_LoopSkill", true);
-        }
-        else
-        {
-            myAnim.SetBool("b_LoopSkill", false);
-        }
+        myAnim.SetInteger("i_SkillType", animType);
 
         //먼저 타겟을 찾는다.
         yield return StartCoroutine(FindTarget());
@@ -317,11 +311,10 @@ public class Slime : Monster
     #region MonoBehaviour
     protected override void Start()
     {
-        //base.Start();
+        base.Start();
 
         dicBoolAnims.Add("isSkillProgress", Animator.StringToHash("b_isSkillProgress"));
         dicBoolAnims.Add("isLoopSkill", Animator.StringToHash("b_LoopSkill"));
-        dicBoolAnims.Add("isCinematic", Animator.StringToHash("b_Cinematic"));
         dicTriggerAnims.Add("SkillStart", Animator.StringToHash("t_SkillStart"));
         dicTriggerAnims.Add("AttackStart", Animator.StringToHash("t_AttackStart"));
         dicTriggerAnims.Add("AttackEnd", Animator.StringToHash("t_AttackEnd"));

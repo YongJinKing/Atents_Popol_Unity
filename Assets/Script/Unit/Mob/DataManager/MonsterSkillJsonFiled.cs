@@ -77,7 +77,7 @@ public struct SkillDataTable
     public int Skill_Option3;
     public int Skill_Option4;
     public int Skill_DescComponent;
-    public bool Skill_IsLoopAttackAnim;
+    public int Skill_AnimType;
 }
 #endregion
 #region Type

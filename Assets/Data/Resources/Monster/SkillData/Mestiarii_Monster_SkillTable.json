@@ -2,7 +2,7 @@
    {
       "Index":30000,
       "Skill_Name":10000,
-      "Skill_PreDelay":0.2,
+      "Skill_PreDelay":2,
       "Skill_PostDelay":2,
       "Skill_DetectRange":2,
       "Skill_TargetMask":10,
@@ -11,7 +11,7 @@
       "Skill_Option3":0,
       "Skill_Option4":0,
       "Skill_DescComponent":10000,
-      "Skill_IsLoopAttackAnim":"FALSE"
+      "Skill_AnimType":2
    },
    {
       "Index":30001,
@@ -25,7 +25,7 @@
       "Skill_Option3":0,
       "Skill_Option4":0,
       "Skill_DescComponent":10001,
-      "Skill_IsLoopAttackAnim":"TRUE"
+      "Skill_AnimType":1
    },
    {
       "Index":30002,
@@ -39,7 +39,7 @@
       "Skill_Option3":0,
       "Skill_Option4":0,
       "Skill_DescComponent":10002,
-      "Skill_IsLoopAttackAnim":"FALSE"
+      "Skill_AnimType":0
    },
    {
       "Index":30003,
@@ -53,6 +53,20 @@
       "Skill_Option3":0,
       "Skill_Option4":0,
       "Skill_DescComponent":10003,
-      "Skill_IsLoopAttackAnim":"FALSE"
+      "Skill_AnimType":0
+   },
+   {
+      "Index":30004,
+      "Skill_Name":10004,
+      "Skill_PreDelay":1,
+      "Skill_PostDelay":2,
+      "Skill_DetectRange":15,
+      "Skill_TargetMask":10,
+      "Skill_Option1":30002,
+      "Skill_Option2":40000,
+      "Skill_Option3":0,
+      "Skill_Option4":0,
+      "Skill_DescComponent":10004,
+      "Skill_AnimType":0
    }
 ]

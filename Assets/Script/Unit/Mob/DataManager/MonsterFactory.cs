@@ -185,7 +185,7 @@ public class MonsterFactory
         objSkill.postDelay = data.Skill_PostDelay;
         objSkill.detectRadius = data.Skill_DetectRange;
         objSkill.targetMask = 1 << data.Skill_TargetMask;
-        objSkill.isLoopAnim = data.Skill_IsLoopAttackAnim;
+        objSkill.animType = data.Skill_AnimType;
 
         objSkill.onSkillActivatedEvent = new UnityEngine.Events.UnityEvent<Transform>();
         objSkill.onSkillHitCheckStartEvent = new UnityEngine.Events.UnityEvent();
@@ -197,7 +197,7 @@ public class MonsterFactory
         AddSkillType(parent, objSkill, data.Skill_Option4);
 
         objSkill.onAddSkillEvent = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction<Transform, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
-        objSkill.onAddSkillEvent2 = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction, bool, LayerMask>();
+        objSkill.onAddSkillEvent2 = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction, int, LayerMask>();
 
         objSkill.onAddSkillEvent.AddListener(parent.OnAddSkillEventListener);
         objSkill.onAddSkillEvent2.AddListener(parent.OnAddSkillEvent2Listener);
@@ -335,7 +335,7 @@ public class MonsterFactory
                     projectile.unPenetrableMask = 1 << data.Skill_Unpenetrable;
                     projectile.targetMask = 1 << data.Skill_TargetMask;
                     projectile.moveSpeed = data.Skill_LongRangeAttackSpeed;
-                    projectile.maxDist = data.Skill_LongRangeAttackSpeed;
+                    projectile.maxDist = data.Skill_LongRangeAttackDist;
                     projectile.parabolaHeight = data.Skill_ParabolaHeight;
                     projectile.attackStartPos = new Transform[data.Skill_NumOfHitBox];
                     projectile.penetrable = data.Skill_Penetrable;
@@ -369,6 +369,19 @@ public class MonsterFactory
                     parent.onSkillActivatedEvent.AddListener(projectile.OnSkillActivated);
                     parent.onSkillHitCheckStartEvent.AddListener(projectile.OnSkillHitCheckStartEventHandler);
                     parent.onSkillHitCheckEndEvent.AddListener(projectile.OnSkillHitCheckEndEventHandler);
+                }
+                break;
+            case 4:
+                {
+                    obj.name = "SideMove";
+                    SideMovementSkillType sideMove = obj.AddComponent<SideMovementSkillType>();
+                    sideMove.sideMoveEvent = new UnityEngine.Events.UnityEvent<Transform, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
+                    sideMove.stopEvent = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction>();
+
+                    sideMove.sideMoveEvent.AddListener(monster.GetComponent<UnitMovement>().SideMove);
+                    sideMove.stopEvent.AddListener(monster.GetComponent<UnitMovement>().StopMove);
+                    parent.onSkillActivatedEvent.AddListener(sideMove.OnSkillActivated);
+                    parent.onSkillHitCheckEndEvent.AddListener(sideMove.OnSkillHitCheckEndEventHandler);
                 }
                 break;
             //dont have skill type

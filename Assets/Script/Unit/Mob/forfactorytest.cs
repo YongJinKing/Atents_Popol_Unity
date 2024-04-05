@@ -6,7 +6,7 @@ public class forfactorytest : MonoBehaviour
     void Awake()
     {
         MonsterFactory factory = new MonsterFactory();
-        GameObject obj = factory.CreateMonster(30000);
+        GameObject obj = factory.CreateMonster(20003);
         //obj.GetComponent<Slime>().TempInit();
     }
 }

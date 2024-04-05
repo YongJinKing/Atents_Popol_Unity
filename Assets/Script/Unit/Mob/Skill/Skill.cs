@@ -20,7 +20,7 @@ public class Skill : MonoBehaviour
     public uiUnitSkillStatus uiSkillStatus;
     public float preDelay = 0;
     public float postDelay = 0;
-    public bool isLoopAnim = false;
+    public int animType = 0;
     #endregion
 
 
@@ -35,7 +35,7 @@ public class Skill : MonoBehaviour
     public UnityAction onDetectTargetAct;
 
     public UnityEvent<UnityAction<Transform, UnityAction, UnityAction, UnityAction>,UnityAction ,UnityAction, UnityAction> onAddSkillEvent;
-    public UnityEvent<UnityAction, bool, LayerMask> onAddSkillEvent2;
+    public UnityEvent<UnityAction, int, LayerMask> onAddSkillEvent2;
     #endregion
     #endregion
 
@@ -102,7 +102,7 @@ public class Skill : MonoBehaviour
     public void OnRequestSkillInfo()
     {
         onAddSkillEvent?.Invoke(OnSkillStart, OnSkillHitCheckStart,  OnSkillHitCheckEnd, OnSkillAnimEnd);
-        onAddSkillEvent2?.Invoke(OnSkillForceEnd, isLoopAnim, targetMask);
+        onAddSkillEvent2?.Invoke(OnSkillForceEnd, animType, targetMask);
     }
 
     public void OnCommandDetectSkillTarget(UnityAction detectAct)

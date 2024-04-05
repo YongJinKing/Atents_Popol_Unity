@@ -19,10 +19,10 @@
       "Skill_hitDuration":10,
       "Skill_TargetMask":10,
       "Skill_AffectOption1":10001,
-      "Skill_AffectOption2":0,
+      "Skill_AffectOption2":20000,
       "Skill_AffectOption3":0,
       "Skill_AffectOption4":0,
-      "Skill_AffectOption5": 0,
+      "Skill_AffectOption5":0,
       "Skill_HitEffect":0
    }
 ]

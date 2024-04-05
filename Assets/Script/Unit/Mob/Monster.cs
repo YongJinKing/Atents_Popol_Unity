@@ -14,33 +14,26 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
         Death
     }
 
-    //���� ����
+    //
     #region Properties / Field
-    //private ���� ����
+    //private
     #region Private
     #endregion
 
-    //protected ���� ����
+    //protected
     #region protected
     [SerializeField]protected State myState;
-    //��ų�� Ÿ�����ϴ� ���̾ �޾ƿ´�.
     protected LayerMask skillMask;
-    protected bool isLoopAnim;
+    protected int animType;
     #endregion
 
-    //Public ��������
+    //Public
     #region public
     public GameObject target;
     public Transform[] attackStartPos;
-    //�ϴ� �ӽ÷�
     public Skill[] skills;
     #endregion
-
-    //�̺�Ʈ �Լ��� ����
     #region Event
-    //Skill�� ������?�̺�Ʈ �迭
-    //detect�� ������ ��� ���� ���� �ϴ� ����
-    //public UnityEvent<Vector3>[] onSkillUseEvent;
     public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent;
     public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
     public UnityEvent<Transform, float, UnityAction, UnityAction> sideMoveEvent;
@@ -57,11 +50,9 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
 
 
     #region Method
-    //private �Լ��� ����
     #region PrivateMethod
     #endregion
 
-    //protected �Լ��� ����
     #region ProtectedMethod
     protected abstract void ChangeState(State s);
     protected abstract void ProcessState();
@@ -73,7 +64,6 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
     }
     #endregion
 
-    //public �Լ��� ����
     #region PublicMethod
     public abstract void CinematicStart();
     //trigger on
@@ -84,12 +74,10 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
     #endregion
     #endregion
 
-    //�ڷ�ƾ ����
     #region Coroutine
     #endregion
 
 
-    //�̺�Ʈ�� �Ͼ���� ����Ǵ�?On~~�Լ�
     #region EventHandler
     public void OnAddSkillEventListener(
         UnityAction<Transform, UnityAction, UnityAction, UnityAction> skillStart,
@@ -103,21 +91,19 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
         onSkillAnimEnd = skillAnimEnd;
     }
 
-    public void OnAddSkillEvent2Listener(UnityAction skillForceEnd ,bool isLoopAnim,LayerMask mask)
+    public void OnAddSkillEvent2Listener(UnityAction skillForceEnd ,int animType ,LayerMask mask)
     {
         onDeadAct = skillForceEnd;
-        this.isLoopAnim = isLoopAnim;
+        this.animType = animType;
         skillMask = mask;
     }
 
 
-    //���ݸ����?��ų�� �ߵ�
     public virtual void OnAttackStartAnim()
     {
         onSkillHitCheckStartAct?.Invoke();
     }
 
-    //���� ����߿�?��Ʈ�ڽ� �� ����
     public virtual void OnAttackEndAnim()
     {
         onSkillHitCheckEndAct?.Invoke();
