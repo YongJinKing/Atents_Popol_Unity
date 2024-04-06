@@ -5,6 +5,8 @@ using System.IO;
 using System;
 
 
+
+
 [Serializable]
 public class PlayerData
 {
@@ -27,13 +29,16 @@ public class PlayerData
     public bool[] clearStage;
     public int PlayerGold = 0;
     public List<int> PlayerInven = new List<int>();
-    public List<int> Duration = new List<int>();
+    public List<int> PlayerItemDuraion = new List<int>();
+    
 }
 
 
 public class DataManager : MonoBehaviour
 {
     public PlayerData playerData = new PlayerData();
+   
+    
     public string path;
     public string fileName = "PlayerData";
     public int StageNum;

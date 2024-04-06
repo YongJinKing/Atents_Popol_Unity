@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,6 +10,7 @@ public class Inventory : MonoBehaviour
     
     public List<UIItem> ItemList;
     public List<int> BackUpIdList;
+    public List<int> BackUpDurList;
     public UnityEvent CleanSlot;
     int InvenMode = 0;
     private void Awake()    //싱글톤
@@ -37,6 +39,7 @@ public class Inventory : MonoBehaviour
         for(int i = 0; i < DataManager.instance.playerData.PlayerInven.Count; i++)
         {
             AddItem(DataManager.instance.playerData.PlayerInven[i]);
+            ItemList[i].ItemDuration = DataManager.instance.playerData.PlayerItemDuraion[i];
         }
     }
     public void AddItem(int id) 
@@ -55,9 +58,10 @@ public class Inventory : MonoBehaviour
     {
         transform.GetChild(0).GetChild(index).GetComponent<UIItem>().ItemDuration = 100;
     }
+
     public void RiggingItemRepair(int index)
     {
-        
+        transform.GetChild(1).GetChild(index).GetComponent<UIItem>().ItemDuration = 100;
     }
 
 
@@ -81,6 +85,7 @@ public class Inventory : MonoBehaviour
             if(BackUpIdList[i] == id)
             {
                 BackUpIdList.RemoveAt(i);
+                BackUpDurList.RemoveAt(i);
                 break;
             }
         }
@@ -106,26 +111,35 @@ public class Inventory : MonoBehaviour
         for(int i = 0; i < BackUpIdList.Count; i++)
         {
             AddItem(BackUpIdList[i]);
+            ItemList[i].ItemDuration = BackUpDurList[i];
         }
         this.BackUpIdList = new List<int>();
+        this.BackUpDurList = new List<int>();
         FreshSlot(InvenMode);
     }
     public void FreshSlot(int Mode)
     {
         List<int> IdList = new List<int>();
+        List<int> DurationList = new List<int>();
         if(Mode == 0)
         {
             for(int i = 0; i < ItemList.Count; i++)
+            {
                 IdList.Add(ItemList[i].id);
+                DurationList.Add(ItemList[i].ItemDuration);
+            }
+                
         }
         else if(Mode == 1)
         {
             for(int i = 0; i < ItemList.Count; i++)
             {
                 BackUpIdList.Add(ItemList[i].id);
+                BackUpDurList.Add(ItemList[i].ItemDuration);
                 if(ItemList[i].ItemRigging == 0)
                 {
                     IdList.Add(ItemList[i].id);
+                    DurationList.Add(ItemList[i].ItemDuration);
                 }
             }
         }
@@ -134,9 +148,11 @@ public class Inventory : MonoBehaviour
             for(int i = 0; i < ItemList.Count; i++)
             {
                 BackUpIdList.Add(ItemList[i].id);
+                BackUpDurList.Add(ItemList[i].ItemDuration);
                 if(ItemList[i].ItemRigging == 1)
                 {
                     IdList.Add(ItemList[i].id);
+                    DurationList.Add(ItemList[i].ItemDuration);
                 }
             }
         }
@@ -149,18 +165,27 @@ public class Inventory : MonoBehaviour
         for(int i = 0; i < IdList.Count; i++)
         {
             AddItem(IdList[i]);
+            ItemList[i].ItemDuration = DurationList[i];
             if(Mode == 0)
+            {
                 BackUpIdList = new List<int>();
+                BackUpDurList = new List<int>();
+            }
+                
         }
            
     }
     public void SaveInvenData()
     {
         DataManager.instance.playerData.PlayerInven = new List<int>();
+        DataManager.instance.playerData.PlayerItemDuraion = new List<int>();
         for(int i = 0; i < ItemList.Count; i++)
         {
             DataManager.instance.playerData.PlayerInven.Add(ItemList[i].id);
+            Debug.Log(ItemList[i].ItemDuration);
+            DataManager.instance.playerData.PlayerItemDuraion.Add(ItemList[i].ItemDuration);
         }
     }
+    
    
 }
