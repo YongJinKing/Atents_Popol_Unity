@@ -14,6 +14,7 @@ public class Slime : Monster
     private int[] idleMoveType;
     private int countIdle = 0;
 
+    private Dictionary<string, int> dicIntAnims = new Dictionary<string, int>();
     private Dictionary<string, int> dicBoolAnims = new Dictionary<string, int>();
     private Dictionary<string, int> dicTriggerAnims = new Dictionary<string, int>();
     #endregion
@@ -198,10 +199,9 @@ public class Slime : Monster
     #region Coroutine
     private IEnumerator ClosingToTarget()
     {
-        followEvent?.Invoke(target.transform, battleStat.Speed,
+        followEvent?.Invoke(target.transform, base.Speed,
             () => myAnim.SetBool("b_Moving",true),
             () => myAnim.SetBool("b_Moving", false));
-
 
         yield return null;
     }
@@ -245,13 +245,21 @@ public class Slime : Monster
                     backStepPos = backStepPos + backStepDir * dist;
 
                     //이동 이벤트
-                    onMovementEvent?.Invoke(backStepPos, battleStat.Speed, null, null);
-
+                    onMovementEvent?.Invoke(backStepPos, battleStat.Speed, 
+                        () => myAnim.SetBool("b_Moving", true),
+                        () => myAnim.SetBool("b_Moving", false));
                 }
                 break;
             case 1:
                 {
-                    sideMoveEvent?.Invoke(target.transform, base.Speed, null, null);
+                    sideMoveEvent?.Invoke(target.transform, new Info<float, float>(base.Speed, 10.0f), null, null);
+                }
+                break;
+            case 2:
+                {
+                    followEvent?.Invoke(target.transform, base.Speed,
+                        () => myAnim.SetBool("b_Moving", true),
+                        () => myAnim.SetBool("b_Moving", false));
                 }
                 break;
             default:
@@ -313,12 +321,15 @@ public class Slime : Monster
     {
         base.Start();
 
+        dicIntAnims.Add("SkillType", Animator.StringToHash("i_SkillType"));
         dicBoolAnims.Add("isSkillProgress", Animator.StringToHash("b_isSkillProgress"));
-        dicBoolAnims.Add("isLoopSkill", Animator.StringToHash("b_LoopSkill"));
+        dicBoolAnims.Add("isMoving", Animator.StringToHash("b_Moving"));
         dicTriggerAnims.Add("SkillStart", Animator.StringToHash("t_SkillStart"));
         dicTriggerAnims.Add("AttackStart", Animator.StringToHash("t_AttackStart"));
         dicTriggerAnims.Add("AttackEnd", Animator.StringToHash("t_AttackEnd"));
         dicTriggerAnims.Add("Death", Animator.StringToHash("t_Death"));
+        dicTriggerAnims.Add("CinematicStart", Animator.StringToHash("t_CinematicStart"));
+        dicTriggerAnims.Add("CinematicEnd", Animator.StringToHash("t_CinematicEnd"));
     }
     #endregion
 }

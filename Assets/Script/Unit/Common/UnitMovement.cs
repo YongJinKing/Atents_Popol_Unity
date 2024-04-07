@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -77,14 +78,14 @@ public class UnitMovement : CharacterProperty
         follow = StartCoroutine(FollowingTarget(target, Speed, startAct, endAct));
     }
 
-    public void SideMove(Transform target, float Speed, UnityAction startAct, UnityAction endAct)
+    public void SideMove(Transform target, Info<float, float> info, UnityAction startAct, UnityAction endAct)
     {
         if (sideMove != null)
         {
             StopCoroutine(sideMove);
             sideMove = null;
         }
-        sideMove = StartCoroutine(SideMoving(target, Speed, startAct, endAct));
+        sideMove = StartCoroutine(SideMoving(target, info, startAct, endAct));
     }
 
     public void Rotate(Vector3 dir, float speed)
@@ -258,8 +259,9 @@ public class UnitMovement : CharacterProperty
         }
     }
 
-    IEnumerator SideMoving(Transform target, float speed, UnityAction startAct, UnityAction endAct)
+    IEnumerator SideMoving(Transform target, Info<float, float> info, UnityAction startAct, UnityAction endAct)
     {
+        //info arg0 : Speed, info arg1 : radius
         //Debug.Log("SideMoving");
         while (target != null)
         {
@@ -267,7 +269,7 @@ public class UnitMovement : CharacterProperty
             startAct?.Invoke();
             //define
             float delta;
-            float radius = 10;
+            float radius = info.arg1;
             Vector3 dir = target.position - transform.position;
             dir.y = 0;
             Vector3 revDir = (-dir.normalized * radius) + dir;
@@ -277,7 +279,7 @@ public class UnitMovement : CharacterProperty
             dir.Normalize();
             float angle = Vector3.Angle(transform.forward, dir);
             float rotDir = Vector3.Dot(transform.right, dir) < 0.0f ? -1.0f : 1.0f;
-            delta = speed * 90.0f * Time.deltaTime;
+            delta = info.arg0 * 90.0f * Time.deltaTime;
             if (delta > angle) delta = angle;
             transform.Rotate(Vector3.up * rotDir * delta, Space.World);
 
@@ -298,7 +300,7 @@ public class UnitMovement : CharacterProperty
             //Debug.Log($"dir : {dir} revDir : {revDir}");
 
             dir.Normalize();
-            delta = speed * Time.deltaTime;
+            delta = info.arg0 * Time.deltaTime;
             transform.Translate(dir * delta, Space.World);
 
             yield return null;

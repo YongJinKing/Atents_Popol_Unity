@@ -62,7 +62,7 @@ public class MonsterFactory
         objMon.onMovementEvent = new UnityEngine.Events.UnityEvent<Vector3, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objMon.followEvent = new UnityEngine.Events.UnityEvent<Transform, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objMon.rotateEvent = new UnityEngine.Events.UnityEvent<Vector3, float>();
-        objMon.sideMoveEvent = new UnityEngine.Events.UnityEvent<Transform, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
+        objMon.sideMoveEvent = new UnityEngine.Events.UnityEvent<Transform, Info<float,float>, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objMon.stopEvent = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction>();
 
         UnitMovement objMove = obj.AddComponent<UnitMovement>();
@@ -375,7 +375,7 @@ public class MonsterFactory
                 {
                     obj.name = "SideMove";
                     SideMovementSkillType sideMove = obj.AddComponent<SideMovementSkillType>();
-                    sideMove.sideMoveEvent = new UnityEngine.Events.UnityEvent<Transform, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
+                    sideMove.sideMoveEvent = new UnityEngine.Events.UnityEvent<Transform, Info<float, float>, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
                     sideMove.stopEvent = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction>();
 
                     sideMove.sideMoveEvent.AddListener(monster.GetComponent<UnitMovement>().SideMove);

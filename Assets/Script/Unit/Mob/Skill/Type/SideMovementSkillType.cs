@@ -13,16 +13,22 @@ public class SideMovementSkillType : SelfSkillType
 
     //protected 변수 영역
     #region protected
+    [SerializeField] protected float _radius = 10;
     #endregion
 
     //Public 변수영역
     #region public
+    public float radius
+    {
+        get { return _radius; }
+        set { _radius = value; }
+    }
     #endregion
 
     //이벤트 함수들 영역
     #region Event
     //For use UnitMovement Class
-    public UnityEvent<Transform, float, UnityAction, UnityAction> sideMoveEvent;
+    public UnityEvent<Transform, Info<float, float>, UnityAction, UnityAction> sideMoveEvent;
     //When End Move
     public UnityEvent<UnityAction> stopEvent;
     #endregion
@@ -53,7 +59,7 @@ public class SideMovementSkillType : SelfSkillType
     public override void OnSkillActivated(Transform target)
     {
         base.OnSkillActivated(target);
-        sideMoveEvent?.Invoke(target, selfBS.Speed, null, null);
+        sideMoveEvent?.Invoke(target, new Info<float, float>(selfBS.Speed, radius), null, null);
     }
 
     public void OnSkillHitCheckEndEventHandler()
