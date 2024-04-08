@@ -11,7 +11,7 @@ public class Slime : Monster
     private int[] saveSkill;
     private int countUsedSkill;
 
-    private int[] idleMoveType;
+    private int[] saveMoveType;
     private int countIdle = 0;
 
     private Dictionary<string, int> dicIntAnims = new Dictionary<string, int>();
@@ -60,17 +60,17 @@ public class Slime : Monster
 
     private void IdleProcessRandomSet()
     {
-        for (int i = 0; i < idleMoveType.Length; i++)
+        for (int i = 0; i < saveMoveType.Length; ++i)
         {
-            idleMoveType[i] = UnityEngine.Random.Range(0, idleMoveType.Length);
+            saveMoveType[i] = UnityEngine.Random.Range(0, saveMoveType.Length);
 
             //공통된 게 있으면 다시
-            for (int j = 0; j < i; j++)
+            for (int j = 0; j < i; ++j)
             {
-                if (idleMoveType[j] == idleMoveType[i])
+                if (saveMoveType[j] == saveMoveType[i])
                 {
-                    idleMoveType[i] = UnityEngine.Random.Range(0,
-                        idleMoveType.Length);
+                    saveMoveType[i] = UnityEngine.Random.Range(0,
+                        saveMoveType.Length);
                     j = 0;
                 }
             }
@@ -93,12 +93,9 @@ public class Slime : Monster
         {
             //대충 적당히 근거리에서 배회
             case State.Idle:
-                if (countIdle > idleMoveType.Length - 1)
+                if (countIdle > saveMoveType.Length - 1)
                 {
-                    for (int i = 0; i < idleMoveType.Length; i++)
-                    {
-                        IdleProcessRandomSet();
-                    }
+                    IdleProcessRandomSet();
                 }
                 ProcessState();
                 break;
@@ -172,8 +169,10 @@ public class Slime : Monster
 
         saveSkill = new int[skills.Length];
         SkillRandomSet();
-
-        idleMoveType = new int[2];
+        //idleAI = new List<int>();
+        //idleAI.Add(0);
+        Debug.Log($"idleAI.Count : {idleAI.Count}");
+        saveMoveType = new int[idleAI.Count];
         IdleProcessRandomSet();
 
         ChangeState(State.Idle);
@@ -221,7 +220,9 @@ public class Slime : Monster
         float IdleTime = 3.0f;
 
         //int type = 0;     //UnityEngine.Random.Range(0,2);
-        switch (idleMoveType[countIdle])
+        Debug.Log($"idleprocessing : {idleAI[saveMoveType[countIdle]]}");
+
+        switch (idleAI[saveMoveType[countIdle]])
         {
             case 0:
                 {

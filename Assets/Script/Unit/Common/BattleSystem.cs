@@ -21,6 +21,7 @@ public interface IDamage
     public void TakeDamage(int damage, AttackType Atype, DefenceType Dtype);
 }
 
+
 public class BattleSystem : CharacterProperty, IDamage
 {
     [SerializeField] protected BattleStat battleStat;
@@ -103,10 +104,14 @@ public class BattleSystem : CharacterProperty, IDamage
         }
         set
         {
+            if(value > MaxHP)
+            {
+                value = MaxHP;
+            }
             this.curBattleStat.HP = value;
         }
     }
-    public int Lavel
+    public int Level
     {
         get
         {
@@ -154,7 +159,6 @@ public class BattleSystem : CharacterProperty, IDamage
     
     public void TakeDamage(int dmg, AttackType Atype, DefenceType Dtype)
     {
-        
         int totaldmg;
         float computed = ComputeCompatibility(Atype, Dtype);
         totaldmg = (int)((float)dmg * computed);
@@ -225,27 +229,8 @@ public class BattleSystem : CharacterProperty, IDamage
         return computed;
     }
 
-    //For Player
-    public void OnGetExp(int Exp)
-    {
-        this.Exp += Exp;
-        if (this.Exp >= 100.0f)
-        {
-            LevelUp();
-        }
-    }
-
-    protected virtual void LevelUp()
-    {
-        battleStat.Level++;
-    }
 
     protected virtual void OnDead()
     {
-    }
-
-    public bool IsLive()
-    {
-        return curBattleStat.HP > 0.0f;
     }
 }

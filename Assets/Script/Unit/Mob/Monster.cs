@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 
 
@@ -25,6 +26,7 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
     [SerializeField]protected State myState;
     protected LayerMask skillMask;
     protected int animType;
+    protected List<int> _idleAI;
     #endregion
 
     //Public
@@ -32,7 +34,13 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
     public GameObject target;
     public Transform[] attackStartPos;
     public Skill[] skills;
+    public List<int> idleAI
+    {
+        get { return _idleAI; }
+        set { _idleAI = value; }
+    }
     #endregion
+
     #region Event
     public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent;
     public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;

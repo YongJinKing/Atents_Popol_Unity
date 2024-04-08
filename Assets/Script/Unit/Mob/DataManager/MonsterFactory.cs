@@ -145,6 +145,26 @@ public class MonsterFactory
         }
         skillList.Clear();
 
+        objMon.idleAI = new List<int>();
+        int temp = data.Character_IdleType;
+        if (temp > Mathf.Pow(2, 11))
+        {
+            Debug.Log("Wrong IdleType");
+            objMon.idleAI.Add(0);
+        }
+        else
+        {
+            for (int i = 10; i >= 0; --i)
+            {
+                if (temp / (int)Mathf.Pow(2, i) > 0)
+                {
+                    objMon.idleAI.Add((int)i);
+                    temp -= (int)Mathf.Pow(2, i);
+                }
+            }
+        }
+
+
         return obj;
     }
 
