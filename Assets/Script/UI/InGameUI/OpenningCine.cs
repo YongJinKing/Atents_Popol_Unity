@@ -36,7 +36,12 @@ public class OpenningCine : MonoBehaviour
     public float waitTime;
 
     byte nowState = 0;
-    
+
+    private void Start()
+    {
+        StartCoroutine(Openning());
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F6))
@@ -57,7 +62,6 @@ public class OpenningCine : MonoBehaviour
             if (Mathf.Floor(Vector2.Distance(plPos, plEndPos)) == 0)
             {
                 Instantiate(Frame_VFX, new Vector3(transform.position.x, transform.position.y, transform.position.z - 10), Quaternion.identity);
-                Debug.Log(nowState+" end");
                 ++nowState;
             }
             yield return null;
