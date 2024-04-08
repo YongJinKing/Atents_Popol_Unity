@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 5607585636577995084}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: -11.13}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crashMask:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 49152
   targetDist: 0
   camDist: 8
   myCam: {fileID: 7506698082515324532}
@@ -188,7 +188,6 @@ MonoBehaviour:
   MonsterCam: {fileID: 0}
   PlayerCam: {fileID: 0}
   cineCamSpeed: 0
-  isCine: 0
   isTracking: 1
   CinecamState: CamMove
   rotateSpeed: 15

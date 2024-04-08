@@ -22,7 +22,6 @@ public class OneHandSwordVFX : MonoBehaviour
         if(((1 << other.gameObject.layer) & targetMask) != 0)
         {
             Instantiate(HitVFX, other.ClosestPoint(transform.position), Quaternion.identity);
-            Debug.Log(other.ClosestPoint(transform.position));
             StartCoroutine(Shake(one, two));
         }
     }
