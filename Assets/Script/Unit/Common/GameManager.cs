@@ -82,6 +82,10 @@ public class GameManager : MonoBehaviour
         deadAct.Invoke(UnitType);
         StartCoroutine(tempDebug());
     }
+    public void UpdateUI()
+    {
+        //DataManager.instance.playerData.Armor_Duration = 
+    }
 
     IEnumerator tempDebug()
     {

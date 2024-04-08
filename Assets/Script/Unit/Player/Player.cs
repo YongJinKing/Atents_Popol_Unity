@@ -24,6 +24,10 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
     public DefenceType Dtype;
 
+    
+    //0 : onehand 1: twohand
+    public GameObject[] Weapon;
+
     public UnityEvent<Vector3, float, UnityAction<float>> clickAct;
     public UnityEvent<UnityAction<float>> stopAct;
     public UnityEvent<Vector3, float> dadgeAct;
@@ -123,6 +127,19 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
         base.Start();
 
+        switch(DataManager.instance.playerData.WeaponType)
+        {
+            case 0:
+                Weapon[0].SetActive(true);
+                myAnim.SetBool("OneHandSword", true);
+                break;
+            case 1:
+                Weapon[1].SetActive(true);
+                myAnim.SetBool("TwoHandSword", true);
+                break;
+        }
+
+
         particle = GetComponentInChildren<ParticleSystem>();
         ChangeState(state.Idle);
     }
@@ -137,22 +154,24 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         ProcessState();
     }
 
-    public Vector3 GetRaycastHit()
+    public bool GetRaycastHit()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, clickMask))
         {
             dir = hit.point - transform.position;
+            return true;
         }
-
-        return dir;
+        else
+        {
+            return false;
+        }
     }
 
     public void FireToMousePos()
     {
-        if (Input.GetMouseButtonDown(0) && isFireReady)
+        if (Input.GetMouseButtonDown(0) && isFireReady && GetRaycastHit())
         {
-            GetRaycastHit();
 
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
 
@@ -191,9 +210,9 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
     public void MoveToMousePos()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && GetRaycastHit())
         {
-            GetRaycastHit();
+            if (dir == null) return;
             ChangeState(state.Run);
             clickAct?.Invoke(dir, battleStat.Speed, (float temp) =>
             {

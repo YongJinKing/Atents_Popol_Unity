@@ -23,6 +23,6 @@ public class TempPlayerAnimEvent : MonoBehaviour
 
     public void OnAttckEffect(string s)
     {
-        i_Effect.PlayAttackEffect(s, 0.5f);
+        i_Effect.PlayAttackEffect(s);
     }
 }

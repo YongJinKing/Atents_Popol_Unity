@@ -131,6 +131,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: Weapon.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: Weapon.Array.data[0]
+      value: 
+      objectReference: {fileID: 135261197}
+    - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: Weapon.Array.data[1]
+      value: 
+      objectReference: {fileID: 135261196}
     - target: {fileID: 3642465875917560104, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -171,6 +183,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5580092575343505333, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8261803422018730252, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -180,6 +196,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+--- !u!1 &135261196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5580092575343505333, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+  m_PrefabInstance: {fileID: 135261195}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &135261197 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3232200905736067695, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+  m_PrefabInstance: {fileID: 135261195}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &203216173 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3642465875917560104, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
@@ -361,7 +387,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1212655925390885250, guid: 601e8622908f64848bc7206334df98e0, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2170147794579880816, guid: 601e8622908f64848bc7206334df98e0, type: 3}
       propertyPath: m_Layer
