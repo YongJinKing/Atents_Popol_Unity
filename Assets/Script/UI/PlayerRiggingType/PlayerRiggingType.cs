@@ -55,6 +55,23 @@ public class PlayerRiggingType : MonoBehaviour
         }
         transform.Find("GridLine").GetChild(SlotNum).GetComponent<UIItem>().Init(PlayerItemId);
         PlayerAbilityUpdate?.Invoke();
-        
+    }
+
+    public void SaveRiggingItemData()
+    {
+        DataManager.instance.playerData.Weapon_Ability = 
+        transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemValue;
+        DataManager.instance.playerData.Armor_Ability = 
+        transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().ItemValue;
+
+        DataManager.instance.playerData.Weapon_Duration = 
+        transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemDuration;
+        DataManager.instance.playerData.Armor_Duration = 
+        transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().ItemDuration;
+
+        DataManager.instance.playerData.WeaponType = 
+        transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().WeaponType;
+        DataManager.instance.playerData.ArmorType = 
+        transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().WeaponType;
     }
 }

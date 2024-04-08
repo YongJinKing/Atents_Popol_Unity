@@ -182,7 +182,6 @@ public class Inventory : MonoBehaviour
         for(int i = 0; i < ItemList.Count; i++)
         {
             DataManager.instance.playerData.PlayerInven.Add(ItemList[i].id);
-            Debug.Log(ItemList[i].ItemDuration);
             DataManager.instance.playerData.PlayerItemDuraion.Add(ItemList[i].ItemDuration);
         }
     }

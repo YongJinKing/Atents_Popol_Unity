@@ -16,16 +16,22 @@ public class PlayerData
     public int Character_CurrentExp;
     public int Character_CurrentLevel;
     public int Character_EnergyGage;
+    public float Character_MoveSpeed;
+    public float Character_AttackSpeed;
+
     public int Weapon_Id;
     public int Armor_Id;
     public int Weapon_Ability;
     public int Armor_Ability;
-    public float Character_MoveSpeed;
-    public float Character_AttackSpeed;
     public int WeaponType;
+     //0 : 한손 검, 1: 양손 검, 2 : 한손 둔기, 3 : 양손 둔기, 4 : 창, 5 : 단검, 6 : 투창용 창
     public int ArmorType;
+    //10 : 가죽, 11 : 경갑, 12 : 판금
     
-    public string[] Skill = new string[4];
+    public int Weapon_Duration;
+    public int Armor_Duration;
+    
+    public List<String> Skill = new List<string>();
     public bool[] clearStage;
     public int PlayerGold = 0;
     public List<int> PlayerInven = new List<int>();
@@ -37,8 +43,6 @@ public class PlayerData
 public class DataManager : MonoBehaviour
 {
     public PlayerData playerData = new PlayerData();
-   
-    
     public string path;
     public string fileName = "PlayerData";
     public int StageNum;

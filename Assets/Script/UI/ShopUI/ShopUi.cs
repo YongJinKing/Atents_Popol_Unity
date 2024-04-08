@@ -49,6 +49,8 @@ public class ShopUi : MonoBehaviour
                 Contents.transform.GetChild(InstanceCount).Find("ItemDetail").Find("ItemType").GetComponent<TMP_Text>().text =
                 "종류 :" +
                 WeaponTypeToString(Contents.transform.GetChild(InstanceCount).Find("ItemDetail").GetComponent<UIItem>().WeaponType);
+
+                
                 Contents.transform.GetChild(InstanceCount).Find("ItemDetail").Find("Gold").Find("Text (TMP)").GetComponent<TMP_Text>().text =
                 Contents.transform.GetChild(InstanceCount).Find("ItemDetail").GetComponent<UIItem>().ItemPrice.ToString();
                 InstanceCount++;
@@ -236,6 +238,8 @@ public class ShopUi : MonoBehaviour
         = RiggingTypeToString(go.ItemRigging) + go.ItemValue.ToString();
         transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemDesc").GetComponent<TMP_Text>().text
         = go.ItemDesc;
+         transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("DurationDesc").Find("Value").GetComponent<TMP_Text>().text
+        = go.ItemDuration.ToString();
         
         
         

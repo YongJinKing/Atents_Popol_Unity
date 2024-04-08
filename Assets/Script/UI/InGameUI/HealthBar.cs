@@ -20,12 +20,12 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         ChangeHpSlider();
-        Debug.Log("Ã¼·ÂÀº," + myHpSlider.value);
+        Debug.Log("Ã¼ï¿½ï¿½ï¿½ï¿½," + myHpSlider.value);
     }
 
     public void ChangeHpSlider()
     {
-        myHpSlider.value = pl.HP / pl.MaxHP;
+        myHpSlider.value = (float)pl.HP / pl.MaxHP;
         //Debug.Log(myHpSlider.value);
     }
 

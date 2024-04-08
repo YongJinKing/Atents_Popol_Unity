@@ -41,6 +41,19 @@ public class SmithUi : MonoBehaviour
         ItemDetail.transform.GetChild(0).gameObject.SetActive(false);
         ItemDetail.transform.GetChild(1).gameObject.SetActive(false);
     }
+    public void OnHighLite(int index, bool OnCheck)
+    {
+        if(OnCheck)
+        {
+            if(SmithGridLine.transform.GetChild(index).GetComponent<UIItem>().id > 0)
+                SmithGridLine.transform.GetChild(index).Find("HLImage").gameObject.SetActive(true);
+        }
+        else
+        {
+            if(SmithGridLine.transform.GetChild(index).GetComponent<UIItem>().id > 0)
+                SmithGridLine.transform.GetChild(index).Find("HLImage").gameObject.SetActive(false);
+        }
+    }
     public void ChooseSlot(int index)
     {
         int id = SmithGridLine.transform.GetChild(index).GetComponent<UIItem>().id;
@@ -147,9 +160,9 @@ public class SmithUi : MonoBehaviour
 
     void SlotImgColorChange(float Value, int index)
     {
-        Color color = SmithGridLine.transform.GetChild(index).GetChild(2).GetComponent<Image>().color;
+        Color color = SmithGridLine.transform.GetChild(index).Find("MainButton").GetComponent<Image>().color;
         color.a = Value;
-        SmithGridLine.transform.GetChild(index).GetChild(2).GetComponent<Image>().color = color;
+        SmithGridLine.transform.GetChild(index).Find("MainButton").GetComponent<Image>().color = color;
     }
     void RiggingItemImgColorChange(float Value, int index)
     {

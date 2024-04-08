@@ -115,6 +115,8 @@ public class UserPopup : MonoBehaviour
         = RiggingTypeToString(go.ItemRigging) + go.ItemValue.ToString();
         Inven.transform.Find("DescPopup").Find("Paper").Find("ItemDesc").GetComponent<TMP_Text>().text
         = go.ItemDesc;
+        Inven.transform.Find("DescPopup").Find("Paper").Find("DurationDesc").Find("Value").GetComponent<TMP_Text>().text
+        = go.ItemDuration.ToString();
 
         MoveInvenDescPopup(type);
     }

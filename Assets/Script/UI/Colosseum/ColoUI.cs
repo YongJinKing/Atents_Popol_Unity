@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class ColoUI : MonoBehaviour
 {
     public GameObject BossAbility;
     public GameObject StagePopup;
+    public UnityEvent SaveRiggingItemData;
     public int skillLength = 4;
 
 
@@ -39,7 +41,6 @@ public class ColoUI : MonoBehaviour
         var stageTableData = MonsterSkillDataManager.GetInstance().dicStageTable[index];
         var stageBossPrefabData = MonsterSkillDataManager.GetInstance().dicPrefabTable[stageTableData.Stage_BossMonster];
         
-        Debug.Log(stageBossPrefabData.Prefab_Name);
         this.BossPrefab = Resources.Load<GameObject>($"Monster/MonsterPrefabs/{stageBossPrefabData.Prefab_Name}");
         GameObject obj = Instantiate(BossPrefab,BossAbility.transform.Find("BossMonster"));
         obj.transform.localScale = new Vector3(400,400,400);
@@ -132,6 +133,7 @@ public class ColoUI : MonoBehaviour
         if(index == 2)//GameStart
         {
             DataManager.instance.StageNum = StageIndex;
+            SaveRiggingItemData?.Invoke();
             SceneLoading.SceneNum(3);
             SceneManager.LoadScene(1);
         }
