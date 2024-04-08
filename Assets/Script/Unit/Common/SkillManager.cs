@@ -38,6 +38,7 @@ public class SkillManager : PlayerSkill
                 StartCoroutine(tempDebuging(ray));
                 if (Physics.Raycast(ray, out RaycastHit hit , 1000.0f, 1 << LayerMask.NameToLayer("Monster_Body")))
                 {
+                    
                     target.Add(temp);
                     Debug.Log("Hit");
                     IDamage iDamage = hit.collider.GetComponentInParent<IDamage>();

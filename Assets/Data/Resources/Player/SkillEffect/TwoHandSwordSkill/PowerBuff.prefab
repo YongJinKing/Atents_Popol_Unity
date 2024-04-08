@@ -4861,7 +4861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiSkillStatus:
     uiSkillSprite: {fileID: 0}
-    uiSkillName: 
+    uiSkillName: PowerBuff
     uiSkillDesc: 
   EnergyGage: 20
   Damage: 0

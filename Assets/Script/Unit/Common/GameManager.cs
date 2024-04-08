@@ -68,16 +68,17 @@ public class GameManager : MonoBehaviour
     {
         pl.enabled = false;
         var playerdata = DataManager.instance.playerData;
-        if (UnitType == 0) // ?�레?�어가 죽었????
+        if (UnitType == 0) // Player Dead
         {
 
         }
-        else // 몬스?��? 죽었????
+        else // Monstar Dead
         {
             pl.Exp += Ms.Exp;
             playerdata.Character_CurrentExp += Ms.Exp;
             StartCoroutine(LevelUp());
         }
+        DataManager.instance.SaveData();
         deadAct.Invoke(UnitType);
         StartCoroutine(tempDebug());
     }
@@ -105,7 +106,6 @@ public class GameManager : MonoBehaviour
             playerdata.Character_AttackPower = playerstat.Character_AttackPower + plLvstat.Total_AttackPower;
             playerdata.Character_Hp = playerstat.Character_Hp + plLvstat.Total_Hp;
         }
-        DataManager.instance.SaveData();
     }
 
     public void EndGame()
