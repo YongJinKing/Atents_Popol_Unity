@@ -75,7 +75,7 @@ public class cameraMove : MonoBehaviour
             {
                 camDist = hit.distance - offSet;
             }
-            
+            myCam.localPosition = new Vector3(0, 0, -camDist);
 
             //RayCast Debug
             if (raycastDebug)
@@ -86,7 +86,6 @@ public class cameraMove : MonoBehaviour
             //Ïπ¥Î©î???¥Îèô
             camDist = Mathf.Lerp(camDist, targetDist, Time.deltaTime * zoomSpeed);
             transform.rotation = Quaternion.Euler(playerAngle.x, playerAngle.y, 0);
-            myCam.localPosition = new Vector3(0, 0, -camDist);
 
             //?åÎ†à?¥Ïñ¥ ?∏Î†à??
             transform.position = Vector3.Lerp(transform.position, playerPos.position + playeroffSet, Time.deltaTime * trackSpeed);
