@@ -16,6 +16,12 @@ public struct BattleStat
     public float Speed;
     public float AttackDelay;
 }
+
+public enum e_BattleStat
+{
+    Level, ATK, HP, Exp, MaxExp, EnergyGage, Speed, AttackDelay
+}
+
 public interface IDamage
 {
     public void TakeDamage(int damage, AttackType Atype, DefenceType Dtype);
@@ -39,6 +45,56 @@ public class BattleSystem : CharacterProperty, IDamage
         get { return battleStat; }
         set { battleStat = value; }
     }
+
+    public float GetModifiedStat(e_BattleStat i)
+    {
+        float temp = 0;
+        switch (i)
+        {
+            case e_BattleStat.Level:
+                {
+
+                }
+                break;
+            case e_BattleStat.ATK:
+                {
+
+                }
+                break;
+            case e_BattleStat.HP:
+                {
+
+                }
+                break; 
+            case e_BattleStat.Exp:
+                {
+
+                }
+                break;
+            case e_BattleStat.MaxExp:
+                {
+
+                }
+                break;
+            case e_BattleStat.EnergyGage:
+                {
+
+                }
+                break;
+            case e_BattleStat.Speed:
+                {
+
+                }
+                break;
+            case e_BattleStat.AttackDelay:
+                {
+
+                }
+                break;
+        }
+        return temp;
+    }
+
     public int MaxHP
     {
         get
