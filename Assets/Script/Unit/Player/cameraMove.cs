@@ -98,30 +98,32 @@ public class cameraMove : MonoBehaviour
         }
     }
 
+    public static bool isBoss = false;
     public void UnitDeath(int Unit)
     {
-        isCine = true;
-        isTracking = false;
-
-
-
-        switch (Unit)
+        if (isBoss)
         {
-            case 0:
-                target = PlayerCam;
-                targetDist = 5;
-                playerAngle.x = 70;
-                playeroffSet.y = 1f;
-                break;
-            case 1 : 
-                target = MonsterCam;
-                targetDist = 2;
-                playerAngle.x = 0;
-                playeroffSet.y = 1f;
-                break;
+            isCine = true;
+            isTracking = false;
+
+            switch (Unit)
+            {
+                case 0:
+                    target = PlayerCam;
+                    targetDist = 5;
+                    playerAngle.x = 70;
+                    playeroffSet.y = 1f;
+                    break;
+                case 1:
+                    target = MonsterCam;
+                    targetDist = 2;
+                    playerAngle.x = 0;
+                    playeroffSet.y = 1f;
+                    break;
+            }
+            originPos = new Vector3(0, 0, myCam.transform.localPosition.z);
+            StartCoroutine(CineCam());
         }
-        originPos = new Vector3(0, 0, myCam.transform.localPosition.z);
-        StartCoroutine(CineCam());
     }
 
     
@@ -173,6 +175,7 @@ public class cameraMove : MonoBehaviour
                 isTracking = true;
             }
             yield return null;
+            //Auto return to main Scene in GameManager.cs
         }
     }
 }

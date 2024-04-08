@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class WaveUI : MonoBehaviour
 {
-    int nowWave = 1;
+    public int nowWave = 1;
     bool iscine = false;
     public int TotalWave;
 
@@ -22,7 +22,7 @@ public class WaveUI : MonoBehaviour
 
     public float moveSpeed;
 
-    public GameObject BrodCastCam;
+    public GameObject BroadCastCore;
     public GameObject BossOpening;
 
     // Update is called once per frame
@@ -40,6 +40,36 @@ public class WaveUI : MonoBehaviour
         {
             state = 0;
             StartCoroutine(WaveChange());
+        }
+    }
+
+    int monsterCode;
+    private void SpawnMonster()
+    {
+        MonsterFactory a = new MonsterFactory();
+        switch (nowWave)
+        {
+            case 1:
+                a.CreateMonster(30000);
+                break;
+            case 2:
+                a.CreateMonster(30000);
+                break;
+            case 3:
+                a.CreateMonster(30000);
+                break;
+            case 4:
+                a.CreateMonster(30000);
+                break;
+            case 5:
+                a.CreateMonster(30000);
+                break;
+            case 6:
+                a.CreateMonster(30000);
+                Instantiate(BossOpening);
+                BroadCastCore.SetActive(true);
+                cameraMove.isBoss = true;
+                break;
         }
     }
 
@@ -104,9 +134,6 @@ public class WaveUI : MonoBehaviour
                 alph = 1.0f;
                 state = 2;
                 yield return new WaitForSeconds(1f);
-                MonsterFactory a = new MonsterFactory(); a.CreateMonster(30000);
-                Instantiate(BrodCastCam);
-                Instantiate(BossOpening);
             }
             yield return null;
         }
@@ -124,6 +151,7 @@ public class WaveUI : MonoBehaviour
                 iscine = false;
                 
                 Debug.Log("2end");
+                SpawnMonster();
             }
             yield return null;
         }
