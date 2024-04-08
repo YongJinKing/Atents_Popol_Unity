@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -45,7 +46,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     Vector3 dir;
     public enum state
     {
-        Fire, Dadge, Idle, Run, Skill, Cinematic
+        Fire, Dadge, Idle, Run, Skill, Cinematic, Stun
     }
 
     [SerializeField] protected state playerstate;
@@ -73,6 +74,11 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
                 emission.rateOverTime = 0;
                 break;
             case state.Cinematic:
+                emission.rateOverTime = 0;
+                break;
+            case state.Stun:
+                myAnim.SetBool("b_Stun", true);
+                emission.rateOverTime = 0;
                 break;
         }
     }
@@ -94,7 +100,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
                 {
                     ChangeState(state.Idle);
                 }
-                //FireToMousePos();
                 break;
             case state.Dadge:
                 break;
@@ -111,6 +116,8 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
                 Skill();
                 break;
             case state.Cinematic:
+                break;
+            case state.Stun:
                 break;
         }
     }
@@ -152,6 +159,25 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         isDadgeReady = DadgeDelay < 0;
 
         ProcessState();
+
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Debuff();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+            ChangeState(state.Stun);
+            Invoke("ChangeIdle", 3.0f);
+        }
+    }
+
+    void ChangeIdle()
+    {
+        myAnim.SetBool("b_Stun", false);
+        ChangeState(state.Idle);
     }
 
     public bool GetRaycastHit()
@@ -214,7 +240,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         {
             if (dir == null) return;
             ChangeState(state.Run);
-            clickAct?.Invoke(dir, battleStat.Speed, (float temp) =>
+            clickAct?.Invoke(dir, curBattleStat.Speed, (float temp) =>
             {
                 myAnim.SetFloat("Move", temp);
                 if (temp < 0.05f && playerstate != state.Dadge && playerstate != state.Fire && playerstate != state.Skill)
@@ -347,5 +373,18 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     public void CinematicEnd()
     {
         ChangeState(state.Idle);
+    }
+
+
+    public void Debuff()
+    {
+        curBattleStat.Speed -= (float)(battleStat.Speed * 0.1);
+        StartCoroutine(SlowDown());
+    }
+
+    IEnumerator SlowDown()
+    {
+        yield return new WaitForSeconds(5.0f);
+        curBattleStat.Speed += (float)(battleStat.Speed * 0.1);
     }
 }
