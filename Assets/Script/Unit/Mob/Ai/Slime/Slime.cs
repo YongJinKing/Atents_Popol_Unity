@@ -172,6 +172,12 @@ public class Slime : Monster
         //idleAI = new List<int>();
         //idleAI.Add(0);
         Debug.Log($"idleAI.Count : {idleAI.Count}");
+        foreach(int data in idleAI)
+        {
+            Debug.Log($"inside the idleAI : {data}");
+        }
+
+
         saveMoveType = new int[idleAI.Count];
         IdleProcessRandomSet();
 
@@ -220,7 +226,6 @@ public class Slime : Monster
         float IdleTime = 3.0f;
 
         //int type = 0;     //UnityEngine.Random.Range(0,2);
-        Debug.Log($"idleprocessing : {idleAI[saveMoveType[countIdle]]}");
 
         switch (idleAI[saveMoveType[countIdle]])
         {

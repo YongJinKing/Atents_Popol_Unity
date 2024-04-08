@@ -207,7 +207,7 @@ public class UnitMovement : CharacterProperty
 
             Vector3 dir = target.position - transform.position;
             //0.5�� ������
-            float dist = dir.magnitude - 0.5f;
+            float dist = dir.magnitude - 1.5f;
             if (dist < 0.0f) dist = 0.0f;
             float delta;
 

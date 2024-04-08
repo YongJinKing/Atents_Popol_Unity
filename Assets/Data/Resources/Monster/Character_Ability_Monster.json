@@ -46,7 +46,7 @@
     "Character_Type": 1,
     "Character_Name": 20000,
     "Character_Hp": 100,
-    "Character_MoveSpeed": 4,
+    "Character_MoveSpeed": 2,
     "Character_AttackPower": 20,
     "Character_SkillVisibleRange": 0,
     "Skill_Index1": 30000,
@@ -67,7 +67,7 @@
     "Character_Type": 1,
     "Character_Name": 20001,
     "Character_Hp": 150,
-    "Character_MoveSpeed": 4,
+    "Character_MoveSpeed": 2,
     "Character_AttackPower": 25,
     "Character_SkillVisibleRange": 0,
     "Skill_Index1": 30000,
@@ -102,7 +102,7 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 1,
-    "Character_IdleType" : 2
+    "Character_IdleType" : 4
   },
   {
     "Index": 20003,
@@ -123,6 +123,6 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 1,
-    "Character_IdleType" : 2
+    "Character_IdleType" : 4
   }
 ]
