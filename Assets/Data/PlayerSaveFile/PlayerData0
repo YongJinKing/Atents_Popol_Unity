@@ -5,14 +5,16 @@
     "Character_CurrentExp": 0,
     "Character_CurrentLevel": 1,
     "Character_EnergyGage": 100,
+    "Character_MoveSpeed": 5.0,
+    "Character_AttackSpeed": 0.5,
     "Weapon_Id": 1000,
     "Armor_Id": 1001,
     "Weapon_Ability": 10,
     "Armor_Ability": 10,
-    "Character_MoveSpeed": 5.0,
-    "Character_AttackSpeed": 0.5,
     "WeaponType": 0,
-    "ArmorType": 0,
+    "ArmorType": 10,
+    "Weapon_Duration": 100,
+    "Armor_Duration": 100,
     "Skill": [
         "",
         "",
@@ -21,5 +23,6 @@
     ],
     "clearStage": [],
     "PlayerGold": 0,
-    "PlayerInven": []
+    "PlayerInven": [],
+    "PlayerItemDuraion": []
 }

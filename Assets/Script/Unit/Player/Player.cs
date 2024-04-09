@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -171,6 +172,27 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             ChangeState(state.Stun);
             Invoke("ChangeIdle", 3.0f);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            int Dtime = 10;
+            StartCoroutine(Dot(Dtime));
+        }
+    }
+
+    IEnumerator Dot(int Dtime)
+    {
+        float tick = (float)(MaxHP*0.05);
+        int time = 0;
+
+        while(time < Dtime)
+        {
+
+            yield return new WaitForSeconds(1.0f);
+            ++time;
+            Debug.Log(time);
+            base.TakeDamage((int)tick, AttackType.Normal, DefenceType.Normal);
         }
     }
 

@@ -4860,7 +4860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiSkillStatus:
-    uiSkillSprite: {fileID: 0}
+    uiSkillSprite: {fileID: 21300000, guid: e8a68fd17ce42174e9b24babd0ae6629, type: 3}
     uiSkillName: PowerBuff
     uiSkillDesc: 
   EnergyGage: 20

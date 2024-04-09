@@ -9738,11 +9738,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiSkillStatus:
-    uiSkillSprite: {fileID: 0}
+    uiSkillSprite: {fileID: 21300000, guid: 03e6f50b7a998ed46a4c3f9f8cb0855e, type: 3}
     uiSkillName: SowrdIlusion
     uiSkillDesc: 
+  EnergyGage: 0
   Damage: 100
   aType: 0
+  Buff: 0
+  BTime: 0
 --- !u!114 &-3751537622055009531
 MonoBehaviour:
   m_ObjectHideFlags: 0

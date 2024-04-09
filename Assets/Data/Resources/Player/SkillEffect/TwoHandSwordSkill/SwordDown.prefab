@@ -4948,7 +4948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiSkillStatus:
-    uiSkillSprite: {fileID: 0}
+    uiSkillSprite: {fileID: 21300000, guid: b11f9c52da2945740b5078d84177a9ab, type: 3}
     uiSkillName: SwordDown
     uiSkillDesc: 
   EnergyGage: 40
