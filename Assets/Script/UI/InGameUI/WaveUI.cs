@@ -43,7 +43,6 @@ public class WaveUI : MonoBehaviour
         }
     }
 
-    int monsterCode;
     private void SpawnMonster()
     {
         MonsterFactory a = new MonsterFactory();

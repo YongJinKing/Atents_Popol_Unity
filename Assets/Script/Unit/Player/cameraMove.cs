@@ -99,6 +99,7 @@ public class cameraMove : MonoBehaviour
     }
 
     public static bool isBoss = false;
+    
     public void UnitDeath(int Unit)
     {
         if (isBoss)
