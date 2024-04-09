@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7ea6eb4d8a77d6844b4981ebc63b2ed3
+guid: 1bae903617cb22b409c41adc87b863db
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: DancingOf
+      name: Dual Weapon Combo
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 106
+      lastFrame: 77
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
