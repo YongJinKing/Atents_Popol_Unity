@@ -1,6 +1,6 @@
 
 using System.Text;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,9 +15,36 @@ public struct BattleStat
     public int EnergyGage;
     public float Speed;
     public float AttackDelay;
+
+    public float this[E_BattleStat i]
+    {
+        get 
+        { 
+            switch (i)
+            {
+                case E_BattleStat.Level:
+                    return Level;
+                case E_BattleStat.ATK:
+                    return ATK;
+                case E_BattleStat.HP:
+                    return HP;
+                case E_BattleStat.Exp:
+                    return Exp;
+                case E_BattleStat.MaxExp:
+                    return MaxExp;
+                case E_BattleStat.EnergyGage:
+                    return EnergyGage;
+                case E_BattleStat.Speed:
+                    return Speed;
+                case E_BattleStat.AttackDelay:
+                    return AttackDelay;
+            }
+            return 0;
+        }
+    }
 }
 
-public enum e_BattleStat
+public enum E_BattleStat
 {
     Level, ATK, HP, Exp, MaxExp, EnergyGage, Speed, AttackDelay
 }
@@ -46,53 +73,19 @@ public class BattleSystem : CharacterProperty, IDamage
         set { battleStat = value; }
     }
 
-    public float GetModifiedStat(e_BattleStat i)
+    public float GetModifiedStat(E_BattleStat i)
     {
-        float temp = 0;
-        switch (i)
+        ValueChanger vc = new ValueChanger(curBattleStat[i]);
+        IGetStatValueModifiers[] modifiers = GetComponentsInChildren<IGetStatValueModifiers>();
+
+        foreach (IGetStatValueModifiers modi in modifiers)
         {
-            case e_BattleStat.Level:
-                {
-
-                }
-                break;
-            case e_BattleStat.ATK:
-                {
-
-                }
-                break;
-            case e_BattleStat.HP:
-                {
-
-                }
-                break; 
-            case e_BattleStat.Exp:
-                {
-
-                }
-                break;
-            case e_BattleStat.MaxExp:
-                {
-
-                }
-                break;
-            case e_BattleStat.EnergyGage:
-                {
-
-                }
-                break;
-            case e_BattleStat.Speed:
-                {
-
-                }
-                break;
-            case e_BattleStat.AttackDelay:
-                {
-
-                }
-                break;
+            List<ValueModifier> vm = modi.GetStatValueModifiers(i);
+            if (vm != null)
+                vc.AddModifiers(vm);
         }
-        return temp;
+
+        return vc.GetModifiedValue();
     }
 
     public int MaxHP

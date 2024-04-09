@@ -24,9 +24,9 @@ public class PlayerData
     public int Weapon_Ability;
     public int Armor_Ability;
     public int WeaponType;
-     //0 : 한손 검, 1: 양손 검, 2 : 한손 둔기, 3 : 양손 둔기, 4 : 창, 5 : 단검, 6 : 투창용 창
+     //0 : ?�손 검, 1: ?�손 검, 2 : ?�손 ?�기, 3 : ?�손 ?�기, 4 : �? 5 : ?��?, 6 : ?�창??�?
     public int ArmorType;
-    //10 : 가죽, 11 : 경갑, 12 : 판금
+    //10 : 가�? 11 : 경갑, 12 : ?�금
     
     public int Weapon_Duration;
     public int Armor_Duration;
@@ -50,7 +50,7 @@ public class DataManager : MonoBehaviour
 
     public static DataManager instance;
 
-    private void Awake()    //싱글톤
+    private void Awake()    //?��???
     {
         if(instance == null)
         {
@@ -61,7 +61,7 @@ public class DataManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-        path = Application.dataPath + "/Data/PlayerSaveFile/";      // json파일 저장 경로
+        path = Application.dataPath + "/Data/PlayerSaveFile/";      // json?�일 ?�??경로
     }
 
     public void Start()

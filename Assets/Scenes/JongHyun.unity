@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -355,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 26653372638042489, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 175139301316857756, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: onAttackEndEvent.m_PersistentCalls.m_Calls.Array.size
@@ -491,6 +491,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2917650358359049177, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124130042241727038, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: _power
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3235234254000190239, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
@@ -657,6 +661,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 3.5763333
       objectReference: {fileID: 0}
+    - target: {fileID: 5606467248656608675, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: _power
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6405549782800752135, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 79.0394
@@ -675,6 +683,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6846226738856845446, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: isLoopAnim
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7022702786265971639, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: _power
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7315596438880838239, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
@@ -724,6 +736,10 @@ PrefabInstance:
     - target: {fileID: 8691363913854543232, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.000091552734
+      objectReference: {fileID: 0}
+    - target: {fileID: 8747748374390514763, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: battleStat.ATK
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8747748374390514763, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: skills.Array.size
@@ -777,6 +793,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 26653372638042489, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1008477215}
+    - targetCorrespondingSourceObject: {fileID: 26653372638042489, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1008477217}
   m_SourcePrefab: {fileID: 100100000, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
 --- !u!114 &787308785 stripped
 MonoBehaviour:
@@ -994,6 +1013,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8399156555bc343b5c2ff54aafc153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1008477217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008477214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41dde1d68083f5d439ab55d6e4e87034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!4 &1454926774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9181312084210741263, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
@@ -1317,7 +1349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2041298581
 Transform:
   m_ObjectHideFlags: 0
@@ -1374,6 +1406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d8f61ce59c95e2489039a83c26e6328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _radius: 10
   sideMoveEvent:
     m_PersistentCalls:
       m_Calls:
