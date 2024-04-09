@@ -5,7 +5,6 @@ using UnityEngine;
 public interface I_Effect
 {
     public void PlayAttackEffect(string skill);
-    // public void PlayerMoveEffect();
 }
 
 public class PlayerEffect : MonoBehaviour, I_Effect

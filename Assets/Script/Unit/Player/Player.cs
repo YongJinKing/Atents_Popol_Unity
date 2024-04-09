@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -39,6 +40,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     public float DadgeDelay = 0;
     public float dadgePw;
     float FireDelay = 0;
+    float bufftime;
 
     bool isFireReady = true;
     bool isDadgeReady = true;
@@ -160,9 +162,9 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         isDadgeReady = DadgeDelay < 0;
 
         ProcessState();
+        bufftime += Time.deltaTime;
 
-
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debuff();
         }
@@ -183,16 +185,13 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
     IEnumerator Dot(int Dtime)
     {
-        float tick = (float)(MaxHP*0.05);
-        int time = 0;
 
-        while(time < Dtime)
+        bufftime = 0;
+        while (bufftime < Dtime)
         {
-
-            yield return new WaitForSeconds(1.0f);
-            ++time;
-            Debug.Log(time);
+            float tick = (float)(curBattleStat.HP * 0.003);
             base.TakeDamage((int)tick, AttackType.Normal, DefenceType.Normal);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 

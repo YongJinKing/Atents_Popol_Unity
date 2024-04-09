@@ -13,7 +13,7 @@
     "Armor_Ability": 10,
     "WeaponType": 0,
     "ArmorType": 10,
-    "Weapon_Duration": 100,
+    "Weapon_Duration": 99,
     "Armor_Duration": 100,
     "Skill": [
         "",

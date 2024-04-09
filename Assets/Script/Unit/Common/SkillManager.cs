@@ -9,6 +9,7 @@ public class SkillManager : PlayerSkill
 {
     public int EnergyGage;
     public int Damage;
+    public float SkillCalculation;
     Collider col;
     GameObject Player;
     Player pl;
@@ -47,7 +48,7 @@ public class SkillManager : PlayerSkill
 
                     if (iDamage != null)
                     {
-                        Plm.totalDamege(hit.collider, pl.ATK, Damage, aType, dtype); ;
+                        Plm.totalDamege(hit.collider, pl.ATK, Damage, aType, dtype, SkillCalculation);
                     }
                 }
             }
