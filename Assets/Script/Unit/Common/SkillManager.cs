@@ -10,6 +10,7 @@ public class SkillManager : PlayerSkill
     public int EnergyGage;
     public int Damage;
     public float SkillCalculation;
+    public int WeaponType;
     Collider col;
     GameObject Player;
     Player pl;

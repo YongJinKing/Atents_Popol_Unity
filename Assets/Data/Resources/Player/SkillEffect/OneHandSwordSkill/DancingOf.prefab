@@ -9699,11 +9699,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiSkillStatus:
-    uiSkillSprite: {fileID: 0}
+    uiSkillSprite: {fileID: 21300000, guid: 6a3fb9963fb36ac49ac25095ee92a4fe, type: 3}
     uiSkillName: DanceOf
     uiSkillDesc: 
   EnergyGage: 20
   Damage: 50
+  SkillCalculation: 0
+  WeaponType: 0
   aType: 1
   Buff: 0
   BTime: 0

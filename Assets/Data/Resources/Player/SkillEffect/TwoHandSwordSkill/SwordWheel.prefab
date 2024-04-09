@@ -19510,6 +19510,8 @@ MonoBehaviour:
     uiSkillDesc: 
   EnergyGage: 0
   Damage: 100
+  SkillCalculation: 0
+  WeaponType: 1
   aType: 1
   Buff: 0
   BTime: 0

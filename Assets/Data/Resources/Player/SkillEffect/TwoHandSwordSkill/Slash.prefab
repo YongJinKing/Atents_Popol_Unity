@@ -14714,7 +14714,8 @@ MonoBehaviour:
   EnergyGage: 90
   Damage: 300
   SkillCalculation: 0
-  aType: 0
+  WeaponType: 1
+  aType: 1
   Buff: 0
   BTime: 0
 --- !u!114 &2455480390482394706
