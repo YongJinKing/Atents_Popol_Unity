@@ -54,6 +54,20 @@ public class SmithUi : MonoBehaviour
                 SmithGridLine.transform.GetChild(index).Find("HLImage").gameObject.SetActive(false);
         }
     }
+    public void OnRiggingHighLite(int index, bool OnCheck)
+    {
+        if(OnCheck)
+        {
+            if(RiggigItem.transform.GetChild(index).GetComponent<UIItem>().id > 0)
+                RiggigItem.transform.GetChild(index).Find("HLImage").gameObject.SetActive(true);
+        }
+        
+        else
+        {
+            if(RiggigItem.transform.GetChild(index).GetComponent<UIItem>().id > 0)
+                RiggigItem.transform.GetChild(index).Find("HLImage").gameObject.SetActive(false);
+        }   
+    }
     public void ChooseSlot(int index)
     {
         int id = SmithGridLine.transform.GetChild(index).GetComponent<UIItem>().id;

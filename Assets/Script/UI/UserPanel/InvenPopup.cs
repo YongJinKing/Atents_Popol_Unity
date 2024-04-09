@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class UserPopup : MonoBehaviour
+public class InvenPopup : MonoBehaviour
 {
 
     public GameObject UserGridLine;
@@ -33,6 +33,7 @@ public class UserPopup : MonoBehaviour
     Vector2 LeftDefalutVector = new Vector2(290 , -240);
     Vector2 RightDefalutVector = new Vector2(-310 , -240);
 
+    
     public void OnRiggingItemHighLight(int index, bool OnCheck)
     {
         if(OnCheck)
@@ -135,7 +136,7 @@ public class UserPopup : MonoBehaviour
         {
             vector2 = new Vector2(1515-755, -655);
         }
-        transform.Find("Inven").Find("DescPopup").GetComponent<RectTransform>().anchoredPosition = 
+        transform.Find("DescPopup").GetComponent<RectTransform>().anchoredPosition = 
         SlotVector2 + vector2;   
     }
     
@@ -150,7 +151,9 @@ public class UserPopup : MonoBehaviour
     {
         if(index == 0)
         {
+            
             EventChangeItem?.Invoke();
+            PlayerAbilityUpdate();
         }
         RiggingPopup.gameObject.SetActive(false);
     }
