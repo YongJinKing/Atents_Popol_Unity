@@ -10,6 +10,7 @@ public class UserPanel : MonoBehaviour
     public GameObject Canvas;
     public GameObject MainUi;
     public GameObject BossMonsterObj;
+    public GameObject DragImage;
     public UnityEvent PlayerAbilityUpdate;
     public UnityEvent<int> BtnAct;
     public UnityEvent<int> CleanBtnAct;
@@ -58,6 +59,7 @@ public class UserPanel : MonoBehaviour
         BossMonsterObj.transform.gameObject.SetActive(false);
         PlayerAbilityUpdate?.Invoke();
         UserPanelPopup.transform.GetChild(index).gameObject.SetActive(true);
+        DragImage.gameObject.SetActive(true);
     }
     public void ClosePopup()
     {

@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class SkillPopup : MonoBehaviour
 {
     public GameObject Content;
+    public GameObject DragImage;
     GameObject[] AllSlots;
     private void Start() 
     {
@@ -24,5 +25,7 @@ public class SkillPopup : MonoBehaviour
             AllSlots[i].GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
         }   
     }
+
+  
 }
 
