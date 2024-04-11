@@ -45,19 +45,18 @@ public class SaveFileSelect : MonoBehaviour
                 DataManager.instance.SlotNum = i;
                 DataManager.instance.LoadData();
                 ItemDataManager.GetInstance().InvenItemLoadDatas();
-                if(i < 3)//slotCount
+                
+                if(DataManager.instance.playerData.Weapon_Id> 0)
                 {
-                    if(DataManager.instance.playerData.Weapon_Id> 0)
-                    {
-                        
-                        transform.GetChild(i).Find("SlotDetail").Find("ProfileSlot").Find("Weapon").GetComponent<UIItem>().
-                        Init(DataManager.instance.playerData.Weapon_Id);
-                        transform.GetChild(i).Find("SlotDetail").Find("ProfileSlot").Find("Armor").GetComponent<UIItem>().
-                        Init(DataManager.instance.playerData.Armor_Id);
-
-                    }
-                    
+                    transform.GetChild(i).Find("SlotDetail").Find("ProfileSlot").Find("Weapon").GetComponent<UIItem>().
+                    Init(DataManager.instance.playerData.Weapon_Id);
+                    transform.GetChild(i).Find("SlotDetail").Find("ProfileSlot").Find("Armor").GetComponent<UIItem>().
+                    Init(DataManager.instance.playerData.Armor_Id);
+                    transform.GetChild(i).Find("SlotDetail").Find("Money").Find("Value").GetComponent<TMP_Text>().text
+                    = DataManager.instance.playerData.PlayerGold.ToString();
                 }
+                
+                
                 
         
                 /* GoldText[i].text = DataManager.instance.playerData.PlayerGold.ToString();	// 슬롯에 표시할 데이터
