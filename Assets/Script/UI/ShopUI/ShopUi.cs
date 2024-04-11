@@ -48,7 +48,7 @@ public class ShopUi : MonoBehaviour
             
                 Contents.transform.GetChild(InstanceCount).Find("ItemDetail").Find("ItemType").GetComponent<TMP_Text>().text =
                 "종류 :" +
-                WeaponTypeToString(Contents.transform.GetChild(InstanceCount).Find("ItemDetail").GetComponent<UIItem>().WeaponType);
+                ItemTypeIntToString.IntToStringUIDesc(Contents.transform.GetChild(InstanceCount).Find("ItemDetail").GetComponent<UIItem>().WeaponType);
 
                 
                 Contents.transform.GetChild(InstanceCount).Find("ItemDetail").Find("Gold").Find("Text (TMP)").GetComponent<TMP_Text>().text =
@@ -124,32 +124,7 @@ public class ShopUi : MonoBehaviour
         BuyPopup.gameObject.SetActive(false);
     }
 
-    public string WeaponTypeToString(int index)
-    {
-        string Rtstring = "";
-        //0 : 한손 검, 1: 양손 검, 2 : 한손 둔기, 3 : 양손 둔기, 4 : 창, 5 : 단검, 6 : 투창용 창, 10 : 가죽, 11 : 경갑, 12 : 판금
-        if(index == 0)
-            Rtstring = "한손 검";
-        if(index == 1)
-            Rtstring = "양손 검";
-        if(index == 2)
-            Rtstring = "한손 둔기";
-        if(index == 3)
-            Rtstring = "양손 둔기";
-        if(index == 4)
-            Rtstring = "창";
-        if(index == 5)
-            Rtstring = "단검";
-        if(index == 6)
-            Rtstring = "투창용 창";
-        if(index == 10)
-            Rtstring = "가죽";
-        if(index == 11)
-            Rtstring = "경갑";
-        if(index == 12)
-            Rtstring = "판금";
-        return Rtstring;
-    }
+    
 
     public string RiggingTypeToString(int index)
     {
@@ -233,7 +208,7 @@ public class ShopUi : MonoBehaviour
         transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemName").GetComponent<TMP_Text>().text
         = go.ItemName;
         transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemType").GetComponent<TMP_Text>().text
-        = WeaponTypeToString(go.WeaponType);
+        = ItemTypeIntToString.IntToStringUIDesc(go.WeaponType);
         transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemValue").GetComponent<TMP_Text>().text
         = RiggingTypeToString(go.ItemRigging) + go.ItemValue.ToString();
         transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemDesc").GetComponent<TMP_Text>().text

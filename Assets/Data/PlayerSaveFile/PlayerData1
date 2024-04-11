@@ -7,18 +7,18 @@
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
-    "Weapon_Id": 1101,
+    "Weapon_Id": 1200,
     "Armor_Id": 3001,
-    "Weapon_Ability": 40,
+    "Weapon_Ability": 30,
     "Armor_Ability": 40,
-    "WeaponType": 0,
+    "WeaponType": 1,
     "ArmorType": 10,
     "Weapon_Duration": 99,
     "Armor_Duration": 100,
     "Skill": [
-        "SwordDown",
         "PowerBuff",
         "Slash",
+        "SwordDown",
         "SwordIlusion"
     ],
     "clearStage": [],
@@ -28,7 +28,7 @@
         3001,
         1100,
         1200,
-        1200
+        1101
     ],
     "PlayerItemDuraion": [
         100,
