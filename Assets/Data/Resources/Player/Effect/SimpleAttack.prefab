@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.7
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4905,7 +4905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8318586590010594487
 Transform:
   m_ObjectHideFlags: 0
@@ -5003,9 +5003,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.5
-      minScalar: 5
+      minMaxState: 3
+      scalar: 0.7
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5639,7 +5639,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 2.7
+      value: 1.94
       mode: 0
       spread: 0
       speed:
@@ -7577,7 +7577,7 @@ ParticleSystem:
     strength:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.29
+      scalar: 0.21
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -7743,7 +7743,7 @@ ParticleSystem:
     scrollSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -14499,8 +14499,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
-  m_Center: {x: 0, y: 2, z: 1.03}
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 2, z: 0.75}
 --- !u!114 &2197435355848236282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14529,8 +14529,13 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 0}
     uiSkillName: 
     uiSkillDesc: 
+  EnergyGage: 0
   Damage: 100
+  SkillCalculation: 0
+  WeaponType: 0
   aType: 0
+  Buff: 0
+  BTime: 0
 --- !u!114 &2428687727842145413
 MonoBehaviour:
   m_ObjectHideFlags: 0

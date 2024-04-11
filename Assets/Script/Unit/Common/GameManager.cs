@@ -78,9 +78,12 @@ public class GameManager : MonoBehaviour
             playerdata.Character_CurrentExp += Ms.Exp;
             StartCoroutine(LevelUp());
         }
-        DataManager.instance.SaveData();
         deadAct.Invoke(UnitType);
-        StartCoroutine(tempDebug());
+        if (cameraMove.isBoss)
+        {
+            DataManager.instance.SaveData();
+            StartCoroutine(tempDebug());
+        }
     }
     public void UpdateUI()
     {

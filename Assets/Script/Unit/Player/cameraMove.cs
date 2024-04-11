@@ -102,8 +102,10 @@ public class cameraMove : MonoBehaviour
     
     public void UnitDeath(int Unit)
     {
+        Debug.Log("SomeThing Dead");
         if (isBoss)
         {
+            Debug.Log("isBoss Dead");
             isCine = true;
             isTracking = false;
 
