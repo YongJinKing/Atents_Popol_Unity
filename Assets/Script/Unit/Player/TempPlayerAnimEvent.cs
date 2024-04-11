@@ -10,10 +10,12 @@ public class TempPlayerAnimEvent : MonoBehaviour
     public UnityEvent<int> End;
     GameObject Effectobj;
     I_Effect i_Effect;
+    I_SimpleEffect i_SimpleEffect;
     void Awake()
     {
         Effectobj = transform.parent.GetComponent<Player>().Effectobj;
         i_Effect = Effectobj.GetComponent<I_Effect>();
+        i_SimpleEffect = Effectobj.GetComponent<I_SimpleEffect>();
     }
     public void OnEnd(int i)
     {
@@ -24,5 +26,10 @@ public class TempPlayerAnimEvent : MonoBehaviour
     public void OnAttckEffect(string s)
     {
         i_Effect.PlayAttackEffect(s);
+    }
+
+    public void SimpleAttack(string skill)
+    {
+        i_SimpleEffect.SimpleEffect(skill);
     }
 }

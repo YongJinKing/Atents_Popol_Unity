@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public interface I_Effect
@@ -7,7 +8,12 @@ public interface I_Effect
     public void PlayAttackEffect(string skill);
 }
 
-public class PlayerEffect : MonoBehaviour, I_Effect
+public interface I_SimpleEffect
+{
+    public void SimpleEffect(string simpleSkill);
+}
+
+public class PlayerEffect : MonoBehaviour, I_Effect, I_SimpleEffect
 {
     GameObject effect;
     
@@ -34,4 +40,12 @@ public class PlayerEffect : MonoBehaviour, I_Effect
         effect = Instantiate<GameObject>(Resources.Load($"Player/SkillEffect/{Weaponpos}/{skill}") as GameObject);
         Attackpos(effect);
     }
+
+    public void SimpleEffect(string SimpleSkill)
+    {
+        effect = Instantiate<GameObject>(Resources.Load($"Player/Effect/{SimpleSkill}") as GameObject);
+        Attackpos(effect);
+    }
+
+
 }
