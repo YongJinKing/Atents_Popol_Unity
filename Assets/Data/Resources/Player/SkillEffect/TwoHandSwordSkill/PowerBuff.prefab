@@ -4870,7 +4870,7 @@ MonoBehaviour:
   SkillCalculation: 0
   WeaponType: 1
   aType: 0
-  Buff: 10
+  Buff: 30
   BTime: 10
 --- !u!1 &7580699392718119294
 GameObject:

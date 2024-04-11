@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -158,7 +159,7 @@ public class UnitMovement : CharacterProperty
             if (delta > dist) delta = dist;
             dist -= delta;
             transform.position += dir * delta;
-            yield return null;
+            yield return new FixedUpdate();
         }
         while (tempSpeed >= 0.01f)
         {

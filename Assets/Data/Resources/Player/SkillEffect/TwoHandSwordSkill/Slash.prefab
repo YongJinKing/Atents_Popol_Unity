@@ -14713,7 +14713,7 @@ MonoBehaviour:
     uiSkillDesc: "\uCC38\uACA9\uC744 \uC55E\uC73C\uB85C \uB0A0\uB9AC\uB294 \uC2A4\uD0AC\uC774\uB2E4."
   EnergyGage: 90
   Damage: 300
-  SkillCalculation: 0
+  SkillCalculation: 1
   WeaponType: 1
   aType: 1
   Buff: 0

@@ -4954,7 +4954,7 @@ MonoBehaviour:
       \uAE30\uC220\uC774\uB2E4."
   EnergyGage: 40
   Damage: 300
-  SkillCalculation: 0
+  SkillCalculation: 0.7
   WeaponType: 1
   aType: 1
   Buff: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -45,6 +46,8 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     bool isFireReady = true;
     bool isDadgeReady = true;
     bool Check;
+
+    int WeaponType = 0;
 
     Vector3 dir;
     public enum state
@@ -136,8 +139,8 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         controllKey[E_Skill.RSkill] = KeyCode.R;
 
         base.Start();
-
-        switch(DataManager.instance.playerData.WeaponType)
+        WeaponType = DataManager.instance.playerData.WeaponType;
+        switch (WeaponType)
         {
             case 0:
                 Weapon[0].SetActive(true);
@@ -296,8 +299,18 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
                 var plskill = DataManager.instance.playerData;
                 if (!string.IsNullOrWhiteSpace(plskill.Skill[i]))
                 {
+                    string Weaponpos = null;
+                    switch (WeaponType)
+                    {
+                        case 0:
+                            Weaponpos = "OneHandSwordSkill";
+                            break;
+                        case 1:
+                            Weaponpos = "TwoHandSwordSkill";
+                            break;
+                    }
                     Debug.Log(plskill.Skill[i]);
-                    GameObject effect = Resources.Load("Player/SkillEffect/" + plskill.Skill[i]) as GameObject;
+                    GameObject effect = Resources.Load($"Player/SkillEffect/{Weaponpos}/{plskill.Skill[i]}") as GameObject;
                     sm = effect.GetComponent<SkillManager>();
                 }
                 else
