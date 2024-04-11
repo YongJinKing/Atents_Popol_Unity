@@ -11,6 +11,7 @@ public class SkillManager : PlayerSkill
     public int Damage;
     public float SkillCalculation;
     public int WeaponType;
+    public int Level;
     Collider col;
     GameObject Player;
     Player pl;

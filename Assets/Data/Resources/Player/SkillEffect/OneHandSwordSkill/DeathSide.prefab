@@ -29349,6 +29349,7 @@ MonoBehaviour:
   Damage: 100
   SkillCalculation: 0.6
   WeaponType: 0
+  Level: 20
   aType: 1
   Buff: 0
   BTime: 0
