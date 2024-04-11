@@ -80,16 +80,17 @@ public class SkillPopup : MonoBehaviour
     {
         isMouseInSlot[index] = InCheck;
     }
-    public void EndDrop(int index, Image image)
+    public void EndDrop(int index, Sprite image)
     {
+        
         for(int i = 0; i < isMouseInSlot.Length; i++)
         {
             if(isMouseInSlot[i])
                 return;
         }
-        
+
         PlayerSkill.transform.Find("GridLine").GetChild(index).GetComponent<Image>().sprite
-        = image.sprite;
+        = image;
     }
 }
 

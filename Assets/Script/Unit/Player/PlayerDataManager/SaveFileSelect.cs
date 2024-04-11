@@ -29,6 +29,7 @@ public class SaveFileSelect : MonoBehaviour
     {
         SlotCheck();
         PlayerDetaManager.GetInstance().LoadPlayerData();
+        
     }
 
     void SlotCheck()
@@ -39,22 +40,38 @@ public class SaveFileSelect : MonoBehaviour
             if (File.Exists(DataManager.instance.path + DataManager.instance.fileName + $"{i}"))	// 슬롯 데이터 존재 유무 확인
             {
                 savefile[i] = true;     // 데이터가 있으면 true값 저장
-                CoinIC[i].SetActive(true);
-                delButton[i].SetActive(true);
+                /* CoinIC[i].SetActive(true);
+                delButton[i].SetActive(true); */
                 DataManager.instance.SlotNum = i;
                 DataManager.instance.LoadData();
-                GoldText[i].text = DataManager.instance.playerData.PlayerGold.ToString();	// 슬롯에 표시할 데이터
-                TimeText[i].text = "PlayTime";   //DataManager.instance.playerData.PlayerGold.ToString();
+                ItemDataManager.GetInstance().InvenItemLoadDatas();
+                if(i < 3)//slotCount
+                {
+                    if(DataManager.instance.playerData.Weapon_Id> 0)
+                    {
+                        
+                        transform.GetChild(i).Find("SlotDetail").Find("ProfileSlot").Find("Weapon").GetComponent<UIItem>().
+                        Init(DataManager.instance.playerData.Weapon_Id);
+                        transform.GetChild(i).Find("SlotDetail").Find("ProfileSlot").Find("Armor").GetComponent<UIItem>().
+                        Init(DataManager.instance.playerData.Armor_Id);
+
+                    }
+                    
+                }
+                
+        
+                /* GoldText[i].text = DataManager.instance.playerData.PlayerGold.ToString();	// 슬롯에 표시할 데이터
+                //TimeText[i].text = "PlayTime";   //DataManager.instance.playerData.PlayerGold.ToString();
                 DescText[i].text = "Player.Lv : " + DataManager.instance.playerData.Character_CurrentLevel.ToString() +
-                                   "\n(추가 예정)";
+                                   "\n(추가 예정)"; */
             }
             else	// 데이터가 없다면
             {
-                GoldText[i].text = "";
+                /* GoldText[i].text = "";
                 TimeText[i].text = "PlayTime";
                 DescText[i].text = "비어있음";  //빈 슬롯 텍스트
                 CoinIC[i].SetActive(false);
-                delButton[i].SetActive(false);
+                delButton[i].SetActive(false); */
             }
         }
         DataManager.instance.DataClear();   // 데이터 체크하는동안 저장된 데이터 클리어

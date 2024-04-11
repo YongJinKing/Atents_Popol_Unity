@@ -12,8 +12,9 @@ public class SlotDrop : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
 {
     public UnityEvent<string, int> EventDrop;
     public UnityEvent<int, bool> IsMouseInSlot;
-    public UnityEvent<int, Image> DropEnd;
-    Image TempImage;
+    public UnityEvent<int, Sprite> DropEnd;
+    Sprite TempSprite;
+    bool DragStart = false;
     int TempSlotIndex;
     public GameObject DragImage;
     
@@ -24,8 +25,8 @@ public class SlotDrop : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
         Image image = transform.GetComponent<Image>();
         if(image.sprite.name != "Grey")
         {
-            TempImage = image;
             
+            TempSprite = image.sprite;
             TempSlotIndex = transform.GetSiblingIndex();
             DragImage.GetComponent<Image>().sprite = image.sprite;
             Color color = DragImage.GetComponent<Image>().color;
@@ -33,14 +34,22 @@ public class SlotDrop : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
             DragImage.GetComponent<Image>().color = color;
             DragImage.GetComponent<Image>().raycastTarget = false;
             image.sprite = Resources.Load<Sprite>("UI/UserSkill/Grey");
+            DragStart = true;
+            
         }
+        else
+            DragStart = false;
+        
         
         
     }
 
     public void OnDrag(PointerEventData eventData)//Drag Ing
     {
-        DragImage.GetComponent<RectTransform>().anchoredPosition = eventData.position;   
+        if(DragStart)
+            DragImage.GetComponent<RectTransform>().anchoredPosition = eventData.position;
+            
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -54,12 +63,18 @@ public class SlotDrop : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
     }
     public void OnEndDrag(PointerEventData eventData)//Drag End
     {
-        DragImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        Color color = DragImage.GetComponent<Image>().color;
-        color.a = 0.0f;
-        DragImage.GetComponent<Image>().color = color;
-        DragImage.GetComponent<Image>().raycastTarget = true;
-        DropEnd?.Invoke(TempSlotIndex, TempImage);
+        if(DragStart)
+        {
+            
+            Debug.Log(TempSlotIndex);
+            DragImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+            Color color = DragImage.GetComponent<Image>().color;
+            color.a = 0.0f;
+            DragImage.GetComponent<Image>().color = color;
+            DragImage.GetComponent<Image>().raycastTarget = true;
+            DropEnd?.Invoke(TempSlotIndex, TempSprite);
+        }
+        
     }
 
     
