@@ -52,8 +52,7 @@ public class SaveFileSelect : MonoBehaviour
                     Init(DataManager.instance.playerData.Weapon_Id);
                     transform.GetChild(i).Find("SlotDetail").Find("ProfileSlot").Find("Armor").GetComponent<UIItem>().
                     Init(DataManager.instance.playerData.Armor_Id);
-                    transform.GetChild(i).Find("SlotDetail").Find("Money").Find("Value").GetComponent<TMP_Text>().text
-                    = DataManager.instance.playerData.PlayerGold.ToString();
+                    
                 }
                 
                 
