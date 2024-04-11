@@ -11,14 +11,17 @@ using Unity.VisualScripting;
 public class SlotDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     
-    public UnityEvent<int> DragType;
 
-    public GameObject DragImage;
+    GameObject DragImage;
+    private void Start() 
+    {
+        DragImage = GameObject.Find("DragImage");
+    }
 
     public void OnBeginDrag(PointerEventData eventData)//Drag Start
     {
 
-        DragImage = GameObject.Find("DragImage");
+        
         Image image = transform.Find("Paper").Find("Image").GetComponent<Image>();
         DragImage.GetComponent<Image>().sprite = image.sprite;
         Color color = DragImage.GetComponent<Image>().color;
@@ -34,12 +37,10 @@ public class SlotDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
     public void OnEndDrag(PointerEventData eventData)//Drag End
     {
-        
         DragImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         Color color = DragImage.GetComponent<Image>().color;
         color.a = 0.0f;
         DragImage.GetComponent<Image>().color = color;
         DragImage.GetComponent<Image>().raycastTarget = true;
-        
     }
 }

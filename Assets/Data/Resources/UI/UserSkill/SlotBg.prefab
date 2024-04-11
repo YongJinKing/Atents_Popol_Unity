@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 155, y: -4}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 178.26538, y: -4}
+  m_SizeDelta: {x: 246.5308, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8700953332189993708
 CanvasRenderer:
@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 4604097687500945294}
   - component: {fileID: 6442349727725281520}
   - component: {fileID: 2938435834410100163}
+  - component: {fileID: 888676328353336703}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -160,17 +161,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3132840763157382656}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.98813045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5889064496263113724}
-  m_Father: {fileID: 7468418808997618878}
+  m_Father: {fileID: 5943125380076479779}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -180, y: -60}
+  m_AnchoredPosition: {x: -198.95044, y: -33.19861}
   m_SizeDelta: {x: 150, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4604097687500945294
@@ -253,6 +254,103 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 6442349727725281520}
   m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &888676328353336703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3132840763157382656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6595844504075534515}
+          m_TargetAssemblyTypeName: BtnNormalFuntion, Assembly-CSharp
+          m_MethodName: ButtonPointerDown
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 3132840763157382656}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 6595844504075534515}
+          m_TargetAssemblyTypeName: BtnNormalFuntion, Assembly-CSharp
+          m_MethodName: ButtonPointerUp
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 3132840763157382656}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &3848964563127801712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5943125380076479779}
+  - component: {fileID: 6595844504075534515}
+  m_Layer: 0
+  m_Name: BtnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5943125380076479779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848964563127801712}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 18.9505, y: -26.801392, z: -0.98813045}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 9179476804368619107}
+  m_Father: {fileID: 7468418808997618878}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6595844504075534515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848964563127801712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba36c2168c0164744b78b99f5557d5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonSprite:
+  - {fileID: 21300000, guid: 2be7b70e984b51444aca9c12ae4723a7, type: 3}
+  - {fileID: 21300000, guid: d6a1673a31851fd4395c287261da36e4, type: 3}
+  btnChildCount: 0
+  BtnAct:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &4063023822199614995
@@ -364,7 +462,7 @@ RectTransform:
   - {fileID: 6319123171404963623}
   - {fileID: 6350374118974180701}
   - {fileID: 7510247525206466840}
-  - {fileID: 9179476804368619107}
+  - {fileID: 5943125380076479779}
   m_Father: {fileID: 2257420981911737049}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -579,8 +677,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: 50}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 303.0451, y: 50}
+  m_SizeDelta: {x: 183.249, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2880066846231079323
 CanvasRenderer:
@@ -768,7 +866,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b7591bf7210874480fb79b5136456b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DragImage: {fileID: 0}
 --- !u!1 &7471092717382224917
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,8 +1035,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 155, y: -4}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 135.45712, y: -4}
+  m_SizeDelta: {x: 127.412, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2527153162635702860
 CanvasRenderer:
