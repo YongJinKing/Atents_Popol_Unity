@@ -12,6 +12,7 @@ public class SkillManager : PlayerSkill
     public float SkillCalculation;
     public int WeaponType;
     public int Level;
+    public float CoolTime;
     Collider col;
     GameObject Player;
     Player pl;

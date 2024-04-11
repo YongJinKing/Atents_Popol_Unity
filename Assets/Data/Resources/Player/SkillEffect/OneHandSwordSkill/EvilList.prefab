@@ -14744,6 +14744,7 @@ MonoBehaviour:
   SkillCalculation: 0.2
   WeaponType: 0
   Level: 10
+  CoolTime: 7
   aType: 1
   Buff: 0
   BTime: 0

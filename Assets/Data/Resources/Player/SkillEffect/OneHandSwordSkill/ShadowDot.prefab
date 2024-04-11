@@ -4927,7 +4927,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Radius: 1.8
   m_Center: {x: 0, y: 1, z: 1}
@@ -4952,6 +4952,7 @@ MonoBehaviour:
   SkillCalculation: 0.3
   WeaponType: 0
   Level: 5
+  CoolTime: 5
   aType: 1
   Buff: 0
   BTime: 0

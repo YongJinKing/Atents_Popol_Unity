@@ -36,6 +36,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     public UnityEvent<UnityAction<float>> stopAct;
     public UnityEvent<Vector3, float> dadgeAct;
     public UnityEvent<Vector3, float> rotAct;
+    public UnityEvent<int> DeBuffAct;
 
     public float rotSpeed = 2;
     public float DadgeDelay = 0;
@@ -170,6 +171,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debuff();
+            DeBuffType(202);
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha2))
@@ -177,12 +179,14 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             ChangeState(state.Stun);
             Invoke("ChangeIdle", 3.0f);
+            DeBuffType(203);
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha3))
         {
             int Dtime = 10;
             StartCoroutine(Dot(Dtime));
+            DeBuffType(201);
         }
     }
 
@@ -196,6 +200,11 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
             base.TakeDamage((int)tick, AttackType.Normal, DefenceType.Normal);
             yield return new WaitForSeconds(0.2f);
         }
+    }
+
+    void DeBuffType(int Type)
+    {
+        DeBuffAct?.Invoke(Type);
     }
 
     void ChangeIdle()
