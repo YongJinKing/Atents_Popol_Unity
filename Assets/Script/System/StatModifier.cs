@@ -38,13 +38,25 @@ public class StatModifier : MonoBehaviour, IGetStatValueModifiers
             temp = data.GetStatValueModifier();
             if (temp.arg1 != null)
             {
-                //dicModifiers.Add(temp.arg0, temp.arg1);
+                List<ValueModifier> tempList;
+                if (dicModifiers.ContainsKey(temp.arg0))
+                {
+                    tempList = dicModifiers[temp.arg0];
+                    tempList.Add(temp.arg1);
+                }
+                else
+                {
+                    tempList = new List<ValueModifier>();
+                    tempList.Add(temp.arg1);
+                    dicModifiers.Add(temp.arg0, tempList);
+                }
             }
         }
     }
 
     public List<ValueModifier> GetStatValueModifiers(E_BattleStat statType)
     {
+        //Debug.Log($"Modifiers 전달 성공, 이름 : {gameObject.name}");
         return dicModifiers[statType];
     }
 }

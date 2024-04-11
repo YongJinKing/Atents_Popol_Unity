@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum ValueModifierType
 {
@@ -16,7 +17,7 @@ public class StatModifyFeature : MonoBehaviour, IGetStatValueModifier
 {
     public E_BattleStat statType;
     public ValueModifierType modifierType = ValueModifierType.Add;
-    public ValueModifier VM;
+    public ValueModifier VM = null;
     public int sortOrder = 1;
     public float value = 0;
 
@@ -39,8 +40,13 @@ public class StatModifyFeature : MonoBehaviour, IGetStatValueModifier
 
     public Info<E_BattleStat , ValueModifier> GetStatValueModifier()
     {
-        if (this.statType != statType) return new Info<E_BattleStat, ValueModifier>(0, null);
-
+        /*
+        Debug.Log($"Modifier 전달, 이름 : {gameObject.name}, 값 ${statType}, {value}");
+        if(VM != null)
+        {
+            Debug.Log($"Feature 값 전달 성공");
+        }
+        */
         return new Info<E_BattleStat,ValueModifier>(statType,VM);
     }
 }
