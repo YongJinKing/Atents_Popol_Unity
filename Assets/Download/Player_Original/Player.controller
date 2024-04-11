@@ -119,7 +119,7 @@ AnimatorStateMachine:
     m_Position: {x: 250, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2627246230446079714}
-    m_Position: {x: 250, y: 0, z: 0}
+    m_Position: {x: 240, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6486453461703471446}
     m_Position: {x: 220, y: 90, z: 0}
@@ -519,7 +519,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Buff
+    m_ConditionEvent: PowerBuff
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1570957070123724487}
@@ -639,7 +639,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skill
+  m_Name: EvilList
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -654,7 +654,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 4cd33d590a4cab84894b93e84d225a7e, type: 2}
+  m_Motion: {fileID: 7400000, guid: 33de7771301f7a94b95125b9ce99b5d5, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -697,7 +697,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Slash
+    m_ConditionEvent: DeathSide
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2627246230446079714}
@@ -915,7 +915,7 @@ AnimatorStateMachine:
     m_Position: {x: 370, y: 70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5735301615693930603}
-    m_Position: {x: 370, y: 260, z: 0}
+    m_Position: {x: 380, y: -100, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions:
@@ -1006,7 +1006,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Buff
+  - m_Name: PowerBuff
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1044,6 +1044,18 @@ AnimatorController:
     m_Controller: {fileID: 0}
   - m_Name: b_Stun
     m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: DeathSide
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: EvilList
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -1170,7 +1182,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: SwordDown
+    m_ConditionEvent: EvilList
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2748343856732198435}
@@ -1242,7 +1254,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MeleeAttack_OneHanded
+  m_Name: DeathSide
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1257,7 +1269,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c34f0c4b7bbe81641a720d8f67f681ef, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9aed018ec47f89346be70952d0eed5df, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

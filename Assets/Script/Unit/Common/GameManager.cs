@@ -79,10 +79,11 @@ public class GameManager : MonoBehaviour
             StartCoroutine(LevelUp());
         }
         deadAct.Invoke(UnitType);
+        DataManager.instance.SaveData();
+        StartCoroutine(tempDebug());
         if (cameraMove.isBoss)
         {
-            DataManager.instance.SaveData();
-            StartCoroutine(tempDebug());
+            
         }
     }
     public void UpdateUI()

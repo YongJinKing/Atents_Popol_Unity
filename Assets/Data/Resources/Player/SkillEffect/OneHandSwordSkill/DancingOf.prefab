@@ -9704,7 +9704,7 @@ MonoBehaviour:
     uiSkillDesc: 
   EnergyGage: 20
   Damage: 50
-  SkillCalculation: 0
+  SkillCalculation: 0.7
   WeaponType: 0
   aType: 1
   Buff: 0

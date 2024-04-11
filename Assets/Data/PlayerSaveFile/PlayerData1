@@ -15,7 +15,12 @@
     "ArmorType": 10,
     "Weapon_Duration": 99,
     "Armor_Duration": 100,
-    "Skill": [],
+    "Skill": [
+        "SwordDown",
+        "PowerBuff",
+        "Slash",
+        "SwordIlusion"
+    ],
     "clearStage": [],
     "PlayerGold": 0,
     "PlayerInven": [

@@ -297,21 +297,24 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
             if (Input.GetKeyDown(controllKey[(E_Skill)i]))
             {
                 var plskill = DataManager.instance.playerData;
-                if (!string.IsNullOrWhiteSpace(plskill.Skill[i]))
+                if (plskill.Skill.Count > 0)
                 {
-                    string Weaponpos = null;
-                    switch (WeaponType)
+                    if (!string.IsNullOrWhiteSpace(plskill.Skill[i]))
                     {
-                        case 0:
-                            Weaponpos = "OneHandSwordSkill";
-                            break;
-                        case 1:
-                            Weaponpos = "TwoHandSwordSkill";
-                            break;
+                        string Weaponpos = null;
+                        switch (WeaponType)
+                        {
+                            case 0:
+                                Weaponpos = "OneHandSwordSkill";
+                                break;
+                            case 1:
+                                Weaponpos = "TwoHandSwordSkill";
+                                break;
+                        }
+                        Debug.Log(plskill.Skill[i]);
+                        GameObject effect = Resources.Load($"Player/SkillEffect/{Weaponpos}/{plskill.Skill[i]}") as GameObject;
+                        sm = effect.GetComponent<SkillManager>();
                     }
-                    Debug.Log(plskill.Skill[i]);
-                    GameObject effect = Resources.Load($"Player/SkillEffect/{Weaponpos}/{plskill.Skill[i]}") as GameObject;
-                    sm = effect.GetComponent<SkillManager>();
                 }
                 else
                 {
