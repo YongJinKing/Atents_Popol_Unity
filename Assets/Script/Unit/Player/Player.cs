@@ -48,6 +48,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
     bool isFireReady = true;
     bool isDadgeReady = true;
+    bool isRun = true;
     bool Check;
 
     int WeaponType = 0;
@@ -169,14 +170,26 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
         ProcessState();
         bufftime += Time.deltaTime;
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            int DeBufftime = 10;
+            StartCoroutine(Corrosion(DeBufftime));
+            DeBuffType(200);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            int Dtime = 10;
+            StartCoroutine(Dot(Dtime));
+            DeBuffType(201);
+        }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Debuff();
             DeBuffType(202);
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha2))
+        if(Input.GetKeyDown(KeyCode.Alpha4))
         {
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             ChangeState(state.Stun);
@@ -184,12 +197,28 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
             DeBuffType(203);
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha3))
+        if(Input.GetKeyDown(KeyCode.Alpha5))
         {
-            int Dtime = 10;
-            StartCoroutine(Dot(Dtime));
-            DeBuffType(201);
+            isRun = false;
+            int DeBuffTime = 10;
+            StartCoroutine(Restraint(DeBuffTime));
         }
+    }
+
+    IEnumerator Restraint(int Dtime)
+    {
+        yield return new WaitForSeconds(Dtime);
+        isRun = true;
+    }
+
+
+    IEnumerator Corrosion(int Dtime)
+    {
+        curBattleStat.ATK -= curBattleStat.ATK / 10;
+
+
+        yield return new WaitForSeconds(Dtime);
+        curBattleStat.ATK = battleStat.ATK;
     }
 
     IEnumerator Dot(int Dtime)
@@ -271,7 +300,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
     public void MoveToMousePos()
     {
-        if (Input.GetMouseButton(1) && GetRaycastHit())
+        if (Input.GetMouseButton(1) && GetRaycastHit() && isRun)
         {
             if (dir == null) return;
             ChangeState(state.Run);

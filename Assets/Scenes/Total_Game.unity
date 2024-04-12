@@ -133,7 +133,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: dadgePw
-      value: 350
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: Weapon.Array.size
