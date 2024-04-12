@@ -7,8 +7,8 @@ public class OneHandSwordVFX : MonoBehaviour
     public GameObject HitVFX;
     public Camera myCam;
     public LayerMask targetMask;
-    public float one = 1;
-    public float two = 2;
+    public float duration = 0.1f;
+    public float magnitud = 0.2f;
 
     cameraMove camMove;
 
@@ -22,7 +22,7 @@ public class OneHandSwordVFX : MonoBehaviour
         if(((1 << other.gameObject.layer) & targetMask) != 0)
         {
             Instantiate(HitVFX, other.ClosestPoint(transform.position), Quaternion.identity);
-            StartCoroutine(Shake(one, two));
+            StartCoroutine(Shake(duration, magnitud));
         }
     }
 
