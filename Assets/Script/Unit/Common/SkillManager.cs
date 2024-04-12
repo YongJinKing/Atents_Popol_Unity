@@ -13,6 +13,7 @@ public class SkillManager : PlayerSkill
     public int WeaponType;
     public int Level;
     public float CoolTime;
+    public bool CoolTimeCheck;// true : can use Skill, false : Can't use Skill
     Collider col;
     GameObject Player;
     Player pl;

@@ -3565,7 +3565,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 341848536}
         m_TargetAssemblyTypeName: SkillPopup, Assembly-CSharp
-        m_MethodName: SlotUpdate
+        m_MethodName: SortSlot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
