@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     //will delete later
     //this is for file load test
     private Dictionary<int, WaveData> dicWaveTable;
-
+    private WaveData curWave;
     private Queue<WaveData> waveQueue = new Queue<WaveData>();
     private MonsterFactory mf;
 
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
 
     public void OnGameEnd(int UnitType, GameObject deadUnit)
     {
-        pl.enabled = false;
+        //pl.enabled = false;
         var playerdata = DataManager.instance.playerData;
         if (UnitType == 0) // Player Dead
         {
@@ -131,10 +131,10 @@ public class GameManager : MonoBehaviour
         }
         deadAct?.Invoke(UnitType);
         DataManager.instance.SaveData();
-        StartCoroutine(tempDebug());
-        if (cameraMove.isBoss)
+        if (curWave.index / 10000 >= 2 && monsters.Count <= 0) //Boss Wave End
         {
-            
+            Debug.Log("StageEnd");
+            StartCoroutine(tempDebug());
         }
     }
     public void UpdateUI()
@@ -173,49 +173,49 @@ public class GameManager : MonoBehaviour
         if(waveQueue.Count > 0)
         {
             monsters.Clear();
-            WaveData temp = waveQueue.Dequeue();
+            curWave = waveQueue.Dequeue();
 
             int count = 0;
-            count += temp.Wave_Monster_Count1;
-            count += temp.Wave_Monster_Count2;
-            count += temp.Wave_Monster_Count3;
-            count += temp.Wave_Monster_Count4;
-            count += temp.Wave_Monster_Count5;
+            count += curWave.Wave_Monster_Count1;
+            count += curWave.Wave_Monster_Count2;
+            count += curWave.Wave_Monster_Count3;
+            count += curWave.Wave_Monster_Count4;
+            count += curWave.Wave_Monster_Count5;
 
             float angle = 360 / (float)count;
             Vector3 spawnPoint = Vector3.forward * spawnOffset;
 
-            for(int i = 0; i < temp.Wave_Monster_Count1 && temp.Wave_Monster1 != 0; ++i)
+            for(int i = 0; i < curWave.Wave_Monster_Count1 && curWave.Wave_Monster1 != 0; ++i)
             {
-                monsters.Add(mf.CreateMonster(temp.Wave_Monster1));
+                monsters.Add(mf.CreateMonster(curWave.Wave_Monster1));
                 spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
                 monsters.Last().transform.position = spawnPoint;
                 yield return new WaitForSeconds(1);
             }
-            for (int i = 0; i < temp.Wave_Monster_Count2 && temp.Wave_Monster2 != 0; ++i)
+            for (int i = 0; i < curWave.Wave_Monster_Count2 && curWave.Wave_Monster2 != 0; ++i)
             {
-                monsters.Add(mf.CreateMonster(temp.Wave_Monster2));
+                monsters.Add(mf.CreateMonster(curWave.Wave_Monster2));
                 spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
                 monsters.Last().transform.position = spawnPoint;
                 yield return new WaitForSeconds(1);
             }
-            for (int i = 0; i < temp.Wave_Monster_Count3 && temp.Wave_Monster3 != 0; ++i)
+            for (int i = 0; i < curWave.Wave_Monster_Count3 && curWave.Wave_Monster3 != 0; ++i)
             {
-                monsters.Add(mf.CreateMonster(temp.Wave_Monster3));
+                monsters.Add(mf.CreateMonster(curWave.Wave_Monster3));
                 spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
                 monsters.Last().transform.position = spawnPoint;
                 yield return new WaitForSeconds(1);
             }
-            for (int i = 0; i < temp.Wave_Monster_Count4 && temp.Wave_Monster4 != 0; ++i)
+            for (int i = 0; i < curWave.Wave_Monster_Count4 && curWave.Wave_Monster4 != 0; ++i)
             {
-                monsters.Add(mf.CreateMonster(temp.Wave_Monster4));
+                monsters.Add(mf.CreateMonster(curWave.Wave_Monster4));
                 spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
                 monsters.Last().transform.position = spawnPoint;
                 yield return new WaitForSeconds(1);
             }
-            for (int i = 0; i < temp.Wave_Monster_Count5 && temp.Wave_Monster5 != 0; ++i)
+            for (int i = 0; i < curWave.Wave_Monster_Count5 && curWave.Wave_Monster5 != 0; ++i)
             {
-                monsters.Add(mf.CreateMonster(temp.Wave_Monster5));
+                monsters.Add(mf.CreateMonster(curWave.Wave_Monster5));
                 spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
                 monsters.Last().transform.position = spawnPoint;
                 yield return new WaitForSeconds(1);
