@@ -63,10 +63,12 @@ public class BattleSystem : CharacterProperty, IDamage
     public UnityAction<int> deathAlarm;
 
     public UnityEvent<int, int> hpbarChangeAct;
+    public UnityEvent DurationAct;
 
     protected virtual void Start()
     {
         Initialize();
+        curBattleStat.EnergyGage = 0;
     }
 
     public BattleStat battlestat
@@ -220,6 +222,7 @@ public class BattleSystem : CharacterProperty, IDamage
         
         curBattleStat.HP -= totaldmg;
         hpbarChangeAct?.Invoke(MaxHP, HP);
+        DurationAct?.Invoke();
 
         if (curBattleStat.HP <= 0.0f)
         {

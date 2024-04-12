@@ -37,6 +37,8 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     public UnityEvent<Vector3, float> dadgeAct;
     public UnityEvent<Vector3, float> rotAct;
     public UnityEvent<int> DeBuffAct;
+    public UnityEvent<int, int> EnergyGageAct;
+    public UnityEvent<int> SkillAct;
 
     public float rotSpeed = 2;
     public float DadgeDelay = 0;
@@ -269,7 +271,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
     public void MoveToMousePos()
     {
-        if (Input.GetMouseButtonDown(1) && GetRaycastHit())
+        if (Input.GetMouseButton(1) && GetRaycastHit())
         {
             if (dir == null) return;
             ChangeState(state.Run);
@@ -334,9 +336,11 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
                 if (curBattleStat.EnergyGage >= sm.EnergyGage)
                 {
+                    SkillAct?.Invoke(i);
                     ChangeState(state.Skill);
                     rotSpeed = 5.0f;
                     curBattleStat.EnergyGage -= sm.EnergyGage;
+                    EnergyGageCal();
                     GetRaycastHit();
                     stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
                     myAnim.SetTrigger(plskill.InGameSkill[i]);
@@ -348,6 +352,11 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
                 }
             }
         }
+    }
+
+    public void EnergyGageCal()
+    {
+        EnergyGageAct?.Invoke(battleStat.EnergyGage, curBattleStat.EnergyGage);
     }
 
     public void OnEnd(int type)
@@ -407,6 +416,11 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
             Time.timeScale = slowTime;
             yield return null;
         }
+    }
+
+    public void duration()
+    {
+        DataManager.instance.playerData.Armor_Duration--;
     }
 
     public void CinematicStart()

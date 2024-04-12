@@ -9741,7 +9741,7 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 21300000, guid: 03e6f50b7a998ed46a4c3f9f8cb0855e, type: 3}
     uiSkillName: "\uD30C\uC774\uB85C \uBE14\uB808\uC774\uC988"
     uiSkillDesc: "\uBE60\uB974\uAC8C \uC5F0\uACA9\uC744 \uB0A0\uB9AC\uB294 \uAE30\uC220\uC774\uB2E4."
-  EnergyGage: 0
+  EnergyGage: 90
   Damage: 100
   SkillCalculation: 0.3
   WeaponType: 1

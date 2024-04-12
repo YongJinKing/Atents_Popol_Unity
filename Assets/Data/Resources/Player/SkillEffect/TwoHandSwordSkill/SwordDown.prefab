@@ -4952,7 +4952,7 @@ MonoBehaviour:
     uiSkillName: "\uADF8\uB77C\uC6B4\uB4DC\uC2A4\uB9E4\uC2DC"
     uiSkillDesc: "\uC9C0\uBA74\uC744 \uAC15\uD558\uAC8C \uB0B4\uB824 \uCC0D\uB294
       \uAE30\uC220\uC774\uB2E4."
-  EnergyGage: 40
+  EnergyGage: 30
   Damage: 300
   SkillCalculation: 0.7
   WeaponType: 1

@@ -17,7 +17,7 @@ public class HpAndEnergy : MonoBehaviour
     }
     public void EnergyGageTrigger(int ReferenceValue, int Value)
     {
-        this.Energybar.fillAmount = Value / ReferenceValue;
+        this.Energybar.fillAmount = (float)Value / (float)ReferenceValue;
     }
     
 }
