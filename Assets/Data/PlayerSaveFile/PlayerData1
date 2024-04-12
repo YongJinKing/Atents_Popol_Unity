@@ -14,7 +14,7 @@
     "WeaponType": 1,
     "ArmorType": 10,
     "Weapon_Duration": 92,
-    "Armor_Duration": 98,
+    "Armor_Duration": 53,
     "UiSkillList": [
         "",
         "",
@@ -26,10 +26,10 @@
         "",
         "",
         "",
+        "SwordDown",
         "PowerBuff",
-        "",
         "Slash",
-        "",
+        "SwordIlusion",
         "",
         "",
         "",
@@ -118,10 +118,10 @@
         ""
     ],
     "InGameSkill": [
+        "SwordDown",
         "PowerBuff",
-        "",
         "Slash",
-        ""
+        "SwordIlusion"
     ],
     "clearStage": [],
     "PlayerGold": 3000,

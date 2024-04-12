@@ -341,18 +341,8 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
                 {
                     if (!string.IsNullOrWhiteSpace(plskill.InGameSkill[i]))
                     {
-                        string Weaponpos = null;
-                        switch (WeaponType)
-                        {
-                            case 0:
-                                Weaponpos = "OneHandSwordSkill";
-                                break;
-                            case 1:
-                                Weaponpos = "TwoHandSwordSkill";
-                                break;
-                        }
                         Debug.Log(plskill.InGameSkill[i]);
-                        GameObject effect = Resources.Load($"Player/SkillEffect/{Weaponpos}/{plskill.InGameSkill[i]}") as GameObject;
+                        GameObject effect = Resources.Load($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(WeaponType)}/{plskill.InGameSkill[i]}") as GameObject;
                         sm = effect.GetComponent<SkillManager>();
                     }
                 }
@@ -363,7 +353,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
                     return;
                 }
 
-                if (curBattleStat.EnergyGage >= sm.EnergyGage)
+                if (curBattleStat.EnergyGage >= sm.EnergyGage && !sm.CoolTimeCheck)
                 {
                     SkillAct?.Invoke(i);
                     ChangeState(state.Skill);
