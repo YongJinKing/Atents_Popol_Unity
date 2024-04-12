@@ -31,6 +31,13 @@ public class StatModifier : MonoBehaviour, IGetStatValueModifiers
         dicModifiers.Add(E_BattleStat.ATK, modifierList);
         */
 
+        StartCoroutine(DelayLoad());
+    }
+
+    private IEnumerator DelayLoad()
+    {
+        yield return new WaitForEndOfFrame();
+
         IGetStatValueModifier[] modifiers = GetComponentsInChildren<IGetStatValueModifier>();
         Info<E_BattleStat, ValueModifier> temp;
         foreach (IGetStatValueModifier data in modifiers)

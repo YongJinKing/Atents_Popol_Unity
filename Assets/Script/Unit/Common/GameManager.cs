@@ -2,28 +2,46 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    //will delete later
+    //this is for file load test
+    private Dictionary<int, WaveData> dicWaveTable;
+
+    private Queue<WaveData> waveQueue = new Queue<WaveData>();
+    private MonsterFactory mf;
+
+    private GameObject Monster;
+
     public UnityEvent<int> deadAct;
     public GameObject Player;
-    private GameObject Monster;
+    public HpAndEnergy hpEpBar;
     //public PlayerDetaManager playerdata;
 
 
     Player pl;
     Monster Ms;
 
+
+
     private void Awake()
     {
+        mf = new MonsterFactory();
+
         pl = Player.GetComponent<Player>();
-        MonsterFactory mf = new MonsterFactory();
+        pl.hpbarChangeAct.AddListener(hpEpBar.HpGageTrigger);
+
+
         Monster = mf.CreateMonster(30000);
         Ms = Monster.GetComponent<Monster>();
-        mf = null;
+
+
+        LoadWaveData(1);
         LoadPlayerStat();
     }
 
@@ -32,7 +50,28 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void LoadPlayerStat()
+    private void LoadWaveData(int stageIndex)
+    {
+        var Mestiarii_WaveData = Resources.Load<TextAsset>("System/Mestiarii_WaveData_Table").text;
+        var arrWaveDatas = JsonConvert.DeserializeObject<WaveData[]>(Mestiarii_WaveData);
+        this.dicWaveTable = arrWaveDatas.ToDictionary(x => x.index);
+
+        foreach(var data in dicWaveTable)
+        {
+            if(data.Value.Stage_Index == stageIndex)
+            {
+                waveQueue.Enqueue(data.Value);
+            }
+        }
+
+        //for debug
+        while(waveQueue.Count > 0)
+        {
+            Debug.Log(waveQueue.Dequeue().index);
+        }
+    }
+
+    private void LoadPlayerStat()
     {
         int NextLevel;
         BattleStat bs = default;
@@ -115,7 +154,12 @@ public class GameManager : MonoBehaviour
             playerdata.Character_Hp = playerstat.Character_Hp + plLvstat.Total_Hp;
         }
     }
+    /*
+    private IEnumerator WaveRound()
+    {
 
+    }
+    */
     public void EndGame()
     {
         var filePath = "Assets/Resources/Player/PlayerStat/Playerlv.json";

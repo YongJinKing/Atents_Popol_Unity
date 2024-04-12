@@ -5,20 +5,19 @@ using UnityEngine.UI;
 
 public class HpAndEnergy : MonoBehaviour
 {
-    
+    public Image HPbar;
+    public Image Energybar;
    /*  public int maxHp = 100;
     private void Start() {
         HpGageTrigger(maxHp, -30);
     } */
     public void HpGageTrigger(int ReferenceValue, int Value)
     {
-        transform.Find("Hp").GetComponent<Image>().fillAmount +=
-            PercentCalculate.Calculate(ReferenceValue, Value);
+        this.HPbar.fillAmount = (float)Value / (float)ReferenceValue;
     }
     public void EnergyGageTrigger(int ReferenceValue, int Value)
     {
-        transform.Find("Energy").GetComponent<Image>().fillAmount +=
-            PercentCalculate.Calculate(ReferenceValue, Value);
+        this.Energybar.fillAmount = Value / ReferenceValue;
     }
     
 }

@@ -62,6 +62,8 @@ public class BattleSystem : CharacterProperty, IDamage
     protected float battleTime = 0.0f;
     public UnityAction<int> deathAlarm;
 
+    public UnityEvent<int, int> hpbarChangeAct;
+
     protected virtual void Start()
     {
         Initialize();
@@ -214,8 +216,11 @@ public class BattleSystem : CharacterProperty, IDamage
         Debug.Log("BattleSystem.TakeDamage");
         Debug.Log($"Atype : {Atype}, Dtype: {Dtype}");
         Debug.Log($"total : {totaldmg}");
+
         
         curBattleStat.HP -= totaldmg;
+        hpbarChangeAct?.Invoke(MaxHP, HP);
+
         if (curBattleStat.HP <= 0.0f)
         {
             //Die
