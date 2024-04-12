@@ -33,7 +33,7 @@ public class SkillPopup : MonoBehaviour
             go.Find("SkillName").GetChild(0).GetComponent<TMP_Text>().text = //Skill Name
             AllSlots[i].GetComponent<SkillManager>().uiSkillStatus.uiSkillName;
             go.Find("SkillType").GetChild(0).GetComponent<TMP_Text>().text = //SkillType
-            ItemTypeIntToString.IntToStringUIDesc(AllSlots[i].GetComponent<SkillManager>().WeaponType);
+            ItemTypeIntToString.IntToStringUISkillType(AllSlots[i].GetComponent<SkillManager>().WeaponType);
             go.Find("SkillDesc").GetChild(0).GetComponent<TMP_Text>().text = //SkillType
             AllSlots[i].GetComponent<SkillManager>().uiSkillStatus.uiSkillDesc;
         }
@@ -55,13 +55,15 @@ public class SkillPopup : MonoBehaviour
         }
         for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)
         {
-         
             if(inst.UiSkillList[i + (10 * inst.WeaponType)] != "")
             {
                 //Debug.Log($"인덱스 체크  : {i + (10 * inst.WeaponType)} 배열 체크 :{inst.UiSkillList[i + (10 * inst.WeaponType)]} ");
                 GameObject gameObject = Resources.Load<GameObject>($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(inst.WeaponType)}/{inst.UiSkillList[i + (10 * inst.WeaponType)]}");
-                PlayerSkill.transform.Find("GridLine").GetChild(i).GetComponent<Image>().sprite =
-                gameObject.GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
+                if(gameObject != null)
+                {
+                    PlayerSkill.transform.Find("GridLine").GetChild(i).GetComponent<Image>().sprite =
+                    gameObject.GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
+                }
             }
             else
             {

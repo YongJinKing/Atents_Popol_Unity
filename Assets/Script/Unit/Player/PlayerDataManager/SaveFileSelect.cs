@@ -10,6 +10,7 @@ public class SaveFileSelect : MonoBehaviour
 {
     public GameObject Canvas;
     public GameObject RemovePopup;
+    public GameObject NewSlotPopup;
     int SelectSlot = 0;
     public TextMeshProUGUI[] GoldText;
     public TextMeshProUGUI[] TimeText;
@@ -29,6 +30,19 @@ public class SaveFileSelect : MonoBehaviour
     {
         SlotCheck();
         PlayerDetaManager.GetInstance().LoadPlayerData();
+        for(int i = 0; i < 3; i++)
+        {
+            transform.GetChild(0).GetChild(i).GetChild(0).GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(0).GetChild(i).GetChild(0).GetChild(1).gameObject.SetActive(false);
+            if (savefile[i])   // 데이터가 있다면
+            {
+            	transform.GetChild(0).GetChild(i).GetChild(0).GetChild(0).gameObject.SetActive(true);
+            }
+            else    // 데이터가 없으면 
+            {
+                transform.GetChild(0).GetChild(i).GetChild(0).GetChild(1).gameObject.SetActive(true);
+            }
+        }
         
     }
 
@@ -48,9 +62,9 @@ public class SaveFileSelect : MonoBehaviour
                 
                 if(DataManager.instance.playerData.Weapon_Id> 0)
                 {
-                    transform.GetChild(i).Find("SlotDetail").Find("ProfileSlot").Find("Weapon").GetComponent<UIItem>().
+                    transform.Find("SlotList").GetChild(i).GetChild(0).Find("LoadSlot").Find("ProfileSlot").Find("Weapon").GetComponent<UIItem>().
                     Init(DataManager.instance.playerData.Weapon_Id);
-                    transform.GetChild(i).Find("SlotDetail").Find("ProfileSlot").Find("Armor").GetComponent<UIItem>().
+                    transform.Find("SlotList").GetChild(i).GetChild(0).Find("LoadSlot").Find("ProfileSlot").Find("Armor").GetComponent<UIItem>().
                     Init(DataManager.instance.playerData.Armor_Id);
                     
                 }
@@ -86,7 +100,7 @@ public class SaveFileSelect : MonoBehaviour
         }
         else    // 데이터가 없으면 그냥 게임 시작
         {
-            GoGame();
+            NewSlotPopup?.gameObject.SetActive(true);
         }
     }
 
@@ -145,8 +159,15 @@ public class SaveFileSelect : MonoBehaviour
         if(index == 1)
         {
             RemovePopup.gameObject.SetActive(false);
-         
         }
+    }
+    public void NewSlotPopupYesOrNo(int index)
+    {
+        if(index == 0)
+        {
+            GoGame();
+        }
+        NewSlotPopup.gameObject.SetActive(false);
         
     }
 }
