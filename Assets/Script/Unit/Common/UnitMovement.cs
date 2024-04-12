@@ -44,6 +44,10 @@ public class UnitMovement : CharacterProperty
             StopCoroutine(follow);
             follow = null;
         }
+        if(rotate != null)
+        {
+            StopCoroutine(rotate);
+        }
         if(sideMove != null)
         {
             StopCoroutine(sideMove);

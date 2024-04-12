@@ -60,7 +60,7 @@ public class BattleSystem : CharacterProperty, IDamage
     [SerializeField] protected BattleStat battleStat;
     [SerializeField] protected BattleStat curBattleStat;
     protected float battleTime = 0.0f;
-    public UnityAction<int> deathAlarm;
+    public UnityAction<int, GameObject> deathAlarm;
 
     public UnityEvent<int, int> hpbarChangeAct;
     public UnityEvent DurationAct;

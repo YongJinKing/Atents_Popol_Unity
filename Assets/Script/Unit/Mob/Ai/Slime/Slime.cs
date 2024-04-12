@@ -169,8 +169,10 @@ public class Slime : Monster
 
         saveSkill = new int[skills.Length];
         SkillRandomSet();
-        idleAI = new List<int>();
-        idleAI.Add(0);
+
+
+        //idleAI = new List<int>();
+        //idleAI.Add(0);
         Debug.Log($"idleAI.Count : {idleAI.Count}");
         foreach(int data in idleAI)
         {

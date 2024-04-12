@@ -66,7 +66,7 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
     protected abstract void ProcessState();
     protected override void OnDead()
     {
-        deathAlarm?.Invoke(1);
+        deathAlarm?.Invoke(1, gameObject);
         ChangeState(State.Death);
         transform.GetComponentInChildren<MonsterPartManager>().DisActiveCol();
     }

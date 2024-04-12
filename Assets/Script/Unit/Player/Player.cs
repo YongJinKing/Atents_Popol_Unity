@@ -244,24 +244,24 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
     bool AnimCheck(string Anim)
     {
-        // 현재 애니메이션이 체크하고자 하는 애니메이션인지 확인
+        // ?�재 ?�니메이?�이 체크?�고???�는 ?�니메이?�인지 ?�인
         if (myAnim.GetCurrentAnimatorStateInfo(0).IsName(Anim) == true)
         {
-            // 원하는 애니메이션이라면 플레이 중인지 체크
+            // ?�하???�니메이?�이?�면 ?�레??중인지 체크
             float animTime = myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
             if (animTime == 0)
             {
                 return false;
-                // 플레이 중이 아님
+                // ?�레??중이 ?�님
             }
             if (animTime > 0 && animTime < 1.0f)
             {
                 return true;
-                // 애니메이션 플레이 중
+                // ?�니메이???�레??�?
             }
             else if (animTime >= 1.0f)
             {
-                // 애니메이션 종료
+                // ?�니메이??종료
             }
         }
         return false;
@@ -329,8 +329,8 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
                 }
                 else
                 {
-                    Debug.Log("현재슬롯에 스킬이 없습니다.");
-                    //스킬 실패 사운드
+                    Debug.Log("?�재?�롯???�킬???�습?�다.");
+                    //?�킬 ?�패 ?�운??
                     return;
                 }
 
@@ -384,7 +384,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
     protected override void OnDead()
     {
-        deathAlarm?.Invoke(0);
+        deathAlarm?.Invoke(0, gameObject);
         stopAct?.Invoke(null);
         StartCoroutine(TimeControl());
         myAnim.SetTrigger("t_Death");

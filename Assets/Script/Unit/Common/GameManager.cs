@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
     private Queue<WaveData> waveQueue = new Queue<WaveData>();
     private MonsterFactory mf;
 
-    private GameObject Monster;
-
     public UnityEvent<int> deadAct;
     public GameObject Player;
     public HpAndEnergy hpEpBar;
@@ -25,7 +23,7 @@ public class GameManager : MonoBehaviour
 
 
     Player pl;
-    Monster Ms;
+    List<GameObject> monsters = new List<GameObject>();
 
 
 
@@ -37,11 +35,12 @@ public class GameManager : MonoBehaviour
         pl.hpbarChangeAct.AddListener(hpEpBar.HpGageTrigger);
 
 
-        Monster = mf.CreateMonster(30000);
-        Ms = Monster.GetComponent<Monster>();
+        //Monster = mf.CreateMonster(30000);
+        //Ms = Monster.GetComponent<Monster>();
 
 
         LoadWaveData(1);
+        StartCoroutine(WaveRound());
         LoadPlayerStat();
     }
 
@@ -64,11 +63,13 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        /*
         //for debug
         while(waveQueue.Count > 0)
         {
             Debug.Log(waveQueue.Dequeue().index);
         }
+        */
     }
 
     private void LoadPlayerStat()
@@ -99,11 +100,11 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.F4))
         {
-            OnGameEnd(1);
+            OnGameEnd(1, gameObject);
         }
     }
 
-    public void OnGameEnd(int UnitType)
+    public void OnGameEnd(int UnitType, GameObject deadUnit)
     {
         pl.enabled = false;
         var playerdata = DataManager.instance.playerData;
@@ -113,11 +114,22 @@ public class GameManager : MonoBehaviour
         }
         else // Monstar Dead
         {
-            pl.Exp += Ms.Exp;
-            playerdata.Character_CurrentExp += Ms.Exp;
+            //pl.Exp += Ms.Exp;
+            //playerdata.Character_CurrentExp += Ms.Exp;
+            if (monsters.Contains(deadUnit))
+            {
+                monsters.Remove(deadUnit);
+                if(monsters.Count == 0)
+                {
+                    //RoundEnd
+                    //new Round Start
+                    StartCoroutine(WaveRound());
+                }
+            }
+
             StartCoroutine(LevelUp());
         }
-        deadAct.Invoke(UnitType);
+        deadAct?.Invoke(UnitType);
         DataManager.instance.SaveData();
         StartCoroutine(tempDebug());
         if (cameraMove.isBoss)
@@ -154,12 +166,66 @@ public class GameManager : MonoBehaviour
             playerdata.Character_Hp = playerstat.Character_Hp + plLvstat.Total_Hp;
         }
     }
-    /*
+    
     private IEnumerator WaveRound()
     {
+        int spawnOffset = 15;
+        if(waveQueue.Count > 0)
+        {
+            monsters.Clear();
+            WaveData temp = waveQueue.Dequeue();
 
+            int count = 0;
+            count += temp.Wave_Monster_Count1;
+            count += temp.Wave_Monster_Count2;
+            count += temp.Wave_Monster_Count3;
+            count += temp.Wave_Monster_Count4;
+            count += temp.Wave_Monster_Count5;
+
+            float angle = 360 / (float)count;
+            Vector3 spawnPoint = Vector3.forward * spawnOffset;
+
+            for(int i = 0; i < temp.Wave_Monster_Count1 && temp.Wave_Monster1 != 0; ++i)
+            {
+                monsters.Add(mf.CreateMonster(temp.Wave_Monster1));
+                spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
+                monsters.Last().transform.position = spawnPoint;
+                yield return new WaitForSeconds(1);
+            }
+            for (int i = 0; i < temp.Wave_Monster_Count2 && temp.Wave_Monster2 != 0; ++i)
+            {
+                monsters.Add(mf.CreateMonster(temp.Wave_Monster2));
+                spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
+                monsters.Last().transform.position = spawnPoint;
+                yield return new WaitForSeconds(1);
+            }
+            for (int i = 0; i < temp.Wave_Monster_Count3 && temp.Wave_Monster3 != 0; ++i)
+            {
+                monsters.Add(mf.CreateMonster(temp.Wave_Monster3));
+                spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
+                monsters.Last().transform.position = spawnPoint;
+                yield return new WaitForSeconds(1);
+            }
+            for (int i = 0; i < temp.Wave_Monster_Count4 && temp.Wave_Monster4 != 0; ++i)
+            {
+                monsters.Add(mf.CreateMonster(temp.Wave_Monster4));
+                spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
+                monsters.Last().transform.position = spawnPoint;
+                yield return new WaitForSeconds(1);
+            }
+            for (int i = 0; i < temp.Wave_Monster_Count5 && temp.Wave_Monster5 != 0; ++i)
+            {
+                monsters.Add(mf.CreateMonster(temp.Wave_Monster5));
+                spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
+                monsters.Last().transform.position = spawnPoint;
+                yield return new WaitForSeconds(1);
+            }
+
+
+            yield return null;
+        }
     }
-    */
+    
     public void EndGame()
     {
         var filePath = "Assets/Resources/Player/PlayerStat/Playerlv.json";
