@@ -41,7 +41,7 @@ public class SkillPopup : MonoBehaviour
     {
         for(int i = 0; i < Content.transform.childCount; i++)
         {
-            //if()
+            //if(Content.transform.GetChild(i).)
         }
     }
     public void SkillChange(string SkillName, int index)

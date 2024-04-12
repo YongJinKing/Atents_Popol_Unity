@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PercentCalculate : MonoBehaviour
 {
-    private void Start() {
-        Debug.Log(Calculate(500, 50));
-    }
+    
     public static float Calculate(int ReferenceValue, int Value)
     {
         float CalculatePercent = 0.00f;
