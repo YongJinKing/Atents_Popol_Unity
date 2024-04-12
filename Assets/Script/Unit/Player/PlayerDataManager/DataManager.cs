@@ -24,14 +24,14 @@ public class PlayerData
     public int Weapon_Ability;
     public int Armor_Ability;
     public int WeaponType;
-     //0 : ?œì† ê²€, 1: ?‘ì† ê²€, 2 : ?œì† ?”ê¸°, 3 : ?‘ì† ?”ê¸°, 4 : ì°? 5 : ?¨ê?, 6 : ?¬ì°½??ì°?
+     //0 : ?ï¿½ì† ê²€, 1: ?ï¿½ì† ê²€, 2 : ?ï¿½ì† ?ï¿½ê¸°, 3 : ?ï¿½ì† ?ï¿½ê¸°, 4 : ï¿½? 5 : ?ï¿½ï¿½?, 6 : ?ï¿½ì°½??ï¿½?
     public int ArmorType;
-    //10 : ê°€ì£? 11 : ê²½ê°‘, 12 : ?ê¸ˆ
+    //10 : ê°€ï¿½? 11 : ê²½ê°‘, 12 : ?ï¿½ê¸ˆ
     
     public int Weapon_Duration;
     public int Armor_Duration;
-    
-    public List<String> Skill = new List<string>();
+    public string[] UiSkillList = new string[100];
+    public List<String> InGameSkill = new List<string>();
     public bool[] clearStage;
     public int PlayerGold = 0;
     public List<int> PlayerInven = new List<int>();
@@ -50,7 +50,7 @@ public class DataManager : MonoBehaviour
 
     public static DataManager instance;
 
-    private void Awake()    //?±ê???
+    private void Awake()    //?ï¿½ï¿½???
     {
         if(instance == null)
         {
@@ -61,7 +61,7 @@ public class DataManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-        path = Application.dataPath + "/Data/PlayerSaveFile/";      // json?Œì¼ ?€??ê²½ë¡œ
+        path = Application.dataPath + "/Data/PlayerSaveFile/";      // json?ï¿½ì¼ ?ï¿½??ê²½ë¡œ
     }
 
     public void Start()

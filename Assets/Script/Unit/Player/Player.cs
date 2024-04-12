@@ -306,9 +306,9 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
             if (Input.GetKeyDown(controllKey[(E_Skill)i]))
             {
                 var plskill = DataManager.instance.playerData;
-                if (plskill.Skill.Count > 0)
+                if (plskill.InGameSkill.Count > 0)
                 {
-                    if (!string.IsNullOrWhiteSpace(plskill.Skill[i]))
+                    if (!string.IsNullOrWhiteSpace(plskill.InGameSkill[i]))
                     {
                         string Weaponpos = null;
                         switch (WeaponType)
@@ -320,8 +320,8 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
                                 Weaponpos = "TwoHandSwordSkill";
                                 break;
                         }
-                        Debug.Log(plskill.Skill[i]);
-                        GameObject effect = Resources.Load($"Player/SkillEffect/{Weaponpos}/{plskill.Skill[i]}") as GameObject;
+                        Debug.Log(plskill.InGameSkill[i]);
+                        GameObject effect = Resources.Load($"Player/SkillEffect/{Weaponpos}/{plskill.InGameSkill[i]}") as GameObject;
                         sm = effect.GetComponent<SkillManager>();
                     }
                 }
@@ -339,7 +339,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
                     curBattleStat.EnergyGage -= sm.EnergyGage;
                     GetRaycastHit();
                     stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-                    myAnim.SetTrigger(plskill.Skill[i]);
+                    myAnim.SetTrigger(plskill.InGameSkill[i]);
                     rotAct?.Invoke(dir, rotSpeed);
                 }
                 else

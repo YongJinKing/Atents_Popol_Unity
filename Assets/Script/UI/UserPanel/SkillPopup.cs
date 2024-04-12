@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SkillPopup : MonoBehaviour
 {
+    
     public GameObject Content;
     public GameObject PlayerSkill;
     public GameObject DragImage;
@@ -20,10 +20,12 @@ public class SkillPopup : MonoBehaviour
     }
     void SlotUpdate()
     {
-        AllSlots = Resources.LoadAll<GameObject>("Player/SkillEffect/TwoHandSwordSkill");
+        AllSlots = Resources.LoadAll<GameObject>("Player/SkillEffect");
         for(int i = 0; i < AllSlots.Length; i++)
         {
             Instantiate(Resources.Load<GameObject>("UI/UserSkill/SlotBg"), Content.transform);
+            Content.transform.GetChild(i).GetComponent<UserSkillSlot>().WeaponType
+            = AllSlots[i].GetComponent<SkillManager>().WeaponType;
             var go = Content.transform.GetChild(i).Find("Paper");
             go.Find("Image").GetComponent<Image>().sprite = 
             AllSlots[i].GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
@@ -33,7 +35,14 @@ public class SkillPopup : MonoBehaviour
             WeaponTypeToString(AllSlots[i].GetComponent<SkillManager>().WeaponType);
             go.Find("SkillDesc").GetChild(0).GetComponent<TMP_Text>().text = //SkillType
             AllSlots[i].GetComponent<SkillManager>().uiSkillStatus.uiSkillDesc;
-        }   
+        }
+    }
+    public void SortSlot()
+    {
+        for(int i = 0; i < Content.transform.childCount; i++)
+        {
+            //if()
+        }
     }
     public void SkillChange(string SkillName, int index)
     {
@@ -47,11 +56,14 @@ public class SkillPopup : MonoBehaviour
         }
         PlayerSkill.transform.Find("GridLine").GetChild(index).GetComponent<Image>().sprite =
         DragImage.GetComponent<Image>().sprite;
-        DataManager.instance.playerData.Skill = new List<string>();
+        DataManager.instance.playerData.InGameSkill = new List<string>();
         for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)
         {
             var go = PlayerSkill.transform.Find("GridLine").GetChild(i);
-            DataManager.instance.playerData.Skill.Add(go.GetComponent<Image>().sprite.name);
+            if(go.GetComponent<Image>().sprite.name != "Grey")
+                DataManager.instance.playerData.InGameSkill.Add(go.GetComponent<Image>().sprite.name);
+            else
+                DataManager.instance.playerData.InGameSkill.Add(null);
         }
     }
 

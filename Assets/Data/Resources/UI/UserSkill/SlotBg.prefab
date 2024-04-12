@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 2257420981911737049}
   - component: {fileID: 2306769508147507379}
   - component: {fileID: 6288628981765662870}
-  - component: {fileID: 4373642415762322327}
+  - component: {fileID: 340497997582130057}
   m_Layer: 5
   m_Name: SlotBg
   m_TagString: Untagged
@@ -854,7 +854,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4373642415762322327
+--- !u!114 &340497997582130057
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7295372629662173145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27b7591bf7210874480fb79b5136456b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a57644a42ffa2644a51c8a7b317bec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7471092717382224917

@@ -12,6 +12,7 @@ public class UserPanel : MonoBehaviour
     public GameObject BossMonsterObj;
     public GameObject DragImage;
     public UnityEvent PlayerAbilityUpdate;
+    public UnityEvent SkillSlotUpdate;
     public UnityEvent<int> BtnAct;
     public UnityEvent<int> CleanBtnAct;
     public UnityEvent<int> FreshBtnAct;
@@ -43,6 +44,10 @@ public class UserPanel : MonoBehaviour
         else 
         {
             ShowPopup(index);
+            if(index == 1)
+            {
+                SkillSlotUpdate?.Invoke();
+            }
             CleanBtnAct?.Invoke(-1);
             FreshBtnAct?.Invoke(0);
         }

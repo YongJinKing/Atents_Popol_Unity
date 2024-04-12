@@ -14,10 +14,23 @@ public class InGameUISkillSlot : MonoBehaviour
         for(int i = 0; i < SkillSlotList.childCount; i++)
         {
             GameObject gameObject = Resources.Load<GameObject>
-            ($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(DataManager.instance.playerData.WeaponType)}/{DataManager.instance.playerData.Skill[i]}");
+            ($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(DataManager.instance.playerData.WeaponType)}/{DataManager.instance.playerData.InGameSkill[i]}");
             
-            SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().sprite
-            = gameObject.GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
+            if(gameObject != null)
+            {
+                SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().sprite
+                = gameObject.GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
+                Color color = SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().color;
+                color.a = 1.0f;
+                SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().color = color;
+            }
+            else
+            {
+                Color color = SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().color;
+                color.a = 0.0f;
+                SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().color = color;
+            }
+            
         }
     }
 

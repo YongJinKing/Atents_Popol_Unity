@@ -3560,6 +3560,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  SkillSlotUpdate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 341848536}
+        m_TargetAssemblyTypeName: SkillPopup, Assembly-CSharp
+        m_MethodName: SlotUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   BtnAct:
     m_PersistentCalls:
       m_Calls:
@@ -12344,7 +12359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c00edfdd0be44469c5ad6aa7dd5f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Content: {fileID: 532882507}
+  TransContents: {fileID: 532882508}
+  ObjContent: {fileID: 0}
   PlayerSkill: {fileID: 164297981}
   DragImage: {fileID: 1818604957}
   isMouseInSlot: 00000000
@@ -55808,7 +55824,108 @@ MonoBehaviour:
     ArmorType: 0
     Weapon_Duration: 0
     Armor_Duration: 0
-    Skill: []
+    UiSkillList:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    InGameSkill: []
     clearStage: 
     PlayerGold: 0
     PlayerInven: 
