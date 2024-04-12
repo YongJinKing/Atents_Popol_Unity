@@ -17,6 +17,7 @@ public class SkillPopup : MonoBehaviour
     private void Start() 
     {
         SlotUpdate();
+        SortSlot();
     }
     void SlotUpdate()
     {
@@ -32,20 +33,48 @@ public class SkillPopup : MonoBehaviour
             go.Find("SkillName").GetChild(0).GetComponent<TMP_Text>().text = //Skill Name
             AllSlots[i].GetComponent<SkillManager>().uiSkillStatus.uiSkillName;
             go.Find("SkillType").GetChild(0).GetComponent<TMP_Text>().text = //SkillType
-            WeaponTypeToString(AllSlots[i].GetComponent<SkillManager>().WeaponType);
+            ItemTypeIntToString.IntToStringUIDesc(AllSlots[i].GetComponent<SkillManager>().WeaponType);
             go.Find("SkillDesc").GetChild(0).GetComponent<TMP_Text>().text = //SkillType
             AllSlots[i].GetComponent<SkillManager>().uiSkillStatus.uiSkillDesc;
         }
     }
     public void SortSlot()
     {
+        var inst = DataManager.instance.playerData;
         for(int i = 0; i < Content.transform.childCount; i++)
         {
-            //if(Content.transform.GetChild(i).)
+            if(Content.transform.GetChild(i).GetComponent<UserSkillSlot>().WeaponType
+                == DataManager.instance.playerData.WeaponType)
+            {
+                Content.transform.GetChild(i).gameObject.SetActive(true);
+            }
+            else
+            {
+                Content.transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
+        for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)
+        {
+         
+            if(inst.UiSkillList[i + (10 * inst.WeaponType)] != "")
+            {
+                //Debug.Log($"인덱스 체크  : {i + (10 * inst.WeaponType)} 배열 체크 :{inst.UiSkillList[i + (10 * inst.WeaponType)]} ");
+                GameObject gameObject = Resources.Load<GameObject>($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(inst.WeaponType)}/{inst.UiSkillList[i + (10 * inst.WeaponType)]}");
+                PlayerSkill.transform.Find("GridLine").GetChild(i).GetComponent<Image>().sprite =
+                gameObject.GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
+            }
+            else
+            {
+                PlayerSkill.transform.Find("GridLine").GetChild(i).GetComponent<Image>().sprite =
+                Resources.Load<Sprite>("UI/UserSkill/Grey");
+            }
+            
+        }
+        
     }
     public void SkillChange(string SkillName, int index)
     {
+        var inst = DataManager.instance.playerData;
         for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)
         {
             var go = PlayerSkill.transform.Find("GridLine").GetChild(i);
@@ -56,37 +85,20 @@ public class SkillPopup : MonoBehaviour
         }
         PlayerSkill.transform.Find("GridLine").GetChild(index).GetComponent<Image>().sprite =
         DragImage.GetComponent<Image>().sprite;
-        DataManager.instance.playerData.InGameSkill = new List<string>();
+        inst.InGameSkill = new List<string>();
         for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)
         {
             var go = PlayerSkill.transform.Find("GridLine").GetChild(i);
             if(go.GetComponent<Image>().sprite.name != "Grey")
-                DataManager.instance.playerData.InGameSkill.Add(go.GetComponent<Image>().sprite.name);
+                inst.InGameSkill.Add(go.GetComponent<Image>().sprite.name);
             else
-                DataManager.instance.playerData.InGameSkill.Add(null);
+                inst.InGameSkill.Add(null);
+            inst.UiSkillList[index + (10 * inst.WeaponType)] = DragImage.GetComponent<Image>().sprite.name;
         }
+        
     }
 
-    public string WeaponTypeToString(int index)
-    {
-        string Rtstring = "";
-        //0 : 한손 검, 1: 양손 검, 2 : 한손 둔기, 3 : 양손 둔기, 4 : 창, 5 : 단검, 6 : 투창용 창, 10 : 가죽, 11 : 경갑, 12 : 판금
-        if(index == 0)
-            Rtstring = "참격";
-        if(index == 1)
-            Rtstring = "참격";
-        if(index == 2)
-            Rtstring = "타격";
-        if(index == 3)
-            Rtstring = "타격";
-        if(index == 4)
-            Rtstring = "관통";
-        if(index == 5)
-            Rtstring = "참격";
-        if(index == 6)
-            Rtstring = "관통";
-        return Rtstring;
-    }
+  
 
     public void MouseInSlotCheck(int index, bool InCheck)
     {
