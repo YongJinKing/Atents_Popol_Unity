@@ -184,7 +184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1209390980219094331
 Transform:
   m_ObjectHideFlags: 0
@@ -277,7 +277,3 @@ MonoBehaviour:
   plCam: {fileID: 7516981819283784254}
   moCam: {fileID: 407740743698804084}
   RayDebug: 1
-  plFaceCam: {fileID: 0}
-  moFaceCam: {fileID: 0}
-  plFaceCamOffset: 2.5
-  moFaceCamOffset: -5

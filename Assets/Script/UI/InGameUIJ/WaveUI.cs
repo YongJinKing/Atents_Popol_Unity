@@ -10,9 +10,9 @@ public class WaveUI : MonoBehaviour
     bool iscine = false;
     public int TotalWave;
 
-    public GameObject WaveFrame;
     public GameObject WaveTxt;
     public GameObject WaveNum;
+    public GameObject StopWatchUI;
 
     public Vector2 txtPos;
     public Vector2 txtEndPos;
@@ -25,7 +25,10 @@ public class WaveUI : MonoBehaviour
     public GameObject BroadCastCore;
     public GameObject BossOpening;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        StartCoroutine("StopWatch");
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Keypad0) && !iscine)
@@ -45,7 +48,7 @@ public class WaveUI : MonoBehaviour
 
     private void SpawnMonster()
     {
-        MonsterFactory a = new MonsterFactory();
+        /*MonsterFactory a = new MonsterFactory();
         switch (nowWave)
         {
             case 1:
@@ -69,7 +72,7 @@ public class WaveUI : MonoBehaviour
                 BroadCastCore.SetActive(true);
                 cameraMove.isBoss = true;
                 break;
-        }
+        }*/
     }
 
     int state = 0;
@@ -107,7 +110,7 @@ public class WaveUI : MonoBehaviour
             if(alph <= -1)
             {
                 txtEndPos.y = 1025;
-                txtEndScale = 1;
+                txtEndScale = 0.44f;
                 alph = 1.0f;
                 ++state;
                 Debug.Log("1end");
@@ -129,7 +132,7 @@ public class WaveUI : MonoBehaviour
             if (alph <= -1)
             {
                 txtEndPos.y = 1025;
-                txtEndScale = 1;
+                txtEndScale = 0.44f;
                 alph = 1.0f;
                 state = 2;
                 yield return new WaitForSeconds(1f);
@@ -145,7 +148,7 @@ public class WaveUI : MonoBehaviour
             if (Mathf.Floor(Vector2.Distance(txtPos, txtEndPos)) == 0)
             {
                 txtEndPos.y = 540;
-                txtEndScale = 2f;
+                txtEndScale = 1.5f;
                 ++state;
                 iscine = false;
                 
@@ -158,7 +161,25 @@ public class WaveUI : MonoBehaviour
 
     private void UIMove()
     {
-        WaveFrame.GetComponent<RectTransform>().position = txtPos;
-        WaveFrame.GetComponent<RectTransform>().localScale = new Vector3(txtScale, txtScale, 1);
+        WaveTxt.GetComponent<RectTransform>().position = txtPos;
+        WaveTxt.GetComponent<RectTransform>().localScale = new Vector3(txtScale, txtScale, 1);
+    }
+
+    float playTime = 0;
+    IEnumerator StopWatch()
+    {
+        while (true)
+        {
+            Debug.Log(playTime);
+            playTime += Time.deltaTime;
+            StopWatchUI.GetComponent<TMP_Text>().text = "Time : " + Mathf.Floor(playTime).ToString()+"s";
+            yield return null;
+        }
+    }
+
+    public void saveTime()
+    {
+        StopCoroutine("StopWatch");
+        DataManager.instance.playerData.PlayTime += (int)playTime;
     }
 }

@@ -108,7 +108,7 @@ public class cameraMove : MonoBehaviour
             Debug.Log("isBoss Dead");
             isCine = true;
             isTracking = false;
-
+            WaveUI w = new WaveUI(); w.saveTime();
             switch (Unit)
             {
                 case 0:
