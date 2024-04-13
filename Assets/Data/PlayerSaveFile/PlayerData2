@@ -121,5 +121,6 @@
     "clearStage": [],
     "PlayerGold": 0,
     "PlayerInven": [],
-    "PlayerItemDuraion": []
+    "PlayerItemDuraion": [],
+    "PlayTime": 0
 }
