@@ -13,8 +13,8 @@
     "Armor_Ability": 40,
     "WeaponType": 1,
     "ArmorType": 10,
-    "Weapon_Duration": 92,
-    "Armor_Duration": 53,
+    "Weapon_Duration": 88,
+    "Armor_Duration": 97,
     "UiSkillList": [
         "",
         "",
@@ -123,8 +123,11 @@
         "Slash",
         "SwordIlusion"
     ],
-    "clearStage": [],
-    "PlayerGold": 3000,
+    "clearStage": [
+        true,
+        false
+    ],
+    "PlayerGold": 10000,
     "PlayerInven": [
         3001,
         1200,
@@ -139,5 +142,5 @@
         100,
         100
     ],
-    "PlayTime": 0
+    "PlayTime": 1654
 }

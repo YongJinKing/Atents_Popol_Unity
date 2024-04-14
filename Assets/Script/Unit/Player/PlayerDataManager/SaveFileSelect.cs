@@ -13,9 +13,9 @@ public class SaveFileSelect : MonoBehaviour
     public GameObject NewSlotPopup;
     int SelectSlot = 0;
     public TextMeshProUGUI[] GoldText;
-    public TextMeshProUGUI[] TimeText;
-    public TextMeshProUGUI[] DescText;
-    public GameObject[] CoinIC;
+    public TextMeshProUGUI[] ProgressText;
+    public TextMeshProUGUI[] LevelText;
+    public TextMeshProUGUI[] PLayTimeText;
     public bool[] savefile = new bool[3];
 
     public GameObject[] delButton;  //데이터 삭제버튼(임시)
@@ -28,62 +28,56 @@ public class SaveFileSelect : MonoBehaviour
 
     private void Start()
     {
-        SlotCheck();
         PlayerDetaManager.GetInstance().LoadPlayerData();
-        for(int i = 0; i < 3; i++)
-        {
-            transform.GetChild(0).GetChild(i).GetChild(0).GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(0).GetChild(i).GetChild(0).GetChild(1).gameObject.SetActive(false);
-            if (savefile[i])   // 데이터가 있다면
-            {
-            	transform.GetChild(0).GetChild(i).GetChild(0).GetChild(0).gameObject.SetActive(true);
-            }
-            else    // 데이터가 없으면 
-            {
-                transform.GetChild(0).GetChild(i).GetChild(0).GetChild(1).gameObject.SetActive(true);
-            }
-        }
-        
+        SlotCheck();
     }
 
     void SlotCheck()
     {
         for (int i = 0; i < 3; i++)
         {
-            
+            DataManager datamanager = DataManager.instance;
+            transform.GetChild(0).GetChild(i).GetChild(0).GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(0).GetChild(i).GetChild(0).GetChild(1).gameObject.SetActive(false);
             if (File.Exists(DataManager.instance.path + DataManager.instance.fileName + $"{i}"))	// 슬롯 데이터 존재 유무 확인
             {
                 savefile[i] = true;     // 데이터가 있으면 true값 저장
-                /* CoinIC[i].SetActive(true);
-                delButton[i].SetActive(true); */
-                DataManager.instance.SlotNum = i;
-                DataManager.instance.LoadData();
+                datamanager.SlotNum = i;
+                datamanager.LoadData();
                 ItemDataManager.GetInstance().InvenItemLoadDatas();
                 
                 if(DataManager.instance.playerData.Weapon_Id> 0)
                 {
                     transform.Find("SlotList").GetChild(i).GetChild(0).Find("LoadSlot").Find("ProfileSlot").Find("Weapon").GetComponent<UIItem>().
-                    Init(DataManager.instance.playerData.Weapon_Id);
+                    Init(datamanager.playerData.Weapon_Id);
                     transform.Find("SlotList").GetChild(i).GetChild(0).Find("LoadSlot").Find("ProfileSlot").Find("Armor").GetComponent<UIItem>().
-                    Init(DataManager.instance.playerData.Armor_Id);
+                    Init(datamanager.playerData.Armor_Id);
                     
                 }
-                
-                
-                
-        
-                /* GoldText[i].text = DataManager.instance.playerData.PlayerGold.ToString();	// 슬롯에 표시할 데이터
-                //TimeText[i].text = "PlayTime";   //DataManager.instance.playerData.PlayerGold.ToString();
-                DescText[i].text = "Player.Lv : " + DataManager.instance.playerData.Character_CurrentLevel.ToString() +
-                                   "\n(추가 예정)"; */
+
+                //Slot Display Data
+                transform.GetChild(0).GetChild(i).GetChild(0).GetChild(0).gameObject.SetActive(true);
+
+                int count = 0;
+                foreach (bool value in datamanager.playerData.clearStage)
+                {
+                    if (value)
+                    {
+                        count++;
+                    }
+                }
+
+                if (datamanager.playerData.PlayTime < 60) PLayTimeText[i].text = "<1m";
+                else PLayTimeText[i].text = (datamanager.playerData.PlayTime / 60).ToString() + ":" + (datamanager.playerData.PlayTime % 60).ToString("D2");
+
+                ProgressText[i].text = (100*count/datamanager.playerData.clearStage.Length).ToString()+"%";
+                GoldText[i].text = datamanager.playerData.PlayerGold.ToString();
+                LevelText[i].text = datamanager.playerData.Character_CurrentLevel.ToString() + "Lv";
             }
-            else	// 데이터가 없다면
+            else	// IF Data Null
             {
-                /* GoldText[i].text = "";
-                TimeText[i].text = "PlayTime";
-                DescText[i].text = "비어있음";  //빈 슬롯 텍스트
-                CoinIC[i].SetActive(false);
-                delButton[i].SetActive(false); */
+                transform.GetChild(0).GetChild(i).GetChild(0).GetChild(1).gameObject.SetActive(true);
+                delButton[i].SetActive(false);
             }
         }
         DataManager.instance.DataClear();   // 데이터 체크하는동안 저장된 데이터 클리어

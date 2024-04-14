@@ -48,7 +48,7 @@ public class WaveUI : MonoBehaviour
 
     private void SpawnMonster()
     {
-        /*MonsterFactory a = new MonsterFactory();
+        MonsterFactory a = new MonsterFactory();
         switch (nowWave)
         {
             case 1:
@@ -72,7 +72,7 @@ public class WaveUI : MonoBehaviour
                 BroadCastCore.SetActive(true);
                 cameraMove.isBoss = true;
                 break;
-        }*/
+        }
     }
 
     int state = 0;
@@ -93,7 +93,6 @@ public class WaveUI : MonoBehaviour
                     break;
                 }
                 ++state;
-                Debug.Log("0end");
             }
             yield return null;
         }
@@ -113,7 +112,6 @@ public class WaveUI : MonoBehaviour
                 txtEndScale = 0.44f;
                 alph = 1.0f;
                 ++state;
-                Debug.Log("1end");
                 yield return new WaitForSeconds(1f);
             }
             yield return null;
@@ -151,8 +149,6 @@ public class WaveUI : MonoBehaviour
                 txtEndScale = 1.5f;
                 ++state;
                 iscine = false;
-                
-                Debug.Log("2end");
                 SpawnMonster();
             }
             yield return null;
@@ -170,7 +166,6 @@ public class WaveUI : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log(playTime);
             playTime += Time.deltaTime;
             StopWatchUI.GetComponent<TMP_Text>().text = "Time : " + Mathf.Floor(playTime).ToString()+"s";
             yield return null;

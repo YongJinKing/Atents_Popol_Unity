@@ -32,7 +32,7 @@ public class PlayerData
     public int Armor_Duration;
     public string[] UiSkillList = new string[100];
     public List<String> InGameSkill = new List<string>();
-    public bool[] clearStage;
+    public bool[] clearStage = { false, false };
     public int PlayerGold = 0;
     public List<int> PlayerInven = new List<int>();
     public List<int> PlayerItemDuraion = new List<int>();

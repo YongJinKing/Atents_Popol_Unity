@@ -118,8 +118,12 @@
         ""
     ],
     "InGameSkill": [],
-    "clearStage": [],
+    "clearStage": [
+        false,
+        false
+    ],
     "PlayerGold": 0,
     "PlayerInven": [],
-    "PlayerItemDuraion": []
+    "PlayerItemDuraion": [],
+    "PlayTime": 0
 }
