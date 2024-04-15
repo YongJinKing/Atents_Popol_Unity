@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -221,9 +222,10 @@ public class GameManager : MonoBehaviour
                 {
                     monsters.Last().GetComponent<Monster>().CinematicEnd();
                 }
-                else
+                else if(curWave.Wave_Monster1 / 10000 >= 3)
                 {
                     monsters.Last().GetComponent<Monster>().CinematicStart();
+                    monsters.Last().GetComponentInChildren<Camera>().gameObject.SetActive(true);
                 }
 
                 yield return new WaitForSeconds(1);
