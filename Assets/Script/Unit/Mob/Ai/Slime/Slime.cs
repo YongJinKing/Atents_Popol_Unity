@@ -116,6 +116,11 @@ public class Slime : Monster
                 onDeadAct?.Invoke();
                 Debug.Log("Monster Death");
                 myAnim.SetTrigger("t_Death");
+                Collider temp = transform.GetComponent<Collider>();
+                temp.attachedRigidbody.isKinematic = true;
+                temp.attachedRigidbody.useGravity = false;
+                temp.enabled = false;
+                ProcessState();
                 break;
         }
     }
@@ -159,6 +164,7 @@ public class Slime : Monster
                     });
                 break;
             case State.Death:
+                StartCoroutine(DeadActing());
                 break;
         }
     }
@@ -315,6 +321,12 @@ public class Slime : Monster
             }
             yield return null;
         }
+    }
+
+    protected IEnumerator DeadActing()
+    {
+        yield return new WaitForSeconds(5.0f);
+        Destroy(gameObject);
     }
     #endregion
 
