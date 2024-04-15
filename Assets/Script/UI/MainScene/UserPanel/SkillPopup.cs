@@ -99,9 +99,6 @@ public class SkillPopup : MonoBehaviour
         }
         
     }
-
-  
-
     public void MouseInSlotCheck(int index, bool InCheck)
     {
         isMouseInSlot[index] = InCheck;
