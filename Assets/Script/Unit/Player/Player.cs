@@ -20,7 +20,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     ParticleSystem particle;
     SkillManager sm;
 
-    GameObject effect;
+    GameObject DebuffEffect;
 
     public GameObject Effectobj;
     
@@ -36,7 +36,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     public UnityEvent<UnityAction<float>> stopAct;
     public UnityEvent<Vector3, float> dadgeAct;
     public UnityEvent<Vector3, float> rotAct;
-    public UnityEvent<int, float> DeBuffAct;
+    public UnityEvent<int, float> BuffAct;
     public UnityEvent<int, int> EnergyGageAct;
     public UnityEvent<int> SkillAct;
 
@@ -174,20 +174,23 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         {
             float Corrosiontime = 10;
             StartCoroutine(Corrosion(Corrosiontime));
-            DeBuffType(200, Corrosiontime);
+            BuffType(200, Corrosiontime);
+            PlayBuffEffect("BuSick");
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             float DotTime = 10;
             StartCoroutine(Dot(DotTime));
-            DeBuffType(201, DotTime);
+            BuffType(201, DotTime);
+            PlayBuffEffect("Poison");
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             float SlowDebuffTime = 10;
             SlowDebuff(SlowDebuffTime);
-            DeBuffType(202, SlowDebuffTime);
+            BuffType(202, SlowDebuffTime);
+            PlayBuffEffect("Slow");
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha4))
@@ -196,25 +199,47 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             ChangeState(state.Stun);
             Invoke("ChangeIdle", StunDebuffTime);
-            DeBuffType(203, StunDebuffTime);
+            BuffType(203, StunDebuffTime);
+            PlayBuffEffect("Stun");
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha5))
         {
             isRun = false;
-            float RestraintDebuffTime = 10;
-            StartCoroutine(Restraint(RestraintDebuffTime));
-            DeBuffType(204, RestraintDebuffTime);
+            float BondageDebuffTime = 10;
+            StartCoroutine(Bondage(BondageDebuffTime));
+            BuffType(204, BondageDebuffTime);
+            PlayBuffEffect("Bondage");
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha6))
         {
             float BlindDebuffTime = 10;
-            DeBuffType(205, BlindDebuffTime);
+            BuffType(205, BlindDebuffTime);
+            PlayBuffEffect("Blind");
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            float HillBuffTime = 10;
+            BuffType(101, HillBuffTime);
+            StartCoroutine(Hill(HillBuffTime));
+
         }
     }
 
-    IEnumerator Restraint(float Debufftime)
+    IEnumerator Hill(float HillBufftime)
+    {
+        bufftime = 0;
+        while (bufftime < HillBufftime)
+        {
+            float tick = (float)(battleStat.HP * 0.003);
+            HP += (int)tick;
+            hpbarChangeAct?.Invoke(MaxHP, HP);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    IEnumerator Bondage(float Debufftime)
     {
         yield return new WaitForSeconds(Debufftime);
         isRun = true;
@@ -236,15 +261,15 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         bufftime = 0;
         while (bufftime < DotDeBufftime)
         {
-            float tick = (float)(curBattleStat.HP * 0.003);
+            float tick = (float)(curBattleStat.HP * 0.03);
             base.TakeDamage((int)tick, AttackType.Normal, DefenceType.Normal);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(1.0f);
         }
     }
 
-    void DeBuffType(int Type, float CoolTime)
+    void BuffType(int Type, float CoolTime)
     {
-        DeBuffAct?.Invoke(Type, CoolTime);
+        BuffAct?.Invoke(Type, CoolTime);
     }
 
     void ChangeIdle()
@@ -252,6 +277,18 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         myAnim.SetBool("b_Stun", false);
         ChangeState(state.Idle);
     }
+
+
+    void PlayBuffEffect(string DebuffName)
+    {
+        PlayerEffect Pe;
+        DebuffEffect = Instantiate<GameObject>(Resources.Load($"Player/DeBuff/{DebuffName}") as GameObject);
+        Pe = Effectobj.GetComponent<PlayerEffect>();
+        Pe.Effectpos(DebuffEffect);
+    }
+
+
+
 
     public bool GetRaycastHit()
     {

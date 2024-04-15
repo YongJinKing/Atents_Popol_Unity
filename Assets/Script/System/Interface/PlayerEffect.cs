@@ -17,7 +17,7 @@ public class PlayerEffect : MonoBehaviour, I_Effect, I_SimpleEffect
 {
     GameObject effect;
     
-    void Attackpos(GameObject effect)
+    public void Effectpos(GameObject effect)
     {
         Vector3 dir = transform.parent.transform.forward;
         effect.transform.position = transform.position;
@@ -38,13 +38,13 @@ public class PlayerEffect : MonoBehaviour, I_Effect, I_SimpleEffect
                 break;
         }
         effect = Instantiate<GameObject>(Resources.Load($"Player/SkillEffect/{Weaponpos}/{skill}") as GameObject);
-        Attackpos(effect);
+        Effectpos(effect);
     }
 
     public void SimpleEffect(string SimpleSkill)
     {
         effect = Instantiate<GameObject>(Resources.Load($"Player/Effect/{SimpleSkill}") as GameObject);
-        Attackpos(effect);
+        Effectpos(effect);
     }
 
 
