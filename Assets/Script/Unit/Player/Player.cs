@@ -36,7 +36,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     public UnityEvent<UnityAction<float>> stopAct;
     public UnityEvent<Vector3, float> dadgeAct;
     public UnityEvent<Vector3, float> rotAct;
-    public UnityEvent<int> DeBuffAct;
+    public UnityEvent<int, float> DeBuffAct;
     public UnityEvent<int, int> EnergyGageAct;
     public UnityEvent<int> SkillAct;
 
@@ -172,60 +172,69 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         bufftime += Time.deltaTime;
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            int DeBufftime = 10;
-            StartCoroutine(Corrosion(DeBufftime));
-            DeBuffType(200);
+            float Corrosiontime = 10;
+            StartCoroutine(Corrosion(Corrosiontime));
+            DeBuffType(200, Corrosiontime);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            int Dtime = 10;
-            StartCoroutine(Dot(Dtime));
-            DeBuffType(201);
+            float DotTime = 10;
+            StartCoroutine(Dot(DotTime));
+            DeBuffType(201, DotTime);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Debuff();
-            DeBuffType(202);
+            float SlowDebuffTime = 10;
+            SlowDebuff(SlowDebuffTime);
+            DeBuffType(202, SlowDebuffTime);
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha4))
         {
+            float StunDebuffTime = 10;
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             ChangeState(state.Stun);
-            Invoke("ChangeIdle", 3.0f);
-            DeBuffType(203);
+            Invoke("ChangeIdle", StunDebuffTime);
+            DeBuffType(203, StunDebuffTime);
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha5))
         {
             isRun = false;
-            int DeBuffTime = 10;
-            StartCoroutine(Restraint(DeBuffTime));
+            float RestraintDebuffTime = 10;
+            StartCoroutine(Restraint(RestraintDebuffTime));
+            DeBuffType(204, RestraintDebuffTime);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            float BlindDebuffTime = 10;
+            DeBuffType(205, BlindDebuffTime);
         }
     }
 
-    IEnumerator Restraint(int Dtime)
+    IEnumerator Restraint(float Debufftime)
     {
-        yield return new WaitForSeconds(Dtime);
+        yield return new WaitForSeconds(Debufftime);
         isRun = true;
     }
 
 
-    IEnumerator Corrosion(int Dtime)
+    IEnumerator Corrosion(float Debufftime)
     {
         curBattleStat.ATK -= curBattleStat.ATK / 10;
 
 
-        yield return new WaitForSeconds(Dtime);
+        yield return new WaitForSeconds(Debufftime);
         curBattleStat.ATK = battleStat.ATK;
     }
 
-    IEnumerator Dot(int Dtime)
+    IEnumerator Dot(float DotDeBufftime)
     {
 
         bufftime = 0;
-        while (bufftime < Dtime)
+        while (bufftime < DotDeBufftime)
         {
             float tick = (float)(curBattleStat.HP * 0.003);
             base.TakeDamage((int)tick, AttackType.Normal, DefenceType.Normal);
@@ -233,9 +242,9 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         }
     }
 
-    void DeBuffType(int Type)
+    void DeBuffType(int Type, float CoolTime)
     {
-        DeBuffAct?.Invoke(Type);
+        DeBuffAct?.Invoke(Type, CoolTime);
     }
 
     void ChangeIdle()
@@ -455,15 +464,15 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     }
 
 
-    public void Debuff()
+    public void SlowDebuff(float DeBuffTime)
     {
         curBattleStat.Speed -= (float)(battleStat.Speed * 0.1);
-        StartCoroutine(SlowDown());
+        StartCoroutine(SlowDown(DeBuffTime));
     }
 
-    IEnumerator SlowDown()
+    IEnumerator SlowDown(float DeBuffTime)
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(DeBuffTime);
         curBattleStat.Speed += (float)(battleStat.Speed * 0.1);
     }
 }
