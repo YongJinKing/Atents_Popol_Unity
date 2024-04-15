@@ -35,6 +35,8 @@ public class OpenningCine : MonoBehaviour
 
     public float waitTime;
 
+    public UnityEngine.Events.UnityEvent cineEndEvent;
+
     byte nowState = 0;
 
     private void Start()
@@ -160,6 +162,7 @@ public class OpenningCine : MonoBehaviour
                 ++nowState;
                 cameraMove.isCine = false;
                 StopCoroutine(Openning());
+                cineEndEvent?.Invoke();
                 Destroy(gameObject);
             }
             yield return null;

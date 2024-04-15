@@ -293,4 +293,12 @@ public class GameManager : MonoBehaviour
             File.Delete(filePath);
         }
     }
+
+    public void OnCinematicEnd()
+    {
+        foreach(GameObject data in monsters)
+        {
+            data.GetComponent<Monster>().CinematicEnd();
+        }
+    }
 }

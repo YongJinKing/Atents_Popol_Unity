@@ -25,9 +25,11 @@ public class WaveUI : MonoBehaviour
     public GameObject BroadCastCore;
     public GameObject BossOpening;
 
+    public Coroutine stopWatch;
+
     private void Start()
     {
-        StartCoroutine("StopWatch");
+        stopWatch = StartCoroutine("StopWatch");
     }
     void Update()
     {
@@ -39,47 +41,23 @@ public class WaveUI : MonoBehaviour
 
     public void nextWave()
     {
-        if (nowWave! <= 5)
+        if (nowWave! < TotalWave)
         {
             state = 0;
             StartCoroutine(WaveChange());
         }
     }
 
-    private void SpawnMonster()
-    {
-        MonsterFactory a = new MonsterFactory();
-        switch (nowWave)
-        {
-            case 1:
-                a.CreateMonster(30000);
-                break;
-            case 2:
-                a.CreateMonster(30000);
-                break;
-            case 3:
-                a.CreateMonster(30000);
-                break;
-            case 4:
-                a.CreateMonster(30000);
-                break;
-            case 5:
-                a.CreateMonster(30000);
-                break;
-            case 6:
-                a.CreateMonster(30000);
-                break;
-        }
-    }
-
     public void IsBossCo()
     {
+        Debug.Log("ISBossSrave");
         StartCoroutine("IsBossStage");
     }
     IEnumerator IsBossStage()
     {
         yield return new WaitForEndOfFrame();
-        Instantiate(BossOpening);
+        //Instantiate(BossOpening).SetActive(true);
+        BossOpening.SetActive(true);
         BroadCastCore.SetActive(true);
     }
 
@@ -88,6 +66,7 @@ public class WaveUI : MonoBehaviour
     {
         iscine = true;
         state = 0;
+        ++nowWave;
         while (state == 0)      //Move to Center
         {
             txtPos.y = Mathf.Lerp(txtPos.y, txtEndPos.y, Time.deltaTime * moveSpeed);
@@ -95,7 +74,7 @@ public class WaveUI : MonoBehaviour
             UIMove();
             if (Mathf.Floor(Vector2.Distance(txtPos, txtEndPos)) == 0)
             {
-                if(nowWave >= 5)
+                if(nowWave >= TotalWave)
                 {
                     state = 10;
                     break;
@@ -105,7 +84,6 @@ public class WaveUI : MonoBehaviour
             yield return null;
         }
         float alph = 1.0f;
-        ++nowWave;
         while (state == 1)      //Change num
         {
             alph -= Time.deltaTime*3;
@@ -157,7 +135,6 @@ public class WaveUI : MonoBehaviour
                 txtEndScale = 1.5f;
                 ++state;
                 iscine = false;
-                //SpawnMonster();
             }
             yield return null;
         }
@@ -182,7 +159,8 @@ public class WaveUI : MonoBehaviour
 
     public void saveTime()
     {
-        StopCoroutine("StopWatch");
+        if( stopWatch != null)
+            StopCoroutine(stopWatch);
         DataManager.instance.playerData.PlayTime += (int)playTime;
     }
 
