@@ -5,14 +5,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIItem : MonoBehaviour
+public class UIItem : MonoBehaviour, ICloneable
 {
     public Image icon;
     public TMP_Text txtCount;
     
     public int id;
-    
-
     public string ItemName;
     public string ItemDesc;
     public string ItemSmith;
@@ -23,7 +21,20 @@ public class UIItem : MonoBehaviour
     public int WeaponType;
     public int ItemPrice;
     
-
+    public object Clone()
+    {
+        UIItem uIItem= new UIItem();
+        uIItem.ItemName = ItemName;
+        uIItem.ItemDesc = ItemDesc;
+        uIItem.ItemSmith = ItemSmith;
+        uIItem.ItemRigging = ItemRigging;
+        uIItem.ItemValue = ItemValue;
+        uIItem.ItemDuration = ItemDuration;
+        uIItem.spName = spName;
+        uIItem.WeaponType = WeaponType;
+        uIItem.ItemPrice = ItemPrice;
+        return uIItem;
+    }
     public void Init(int id)
     {
         this.id = id;
@@ -68,7 +79,7 @@ public class UIItem : MonoBehaviour
         var NameData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_itemName];
         var DescData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_itemDesc];
         var SmithData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_smithTalk];
-      
+        this.id = uIItem.id;
         this.WeaponType = ItemData.Inven_weaponType;
         //0 : 한손 검, 1: 양손 검, 2 : 한손 둔기, 3 : 양손 둔기, 4 : 창, 5 : 단검, 6 : 투창용 창, 10 : 가죽, 11 : 경갑, 12 : 판금
         this.spName = SpriteData.ImageResourceName;
@@ -77,7 +88,7 @@ public class UIItem : MonoBehaviour
         this.ItemSmith = SmithData.String_Desc;
         this.ItemRigging = ItemData.Inven_riggingType;
         this.ItemValue = ItemData.Inven_itemValue;
-        this.ItemDuration = ItemData.Inven_durAbility;
+        this.ItemDuration = uIItem.ItemDuration;
         this.ItemPrice = ItemData.Inven_ItemPrice;
         Sprite sp = Resources.Load<Sprite>($"UI/UIItem/{spName}");
         this.icon.sprite = sp;

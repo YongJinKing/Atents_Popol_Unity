@@ -7,11 +7,11 @@
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
-    "Weapon_Id": 1200,
+    "Weapon_Id": 1101,
     "Armor_Id": 3001,
-    "Weapon_Ability": 30,
+    "Weapon_Ability": 40,
     "Armor_Ability": 40,
-    "WeaponType": 1,
+    "WeaponType": 0,
     "ArmorType": 10,
     "Weapon_Duration": 92,
     "Armor_Duration": 95,
@@ -131,13 +131,11 @@
     "PlayerInven": [
         3001,
         1200,
-        1101,
         1100,
         1101
     ],
     "PlayerItemDuraion": [
         100,
-        80,
         100,
         100,
         100

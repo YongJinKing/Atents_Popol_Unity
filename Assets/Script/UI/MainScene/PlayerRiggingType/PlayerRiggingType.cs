@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PlayerRiggingType : MonoBehaviour
 {
     int SlotNum;
-    int InvenItemId;
+    int InvenItem;
     public UnityEvent PlayerAbilityUpdate;
     void Start()
     {
@@ -22,10 +22,8 @@ public class PlayerRiggingType : MonoBehaviour
         {
             transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().Init(DataManager.instance.playerData.Weapon_Id);
             transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().Init(DataManager.instance.playerData.Armor_Id);
-            transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemDuration = DataManager.instance.playerData.Weapon_Duration;
-            transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().ItemDuration = DataManager.instance.playerData.Armor_Duration;
-            DataManager.instance.SaveData();
-            
+            transform.GetChild(1).GetChild(0).GetComponent<UIItem>().ItemDuration = DataManager.instance.playerData.Weapon_Duration;
+            transform.GetChild(1).GetChild(1).GetComponent<UIItem>().ItemDuration = DataManager.instance.playerData.Armor_Duration;
         }
     }
 
@@ -36,28 +34,35 @@ public class PlayerRiggingType : MonoBehaviour
     }
     public void TempItemId()
     {
-        InvenItemId = transform.GetComponent<Inventory>().ItemList[SlotNum].id;
-        var ItemData = ItemDataManager.GetInstance().dicItemDatas[InvenItemId];
+        UIItem InvenItem = transform.GetComponent<Inventory>().ItemList[SlotNum];
+        var ItemData = ItemDataManager.GetInstance().dicItemDatas[InvenItem.id];
         int ItemRigging = ItemData.Inven_riggingType;//0 : weapon, 1 :Armor
         ChangeItem(ItemRigging);
     }
     void ChangeItem(int index)
     {
-        int PlayerItemId = 0;
-        
+        int PlayerItem = 0;
+        int RiggingItemDur = 0;
+        int InvenItemDur = 0;
+        InvenItem = transform.GetComponent<Inventory>().ItemList[SlotNum].id;
+        InvenItemDur = transform.Find("GridLine").GetChild(SlotNum).GetComponent<UIItem>().ItemDuration;
         if(index == 0)
         {
-            PlayerItemId = transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().id;
-            transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().Init(InvenItemId);
-            DataManager.instance.playerData.Weapon_Id = InvenItemId;
+            PlayerItem = transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().id;
+            RiggingItemDur = transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemDuration;
+            transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().Init(InvenItem);
+            DataManager.instance.playerData.Weapon_Id = InvenItem;
         }
         if(index == 1)
         {
-            PlayerItemId = transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().id;
-            transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().Init(InvenItemId);
-            DataManager.instance.playerData.Armor_Id = InvenItemId;
+            PlayerItem = transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().id;
+            RiggingItemDur = transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().ItemDuration;
+            transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().Init(InvenItem);
+            DataManager.instance.playerData.Armor_Id = InvenItem;
         }
-        transform.Find("GridLine").GetChild(SlotNum).GetComponent<UIItem>().Init(PlayerItemId);
+        transform.Find("GridLine").GetChild(SlotNum).GetComponent<UIItem>().Init(PlayerItem);
+        transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemDuration = InvenItemDur;
+        transform.Find("GridLine").GetChild(SlotNum).GetComponent<UIItem>().ItemDuration = RiggingItemDur;
         PlayerAbilityUpdate?.Invoke();
     }
 

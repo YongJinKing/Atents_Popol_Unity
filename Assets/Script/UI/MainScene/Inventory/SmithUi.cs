@@ -45,6 +45,7 @@ public class SmithUi : MonoBehaviour
     {
         if(OnCheck)
         {
+            
             if(SmithGridLine.transform.GetChild(index).GetComponent<UIItem>().id > 0)
                 SmithGridLine.transform.GetChild(index).Find("HLImage").gameObject.SetActive(true);
         }

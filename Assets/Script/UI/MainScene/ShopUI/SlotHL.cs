@@ -12,6 +12,7 @@ public class SlotHL : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public UnityEvent<int, bool> OnHighLite;
     public void OnPointerEnter(PointerEventData eventData)
     {
+        //Debug.Log("들어옴?");
         OnHighLite?.Invoke(transform.GetSiblingIndex(),true);
     }
 

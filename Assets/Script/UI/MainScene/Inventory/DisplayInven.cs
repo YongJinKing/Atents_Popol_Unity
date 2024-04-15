@@ -18,14 +18,10 @@ public class DisplayInven : MonoBehaviour
         {
             GridLine.transform.GetChild(i).GetComponent<UIItem>().Attached
             (InvenDataManager.transform.GetChild(0).GetChild(i).GetComponent<UIItem>());
-            
-          
-            
         }
         for(; i < GridLine.transform.childCount; i++)
         {
-            GridLine.transform.GetChild(i).GetComponent<UIItem>().InitAll();
-          
+            GridLine.transform.GetChild(i).GetComponent<UIItem>().InitAll(); 
         }
         
         PlayerRiggingType.transform.Find("Weapon").GetComponent<UIItem>().Attached
