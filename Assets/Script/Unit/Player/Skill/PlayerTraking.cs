@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class PlayerTraking : MonoBehaviour
 {
-    public LayerMask player;
+    public LayerMask targetLayer;
     public Vector3 offSet;
-    Vector3 targetPosition;
-    Player pl;
+    GameObject target;
+
     public bool isRot;
     public float RotSpeed;
     private void Start()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 10f, player);
-        pl = colliders[0].GetComponent<Player>();
-        Debug.Log(colliders[0].name);
-        Debug.Log(pl.name);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 10f, targetLayer);
+        target = colliders[0].gameObject;
+        Debug.Log(target.name);
+        Debug.Log(target.transform.position);
     }
     void Update()
     {
-        targetPosition = pl.Effectobj.transform.position;
-        transform.position = targetPosition + offSet;
-        
-        
+        transform.position = target.transform.position + offSet;
+        transform.rotation = target.transform.rotation;
+
         if (isRot)
         {
-            transform.Rotate(Vector3.up * Time.deltaTime * RotSpeed);
+            transform.GetChild(0).gameObject.transform.Rotate(Vector3.up * Time.deltaTime * RotSpeed);
         }
     }
 }
