@@ -31,7 +31,6 @@ public class UIItem : MonoBehaviour
         var SpriteData = ItemDataManager.GetInstance().dicResouseTable[ItemData.Inven_spriteName];
         var NameData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_itemName];
         var DescData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_itemDesc];
-        
         var SmithData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_smithTalk];
         
         this.WeaponType = ItemData.Inven_weaponType;
@@ -63,21 +62,27 @@ public class UIItem : MonoBehaviour
     }
     
     public void Attached(UIItem uIItem)
-    {
-        this.icon = uIItem.icon;
-        this.txtCount = uIItem.txtCount;
-        this.id = uIItem.id;
-        this.ItemName = uIItem.ItemName;
-        this.ItemDesc= uIItem.ItemDesc;
-        this.ItemSmith = uIItem.ItemSmith;
-        this.ItemRigging = uIItem.ItemRigging;
-        this.ItemValue = uIItem.ItemValue;
-        this.ItemDuration = uIItem.ItemDuration;
-        this.spName = uIItem.spName;
-        this.WeaponType = uIItem.WeaponType;
-        this.ItemPrice = uIItem.ItemPrice;
+    {   
+        var ItemData = ItemDataManager.GetInstance().dicItemDatas[uIItem.id];
+        var SpriteData = ItemDataManager.GetInstance().dicResouseTable[ItemData.Inven_spriteName];
+        var NameData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_itemName];
+        var DescData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_itemDesc];
+        var SmithData = ItemDataManager.GetInstance().dicStringTable[ItemData.Inven_smithTalk];
+      
+        this.WeaponType = ItemData.Inven_weaponType;
+        //0 : 한손 검, 1: 양손 검, 2 : 한손 둔기, 3 : 양손 둔기, 4 : 창, 5 : 단검, 6 : 투창용 창, 10 : 가죽, 11 : 경갑, 12 : 판금
+        this.spName = SpriteData.ImageResourceName;
+        this.ItemName = NameData.String_Desc;
+        this.ItemDesc = DescData.String_Desc;
+        this.ItemSmith = SmithData.String_Desc;
+        this.ItemRigging = ItemData.Inven_riggingType;
+        this.ItemValue = ItemData.Inven_itemValue;
+        this.ItemDuration = ItemData.Inven_durAbility;
+        this.ItemPrice = ItemData.Inven_ItemPrice;
         Sprite sp = Resources.Load<Sprite>($"UI/UIItem/{spName}");
         this.icon.sprite = sp;
+        this.txtCount.text = "1";
+        
         ColorChage(1.0f);
     }
     void ColorChage(float Value)
