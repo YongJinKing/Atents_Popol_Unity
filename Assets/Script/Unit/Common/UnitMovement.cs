@@ -163,7 +163,7 @@ public class UnitMovement : CharacterProperty
             if (delta > dist) delta = dist;
             dist -= delta;
             transform.position += dir * delta;
-            yield return new FixedUpdate();
+            yield return null;
         }
         while (tempSpeed >= 0.01f)
         {

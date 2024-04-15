@@ -34,6 +34,8 @@ public class cameraMove : MonoBehaviour
     public string CinecamState = "CamMove";
     public float rotateSpeed;
 
+    public GameObject BrodCastCam;
+
     void Start()
     {
         //myCam = GetComponentInChildren<Camera>().transform;
@@ -97,14 +99,13 @@ public class cameraMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(playerAngle.x, playerAngle.y * rotateSpeed, 0);
         }
     }
-
-    public static bool isBoss = false;
     
     public void UnitDeath(int Unit)
     {
         isCine = true;
         isTracking = false;
-        WaveUI w = new WaveUI(); w.saveTime();
+        BrodCastCam.SetActive(true);
+        //WaveUI w = new WaveUI(); w.saveTime();
         switch (Unit)
         {
             case 0:

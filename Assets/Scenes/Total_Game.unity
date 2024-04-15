@@ -231,6 +231,10 @@ PrefabInstance:
       propertyPath: EnergyGageAct.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2950609773040354562, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3642465875917560104, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -740,6 +744,10 @@ PrefabInstance:
       propertyPath: MonsterCam
       value: 
       objectReference: {fileID: 1631162580}
+    - target: {fileID: 3581572405989491082, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
+      propertyPath: BrodCastCam
+      value: 
+      objectReference: {fileID: 1296209447}
     - target: {fileID: 9164841429843295199, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
       propertyPath: m_Name
       value: StrongArm
@@ -1121,6 +1129,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 511627395}
+        m_TargetAssemblyTypeName: WaveUI, Assembly-CSharp
+        m_MethodName: saveTime
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   lossGameEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1128,6 +1148,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: cameraMove, Assembly-CSharp
         m_MethodName: UnitDeath
         m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 511627395}
+        m_TargetAssemblyTypeName: WaveUI, Assembly-CSharp
+        m_MethodName: saveTime
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1153,6 +1185,79 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1242034136
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 328034151902853477, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: player.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869772325625519911, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869772325625519911, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869772325625519911, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869772325625519911, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869772325625519911, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869772325625519911, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869772325625519911, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869772325625519911, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869772325625519911, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869772325625519911, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229323231774273160, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_Name
+      value: BossTiara
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671574787973879961, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671574787973879961, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671574787973879961, guid: fe6e43b7357704746a2c83461675c754, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fe6e43b7357704746a2c83461675c754, type: 3}
 --- !u!1 &1296209447 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5320029994152090585, guid: 89bbc9dbfb32bb04e91cec2173d15f00, type: 3}
@@ -1318,3 +1423,4 @@ SceneRoots:
   - {fileID: 179462420}
   - {fileID: 1063538554}
   - {fileID: 879928710}
+  - {fileID: 1242034136}

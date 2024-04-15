@@ -50,7 +50,6 @@ public class WaveUI : MonoBehaviour
 
     public void IsBossCo()
     {
-        Debug.Log("ISBossSrave");
         StartCoroutine("IsBossStage");
     }
     IEnumerator IsBossStage()
@@ -58,7 +57,7 @@ public class WaveUI : MonoBehaviour
         yield return new WaitForEndOfFrame();
         //Instantiate(BossOpening).SetActive(true);
         BossOpening.SetActive(true);
-        BroadCastCore.SetActive(true);
+        //BroadCastCore.SetActive(true);
     }
 
     int state = 0;

@@ -124,22 +124,25 @@ public class GameManager : MonoBehaviour
 
     public void OnGameEnd(int UnitType, GameObject deadUnit)
     {
-        //pl.enabled = false;
         var playerdata = DataManager.instance.playerData;
         if (UnitType == 0) // Player Dead
         {
             lossGameEvent?.Invoke();
+            pl.enabled = false;
+            DataManager.instance.SaveData();
         }
         else // Monstar Dead
         {
-            //pl.Exp += Ms.Exp;
-            //playerdata.Character_CurrentExp += Ms.Exp;
             if (monsters.Contains(deadUnit))
             {
                 monsters.Remove(deadUnit);
                 if(monsters.Count == 0)
                 {
                     //RoundEnd
+                    playerdata.PlayerGold += curWave.Wave_Reward_Gold;
+                    pl.Exp += curWave.Wave_Reward_Exp;
+                    playerdata.Character_CurrentExp += curWave.Wave_Reward_Exp;
+                    DataManager.instance.SaveData();
                     //new Round Start
                     StartCoroutine(WaveRound());
                     waveEndEvent?.Invoke();
@@ -148,14 +151,15 @@ public class GameManager : MonoBehaviour
 
             StartCoroutine(LevelUp());
         }
-        deadAct?.Invoke(UnitType);
-        DataManager.instance.SaveData();
         if (curWave.index / 10000 >= 2 && monsters.Count <= 0) //Boss Wave End
         {
             Debug.Log("StageEnd");
             StartCoroutine(tempDebug());
+            DataManager.instance.SaveData();
             stageEndEvent?.Invoke();
+            pl.enabled = false;
         }
+        
     }
     public void UpdateUI()
     {
