@@ -194,6 +194,13 @@ public class GameManager : MonoBehaviour
             monsters.Clear();
             curWave = waveQueue.Dequeue();
 
+            bool isBossWave = curWave.index / 10000 >= 2;
+
+            if (isBossWave)
+            {
+                bossWaveStartEvent?.Invoke();
+            }
+
             int count = 0;
             count += curWave.Wave_Monster_Count1;
             count += curWave.Wave_Monster_Count2;
@@ -209,6 +216,16 @@ public class GameManager : MonoBehaviour
                 monsters.Add(mf.CreateMonster(curWave.Wave_Monster1));
                 spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
                 monsters.Last().transform.position = spawnPoint;
+
+                if (!isBossWave)
+                {
+                    monsters.Last().GetComponent<Monster>().CinematicEnd();
+                }
+                else
+                {
+                    monsters.Last().GetComponent<Monster>().CinematicStart();
+                }
+
                 yield return new WaitForSeconds(1);
             }
             for (int i = 0; i < curWave.Wave_Monster_Count2 && curWave.Wave_Monster2 != 0; ++i)
@@ -216,6 +233,12 @@ public class GameManager : MonoBehaviour
                 monsters.Add(mf.CreateMonster(curWave.Wave_Monster2));
                 spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
                 monsters.Last().transform.position = spawnPoint;
+
+                if (!isBossWave)
+                {
+                    monsters.Last().GetComponent<Monster>().CinematicEnd();
+                }
+
                 yield return new WaitForSeconds(1);
             }
             for (int i = 0; i < curWave.Wave_Monster_Count3 && curWave.Wave_Monster3 != 0; ++i)
@@ -223,6 +246,12 @@ public class GameManager : MonoBehaviour
                 monsters.Add(mf.CreateMonster(curWave.Wave_Monster3));
                 spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
                 monsters.Last().transform.position = spawnPoint;
+
+                if (!isBossWave)
+                {
+                    monsters.Last().GetComponent<Monster>().CinematicEnd();
+                }
+
                 yield return new WaitForSeconds(1);
             }
             for (int i = 0; i < curWave.Wave_Monster_Count4 && curWave.Wave_Monster4 != 0; ++i)
@@ -230,6 +259,12 @@ public class GameManager : MonoBehaviour
                 monsters.Add(mf.CreateMonster(curWave.Wave_Monster4));
                 spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
                 monsters.Last().transform.position = spawnPoint;
+
+                if (!isBossWave)
+                {
+                    monsters.Last().GetComponent<Monster>().CinematicEnd();
+                }
+
                 yield return new WaitForSeconds(1);
             }
             for (int i = 0; i < curWave.Wave_Monster_Count5 && curWave.Wave_Monster5 != 0; ++i)
@@ -237,9 +272,14 @@ public class GameManager : MonoBehaviour
                 monsters.Add(mf.CreateMonster(curWave.Wave_Monster5));
                 spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
                 monsters.Last().transform.position = spawnPoint;
+
+                if (!isBossWave)
+                {
+                    monsters.Last().GetComponent<Monster>().CinematicEnd();
+                }
+
                 yield return new WaitForSeconds(1);
             }
-
 
             yield return null;
         }

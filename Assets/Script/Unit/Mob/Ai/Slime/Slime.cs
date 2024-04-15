@@ -327,7 +327,7 @@ public class Slime : Monster
     #region MonoBehaviour
     protected override void Start()
     {
-        base.Start();
+        //base.Start();
 
         dicIntAnims.Add("SkillType", Animator.StringToHash("i_SkillType"));
         dicBoolAnims.Add("isSkillProgress", Animator.StringToHash("b_isSkillProgress"));
