@@ -68,7 +68,7 @@ public class BattleSystem : CharacterProperty, IDamage
     protected virtual void Start()
     {
         Initialize();
-        curBattleStat.EnergyGage = 0;
+        
     }
 
     public BattleStat battlestat
@@ -208,6 +208,7 @@ public class BattleSystem : CharacterProperty, IDamage
         {
             deathAlarm += obj.GetComponent<GameManager>().OnGameEnd;
         }
+        curBattleStat.EnergyGage = 0;
     }
     
     public void TakeDamage(int dmg, AttackType Atype, DefenceType Dtype)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -41,19 +42,30 @@ public class SkillManager : PlayerSkill
             {
                 Ray ray = new Ray(col.bounds.center, other.ClosestPoint(col.bounds.center) - col.bounds.center);
                 StartCoroutine(tempDebuging(ray));
-                if (Physics.Raycast(ray, out RaycastHit hit , 1000.0f, 1 << LayerMask.NameToLayer("Monster_Body")))
+                RaycastHit[] hits;
+                if ((hits = Physics.RaycastAll(ray , col.bounds.extents.magnitude, 1 << LayerMask.NameToLayer("Monster_Body"))) != null)
                 {
-                    DataManager.instance.playerData.Weapon_Duration -= 1;
-                    target.Add(temp);
-                    Debug.Log("Hit");
-                    IDamage iDamage = hit.collider.GetComponentInParent<IDamage>();
-                    DefenceType dtype = hit.collider.GetComponentInParent<IGetDType>().GetDType(hit.collider);
-
-
-                    if (iDamage != null)
+                    foreach(RaycastHit data in hits)
                     {
-                        Plm.totalDamege(hit.collider, pl.ATK, Damage, aType, dtype, SkillCalculation);
+                        if (!target.Contains(data.collider.GetComponentInParent<BattleSystem>()))
+                        {
+                            target.Add(temp);
+                            DataManager.instance.playerData.Weapon_Duration -= 1;
+                            Debug.Log("Hit");
+
+                            IDamage iDamage = data.collider.GetComponentInParent<IDamage>();
+                            DefenceType dtype = data.collider.GetComponentInParent<IGetDType>().GetDType(data.collider);
+
+
+                            if (iDamage != null)
+                            {
+                                Plm.totalDamege(data.collider, pl.ATK, Damage, aType, dtype, SkillCalculation);
+                            }
+                        }
                     }
+
+                   
+                    
                 }
             }
         }

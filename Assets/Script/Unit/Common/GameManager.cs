@@ -12,19 +12,32 @@ public class GameManager : MonoBehaviour
     //will delete later
     //this is for file load test
     private Dictionary<int, WaveData> dicWaveTable;
+
     private WaveData curWave;
     private Queue<WaveData> waveQueue = new Queue<WaveData>();
+
     private MonsterFactory mf;
 
     public UnityEvent<int> deadAct;
+
+    //stage load, int for send total wave count
+    public UnityEvent<int> loadStageDataEvent;
+    //wave end event
+    public UnityEvent waveEndEvent;
+    //boss wave start
+    public UnityEvent bossWaveStartEvent;
+    //every wave is end
+    public UnityEvent stageEndEvent;
+    //player loss Game
+    public UnityEvent lossGameEvent;
+
     public GameObject Player;
     public HpAndEnergy hpEpBar;
     //public PlayerDetaManager playerdata;
 
 
-    Player pl;
-    List<GameObject> monsters = new List<GameObject>();
-
+    private Player pl;
+    private List<GameObject> monsters = new List<GameObject>();
 
 
     private void Awake()
@@ -38,18 +51,15 @@ public class GameManager : MonoBehaviour
         //Monster = mf.CreateMonster(30000);
         //Ms = Monster.GetComponent<Monster>();
 
-
-        LoadWaveData(1);
+        //need stage number
+        //for test, static int 1 inside the function
+        LoadStageData(1);
         StartCoroutine(WaveRound());
+
         LoadPlayerStat();
     }
 
-    void Start()
-    {
-
-    }
-
-    private void LoadWaveData(int stageIndex)
+    private void LoadStageData(int stageIndex)
     {
         var Mestiarii_WaveData = Resources.Load<TextAsset>("System/Mestiarii_WaveData_Table").text;
         var arrWaveDatas = JsonConvert.DeserializeObject<WaveData[]>(Mestiarii_WaveData);
@@ -62,6 +72,13 @@ public class GameManager : MonoBehaviour
                 waveQueue.Enqueue(data.Value);
             }
         }
+
+        //waveQueue.Count is wave number
+        //need to send waveQueue.Count to WaveUI class
+        loadStageDataEvent?.Invoke(waveQueue.Count);
+
+
+
 
         /*
         //for debug
@@ -110,7 +127,7 @@ public class GameManager : MonoBehaviour
         var playerdata = DataManager.instance.playerData;
         if (UnitType == 0) // Player Dead
         {
-
+            lossGameEvent?.Invoke();
         }
         else // Monstar Dead
         {
@@ -124,6 +141,7 @@ public class GameManager : MonoBehaviour
                     //RoundEnd
                     //new Round Start
                     StartCoroutine(WaveRound());
+                    waveEndEvent?.Invoke();
                 }
             }
 
@@ -135,6 +153,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("StageEnd");
             StartCoroutine(tempDebug());
+            stageEndEvent?.Invoke();
         }
     }
     public void UpdateUI()
@@ -183,7 +202,7 @@ public class GameManager : MonoBehaviour
             count += curWave.Wave_Monster_Count5;
 
             float angle = 360 / (float)count;
-            Vector3 spawnPoint = Vector3.forward * spawnOffset;
+            Vector3 spawnPoint = Vector3.back * spawnOffset;
 
             for(int i = 0; i < curWave.Wave_Monster_Count1 && curWave.Wave_Monster1 != 0; ++i)
             {

@@ -177,4 +177,26 @@ public class WaveUI : MonoBehaviour
         StopCoroutine("StopWatch");
         DataManager.instance.playerData.PlayTime += (int)playTime;
     }
+
+
+
+    public void OnLoadStageEvent(int totalStageWaves)
+    {
+        this.TotalWave = totalStageWaves;
+    }
+
+    public void OnWaveEndEvent()
+    {
+        ++nowWave;
+    }
+
+    public void OnStageEnd()
+    {
+
+    }
+
+    public void OnBossWaveStartEvent()
+    {
+
+    }
 }
