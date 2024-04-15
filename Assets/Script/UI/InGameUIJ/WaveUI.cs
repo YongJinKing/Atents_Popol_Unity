@@ -68,11 +68,19 @@ public class WaveUI : MonoBehaviour
                 break;
             case 6:
                 a.CreateMonster(30000);
-                Instantiate(BossOpening);
-                BroadCastCore.SetActive(true);
-                cameraMove.isBoss = true;
                 break;
         }
+    }
+
+    public void IsBossCo()
+    {
+        StartCoroutine("IsBossStage");
+    }
+    IEnumerator IsBossStage()
+    {
+        yield return new WaitForEndOfFrame();
+        Instantiate(BossOpening);
+        BroadCastCore.SetActive(true);
     }
 
     int state = 0;
@@ -149,7 +157,7 @@ public class WaveUI : MonoBehaviour
                 txtEndScale = 1.5f;
                 ++state;
                 iscine = false;
-                SpawnMonster();
+                //SpawnMonster();
             }
             yield return null;
         }

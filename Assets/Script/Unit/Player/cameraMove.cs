@@ -102,34 +102,29 @@ public class cameraMove : MonoBehaviour
     
     public void UnitDeath(int Unit)
     {
-        Debug.Log("SomeThing Dead");
-        if (isBoss)
+        isCine = true;
+        isTracking = false;
+        WaveUI w = new WaveUI(); w.saveTime();
+        switch (Unit)
         {
-            Debug.Log("isBoss Dead");
-            isCine = true;
-            isTracking = false;
-            WaveUI w = new WaveUI(); w.saveTime();
-            switch (Unit)
-            {
-                case 0:
-                    target = PlayerCam;
-                    targetDist = 5;
-                    playerAngle.x = 70;
-                    playeroffSet.y = 1f;
-                    break;
-                case 1:
-                    target = MonsterCam;
-                    targetDist = 2;
-                    playerAngle.x = 0;
-                    playeroffSet.y = 1f;
-                    break;
-            }
-            originPos = new Vector3(0, 0, myCam.transform.localPosition.z);
-            StartCoroutine(CineCam());
+            case 0:
+                target = PlayerCam;
+                targetDist = 5;
+                playerAngle.x = 70;
+                playeroffSet.y = 1f;
+                break;
+            case 1:
+                target = MonsterCam;
+                targetDist = 2;
+                playerAngle.x = 0;
+                playeroffSet.y = 1f;
+                break;
         }
+        originPos = new Vector3(0, 0, myCam.transform.localPosition.z);
+        StartCoroutine(CineCam());
     }
 
-    
+
     Vector3 originPos;
 
     IEnumerator CineCam()
