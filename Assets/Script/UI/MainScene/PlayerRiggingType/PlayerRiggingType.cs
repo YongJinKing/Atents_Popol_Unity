@@ -22,6 +22,10 @@ public class PlayerRiggingType : MonoBehaviour
         {
             transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().Init(DataManager.instance.playerData.Weapon_Id);
             transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().Init(DataManager.instance.playerData.Armor_Id);
+            transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemDuration = DataManager.instance.playerData.Weapon_Duration;
+            transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().ItemDuration = DataManager.instance.playerData.Armor_Duration;
+            DataManager.instance.SaveData();
+            
         }
     }
 

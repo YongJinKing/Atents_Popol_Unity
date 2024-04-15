@@ -27,6 +27,8 @@ public class SkillPopup : MonoBehaviour
             Instantiate(Resources.Load<GameObject>("UI/UserSkill/SlotBg"), Content.transform);
             Content.transform.GetChild(i).GetComponent<UserSkillSlot>().WeaponType
             = AllSlots[i].GetComponent<SkillManager>().WeaponType;
+            Content.transform.GetChild(i).GetComponent<UserSkillSlot>().SkillLevel
+            = AllSlots[i].GetComponent<SkillManager>().Level;
             var go = Content.transform.GetChild(i).Find("Paper");
             go.Find("Image").GetComponent<Image>().sprite = 
             AllSlots[i].GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
@@ -36,6 +38,8 @@ public class SkillPopup : MonoBehaviour
             ItemTypeIntToString.IntToStringUISkillType(AllSlots[i].GetComponent<SkillManager>().WeaponType);
             go.Find("SkillDesc").GetChild(0).GetComponent<TMP_Text>().text = //SkillType
             AllSlots[i].GetComponent<SkillManager>().uiSkillStatus.uiSkillDesc;
+            go.Find("SkillLevel").GetChild(0).GetComponent<TMP_Text>().text = 
+            AllSlots[i].GetComponent<SkillManager>().Level.ToString();
         }
     }
     public void SortSlot()
@@ -47,13 +51,23 @@ public class SkillPopup : MonoBehaviour
                 == DataManager.instance.playerData.WeaponType)
             {
                 Content.transform.GetChild(i).gameObject.SetActive(true);
+                if(Content.transform.GetChild(i).GetComponent<UserSkillSlot>().SkillLevel > DataManager.instance.playerData.Character_CurrentLevel)
+                {
+                    Content.transform.GetChild(i).GetChild(1).gameObject.SetActive(true);
+                }
+                
+                else
+                {
+                    Content.transform.GetChild(i).GetChild(1).gameObject.SetActive(false);
+                }
             }
             else
             {
                 Content.transform.GetChild(i).gameObject.SetActive(false);
             }
         }
-        for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)
+
+        for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)//Road SkillSlot About RiggingWeapon
         {
             if(inst.UiSkillList[i + (10 * inst.WeaponType)] != "")
             {
@@ -70,9 +84,20 @@ public class SkillPopup : MonoBehaviour
                 PlayerSkill.transform.Find("GridLine").GetChild(i).GetComponent<Image>().sprite =
                 Resources.Load<Sprite>("UI/UserSkill/Grey");
             }
-            
         }
-        
+        for(int i = 0; i < Content.transform.childCount - 1; i++)//skill level sort
+        {
+            for(int j = 0; j < Content.transform.childCount - 1; j++)
+            {
+                if(Content.transform.GetChild(j).GetComponent<UserSkillSlot>().SkillLevel > 
+                Content.transform.GetChild(j + 1).GetComponent<UserSkillSlot>().SkillLevel)
+                {
+                    Content.transform.GetChild(j).SetSiblingIndex(j + 1);
+                }
+            }
+        }
+        transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = // Displayed WeaponType
+        ItemTypeIntToString.IntToStringUIDesc(DataManager.instance.playerData.WeaponType);
     }
     public void SkillChange(string SkillName, int index)
     {

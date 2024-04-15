@@ -66,7 +66,7 @@ public class SlotDrop : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
         if(DragStart)
         {
             
-            Debug.Log(TempSlotIndex);
+
             DragImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             Color color = DragImage.GetComponent<Image>().color;
             color.a = 0.0f;
@@ -81,7 +81,8 @@ public class SlotDrop : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
     
     public void OnDrop(PointerEventData eventData)
     {
-        EventDrop?.Invoke(DragImage.GetComponent<Image>().sprite.name, transform.GetSiblingIndex());       
+        if(!UserSkillSlot.CanDrag)
+            EventDrop?.Invoke(DragImage.GetComponent<Image>().sprite.name, transform.GetSiblingIndex());       
         //transform.GetComponent<Image>().sprite = DragImage.GetComponent<Image>().sprite;
     }
 

@@ -14,29 +14,50 @@ public class UserSkillSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     GameObject DragImage;
     public int WeaponType;
+    public int SkillLevel;
+    public static bool CanDrag = false;
+    
     private void Start() 
     {
         DragImage = GameObject.Find("DragImage");
     }
     public void OnBeginDrag(PointerEventData eventData)//Drag Start
     {
-        Image image = transform.Find("Paper").Find("Image").GetComponent<Image>();
-        DragImage.GetComponent<Image>().sprite = image.sprite;
-        Color color = DragImage.GetComponent<Image>().color;
-        color.a = 1.0f;
-        DragImage.GetComponent<Image>().color = color;
-        DragImage.GetComponent<Image>().raycastTarget = false;
+        if(transform.GetChild(1).gameObject.activeSelf )
+            CanDrag = true;
+        else
+            CanDrag = false;
+        if(!CanDrag)
+        {
+            Image image = transform.Find("Paper").Find("Image").GetComponent<Image>();
+            DragImage.GetComponent<Image>().sprite = image.sprite;
+            Color color = DragImage.GetComponent<Image>().color;
+            color.a = 1.0f;
+            DragImage.GetComponent<Image>().color = color;
+            DragImage.GetComponent<Image>().raycastTarget = false;
+        }
+        
     }
     public void OnDrag(PointerEventData eventData)//Drag Ing
     {
-        DragImage.GetComponent<RectTransform>().anchoredPosition = eventData.position;
+      
+        
+        if(!CanDrag)
+        {
+            //Debug.Log("드래그실행?");
+            DragImage.GetComponent<RectTransform>().anchoredPosition = eventData.position;
+        }
     }
     public void OnEndDrag(PointerEventData eventData)//Drag End
     {
-        DragImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
-        Color color = DragImage.GetComponent<Image>().color;
-        color.a = 0.0f;
-        DragImage.GetComponent<Image>().color = color;
-        DragImage.GetComponent<Image>().raycastTarget = true;
+        if(!CanDrag)
+        {
+            //Debug.Log("앤드실행?");
+            DragImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+            Color color = DragImage.GetComponent<Image>().color;
+            color.a = 0.0f;
+            DragImage.GetComponent<Image>().color = color;
+            DragImage.GetComponent<Image>().raycastTarget = true;
+        }
     }
 }

@@ -34,9 +34,12 @@ public class DisplayInven : MonoBehaviour
             color.a = 0.0f;
             GridLine.transform.GetChild(i).Find("Image").GetComponent<Image>().color = color;
         }
-        PlayerRiggingType.transform.Find("Weapon").GetComponent<UIItem>().
-        Init(InvenDataManager.transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().id);
-        PlayerRiggingType.transform.Find("Armor").GetComponent<UIItem>().
-        Init(InvenDataManager.transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().id);
+        
+        PlayerRiggingType.transform.Find("Weapon").GetComponent<UIItem>().Attached
+        (InvenDataManager.transform.GetChild(1).GetChild(0).GetComponent<UIItem>());
+        PlayerRiggingType.transform.Find("Armor").GetComponent<UIItem>().Attached
+        (InvenDataManager.transform.GetChild(1).GetChild(1).GetComponent<UIItem>());
+        
+        
     }
 }
