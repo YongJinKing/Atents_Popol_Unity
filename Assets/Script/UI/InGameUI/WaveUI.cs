@@ -56,6 +56,10 @@ public class WaveUI : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         BossOpening.SetActive(true);
+<<<<<<< Updated upstream
+=======
+        //BroadCastCore.SetActive(true);
+>>>>>>> Stashed changes
     }
 
     int state = 0;
