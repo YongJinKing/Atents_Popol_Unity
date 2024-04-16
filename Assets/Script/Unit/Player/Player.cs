@@ -320,24 +320,24 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
     bool AnimCheck(string Anim)
     {
-        // ?�재 ?�니메이?�이 체크?�고???�는 ?�니메이?�인지 ?�인
+        // ?�재 ?�니메이?�이 체크?�고???�는 ?�니메이?�인지 ?�인
         if (myAnim.GetCurrentAnimatorStateInfo(0).IsName(Anim) == true)
         {
-            // ?�하???�니메이?�이?�면 ?�레??중인지 체크
+            // ?�하???�니메이?�이?�면 ?�레??중인지 체크
             float animTime = myAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
             if (animTime == 0)
             {
                 return false;
-                // ?�레??중이 ?�님
+                // ?�레??중이 ?�님
             }
             if (animTime > 0 && animTime < 1.0f)
             {
                 return true;
-                // ?�니메이???�레??�?
+                // ?�니메이???�레??�?
             }
             else if (animTime >= 1.0f)
             {
-                // ?�니메이??종료
+                // ?�니메이??종료
             }
         }
         return false;
@@ -384,7 +384,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
             if (Input.GetKeyDown(controllKey[(E_Skill)i]))
             {
                 var plskill = DataManager.instance.playerData;
-                if (plskill.InGameSkill.Count > 0)
+                if (plskill.InGameSkill.Length > 0)
                 {
                     if (!string.IsNullOrWhiteSpace(plskill.InGameSkill[i]))
                     {
@@ -395,8 +395,8 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
                 }
                 else
                 {
-                    Debug.Log("?�재?�롯???�킬???�습?�다.");
-                    //?�킬 ?�패 ?�운??
+                    Debug.Log("?�재?�롯???�킬???�습?�다.");
+                    //?�킬 ?�패 ?�운??
                     return;
                 }
 

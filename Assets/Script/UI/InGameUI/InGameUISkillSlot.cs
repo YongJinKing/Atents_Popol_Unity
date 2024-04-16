@@ -7,9 +7,10 @@ using UnityEngine.UI;
 public class InGameUISkillSlot : MonoBehaviour
 {
     SkillManager[] InGameSkillList = new SkillManager[4];
+    public GameObject HpAndEnergy;
     void Start()
     {
-        var SkillSlotList = transform.Find("Bg").Find("Paper").Find("GridLine");
+        var SkillSlotList = transform.GetChild(0).GetChild(0).GetChild(0);//Skillslot//Bg/Paper/GridLine
         
         for(int i = 0; i < SkillSlotList.childCount; i++)
         {
@@ -21,7 +22,7 @@ public class InGameUISkillSlot : MonoBehaviour
                 SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().sprite
                 = SkillGameObject.GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
                 InGameSkillList[i] = SkillGameObject.GetComponent<SkillManager>();
-                Debug.Log(SkillGameObject.GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite);
+                
                 Color color = SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().color;
                 color.a = 1.0f;
                 SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().color = color;
@@ -32,18 +33,34 @@ public class InGameUISkillSlot : MonoBehaviour
                 color.a = 0.0f;
                 SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().color = color;
             }
-        }    
+        }
+        /* PlayerEnergyCheck(); */
     }
+    /* public void PlayerEnergyCheck() 
+    {
+        var SkillSlotList = transform.GetChild(0).GetChild(0).GetChild(0);//Skillslot//Bg/Paper/GridLine
+        for(int i = 0; i < SkillSlotList.childCount; i++)//Skillslot//Bg/Paper/GridLine
+        {
+            if(InGameSkillList[i].EnergyGage < ((int)(HpAndEnergy.GetComponent<HpAndEnergy>().Energybar.fillAmount) * 100))
+            {
+                SkillSlotList.GetChild(2).gameObject.SetActive(true);//Skillslot//Bg/Paper/GridLine/SkillSlot/EnergyCheck
+            }
+            else
+            {
+                SkillSlotList.GetChild(2).gameObject.SetActive(false);
+            }
+        }
+    } */
     public void UseSkill(int index)
     {
-        var SkillSlotList = transform.Find("Bg").Find("Paper").Find("GridLine");
+        var SkillSlotList = transform.GetChild(0).GetChild(0).GetChild(0);//Skillslot//Bg/Paper/GridLine
         SkillSlotList.GetChild(index).Find("CoolTime").GetComponent<Image>().fillAmount = 1.0f;
         StartCoroutine(SkillCoolTime(index));
     }
 
     IEnumerator SkillCoolTime(int index)
     {
-        var SkillSlotList = transform.Find("Bg").Find("Paper").Find("GridLine");
+        var SkillSlotList = transform.GetChild(0).GetChild(0).GetChild(0);//Skillslot//Bg/Paper/GridLine
         var CurrentCoolTime = InGameSkillList[index].CoolTime;
         InGameSkillList[index].CoolTimeCheck = true;
         while(CurrentCoolTime > 0)

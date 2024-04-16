@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BuffAndDeBuffAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 401aa16aa0308084398b2394f246654e, type: 3}
+    - {fileID: 2800000, guid: f6845b44cdaf9524db6daa93cba73c18, type: 3}
+    - {fileID: 2800000, guid: ff3bfa7fe9a376c4eb65c163d9e9c0d8, type: 3}
+    - {fileID: 2800000, guid: 72fa66ee21d1b214da48d731a29c27a9, type: 3}
+    - {fileID: 2800000, guid: 46f91597ba470c84583013c996d18230, type: 3}
+    - {fileID: 2800000, guid: 1977e5d1a8f19ee4986ae0d8f560a40c, type: 3}
+    - {fileID: 2800000, guid: f7a3e24a8be207b488fc61b0c31c8bee, type: 3}
+    - {fileID: 2800000, guid: 349da43f8e2b0894cb2b6796601e91c6, type: 3}
+    - {fileID: 2800000, guid: 0d9ac8bd5a13931498ac50fe9d162857, type: 3}
+    - {fileID: 2800000, guid: 32f2ad2d008489747b6440a380f84085, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 1977e5d1a8f19ee4986ae0d8f560a40c: 21300000
+    - f6845b44cdaf9524db6daa93cba73c18: 21300000
+    - 46f91597ba470c84583013c996d18230: 21300000
+    - f7a3e24a8be207b488fc61b0c31c8bee: 21300000
+    - 401aa16aa0308084398b2394f246654e: 21300000
+    - 32f2ad2d008489747b6440a380f84085: 21300000
+    - 0d9ac8bd5a13931498ac50fe9d162857: 21300000
+    - 72fa66ee21d1b214da48d731a29c27a9: 21300000
+    - 349da43f8e2b0894cb2b6796601e91c6: 21300000
+    - ff3bfa7fe9a376c4eb65c163d9e9c0d8: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 1977e5d1a8f19ee4986ae0d8f560a40c, type: 3}
+  - {fileID: 21300000, guid: f6845b44cdaf9524db6daa93cba73c18, type: 3}
+  - {fileID: 21300000, guid: 46f91597ba470c84583013c996d18230, type: 3}
+  - {fileID: 21300000, guid: f7a3e24a8be207b488fc61b0c31c8bee, type: 3}
+  - {fileID: 21300000, guid: 401aa16aa0308084398b2394f246654e, type: 3}
+  - {fileID: 21300000, guid: 32f2ad2d008489747b6440a380f84085, type: 3}
+  - {fileID: 21300000, guid: 0d9ac8bd5a13931498ac50fe9d162857, type: 3}
+  - {fileID: 21300000, guid: 72fa66ee21d1b214da48d731a29c27a9, type: 3}
+  - {fileID: 21300000, guid: 349da43f8e2b0894cb2b6796601e91c6, type: 3}
+  - {fileID: 21300000, guid: ff3bfa7fe9a376c4eb65c163d9e9c0d8, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Slow
+  - corrosion
+  - Restraint
+  - AttackDamageUp
+  - blindness
+  - MoveSpeedUp
+  - HeartUp
+  - Poison
+  - AttackSpeedUp
+  - faint
+  m_RenderDataMap: {}
+  m_Tag: BuffAndDeBuffAtlas
+  m_IsVariant: 0

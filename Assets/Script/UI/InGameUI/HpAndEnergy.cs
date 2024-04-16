@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class HpAndEnergy : MonoBehaviour
 {
     public Image HPbar;
     public Image Energybar;
+    public UnityEvent UseEnergy;
    /*  public int maxHp = 100;
     private void Start() {
         HpGageTrigger(maxHp, -30);
@@ -18,6 +21,8 @@ public class HpAndEnergy : MonoBehaviour
     public void EnergyGageTrigger(int ReferenceValue, int Value)
     {
         this.Energybar.fillAmount = (float)Value / (float)ReferenceValue;
+        UseEnergy?.Invoke();
+
     }
     
 }

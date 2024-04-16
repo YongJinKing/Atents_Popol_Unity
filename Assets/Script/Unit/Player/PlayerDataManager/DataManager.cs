@@ -31,7 +31,7 @@ public class PlayerData
     public int Weapon_Duration;
     public int Armor_Duration;
     public string[] UiSkillList = new string[100];
-    public List<String> InGameSkill = new List<string>();
+    public String[] InGameSkill = new string[4];
     public bool[] clearStage = { false, false };
     public int PlayerGold = 0;
     public List<int> PlayerInven = new List<int>();

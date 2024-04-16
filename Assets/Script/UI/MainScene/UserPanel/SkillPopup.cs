@@ -112,15 +112,23 @@ public class SkillPopup : MonoBehaviour
         }
         PlayerSkill.transform.Find("GridLine").GetChild(index).GetComponent<Image>().sprite =
         DragImage.GetComponent<Image>().sprite;
-        inst.InGameSkill = new List<string>();
+        inst.InGameSkill = new string[4];
+        
         for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)
         {
             var go = PlayerSkill.transform.Find("GridLine").GetChild(i);
             if(go.GetComponent<Image>().sprite.name != "Grey")
-                inst.InGameSkill.Add(go.GetComponent<Image>().sprite.name);
+            {
+                inst.InGameSkill[i] = go.GetComponent<Image>().sprite.name;
+                inst.UiSkillList[i + (10 * inst.WeaponType)] =  go.GetComponent<Image>().sprite.name;
+            }  
             else
-                inst.InGameSkill.Add(null);
-            inst.UiSkillList[index + (10 * inst.WeaponType)] = DragImage.GetComponent<Image>().sprite.name;
+            {
+                inst.InGameSkill[i] = null;
+                inst.UiSkillList[i + (10 * inst.WeaponType)] = null;
+            }
+                
+            
         }
         
     }

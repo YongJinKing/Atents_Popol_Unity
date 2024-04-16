@@ -65,8 +65,6 @@ public class SlotDrop : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHan
     {
         if(DragStart)
         {
-            
-
             DragImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
             Color color = DragImage.GetComponent<Image>().color;
             color.a = 0.0f;
