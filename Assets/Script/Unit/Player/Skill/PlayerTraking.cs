@@ -12,15 +12,18 @@ public class PlayerTraking : MonoBehaviour
     public float RotSpeed;
     private void Start()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 10f, targetLayer);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 100f, targetLayer);
         target = colliders[0].gameObject;
         Debug.Log(target.name);
         Debug.Log(target.transform.position);
     }
     void Update()
     {
-        transform.position = target.transform.position + offSet;
-        transform.rotation = target.transform.rotation;
+        if(target != null)
+        {
+            transform.position = target.transform.position + offSet;
+            transform.rotation = target.transform.rotation;
+        }
 
         if (isRot)
         {

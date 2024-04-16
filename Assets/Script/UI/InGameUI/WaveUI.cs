@@ -22,9 +22,9 @@ public class WaveUI : MonoBehaviour
 
     public float moveSpeed;
 
-    public GameObject BroadCastCore;
     public GameObject BossOpening;
-
+    public GameObject BossTiara;
+    public UnityEngine.Events.UnityEvent WaveRound;
     public Coroutine stopWatch;
 
     private void Start()
@@ -56,12 +56,13 @@ public class WaveUI : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         BossOpening.SetActive(true);
-
+        Instantiate(BossTiara);
     }
 
     int state = 0;
     IEnumerator WaveChange()
     {
+        yield return new WaitForSeconds(3);
         iscine = true;
         state = 0;
         ++nowWave;
@@ -131,6 +132,7 @@ public class WaveUI : MonoBehaviour
             {
                 txtEndPos.y = 540;
                 txtEndScale = 1.5f;
+                WaveRound?.Invoke();
                 ++state;
                 iscine = false;
             }

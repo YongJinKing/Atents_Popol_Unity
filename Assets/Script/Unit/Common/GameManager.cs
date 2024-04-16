@@ -143,8 +143,6 @@ public class GameManager : MonoBehaviour
                     pl.Exp += curWave.Wave_Reward_Exp;
                     playerdata.Character_CurrentExp += curWave.Wave_Reward_Exp;
                     DataManager.instance.SaveData();
-                    //new Round Start
-                    StartCoroutine(WaveRound());
                     waveEndEvent?.Invoke();
                 }
             }
@@ -191,6 +189,12 @@ public class GameManager : MonoBehaviour
         }
     }
     
+    public void WaveRownd()
+    {
+        //new Round Start
+        StartCoroutine(WaveRound());
+    }
+
     private IEnumerator WaveRound()
     {
         int spawnOffset = 15;

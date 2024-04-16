@@ -37,40 +37,42 @@ public class BroadCastCamControll : MonoBehaviour
 
     void Update()
     {
-        Vector3 plPos = new Vector3(playerObject.position.x, 0, playerObject.position.z);
-        Vector3 moPos = new Vector3(monsterObject.position.x, 0, monsterObject.position.z);
-
-        Vector3 plOff = new Vector3(playerOffset.x, playerOffset.y, Vector3.Distance(transform.position, plPos) - playerOffset.z);
-        Vector3 moOff = new Vector3(monsterOffset.x, monsterOffset.y, -Vector3.Distance(transform.position, moPos) - monsterOffset.z);
-
-        transform.position = plPos + (moPos - plPos) * 0.5f;
-        transform.rotation = Quaternion.LookRotation(plPos - moPos);
-
-        plCam.transform.localPosition = plOff;
-        moCam.transform.localPosition = moOff;
-
-        float digree = Vector3.Angle(transform.right.normalized, (Vector3.zero - transform.position).normalized);
-
-        if (digree >= 90) flip = true;
-        else flip = false;
-
-        if (flip)
+        if (playerObject != null && monsterObject != null)
         {
-            playerOffset.x = -Mathf.Abs(playerOffset.x);
-            monsterOffset.x = -Mathf.Abs(monsterOffset.x);
-            plCam.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
-            moCam.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
-        }
-        else
-        {
-            playerOffset.x = Mathf.Abs(playerOffset.x);
-            monsterOffset.x = Mathf.Abs(monsterOffset.x);
-            plCam.transform.localRotation = Quaternion.Euler(0f, -90f, 0f);
-            moCam.transform.localRotation = Quaternion.Euler(0f, -90f, 0f);
-        }
+            Vector3 plPos = new Vector3(playerObject.position.x, 0, playerObject.position.z);
+            Vector3 moPos = new Vector3(monsterObject.position.x, 0, monsterObject.position.z);
 
-        
+            Vector3 plOff = new Vector3(playerOffset.x, playerOffset.y, Vector3.Distance(transform.position, plPos) - playerOffset.z);
+            Vector3 moOff = new Vector3(monsterOffset.x, monsterOffset.y, -Vector3.Distance(transform.position, moPos) - monsterOffset.z);
+
+            transform.position = plPos + (moPos - plPos) * 0.5f;
+            transform.rotation = Quaternion.LookRotation(plPos - moPos);
+
+            plCam.transform.localPosition = plOff;
+            moCam.transform.localPosition = moOff;
+
+            float digree = Vector3.Angle(transform.right.normalized, (Vector3.zero - transform.position).normalized);
+
+            if (digree >= 90) flip = true;
+            else flip = false;
+
+            if (flip)
+            {
+                playerOffset.x = -Mathf.Abs(playerOffset.x);
+                monsterOffset.x = -Mathf.Abs(monsterOffset.x);
+                plCam.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+                moCam.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+            }
+            else
+            {
+                playerOffset.x = Mathf.Abs(playerOffset.x);
+                monsterOffset.x = Mathf.Abs(monsterOffset.x);
+                plCam.transform.localRotation = Quaternion.Euler(0f, -90f, 0f);
+                moCam.transform.localRotation = Quaternion.Euler(0f, -90f, 0f);
+            }
+        }
     }
+    
     private void OnDrawGizmos()
     {
         if (RayDebug)

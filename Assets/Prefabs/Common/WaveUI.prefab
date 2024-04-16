@@ -125,8 +125,8 @@ MonoBehaviour:
   txtScale: 0.44
   txtEndScale: 1.5
   moveSpeed: 5
-  BroadCastCore: {fileID: 0}
-  BossOpening: {fileID: 8034180341809947914, guid: 9a8da39989fb00343853f656a0327338, type: 3}
+  BossOpening: {fileID: 0}
+  BossTiara: {fileID: 5229323231774273160, guid: fe6e43b7357704746a2c83461675c754, type: 3}
 --- !u!1 &1340885313144490455
 GameObject:
   m_ObjectHideFlags: 0
