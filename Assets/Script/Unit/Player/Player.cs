@@ -207,6 +207,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         {
             isRun = false;
             float BondageDebuffTime = 10;
+            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             StartCoroutine(Bondage(BondageDebuffTime));
             BuffType(204, BondageDebuffTime);
             PlayBuffEffect("Bondage");
