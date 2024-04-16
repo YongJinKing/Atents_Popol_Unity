@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
     {
         
         IDamage iDamage = other.GetComponentInParent<IDamage>();
-        totalDmg = (int)(Pldmg*SkillCalculation) * skillDamage;
+        totalDmg = (int)(Pldmg*SkillCalculation) + skillDamage;
         iDamage.TakeDamage(totalDmg, A_type, Dtype);
     }
 }

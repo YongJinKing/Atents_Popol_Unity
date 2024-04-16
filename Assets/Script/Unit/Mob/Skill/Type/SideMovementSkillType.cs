@@ -59,7 +59,7 @@ public class SideMovementSkillType : SelfSkillType
     public override void OnSkillActivated(Transform target)
     {
         base.OnSkillActivated(target);
-        sideMoveEvent?.Invoke(target, new Info<float, float>(selfBS.Speed, radius), null, null);
+        sideMoveEvent?.Invoke(target, new Info<float, float>(selfBS.GetModifiedStat(E_BattleStat.Speed), radius), null, null);
     }
 
     public void OnSkillHitCheckEndEventHandler()

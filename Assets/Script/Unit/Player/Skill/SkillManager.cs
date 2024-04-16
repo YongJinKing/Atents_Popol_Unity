@@ -59,7 +59,7 @@ public class SkillManager : PlayerSkill
 
                             if (iDamage != null)
                             {
-                                Plm.totalDamege(data.collider, pl.ATK, Damage, aType, dtype, SkillCalculation);
+                                Plm.totalDamege(data.collider, (int)pl.GetModifiedStat(E_BattleStat.ATK), Damage, aType, dtype, SkillCalculation);
                             }
                         }
                     }

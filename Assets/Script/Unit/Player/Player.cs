@@ -15,7 +15,12 @@ public enum E_Skill
     RSkill = 3
 }
 
-public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
+public interface IDebuff
+{
+    public void Debuff(int type);
+}
+
+public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, IDebuff
 {
     ParticleSystem particle;
     SkillManager sm;
@@ -23,12 +28,12 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     GameObject DebuffEffect;
 
     public GameObject Effectobj;
-    
+
     public LayerMask clickMask;
 
     public DefenceType Dtype;
 
-    
+
     //0 : onehand 1: twohand
     public GameObject[] Weapon;
 
@@ -170,61 +175,110 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 
         ProcessState();
         bufftime += Time.deltaTime;
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            float Corrosiontime = 10;
-            StartCoroutine(Corrosion(Corrosiontime));
-            BuffType(200, Corrosiontime);
-            PlayBuffEffect("BuSick");
+            Debuff(0);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            float DotTime = 10;
-            StartCoroutine(Dot(DotTime));
-            BuffType(201, DotTime);
-            PlayBuffEffect("Poison");
+            Debuff(1);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            float SlowDebuffTime = 10;
-            SlowDebuff(SlowDebuffTime);
-            BuffType(202, SlowDebuffTime);
-            PlayBuffEffect("Slow");
+            Debuff(2);
         }
-
+        
         if(Input.GetKeyDown(KeyCode.Alpha4))
         {
-            float StunDebuffTime = 10;
-            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-            ChangeState(state.Stun);
-            Invoke("ChangeIdle", StunDebuffTime);
-            BuffType(203, StunDebuffTime);
-            PlayBuffEffect("Stun");
+            Debuff(3);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            Debuff(4);
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha5))
+        if (Input.GetKeyDown(KeyCode.Alpha6))
         {
-            isRun = false;
-            float BondageDebuffTime = 10;
-            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-            StartCoroutine(Bondage(BondageDebuffTime));
-            BuffType(204, BondageDebuffTime);
-            PlayBuffEffect("Bondage");
+            Debuff(5);
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            float BlindDebuffTime = 10;
-            BuffType(205, BlindDebuffTime);
-            PlayBuffEffect("Blind");
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha7))
+        if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             float HillBuffTime = 10;
             BuffType(101, HillBuffTime);
             StartCoroutine(Hill(HillBuffTime));
 
+        }
+    }
+
+    private void Corrosion()
+    {
+        float Corrosiontime = 10;
+        BuffType(2000, Corrosiontime);
+        PlayBuffEffect("BuSick");
+    }
+    private void Poison()
+    {
+        float DotTime = 10;
+        StartCoroutine(Dot(DotTime));
+        BuffType(2001, DotTime);
+        PlayBuffEffect("Poison");
+    }
+    private void Slow()
+    {
+        float SlowDebuffTime = 10;
+        BuffType(2002, SlowDebuffTime);
+        PlayBuffEffect("Slow");
+    }
+    private void Stun()
+    {
+        float StunDebuffTime = 10;
+        stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+        ChangeState(state.Stun);
+        Invoke("ChangeIdle", StunDebuffTime);
+        BuffType(2003, StunDebuffTime);
+        PlayBuffEffect("Stun");
+    }
+    private void Bondage()
+    {
+        isRun = false;
+        float BondageDebuffTime = 10;
+        stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+        StartCoroutine(Bondage(BondageDebuffTime));
+        BuffType(2004, BondageDebuffTime);
+        PlayBuffEffect("Bondage");
+    }
+    private void Blind()
+    {
+        float BlindDebuffTime = 10;
+        BuffType(2005, BlindDebuffTime);
+        PlayBuffEffect("Blind");
+    }
+
+    public void Debuff(int type)
+    {
+        switch (type)
+        {
+            case 0:
+                Corrosion();
+                break;
+            case 1:
+                Poison();
+                break;
+            case 2:
+                Slow();
+                break;
+            case 3:
+                Stun();
+                break;
+            case 4:
+                Bondage();
+                break;
+            case 5:
+                Blind();
+                break;
         }
     }
 
@@ -247,14 +301,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     }
 
 
-    IEnumerator Corrosion(float Debufftime)
-    {
-        curBattleStat.ATK -= curBattleStat.ATK / 10;
 
-
-        yield return new WaitForSeconds(Debufftime);
-        curBattleStat.ATK = battleStat.ATK;
-    }
 
     IEnumerator Dot(float DotDeBufftime)
     {
@@ -284,6 +331,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
     {
         PlayerEffect Pe;
         DebuffEffect = Instantiate<GameObject>(Resources.Load($"Player/DeBuff/{DebuffName}") as GameObject);
+        DebuffEffect.transform.SetParent(transform);
         Pe = Effectobj.GetComponent<PlayerEffect>();
         Pe.Effectpos(DebuffEffect);
     }
@@ -333,7 +381,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
             if (animTime > 0 && animTime < 1.0f)
             {
                 return true;
-                // ?�니메이???�레??�?
+                // ?�니메이???�레??�?
             }
             else if (animTime >= 1.0f)
             {
@@ -351,7 +399,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         {
             if (dir == null) return;
             ChangeState(state.Run);
-            clickAct?.Invoke(dir, curBattleStat.Speed, (float temp) =>
+            clickAct?.Invoke(dir, GetModifiedStat(E_BattleStat.Speed), (float temp) =>
             {
                 myAnim.SetFloat("Move", temp);
                 if (temp < 0.05f && playerstate != state.Dadge && playerstate != state.Fire && playerstate != state.Skill)
@@ -501,13 +549,13 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         ChangeState(state.Idle);
     }
 
-
+    /*
     public void SlowDebuff(float DeBuffTime)
     {
         curBattleStat.Speed -= (float)(battleStat.Speed * 0.1);
         StartCoroutine(SlowDown(DeBuffTime));
     }
-
+    */
     IEnumerator SlowDown(float DeBuffTime)
     {
         yield return new WaitForSeconds(DeBuffTime);

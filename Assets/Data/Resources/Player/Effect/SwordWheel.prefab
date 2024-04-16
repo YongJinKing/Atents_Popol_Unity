@@ -19510,11 +19510,12 @@ MonoBehaviour:
     uiSkillName: SwordWheel
     uiSkillDesc: 
   EnergyGage: 0
-  Damage: 100
-  SkillCalculation: 1
+  Damage: 50
+  SkillCalculation: 0.3
   WeaponType: 1
   Level: 0
   CoolTime: 0
+  CoolTimeCheck: 0
   aType: 1
   Buff: 0
   BTime: 0
@@ -19535,8 +19536,8 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 4096
-  one: 0.1
-  two: 0.1
+  duration: 0.1
+  magnitud: 0.2
 --- !u!114 &8856199668242290619
 MonoBehaviour:
   m_ObjectHideFlags: 0
