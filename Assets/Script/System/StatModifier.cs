@@ -64,6 +64,9 @@ public class StatModifier : MonoBehaviour, IGetStatValueModifiers
     public List<ValueModifier> GetStatValueModifiers(E_BattleStat statType)
     {
         //Debug.Log($"Modifiers 전달 성공, 이름 : {gameObject.name}");
-        return dicModifiers[statType];
+        if (isActive)
+            return dicModifiers[statType];
+        else
+            return null;
     }
 }

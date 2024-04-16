@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
 
         //need stage number
         //for test, static int 1 inside the function
-        LoadStageData(1);
+        LoadStageData(DataManager.instance.StageNum);
         StartCoroutine(WaveRound());
 
         LoadPlayerStat();
@@ -77,9 +77,6 @@ public class GameManager : MonoBehaviour
         //waveQueue.Count is wave number
         //need to send waveQueue.Count to WaveUI class
         loadStageDataEvent?.Invoke(waveQueue.Count);
-
-
-
 
         /*
         //for debug
@@ -208,6 +205,7 @@ public class GameManager : MonoBehaviour
             if (isBossWave)
             {
                 bossWaveStartEvent?.Invoke();
+                pl.CinematicStart();
             }
 
             int count = 0;
@@ -234,6 +232,7 @@ public class GameManager : MonoBehaviour
                 {
                     monsters.Last().GetComponent<Monster>().CinematicStart();
                     monsters.Last().GetComponentInChildren<Camera>().gameObject.SetActive(true);
+                    monsters.Last().transform.position = Vector3.up * 10;
                 }
 
                 yield return new WaitForSeconds(1);
@@ -309,6 +308,8 @@ public class GameManager : MonoBehaviour
         foreach(GameObject data in monsters)
         {
             data.GetComponent<Monster>().CinematicEnd();
+
         }
+        pl.CinematicEnd();
     }
 }

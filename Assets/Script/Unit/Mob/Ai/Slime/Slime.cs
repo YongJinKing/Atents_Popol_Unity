@@ -179,12 +179,13 @@ public class Slime : Monster
 
         //idleAI = new List<int>();
         //idleAI.Add(0);
+        
         Debug.Log($"idleAI.Count : {idleAI.Count}");
         foreach(int data in idleAI)
         {
             Debug.Log($"inside the idleAI : {data}");
         }
-
+        
 
         saveMoveType = new int[idleAI.Count];
         IdleProcessRandomSet();
@@ -212,7 +213,7 @@ public class Slime : Monster
     #region Coroutine
     private IEnumerator ClosingToTarget()
     {
-        followEvent?.Invoke(target.transform, base.Speed,
+        followEvent?.Invoke(target.transform, GetModifiedStat(E_BattleStat.Speed),
             () => myAnim.SetBool("b_Moving",true),
             () => myAnim.SetBool("b_Moving", false));
 
@@ -259,19 +260,19 @@ public class Slime : Monster
                     backStepPos = backStepPos + backStepDir * dist;
 
                     //이동 이벤트
-                    onMovementEvent?.Invoke(backStepPos, battleStat.Speed, 
+                    onMovementEvent?.Invoke(backStepPos, GetModifiedStat(E_BattleStat.Speed), 
                         () => myAnim.SetBool("b_Moving", true),
                         () => myAnim.SetBool("b_Moving", false));
                 }
                 break;
             case 1:
                 {
-                    sideMoveEvent?.Invoke(target.transform, new Info<float, float>(base.Speed, 10.0f), null, null);
+                    sideMoveEvent?.Invoke(target.transform, new Info<float, float>(GetModifiedStat(E_BattleStat.Speed), 10.0f), null, null);
                 }
                 break;
             case 2:
                 {
-                    followEvent?.Invoke(target.transform, base.Speed,
+                    followEvent?.Invoke(target.transform, GetModifiedStat(E_BattleStat.Speed),
                         () => myAnim.SetBool("b_Moving", true),
                         () => myAnim.SetBool("b_Moving", false));
                 }
