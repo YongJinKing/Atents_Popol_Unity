@@ -1,9 +1,16 @@
 {
     "index": 0,
+<<<<<<< Updated upstream
     "Character_Hp": 600,
     "Character_AttackPower": 70,
     "Character_CurrentExp": 2200,
     "Character_CurrentLevel": 6,
+=======
+    "Character_Hp": 520,
+    "Character_AttackPower": 30,
+    "Character_CurrentExp": 400,
+    "Character_CurrentLevel": 2,
+>>>>>>> Stashed changes
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
@@ -13,8 +20,13 @@
     "Armor_Ability": 10,
     "WeaponType": 1,
     "ArmorType": 10,
+<<<<<<< Updated upstream
     "Weapon_Duration": 77,
     "Armor_Duration": -69,
+=======
+    "Weapon_Duration": 92,
+    "Armor_Duration": 98,
+>>>>>>> Stashed changes
     "UiSkillList": [
         "",
         "",
@@ -118,7 +130,11 @@
         ""
     ],
     "InGameSkill": [
+<<<<<<< Updated upstream
         "SwordDown",
+=======
+        "",
+>>>>>>> Stashed changes
         "",
         "",
         ""
@@ -127,6 +143,7 @@
         false,
         false
     ],
+<<<<<<< Updated upstream
     "PlayerGold": 4760,
     "PlayerInven": [
         1200,
@@ -137,4 +154,14 @@
         100
     ],
     "PlayTime": 332
+=======
+    "PlayerGold": 21096,
+    "PlayerInven": [
+        1200
+    ],
+    "PlayerItemDuraion": [
+        100
+    ],
+    "PlayTime": 0
+>>>>>>> Stashed changes
 }

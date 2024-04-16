@@ -13,6 +13,7 @@ public class ColoUI : MonoBehaviour
     public GameObject BossAbility;
     public GameObject StagePopup;
     public UnityEvent SaveRiggingItemData;
+    public UnityEvent SaveInvenData;
     public int skillLength = 4;
 
 
@@ -134,6 +135,8 @@ public class ColoUI : MonoBehaviour
         {
             DataManager.instance.StageNum = StageIndex;
             SaveRiggingItemData?.Invoke();
+            SaveInvenData?.Invoke();
+            DataManager.instance.SaveData();
             SceneLoading.SceneNum(3);
             SceneManager.LoadScene(1);
         }

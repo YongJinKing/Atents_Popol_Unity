@@ -1,0 +1,52 @@
+[
+   {
+      "index":1000,
+      "String_Type":0,
+      "String_Desc":"공격력 증가"
+   },
+   {
+      "index":1001,
+      "String_Type":0,
+      "String_Desc":"체력 증가"
+   },
+   {
+      "index":1002,
+      "String_Type":0,
+      "String_Desc":"이동 속도 증가"
+   },
+   {
+      "index":1003,
+      "String_Type":0,
+      "String_Desc":"공격 속도 증가"
+   },
+   {
+      "index":2000,
+      "String_Type":1,
+      "String_Desc":"부식"
+   },
+   {
+      "index":2001,
+      "String_Type":1,
+      "String_Desc":"중독"
+   },
+   {
+      "index":2002,
+      "String_Type":1,
+      "String_Desc":"둔화"
+   },
+   {
+      "index":2003,
+      "String_Type":1,
+      "String_Desc":"기절"
+   },
+   {
+      "index":2004,
+      "String_Type":1,
+      "String_Desc":"속박"
+   },
+   {
+      "index":2005,
+      "String_Type":1,
+      "String_Desc":"실명"
+   }
+]

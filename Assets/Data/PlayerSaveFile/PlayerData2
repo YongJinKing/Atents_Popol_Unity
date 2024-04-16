@@ -7,6 +7,7 @@
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
+<<<<<<< Updated upstream
     "Weapon_Id": 1209,
     "Armor_Id": 1001,
     "Weapon_Ability": 300,
@@ -15,6 +16,16 @@
     "ArmorType": 10,
     "Weapon_Duration": 88,
     "Armor_Duration": 99,
+=======
+    "Weapon_Id": 1200,
+    "Armor_Id": 1001,
+    "Weapon_Ability": 30,
+    "Armor_Ability": 10,
+    "WeaponType": 1,
+    "ArmorType": 10,
+    "Weapon_Duration": 92,
+    "Armor_Duration": 100,
+>>>>>>> Stashed changes
     "UiSkillList": [
         "",
         "",
@@ -117,14 +128,29 @@
         "",
         ""
     ],
+<<<<<<< Updated upstream
     "InGameSkill": [],
+=======
+    "InGameSkill": [
+        "",
+        "",
+        "",
+        ""
+    ],
+>>>>>>> Stashed changes
     "clearStage": [
         false,
         false
     ],
+<<<<<<< Updated upstream
     "PlayerGold": 2464,
     "PlayerInven": [
         1209
+=======
+    "PlayerGold": 4026,
+    "PlayerInven": [
+        1000
+>>>>>>> Stashed changes
     ],
     "PlayerItemDuraion": [
         100

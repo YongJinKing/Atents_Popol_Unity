@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIItem : MonoBehaviour, ICloneable
+public class UIItem : MonoBehaviour
 {
     public Image icon;
     public TMP_Text txtCount;
@@ -21,20 +21,7 @@ public class UIItem : MonoBehaviour, ICloneable
     public int WeaponType;
     public int ItemPrice;
     
-    public object Clone()
-    {
-        UIItem uIItem= new UIItem();
-        uIItem.ItemName = ItemName;
-        uIItem.ItemDesc = ItemDesc;
-        uIItem.ItemSmith = ItemSmith;
-        uIItem.ItemRigging = ItemRigging;
-        uIItem.ItemValue = ItemValue;
-        uIItem.ItemDuration = ItemDuration;
-        uIItem.spName = spName;
-        uIItem.WeaponType = WeaponType;
-        uIItem.ItemPrice = ItemPrice;
-        return uIItem;
-    }
+    
     public void Init(int id)
     {
         this.id = id;
