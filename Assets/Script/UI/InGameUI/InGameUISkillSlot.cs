@@ -34,23 +34,32 @@ public class InGameUISkillSlot : MonoBehaviour
                 SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().color = color;
             }
         }
-        /* PlayerEnergyCheck(); */
     }
-    /* public void PlayerEnergyCheck() 
+    private void Update() 
+    {
+        PlayerEnergyCheck();
+    }
+    public void PlayerEnergyCheck() 
     {
         var SkillSlotList = transform.GetChild(0).GetChild(0).GetChild(0);//Skillslot//Bg/Paper/GridLine
+        //Debug.Log($"에너지 체크 : {(int)(HpAndEnergy.GetComponent<HpAndEnergy>().Energybar.fillAmount) * 100}");
         for(int i = 0; i < SkillSlotList.childCount; i++)//Skillslot//Bg/Paper/GridLine
         {
-            if(InGameSkillList[i].EnergyGage < ((int)(HpAndEnergy.GetComponent<HpAndEnergy>().Energybar.fillAmount) * 100))
+            
+            //Debug.Log($"왼쪽 : {InGameSkillList[i]?.EnergyGage}, 오른쪽 : {(HpAndEnergy.GetComponent<HpAndEnergy>().Energybar.fillAmount) * 100.0f}");
+            if(InGameSkillList[i]?.EnergyGage <= ((HpAndEnergy.GetComponent<HpAndEnergy>().Energybar.fillAmount) * 100.0f))
             {
-                SkillSlotList.GetChild(2).gameObject.SetActive(true);//Skillslot//Bg/Paper/GridLine/SkillSlot/EnergyCheck
+                
+                SkillSlotList.GetChild(i).GetChild(2).gameObject.SetActive(false);
             }
             else
             {
-                SkillSlotList.GetChild(2).gameObject.SetActive(false);
+                
+                if(InGameSkillList[i] != null)
+                    SkillSlotList.GetChild(i).GetChild(2).gameObject.SetActive(true);//Skillslot//Bg/Paper/GridLine/SkillSlot/EnergyCheck
             }
         }
-    } */
+    }
     public void UseSkill(int index)
     {
         var SkillSlotList = transform.GetChild(0).GetChild(0).GetChild(0);//Skillslot//Bg/Paper/GridLine

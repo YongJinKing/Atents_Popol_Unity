@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
     
     void Start()
     {
-        Debug.Log("startCheckInInventory");
+        
         
         ItemDataManager.GetInstance().InvenItemLoadDatas();
         this.ItemList = new List<UIItem>();
@@ -44,7 +44,7 @@ public class Inventory : MonoBehaviour
             ItemList[i].ItemDuration = DataManager.instance.playerData.PlayerInvenDuraion[i];
         }
         
-        Debug.Log($"Armor Duration : {DataManager.instance.playerData.Armor_Duration}, {transform.GetChild(1).GetChild(1).GetComponent<UIItem>().ItemDuration}");
+        //Debug.Log($"Armor Duration : {DataManager.instance.playerData.Armor_Duration}, {transform.GetChild(1).GetChild(1).GetComponent<UIItem>().ItemDuration}");
 
         
     }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Slime : Monster
 {
-    //º¯¼ö ¿µ¿ª
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Properties / Field
-    //private º¯¼ö ¿µ¿ª
+    //private ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Private
     private int[] saveSkill;
     private int countUsedSkill;
@@ -19,32 +19,32 @@ public class Slime : Monster
     private Dictionary<string, int> dicTriggerAnims = new Dictionary<string, int>();
     #endregion
 
-    //protected º¯¼ö ¿µ¿ª
+    //protected ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region protected
     #endregion
 
-    //Public º¯¼ö¿µ¿ª
+    //Public ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     #region public
     public float backStapOffset = 5.0f;
     #endregion
 
-    //ÀÌº¥Æ® ÇÔ¼öµé ¿µ¿ª
+    //ï¿½Ìºï¿½Æ® ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region Event
     #endregion
     #endregion
 
 
     #region Method
-    //private ÇÔ¼öµé ¿µ¿ª
+    //private ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region PrivateMethod
     private void SkillRandomSet()
     {
-        //½ºÅ³À» ´Ù½èÀ¸¸é
+        //ï¿½ï¿½Å³ï¿½ï¿½ ï¿½Ù½ï¿½ï¿½ï¿½ï¿½ï¿½
         for(int i = 0; i < skills.Length; i++)
         {
             saveSkill[i] = UnityEngine.Random.Range(0, skills.Length);
             
-            //°øÅëµÈ °Ô ÀÖÀ¸¸é ´Ù½Ã
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½
             for(int j = 0; j < i; j++)
             {
                 if (saveSkill[j] == saveSkill[i])
@@ -64,7 +64,7 @@ public class Slime : Monster
         {
             saveMoveType[i] = UnityEngine.Random.Range(0, saveMoveType.Length);
 
-            //°øÅëµÈ °Ô ÀÖÀ¸¸é ´Ù½Ã
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½
             for (int j = 0; j < i; ++j)
             {
                 if (saveMoveType[j] == saveMoveType[i])
@@ -79,7 +79,7 @@ public class Slime : Monster
     }
     #endregion
 
-    //protected ÇÔ¼öµé ¿µ¿ª
+    //protected ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region ProtectedMethod
     protected override void ChangeState(State s)
     {
@@ -91,7 +91,7 @@ public class Slime : Monster
 
         switch (myState)
         {
-            //´ëÃæ Àû´çÈ÷ ±Ù°Å¸®¿¡¼­ ¹èÈ¸
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù°Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
             case State.Idle:
                 if (countIdle > saveMoveType.Length - 1)
                 {
@@ -99,11 +99,11 @@ public class Slime : Monster
                 }
                 ProcessState();
                 break;
-            //Àû¿¡°Ô Á¢±Ù
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             case State.Closing:
                 ProcessState();
                 break;
-            //°ø°Ý
+            //ï¿½ï¿½ï¿½ï¿½
             case State.Attacking:
                 Vector3 dir = target.transform.position - transform.position;
                 dir = new Vector3(dir.x, 0, dir.z);
@@ -128,13 +128,13 @@ public class Slime : Monster
     {
         switch (myState)
         {
-            //´ëÃæ Àû´çÈ÷ ±Ù°Å¸®¿¡¼­ ¹èÈ¸
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù°Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
             case State.Idle:
                 StartCoroutine(IdleProcessing());
                 break;
-            //Àû¿¡°Ô Á¢±Ù
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             case State.Closing:
-                //detect¸¦ ½ÇÇàÇÏ¶ó°í Áö½Ã
+                //detectï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 skills[saveSkill[countUsedSkill]].OnCommandDetectSkillTarget(
                     () => 
                     {
@@ -143,7 +143,7 @@ public class Slime : Monster
                 //Debug.Log(saveSkill[countUsedSkill]);
                 StartCoroutine(ClosingToTarget());
                 break;
-            //°ø°Ý
+            //ï¿½ï¿½ï¿½ï¿½
             case State.Attacking:
                 myAnim.SetBool("b_isSkillProgress", true);
                 myAnim.SetTrigger("t_SkillStart");
@@ -194,7 +194,7 @@ public class Slime : Monster
     }
     #endregion
 
-    //public ÇÔ¼öµé ¿µ¿ª
+    //public ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region PublicMethod
     public override void CinematicStart()
     {
@@ -209,7 +209,7 @@ public class Slime : Monster
     #endregion
 
 
-    //ÄÚ·çÆ¾ ¿µ¿ª
+    //ï¿½Ú·ï¿½Æ¾ ï¿½ï¿½ï¿½ï¿½
     #region Coroutine
     private IEnumerator ClosingToTarget()
     {
@@ -221,7 +221,7 @@ public class Slime : Monster
     }
 
 
-    //ÀÏ´Ü Æ¯Á¤ °Å¸®¿¡¼­ ±â´Ù¸®´Â AI
+    //ï¿½Ï´ï¿½ Æ¯ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½ AI
     private IEnumerator IdleProcessing()
     {
         skills[saveSkill[countUsedSkill]].OnRequestSkillInfo();
@@ -229,7 +229,7 @@ public class Slime : Monster
         yield return new WaitForEndOfFrame();
         myAnim.SetInteger("i_SkillType", animType);
 
-        //¸ÕÀú Å¸°ÙÀ» Ã£´Â´Ù.
+        //ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Â´ï¿½.
         yield return StartCoroutine(FindTarget());
 
         float IdleTime = 3.0f;
@@ -240,12 +240,12 @@ public class Slime : Monster
         {
             case 0:
                 {
-                    //ÀÌµ¿ÇÒ ÁÂÇ¥ ±¸ÇÏ±â
+                    //ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½Ï±ï¿½
                     Vector3 dir = -(target.transform.position - transform.position);
                     dir = new Vector3(dir.x, 0, dir.z);
                     dir.Normalize();
 
-                    //±× ¹æÇâÀ¸·Î ¿ÀÇÁ¼Â ¸¸Å­ ÀÌµ¿ÇÑ µÚ¿¡ ·£´ýÇÑ ¹æÇâÀ¸·Î ÁÂÇ¥¸¦ Âï¾î¼­ backStepPos ¸¦ »ý¼º
+                    //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å­ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½ï¿½î¼­ backStepPos ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                     Vector3 backStepPos = (transform.position + dir * backStapOffset);
                     Vector3 backStepDir = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360f), 0) * dir;
                     backStepDir.Normalize();
@@ -259,7 +259,7 @@ public class Slime : Monster
 
                     backStepPos = backStepPos + backStepDir * dist;
 
-                    //ÀÌµ¿ ÀÌº¥Æ®
+                    //ï¿½Ìµï¿½ ï¿½Ìºï¿½Æ®
                     onMovementEvent?.Invoke(backStepPos, GetModifiedStat(E_BattleStat.Speed), 
                         () => myAnim.SetBool("b_Moving", true),
                         () => myAnim.SetBool("b_Moving", false));
@@ -282,7 +282,7 @@ public class Slime : Monster
         }
 
 
-        //idle ½Ã°£ Àç±â
+        //idle ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½
         while (IdleTime >= 0.0f)
         {
             IdleTime -= Time.deltaTime;
@@ -290,10 +290,10 @@ public class Slime : Monster
         }
 
 
-        //½Ã°£ ³¡³ª¸é ÀÌµ¿ ³¡³¿
+        //ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
         stopEvent?.Invoke(null);
 
-        //»óÅÂ ¹Ù²Þ
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½
         ++countIdle;
         ChangeState(State.Closing);
         yield return null;
@@ -332,11 +332,11 @@ public class Slime : Monster
     #endregion
 
 
-    //ÀÌº¥Æ®°¡ ÀÏ¾î³µÀ»¶§ ½ÇÇàµÇ´Â On~~ÇÔ¼ö
+    //ï¿½Ìºï¿½Æ®ï¿½ï¿½ ï¿½Ï¾î³µï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ On~~ï¿½Ô¼ï¿½
     #region EventHandler
     #endregion
 
-    //À¯´ÏÆ¼ ÇÔ¼öµé ¿µ¿ª
+    //ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     #region MonoBehaviour
     protected override void Start()
     {
