@@ -212,9 +212,33 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
             float HillBuffTime = 10;
             BuffType(101, HillBuffTime);
             StartCoroutine(Hill(HillBuffTime));
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            float SpeedBuffTime = 10;
+            BuffType(102, SpeedBuffTime);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            float AttackSpeedBuffTime = 10;
+            BuffType(103, AttackSpeedBuffTime);
+            myAnim.SetFloat("AttackSpeed", 2f);
+            StartCoroutine(StopAttackSpeed(AttackSpeedBuffTime));
 
         }
+
     }
+
+
+    IEnumerator StopAttackSpeed(float BuffTime)
+    {
+        yield return new WaitForSeconds(BuffTime);
+        myAnim.SetFloat("AttackSpeed", 1.0f);
+    }
+
+
 
     private void Corrosion()
     {
@@ -453,19 +477,15 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
             if (Input.GetKeyDown(controllKey[(E_Skill)i]))
             {
                 var plskill = DataManager.instance.playerData;
-                if (plskill.InGameSkill.Length > 0)
+                if (!string.IsNullOrWhiteSpace(plskill.InGameSkill[i]))
                 {
-                    if (!string.IsNullOrWhiteSpace(plskill.InGameSkill[i]))
-                    {
-                        Debug.Log(plskill.InGameSkill[i]);
-                        GameObject effect = Resources.Load($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(WeaponType)}/{plskill.InGameSkill[i]}") as GameObject;
-                        sm = effect.GetComponent<SkillManager>();
-                    }
+                    Debug.Log(string.IsNullOrWhiteSpace(plskill.InGameSkill[i]));
+                    GameObject effect = Resources.Load($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(WeaponType)}/{plskill.InGameSkill[i]}") as GameObject;
+                    sm = effect.GetComponent<SkillManager>();
                 }
                 else
                 {
-                    Debug.Log("?ï¿½ìž¬?ï¿½ë¡¯???ï¿½í‚¬???ï¿½ìŠµ?ï¿½ë‹¤.");
-                    //?ï¿½í‚¬ ?ï¿½íŒ¨ ?ï¿½ìš´??
+                    Debug.Log("ÇöÀç ½ºÅ³½½·Ô¿¡ ½ºÅ³ÀÌ ¾ø½À´Ï´Ù.");
                     return;
                 }
 
