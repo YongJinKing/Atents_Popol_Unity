@@ -4,32 +4,24 @@ using UnityEngine;
 
 public class DisplayCondition : MonoBehaviour
 {
-    int index = 0;
     private void Start() 
     {
         ConditionDataManager.GetInstance().ConditionLoadDatas();
     }
-    public void Display(int Id, float CoolTime)
+    public void Display(int Id)
     {
-        var ConditionData = ConditionDataManager.GetInstance().dicConditionDatas[Id];
-        var SpriteData = ConditionDataManager.GetInstance().dicStringTable[ConditionData.Condition_Sprite];
-        var NameData = ConditionDataManager.GetInstance().dicStringTable[ConditionData.Condition_Name];
-        Instantiate(Resources.Load<GameObject>("UI/UserSkill/Condition"),transform.GetChild(0).GetChild(0).GetChild(0));//DiplayCondition//Bg/Paper/GridLine
-        
-    }
-
-    IEnumerator ConditionTimeCheck(int index, float CoolTime)
-    {
-        while(CoolTime > 0)
+        var go = transform.GetChild(0).GetChild(0).GetChild(0);//DiplayCondition//Bg/Paper/GridLine
+        for(int i = 0; i < go.childCount; i++)
         {   
-            CoolTime -= Time.deltaTime;
-            if(CoolTime < 0)
+            if(go.GetChild(i).GetComponent<Condition>().ConditionId == Id)
             {
-             
-                CoolTime = 0.0f;
+                go.GetChild(i).GetComponent<Condition>().SetTrigger(Id);
+                return;
             }
-          
-            yield return null;
         }
+        Instantiate(Resources.Load<GameObject>("UI/UserSkill/Condition"), go);
+        Debug.Log(go.childCount);
+        go.GetChild(go.childCount - 1).GetComponent<Condition>().SetTrigger(Id);
+
     }
 }

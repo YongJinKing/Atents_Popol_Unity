@@ -5,24 +5,41 @@ using UnityEngine;
 using System;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
 
 public class Condition : MonoBehaviour
 {
     public Image image;
-    public Image CoolTime;
+    public Image CoolTimeImage;
+    public TMP_Text ConditionCountTxt;
 
 
-    float StartCoolTime = 0;
-    float EndCoolTime;
+    float StartDurationTime = 0;
+    float EndDurationTime;
+    int ConditionCount = 1;
+
+    public int ConditionId;
+    string Spname;
     Coroutine myco;
-    public void SetTrigger(int Id, float CoolTime)
+    private void Start() 
     {
+        ConditionCountTxt.text = "";
+        ConditionDataManager.GetInstance().ConditionLoadDatas();
+    }
+    public void SetTrigger(int Id)//cooltime = endtime
+    {
+        this.ConditionId = Id;
         var ConditionData = ConditionDataManager.GetInstance().dicConditionDatas[Id];
-        var SpriteData = ConditionDataManager.GetInstance().dicStringTable[ConditionData.Condition_Sprite];
+        var SpriteData = ConditionDataManager.GetInstance().dicResouseTable[ConditionData.Condition_Sprite];
         var NameData = ConditionDataManager.GetInstance().dicStringTable[ConditionData.Condition_Name];
-        EndCoolTime = CoolTime;
+        Spname = SpriteData.ImageResourceName;
+        Sprite sp = Resources.Load<Sprite>($"UI/BuffAndDeBuff/{ItemTypeIntToString.IntToStringConditionFileName(Id/1000)}/{Spname}");
+        image.sprite = sp;
+        EndDurationTime = ConditionData.Condition_DurationTime;
         if(myco != null)
-            StartCoolTime = 0;
+        {
+            ConditionCount++;
+        }
         else
             myco = StartCoroutine(ConditionTimeCheck());
         
@@ -31,13 +48,24 @@ public class Condition : MonoBehaviour
     IEnumerator ConditionTimeCheck()
     {
         //Debug.Log($"실행 및 쿨타임 체크 : ");
-        while (StartCoolTime < EndCoolTime)
+        while (ConditionCount > 0)
         {
-            StartCoolTime += Time.deltaTime;
+            StartDurationTime += Time.deltaTime;
+            CoolTimeImage.fillAmount = StartDurationTime/EndDurationTime;
+            ConditionCountTxt.text = "x" +ConditionCount.ToString();
+            if(StartDurationTime >= EndDurationTime)
+            {
+                ConditionCount--;
+                StartDurationTime = 0;
+            }
             yield return null;
         }
-        StartCoolTime = 0;
+        ConditionCount = 1;
+        StartDurationTime = 0;
+        CoolTimeImage.fillAmount = 0.0f;
         myco = null;
+        ConditionCountTxt.text = "";
+        Destroy(gameObject);
         //Debug.Log($"종료 : ");
     }
     

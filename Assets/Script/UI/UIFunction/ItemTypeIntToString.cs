@@ -82,4 +82,13 @@ public class ItemTypeIntToString : MonoBehaviour
             Rtstring = "판금";
         return Rtstring;
     }
+    public static string IntToStringConditionFileName(int index)
+    {
+        string Rtstring = "";
+        if(index == 1)
+            Rtstring = "Buff";
+        if(index == 2)
+            Rtstring = "DeBuff";
+        return Rtstring;
+    }
 }
