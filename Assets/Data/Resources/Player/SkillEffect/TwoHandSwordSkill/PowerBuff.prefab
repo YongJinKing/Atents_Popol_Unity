@@ -118,9 +118,9 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0.7
-      minScalar: 5
+      minMaxState: 3
+      scalar: 1.2
+      minScalar: 0.7
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -667,14 +667,14 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 6
+    type: 10
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: -0.7, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0}
+    m_Position: {x: 0, y: 0, z: 0}
+    m_Rotation: {x: -90, y: 0, z: 0}
     m_Scale: {x: 0.7, y: 0.5, z: 0.7}
     placementMode: 1
     m_MeshMaterialIndex: 0
@@ -4845,9 +4845,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c8fa89459f91744b2058532811dbdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player:
+  targetLayer:
     serializedVersion: 2
     m_Bits: 1024
+  offSet: {x: 0, y: 0, z: 0}
+  isRot: 0
+  RotSpeed: 0
 --- !u!114 &4196453803616073522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4871,6 +4874,7 @@ MonoBehaviour:
   WeaponType: 1
   Level: 10
   CoolTime: 20
+  CoolTimeCheck: 0
   aType: 0
   Buff: 30
   BTime: 10
@@ -4901,7 +4905,7 @@ Transform:
   m_GameObject: {fileID: 7580699392718119294}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.951, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

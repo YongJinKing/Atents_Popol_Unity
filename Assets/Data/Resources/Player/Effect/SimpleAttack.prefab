@@ -4905,7 +4905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8318586590010594487
 Transform:
   m_ObjectHideFlags: 0
@@ -9729,7 +9729,7 @@ GameObject:
   - component: {fileID: 8195263217757697548}
   - component: {fileID: 3027870289781786815}
   - component: {fileID: 1129326142372700784}
-  - component: {fileID: 2197435355848236282}
+  - component: {fileID: 5218256461309147293}
   - component: {fileID: -2990561302042464508}
   - component: {fileID: 2428687727842145413}
   - component: {fileID: 5540558775326653587}
@@ -14501,7 +14501,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.5
   m_Center: {x: 0, y: 2, z: 0.75}
---- !u!114 &2197435355848236282
+--- !u!114 &5218256461309147293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14510,9 +14510,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7925162887021308499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83741ce3111fdab48b8b845fb494bc78, type: 3}
+  m_Script: {fileID: 11500000, guid: 52df49c8c36e4e848bc286e57da5b967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startDelay: 0
+  colCount: 1
+  colDelay: 0
 --- !u!114 &-2990561302042464508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14533,6 +14536,9 @@ MonoBehaviour:
   Damage: 100
   SkillCalculation: 0
   WeaponType: 0
+  Level: 0
+  CoolTime: 0
+  CoolTimeCheck: 0
   aType: 0
   Buff: 0
   BTime: 0
@@ -14553,8 +14559,8 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 4096
-  one: 0.1
-  two: 0.1
+  duration: 0.1
+  magnitud: 0.2
 --- !u!199 &5540558775326653587
 ParticleSystemRenderer:
   serializedVersion: 6

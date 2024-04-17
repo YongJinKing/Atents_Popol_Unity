@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         //need stage number
         //for test, static int 1 inside the function
         LoadStageData(DataManager.instance.StageNum);
-        StartCoroutine(WaveRound());
+        //StartCoroutine(WaveRound());
 
         LoadPlayerStat();
     }
