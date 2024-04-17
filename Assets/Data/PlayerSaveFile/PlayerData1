@@ -1,20 +1,20 @@
 {
     "index": 0,
-    "Character_Hp": 800,
-    "Character_AttackPower": 170,
-    "Character_CurrentExp": 60068,
-    "Character_CurrentLevel": 13,
+    "Character_Hp": 500,
+    "Character_AttackPower": 20,
+    "Character_CurrentExp": 0,
+    "Character_CurrentLevel": 1,
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
-    "Weapon_Id": 1200,
-    "Armor_Id": 3001,
-    "Weapon_Ability": 30,
-    "Armor_Ability": 40,
+    "Weapon_Id": 1203,
+    "Armor_Id": 1001,
+    "Weapon_Ability": 120,
+    "Armor_Ability": 10,
     "WeaponType": 1,
     "ArmorType": 10,
-    "Weapon_Duration": -5,
-    "Armor_Duration": 74,
+    "Weapon_Duration": 100,
+    "Armor_Duration": 100,
     "UiSkillList": [
         "",
         "",
@@ -26,10 +26,10 @@
         "",
         "",
         "",
-        "SwordDown",
-        "PowerBuff",
-        "Slash",
-        "SwordIlusion",
+        "",
+        "",
+        "",
+        "",
         "",
         "",
         "",
@@ -118,27 +118,21 @@
         ""
     ],
     "InGameSkill": [
-        "SwordDown",
-        "PowerBuff",
-        "Slash",
-        "SwordIlusion"
+        "",
+        "",
+        "",
+        ""
     ],
     "clearStage": [
-        true,
+        false,
         false
     ],
-    "PlayerGold": 19200,
+    "PlayerGold": 2027,
     "PlayerInven": [
-        3001,
-        1200,
-        1100,
-        1101
+        1000
     ],
-    "PlayerItemDuraion": [
-        100,
-        100,
-        100,
+    "PlayerInvenDuraion": [
         100
     ],
-    "PlayTime": 1654
+    "PlayTime": 0
 }

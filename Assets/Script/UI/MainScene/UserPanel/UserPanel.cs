@@ -70,6 +70,8 @@ public class UserPanel : MonoBehaviour
     {
         UserPanelPopup.transform.gameObject.SetActive(false);
         BossMonsterObj.transform.gameObject.SetActive(true);
+        SaveInvenData?.Invoke();
+        DataManager.instance.SaveData();
     }
         
 

@@ -41,7 +41,7 @@ public class Inventory : MonoBehaviour
         for(int i = 0; i < DataManager.instance.playerData.PlayerInven.Count; i++)
         {
             AddItem(DataManager.instance.playerData.PlayerInven[i]);
-            ItemList[i].ItemDuration = DataManager.instance.playerData.PlayerItemDuraion[i];
+            ItemList[i].ItemDuration = DataManager.instance.playerData.PlayerInvenDuraion[i];
         }
         
         Debug.Log($"Armor Duration : {DataManager.instance.playerData.Armor_Duration}, {transform.GetChild(1).GetChild(1).GetComponent<UIItem>().ItemDuration}");
@@ -184,12 +184,15 @@ public class Inventory : MonoBehaviour
     public void SaveInvenData()
     {
         DataManager.instance.playerData.PlayerInven = new List<int>();
-        DataManager.instance.playerData.PlayerItemDuraion = new List<int>(); 
+        DataManager.instance.playerData.PlayerInvenDuraion = new List<int>(); 
+        
         for(int i = 0; i < ItemList.Count; i++)
         {
             DataManager.instance.playerData.PlayerInven.Add(ItemList[i].id);
-            DataManager.instance.playerData.PlayerItemDuraion.Add(ItemList[i].ItemDuration);
+            DataManager.instance.playerData.PlayerInvenDuraion.Add(ItemList[i].ItemDuration);
         }
+        DataManager.instance.playerData.Weapon_Duration = transform.GetChild(1).GetChild(0).GetComponent<UIItem>().ItemDuration;
+        DataManager.instance.playerData.Armor_Duration = transform.GetChild(1).GetChild(1).GetComponent<UIItem>().ItemDuration;
     }
     
    

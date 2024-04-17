@@ -35,7 +35,7 @@ public class PlayerData
     public bool[] clearStage = { false, false };
     public int PlayerGold = 0;
     public List<int> PlayerInven = new List<int>();
-    public List<int> PlayerItemDuraion = new List<int>();
+    public List<int> PlayerInvenDuraion = new List<int>();
     public int PlayTime;
 }
 

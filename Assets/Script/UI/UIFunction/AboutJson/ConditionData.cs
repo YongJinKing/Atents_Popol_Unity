@@ -8,6 +8,7 @@ public class ConditionData
     public int index;
     public int Condition_Name;
     public int Condition_Sprite;
+    public float Condition_DurationTime;
 }
 public class ConditionImageResourceTable
 {
