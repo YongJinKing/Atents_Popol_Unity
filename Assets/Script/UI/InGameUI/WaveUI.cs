@@ -18,6 +18,8 @@ public class WaveUI : MonoBehaviour
 
     public Vector2 txtEndPos;   //ScreenCenter Pos
     public float txtEndScale;   //Make UI How Much Bigger
+    Vector2 txtPos;
+    float txtScale = 1;
 
     public float moveSpeed;
 
@@ -30,57 +32,68 @@ public class WaveUI : MonoBehaviour
     {
         StartCoroutine("WaveStart");
     }
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad0) && !iscine)
+        if (Input.GetKeyDown(KeyCode.Keypad0))
         {
             nextWave();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            StartCoroutine("BossIntro");
         }
     }
 
     public void nextWave()
     {
-        if (nowWave! < TotalWave)
+        if (nowWave < TotalWave)
         {
             state = 0;
             StartCoroutine("NextWave");
         }
     }
 
-    public void IsBossCo()
-    {
-        StartCoroutine("IsBossStage");
-    }
-    IEnumerator IsBossStage()
-    {
-        yield return new WaitForEndOfFrame();
-        BossOpening.SetActive(true);
-        Instantiate(BossTiara);
-        Instantiate(BossSpawnRing,Vector3.zero,Quaternion.identity);
-    }
 
     int state = 0;
     float alph = 1.0f;
     IEnumerator WaveStart()
     {
         WaveTxt.alignment = TextAlignmentOptions.Center;
+        txtPos = txtEndPos;
+        txtScale = txtEndScale * 2;
         MoveT();
         ChangeT(0, "Ready");
-        txtEndScale = txtEndScale * 2;
+        txtScale = txtEndScale * 4;
         yield return new WaitForSeconds(2);
         while (state == 0)
         {
             ChangeT(0, "Start!");
-            txtEndScale = Mathf.Lerp(txtEndScale, 4, Time.deltaTime * moveSpeed);
+            txtScale = Mathf.Lerp(txtScale,txtEndScale*2,Time.deltaTime*moveSpeed*3);
             MoveT();
-            if (Mathf.Approximately(txtEndScale,4))
+            if (Mathf.Approximately(txtScale,4))
             {
-                WaveTxt.alignment = TextAlignmentOptions.Left;
-                txtEndScale = 2;
+                StartCoroutine("StopWatch");
+                ++state;
+            }
+            yield return null;
+        }
+        while (state == 1)
+        {
+            alph -= Time.deltaTime * moveSpeed * 0.5f;
+            WaveTxt.alpha = WaveNum.alpha = Mathf.Abs(alph);
+            if (Mathf.Floor(alph * 10) <= 0)
+            {
+                ChangeT(1, nowWave.ToString());
+                txtScale = txtEndScale;
                 MoveT();
+                WaveTxt.alignment = TextAlignmentOptions.Left;
                 ChangeT(0, "Wave");
                 ChangeT(1, "1");
-                state = 2;
+            }
+            if (alph <= -1)
+            {
+                alph = 1.0f;
+                ++state;
                 StartCoroutine("NextWave");
             }
             yield return null;
@@ -92,18 +105,24 @@ public class WaveUI : MonoBehaviour
         yield return new WaitForSeconds(2);
         iscine = true;
         ++nowWave;
+        if (nowWave == TotalWave) StartCoroutine("BossIntro");
         while (state == 0)      //Move to Center
         {
-            txtEndPos.y = Mathf.Lerp(txtEndPos.y, txtEndPos.y, Time.deltaTime * moveSpeed);
-            txtEndScale = Mathf.Lerp(txtEndScale, txtEndScale, Time.deltaTime * moveSpeed);
+            txtPos.y = Mathf.Lerp(txtPos.y, txtEndPos.y, Time.deltaTime * moveSpeed);
+            txtScale = Mathf.Lerp(txtScale, txtEndScale, Time.deltaTime * moveSpeed);
             MoveT();
-            if (Mathf.Floor(Vector2.Distance(txtEndPos, txtEndPos)) == 0)
+            if (Vector2.Distance(txtPos, txtEndPos) <= 1)
             {
+                if (nowWave == TotalWave)
+                {
+                    state = 10;
+                    break;
+                }
                 ++state;
             }
             yield return null;
         }
-
+        
         while (state == 1)      //Change num
         {
             alph -= Time.deltaTime * moveSpeed * 0.5f;
@@ -121,78 +140,18 @@ public class WaveUI : MonoBehaviour
             yield return null;
         }
 
-        while (state == 2)      //Move back
+        while (state == 10)
         {
-            txtEndPos.y = Mathf.Lerp(txtEndPos.y, 0, Time.deltaTime * moveSpeed);
-            txtEndScale = Mathf.Lerp(txtEndScale, 1, Time.deltaTime * moveSpeed);
-            MoveT();
-            if (Mathf.Floor(txtEndPos.y) == 0)
-            {
-                if (nowWave > 1) WaveRound?.Invoke();
-                ++state;
-                iscine = false;
-            }
-            yield return null;
-        }
-    }
-
-
-    /*IEnumerator WaveChange()
-    {
-        if(nowWave >0)
-            yield return new WaitForSeconds(2);
-        iscine = true;
-        ++nowWave;
-        while (state == 0)      //Move to Center
-        {
-            txtPos.y = Mathf.Lerp(txtPos.y, txtEndPos.y, Time.deltaTime * moveSpeed);
-            txtScale = Mathf.Lerp(txtScale, txtEndScale, Time.deltaTime * moveSpeed);
-            UIMove();
-            if (Mathf.Floor(Vector2.Distance(txtPos, txtEndPos)) == 0)
-            {
-                if(nowWave >= TotalWave)
-                {
-                    state = 10;
-                    break;
-                }
-                ++state;
-            }
-            yield return null;
-        }
-        float alph = 1.0f;
-        while (state == 1)      //Change num
-        {
-            alph -= Time.deltaTime*3;
-            WaveNum.GetComponent<TMP_Text>().alpha = Mathf.Abs(alph);
-            if (Mathf.Floor(alph*10) <= 0)
-            {
-                WaveNum.GetComponent<TMP_Text>().text = nowWave.ToString();
-            }
-            if(alph <= -1)
-            {
-                txtEndPos.y = 1025;
-                txtEndScale = 1f;
-                alph = 1.0f;
-                ++state;
-                yield return new WaitForSeconds(1f);
-            }
-            yield return null;
-        }
-
-        while (state == 10)     //Boss
-        {
-            alph -= Time.deltaTime * 3;
-            WaveTxt.GetComponent<TMP_Text>().alpha = Mathf.Abs(alph);
-            WaveNum.GetComponent<TMP_Text>().alpha = Mathf.Abs(alph);
+            alph -= Time.deltaTime * moveSpeed * 0.5f;
+            WaveTxt.alpha = WaveNum.alpha = Mathf.Abs(alph);
             if (Mathf.Floor(alph * 10) <= 0)
             {
-                WaveNum.GetComponent<TMP_Text>().text = "";
-                WaveTxt.GetComponent<TMP_Text>().text = "   Boss";
+                ChangeT(1, "");
+                WaveTxt.alignment = TextAlignmentOptions.Center;
+                ChangeT(0, "Boss");
             }
             if (alph <= -1)
             {
-                txtEndPos.y = 1025;
-                txtEndScale = 1f;
                 alph = 1.0f;
                 state = 2;
                 yield return new WaitForSeconds(1f);
@@ -202,25 +161,60 @@ public class WaveUI : MonoBehaviour
 
         while (state == 2)      //Move back
         {
-            txtPos.y = Mathf.Lerp(txtPos.y, txtEndPos.y, Time.deltaTime * moveSpeed);
-            txtScale = Mathf.Lerp(txtScale, txtEndScale, Time.deltaTime * moveSpeed);
-            UIMove();
-            if (Mathf.Floor(Vector2.Distance(txtPos, txtEndPos)) == 0)
+            txtPos.y = Mathf.Lerp(txtPos.y, 0, Time.deltaTime * moveSpeed);
+            txtScale = Mathf.Lerp(txtScale, 1, Time.deltaTime * moveSpeed);
+            MoveT();
+            if (Mathf.Abs(txtPos.y) <= 0.1f)
             {
-                txtEndPos.y = 540;
-                txtEndScale = 2f;
-                if(nowWave>1)WaveRound?.Invoke();
+                txtPos = Vector2.zero;
+                MoveT();
+                WaveRound?.Invoke();
                 ++state;
                 iscine = false;
             }
             yield return null;
         }
-    }*/
+    }
+
+    IEnumerator BossIntro()
+    {
+        Instantiate(BossSpawnRing, Vector3.zero, Quaternion.identity);
+        Debug.Log("BossInstro");
+        Color color = Warnning.color;
+        byte c = 5;
+        while (c > 0)
+        {
+            for (float alpha = 0f; alpha <= 70f; alpha += 0.5f)
+            {
+                color.a = alpha / 255f;
+                Warnning.color = color;
+                yield return null;
+            }
+            for (float alpha = 70f; alpha >= 0f; alpha -= 0.5f)
+            {
+                color.a = alpha / 255f;
+                Warnning.color = color;
+                yield return null;
+            }
+            --c;
+        }
+    }
+
+    public void IsBossCo()
+    {
+        StartCoroutine("IsBossStage");
+    }
+    IEnumerator IsBossStage()
+    {
+        yield return new WaitForEndOfFrame();
+        Instantiate(BossOpening);
+        Instantiate(BossTiara);
+    }
 
     private void MoveT()
     {
-        WaveTxt.transform.localPosition = txtEndPos;
-        WaveTxt.transform.localScale = new Vector3(txtEndScale, txtEndScale, 1);
+        WaveTxt.transform.localPosition = txtPos;
+        WaveTxt.transform.localScale = new Vector3(txtScale, txtScale, 1);
     }
 
     private void ChangeT(int i, string s)
@@ -235,8 +229,6 @@ public class WaveUI : MonoBehaviour
         }
         t.text = s;
     }
-
-
 
     float playTime = 0;
     IEnumerator StopWatch()
