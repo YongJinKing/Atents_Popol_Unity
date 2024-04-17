@@ -14,15 +14,12 @@ public class MainEventManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        #region UIInit
-
+        SoundManager.instance.PlayBgmMusic("MainBgm");
         for(int i = 2; i < gameCanvas.transform.childCount; i++)
-            {
                 gameCanvas.transform.GetChild(i).gameObject.SetActive(false);
-            }
+
             transform.gameObject.SetActive(true);
 
-        #endregion
     }
     
     void ChangeMainUI()

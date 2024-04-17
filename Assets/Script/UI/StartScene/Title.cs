@@ -5,6 +5,11 @@ using UnityEngine;
 public class Title : MonoBehaviour
 {
     public GameObject Canvas;
+    private void Start() {
+        
+        SoundManager.instance.PlayBgmMusic("TitleMusic");
+        
+    }
     public void PressedBtn(int index)
     {
         if(index == 0)//GameStart

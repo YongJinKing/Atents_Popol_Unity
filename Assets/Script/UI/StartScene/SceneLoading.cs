@@ -13,6 +13,7 @@ public class SceneLoading : MonoBehaviour
     void Start()
     {
         LoadTxt.text = "Loading...";
+        SoundManager.instance.StopBgmMusic();
         StartCoroutine(LoadScene());
     }
 

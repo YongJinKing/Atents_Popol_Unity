@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    private AudioSource audioSource;
+    public AudioClip[] audioBgmClips;
+    public AudioClip[] audioSfxClips;
+    public AudioSource BgmPlayer;
+    public AudioSource SfxPlayer;
+    public AudioMixer mixer;
     
     public static SoundManager instance;
     private void Awake()    
@@ -18,16 +24,33 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-        audioSource = GetComponent<AudioSource>();
+
     }
-    public void PlayMusic()
+    private void Start() 
     {
-        if(audioSource.isPlaying) return;
-        audioSource.Play();
+        BgmPlayer.volume = DataManager.instance.Bgm_Volum;
     }
-    public void StopMusic()
+    public void PlayBgmMusic(string Type)
     {
-        audioSource.Stop();
+        int index = 0;
+
+        switch(Type)
+        {
+            case "TitleBgm": index = 0; break;
+            case "MainBgm": index = 1; break;
+        }
+        BgmPlayer.clip = audioBgmClips[index];
+        BgmPlayer.Play();
     }
+    public void StopBgmMusic()
+    {
+        BgmPlayer.Stop();
+    }
+    public void SetMusicVolume(float volume)
+    {
+        BgmPlayer.volume = volume;
+    }
+    
+   
     
 }

@@ -45,6 +45,8 @@ public class DataManager : MonoBehaviour
     public PlayerData playerData = new PlayerData();
     public string path;
     public string fileName = "PlayerData";
+    public float Bgm_Volum = 0.75f;
+    public float Sfx_Volum = 0.75f;
     public int StageNum;
     public int SlotNum;
 
