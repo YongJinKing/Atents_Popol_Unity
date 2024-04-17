@@ -26,6 +26,9 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     SkillManager sm;
 
     GameObject DebuffEffect;
+    GameObject DebuffScreen;
+
+    public Canvas DeBuffScr;
 
     public GameObject Effectobj;
 
@@ -217,14 +220,18 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     {
         float Corrosiontime = 10;
         BuffType(2000, Corrosiontime);
+        DeBuffScr.transform.Find("BuSick").gameObject.SetActive(true);
         PlayBuffEffect("BuSick");
+        StopScr("BuSick", Corrosiontime);
     }
     private void Poison()
     {
         float DotTime = 10;
         StartCoroutine(Dot(DotTime));
+        DeBuffScr.transform.Find("Poison").gameObject.SetActive(true);
         BuffType(2001, DotTime);
         PlayBuffEffect("Poison");
+        StopScr("Poison", DotTime);
     }
     private void Slow()
     {
@@ -246,15 +253,19 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         isRun = false;
         float BondageDebuffTime = 10;
         stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+        DeBuffScr.transform.Find("Bondage").gameObject.SetActive(true);
         StartCoroutine(Bondage(BondageDebuffTime));
         BuffType(2004, BondageDebuffTime);
         PlayBuffEffect("Bondage");
+        StopScr("Bondage", BondageDebuffTime);
     }
     private void Blind()
     {
+        DeBuffScr.transform.Find("Blind").gameObject.SetActive(true);
         float BlindDebuffTime = 10;
         BuffType(2005, BlindDebuffTime);
         PlayBuffEffect("Blind");
+        StopScr("Blind", BlindDebuffTime);
     }
 
     public void Debuff(int type)
@@ -300,14 +311,13 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         isRun = true;
     }
 
+    
 
-
-
-    IEnumerator Dot(float DotDeBufftime)
+    IEnumerator Dot(float Debufftime)
     {
 
         bufftime = 0;
-        while (bufftime < DotDeBufftime)
+        while (bufftime < Debufftime)
         {
             float tick = (float)(curBattleStat.HP * 0.03);
             base.TakeDamage((int)tick, AttackType.Normal, DefenceType.Normal);
@@ -315,10 +325,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         }
     }
 
-    void BuffType(int Type, float CoolTime)
-    {
-        BuffAct?.Invoke(Type, CoolTime);
-    }
+    
 
     void ChangeIdle()
     {
@@ -326,6 +333,20 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         ChangeState(state.Idle);
     }
 
+    void StopScr(string name, float Time)
+    {
+        StartCoroutine(C_Stopscr(name, Time));
+    }
+
+    IEnumerator C_Stopscr(string name, float Debufftime)
+    {
+        yield return new WaitForSeconds(Debufftime);
+        DeBuffScr.transform.Find(name).gameObject.SetActive(false);
+    }
+    void BuffType(int Type, float CoolTime)
+    {
+        BuffAct?.Invoke(Type, CoolTime);
+    }
 
     void PlayBuffEffect(string DebuffName)
     {
@@ -539,6 +560,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
 
     public void CinematicStart()
     {
+        stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
         ChangeState(state.Cinematic);
         myAnim.SetTrigger("t_Taunt");
 
