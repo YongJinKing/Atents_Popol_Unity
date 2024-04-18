@@ -102,9 +102,9 @@ public class cameraMove : MonoBehaviour
     
     public void UnitDeath(int Unit)
     {
+        BrodCastCam.SetActive(true);
         isCine = true;
         isTracking = false;
-        BrodCastCam.SetActive(true);
         //WaveUI w = new WaveUI(); w.saveTime();
         switch (Unit)
         {
@@ -130,6 +130,7 @@ public class cameraMove : MonoBehaviour
 
     IEnumerator CineCam()
     {
+        Debug.Log("cinecamIn");
         while (CinecamState == "CamMove")
         {
             Time.timeScale = 0.01f;
@@ -142,6 +143,7 @@ public class cameraMove : MonoBehaviour
 
             if (dis <= 0.5f)
             {
+                Debug.Log("1End");
                 cineCamSpeed = 1f;
                 CinecamState = "TimeFaster";
             }
@@ -157,6 +159,7 @@ public class cameraMove : MonoBehaviour
             }
             else
             {
+                Debug.Log("2End");
                 CinecamState = "GoBack";
             }
             yield return null;
@@ -169,6 +172,7 @@ public class cameraMove : MonoBehaviour
 
             if (Vector3.Distance(myCam.transform.localPosition, originPos) <= 0.01f)
             {
+                Debug.Log("3end");
                 Time.timeScale = 1f;
                 CinecamState = "EndingRotate";
                 isTracking = true;

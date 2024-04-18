@@ -184,13 +184,13 @@ public class WaveUI : MonoBehaviour
         byte c = 5;
         while (c > 0)
         {
-            for (float alpha = 0f; alpha <= 70f; alpha += 0.5f)
+            for (float alpha = 0f; alpha <= 70f; alpha += Time.deltaTime * 140)
             {
                 color.a = alpha / 255f;
                 Warnning.color = color;
                 yield return null;
             }
-            for (float alpha = 70f; alpha >= 0f; alpha -= 0.5f)
+            for (float alpha = 70f; alpha >= 0f; alpha -= Time.deltaTime * 140)
             {
                 color.a = alpha / 255f;
                 Warnning.color = color;
@@ -207,7 +207,7 @@ public class WaveUI : MonoBehaviour
     IEnumerator IsBossStage()
     {
         yield return new WaitForEndOfFrame();
-        Instantiate(BossOpening);
+        BossOpening.SetActive(true);
         Instantiate(BossTiara);
     }
 

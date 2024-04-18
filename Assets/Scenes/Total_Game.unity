@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &131248660 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6890754285283147010, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-  m_PrefabInstance: {fileID: 1360592841}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &135261195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -663,17 +652,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &795571328 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4850423639097430851, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-  m_PrefabInstance: {fileID: 1360592841}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &865157516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -953,17 +931,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28b173bc3f719da40bfdc513c46f0528, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1060650301 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2782669013527601409, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-  m_PrefabInstance: {fileID: 1360592841}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1063538554
@@ -1272,10 +1239,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveUI
       objectReference: {fileID: 0}
-    - target: {fileID: 4338489551430612927, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5056948185274703275, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1357,25 +1320,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6002581154846252743, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: WaveNum
-      value: 
-      objectReference: {fileID: 1060650301}
-    - target: {fileID: 6002581154846252743, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: WaveTxt
-      value: 
-      objectReference: {fileID: 795571328}
-    - target: {fileID: 6002581154846252743, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
       propertyPath: BossOpening
       value: 
       objectReference: {fileID: 1627297828}
     - target: {fileID: 6002581154846252743, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: StopWatchUI
-      value: 
-      objectReference: {fileID: 131248660}
-    - target: {fileID: 6002581154846252743, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: BossSpawnRing
-      value: 
-      objectReference: {fileID: 1627297828}
+      propertyPath: txtEndPos.y
+      value: -450
+      objectReference: {fileID: 0}
     - target: {fileID: 6002581154846252743, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
       propertyPath: WaveRound.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

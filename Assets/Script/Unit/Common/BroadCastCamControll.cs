@@ -22,6 +22,10 @@ public class BroadCastCamControll : MonoBehaviour
 
     void Start()
     {
+        
+    }
+    private void Awake()
+    {
         Collider[] playerColliders = Physics.OverlapSphere(transform.position, 100f, playerLayer);
         if (playerColliders.Length > 0)
         {
@@ -33,9 +37,15 @@ public class BroadCastCamControll : MonoBehaviour
         {
             monsterObject = monsterColliders[0].transform;
         }
+        Traking();
     }
 
     void Update()
+    {
+        Traking();
+    }
+
+    void Traking()
     {
         if (playerObject != null && monsterObject != null)
         {
