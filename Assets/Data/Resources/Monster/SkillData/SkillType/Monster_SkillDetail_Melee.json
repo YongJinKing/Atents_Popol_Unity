@@ -1,28 +1,20 @@
 [
-   {
-      "Index":20000,
-      "Skill_NumOfHitBox":1,
-      "Skill_ObjectEffect":20000,
-      "Skill_hitDuration":10,
-      "Skill_TargetMask":10,
-      "Skill_AffectOption1":10000,
-      "Skill_AffectOption2":0,
-      "Skill_AffectOption3":0,
-      "Skill_AffectOption4":0,
-      "Skill_AffectOption5":0,
-      "Skill_HitEffect":0
-   },
-   {
-      "Index":20001,
-      "Skill_NumOfHitBox":1,
-      "Skill_ObjectEffect":20000,
-      "Skill_hitDuration":10,
-      "Skill_TargetMask":10,
-      "Skill_AffectOption1":10001,
-      "Skill_AffectOption2":20000,
-      "Skill_AffectOption3":0,
-      "Skill_AffectOption4":0,
-      "Skill_AffectOption5":0,
-      "Skill_HitEffect":0
-   }
+  {
+    "Index": 20000,
+    "Skill_NumOfHitBox": 1,
+    "Skill_ObjectEffect": 20000,
+    "Skill_hitDuration": 10,
+    "Skill_TargetMask": 10,
+    "Skill_AffectOptionArr": [ 10000 ],
+    "Skill_HitEffect": 0
+  },
+  {
+    "Index": 20001,
+    "Skill_NumOfHitBox": 1,
+    "Skill_ObjectEffect": 20000,
+    "Skill_hitDuration": 10,
+    "Skill_TargetMask": 10,
+    "Skill_AffectOptionArr": [ 10001, 20000 ],
+    "Skill_HitEffect": 0
+  }
 ]

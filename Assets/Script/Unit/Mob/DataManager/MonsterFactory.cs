@@ -84,21 +84,7 @@ public class MonsterFactory
         for(int i = 0; i< part.parts.Length; i++)
         {
             part.parts[i].col.gameObject.layer = LayerMask.NameToLayer("Monster_Body");
-            switch (i)
-            {
-                case 0:
-                    part.parts[i].type = (DefenceType)data.Character_DetailArmorType1;
-                    break;
-                case 1:
-                    part.parts[i].type = (DefenceType)data.Character_DetailArmorType2;
-                    break;
-                case 2:
-                    part.parts[i].type = (DefenceType)data.Character_DetailArmorType3;
-                    break;
-                case 3:
-                    part.parts[i].type = (DefenceType)data.Character_DetailArmorType4;
-                    break;
-            }
+            part.parts[i].type = (DefenceType)data.Character_DetailArmorTypeArr[i];
         }
 
         MonsterAnimEvent anim = prefab.GetComponent<MonsterAnimEvent>();
@@ -119,36 +105,12 @@ public class MonsterFactory
         objMon.battlestat = bs;
 
 
-        List<Skill> skillList = new List<Skill>();
-        if(data.Skill_Index1 / 10000 > 0)
-        {
-            skillList.Add(CreateMonsterSkill(objMon, data.Skill_Index1));
-            if(data.Skill_Index2 / 10000 > 0)
-            {
-                skillList.Add(CreateMonsterSkill(objMon, data.Skill_Index2));
-                if (data.Skill_Index3 /10000 >0)
-                {
-                    skillList.Add(CreateMonsterSkill(objMon, data.Skill_Index3));
-                    if ((data.Skill_Index4 /10000) > 0)
-                    {
-                        skillList.Add(CreateMonsterSkill(objMon, data.Skill_Index4));
-                    }
-                }
-            }
-        }
+        objMon.skills = new Skill[data.Skill_IndexArr.Length];
 
-        for(int i = 0; i < data.SkillArrayTest.Length; ++i)
+        for (int i = 0; i < data.Skill_IndexArr.Length; ++i)
         {
-            skillList.Add(CreateMonsterSkill(objMon, data.SkillArrayTest[i]));
+            objMon.skills[i] = CreateMonsterSkill(objMon, data.Skill_IndexArr[i]);
         }
-
-        objMon.skills = new Skill[skillList.Count];
-
-        for(int i = 0; i < skillList.Count; i++)
-        {
-            objMon.skills[i] = skillList[i];
-        }
-        skillList.Clear();
 
         objMon.idleAI = new List<int>();
         int temp = data.Character_IdleType;
@@ -216,10 +178,10 @@ public class MonsterFactory
         objSkill.onSkillHitCheckStartEvent = new UnityEngine.Events.UnityEvent();
         objSkill.onSkillHitCheckEndEvent = new UnityEngine.Events.UnityEvent();
 
-        AddSkillType(parent, objSkill, data.Skill_Option1);
-        AddSkillType(parent, objSkill, data.Skill_Option2);
-        AddSkillType(parent, objSkill, data.Skill_Option3);
-        AddSkillType(parent, objSkill, data.Skill_Option4);
+        for(int i = 0; i < data.Skill_OptionArr.Length; ++i)
+        {
+            AddSkillType(parent, objSkill, data.Skill_OptionArr[i]);
+        }
 
         objSkill.onAddSkillEvent = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction<Transform, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objSkill.onAddSkillEvent2 = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction, int, LayerMask>();
@@ -315,11 +277,10 @@ public class MonsterFactory
                     melee.hitDuration = data.Skill_hitDuration;
 
                     melee.onSkillHitEvent = new UnityEngine.Events.UnityEvent<Collider>();
-                    AddSkillAffect(melee, data.Skill_AffectOption1);
-                    AddSkillAffect(melee, data.Skill_AffectOption2);
-                    AddSkillAffect(melee, data.Skill_AffectOption3);
-                    AddSkillAffect(melee, data.Skill_AffectOption4);
-                    AddSkillAffect(melee, data.Skill_AffectOption5);
+                    for(int i = 0; i < data.Skill_AffectOptionArr.Length; ++i)
+                    {
+                        AddSkillAffect(melee, data.Skill_AffectOptionArr[i]);
+                    }
 
                     parent.onSkillActivatedEvent.AddListener(melee.OnSkillActivated);
                     parent.onSkillHitCheckStartEvent.AddListener(melee.OnSkillHitCheckStartEventHandler);
@@ -366,31 +327,18 @@ public class MonsterFactory
                     projectile.penetrable = data.Skill_Penetrable;
                     projectile.isParabola = data.Skill_IsParabola;
 
-
-                    switch (data.Skill_NumOfHitBox)
+                    for(int i = 0; i < data.Skill_NumOfHitBox; ++i)
                     {
-                        case 4:
-                            projectile.attackStartPos[3] = monster.attackStartPos[data.Skill_HitBoxStartPos4];
-                            goto case 3;
-                        case 3:
-                            projectile.attackStartPos[2] = monster.attackStartPos[data.Skill_HitBoxStartPos3];
-                            goto case 2;
-                        case 2:
-                            projectile.attackStartPos[1] = monster.attackStartPos[data.Skill_HitBoxStartPos2];
-                            goto case 1;
-                        case 1:
-                            projectile.attackStartPos[0] = monster.attackStartPos[data.Skill_HitBoxStartPos1];
-                            break;
+                        projectile.attackStartPos[i] = monster.attackStartPos[data.Skill_HitBoxStartPosArr[i]];
                     }
 
                     projectile.hitDuration = data.Skill_hitDuration;
 
                     projectile.onSkillHitEvent = new UnityEngine.Events.UnityEvent<Collider>();
-                    AddSkillAffect(projectile, data.Skill_AffectOption1);
-                    AddSkillAffect(projectile, data.Skill_AffectOption2);
-                    AddSkillAffect(projectile, data.Skill_AffectOption3);
-                    AddSkillAffect(projectile, data.Skill_AffectOption4);
-                    AddSkillAffect(projectile, data.Skill_AffectOption5);
+                    for (int i = 0; i < data.Skill_AffectOptionArr.Length; ++i)
+                    {
+                        AddSkillAffect(projectile, data.Skill_AffectOptionArr[i]);
+                    }
                     parent.onSkillActivatedEvent.AddListener(projectile.OnSkillActivated);
                     parent.onSkillHitCheckStartEvent.AddListener(projectile.OnSkillHitCheckStartEventHandler);
                     parent.onSkillHitCheckEndEvent.AddListener(projectile.OnSkillHitCheckEndEventHandler);

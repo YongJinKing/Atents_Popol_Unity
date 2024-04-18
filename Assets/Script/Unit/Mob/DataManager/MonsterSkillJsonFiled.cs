@@ -48,19 +48,12 @@ public struct MonsterDataTable
     public float Character_MoveSpeed;
     public int Character_AttackPower;
     public int Character_SkillVisibleRange;
-    public int Skill_Index1;
-    public int Skill_Index2;
-    public int Skill_Index3;
-    public int Skill_Index4;
-    public int Character_DetailArmorType1;
-    public int Character_DetailArmorType2;
-    public int Character_DetailArmorType3;
-    public int Character_DetailArmorType4;
+    public int[] Skill_IndexArr;
+    public int[] Character_DetailArmorTypeArr;
     public int Character_Prefab;
     public int Character_AIType;
     public float Character_Scale;
     public int Character_IdleType;
-    public int[] SkillArrayTest;
 }
 #endregion
 
@@ -74,10 +67,7 @@ public struct SkillDataTable
     public float Skill_PostDelay;
     public float Skill_DetectRange;
     public int Skill_TargetMask;
-    public int Skill_Option1;
-    public int Skill_Option2;
-    public int Skill_Option3;
-    public int Skill_Option4;
+    public int[] Skill_OptionArr;
     public int Skill_DescComponent;
     public int Skill_AnimType;
 }
@@ -97,11 +87,7 @@ public struct SkillMeleeTypeDataTable
     public int Skill_ObjectEffect;
     public int Skill_TargetMask;
     public float Skill_hitDuration;
-    public int Skill_AffectOption1;
-    public int Skill_AffectOption2;
-    public int Skill_AffectOption3;
-    public int Skill_AffectOption4;
-    public int Skill_AffectOption5;
+    public int[] Skill_AffectOptionArr;
     public int Skill_HitEffect;
 }
 
@@ -118,15 +104,8 @@ public struct SkillProjectileDetailDataTable
     public float Skill_ParabolaHeight;
     public bool Skill_Penetrable;
     public bool Skill_IsParabola;
-    public int Skill_AffectOption1;
-    public int Skill_AffectOption2;
-    public int Skill_AffectOption3;
-    public int Skill_AffectOption4;
-    public int Skill_AffectOption5;
-    public int Skill_HitBoxStartPos1;
-    public int Skill_HitBoxStartPos2;
-    public int Skill_HitBoxStartPos3;
-    public int Skill_HitBoxStartPos4;
+    public int[] Skill_AffectOptionArr;
+    public int[] Skill_HitBoxStartPosArr;
     public int Skill_HitEffect;
     public int Skill_DestroyEffect;
 }
