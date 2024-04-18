@@ -18,28 +18,34 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 3,
-    "Character_IdleType": 2
+    "Character_IdleType": 3,
+    "SkillArrayTest": [ 0 ]
   },
   {
     "Index": 30001,
     "Character_Type": 2,
-    "Character_Name": 30001,
+    "Character_Name": 30000,
     "Character_Hp": 1500,
     "Character_MoveSpeed": 3,
-    "Character_AttackPower": 15,
+    "Character_AttackPower": 20,
     "Character_SkillVisibleRange": 20,
-    "Skill_Index1": 10000,
-    "Skill_Index2": 10001,
-    "Skill_Index3": 10002,
+    "Skill_Index1": 30004,
+    "Skill_Index2": 30004,
+    "Skill_Index3": 30001,
     "Skill_Index4": 0,
-    "Character_DetailArmorType1": 0,
-    "Character_DetailArmorType2": 0,
+    "Character_DetailArmorType1": 1,
+    "Character_DetailArmorType2": 2,
     "Character_DetailArmorType3": 0,
     "Character_DetailArmorType4": 0,
-    "Character_Prefab": 10001,
+    "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 3,
-    "Character_IdleType": 4
+    "Character_IdleType": 2,
+    "SkillArrayTest": [
+      30004,
+      30004,
+      30001
+    ]
   },
   {
     "Index": 20000,
@@ -60,7 +66,8 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 1,
-    "Character_IdleType": 4
+    "Character_IdleType": 4,
+    "SkillArrayTest": [0]
   },
   {
     "Index": 20001,
@@ -81,7 +88,8 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 1,
-    "Character_IdleType": 4
+    "Character_IdleType": 4,
+    "SkillArrayTest": [ 0 ]
   },
   {
     "Index": 20002,
@@ -102,7 +110,8 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 1,
-    "Character_IdleType": 4
+    "Character_IdleType": 4,
+    "SkillArrayTest": [ 0 ]
   },
   {
     "Index": 20003,
@@ -123,6 +132,7 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 1,
-    "Character_IdleType": 4
+    "Character_IdleType": 4,
+    "SkillArrayTest": [ 0 ]
   }
 ]

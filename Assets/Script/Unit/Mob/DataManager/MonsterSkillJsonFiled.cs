@@ -60,6 +60,7 @@ public struct MonsterDataTable
     public int Character_AIType;
     public float Character_Scale;
     public int Character_IdleType;
+    public int[] SkillArrayTest;
 }
 #endregion
 

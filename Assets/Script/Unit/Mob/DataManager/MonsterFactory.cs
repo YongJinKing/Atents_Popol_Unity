@@ -137,6 +137,11 @@ public class MonsterFactory
             }
         }
 
+        for(int i = 0; i < data.SkillArrayTest.Length; ++i)
+        {
+            skillList.Add(CreateMonsterSkill(objMon, data.SkillArrayTest[i]));
+        }
+
         objMon.skills = new Skill[skillList.Count];
 
         for(int i = 0; i < skillList.Count; i++)
