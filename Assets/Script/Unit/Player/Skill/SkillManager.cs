@@ -51,11 +51,19 @@ public class SkillManager : PlayerSkill
                         {
                             target.Add(temp);
                             var plData = DataManager.instance.playerData;
-                            if (plData.Armor_Duration <= 0)
+                            if (plData.Weapon_Duration <= 0)
                             {
-                                plData.Armor_Duration = 0;
+                                plData.Weapon_Duration = 0;
                             }
-                            plData.Armor_Duration--;
+
+                            switch (UnityEngine.Random.Range(0, 2))
+                            {
+                                case 0:
+                                    plData.Weapon_Duration--;
+                                    break;
+                                case 1:
+                                    break;
+                            }
                             Debug.Log("Hit");
 
                             IDamage iDamage = data.collider.GetComponentInParent<IDamage>();

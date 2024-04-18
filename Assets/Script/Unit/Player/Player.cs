@@ -596,7 +596,16 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         {
             plData.Armor_Duration = 0;
         }
-        plData.Armor_Duration--;
+
+
+        switch (Random.Range(0, 2))
+        {
+            case 0:
+                plData.Armor_Duration--;
+                break;
+            case 1:
+                break;
+        }
     }
 
     public void CinematicStart()
