@@ -50,7 +50,12 @@ public class SkillManager : PlayerSkill
                         if (!target.Contains(data.collider.GetComponentInParent<BattleSystem>()))
                         {
                             target.Add(temp);
-                            DataManager.instance.playerData.Weapon_Duration -= 1;
+                            var plData = DataManager.instance.playerData;
+                            if (plData.Armor_Duration <= 0)
+                            {
+                                plData.Armor_Duration = 0;
+                            }
+                            plData.Armor_Duration--;
                             Debug.Log("Hit");
 
                             IDamage iDamage = data.collider.GetComponentInParent<IDamage>();

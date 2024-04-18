@@ -5,7 +5,9 @@ using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public enum E_Skill
 {
@@ -44,7 +46,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     public UnityEvent<UnityAction<float>> stopAct;
     public UnityEvent<Vector3, float> dadgeAct;
     public UnityEvent<Vector3, float> rotAct;
-    public UnityEvent<int, float> BuffAct;
+    public UnityEvent<int> BuffAct;
     public UnityEvent<int, int> EnergyGageAct;
     public UnityEvent<int> SkillAct;
 
@@ -178,6 +180,11 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
 
         ProcessState();
         bufftime += Time.deltaTime;
+
+
+        
+
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             Debuff(0);
@@ -210,20 +217,20 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             float HillBuffTime = 10;
-            BuffType(101, HillBuffTime);
+            BuffType(1001);
             StartCoroutine(Hill(HillBuffTime));
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             float SpeedBuffTime = 10;
-            BuffType(102, SpeedBuffTime);
+            BuffType(1002);
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha9))
         {
             float AttackSpeedBuffTime = 10;
-            BuffType(103, AttackSpeedBuffTime);
+            BuffType(1003);
             myAnim.SetFloat("AttackSpeed", 2f);
             StartCoroutine(StopAttackSpeed(AttackSpeedBuffTime));
 
@@ -243,7 +250,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     private void Corrosion()
     {
         float Corrosiontime = 10;
-        BuffType(2000, Corrosiontime);
+        BuffType(2000);
         DeBuffScr.transform.Find("BuSick").gameObject.SetActive(true);
         PlayBuffEffect("BuSick");
         StopScr("BuSick", Corrosiontime);
@@ -253,14 +260,14 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         float DotTime = 10;
         StartCoroutine(Dot(DotTime));
         DeBuffScr.transform.Find("Poison").gameObject.SetActive(true);
-        BuffType(2001, DotTime);
+        BuffType(2001);
         PlayBuffEffect("Poison");
         StopScr("Poison", DotTime);
     }
     private void Slow()
     {
         float SlowDebuffTime = 10;
-        BuffType(2002, SlowDebuffTime);
+        BuffType(2002);
         PlayBuffEffect("Slow");
     }
     private void Stun()
@@ -269,7 +276,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
         ChangeState(state.Stun);
         Invoke("ChangeIdle", StunDebuffTime);
-        BuffType(2003, StunDebuffTime);
+        BuffType(2003);
         PlayBuffEffect("Stun");
     }
     private void Bondage()
@@ -279,7 +286,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
         DeBuffScr.transform.Find("Bondage").gameObject.SetActive(true);
         StartCoroutine(Bondage(BondageDebuffTime));
-        BuffType(2004, BondageDebuffTime);
+        BuffType(2004);
         PlayBuffEffect("Bondage");
         StopScr("Bondage", BondageDebuffTime);
     }
@@ -287,7 +294,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     {
         DeBuffScr.transform.Find("Blind").gameObject.SetActive(true);
         float BlindDebuffTime = 10;
-        BuffType(2005, BlindDebuffTime);
+        BuffType(2005);
         PlayBuffEffect("Blind");
         StopScr("Blind", BlindDebuffTime);
     }
@@ -367,9 +374,9 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         yield return new WaitForSeconds(Debufftime);
         DeBuffScr.transform.Find(name).gameObject.SetActive(false);
     }
-    void BuffType(int Type, float CoolTime)
+    void BuffType(int Type)
     {
-        BuffAct?.Invoke(Type, CoolTime);
+        BuffAct?.Invoke(Type);
     }
 
     void PlayBuffEffect(string DebuffName)
@@ -400,7 +407,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
 
     public void FireToMousePos()
     {
-        if (Input.GetMouseButtonDown(0) && isFireReady && GetRaycastHit())
+        if (Input.GetMouseButtonDown(0) && isFireReady && GetRaycastHit() && !EventSystem.current.IsPointerOverGameObject())
         {
 
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
@@ -440,7 +447,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
 
     public void MoveToMousePos()
     {
-        if (Input.GetMouseButton(1) && GetRaycastHit() && isRun)
+        if (Input.GetMouseButton(1) && GetRaycastHit() && isRun )
         {
             if (dir == null) return;
             ChangeState(state.Run);
@@ -541,6 +548,9 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     {
         if(!Death)
         {
+            var emission = particle.emission;
+
+            emission.rateOverTime = 0;
             deathAlarm?.Invoke(0, gameObject);
             stopAct?.Invoke(null);
             StartCoroutine(TimeControl());
@@ -580,7 +590,13 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
 
     public void duration()
     {
-        DataManager.instance.playerData.Armor_Duration--;
+        var plData = DataManager.instance.playerData;
+
+        if(plData.Armor_Duration <= 0)
+        {
+            plData.Armor_Duration = 0;
+        }
+        plData.Armor_Duration--;
     }
 
     public void CinematicStart()
