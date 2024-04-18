@@ -4,22 +4,20 @@
     "Character_Type": 2,
     "Character_Name": 30000,
     "Character_Hp": 1000,
-    "Character_MoveSpeed": 3,
-    "Character_AttackPower": 60,
+    "Character_MoveSpeed": 4,
+    "Character_AttackPower": 10,
     "Character_SkillVisibleRange": 20,
-    "Skill_Index1": 30000,
-    "Skill_Index2": 30001,
-    "Skill_Index3": 30002,
-    "Skill_Index4": 30003,
-    "Character_DetailArmorType1": 1,
-    "Character_DetailArmorType2": 2,
-    "Character_DetailArmorType3": 0,
-    "Character_DetailArmorType4": 0,
+    "Skill_IndexArr": [30000, 30001, 30002, 30003],
+    "Character_DetailArmorTypeArr": "[1, 2]",
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 3,
+<<<<<<< Updated upstream
     "Character_IdleType": 3,
     "SkillArrayTest": [ 0 ]
+=======
+    "Character_IdleType": 3
+>>>>>>> Stashed changes
   },
   {
     "Index": 30001,
@@ -29,6 +27,7 @@
     "Character_MoveSpeed": 3,
     "Character_AttackPower": 20,
     "Character_SkillVisibleRange": 20,
+<<<<<<< Updated upstream
     "Skill_Index1": 30004,
     "Skill_Index2": 30004,
     "Skill_Index3": 30001,
@@ -131,6 +130,12 @@
     "Character_DetailArmorType4": 0,
     "Character_Prefab": 10000,
     "Character_AIType": 0,
+=======
+    "Skill_IndexArr": [10000, 10001, 10002],
+    "Character_DetailArmorTypeArr": "0",
+    "Character_Prefab": 10001,
+    "Character_AIType": 1,
+>>>>>>> Stashed changes
     "Character_Scale": 1,
     "Character_IdleType": 4,
     "SkillArrayTest": [ 0 ]
