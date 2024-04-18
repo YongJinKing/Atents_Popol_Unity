@@ -8,26 +8,36 @@ using UnityEngine.UI;
 
 public class WaveUI : MonoBehaviour
 {
+    [Header("Wave")]
     public int nowWave = 0;
     bool iscine = false;
     public int TotalWave;
 
+    [Space(3)]
+    [Header("UISetting")]
     public TMP_Text WaveTxt;
     public TMP_Text WaveNum;
     public TMP_Text StopWatchUI;
     public Image Warnning;
+    public Image BossHpBar;
+    public LayerMask layer;
+    GameObject BossObject;
 
     public Vector2 txtEndPos;   //ScreenCenter Pos
     public float txtEndScale;   //Make UI How Much Bigger
-    public Vector2 txtPos;
+    Vector2 txtPos;
     float txtScale = 1;
 
     public float moveSpeed;
 
+    [Space(3)]
+    [Header("InstantiateObj")]
     public GameObject BossOpening;
     public GameObject BossTiara;
     public GameObject BossSpawnRing;
     public UnityEngine.Events.UnityEvent WaveRound;
+
+    
 
     private void Start()
     {
@@ -45,10 +55,7 @@ public class WaveUI : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
-            txtPos.y = 610;
-            txtEndPos.y = 485;
-            WaveTxt.transform.parent.localPosition = txtPos;
-            WaveTxt.transform.parent.parent.GetChild(0).localPosition = txtEndPos;
+            BossHPFresh();
         }
     }
 
@@ -234,6 +241,19 @@ public class WaveUI : MonoBehaviour
         yield return new WaitForEndOfFrame();
         BossOpening.SetActive(true);
         Instantiate(BossTiara);
+        Collider[] monsterColliders = Physics.OverlapSphere(Vector3.zero, 30f, layer);
+        if (monsterColliders.Length > 0)
+        {
+            BossObject = monsterColliders[0].gameObject;
+            Debug.Log(BossObject.name);
+        }
+    }
+
+    public void BossHPFresh()
+    {
+        float max = BossObject.gameObject.GetComponentInParent<BattleSystem>().MaxHP;
+        float cur = BossObject.gameObject.GetComponentInParent<BattleSystem>().HP;
+        BossHpBar.fillAmount = cur / max;
     }
 
     private void MoveT()

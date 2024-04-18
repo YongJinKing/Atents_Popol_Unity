@@ -14,8 +14,6 @@ public class PlayerTraking : MonoBehaviour
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, 100f, targetLayer);
         target = colliders[0].gameObject;
-        Debug.Log(target.name);
-        Debug.Log(target.transform.position);
     }
     void Update()
     {
