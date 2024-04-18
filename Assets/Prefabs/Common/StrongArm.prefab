@@ -104,7 +104,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1113095
+    m_Bits: 1113111
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -191,6 +191,7 @@ MonoBehaviour:
   isTracking: 1
   CinecamState: CamMove
   rotateSpeed: 15
+  BrodCastCam: {fileID: 0}
 --- !u!114 &7356268427517669075
 MonoBehaviour:
   m_ObjectHideFlags: 0
