@@ -16,7 +16,7 @@ public class InflictStatusSkillEffect : BaseSkillEffect
 
     //Public 변수영역
     #region public
-    E_StatusAbnormality abType;
+    public E_StatusAbnormality abType;
     #endregion
 
     //이벤트 함수들 영역

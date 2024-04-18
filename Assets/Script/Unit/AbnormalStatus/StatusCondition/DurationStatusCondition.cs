@@ -5,13 +5,16 @@ using UnityEngine;
 public class DurationStatusCondition : StatusCondition
 {
     protected int MaxCount = 9;
-    protected int overlapCount = 1;
-    protected float duration = 5.0f;
+    [SerializeField]protected int overlapCount = 1;
+    [SerializeField]protected float duration = 5.0f;
 
     private void Start()
     {
+        ConditionDataManager.GetInstance().ConditionLoadDatas();
         //load duration data
         duration = ConditionDataManager.GetInstance().dicConditionDatas[(int)myStatusAbType + 2000].Condition_DurationTime;
+
+
         StartCoroutine(DurationChecking());
     }
 

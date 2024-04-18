@@ -10,6 +10,9 @@ public class forfactorytest : MonoBehaviour
         //GameObject obj = factory.CreateMonster(20001);
         //obj.GetComponent<Slime>().TempInit();
 
+        monster.idleAI = new System.Collections.Generic.List<int>();
+        monster.idleAI.Add(0);
         monster.CinematicEnd();
+        
     }
 }

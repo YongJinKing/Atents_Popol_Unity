@@ -61,7 +61,7 @@ public class Status : MonoBehaviour
                 break;
             case E_StatusAbnormality.Blind:
                 {
-                    obj.AddComponent<CorrosionStatusEffect>();
+                    //obj.AddComponent<CorrosionStatusEffect>();
                     obj.name = "Blind";
                     condition.myStatusAbType = E_StatusAbnormality.Blind;
                     abnormals.Add(E_StatusAbnormality.Blind, condition);
@@ -74,9 +74,9 @@ public class Status : MonoBehaviour
 
     public void Remove(E_StatusAbnormality eType)
     {
-        if(abnormals.ContainsKey(eType))
+        if (abnormals.ContainsKey(eType))
         {
-            if(abnormals[eType] != null)
+            if (abnormals[eType] != null)
             {
                 GameObject obj = abnormals[eType].gameObject;
                 abnormals.Remove(eType);

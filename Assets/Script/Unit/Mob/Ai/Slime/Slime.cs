@@ -44,7 +44,7 @@ public class Slime : Monster
         {
             saveSkill[i] = UnityEngine.Random.Range(0, skills.Length);
             
-            //����� �� ������ �ٽ�
+            //�����?�� ������ �ٽ�
             for(int j = 0; j < i; j++)
             {
                 if (saveSkill[j] == saveSkill[i])
@@ -64,7 +64,7 @@ public class Slime : Monster
         {
             saveMoveType[i] = UnityEngine.Random.Range(0, saveMoveType.Length);
 
-            //����� �� ������ �ٽ�
+            //�����?�� ������ �ٽ�
             for (int j = 0; j < i; ++j)
             {
                 if (saveMoveType[j] == saveMoveType[i])
@@ -134,7 +134,7 @@ public class Slime : Monster
                 break;
             //������ ����
             case State.Closing:
-                //detect�� �����϶�� ����
+                //detect�� �����϶��?����
                 skills[saveSkill[countUsedSkill]].OnCommandDetectSkillTarget(
                     () => 
                     {
@@ -221,7 +221,7 @@ public class Slime : Monster
     }
 
 
-    //�ϴ� Ư�� �Ÿ����� ��ٸ��� AI
+    //�ϴ� Ư�� �Ÿ����� ��ٸ���?AI
     private IEnumerator IdleProcessing()
     {
         skills[saveSkill[countUsedSkill]].OnRequestSkillInfo();
@@ -245,7 +245,7 @@ public class Slime : Monster
                     dir = new Vector3(dir.x, 0, dir.z);
                     dir.Normalize();
 
-                    //�� �������� ������ ��ŭ �̵��� �ڿ� ������ �������� ��ǥ�� �� backStepPos �� ����
+                    //�� �������� ������ ��ŭ �̵��� �ڿ� ������ �������� ��ǥ�� ���?backStepPos �� ����
                     Vector3 backStepPos = (transform.position + dir * backStapOffset);
                     Vector3 backStepDir = Quaternion.Euler(0, UnityEngine.Random.Range(0, 360f), 0) * dir;
                     backStepDir.Normalize();
@@ -282,7 +282,7 @@ public class Slime : Monster
         }
 
 
-        //idle �ð� ���
+        //idle �ð� ���?
         while (IdleTime >= 0.0f)
         {
             IdleTime -= Time.deltaTime;
@@ -332,7 +332,7 @@ public class Slime : Monster
     #endregion
 
 
-    //�̺�Ʈ�� �Ͼ���� ����Ǵ� On~~�Լ�
+    //�̺�Ʈ�� �Ͼ���� ����Ǵ�?On~~�Լ�
     #region EventHandler
     #endregion
 
