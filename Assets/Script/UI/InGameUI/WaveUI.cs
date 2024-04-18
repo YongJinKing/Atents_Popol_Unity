@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,7 +19,7 @@ public class WaveUI : MonoBehaviour
 
     public Vector2 txtEndPos;   //ScreenCenter Pos
     public float txtEndScale;   //Make UI How Much Bigger
-    Vector2 txtPos;
+    public Vector2 txtPos;
     float txtScale = 1;
 
     public float moveSpeed;
@@ -41,6 +42,13 @@ public class WaveUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             StartCoroutine("BossIntro");
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            txtPos.y = 610;
+            txtEndPos.y = 485;
+            WaveTxt.transform.parent.localPosition = txtPos;
+            WaveTxt.transform.parent.parent.GetChild(0).localPosition = txtEndPos;
         }
     }
 
@@ -174,12 +182,29 @@ public class WaveUI : MonoBehaviour
             }
             yield return null;
         }
+        if(state == 3 && nowWave == TotalWave)
+        {
+            txtPos = WaveTxt.transform.parent.localPosition;
+            txtEndPos = WaveTxt.transform.parent.parent.GetChild(0).localPosition;
+            ++state;
+        }
+        while (state == 4 && nowWave == TotalWave)
+        {
+            txtPos.y += Time.deltaTime * 70;
+            txtEndPos.y -= Time.deltaTime * 70;
+            WaveTxt.transform.parent.localPosition = txtPos;
+            WaveTxt.transform.parent.parent.GetChild(0).localPosition = txtEndPos;
+            if(txtEndPos.y <= 485)
+            {
+                ++state;
+            }
+            yield return null;
+        }
     }
 
     IEnumerator BossIntro()
     {
         Instantiate(BossSpawnRing, Vector3.zero, Quaternion.identity);
-        Debug.Log("BossInstro");
         Color color = Warnning.color;
         byte c = 5;
         while (c > 0)
