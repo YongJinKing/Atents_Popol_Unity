@@ -4944,15 +4944,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiSkillStatus:
-    uiSkillSprite: {fileID: 0}
-    uiSkillName: ShadowDot
-    uiSkillDesc: 
+    uiSkillSprite: {fileID: -2031359076, guid: 9613adf97591e3f44bbbc6fa946707b7, type: 3}
+    uiSkillName: "\uC250\uB3C4\uC6B0\uB2F7"
+    uiSkillDesc: "\uC606\uC73C\uB85C 2\uC5F0\uACA9\uC744 \uB0A0\uB9B0\uB2E4."
   EnergyGage: 5
   Damage: 100
   SkillCalculation: 0.3
   WeaponType: 0
   Level: 5
   CoolTime: 5
+  CoolTimeCheck: 0
   aType: 1
   Buff: 0
   BTime: 0
@@ -4973,8 +4974,8 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 4096
-  one: 0.1
-  two: 0.1
+  duration: 0.1
+  magnitud: 0.2
 --- !u!1 &1604432522506000583
 GameObject:
   m_ObjectHideFlags: 0

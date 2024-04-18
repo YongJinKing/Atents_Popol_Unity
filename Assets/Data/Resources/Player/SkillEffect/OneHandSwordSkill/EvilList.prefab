@@ -14736,15 +14736,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiSkillStatus:
-    uiSkillSprite: {fileID: 0}
-    uiSkillName: EvilList
-    uiSkillDesc: 
+    uiSkillSprite: {fileID: 369742102, guid: 9613adf97591e3f44bbbc6fa946707b7, type: 3}
+    uiSkillName: "\uC774\uBE4C\uB9AC\uC2A4\uD2B8"
+    uiSkillDesc: "3\uC5F0\uACA9 \uACF5\uACA9\uC774\uB2E4."
   EnergyGage: 5
   Damage: 50
   SkillCalculation: 0.2
   WeaponType: 0
   Level: 10
   CoolTime: 7
+  CoolTimeCheck: 0
   aType: 1
   Buff: 0
   BTime: 0
@@ -14765,8 +14766,8 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 4096
-  one: 0.1
-  two: 0.1
+  duration: 0.1
+  magnitud: 0.2
 --- !u!1 &8091776548384899569
 GameObject:
   m_ObjectHideFlags: 0

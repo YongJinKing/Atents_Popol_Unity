@@ -58,7 +58,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     bool isDadgeReady = true;
     bool isRun = true;
     bool Check;
-
+    bool Death;
     int WeaponType = 0;
 
     Vector3 dir;
@@ -539,10 +539,15 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
 
     protected override void OnDead()
     {
-        deathAlarm?.Invoke(0, gameObject);
-        stopAct?.Invoke(null);
-        StartCoroutine(TimeControl());
-        myAnim.SetTrigger("t_Death");
+        if(!Death)
+        {
+            deathAlarm?.Invoke(0, gameObject);
+            stopAct?.Invoke(null);
+            StartCoroutine(TimeControl());
+            myAnim.SetTrigger("t_Death");
+
+        }
+        Death = false;
     }
 
     IEnumerator TimeControl()

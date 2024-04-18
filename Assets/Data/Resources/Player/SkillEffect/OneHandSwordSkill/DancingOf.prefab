@@ -9700,15 +9700,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiSkillStatus:
-    uiSkillSprite: {fileID: 21300000, guid: 6a3fb9963fb36ac49ac25095ee92a4fe, type: 3}
-    uiSkillName: DanceOf
-    uiSkillDesc: 
+    uiSkillSprite: {fileID: 1972288945, guid: 9613adf97591e3f44bbbc6fa946707b7, type: 3}
+    uiSkillName: "\uB304\uC2F1\uC624\uD504"
+    uiSkillDesc: "\uC5F0\uACA9\uC2A4\uD0AC\uC774\uB2E4."
   EnergyGage: 20
   Damage: 50
   SkillCalculation: 0.7
   WeaponType: 0
   Level: 15
   CoolTime: 15
+  CoolTimeCheck: 0
   aType: 1
   Buff: 0
   BTime: 0

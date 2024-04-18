@@ -14726,15 +14726,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiSkillStatus:
-    uiSkillSprite: {fileID: 0}
-    uiSkillName: DeathSide
-    uiSkillDesc: 
+    uiSkillSprite: {fileID: 1782276901, guid: 9613adf97591e3f44bbbc6fa946707b7, type: 3}
+    uiSkillName: "\uB370\uC2A4\uC0AC\uC774\uB4DC"
+    uiSkillDesc: "\uAD81\uADF9\uAE30 \uC2A4\uD0AC\uC774\uB2E4."
   EnergyGage: 80
   Damage: 100
   SkillCalculation: 0.6
   WeaponType: 0
   Level: 20
   CoolTime: 30
+  CoolTimeCheck: 0
   aType: 1
   Buff: 0
   BTime: 0

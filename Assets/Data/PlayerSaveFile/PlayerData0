@@ -2,24 +2,24 @@
     "index": 0,
     "Character_Hp": 500,
     "Character_AttackPower": 20,
-    "Character_CurrentExp": 0,
+    "Character_CurrentExp": 200,
     "Character_CurrentLevel": 20,
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
-    "Weapon_Id": 1200,
+    "Weapon_Id": 1000,
     "Armor_Id": 1001,
-    "Weapon_Ability": 30,
+    "Weapon_Ability": 10,
     "Armor_Ability": 10,
-    "WeaponType": 1,
-    "ArmorType": 0,
-    "Weapon_Duration": 100,
-    "Armor_Duration": 100,
+    "WeaponType": 0,
+    "ArmorType": 10,
+    "Weapon_Duration": 92,
+    "Armor_Duration": 97,
     "UiSkillList": [
-        "",
-        "",
-        "",
-        "",
+        "ShadowDot",
+        "EviList",
+        "DancingOf",
+        "DeathSide",
         "",
         "",
         "",
@@ -118,18 +118,18 @@
         ""
     ],
     "InGameSkill": [
-        "SwordDown",
-        "PowerBuff",
-        "Slash",
-        "SwordIlusion"
+        "ShadowDot",
+        "EviList",
+        "DancingOf",
+        "DeathSide"
     ],
     "clearStage": [
         false,
         false
     ],
-    "PlayerGold": 969,
+    "PlayerGold": 1419,
     "PlayerInven": [
-        1000
+        1200
     ],
     "PlayerInvenDuraion": [
         100
