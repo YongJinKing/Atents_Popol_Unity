@@ -426,7 +426,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
             if (animTime > 0 && animTime < 1.0f)
             {
                 return true;
-                // ?ï¿½ë‹ˆë©”ì´???ï¿½ë ˆ??ï¿?
+                // ?ï¿½ë‹ˆë©”ì´???ï¿½ë ˆ??ï¿½?
             }
             else if (animTime >= 1.0f)
             {
@@ -485,7 +485,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
                 }
                 else
                 {
-                    Debug.Log("ÇöÀç ½ºÅ³½½·Ô¿¡ ½ºÅ³ÀÌ ¾ø½À´Ï´Ù.");
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
                     return;
                 }
 
@@ -546,8 +546,8 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
             StartCoroutine(TimeControl());
             myAnim.SetTrigger("t_Death");
 
+            Death = true;
         }
-        Death = false;
     }
 
     IEnumerator TimeControl()

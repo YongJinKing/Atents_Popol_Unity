@@ -5,15 +5,9 @@ using UnityEngine;
 public class InGameSetting : MonoBehaviour
 {
     public GameObject GameSettingPopup;
-    // Start is called before the first frame update
-    void Start()
+    
+    public void PressedSettingBtn()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameSettingPopup.SetActive(true);
     }
 }

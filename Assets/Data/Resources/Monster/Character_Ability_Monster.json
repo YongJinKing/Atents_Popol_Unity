@@ -18,7 +18,7 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 3,
-    "Character_IdleType" : 3
+    "Character_IdleType": 2
   },
   {
     "Index": 30001,
@@ -39,7 +39,7 @@
     "Character_Prefab": 10001,
     "Character_AIType": 0,
     "Character_Scale": 3,
-    "Character_IdleType" : 4
+    "Character_IdleType": 4
   },
   {
     "Index": 20000,
@@ -60,7 +60,7 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 1,
-    "Character_IdleType" : 4
+    "Character_IdleType": 4
   },
   {
     "Index": 20001,
@@ -81,7 +81,7 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 1,
-    "Character_IdleType" : 4
+    "Character_IdleType": 4
   },
   {
     "Index": 20002,
@@ -102,7 +102,7 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 1,
-    "Character_IdleType" : 4
+    "Character_IdleType": 4
   },
   {
     "Index": 20003,
@@ -123,6 +123,6 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 1,
-    "Character_IdleType" : 4
+    "Character_IdleType": 4
   }
 ]
