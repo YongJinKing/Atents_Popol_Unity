@@ -29,7 +29,7 @@ public class Status : MonoBehaviour
                 break;
             case E_StatusAbnormality.Poison:
                 {
-                    //obj.AddComponent<CorrosionStatusEffect>();
+                    obj.AddComponent<PoisonStatusEffect>();
                     obj.name = "Poison";
                     condition.myStatusAbType = E_StatusAbnormality.Poison;
                     abnormals.Add(E_StatusAbnormality.Poison, condition);
@@ -69,7 +69,7 @@ public class Status : MonoBehaviour
                 break;
         }
 
-        obj.transform.SetParent(this.transform);
+        obj.transform.SetParent(this.transform, false);
     }
 
     public void Remove(E_StatusAbnormality eType)

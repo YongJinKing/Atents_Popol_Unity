@@ -1159,7 +1159,7 @@ MonoBehaviour:
   battleStat:
     Level: 0
     ATK: 0
-    HP: 500
+    HP: 100
     Exp: 0
     MaxExp: 0
     EnergyGage: 0
@@ -1178,6 +1178,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   DurationAct:
+    m_PersistentCalls:
+      m_Calls: []
+  HPChangeEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!54 &934310770
@@ -1353,7 +1356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30563e58781127f4faba2727d56b753e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abType: 0
+  abType: 1
 --- !u!4 &1454926774 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9181312084210741263, guid: dbef5c316ee371e4f985561d49c239de, type: 3}

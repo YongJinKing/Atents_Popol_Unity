@@ -5,8 +5,14 @@ using UnityEngine;
 public class CorrosionStatusEffect : StatusEffect
 {
     public float value = 0.9f;
+
+    public CorrosionStatusEffect() : base("BuSick"){}
+
     private void Start()
     {
+        GameObject Effect = LoadEffect();
+        Effect.transform.SetParent(transform, false);
+
         GameObject child = new GameObject();
         child.name = "StatModifier";
         child.AddComponent<StatModifier>();
