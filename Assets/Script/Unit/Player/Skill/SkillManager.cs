@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class SkillManager : PlayerSkill
 {
+    public bool SimpleAttack;
     public int EnergyGage;
     public int Damage;
     public float SkillCalculation;
@@ -64,6 +65,19 @@ public class SkillManager : PlayerSkill
                                 case 1:
                                     break;
                             }
+
+                            if(SimpleAttack)
+                            {
+                                pl.EnergyGage += (int)(pl.MaxEnergyGage * 0.05);
+
+                                if (pl.EnergyGage > pl.MaxEnergyGage)
+                                {
+                                    pl.EnergyGage = pl.MaxEnergyGage;
+                                }
+                                pl.EnergyGageCal();
+                            }
+                            pl.WeaponDurability();
+
                             Debug.Log("Hit");
 
                             IDamage iDamage = data.collider.GetComponentInParent<IDamage>();

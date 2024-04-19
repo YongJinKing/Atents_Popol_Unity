@@ -49,7 +49,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     public UnityEvent<int> BuffAct;
     public UnityEvent<int, int> EnergyGageAct;
     public UnityEvent<int> SkillAct;
-
+    public UnityEvent DurabilityAct;
     public float rotSpeed = 2;
     public float DadgeDelay = 0;
     public float dadgePw;
@@ -591,7 +591,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         }
     }
 
-    public void duration()
+    public void ArmorDurability()
     {
         var plData = DataManager.instance.playerData;
 
@@ -608,6 +608,19 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
                 break;
             case 1:
                 break;
+        }
+        if (plData.Armor_Duration == 40 || plData.Armor_Duration == 20 || plData.Armor_Duration == 0)
+        {
+            DurabilityAct?.Invoke();
+        }
+    }
+
+    public void WeaponDurability()
+    {
+        var plData = DataManager.instance.playerData;
+        if (plData.Weapon_Duration == 40 || plData.Weapon_Duration == 20 || plData.Weapon_Duration == 0)
+        {
+            DurabilityAct?.Invoke();
         }
     }
 

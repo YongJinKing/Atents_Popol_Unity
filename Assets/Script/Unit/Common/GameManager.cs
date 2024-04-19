@@ -104,7 +104,10 @@ public class GameManager : MonoBehaviour
         bs.AttackDelay = pldata.Character_AttackSpeed; // float
 
         NextLevel = bs.Level + 1;
-
+        if(NextLevel >= PlayerDetaManager.instance.dicPlayerData[10000].Character_MaxLevel)
+        {
+            NextLevel = PlayerDetaManager.instance.dicPlayerData[10000].Character_MaxLevel;
+        }
         var plLvstat1 = PlayerDetaManager.instance.dicPlayerLevelData[NextLevel];
         bs.MaxExp = plLvstat1.Total_Exp;
 
