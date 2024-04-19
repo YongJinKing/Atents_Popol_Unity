@@ -174,13 +174,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 49152
   targetDist: 0
-  camDist: 8
+  camDist: 12
   myCam: {fileID: 7506698082515324532}
   playerPos: {fileID: 0}
-  playerAngle: {x: 50, y: 180}
+  playerAngle: {x: 60, y: 180}
   playeroffSet: {x: 0, y: 1.8, z: 0}
   trackSpeed: 7
-  zoomRange: {x: 1, y: 15}
+  zoomRange: {x: 3, y: 15}
   zoomSpeed: 12
   wheelClickRot: 1
   rotationSpeed: 0.1
