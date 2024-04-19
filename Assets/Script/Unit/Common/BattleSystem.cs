@@ -65,6 +65,7 @@ public class BattleSystem : CharacterProperty, IDamage
 
     public UnityEvent<int, int> hpbarChangeAct;
     public UnityEvent DurationAct;
+    public UnityEvent<BattleSystem> HPChangeEvent;
 
     protected virtual void Start()
     {

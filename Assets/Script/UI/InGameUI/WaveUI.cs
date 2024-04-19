@@ -55,7 +55,7 @@ public class WaveUI : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
-            BossHPFresh();
+            //BossHPFresh();
         }
     }
 
@@ -249,11 +249,9 @@ public class WaveUI : MonoBehaviour
         }
     }
 
-    public void BossHPFresh()
+    public void BossHPFresh(int ReferenceValue, int Value)
     {
-        float max = BossObject.gameObject.GetComponentInParent<BattleSystem>().MaxHP;
-        float cur = BossObject.gameObject.GetComponentInParent<BattleSystem>().HP;
-        BossHpBar.fillAmount = cur / max;
+        BossHpBar.fillAmount = (float)Value / (float)ReferenceValue;
     }
 
     private void MoveT()

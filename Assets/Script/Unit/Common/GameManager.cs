@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject Player;
     public HpAndEnergy hpEpBar;
+    public WaveUI waveUI;
     //public PlayerDetaManager playerdata;
 
 
@@ -233,6 +234,9 @@ public class GameManager : MonoBehaviour
                     monsters.Last().GetComponent<Monster>().CinematicStart();
                     monsters.Last().GetComponentInChildren<Camera>().gameObject.SetActive(true);
                     monsters.Last().transform.position = Vector3.up * 10;
+                    monsters.Last().GetComponent<Monster>().hpbarChangeAct = new UnityEvent<int, int>();
+                    monsters.Last().GetComponent<Monster>().hpbarChangeAct.AddListener(waveUI.BossHPFresh);
+
                 }
 
                 yield return new WaitForSeconds(1);
