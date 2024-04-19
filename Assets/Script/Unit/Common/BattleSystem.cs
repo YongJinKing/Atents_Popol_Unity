@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public struct BattleStat
@@ -219,8 +220,9 @@ public class BattleSystem : CharacterProperty, IDamage
         Debug.Log("BattleSystem.TakeDamage");
         Debug.Log($"Atype : {Atype}, Dtype: {Dtype}");
         Debug.Log($"total : {totaldmg}");
+        DamageTextController.Instance.DmgTxtPrint(transform.position, totaldmg);
 
-        
+
         curBattleStat.HP -= totaldmg;
         hpbarChangeAct?.Invoke(MaxHP, HP);
         DurationAct?.Invoke();

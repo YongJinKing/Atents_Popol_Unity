@@ -116,7 +116,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1024
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 81c771d9be96f884ea6e51e2c8d7b27c, type: 2}
   m_TargetDisplay: 0
@@ -313,6 +313,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  DeBuffScr: {fileID: 0}
   Effectobj: {fileID: 2219723321589671901}
   clickMask:
     serializedVersion: 2
@@ -559,6 +560,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: HumanMale_Character
       objectReference: {fileID: 0}
+    - target: {fileID: 368422298790835735, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 618589833059784429, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 643068166643673773, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -599,6 +608,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1840793225504488371, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914196766771722985, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021687708190815029, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067661643118182144, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511022644161000879, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4617467083447393160, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850619159004785841, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5220652441251017199, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451720749711628831, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5509189406211053926, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957477093725890519, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6776949609690673367, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -614,6 +667,10 @@ PrefabInstance:
     - target: {fileID: 6776949609690673367, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410220683449698740, guid: e9e94bdaf9e70be44b1b0c54a3fc78fa, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

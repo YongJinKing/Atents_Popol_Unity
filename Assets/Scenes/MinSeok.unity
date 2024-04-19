@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5719,38 +5719,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveUI
       objectReference: {fileID: 0}
-    - target: {fileID: 2005279422279850975, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2005279422279850975, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2005279422279850975, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2005279422279850975, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2005279422279850975, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2005279422279850975, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2005279422279850975, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2005279422279850975, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5056948185274703275, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5830,18 +5798,6 @@ PrefabInstance:
     - target: {fileID: 5056948185274703275, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7248378458731757051, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 7248378458731757051, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 7248378458731757051, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
