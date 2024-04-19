@@ -20,6 +20,7 @@ public class InvenPopup : MonoBehaviour
     public GameObject PlayerDetailAbility;
     
     public UnityEvent EventChangeItem;
+    
     public UnityEvent<int> EventSlotNum;
     
 
@@ -153,6 +154,7 @@ public class InvenPopup : MonoBehaviour
         {
             
             EventChangeItem?.Invoke();
+            
             PlayerAbilityUpdate();
         }
         RiggingPopup.gameObject.SetActive(false);

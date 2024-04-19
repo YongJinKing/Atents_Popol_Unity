@@ -78,6 +78,11 @@ public class SkillPopup : MonoBehaviour
                     PlayerSkill.transform.Find("GridLine").GetChild(i).GetComponent<Image>().sprite =
                     gameObject.GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
                 }
+                else
+                {
+                    PlayerSkill.transform.Find("GridLine").GetChild(i).GetComponent<Image>().sprite =
+                    Resources.Load<Sprite>("UI/UserSkill/Grey");
+                }
             }
             else
             {
