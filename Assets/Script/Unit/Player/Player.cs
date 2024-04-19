@@ -249,11 +249,14 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
 
     private void Corrosion()
     {
+        /*
         float Corrosiontime = 10;
         BuffType(2000);
         DeBuffScr.transform.Find("BuSick").gameObject.SetActive(true);
         PlayBuffEffect("BuSick");
         StopScr("BuSick", Corrosiontime);
+        */
+        gameObject.GetComponent<Status>().Add(E_StatusAbnormality.Corrosion);
     }
     private void Poison()
     {
