@@ -14,7 +14,7 @@
     "WeaponType": 1,
     "ArmorType": 10,
     "Weapon_Duration": 44,
-    "Armor_Duration": 53,
+    "Armor_Duration": 100,
     "UiSkillList": [
         "",
         "",
@@ -127,9 +127,9 @@
         false,
         false
     ],
-    "PlayerGold": 6577,
+    "PlayerGold": 40,
     "PlayerInven": [
-        1000
+        1101
     ],
     "PlayerInvenDuraion": [
         100

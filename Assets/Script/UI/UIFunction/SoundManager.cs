@@ -35,10 +35,11 @@ public class SoundManager : MonoBehaviour
     private void Start() 
     {
         //BgmPlayer.volume = DataManager.instance.Bgm_Volum;
-        Debug.Log("StartCheck");
+
         SetMasterVolume(0.75f);
         SetBgmVolume(0.75f);
         SetSfxVolume(0.75f);
+        
     }
     public void PlayBgmMusic(string Type)
     {

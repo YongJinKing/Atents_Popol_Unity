@@ -10,8 +10,12 @@ using UnityEngine.Events;
 public class SmithUi : MonoBehaviour
 {
     
-    public GameObject FuntionPopup;
+    
+    
+    public GameObject DestroyPopup;
+    public GameObject RepairPopup;
     public GameObject CantPopup;
+    public GameObject NomoneyPopup;
     public GameObject SmithGridLine;
     public GameObject ItemDetail;
     public GameObject ItemAbility;
@@ -22,6 +26,7 @@ public class SmithUi : MonoBehaviour
     public UnityEvent<int> BtnAct2;
     bool RiggingItemSelected= false;
     bool SlotSelected= false;
+    int PayRepairMoney;
     int SlotIndex = 0;
     int RiggingIndex = 0;
     int smithFuntion;
@@ -189,7 +194,8 @@ public class SmithUi : MonoBehaviour
     public void PressedPopupBtn(int index)
     {
         PopupType = 0;
-        String ModeText = "";
+        PayRepairMoney = 0;
+        
         if(SlotSelected)
             PopupType = 1;
         if(RiggingItemSelected)
@@ -198,34 +204,69 @@ public class SmithUi : MonoBehaviour
         {   
             if(PopupType == 1)
             {
-                FuntionPopup.transform.gameObject.SetActive(true);
                 if(index == 0)
-                    ModeText = "수리";
+                {
+                    var go = SmithGridLine.transform.GetChild(SlotIndex).GetComponent<UIItem>();
+                    PayRepairMoney = RepairCalculate(go.ItemPrice, go.ItemDuration);
+                    if(DataManager.instance.playerData.PlayerGold >= RepairCalculate(go.ItemPrice, go.ItemDuration))
+                    {
+                        RepairPopup.transform.gameObject.SetActive(true);
+                        RepairPopup.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = 
+                        RepairCalculate(go.ItemPrice, go.ItemDuration).ToString() + "Gold";
+                    }
+                    else
+                    {
+                        StartCoroutine(CantDesPopup(NomoneyPopup));
+                    }
+                    
+                    
+                    //수리할 아이템의 가격 가져온다음 80퍼로 만들고, 수리해야될 내구도를 100분률로 나타내어 마이너스 한 돈을 표현시키기
+                }
                 else if(index == 1)
-                    ModeText = "폐기";
-                FuntionPopup.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text =
-                $"아이템을 {ModeText}하시겠습니까?";
+                {
+                    DestroyPopup.transform.gameObject.SetActive(true);
+                }
+                    
+                
                 smithFuntion = index + 1;
+                
             }
             if(PopupType == 2)
             {
                 
                 if(index == 0)
                 {
-                    FuntionPopup.transform.gameObject.SetActive(true);
-                    ModeText = "수리";
+                    var go = RiggigItem.transform.GetChild(RiggingIndex).GetComponent<UIItem>();
+                    PayRepairMoney = RepairCalculate(go.ItemPrice, go.ItemDuration);
+                    if(DataManager.instance.playerData.PlayerGold >= RepairCalculate(go.ItemPrice, go.ItemDuration))
+                    {
+                        RepairPopup.transform.gameObject.SetActive(true);
+                        RepairPopup.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = 
+                        RepairCalculate(go.ItemPrice, go.ItemDuration).ToString() + "Gold";
+                    }
+                    else
+                    {
+                        StartCoroutine(CantDesPopup(NomoneyPopup));
+                    }
+                    //수리할 아이템의 가격 가져온다음 80퍼로 만들고, 수리해야될 내구도를 100분률로 나타내어 마이너스 한 돈을 표현시키기
                 }
                 else if(index == 1)
                 {
-                    StartCoroutine(CantDesPopup());
+                    StartCoroutine(CantDesPopup(CantPopup));
                 }
-                FuntionPopup.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text =
-                $"아이템을 {ModeText}하시겠습니까?";
                 smithFuntion = index + 1;
             }
         }
         else
             return;
+    }
+    public int RepairCalculate(int ItemPrice, int ItemDuration)
+    {
+        float TempPrice;
+        int RepairPrice;
+        TempPrice = ItemPrice * 0.8f;
+        RepairPrice = (int)((TempPrice * ItemDuration)/ 100.0f);
+        return RepairPrice;
     }
     public void PressedYesOrNoBtn(int index)
     {
@@ -237,22 +278,24 @@ public class SmithUi : MonoBehaviour
                     InvenItemRepair?.Invoke(SlotIndex);
                 if(PopupType == 2)
                     RiggingItemRepair?.Invoke(RiggingIndex);
+                DataManager.instance.playerData.PlayerGold -= PayRepairMoney;
             }
             if(smithFuntion == 2)
             {
                 BtnAct2?.Invoke(SlotIndex);                
             }
-            FuntionPopup.transform.gameObject.SetActive(false);
             ItemDetailShow();
             CleanSlotAndRiggingItem();
         }
-        else
-            FuntionPopup.transform.gameObject.SetActive(false);
+        DestroyPopup.transform.gameObject.SetActive(false);
+        RepairPopup.transform.gameObject.SetActive(false);
+        
+            
     }
-    IEnumerator CantDesPopup()
+    IEnumerator CantDesPopup(GameObject ReferencePopup)
     {
-        CantPopup.gameObject.SetActive(true);
+        ReferencePopup.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.8f);
-        CantPopup.gameObject.SetActive(false);
+        ReferencePopup.gameObject.SetActive(false);
     }
 }
