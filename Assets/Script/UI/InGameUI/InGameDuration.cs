@@ -12,9 +12,9 @@ public class InGameDuration : MonoBehaviour
     Color ArmorColor = new Color();
     private void Start() 
     {   
-        DisPlayArmorDuration();
+        DisPlayDuration();
     }
-    public void DisPlayArmorDuration()
+    public void DisPlayDuration()
     {   
         if(Cor_Armor != null)
         {
@@ -26,7 +26,6 @@ public class InGameDuration : MonoBehaviour
             StopCoroutine(Cor_Weapon);
             Cor_Weapon = null;
         }
-        
         Cor_Armor = StartCoroutine(DurationDisplay(transform.GetChild(0).GetChild(0).GetChild(0)));
         Cor_Weapon = StartCoroutine(DurationDisplay(transform.GetChild(0).GetChild(0).GetChild(1)));
         
