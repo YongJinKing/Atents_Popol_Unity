@@ -16,6 +16,7 @@ public class UserSkillSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public int WeaponType;
     public int SkillLevel;
     public static bool CanDrag = false;
+    public GameObject SkillDetail;
     
     private void Start() 
     {

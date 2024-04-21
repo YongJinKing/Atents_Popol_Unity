@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     //will delete later
     //this is for file load test
     private Dictionary<int, WaveData> dicWaveTable;
+    
 
     private WaveData curWave;
     private Queue<WaveData> waveQueue = new Queue<WaveData>();
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
     public HpAndEnergy hpEpBar;
     public WaveUI waveUI;
     //public PlayerDetaManager playerdata;
+
+    public UnityEvent<int> GameEndUI;
 
 
     private Player pl;
@@ -94,7 +97,7 @@ public class GameManager : MonoBehaviour
         BattleStat bs = default;
 
         var pldata = DataManager.instance.playerData;
-        //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½
+        //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½
         bs.Exp = pldata.Character_CurrentExp;
         bs.Level = pldata.Character_CurrentLevel;
         bs.ATK = pldata.Character_AttackPower;
@@ -129,6 +132,7 @@ public class GameManager : MonoBehaviour
         if (UnitType == 0) // Player Dead
         {
             lossGameEvent?.Invoke();
+            GameEndUI?.Invoke(0);//Player
             pl.enabled = false;
             DataManager.instance.SaveData();
         }
@@ -140,6 +144,7 @@ public class GameManager : MonoBehaviour
                 if(monsters.Count == 0)
                 {
                     //RoundEnd
+                    GameEndUI?.Invoke(1);//Monster
                     playerdata.PlayerGold += curWave.Wave_Reward_Gold;
                     pl.Exp += curWave.Wave_Reward_Exp;
                     playerdata.Character_CurrentExp += curWave.Wave_Reward_Exp;
