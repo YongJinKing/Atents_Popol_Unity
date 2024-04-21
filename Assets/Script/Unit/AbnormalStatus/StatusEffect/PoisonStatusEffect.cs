@@ -33,7 +33,7 @@ public class PoisonStatusEffect : StatusEffect
             temp += dmg * Time.deltaTime;
             if(temp > 1)
             {
-                target.TakeDamage((int)temp, AttackType.Normal, DefenceType.Normal);
+                target.HP -= (int)temp;
                 temp = 0;
             }
             yield return null;

@@ -37,7 +37,7 @@ public class Status : MonoBehaviour
                 break;
             case E_StatusAbnormality.Slow:
                 {
-                    //obj.AddComponent<CorrosionStatusEffect>();
+                    obj.AddComponent<SlowStatusEffect>();
                     obj.name = "Slow";
                     condition.myStatusAbType = E_StatusAbnormality.Slow;
                     abnormals.Add(E_StatusAbnormality.Slow, condition);
@@ -53,7 +53,7 @@ public class Status : MonoBehaviour
                 break;
             case E_StatusAbnormality.Bondage:
                 {
-                    //obj.AddComponent<CorrosionStatusEffect>();
+                    obj.AddComponent<BondageStatusEffect>();
                     obj.name = "Bondage";
                     condition.myStatusAbType = E_StatusAbnormality.Bondage;
                     abnormals.Add(E_StatusAbnormality.Bondage, condition);
