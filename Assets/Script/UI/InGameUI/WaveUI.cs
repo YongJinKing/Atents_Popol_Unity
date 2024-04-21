@@ -29,6 +29,7 @@ public class WaveUI : MonoBehaviour
     float txtScale = 1;
 
     public float moveSpeed;
+    public byte LimitTime = 3;
 
     [Space(3)]
     [Header("InstantiateObj")]
@@ -55,7 +56,7 @@ public class WaveUI : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
-            //BossHPFresh();
+            playTime++;
         }
     }
 
@@ -257,7 +258,7 @@ public class WaveUI : MonoBehaviour
     private void MoveT()
     {
         WaveTxt.transform.localPosition = txtPos;
-        WaveTxt.transform.localScale = new Vector3(txtScale, txtScale, 1);
+        WaveTxt.transform.localScale = Vector3.one * txtScale;
     }
 
     private void ChangeT(int i, string s)
@@ -278,9 +279,28 @@ public class WaveUI : MonoBehaviour
     {
         while (true)
         {
-            playTime += Time.deltaTime;
-            StopWatchUI.text = "Time : " + Mathf.Floor(playTime).ToString()+"s";
-            yield return null;
+            ++playTime;
+            timeDisplay();
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    private void timeDisplay()
+    {
+        if(playTime >= LimitTime * 60)
+        {
+            StopWatchUI.text = "TimeOut";
+            saveTime();
+        }
+        else if (playTime > (LimitTime - 1) * 60)
+        {
+            StopWatchUI.color = Color.red;
+            StopWatchUI.transform.localScale = Vector3.one * 1.5f;
+            StopWatchUI.text = (LimitTime * 60 - playTime).ToString();
+        }
+        else
+        {
+            StopWatchUI.text = string.Format("{0:0} : {1:00}", Mathf.FloorToInt(playTime / 60), playTime % 60);
         }
     }
 

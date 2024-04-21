@@ -14513,7 +14513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52df49c8c36e4e848bc286e57da5b967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 0
+  startDelay: 0.05
   colCount: 1
   colDelay: 0
 --- !u!114 &-2990561302042464508
