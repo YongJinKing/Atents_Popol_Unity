@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ColiderBlink : MonoBehaviour
 {
@@ -8,10 +9,12 @@ public class ColiderBlink : MonoBehaviour
     public int colCount;
     public float colDelay;
     SphereCollider col;
+    SkillManager sk;
 
     // Start is called before the first frame update
     void Start()
     {
+        sk = GetComponent<SkillManager>();
         col=GetComponent<SphereCollider>();
         StartCoroutine(colBlink());
     }
@@ -31,6 +34,7 @@ public class ColiderBlink : MonoBehaviour
             {
                 col.enabled = false;
                 --colCount;
+                sk.OnColliderBlink();
                 yield return new WaitForSeconds(colDelay-0.05f);
             }
         }

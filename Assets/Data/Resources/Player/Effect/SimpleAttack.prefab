@@ -14532,10 +14532,12 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 0}
     uiSkillName: 
     uiSkillDesc: 
+    uiSkillDetailDesc: 
+  index: 0
   SimpleAttack: 1
   EnergyGage: 0
   Damage: 100
-  SkillCalculation: 0
+  SkillCalculation: 0.3
   WeaponType: 0
   Level: 0
   CoolTime: 0

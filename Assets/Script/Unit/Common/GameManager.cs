@@ -100,8 +100,8 @@ public class GameManager : MonoBehaviour
         //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ������ ���?����
         bs.Exp = pldata.Character_CurrentExp;
         bs.Level = pldata.Character_CurrentLevel;
-        bs.ATK = pldata.Character_AttackPower;
-        bs.HP = pldata.Character_Hp;
+        bs.ATK = pldata.Character_AttackPower + pldata.Weapon_Ability;
+        bs.HP = pldata.Character_Hp + pldata.Armor_Ability;
         bs.EnergyGage = pldata.Character_EnergyGage; // int
         bs.Speed = pldata.Character_MoveSpeed; // float
         bs.AttackDelay = pldata.Character_AttackSpeed; // float

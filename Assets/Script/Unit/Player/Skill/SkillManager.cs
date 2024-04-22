@@ -134,5 +134,8 @@ public class SkillManager : PlayerSkill
         }
     }
 
-    
+    public void OnColliderBlink()
+    {
+        target.Clear();
+    }
 }

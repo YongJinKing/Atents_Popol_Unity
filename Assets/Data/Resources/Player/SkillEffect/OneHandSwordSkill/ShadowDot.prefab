@@ -4946,7 +4946,13 @@ MonoBehaviour:
   uiSkillStatus:
     uiSkillSprite: {fileID: -2031359076, guid: 9613adf97591e3f44bbbc6fa946707b7, type: 3}
     uiSkillName: "\uC250\uB3C4\uC6B0\uB2F7"
-    uiSkillDesc: "\uC606\uC73C\uB85C 2\uC5F0\uACA9\uC744 \uB0A0\uB9B0\uB2E4."
+    uiSkillDesc: "\uD50C\uB808\uC774\uC5B4\uAC00 \uC804\uBC29\uC73C\uB85C \uAE38\uAC8C
+      2\uC5F0\uACA9\uC744 \uD558\uB294 \uAE30\uC220\uC774\uB2E4."
+    uiSkillDetailDesc: "\uD50C\uB808\uC774\uC5B4\uAC00 \uC804\uBC29\uC73C\uB85C \uAE38\uAC8C
+      2\uC5F0\uACA9\uC744 \uD558\uC5EC <color=\"red\">100 + \uACF5\uACA9\uB82550%</color>\uC758
+      \uB370\uBBF8\uC9C0\uB97C \uC8FC\uB294 \uAE30\uC220\uC774\uB2E4."
+  index: 0
+  SimpleAttack: 0
   EnergyGage: 5
   Damage: 100
   SkillCalculation: 0.3
