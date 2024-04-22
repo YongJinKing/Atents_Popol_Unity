@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +34,9 @@ public class GameManager : MonoBehaviour
     public GameObject Player;
     public HpAndEnergy hpEpBar;
     public WaveUI waveUI;
+
+    public int curRewardGold = 0;
+    public int curRewardExp = 0;
     //public PlayerDetaManager playerdata;
 
     
@@ -97,7 +98,7 @@ public class GameManager : MonoBehaviour
         BattleStat bs = default;
 
         var pldata = DataManager.instance.playerData;
-        //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½
+        //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½
         bs.Exp = pldata.Character_CurrentExp;
         bs.Level = pldata.Character_CurrentLevel;
         bs.ATK = pldata.Character_AttackPower + pldata.Weapon_Ability;
@@ -145,8 +146,10 @@ public class GameManager : MonoBehaviour
                     //RoundEnd
                     
                     playerdata.PlayerGold += curWave.Wave_Reward_Gold;
+                    curRewardGold += curWave.Wave_Reward_Gold;
                     pl.Exp += curWave.Wave_Reward_Exp;
                     playerdata.Character_CurrentExp += curWave.Wave_Reward_Exp;
+                    curRewardExp += curWave.Wave_Reward_Exp;
                     DataManager.instance.SaveData();
                     waveEndEvent?.Invoke();
                 }
