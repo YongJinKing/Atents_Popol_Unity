@@ -10,8 +10,7 @@ public class BondageStatusEffect : StatusEffect
 
     private void Start()
     {
-        GameObject Effect = LoadEffect();
-        Effect.transform.SetParent(transform, false);
+        LoadEffect();
 
         GameObject child = new GameObject();
         child.name = "StatModifier";

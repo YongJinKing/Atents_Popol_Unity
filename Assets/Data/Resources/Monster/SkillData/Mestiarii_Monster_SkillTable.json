@@ -53,5 +53,16 @@
     "Skill_OptionArr": [ 30002, 40000 ],
     "Skill_DescComponent": 10004,
     "Skill_AnimType": 0
+  },
+  {
+    "Index": 30005,
+    "Skill_Name": 10005,
+    "Skill_PreDelay": 2,
+    "Skill_PostDelay": 2,
+    "Skill_DetectRange": 15,
+    "Skill_TargetMask": 10,
+    "Skill_OptionArr": [ 30003 ],
+    "Skill_DescComponent": 10005,
+    "Skill_AnimType": 0
   }
 ]

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class MonsterFactory
 {
@@ -420,6 +421,14 @@ public class MonsterFactory
                     knockBack.knockBackPower = data.Skill_KnockBackPower;
                     knockBack.knockUpPower = data.Skill_KnockUpPower;
                     parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(knockBack.OnSkillHit);
+                }
+                break;
+            case 3:
+                {
+                    InflictStatusSkillEffect inflict = obj.AddComponent<InflictStatusSkillEffect>();
+                    inflict.abType = (E_StatusAbnormality)(index % 10000);
+                    obj.name = inflict.abType.ToString();
+                    parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(inflict.OnSkillHit);
                 }
                 break;
             default:

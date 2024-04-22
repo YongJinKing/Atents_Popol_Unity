@@ -12,6 +12,7 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
         Idle,
         Closing,
         Attacking,
+        Stun,
         Death
     }
 
@@ -125,7 +126,6 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
     #endregion
 
 
-    //����Ƽ �Լ��� ����
     #region MonoBehaviour
     #endregion
 }

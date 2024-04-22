@@ -14,10 +14,13 @@ public class StatusEffect : MonoBehaviour
         EffectPrefabName = effectPrefabName;
     }
 
-    protected GameObject LoadEffect()
+    protected void LoadEffect()
     {
-        if(EffectPrefabName != null)
-            return Instantiate(Resources.Load<GameObject>($"Player/DeBuff/{EffectPrefabName}"));
-        return null;
+        if (EffectPrefabName == null)
+            return;
+        
+        GameObject Effect = Instantiate(Resources.Load<GameObject>($"Player/DeBuff/{EffectPrefabName}"));
+        Effect.transform.SetParent(transform, false);
+        Effect.transform.localPosition += Vector3.up * 0.5f;
     }
 }

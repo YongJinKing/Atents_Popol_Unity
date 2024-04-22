@@ -9,8 +9,7 @@ public class PoisonStatusEffect : StatusEffect
 
     private void Start()
     {
-        GameObject effect = LoadEffect();
-        effect.transform.SetParent(transform, false);
+        LoadEffect();
 
         target = GetComponentInParent<BattleSystem>();
         dmg = target.MaxHP / 200;
