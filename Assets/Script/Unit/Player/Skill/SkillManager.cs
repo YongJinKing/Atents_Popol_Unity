@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class SkillManager : PlayerSkill
 {
+    public int index;
     public bool SimpleAttack;
     public int EnergyGage;
     public int Damage;
@@ -32,6 +33,8 @@ public class SkillManager : PlayerSkill
         Plm = Player.GetComponent<PlayerManager>();
         pl = Player.GetComponent<Player>();
         OnBuff();
+        
+        
     }
 
     void OnTriggerEnter(Collider other)

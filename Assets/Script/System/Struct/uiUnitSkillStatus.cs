@@ -6,4 +6,5 @@ public struct uiUnitSkillStatus
     public Sprite uiSkillSprite;
     public string uiSkillName;
     public string uiSkillDesc;
+    public string uiSkillDetailDesc;
 }
