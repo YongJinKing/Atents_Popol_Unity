@@ -82,6 +82,7 @@ public class GameSetting : MonoBehaviour
     {
         if(index == 0)//씬체인지
         {
+            Time.timeScale = 1;
             SceneLoading.SceneNum(2);
             SceneManager.LoadScene(1);
             gameObject.SetActive(false);
