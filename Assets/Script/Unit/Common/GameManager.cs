@@ -213,88 +213,38 @@ public class GameManager : MonoBehaviour
             }
 
             int count = 0;
-            count += curWave.Wave_Monster_Count1;
-            count += curWave.Wave_Monster_Count2;
-            count += curWave.Wave_Monster_Count3;
-            count += curWave.Wave_Monster_Count4;
-            count += curWave.Wave_Monster_Count5;
+            for(int i = 0; i < curWave.Wave_Monster_CountArr.Length; ++i)
+            {
+                count += curWave.Wave_Monster_CountArr[i];
+            }
 
             float angle = 360 / (float)count;
             Vector3 spawnPoint = Vector3.back * spawnOffset;
 
-            for(int i = 0; i < curWave.Wave_Monster_Count1 && curWave.Wave_Monster1 != 0; ++i)
+            for(int i = 0; i < curWave.Wave_MonsterArr.Length; ++i)
             {
-                monsters.Add(mf.CreateMonster(curWave.Wave_Monster1));
-                spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
-                monsters.Last().transform.position = spawnPoint;
-
-                if (!isBossWave)
+                for(int j = 0; j < curWave.Wave_Monster_CountArr[i]; ++j)
                 {
-                    monsters.Last().GetComponent<Monster>().CinematicEnd();
+                    monsters.Add(mf.CreateMonster(curWave.Wave_MonsterArr[i]));
+                    spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
+                    monsters.Last().transform.position = spawnPoint;
+
+                    if (!isBossWave)
+                    {
+                        monsters.Last().GetComponent<Monster>().CinematicEnd();
+                    }
+                    else if (curWave.Wave_MonsterArr[i] / 10000 >= 3)
+                    {
+                        monsters.Last().GetComponent<Monster>().CinematicStart();
+                        monsters.Last().GetComponentInChildren<Camera>().gameObject.SetActive(true);
+                        monsters.Last().transform.position = Vector3.up * 10;
+                        monsters.Last().GetComponent<Monster>().hpbarChangeAct = new UnityEvent<int, int>();
+                        monsters.Last().GetComponent<Monster>().hpbarChangeAct.AddListener(waveUI.BossHPFresh);
+
+                    }
+
+                    yield return new WaitForSeconds(1);
                 }
-                else if(curWave.Wave_Monster1 / 10000 >= 3)
-                {
-                    monsters.Last().GetComponent<Monster>().CinematicStart();
-                    monsters.Last().GetComponentInChildren<Camera>().gameObject.SetActive(true);
-                    monsters.Last().transform.position = Vector3.up * 10;
-                    monsters.Last().GetComponent<Monster>().hpbarChangeAct = new UnityEvent<int, int>();
-                    monsters.Last().GetComponent<Monster>().hpbarChangeAct.AddListener(waveUI.BossHPFresh);
-
-                }
-
-                yield return new WaitForSeconds(1);
-            }
-            for (int i = 0; i < curWave.Wave_Monster_Count2 && curWave.Wave_Monster2 != 0; ++i)
-            {
-                monsters.Add(mf.CreateMonster(curWave.Wave_Monster2));
-                spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
-                monsters.Last().transform.position = spawnPoint;
-
-                if (!isBossWave)
-                {
-                    monsters.Last().GetComponent<Monster>().CinematicEnd();
-                }
-
-                yield return new WaitForSeconds(1);
-            }
-            for (int i = 0; i < curWave.Wave_Monster_Count3 && curWave.Wave_Monster3 != 0; ++i)
-            {
-                monsters.Add(mf.CreateMonster(curWave.Wave_Monster3));
-                spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
-                monsters.Last().transform.position = spawnPoint;
-
-                if (!isBossWave)
-                {
-                    monsters.Last().GetComponent<Monster>().CinematicEnd();
-                }
-
-                yield return new WaitForSeconds(1);
-            }
-            for (int i = 0; i < curWave.Wave_Monster_Count4 && curWave.Wave_Monster4 != 0; ++i)
-            {
-                monsters.Add(mf.CreateMonster(curWave.Wave_Monster4));
-                spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
-                monsters.Last().transform.position = spawnPoint;
-
-                if (!isBossWave)
-                {
-                    monsters.Last().GetComponent<Monster>().CinematicEnd();
-                }
-
-                yield return new WaitForSeconds(1);
-            }
-            for (int i = 0; i < curWave.Wave_Monster_Count5 && curWave.Wave_Monster5 != 0; ++i)
-            {
-                monsters.Add(mf.CreateMonster(curWave.Wave_Monster5));
-                spawnPoint = Quaternion.Euler(0, angle, 0) * spawnPoint;
-                monsters.Last().transform.position = spawnPoint;
-
-                if (!isBossWave)
-                {
-                    monsters.Last().GetComponent<Monster>().CinematicEnd();
-                }
-
-                yield return new WaitForSeconds(1);
             }
 
             yield return null;
