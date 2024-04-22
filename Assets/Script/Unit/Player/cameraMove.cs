@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class cameraMove : MonoBehaviour
 {
@@ -35,6 +37,9 @@ public class cameraMove : MonoBehaviour
     public float rotateSpeed;
 
     public GameObject BrodCastCam;
+
+    public UnityEvent<int> GameEndUI; //0win 1lose
+    byte whoWin;
 
     void Start()
     {
@@ -113,12 +118,14 @@ public class cameraMove : MonoBehaviour
                 targetDist = 5;
                 playerAngle.x = 70;
                 playeroffSet.y = 1f;
+                whoWin = 1;
                 break;
             case 1:
                 target = MonsterCam;
                 targetDist = 2;
                 playerAngle.x = 0;
                 playeroffSet.y = 1f;
+                whoWin = 0;
                 break;
         }
         originPos = new Vector3(0, 0, myCam.transform.localPosition.z);
@@ -172,6 +179,8 @@ public class cameraMove : MonoBehaviour
                 Time.timeScale = 1f;
                 CinecamState = "EndingRotate";
                 isTracking = true;
+                yield return new WaitForSeconds(3);
+                GameEndUI?.Invoke(whoWin);
             }
             yield return null;
             //Auto return to main Scene in GameManager.cs

@@ -2,7 +2,7 @@
     "index": 0,
     "Character_Hp": 500,
     "Character_AttackPower": 20,
-    "Character_CurrentExp": 2000,
+    "Character_CurrentExp": 3000,
     "Character_CurrentLevel": 17,
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
@@ -13,12 +13,12 @@
     "Armor_Ability": 10,
     "WeaponType": 0,
     "ArmorType": 10,
-    "Weapon_Duration": 97,
+    "Weapon_Duration": 72,
     "Armor_Duration": 100,
     "UiSkillList": [
         "ShadowDot",
-        "",
-        "",
+        "EvilList",
+        "DancingOf",
         "",
         "",
         "",
@@ -118,21 +118,21 @@
         ""
     ],
     "InGameSkill": [
-        "PowerBuff",
-        "",
-        "SwordDown",
-        "Slash"
+        "ShadowDot",
+        "EvilList",
+        "DancingOf",
+        ""
     ],
     "clearStage": [
         false,
         false
     ],
-    "PlayerGold": 190,
+    "PlayerGold": 2340,
     "PlayerInven": [
         1203
     ],
     "PlayerInvenDuraion": [
         44
     ],
-    "PlayTime": 769
+    "PlayTime": 929
 }

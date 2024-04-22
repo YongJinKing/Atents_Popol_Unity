@@ -12,7 +12,7 @@ public class SceneLoading : MonoBehaviour
 
     void Start()
     {
-        LoadTxt.text = "Loading...";
+        //LoadTxt.text = "Loading...";
         SoundManager.instance.StopBgmMusic();
         StartCoroutine(LoadScene());
     }
@@ -42,7 +42,7 @@ public class SceneLoading : MonoBehaviour
             }
             else
             {
-                LoadTxt.text = "Done!";
+                //LoadTxt.text = "Done!";
                 Invoke("NextScene", 1f);
             }
         }

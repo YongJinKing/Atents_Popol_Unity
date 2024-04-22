@@ -158,7 +158,6 @@ public class GameManager : MonoBehaviour
         if (curWave.index / 10000 >= 2 && monsters.Count <= 0) //Boss Wave End
         {
             Debug.Log("StageEnd");
-            StartCoroutine(tempDebug());
             DataManager.instance.SaveData();
             stageEndEvent?.Invoke();
             pl.enabled = false;
@@ -168,13 +167,6 @@ public class GameManager : MonoBehaviour
     public void UpdateUI()
     {
         //DataManager.instance.playerData.Armor_Duration = 
-    }
-
-    IEnumerator tempDebug()
-    {
-        yield return new WaitForSeconds(12);
-        SceneLoading.SceneNum(2);
-        SceneManager.LoadScene(1);
     }
 
     IEnumerator LevelUp()

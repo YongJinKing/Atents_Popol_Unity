@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InGameEndUI : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class InGameEndUI : MonoBehaviour
     {
         if(index == 0)//SceneChange
         {
-
+            SceneLoading.SceneNum(2);
+            SceneManager.LoadScene(1);
         }
         GameWinPopup.SetActive(false);
         GameLosePopup.SetActive(false);

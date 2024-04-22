@@ -18,7 +18,7 @@ public class DamageText : MonoBehaviour
             transform.localScale = new Vector3(scale,scale,1);
             if(scale <= 1.01f)
             {
-                Destroy(gameObject,1);
+                Destroy(gameObject,0.5f);
 
             }
             yield return null;
