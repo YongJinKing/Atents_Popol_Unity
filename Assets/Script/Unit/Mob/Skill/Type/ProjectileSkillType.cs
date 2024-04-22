@@ -171,7 +171,7 @@ public class ProjectileSkillType : HitCheckSkillType
         if (hitBox != null)
         {
             hitBox.transform.SetParent(null);
-            dir = targetPos - hitBox.transform.position;
+            dir = (targetPos + Vector3.up * 1.0f) - hitBox.transform.position;
             dir.Normalize();
             //xz 평면에서 가는 거리
             float xzDist = (new Vector3(dir.x, 0, dir.z)).magnitude;
