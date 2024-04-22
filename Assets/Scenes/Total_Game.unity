@@ -412,7 +412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: BuffAct.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: DurabilityAct.m_PersistentCalls.m_Calls.Array.size
@@ -435,9 +435,13 @@ PrefabInstance:
       value: Display
       objectReference: {fileID: 0}
     - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: DurabilityAct.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: DurabilityAct.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1803721716}
+      objectReference: {fileID: 1803721718}
     - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: EnergyGageAct.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -447,11 +451,23 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: DurabilityAct.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisPlayDuration
+      objectReference: {fileID: 0}
+    - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: BuffAct.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: DisplayCondition, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: DurabilityAct.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: InGameDuration, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: BuffAct.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: DurabilityAct.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3642465875917560104, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
@@ -3843,6 +3859,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b77ee406b558f4c92ba3eaa878a1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuffAct:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 927201804}
+        m_TargetAssemblyTypeName: DisplayCondition, Assembly-CSharp
+        m_MethodName: Display
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &1360592841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4745,11 +4776,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7516981819283784254, guid: 89bbc9dbfb32bb04e91cec2173d15f00, type: 3}
   m_PrefabInstance: {fileID: 1063538554}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1803721716 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8786675112621125203, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+--- !u!114 &1803721718 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2974455103654995804, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
   m_PrefabInstance: {fileID: 179462420}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bb99aab78b6e34f9e8edf1cc2c11bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1823255449 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5195858549544860348, guid: 68614111db49cff4cbda81d1090711d2, type: 3}

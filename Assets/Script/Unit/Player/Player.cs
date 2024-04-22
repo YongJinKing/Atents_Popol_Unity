@@ -17,12 +17,7 @@ public enum E_Skill
     RSkill = 3
 }
 
-public interface IDebuff
-{
-    public void Debuff(int type);
-}
-
-public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, IDebuff
+public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
 {
     ParticleSystem particle;
     SkillManager sm;
@@ -184,36 +179,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
 
         
 
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            Debuff(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Debuff(1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            Debuff(2);
-        }
-        
-        if(Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            Debuff(3);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            Debuff(4);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            Debuff(5);
-        }
-
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             float HillBuffTime = 10;
@@ -245,34 +210,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         myAnim.SetFloat("AttackSpeed", 1.0f);
     }
 
-
-
-    private void Corrosion()
-    {
-        /*
-        float Corrosiontime = 10;
-        BuffType(2000);
-        DeBuffScr.transform.Find("BuSick").gameObject.SetActive(true);
-        PlayBuffEffect("BuSick");
-        StopScr("BuSick", Corrosiontime);
-        */
-        gameObject.GetComponent<Status>().Add(E_StatusAbnormality.Corrosion);
-    }
-    private void Poison()
-    {
-        float DotTime = 10;
-        StartCoroutine(Dot(DotTime));
-        DeBuffScr.transform.Find("Poison").gameObject.SetActive(true);
-        BuffType(2001);
-        PlayBuffEffect("Poison");
-        StopScr("Poison", DotTime);
-    }
-    private void Slow()
-    {
-        float SlowDebuffTime = 10;
-        BuffType(2002);
-        PlayBuffEffect("Slow");
-    }
+   
     private void Stun()
     {
         float StunDebuffTime = 10;
@@ -282,17 +220,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         BuffType(2003);
         PlayBuffEffect("Stun");
     }
-    private void Bondage()
-    {
-        isRun = false;
-        float BondageDebuffTime = 10;
-        stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-        DeBuffScr.transform.Find("Bondage").gameObject.SetActive(true);
-        StartCoroutine(Bondage(BondageDebuffTime));
-        BuffType(2004);
-        PlayBuffEffect("Bondage");
-        StopScr("Bondage", BondageDebuffTime);
-    }
     private void Blind()
     {
         DeBuffScr.transform.Find("Blind").gameObject.SetActive(true);
@@ -300,31 +227,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         BuffType(2005);
         PlayBuffEffect("Blind");
         StopScr("Blind", BlindDebuffTime);
-    }
-
-    public void Debuff(int type)
-    {
-        switch (type)
-        {
-            case 0:
-                Corrosion();
-                break;
-            case 1:
-                Poison();
-                break;
-            case 2:
-                Slow();
-                break;
-            case 3:
-                Stun();
-                break;
-            case 4:
-                Bondage();
-                break;
-            case 5:
-                Blind();
-                break;
-        }
     }
 
     IEnumerator Hill(float HillBufftime)
@@ -338,28 +240,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
             yield return new WaitForSeconds(0.2f);
         }
     }
-
-    IEnumerator Bondage(float Debufftime)
-    {
-        yield return new WaitForSeconds(Debufftime);
-        isRun = true;
-    }
-
-    
-
-    IEnumerator Dot(float Debufftime)
-    {
-
-        bufftime = 0;
-        while (bufftime < Debufftime)
-        {
-            float tick = (float)(curBattleStat.HP * 0.03);
-            base.TakeDamage((int)tick, AttackType.Normal, DefenceType.Normal);
-            yield return new WaitForSeconds(1.0f);
-        }
-    }
-
-    
 
     void ChangeIdle()
     {

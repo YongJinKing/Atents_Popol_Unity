@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Status : MonoBehaviour
 {
+    public UnityEvent<int> BuffAct;
     public Dictionary<E_StatusAbnormality, StatusCondition> abnormals = new Dictionary<E_StatusAbnormality, StatusCondition>();
 
     public void Add(E_StatusAbnormality eType)
@@ -25,6 +27,7 @@ public class Status : MonoBehaviour
                     obj.name = "Corrosion";
                     condition.myStatusAbType = E_StatusAbnormality.Corrosion;
                     abnormals.Add(E_StatusAbnormality.Corrosion, condition);
+                    BuffType(2000);
                 }
                 break;
             case E_StatusAbnormality.Poison:
@@ -33,6 +36,7 @@ public class Status : MonoBehaviour
                     obj.name = "Poison";
                     condition.myStatusAbType = E_StatusAbnormality.Poison;
                     abnormals.Add(E_StatusAbnormality.Poison, condition);
+                    BuffType(2001);
                 }
                 break;
             case E_StatusAbnormality.Slow:
@@ -41,6 +45,7 @@ public class Status : MonoBehaviour
                     obj.name = "Slow";
                     condition.myStatusAbType = E_StatusAbnormality.Slow;
                     abnormals.Add(E_StatusAbnormality.Slow, condition);
+                    BuffType(2002);
                 }
                 break;
             case E_StatusAbnormality.Stun:
@@ -49,6 +54,7 @@ public class Status : MonoBehaviour
                     obj.name = "Stun";
                     condition.myStatusAbType = E_StatusAbnormality.Stun;
                     abnormals.Add(E_StatusAbnormality.Stun, condition);
+                    BuffType(2003);
                 }
                 break;
             case E_StatusAbnormality.Bondage:
@@ -57,6 +63,7 @@ public class Status : MonoBehaviour
                     obj.name = "Bondage";
                     condition.myStatusAbType = E_StatusAbnormality.Bondage;
                     abnormals.Add(E_StatusAbnormality.Bondage, condition);
+                    BuffType(2004);
                 }
                 break;
             case E_StatusAbnormality.Blind:
@@ -65,6 +72,7 @@ public class Status : MonoBehaviour
                     obj.name = "Blind";
                     condition.myStatusAbType = E_StatusAbnormality.Blind;
                     abnormals.Add(E_StatusAbnormality.Blind, condition);
+                    BuffType(2005);
                 }
                 break;
         }
@@ -83,5 +91,10 @@ public class Status : MonoBehaviour
                 Destroy(obj);
             }
         }
+    }
+
+    void BuffType(int Type)
+    {
+        BuffAct?.Invoke(Type);
     }
 }
