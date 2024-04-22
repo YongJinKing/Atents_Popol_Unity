@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     public WaveUI waveUI;
     //public PlayerDetaManager playerdata;
 
-    public UnityEvent<int> GameEndUI;
+    
 
 
     private Player pl;
@@ -132,7 +132,6 @@ public class GameManager : MonoBehaviour
         if (UnitType == 0) // Player Dead
         {
             lossGameEvent?.Invoke();
-            GameEndUI?.Invoke(0);//Player
             pl.enabled = false;
             DataManager.instance.SaveData();
         }
@@ -144,7 +143,7 @@ public class GameManager : MonoBehaviour
                 if(monsters.Count == 0)
                 {
                     //RoundEnd
-                    GameEndUI?.Invoke(1);//Monster
+                    
                     playerdata.PlayerGold += curWave.Wave_Reward_Gold;
                     pl.Exp += curWave.Wave_Reward_Exp;
                     playerdata.Character_CurrentExp += curWave.Wave_Reward_Exp;
@@ -160,6 +159,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("StageEnd");
             DataManager.instance.SaveData();
             stageEndEvent?.Invoke();
+            //GameEndUI?.Invoke(1);//Monster
             pl.enabled = false;
         }
         

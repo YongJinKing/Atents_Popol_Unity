@@ -8,7 +8,6 @@ public class Title : MonoBehaviour
     private void Start() {
         
         SoundManager.instance.PlayBgmMusic("TitleMusic");
-        
     }
     public void PressedBtn(int index)
     {

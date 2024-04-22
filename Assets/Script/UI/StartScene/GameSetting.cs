@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameSetting : MonoBehaviour
@@ -50,18 +51,21 @@ public class GameSetting : MonoBehaviour
     }
     public void PressedBtnInGame(int index)
     {
-        
-        if(index == 3)//Cancel Btn
-            {
-
-            }
+        Time.timeScale = 0.0f;
+        if(index == 3)//giveUp Btn
+        {
+            transform.GetChild(1).gameObject.SetActive(true);
+        }
         else if(index == 4)//Cancel Btn
+        {
             gameObject.SetActive(false);
+            Time.timeScale = 1.0f;
+        }
+            
         else
         {
             var go = Paper.transform.GetChild(index + 1).GetChild(0).GetChild(0).GetComponent<Image>();//Paper//Master,Bgm,Sfx,/Icon/Image
             SoundBtn[index] = !SoundBtn[index];
-            Debug.Log(SoundBtn[index]);
             if(SoundBtn[index])
             {
                 go.sprite = Img_Sound;
@@ -71,6 +75,20 @@ public class GameSetting : MonoBehaviour
                 go.sprite = Img_Mute;
             }
             SoundManager.instance.MuteCheck(index, SoundBtn[index]);
+
         }
     }
+    public void PressedBtnYesOrNo(int index)
+    {
+        if(index == 0)//씬체인지
+        {
+            SceneLoading.SceneNum(2);
+            SceneManager.LoadScene(1);
+            gameObject.SetActive(false);
+        }
+        transform.GetChild(1).gameObject.SetActive(false);
+
+        
+    }
+
 }
