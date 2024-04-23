@@ -57,6 +57,8 @@ public class MonsterFactory
         rigid.useGravity = true;
         rigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 
+        obj.AddComponent<Status>();
+
         //need exl
         Monster objMon = FindAI(obj,data.Character_AIType);
 
