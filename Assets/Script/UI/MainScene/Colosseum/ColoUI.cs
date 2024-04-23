@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using Newtonsoft.Json;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -14,9 +14,11 @@ public class ColoUI : MonoBehaviour
     public GameObject StagePopup;
     public UnityEvent SaveRiggingItemData;
     public UnityEvent SaveInvenData;
+    private Dictionary<int, WaveData> dicWaveTable;
     public int skillLength = 4;
 
-
+    int totalGold;
+    int totalExp;
     public int StageIndex;
     List<bool> ClearCheck = new List<bool>();
     GameObject BossPrefab;
@@ -66,7 +68,7 @@ public class ColoUI : MonoBehaviour
                 BossAbility.transform.Find("BossExplain").Find("Ability").Find("BossExplain").GetComponent<TMP_Text>().text
                 = "설명 :\n" + BossDescText;
                 
-
+                
                 if(BossSkillData.index > 0)
                 {
                     BossSkillList.Add(Resources.Load<Sprite>($"UI/Colosseum/MonsterSkill/Stage{index}/{BossSkillData.Skill_ImageResource}"));
@@ -74,24 +76,55 @@ public class ColoUI : MonoBehaviour
                     go.GetChild(0).GetComponent<Image>().sprite
                     = BossSkillList[i];
                     go.gameObject.SetActive(true);
-                    /* Color color = go.GetChild(0).GetComponent<Image>().color;
-                    color.a = 1.0f;
-                    go.GetChild(0).GetComponent<Image>().color = color;  */
-                    
                 }
             }
             catch
             {
                 var go = BossAbility.transform.Find("BossExplain").Find("Ability").Find("BossSkill").Find("GridLine").GetChild(i);
                 go.gameObject.SetActive(false);
-                /* Color color = go.GetChild(0).GetComponent<Image>().color;
-                color.a = 0.0f;
-                go.GetChild(0).GetComponent<Image>().color = color;  */
+                
             }
         }
-        BossAbility.transform.Find("BossStage").GetComponent<TMP_Text>().text = $"Stage\n{index}";   
+        BossAbility.transform.Find("BossStage").GetComponent<TMP_Text>().text = $"Stage\n{index}";
+        DisplayReward();
     }
+    void DisplayReward()
+    {
+        var Mestiarii_WaveData = Resources.Load<TextAsset>("System/Mestiarii_WaveData_Table").text;
+        var arrWaveDatas = JsonConvert.DeserializeObject<WaveData[]>(Mestiarii_WaveData);
+        this.dicWaveTable = arrWaveDatas.ToDictionary(x => x.index);
+        totalGold = 0;
+        totalExp = 0;
+        int count = ((StageIndex - 1) * 1000);
+        foreach(var data in dicWaveTable)
+        {
+            //Debug.Log($"인덱스 체크 : {data.Value.index}");
+            Debug.Log($"데이터 체크 : {data.Value.index} , 카운트 체크 {count}");
+            if(data.Value.index / 10000 == 1)
+            {
+                if(data.Value.index % 10000 == count)
+                {
+                    totalGold += data.Value.Wave_Reward_Gold;
+                    totalExp += data.Value.Wave_Reward_Exp;
+                    count++;
+                }
+            }
+            else
+            {
+                if(data.Value.index % 10000 == StageIndex - 1)
+                {
+                    totalGold += data.Value.Wave_Reward_Gold;
+                    totalExp += data.Value.Wave_Reward_Exp;
+                }
+            }
+            
+            
+        }
+        var go = BossAbility.transform.GetChild(3).GetChild(1);//BossAbility//GridLine
+        go.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = totalGold.ToString();
+        go.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = totalExp.ToString();
 
+    }
     private void ChangeLayerRecursively(GameObject obj, int layer)
     {
         obj.layer = layer;
@@ -115,8 +148,8 @@ public class ColoUI : MonoBehaviour
         }
         if(index == 1)
         {
-            int trueCount = ClearCheck.Where(x => x == true).Count();
-            if(StageIndex < trueCount)
+            int trueCount = DataManager.instance.playerData.clearStage.Where(x => x == true).Count();
+            if(StageIndex - 1 < trueCount)
             {
                 StageIndex++;
                 if(BossAbility.transform.Find("BossMonster").GetChild(0).gameObject)

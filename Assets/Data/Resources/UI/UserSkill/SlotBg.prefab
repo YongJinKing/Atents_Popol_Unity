@@ -775,13 +775,13 @@ MonoBehaviour:
   BtnAct:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 340497997582130057}
+        m_TargetAssemblyTypeName: UserSkillSlot, Assembly-CSharp
+        m_MethodName: PressedBtn
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1438,6 +1438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponType: 0
   SkillLevel: 0
+  SkillDetail: {fileID: 4913496526344145030, guid: 5d5c150a2e1e29c4bb57543063dfbb8c, type: 3}
 --- !u!1 &7471092717382224917
 GameObject:
   m_ObjectHideFlags: 0

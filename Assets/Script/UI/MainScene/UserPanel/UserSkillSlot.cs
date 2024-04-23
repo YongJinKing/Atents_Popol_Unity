@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Timeline;
 using UnityEngine.Events;
 using Unity.VisualScripting;
+using TMPro;
 
 
 public class UserSkillSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
@@ -15,8 +16,11 @@ public class UserSkillSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     GameObject DragImage;
     public int WeaponType;
     public int SkillLevel;
+    public int SkillEnergy;
+    public string DetailDesc;
+    
     public static bool CanDrag = false;
-    public GameObject SkillDetail;
+    
     
     private void Start() 
     {
@@ -42,7 +46,6 @@ public class UserSkillSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnDrag(PointerEventData eventData)//Drag Ing
     {
       
-        
         if(!CanDrag)
         {
             //Debug.Log("드래그실행?");
@@ -61,4 +64,5 @@ public class UserSkillSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             DragImage.GetComponent<Image>().raycastTarget = true;
         }
     }
+    
 }

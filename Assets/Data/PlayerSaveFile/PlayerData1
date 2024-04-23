@@ -124,7 +124,7 @@
         ""
     ],
     "clearStage": [
-        false,
+        true,
         false
     ],
     "PlayerGold": 5390,
