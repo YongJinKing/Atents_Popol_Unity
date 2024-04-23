@@ -55,18 +55,19 @@ public class SkillManager : PlayerSkill
                         {
                             target.Add(temp);
                             var plData = DataManager.instance.playerData;
-                            if (plData.Weapon_Duration <= 0)
-                            {
-                                plData.Weapon_Duration = 0;
-                            }
 
                             switch (UnityEngine.Random.Range(0, 2))
                             {
                                 case 0:
-                                    plData.Weapon_Duration--;
-                                    break;
+                                plData.Weapon_Duration--;
+                                break;
                                 case 1:
-                                    break;
+                                break;
+                            }
+
+                            if (plData.Weapon_Duration <= 0)
+                            {
+                                plData.Weapon_Duration = 0;
                             }
 
                             if(SimpleAttack)

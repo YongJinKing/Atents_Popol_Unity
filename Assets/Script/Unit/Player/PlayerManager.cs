@@ -10,6 +10,13 @@ public class PlayerManager : MonoBehaviour
         
         IDamage iDamage = other.GetComponentInParent<IDamage>();
         totalDmg = (int)(Pldmg*SkillCalculation) + skillDamage;
+        var duration = DataManager.instance.playerData.Weapon_Duration;
+
+        if (duration <= 50)
+        {
+            totalDmg = (int)(totalDmg * 0.8f);
+        }
+
         iDamage.TakeDamage(totalDmg, A_type, Dtype);
     }
 }

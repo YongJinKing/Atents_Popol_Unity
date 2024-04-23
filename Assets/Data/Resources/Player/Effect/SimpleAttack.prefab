@@ -14542,7 +14542,7 @@ MonoBehaviour:
   Level: 0
   CoolTime: 0
   CoolTimeCheck: 0
-  aType: 0
+  aType: 1
   Buff: 0
   BTime: 0
 --- !u!114 &2428687727842145413
