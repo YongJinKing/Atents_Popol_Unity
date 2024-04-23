@@ -81,6 +81,12 @@ public class SkillManager : PlayerSkill
                             }
                             pl.WeaponDurability();
 
+                            InflictDeBuff inflict = GetComponent<InflictDeBuff>();
+                            if (inflict != null)
+                            {
+                                inflict.GetCol(data.collider);
+                            }
+
                             Debug.Log("Hit");
 
                             IDamage iDamage = data.collider.GetComponentInParent<IDamage>();
