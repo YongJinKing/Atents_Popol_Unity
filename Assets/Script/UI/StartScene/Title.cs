@@ -11,22 +11,12 @@ public class Title : MonoBehaviour
     }
     public void PressedBtn(int index)
     {
-        if(index == 0)//GameStart
-        {
-            MenuAct(index+1, false);
-        }
-        if(index == 1)//GameSetting
-        {
-            MenuAct(index+1, true);
-        }
-        if(index == 2)//GameEnd
-        {
-            MenuAct(index+1, true);
-        }
+        MenuAct(index+1);
     }
-    public void MenuAct(int index, bool OnCheck)
+    public void MenuAct(int index)
     {
-        Canvas.transform.Find("Title").gameObject.SetActive(OnCheck);
+        if (index == 0)
+            Canvas.transform.Find("Title").gameObject.SetActive(false);
         Canvas.transform.GetChild(index).gameObject.SetActive(true);
     }
     

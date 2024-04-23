@@ -99,7 +99,7 @@ public class ColoUI : MonoBehaviour
         foreach(var data in dicWaveTable)
         {
             //Debug.Log($"인덱스 체크 : {data.Value.index}");
-            Debug.Log($"데이터 체크 : {data.Value.index} , 카운트 체크 {count}");
+            //Debug.Log($"데이터 체크 : {data.Value.index} , 카운트 체크 {count}");
             if(data.Value.index / 10000 == 1)
             {
                 if(data.Value.index % 10000 == count)

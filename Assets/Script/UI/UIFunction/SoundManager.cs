@@ -15,6 +15,10 @@ public class SoundManager : MonoBehaviour
     public float MasterValue;
     public float BgmValue;
     public float SfxValue;
+
+    public bool MasterMuteCheck;
+    public bool BgmMuteCheck;
+    public bool SfxMuteCheck;
     
     
     
@@ -74,20 +78,43 @@ public class SoundManager : MonoBehaviour
         if(OnCheck)
         {
             if(index == 0)
+            {
                 m_AudioMixer.SetFloat("Master", Mathf.Log10(MasterValue) * 20);
+                MasterMuteCheck = true;
+            }
             if(index == 1)
+            {
                 m_AudioMixer.SetFloat("BgmMusic", Mathf.Log10(BgmValue) * 20);
+                BgmMuteCheck = true;
+            }
+                
             if(index == 2)
+            {
                 m_AudioMixer.SetFloat("SfxMusic", Mathf.Log10(SfxValue) * 20);
+                SfxMuteCheck = true;
+            }
+                
         }
         else
         {
             if(index == 0)
+            {
                 m_AudioMixer.SetFloat("Master", Mathf.Log10(0.0001f) * 20);
+                MasterMuteCheck = false;
+            }
+                
             if(index == 1)
+            {
                 m_AudioMixer.SetFloat("BgmMusic", Mathf.Log10(0.0001f) * 20);
+                BgmMuteCheck = false;
+            }
+                
             if(index == 2)
+            {
                 m_AudioMixer.SetFloat("SfxMusic", Mathf.Log10(0.0001f) * 20);
+                SfxMuteCheck = false;
+            }   
+                
         }
     }
     public void StopBgmMusic()
