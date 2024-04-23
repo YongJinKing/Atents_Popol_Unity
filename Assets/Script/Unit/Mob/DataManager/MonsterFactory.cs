@@ -55,7 +55,7 @@ public class MonsterFactory
         col.height = 1.0f;
         Rigidbody rigid = obj.AddComponent<Rigidbody>();
         rigid.useGravity = true;
-        rigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        rigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
         obj.AddComponent<Status>();
 
