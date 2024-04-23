@@ -17,7 +17,7 @@ public enum E_Skill
     RSkill = 3
 }
 
-public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
+public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, IStun
 {
     ParticleSystem particle;
     SkillManager sm;
@@ -182,20 +182,17 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
             float HillBuffTime = 10;
-            BuffType(1001);
             StartCoroutine(Hill(HillBuffTime));
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
             float SpeedBuffTime = 10;
-            BuffType(1002);
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha9))
+        if (Input.GetKeyDown(KeyCode.Alpha9))
         {
             float AttackSpeedBuffTime = 10;
-            BuffType(1003);
             myAnim.SetFloat("AttackSpeed", 2f);
             StartCoroutine(StopAttackSpeed(AttackSpeedBuffTime));
 
@@ -210,22 +207,23 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         myAnim.SetFloat("AttackSpeed", 1.0f);
     }
 
-   
-    private void Stun()
+    public void GetStun()
     {
-        float StunDebuffTime = 10;
         stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
         ChangeState(state.Stun);
-        Invoke("ChangeIdle", StunDebuffTime);
-        BuffType(2003);
-        PlayBuffEffect("Stun");
     }
+
+    public void OutStun()
+    {
+        myAnim.SetBool("b_Stun", false);
+        ChangeState(state.Idle);
+        
+    }
+
     private void Blind()
     {
         DeBuffScr.transform.Find("Blind").gameObject.SetActive(true);
         float BlindDebuffTime = 10;
-        BuffType(2005);
-        PlayBuffEffect("Blind");
         StopScr("Blind", BlindDebuffTime);
     }
 
@@ -241,12 +239,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         }
     }
 
-    void ChangeIdle()
-    {
-        myAnim.SetBool("b_Stun", false);
-        ChangeState(state.Idle);
-    }
-
+   
     void StopScr(string name, float Time)
     {
         StartCoroutine(C_Stopscr(name, Time));
@@ -257,22 +250,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd
         yield return new WaitForSeconds(Debufftime);
         DeBuffScr.transform.Find(name).gameObject.SetActive(false);
     }
-    void BuffType(int Type)
-    {
-        BuffAct?.Invoke(Type);
-    }
-
-    void PlayBuffEffect(string DebuffName)
-    {
-        PlayerEffect Pe;
-        DebuffEffect = Instantiate<GameObject>(Resources.Load($"Player/DeBuff/{DebuffName}") as GameObject);
-        DebuffEffect.transform.SetParent(transform);
-        Pe = Effectobj.GetComponent<PlayerEffect>();
-        Pe.Effectpos(DebuffEffect);
-    }
-
-
-
 
     public bool GetRaycastHit()
     {
