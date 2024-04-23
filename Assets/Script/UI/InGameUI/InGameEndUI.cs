@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class InGameEndUI : MonoBehaviour
 {
+    public GameObject GameManager;
     GameObject GameWinPopup;
     GameObject GameLosePopup;
     void Start()
@@ -30,10 +31,20 @@ public class InGameEndUI : MonoBehaviour
         if(index == 0)
         {
             GameWinPopup.SetActive(true);
+            var go =  GameWinPopup.transform.GetChild(0).GetChild(1).GetChild(1);//GameWin//Paper/GridLine
+            go.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text =//GoldReward/Text
+            GameManager.GetComponent<GameManager>().curRewardGold.ToString();
+            go.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text =//ExpReward/Text
+            GameManager.GetComponent<GameManager>().curRewardExp.ToString();   
         }
         if(index == 1)
         {
             GameLosePopup.SetActive(true);
+            var go =  GameLosePopup.transform.GetChild(0).GetChild(1).GetChild(1);//GameWin//Paper/GridLine
+            go.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text =//GoldReward/Text
+            GameManager.GetComponent<GameManager>().curRewardGold.ToString();
+            go.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text =//ExpReward/Text
+            GameManager.GetComponent<GameManager>().curRewardExp.ToString();   
         }
     }
 
