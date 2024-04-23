@@ -118,6 +118,7 @@ public class Slime : Monster
                 break;
             case State.Death:
                 onDeadAct?.Invoke();
+                DeadEvent?.Invoke();
                 Debug.Log("Monster Death");
                 myAnim.SetTrigger("t_Death");
                 Collider temp = transform.GetComponent<Collider>();

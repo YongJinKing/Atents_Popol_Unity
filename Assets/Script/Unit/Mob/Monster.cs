@@ -49,6 +49,8 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd, IS
     public UnityEvent<Vector3, float> rotateEvent;
     public UnityEvent<UnityAction> stopEvent;
 
+    public UnityEvent DeadEvent;
+
     protected UnityAction<Transform, UnityAction, UnityAction, UnityAction> onSkillStartAct;
     protected UnityAction onSkillHitCheckStartAct;
     protected UnityAction onSkillHitCheckEndAct;

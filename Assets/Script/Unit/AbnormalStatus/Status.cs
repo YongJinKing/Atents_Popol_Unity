@@ -93,6 +93,18 @@ public class Status : MonoBehaviour
         }
     }
 
+    public void RemoveAll()
+    {
+        foreach(StatusCondition status in abnormals.Values)
+        {
+            if(status != null)
+            {
+                Destroy(status.gameObject);
+            }
+        }
+        abnormals.Clear();
+    }
+
     void BuffType(int Type)
     {
         BuffAct?.Invoke(Type);

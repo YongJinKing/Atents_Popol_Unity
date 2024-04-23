@@ -57,8 +57,6 @@ public class MonsterFactory
         rigid.useGravity = true;
         rigid.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
-        obj.AddComponent<Status>();
-
         //need exl
         Monster objMon = FindAI(obj,data.Character_AIType);
 
@@ -67,6 +65,7 @@ public class MonsterFactory
         objMon.rotateEvent = new UnityEngine.Events.UnityEvent<Vector3, float>();
         objMon.sideMoveEvent = new UnityEngine.Events.UnityEvent<Transform, Info<float,float>, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objMon.stopEvent = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction>();
+        objMon.DeadEvent = new UnityEngine.Events.UnityEvent();
 
         UnitMovement objMove = obj.AddComponent<UnitMovement>();
         objMon.onMovementEvent.AddListener(objMove.MoveToPos);
@@ -74,6 +73,9 @@ public class MonsterFactory
         objMon.rotateEvent.AddListener(objMove.Rotate);
         objMon.sideMoveEvent.AddListener(objMove.SideMove);
         objMon.stopEvent.AddListener(objMove.StopMove);
+
+        Status objStatus = obj.AddComponent<Status>();
+        objMon.DeadEvent.AddListener(objStatus.RemoveAll);
 
         GameObject prefab = GameObject.Instantiate(FindPrefab(data.Character_Prefab));
         //GameObject prefab = GameObject.Instantiate(Resources.Load<GameObject>("Monster/MonsterPrefabs/Prefab_Stage1_Slime"));
