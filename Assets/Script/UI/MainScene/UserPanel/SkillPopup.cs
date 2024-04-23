@@ -11,13 +11,23 @@ public class SkillPopup : MonoBehaviour
     public GameObject Content;
     public GameObject PlayerSkill;
     public GameObject DragImage;
+    public GameObject SkillSlotDetail;
     GameObject[] AllSlots;
     public bool[] isMouseInSlot = new bool[4];
+    Button[] SlotBtnList;
 
     private void Start() 
     {
         SlotUpdate();
         SortSlot();
+        SlotBtnList = Content.GetComponentsInChildren<Button>();
+        for(int i = 0; i < SlotBtnList.Length; i++)
+        {
+            int index = i;
+            SlotBtnList[i].onClick.AddListener(() => PressedDetailBtn(index));
+        }
+        DisplaySlot();
+           
     }
     void SlotUpdate()
     {
@@ -29,7 +39,11 @@ public class SkillPopup : MonoBehaviour
             = AllSlots[i].GetComponent<SkillManager>().WeaponType;
             Content.transform.GetChild(i).GetComponent<UserSkillSlot>().SkillLevel
             = AllSlots[i].GetComponent<SkillManager>().Level;
-            var go = Content.transform.GetChild(i).Find("Paper");
+            Content.transform.GetChild(i).GetComponent<UserSkillSlot>().DetailDesc
+            =AllSlots[i].GetComponent<SkillManager>().uiSkillStatus.uiSkillDetailDesc;
+            Content.transform.GetChild(i).GetComponent<UserSkillSlot>().SkillEnergy
+            =AllSlots[i].GetComponent<SkillManager>().EnergyGage;
+            var go = Content.transform.GetChild(i).GetChild(0);
             go.Find("Image").GetComponent<Image>().sprite = 
             AllSlots[i].GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
             go.Find("SkillName").GetChild(0).GetComponent<TMP_Text>().text = //Skill Name
@@ -44,29 +58,19 @@ public class SkillPopup : MonoBehaviour
     }
     public void SortSlot()
     {
+
         var inst = DataManager.instance.playerData;
-        for(int i = 0; i < Content.transform.childCount; i++)
+        for(int i = 0; i < Content.transform.childCount - 1; i++)//skill level sort
         {
-            if(Content.transform.GetChild(i).GetComponent<UserSkillSlot>().WeaponType
-                == DataManager.instance.playerData.WeaponType)
+            for(int j = 0; j < Content.transform.childCount - 1; j++)
             {
-                Content.transform.GetChild(i).gameObject.SetActive(true);
-                if(Content.transform.GetChild(i).GetComponent<UserSkillSlot>().SkillLevel > DataManager.instance.playerData.Character_CurrentLevel)
+                if(Content.transform.GetChild(j).GetComponent<UserSkillSlot>().SkillLevel > 
+                Content.transform.GetChild(j + 1).GetComponent<UserSkillSlot>().SkillLevel)
                 {
-                    Content.transform.GetChild(i).GetChild(1).gameObject.SetActive(true);
+                    Content.transform.GetChild(j).SetSiblingIndex(j + 1);
                 }
-                
-                else
-                {
-                    Content.transform.GetChild(i).GetChild(1).gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                Content.transform.GetChild(i).gameObject.SetActive(false);
             }
         }
-
         for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)//Road SkillSlot About RiggingWeapon
         {
             if(inst.UiSkillList[i + (10 * inst.WeaponType)] != "")
@@ -90,20 +94,43 @@ public class SkillPopup : MonoBehaviour
                 Resources.Load<Sprite>("UI/UserSkill/Grey");
             }
         }
-        for(int i = 0; i < Content.transform.childCount - 1; i++)//skill level sort
+
+       
+        
+        
+    }
+    public void DisplaySlot()
+    {
+        var inst = DataManager.instance.playerData;
+        for(int i = 0; i < Content.transform.childCount; i++)
         {
-            for(int j = 0; j < Content.transform.childCount - 1; j++)
+            if(Content.transform.GetChild(i).GetComponent<UserSkillSlot>().WeaponType
+                == inst.WeaponType)
             {
-                if(Content.transform.GetChild(j).GetComponent<UserSkillSlot>().SkillLevel > 
-                Content.transform.GetChild(j + 1).GetComponent<UserSkillSlot>().SkillLevel)
+                Content.transform.GetChild(i).gameObject.SetActive(true);
+                if(Content.transform.GetChild(i).GetComponent<UserSkillSlot>().SkillLevel > inst.Character_CurrentLevel)
                 {
-                    Content.transform.GetChild(j).SetSiblingIndex(j + 1);
+                    Content.transform.GetChild(i).GetChild(1).gameObject.SetActive(true);
+                }
+                
+                else
+                {
+                    Content.transform.GetChild(i).GetChild(1).gameObject.SetActive(false);
                 }
             }
+            else
+            {
+                Content.transform.GetChild(i).gameObject.SetActive(false);
+            }
+        }
+        for(int i = 0; i < SkillSlotDetail.transform.GetChild(0).childCount; i++)
+        {
+            SkillSlotDetail.transform.GetChild(0).GetChild(i).gameObject.SetActive(false);
         }
         transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = // Displayed WeaponType
         ItemTypeIntToString.IntToStringUIDesc(DataManager.instance.playerData.WeaponType);
     }
+
     public void SkillChange(string SkillName, int index)
     {
         var inst = DataManager.instance.playerData;
@@ -152,6 +179,24 @@ public class SkillPopup : MonoBehaviour
 
         PlayerSkill.transform.Find("GridLine").GetChild(index).GetComponent<Image>().sprite
         = image;
+    }
+    void PressedDetailBtn(int index)
+    {
+        var SlotBgGo = Content.transform.GetChild(index).GetChild(0);
+        var UserSkillGo = Content.transform.GetChild(index).GetComponent<UserSkillSlot>();
+        for(int i = 0; i < SkillSlotDetail.transform.GetChild(0).childCount; i++)
+        {
+            SkillSlotDetail.transform.GetChild(0).GetChild(i).gameObject.SetActive(true);
+        }
+
+        SkillSlotDetail.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite =
+        SlotBgGo.GetChild(0).GetComponent<Image>().sprite;
+        SkillSlotDetail.transform.GetChild(0).GetChild(1).GetChild(0).GetComponent<TMP_Text>().text =
+        SlotBgGo.GetChild(1).GetChild(0).GetComponent<TMP_Text>().text;
+        SkillSlotDetail.transform.GetChild(0).GetChild(2).GetChild(0).GetComponent<TMP_Text>().text =
+        UserSkillGo.SkillEnergy.ToString();
+        SkillSlotDetail.transform.GetChild(0).GetChild(3).GetChild(0).GetComponent<TMP_Text>().text =
+        UserSkillGo.DetailDesc;
     }
 }
 
