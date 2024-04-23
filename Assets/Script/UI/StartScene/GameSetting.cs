@@ -20,7 +20,6 @@ public class GameSetting : MonoBehaviour
         {
             SoundBtn[i] = true;
         }
-        gameObject.SetActive(false);
         MasterSlider.onValueChanged.AddListener(SoundManager.instance.SetMasterVolume);
         BgmSlider.onValueChanged.AddListener(SoundManager.instance.SetBgmVolume);
         SfxSlider.onValueChanged.AddListener(SoundManager.instance.SetSfxVolume);
