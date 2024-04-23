@@ -16,6 +16,7 @@ public class SmithUi : MonoBehaviour
     public GameObject RepairPopup;
     public GameObject CantPopup;
     public GameObject NomoneyPopup;
+    public GameObject CantRepair;
     public GameObject SmithGridLine;
     public GameObject ItemDetail;
     public GameObject ItemAbility;
@@ -208,15 +209,22 @@ public class SmithUi : MonoBehaviour
                 {
                     var go = SmithGridLine.transform.GetChild(SlotIndex).GetComponent<UIItem>();
                     PayRepairMoney = RepairCalculate(go.ItemPrice, go.ItemDuration);
-                    if(DataManager.instance.playerData.PlayerGold >= RepairCalculate(go.ItemPrice, go.ItemDuration))
+                    if(go.ItemDuration != 100)
                     {
-                        RepairPopup.transform.gameObject.SetActive(true);
-                        RepairPopup.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = 
-                        RepairCalculate(go.ItemPrice, go.ItemDuration).ToString() + "Gold";
+                        if(DataManager.instance.playerData.PlayerGold >= RepairCalculate(go.ItemPrice, go.ItemDuration))
+                        {
+                            RepairPopup.transform.gameObject.SetActive(true);
+                            RepairPopup.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = 
+                            RepairCalculate(go.ItemPrice, go.ItemDuration).ToString() + "Gold";
+                        }
+                        else
+                        {
+                            StartCoroutine(CantDesPopup(NomoneyPopup));
+                        }
                     }
                     else
                     {
-                        StartCoroutine(CantDesPopup(NomoneyPopup));
+                        StartCoroutine(CantDesPopup(CantRepair));
                     }
                     
                     
@@ -238,15 +246,23 @@ public class SmithUi : MonoBehaviour
                 {
                     var go = RiggigItem.transform.GetChild(RiggingIndex).GetComponent<UIItem>();
                     PayRepairMoney = RepairCalculate(go.ItemPrice, go.ItemDuration);
-                    if(DataManager.instance.playerData.PlayerGold >= RepairCalculate(go.ItemPrice, go.ItemDuration))
+                    if(go.ItemDuration != 100)
                     {
-                        RepairPopup.transform.gameObject.SetActive(true);
-                        RepairPopup.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = 
-                        RepairCalculate(go.ItemPrice, go.ItemDuration).ToString() + "Gold";
+                        if(DataManager.instance.playerData.PlayerGold >= RepairCalculate(go.ItemPrice, go.ItemDuration))
+                        {
+                            RepairPopup.transform.gameObject.SetActive(true);
+                            RepairPopup.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = 
+                            RepairCalculate(go.ItemPrice, go.ItemDuration).ToString() + "Gold";
+                        }
+                        else
+                        {
+                            StartCoroutine(CantDesPopup(NomoneyPopup));
+                        
+                        }
                     }
                     else
                     {
-                        StartCoroutine(CantDesPopup(NomoneyPopup));
+                        StartCoroutine(CantDesPopup(CantRepair));
                     }
                     //수리할 아이템의 가격 가져온다음 80퍼로 만들고, 수리해야될 내구도를 100분률로 나타내어 마이너스 한 돈을 표현시키기
                 }
@@ -265,7 +281,7 @@ public class SmithUi : MonoBehaviour
         float TempPrice;
         int RepairPrice;
         TempPrice = ItemPrice * 0.8f;
-        RepairPrice = (int)((TempPrice * ItemDuration)/ 100.0f);
+        RepairPrice = (int)(TempPrice - ((TempPrice * ItemDuration)/ 100.0f));
         return RepairPrice;
     }
     public void PressedYesOrNoBtn(int index)
