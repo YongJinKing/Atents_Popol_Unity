@@ -44,7 +44,7 @@ public class SkillManager : PlayerSkill
             BattleSystem temp = other.GetComponentInParent<BattleSystem>();
             if (!target.Contains(temp))
             {
-                Ray ray = new Ray(col.bounds.center, other.ClosestPoint(col.bounds.center) - col.bounds.center);
+                Ray ray = new Ray(pl.transform.position + Vector3.up * 0.5f, other.ClosestPoint(col.bounds.center) - col.bounds.center);
                 StartCoroutine(tempDebuging(ray));
                 RaycastHit[] hits;
                 if ((hits = Physics.RaycastAll(ray , col.bounds.extents.magnitude, 1 << LayerMask.NameToLayer("Monster_Body"))) != null)

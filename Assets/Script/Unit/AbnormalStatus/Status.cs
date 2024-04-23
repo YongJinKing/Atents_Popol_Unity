@@ -8,6 +8,60 @@ public class Status : MonoBehaviour
 {
     public UnityEvent<int> BuffAct;
     public Dictionary<E_StatusAbnormality, StatusCondition> abnormals = new Dictionary<E_StatusAbnormality, StatusCondition>();
+    public Dictionary<E_Buff, StatusCondition> buffs = new Dictionary<E_Buff, StatusCondition>();
+
+    public void Add(E_Buff buffType)
+    {
+        if(buffs.ContainsKey(buffType))
+        {
+            buffs[buffType].Overlap();
+            return;
+        }
+
+        GameObject obj = new GameObject();
+        StatusCondition condition = obj.AddComponent<DurationStatusCondition>();
+        switch (buffType)
+        {
+            case E_Buff.AtkUp:
+                {
+                    //obj.AddComponent<CorrosionStatusEffect>();
+                    obj.name = "Corrosion";
+                    condition.myStatusAbType = E_StatusAbnormality.Corrosion;
+                    abnormals.Add(E_StatusAbnormality.Corrosion, condition);
+                    BuffType(2000);
+                }
+                break;
+            case E_Buff.DotHeal:
+                {
+                    //obj.AddComponent<StunStatusEffect>();
+                    obj.name = "Stun";
+                    condition.myStatusAbType = E_StatusAbnormality.Stun;
+                    abnormals.Add(E_StatusAbnormality.Stun, condition);
+                    BuffType(2003);
+                }
+                break;
+            case E_Buff.MoveSpeedUp:
+                {
+                    //obj.AddComponent<PoisonStatusEffect>();
+                    obj.name = "Poison";
+                    condition.myStatusAbType = E_StatusAbnormality.Poison;
+                    abnormals.Add(E_StatusAbnormality.Poison, condition);
+                    BuffType(2001);
+                }
+                break;
+            case E_Buff.AttackSpeedUp:
+                {
+                    //obj.AddComponent<SlowStatusEffect>();
+                    obj.name = "Slow";
+                    condition.myStatusAbType = E_StatusAbnormality.Slow;
+                    abnormals.Add(E_StatusAbnormality.Slow, condition);
+                    BuffType(2002);
+                }
+                break;
+        }
+
+        obj.transform.SetParent(this.transform, false);
+    }
 
     public void Add(E_StatusAbnormality eType)
     {

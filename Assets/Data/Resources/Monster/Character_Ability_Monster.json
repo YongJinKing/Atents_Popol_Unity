@@ -12,7 +12,7 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 3,
-    "Character_IdleType": 3
+    "Character_IdleType": 7
   },
   {
     "Index": 30001,
@@ -27,7 +27,7 @@
     "Character_Prefab": 10000,
     "Character_AIType": 0,
     "Character_Scale": 3,
-    "Character_IdleType": 2
+    "Character_IdleType": 6
   },
   {
     "Index": 20000,
