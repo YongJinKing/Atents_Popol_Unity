@@ -19508,7 +19508,9 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 0}
     uiSkillName: SwordWheel
     uiSkillDesc: 
-  SimpleAttack: 0
+    uiSkillDetailDesc: 
+  index: 0
+  SimpleAttack: 1
   EnergyGage: 0
   Damage: 50
   SkillCalculation: 0.3
