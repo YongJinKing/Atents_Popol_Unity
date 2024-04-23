@@ -27,7 +27,7 @@
       "index":1100,
       "Inven_itemName":1100,
       "Inven_spriteName":1100,
-      "Inven_itemValue":20,
+      "Inven_itemValue":30,
       "Inven_durAbility":100,
       "Inven_smithTalk":10100,
       "Inven_itemDesc":5100,
@@ -39,115 +39,115 @@
       "index":1101,
       "Inven_itemName":1101,
       "Inven_spriteName":1101,
-      "Inven_itemValue":40,
+      "Inven_itemValue":50,
       "Inven_durAbility":100,
       "Inven_smithTalk":10101,
       "Inven_itemDesc":5101,
       "Inven_riggingType":0,
       "Inven_weaponType":0,
-      "Inven_ItemPrice":2000
+      "Inven_ItemPrice":3000
    },
    {
       "index":1102,
       "Inven_itemName":1102,
       "Inven_spriteName":1102,
-      "Inven_itemValue":60,
+      "Inven_itemValue":70,
       "Inven_durAbility":100,
       "Inven_smithTalk":10102,
       "Inven_itemDesc":5102,
       "Inven_riggingType":0,
       "Inven_weaponType":0,
-      "Inven_ItemPrice":3000
+      "Inven_ItemPrice":9000
    },
    {
       "index":1103,
       "Inven_itemName":1103,
       "Inven_spriteName":1103,
-      "Inven_itemValue":80,
+      "Inven_itemValue":90,
       "Inven_durAbility":100,
       "Inven_smithTalk":10103,
       "Inven_itemDesc":5103,
       "Inven_riggingType":0,
       "Inven_weaponType":0,
-      "Inven_ItemPrice":4000
+      "Inven_ItemPrice":27000
    },
    {
       "index":1104,
       "Inven_itemName":1104,
       "Inven_spriteName":1104,
-      "Inven_itemValue":100,
+      "Inven_itemValue":110,
       "Inven_durAbility":100,
       "Inven_smithTalk":10104,
       "Inven_itemDesc":5104,
       "Inven_riggingType":0,
       "Inven_weaponType":0,
-      "Inven_ItemPrice":5000
+      "Inven_ItemPrice":81000
    },
    {
       "index":1105,
       "Inven_itemName":1105,
       "Inven_spriteName":1105,
-      "Inven_itemValue":120,
+      "Inven_itemValue":130,
       "Inven_durAbility":100,
       "Inven_smithTalk":10105,
       "Inven_itemDesc":5105,
       "Inven_riggingType":0,
       "Inven_weaponType":0,
-      "Inven_ItemPrice":6000
+      "Inven_ItemPrice":243000
    },
    {
       "index":1106,
       "Inven_itemName":1106,
       "Inven_spriteName":1106,
-      "Inven_itemValue":140,
+      "Inven_itemValue":150,
       "Inven_durAbility":100,
       "Inven_smithTalk":10106,
       "Inven_itemDesc":5106,
       "Inven_riggingType":0,
       "Inven_weaponType":0,
-      "Inven_ItemPrice":7000
+      "Inven_ItemPrice":729000
    },
    {
       "index":1107,
       "Inven_itemName":1107,
       "Inven_spriteName":1107,
-      "Inven_itemValue":160,
+      "Inven_itemValue":170,
       "Inven_durAbility":100,
       "Inven_smithTalk":10107,
       "Inven_itemDesc":5107,
       "Inven_riggingType":0,
       "Inven_weaponType":0,
-      "Inven_ItemPrice":8000
+      "Inven_ItemPrice":2187000
    },
    {
       "index":1108,
       "Inven_itemName":1108,
       "Inven_spriteName":1108,
-      "Inven_itemValue":180,
+      "Inven_itemValue":190,
       "Inven_durAbility":100,
       "Inven_smithTalk":10108,
       "Inven_itemDesc":5108,
       "Inven_riggingType":0,
       "Inven_weaponType":0,
-      "Inven_ItemPrice":9000
+      "Inven_ItemPrice":6561000
    },
    {
       "index":1109,
       "Inven_itemName":1109,
       "Inven_spriteName":1109,
-      "Inven_itemValue":200,
+      "Inven_itemValue":210,
       "Inven_durAbility":100,
       "Inven_smithTalk":10109,
       "Inven_itemDesc":5109,
       "Inven_riggingType":0,
       "Inven_weaponType":0,
-      "Inven_ItemPrice":10000
+      "Inven_ItemPrice":19683000
    },
    {
       "index":1200,
       "Inven_itemName":1200,
       "Inven_spriteName":1200,
-      "Inven_itemValue":30,
+      "Inven_itemValue":50,
       "Inven_durAbility":100,
       "Inven_smithTalk":10200,
       "Inven_itemDesc":5200,
@@ -159,109 +159,109 @@
       "index":1201,
       "Inven_itemName":1201,
       "Inven_spriteName":1201,
-      "Inven_itemValue":60,
+      "Inven_itemValue":80,
       "Inven_durAbility":100,
       "Inven_smithTalk":10201,
       "Inven_itemDesc":5201,
       "Inven_riggingType":0,
       "Inven_weaponType":1,
-      "Inven_ItemPrice":2000
+      "Inven_ItemPrice":3000
    },
    {
       "index":1202,
       "Inven_itemName":1202,
       "Inven_spriteName":1202,
-      "Inven_itemValue":90,
+      "Inven_itemValue":110,
       "Inven_durAbility":100,
       "Inven_smithTalk":10202,
       "Inven_itemDesc":5202,
       "Inven_riggingType":0,
       "Inven_weaponType":1,
-      "Inven_ItemPrice":3000
+      "Inven_ItemPrice":9000
    },
    {
       "index":1203,
       "Inven_itemName":1203,
       "Inven_spriteName":1203,
-      "Inven_itemValue":120,
+      "Inven_itemValue":140,
       "Inven_durAbility":100,
       "Inven_smithTalk":10203,
       "Inven_itemDesc":5203,
       "Inven_riggingType":0,
       "Inven_weaponType":1,
-      "Inven_ItemPrice":4000
+      "Inven_ItemPrice":27000
    },
    {
       "index":1204,
       "Inven_itemName":1204,
       "Inven_spriteName":1204,
-      "Inven_itemValue":150,
+      "Inven_itemValue":170,
       "Inven_durAbility":100,
       "Inven_smithTalk":10204,
       "Inven_itemDesc":5204,
       "Inven_riggingType":0,
       "Inven_weaponType":1,
-      "Inven_ItemPrice":5000
+      "Inven_ItemPrice":81000
    },
    {
       "index":1205,
       "Inven_itemName":1205,
       "Inven_spriteName":1205,
-      "Inven_itemValue":180,
+      "Inven_itemValue":200,
       "Inven_durAbility":100,
       "Inven_smithTalk":10205,
       "Inven_itemDesc":5205,
       "Inven_riggingType":0,
       "Inven_weaponType":1,
-      "Inven_ItemPrice":6000
+      "Inven_ItemPrice":243000
    },
    {
       "index":1206,
       "Inven_itemName":1206,
       "Inven_spriteName":1206,
-      "Inven_itemValue":210,
+      "Inven_itemValue":230,
       "Inven_durAbility":100,
       "Inven_smithTalk":10206,
       "Inven_itemDesc":5206,
       "Inven_riggingType":0,
       "Inven_weaponType":1,
-      "Inven_ItemPrice":7000
+      "Inven_ItemPrice":729000
    },
    {
       "index":1207,
       "Inven_itemName":1207,
       "Inven_spriteName":1207,
-      "Inven_itemValue":240,
+      "Inven_itemValue":260,
       "Inven_durAbility":100,
       "Inven_smithTalk":10207,
       "Inven_itemDesc":5207,
       "Inven_riggingType":0,
       "Inven_weaponType":1,
-      "Inven_ItemPrice":8000
+      "Inven_ItemPrice":2187000
    },
    {
       "index":1208,
       "Inven_itemName":1208,
       "Inven_spriteName":1208,
-      "Inven_itemValue":270,
+      "Inven_itemValue":290,
       "Inven_durAbility":100,
       "Inven_smithTalk":10208,
       "Inven_itemDesc":5208,
       "Inven_riggingType":0,
       "Inven_weaponType":1,
-      "Inven_ItemPrice":9000
+      "Inven_ItemPrice":6561000
    },
    {
       "index":1209,
       "Inven_itemName":1209,
       "Inven_spriteName":1209,
-      "Inven_itemValue":300,
+      "Inven_itemValue":320,
       "Inven_durAbility":100,
       "Inven_smithTalk":10209,
       "Inven_itemDesc":5209,
       "Inven_riggingType":0,
       "Inven_weaponType":1,
-      "Inven_ItemPrice":10000
+      "Inven_ItemPrice":19683000
    },
    {
       "index":1300,
@@ -285,7 +285,7 @@
       "Inven_itemDesc":5301,
       "Inven_riggingType":0,
       "Inven_weaponType":2,
-      "Inven_ItemPrice":2000
+      "Inven_ItemPrice":3000
    },
    {
       "index":1302,
@@ -297,7 +297,7 @@
       "Inven_itemDesc":5302,
       "Inven_riggingType":0,
       "Inven_weaponType":2,
-      "Inven_ItemPrice":3000
+      "Inven_ItemPrice":9000
    },
    {
       "index":1303,
@@ -309,7 +309,7 @@
       "Inven_itemDesc":5303,
       "Inven_riggingType":0,
       "Inven_weaponType":2,
-      "Inven_ItemPrice":4000
+      "Inven_ItemPrice":27000
    },
    {
       "index":1304,
@@ -321,7 +321,7 @@
       "Inven_itemDesc":5304,
       "Inven_riggingType":0,
       "Inven_weaponType":2,
-      "Inven_ItemPrice":5000
+      "Inven_ItemPrice":81000
    },
    {
       "index":1305,
@@ -333,7 +333,7 @@
       "Inven_itemDesc":5305,
       "Inven_riggingType":0,
       "Inven_weaponType":2,
-      "Inven_ItemPrice":6000
+      "Inven_ItemPrice":243000
    },
    {
       "index":1306,
@@ -345,7 +345,7 @@
       "Inven_itemDesc":5306,
       "Inven_riggingType":0,
       "Inven_weaponType":2,
-      "Inven_ItemPrice":7000
+      "Inven_ItemPrice":729000
    },
    {
       "index":1307,
@@ -357,7 +357,7 @@
       "Inven_itemDesc":5307,
       "Inven_riggingType":0,
       "Inven_weaponType":2,
-      "Inven_ItemPrice":8000
+      "Inven_ItemPrice":2187000
    },
    {
       "index":1308,
@@ -369,7 +369,7 @@
       "Inven_itemDesc":5308,
       "Inven_riggingType":0,
       "Inven_weaponType":2,
-      "Inven_ItemPrice":9000
+      "Inven_ItemPrice":6561000
    },
    {
       "index":1309,
@@ -381,7 +381,7 @@
       "Inven_itemDesc":5309,
       "Inven_riggingType":0,
       "Inven_weaponType":2,
-      "Inven_ItemPrice":10000
+      "Inven_ItemPrice":19683000
    },
    {
       "index":1400,
@@ -405,7 +405,7 @@
       "Inven_itemDesc":5401,
       "Inven_riggingType":0,
       "Inven_weaponType":3,
-      "Inven_ItemPrice":2000
+      "Inven_ItemPrice":3000
    },
    {
       "index":1402,
@@ -417,7 +417,7 @@
       "Inven_itemDesc":5402,
       "Inven_riggingType":0,
       "Inven_weaponType":3,
-      "Inven_ItemPrice":3000
+      "Inven_ItemPrice":9000
    },
    {
       "index":1403,
@@ -429,7 +429,7 @@
       "Inven_itemDesc":5403,
       "Inven_riggingType":0,
       "Inven_weaponType":3,
-      "Inven_ItemPrice":4000
+      "Inven_ItemPrice":27000
    },
    {
       "index":1404,
@@ -441,7 +441,7 @@
       "Inven_itemDesc":5404,
       "Inven_riggingType":0,
       "Inven_weaponType":3,
-      "Inven_ItemPrice":5000
+      "Inven_ItemPrice":81000
    },
    {
       "index":1405,
@@ -453,7 +453,7 @@
       "Inven_itemDesc":5405,
       "Inven_riggingType":0,
       "Inven_weaponType":3,
-      "Inven_ItemPrice":6000
+      "Inven_ItemPrice":243000
    },
    {
       "index":1406,
@@ -465,7 +465,7 @@
       "Inven_itemDesc":5406,
       "Inven_riggingType":0,
       "Inven_weaponType":3,
-      "Inven_ItemPrice":7000
+      "Inven_ItemPrice":729000
    },
    {
       "index":1407,
@@ -477,7 +477,7 @@
       "Inven_itemDesc":5407,
       "Inven_riggingType":0,
       "Inven_weaponType":3,
-      "Inven_ItemPrice":8000
+      "Inven_ItemPrice":2187000
    },
    {
       "index":1408,
@@ -489,7 +489,7 @@
       "Inven_itemDesc":5408,
       "Inven_riggingType":0,
       "Inven_weaponType":3,
-      "Inven_ItemPrice":9000
+      "Inven_ItemPrice":6561000
    },
    {
       "index":1409,
@@ -501,7 +501,7 @@
       "Inven_itemDesc":5409,
       "Inven_riggingType":0,
       "Inven_weaponType":3,
-      "Inven_ItemPrice":10000
+      "Inven_ItemPrice":19683000
    },
    {
       "index":1500,
@@ -525,7 +525,7 @@
       "Inven_itemDesc":5501,
       "Inven_riggingType":0,
       "Inven_weaponType":4,
-      "Inven_ItemPrice":2000
+      "Inven_ItemPrice":3000
    },
    {
       "index":1502,
@@ -537,7 +537,7 @@
       "Inven_itemDesc":5502,
       "Inven_riggingType":0,
       "Inven_weaponType":4,
-      "Inven_ItemPrice":3000
+      "Inven_ItemPrice":9000
    },
    {
       "index":1503,
@@ -549,7 +549,7 @@
       "Inven_itemDesc":5503,
       "Inven_riggingType":0,
       "Inven_weaponType":4,
-      "Inven_ItemPrice":4000
+      "Inven_ItemPrice":27000
    },
    {
       "index":1504,
@@ -561,7 +561,7 @@
       "Inven_itemDesc":5504,
       "Inven_riggingType":0,
       "Inven_weaponType":4,
-      "Inven_ItemPrice":5000
+      "Inven_ItemPrice":81000
    },
    {
       "index":1505,
@@ -573,7 +573,7 @@
       "Inven_itemDesc":5505,
       "Inven_riggingType":0,
       "Inven_weaponType":4,
-      "Inven_ItemPrice":6000
+      "Inven_ItemPrice":243000
    },
    {
       "index":1506,
@@ -585,7 +585,7 @@
       "Inven_itemDesc":5506,
       "Inven_riggingType":0,
       "Inven_weaponType":4,
-      "Inven_ItemPrice":7000
+      "Inven_ItemPrice":729000
    },
    {
       "index":1507,
@@ -597,7 +597,7 @@
       "Inven_itemDesc":5507,
       "Inven_riggingType":0,
       "Inven_weaponType":4,
-      "Inven_ItemPrice":8000
+      "Inven_ItemPrice":2187000
    },
    {
       "index":1508,
@@ -609,7 +609,7 @@
       "Inven_itemDesc":5508,
       "Inven_riggingType":0,
       "Inven_weaponType":4,
-      "Inven_ItemPrice":9000
+      "Inven_ItemPrice":6561000
    },
    {
       "index":1509,
@@ -621,7 +621,7 @@
       "Inven_itemDesc":5509,
       "Inven_riggingType":0,
       "Inven_weaponType":4,
-      "Inven_ItemPrice":10000
+      "Inven_ItemPrice":19683000
    },
    {
       "index":1600,
@@ -645,7 +645,7 @@
       "Inven_itemDesc":5601,
       "Inven_riggingType":0,
       "Inven_weaponType":5,
-      "Inven_ItemPrice":2000
+      "Inven_ItemPrice":3000
    },
    {
       "index":1602,
@@ -657,7 +657,7 @@
       "Inven_itemDesc":5602,
       "Inven_riggingType":0,
       "Inven_weaponType":5,
-      "Inven_ItemPrice":3000
+      "Inven_ItemPrice":9000
    },
    {
       "index":1603,
@@ -669,7 +669,7 @@
       "Inven_itemDesc":5603,
       "Inven_riggingType":0,
       "Inven_weaponType":5,
-      "Inven_ItemPrice":4000
+      "Inven_ItemPrice":27000
    },
    {
       "index":1604,
@@ -681,7 +681,7 @@
       "Inven_itemDesc":5604,
       "Inven_riggingType":0,
       "Inven_weaponType":5,
-      "Inven_ItemPrice":5000
+      "Inven_ItemPrice":81000
    },
    {
       "index":1605,
@@ -693,7 +693,7 @@
       "Inven_itemDesc":5605,
       "Inven_riggingType":0,
       "Inven_weaponType":5,
-      "Inven_ItemPrice":6000
+      "Inven_ItemPrice":243000
    },
    {
       "index":1606,
@@ -705,7 +705,7 @@
       "Inven_itemDesc":5606,
       "Inven_riggingType":0,
       "Inven_weaponType":5,
-      "Inven_ItemPrice":7000
+      "Inven_ItemPrice":729000
    },
    {
       "index":1607,
@@ -717,7 +717,7 @@
       "Inven_itemDesc":5607,
       "Inven_riggingType":0,
       "Inven_weaponType":5,
-      "Inven_ItemPrice":8000
+      "Inven_ItemPrice":2187000
    },
    {
       "index":1608,
@@ -729,7 +729,7 @@
       "Inven_itemDesc":5608,
       "Inven_riggingType":0,
       "Inven_weaponType":5,
-      "Inven_ItemPrice":9000
+      "Inven_ItemPrice":6561000
    },
    {
       "index":1609,
@@ -741,7 +741,7 @@
       "Inven_itemDesc":5609,
       "Inven_riggingType":0,
       "Inven_weaponType":5,
-      "Inven_ItemPrice":10000
+      "Inven_ItemPrice":19683000
    },
    {
       "index":1700,
@@ -765,7 +765,7 @@
       "Inven_itemDesc":5701,
       "Inven_riggingType":0,
       "Inven_weaponType":6,
-      "Inven_ItemPrice":2000
+      "Inven_ItemPrice":3000
    },
    {
       "index":1702,
@@ -777,7 +777,7 @@
       "Inven_itemDesc":5702,
       "Inven_riggingType":0,
       "Inven_weaponType":6,
-      "Inven_ItemPrice":3000
+      "Inven_ItemPrice":9000
    },
    {
       "index":1703,
@@ -789,7 +789,7 @@
       "Inven_itemDesc":5703,
       "Inven_riggingType":0,
       "Inven_weaponType":6,
-      "Inven_ItemPrice":4000
+      "Inven_ItemPrice":27000
    },
    {
       "index":1704,
@@ -801,7 +801,7 @@
       "Inven_itemDesc":5704,
       "Inven_riggingType":0,
       "Inven_weaponType":6,
-      "Inven_ItemPrice":5000
+      "Inven_ItemPrice":81000
    },
    {
       "index":1705,
@@ -813,7 +813,7 @@
       "Inven_itemDesc":5705,
       "Inven_riggingType":0,
       "Inven_weaponType":6,
-      "Inven_ItemPrice":6000
+      "Inven_ItemPrice":243000
    },
    {
       "index":1706,
@@ -825,7 +825,7 @@
       "Inven_itemDesc":5706,
       "Inven_riggingType":0,
       "Inven_weaponType":6,
-      "Inven_ItemPrice":7000
+      "Inven_ItemPrice":729000
    },
    {
       "index":1707,
@@ -837,7 +837,7 @@
       "Inven_itemDesc":5707,
       "Inven_riggingType":0,
       "Inven_weaponType":6,
-      "Inven_ItemPrice":8000
+      "Inven_ItemPrice":2187000
    },
    {
       "index":1708,
@@ -849,7 +849,7 @@
       "Inven_itemDesc":5708,
       "Inven_riggingType":0,
       "Inven_weaponType":6,
-      "Inven_ItemPrice":9000
+      "Inven_ItemPrice":6561000
    },
    {
       "index":1709,
@@ -861,7 +861,7 @@
       "Inven_itemDesc":5709,
       "Inven_riggingType":0,
       "Inven_weaponType":6,
-      "Inven_ItemPrice":10000
+      "Inven_ItemPrice":19683000
    },
    {
       "index":3000,
@@ -885,7 +885,7 @@
       "Inven_itemDesc":7001,
       "Inven_riggingType":1,
       "Inven_weaponType":10,
-      "Inven_ItemPrice":2000
+      "Inven_ItemPrice":3000
    },
    {
       "index":3002,
@@ -897,7 +897,7 @@
       "Inven_itemDesc":7002,
       "Inven_riggingType":1,
       "Inven_weaponType":10,
-      "Inven_ItemPrice":3000
+      "Inven_ItemPrice":9000
    },
    {
       "index":3003,
@@ -909,7 +909,7 @@
       "Inven_itemDesc":7003,
       "Inven_riggingType":1,
       "Inven_weaponType":10,
-      "Inven_ItemPrice":4000
+      "Inven_ItemPrice":27000
    },
    {
       "index":3004,
@@ -921,7 +921,7 @@
       "Inven_itemDesc":7004,
       "Inven_riggingType":1,
       "Inven_weaponType":10,
-      "Inven_ItemPrice":5000
+      "Inven_ItemPrice":81000
    },
    {
       "index":3005,
@@ -933,7 +933,7 @@
       "Inven_itemDesc":7005,
       "Inven_riggingType":1,
       "Inven_weaponType":10,
-      "Inven_ItemPrice":6000
+      "Inven_ItemPrice":243000
    },
    {
       "index":3006,
@@ -945,7 +945,7 @@
       "Inven_itemDesc":7006,
       "Inven_riggingType":1,
       "Inven_weaponType":10,
-      "Inven_ItemPrice":7000
+      "Inven_ItemPrice":729000
    },
    {
       "index":3007,
@@ -957,7 +957,7 @@
       "Inven_itemDesc":7007,
       "Inven_riggingType":1,
       "Inven_weaponType":10,
-      "Inven_ItemPrice":8000
+      "Inven_ItemPrice":2187000
    },
    {
       "index":3008,
@@ -969,7 +969,7 @@
       "Inven_itemDesc":7008,
       "Inven_riggingType":1,
       "Inven_weaponType":10,
-      "Inven_ItemPrice":9000
+      "Inven_ItemPrice":6561000
    },
    {
       "index":3009,
@@ -981,7 +981,7 @@
       "Inven_itemDesc":7009,
       "Inven_riggingType":1,
       "Inven_weaponType":10,
-      "Inven_ItemPrice":10000
+      "Inven_ItemPrice":19683000
    },
    {
       "index":3100,
@@ -1005,7 +1005,7 @@
       "Inven_itemDesc":7101,
       "Inven_riggingType":1,
       "Inven_weaponType":11,
-      "Inven_ItemPrice":2000
+      "Inven_ItemPrice":3000
    },
    {
       "index":3102,
@@ -1017,7 +1017,7 @@
       "Inven_itemDesc":7102,
       "Inven_riggingType":1,
       "Inven_weaponType":11,
-      "Inven_ItemPrice":3000
+      "Inven_ItemPrice":9000
    },
    {
       "index":3103,
@@ -1029,7 +1029,7 @@
       "Inven_itemDesc":7103,
       "Inven_riggingType":1,
       "Inven_weaponType":11,
-      "Inven_ItemPrice":4000
+      "Inven_ItemPrice":27000
    },
    {
       "index":3104,
@@ -1041,7 +1041,7 @@
       "Inven_itemDesc":7104,
       "Inven_riggingType":1,
       "Inven_weaponType":11,
-      "Inven_ItemPrice":5000
+      "Inven_ItemPrice":81000
    },
    {
       "index":3105,
@@ -1053,7 +1053,7 @@
       "Inven_itemDesc":7105,
       "Inven_riggingType":1,
       "Inven_weaponType":11,
-      "Inven_ItemPrice":6000
+      "Inven_ItemPrice":243000
    },
    {
       "index":3106,
@@ -1065,7 +1065,7 @@
       "Inven_itemDesc":7106,
       "Inven_riggingType":1,
       "Inven_weaponType":11,
-      "Inven_ItemPrice":7000
+      "Inven_ItemPrice":729000
    },
    {
       "index":3107,
@@ -1077,7 +1077,7 @@
       "Inven_itemDesc":7107,
       "Inven_riggingType":1,
       "Inven_weaponType":11,
-      "Inven_ItemPrice":8000
+      "Inven_ItemPrice":2187000
    },
    {
       "index":3108,
@@ -1089,7 +1089,7 @@
       "Inven_itemDesc":7108,
       "Inven_riggingType":1,
       "Inven_weaponType":11,
-      "Inven_ItemPrice":9000
+      "Inven_ItemPrice":6561000
    },
    {
       "index":3109,
@@ -1101,7 +1101,7 @@
       "Inven_itemDesc":7109,
       "Inven_riggingType":1,
       "Inven_weaponType":11,
-      "Inven_ItemPrice":10000
+      "Inven_ItemPrice":19683000
    },
    {
       "index":3200,
@@ -1125,7 +1125,7 @@
       "Inven_itemDesc":7201,
       "Inven_riggingType":1,
       "Inven_weaponType":12,
-      "Inven_ItemPrice":2000
+      "Inven_ItemPrice":3000
    },
    {
       "index":3202,
@@ -1137,7 +1137,7 @@
       "Inven_itemDesc":7202,
       "Inven_riggingType":1,
       "Inven_weaponType":12,
-      "Inven_ItemPrice":3000
+      "Inven_ItemPrice":9000
    },
    {
       "index":3203,
@@ -1149,7 +1149,7 @@
       "Inven_itemDesc":7203,
       "Inven_riggingType":1,
       "Inven_weaponType":12,
-      "Inven_ItemPrice":4000
+      "Inven_ItemPrice":27000
    },
    {
       "index":3204,
@@ -1161,7 +1161,7 @@
       "Inven_itemDesc":7204,
       "Inven_riggingType":1,
       "Inven_weaponType":12,
-      "Inven_ItemPrice":5000
+      "Inven_ItemPrice":81000
    },
    {
       "index":3205,
@@ -1173,7 +1173,7 @@
       "Inven_itemDesc":7205,
       "Inven_riggingType":1,
       "Inven_weaponType":12,
-      "Inven_ItemPrice":6000
+      "Inven_ItemPrice":243000
    },
    {
       "index":3206,
@@ -1185,7 +1185,7 @@
       "Inven_itemDesc":7206,
       "Inven_riggingType":1,
       "Inven_weaponType":12,
-      "Inven_ItemPrice":7000
+      "Inven_ItemPrice":729000
    },
    {
       "index":3207,
@@ -1197,7 +1197,7 @@
       "Inven_itemDesc":7207,
       "Inven_riggingType":1,
       "Inven_weaponType":12,
-      "Inven_ItemPrice":8000
+      "Inven_ItemPrice":2187000
    },
    {
       "index":3208,
@@ -1209,7 +1209,7 @@
       "Inven_itemDesc":7208,
       "Inven_riggingType":1,
       "Inven_weaponType":12,
-      "Inven_ItemPrice":9000
+      "Inven_ItemPrice":6561000
    },
    {
       "index":3209,
@@ -1221,6 +1221,6 @@
       "Inven_itemDesc":7209,
       "Inven_riggingType":1,
       "Inven_weaponType":12,
-      "Inven_ItemPrice":10000
+      "Inven_ItemPrice":19683000
    }
 ]

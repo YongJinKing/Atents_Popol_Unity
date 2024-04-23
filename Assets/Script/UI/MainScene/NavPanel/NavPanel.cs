@@ -11,7 +11,7 @@ public class NavPanel : MonoBehaviour
     {
         
         transform.Find("Profile BackGround").Find("Gold_Displayer").Find("Text (TMP)").GetComponent<TMP_Text>().text =
-        DataManager.instance.playerData.PlayerGold.ToString();
+        UnitCalculate.GetInstance().Calculate(DataManager.instance.playerData.PlayerGold);
     }
     public void PressedBtn(int index)
     {

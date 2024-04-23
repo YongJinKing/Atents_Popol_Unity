@@ -121,8 +121,8 @@ public class ColoUI : MonoBehaviour
             
         }
         var go = BossAbility.transform.GetChild(3).GetChild(1);//BossAbility//GridLine
-        go.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = totalGold.ToString();
-        go.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = totalExp.ToString();
+        go.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text = UnitCalculate.GetInstance().Calculate(totalGold);
+        go.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text = UnitCalculate.GetInstance().Calculate(totalExp);
 
     }
     private void ChangeLayerRecursively(GameObject obj, int layer)

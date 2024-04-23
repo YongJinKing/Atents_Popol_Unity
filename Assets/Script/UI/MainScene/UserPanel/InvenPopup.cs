@@ -81,7 +81,7 @@ public class InvenPopup : MonoBehaviour
         }
           
     }
-     IEnumerator OnMouseControll()
+    IEnumerator OnMouseControll()
     {
         while(true)
         {
@@ -152,9 +152,7 @@ public class InvenPopup : MonoBehaviour
     {
         if(index == 0)
         {
-            
             EventChangeItem?.Invoke();
-            
             PlayerAbilityUpdate();
         }
         RiggingPopup.gameObject.SetActive(false);

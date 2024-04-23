@@ -52,7 +52,7 @@ public class ShopUi : MonoBehaviour
 
                 
                 Contents.transform.GetChild(InstanceCount).Find("ItemDetail").Find("Gold").Find("Text (TMP)").GetComponent<TMP_Text>().text =
-                Contents.transform.GetChild(InstanceCount).Find("ItemDetail").GetComponent<UIItem>().ItemPrice.ToString();
+                UnitCalculate.GetInstance().Calculate(Contents.transform.GetChild(InstanceCount).Find("ItemDetail").GetComponent<UIItem>().ItemPrice);
                 InstanceCount++;
             }
             Button[] BuyBtnList = Contents.GetComponentsInChildren<Button>();
