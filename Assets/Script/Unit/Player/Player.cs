@@ -209,6 +209,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
 
     public void GetStun()
     {
+        Debug.Log("IStun Active");
         stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
         ChangeState(state.Stun);
     }
@@ -293,7 +294,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
             if (animTime > 0 && animTime < 1.0f)
             {
                 return true;
-                // ?�니메이???�레??�?
+                // ?�니메이???�레??�?
             }
             else if (animTime >= 1.0f)
             {

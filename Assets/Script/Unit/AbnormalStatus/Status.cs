@@ -50,7 +50,7 @@ public class Status : MonoBehaviour
                 break;
             case E_StatusAbnormality.Stun:
                 {
-                    //obj.AddComponent<CorrosionStatusEffect>();
+                    obj.AddComponent<StunStatusEffect>();
                     obj.name = "Stun";
                     condition.myStatusAbType = E_StatusAbnormality.Stun;
                     abnormals.Add(E_StatusAbnormality.Stun, condition);

@@ -211,6 +211,16 @@ public class Slime : Monster
         myAnim.SetTrigger("t_CinematicEnd");
         Initialize();
     }
+
+    public override void GetStun()
+    {
+        ChangeState(State.Stun);
+    }
+    public override void OutStun()
+    {
+        myAnim.SetBool("b_Stun", false);
+        ChangeState(State.Idle);
+    }
     #endregion
     #endregion
 

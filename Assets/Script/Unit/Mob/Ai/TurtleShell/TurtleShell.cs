@@ -117,6 +117,16 @@ public class TurtleShell : Monster
         throw new System.NotImplementedException();
     }
 
+    public override void GetStun()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void OutStun()
+    {
+        throw new System.NotImplementedException();
+    }
+
     private IEnumerator DelayChangeState(State s, float time)
     {
         yield return new WaitForSeconds(time);

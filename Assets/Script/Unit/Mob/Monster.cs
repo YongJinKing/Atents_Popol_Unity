@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 
 
-public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
+public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd, IStun
 {
     public enum State
     {
@@ -79,6 +79,8 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd
     public abstract void CinematicEnd();
     //trigger off
     //initial()
+    public abstract void GetStun();
+    public abstract void OutStun();
 
     #endregion
     #endregion
