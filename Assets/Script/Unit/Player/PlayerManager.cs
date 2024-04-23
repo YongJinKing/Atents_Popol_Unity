@@ -14,7 +14,18 @@ public class PlayerManager : MonoBehaviour
 
         if (duration <= 50)
         {
-            totalDmg = (int)(totalDmg * 0.8f);
+            int durDmg;
+            durDmg = (int)(totalDmg * 0.8f);
+            if(duration <= 25)
+            {
+                durDmg = (int)(totalDmg * 0.5);
+                if(duration <= 0)
+                {
+                    durDmg = (int)(totalDmg * 0.1);
+                }
+            }
+            totalDmg = durDmg;
+
         }
 
         iDamage.TakeDamage(totalDmg, A_type, Dtype);
