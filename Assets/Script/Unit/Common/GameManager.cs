@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
         pl = Player.GetComponent<Player>();
         pl.hpbarChangeAct.AddListener(hpEpBar.HpGageTrigger);
 
-
         //Monster = mf.CreateMonster(30000);
         //Ms = Monster.GetComponent<Monster>();
 
@@ -127,6 +126,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void TimeOutGameEnd()
+    {
+        pl.TakeDamage(99999, AttackType.Normal, DefenceType.Normal);
+    }
+    
     public void OnGameEnd(int UnitType, GameObject deadUnit)
     {
         var playerdata = DataManager.instance.playerData;

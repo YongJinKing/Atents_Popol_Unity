@@ -37,6 +37,11 @@ public class BroadCastCamControll : MonoBehaviour
         {
             monsterObject = monsterColliders[0].transform;
         }
+        else if (monsterColliders.Length < 1)
+        {
+            monsterObject = this.transform;
+            Debug.Log(monsterObject.position);
+        }
         Traking();
     }
 

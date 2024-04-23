@@ -37,6 +37,7 @@ public class WaveUI : MonoBehaviour
     public GameObject BossTiara;
     public GameObject BossSpawnRing;
     public UnityEngine.Events.UnityEvent WaveRound;
+    public UnityEngine.Events.UnityEvent TimeOut;
 
     
 
@@ -290,6 +291,7 @@ public class WaveUI : MonoBehaviour
         if(playTime >= LimitTime * 60)
         {
             StopWatchUI.text = "TimeOut";
+            TimeOut?.Invoke();
             saveTime();
         }
         else if (playTime > (LimitTime - 1) * 60)
