@@ -112,6 +112,10 @@ public class Slime : Monster
                 rotateEvent?.Invoke(dir, 1.0f);
                 ProcessState();
                 break;
+            case State.Stun:
+                onDeadAct?.Invoke();
+                myAnim.SetBool("b_Stun", true);
+                break;
             case State.Death:
                 onDeadAct?.Invoke();
                 Debug.Log("Monster Death");
@@ -162,6 +166,8 @@ public class Slime : Monster
                         }
                         ChangeState(State.Idle);
                     });
+                break;
+            case State.Stun:
                 break;
             case State.Death:
                 StartCoroutine(DeadActing());
@@ -345,6 +351,7 @@ public class Slime : Monster
         dicIntAnims.Add("SkillType", Animator.StringToHash("i_SkillType"));
         dicBoolAnims.Add("isSkillProgress", Animator.StringToHash("b_isSkillProgress"));
         dicBoolAnims.Add("isMoving", Animator.StringToHash("b_Moving"));
+        dicBoolAnims.Add("isStun", Animator.StringToHash("b_Stun"));
         dicTriggerAnims.Add("SkillStart", Animator.StringToHash("t_SkillStart"));
         dicTriggerAnims.Add("AttackStart", Animator.StringToHash("t_AttackStart"));
         dicTriggerAnims.Add("AttackEnd", Animator.StringToHash("t_AttackEnd"));
