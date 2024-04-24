@@ -28,16 +28,16 @@ public class Status : MonoBehaviour
                     obj.name = "AtkUp";
                     condition.myBuffType = E_Buff.AtkUp;
                     buffs.Add(E_Buff.AtkUp, condition);
-                    //BuffType(2000);
+                    //BuffType(1000);
                 }
                 break;
             case E_Buff.DotHeal:
                 {
-                    //obj.AddComponent<DotHealStatusEffect>();
+                    obj.AddComponent<DotHealStatusEffect>();
                     obj.name = "DotHeal";
                     condition.myBuffType = E_Buff.DotHeal;
                     buffs.Add(E_Buff.DotHeal, condition);
-                    //BuffType(2003);
+                    //BuffType(1001);
                 }
                 break;
             case E_Buff.MoveSpeedUp:
