@@ -221,7 +221,7 @@ public class BattleSystem : CharacterProperty, IDamage
         Debug.Log("BattleSystem.TakeDamage");
         Debug.Log($"Atype : {Atype}, Dtype: {Dtype}");
         Debug.Log($"total : {totaldmg}");
-        DamageTextController.Instance.DmgTxtPrint(transform.position, totaldmg, transform.name);
+        DamageTextController.Instance.DmgTxtPrint(transform.position, totaldmg, transform.name, computed);
 
 
         curBattleStat.HP -= totaldmg;

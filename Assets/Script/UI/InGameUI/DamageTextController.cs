@@ -27,15 +27,29 @@ public class DamageTextController : MonoBehaviour
     public GameObject DmgTxt;
     Vector2 ScreenPos;
 
-    public void DmgTxtPrint(Vector3 point,int Dmg, string name)
+    public void DmgTxtPrint(Vector3 point,int Dmg, string name, float computed)
     {
-        if(name == "Player")
+        if(computed >= 1.5f)
         {
-            DmgTxt.GetComponent<TMP_Text>().color= Color.red;
+            DmgTxt.transform.GetChild(0).gameObject.SetActive(true);
+            DmgTxt.GetComponent<TMP_Text>().color = Color.red;
+        }
+        else if (computed <= 0.7f)
+        {
+            DmgTxt.transform.GetChild(0).gameObject.SetActive(false);
+            DmgTxt.GetComponent<TMP_Text>().color = Color.gray;
         }
         else
         {
-            DmgTxt.GetComponent<TMP_Text>().color = Color.yellow;   //new Color32(255,169,0,255);
+            DmgTxt.transform.GetChild(0).gameObject.SetActive(false);
+            if (name == "Player")
+            {
+                DmgTxt.GetComponent<TMP_Text>().color = Color.red;
+            }
+            else
+            {
+                DmgTxt.GetComponent<TMP_Text>().color = Color.yellow;   //new Color32(255,169,0,255);
+            }
         }
         ScreenPos = Camera.main.WorldToScreenPoint(point);
         GameObject dmg = Instantiate(DmgTxt,ScreenPos,Quaternion.identity,transform);
