@@ -25,7 +25,12 @@ public class StatusCondition : MonoBehaviour
         Status s = GetComponentInParent<Status>();
         if (s)
         {
-            s.Remove(myStatusAbType);
+            if(myBuffType != E_Buff.None)
+            {
+                s.Remove(myBuffType);
+            }
+            else if(myStatusAbType != E_StatusAbnormality.None)
+                s.Remove(myStatusAbType);
         }
             
     }

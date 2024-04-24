@@ -24,38 +24,38 @@ public class Status : MonoBehaviour
         {
             case E_Buff.AtkUp:
                 {
-                    //obj.AddComponent<CorrosionStatusEffect>();
+                    obj.AddComponent<AtkUpStatusEffect>();
                     obj.name = "AtkUp";
-                    condition.myStatusAbType = E_StatusAbnormality.Corrosion;
-                    abnormals.Add(E_StatusAbnormality.Corrosion, condition);
-                    BuffType(2000);
+                    condition.myBuffType = E_Buff.AtkUp;
+                    buffs.Add(E_Buff.AtkUp, condition);
+                    //BuffType(2000);
                 }
                 break;
             case E_Buff.DotHeal:
                 {
-                    //obj.AddComponent<StunStatusEffect>();
-                    obj.name = "Stun";
-                    condition.myStatusAbType = E_StatusAbnormality.Stun;
-                    abnormals.Add(E_StatusAbnormality.Stun, condition);
-                    BuffType(2003);
+                    //obj.AddComponent<DotHealStatusEffect>();
+                    obj.name = "DotHeal";
+                    condition.myBuffType = E_Buff.DotHeal;
+                    buffs.Add(E_Buff.DotHeal, condition);
+                    //BuffType(2003);
                 }
                 break;
             case E_Buff.MoveSpeedUp:
                 {
-                    //obj.AddComponent<PoisonStatusEffect>();
-                    obj.name = "Poison";
-                    condition.myStatusAbType = E_StatusAbnormality.Poison;
-                    abnormals.Add(E_StatusAbnormality.Poison, condition);
-                    BuffType(2001);
+                    //obj.AddComponent<MoveSpeedUpStatusEffect>();
+                    obj.name = "MoveSpeedUp";
+                    condition.myBuffType = E_Buff.MoveSpeedUp;
+                    buffs.Add(E_Buff.MoveSpeedUp, condition);
+                    //BuffType(2001);
                 }
                 break;
             case E_Buff.AttackSpeedUp:
                 {
-                    //obj.AddComponent<SlowStatusEffect>();
-                    obj.name = "Slow";
-                    condition.myStatusAbType = E_StatusAbnormality.Slow;
-                    abnormals.Add(E_StatusAbnormality.Slow, condition);
-                    BuffType(2002);
+                    //obj.AddComponent<AttackSpeedUpStatusEffect>();
+                    obj.name = "AttackSpeedUp";
+                    condition.myBuffType = E_Buff.AttackSpeedUp;
+                    buffs.Add(E_Buff.AttackSpeedUp, condition);
+                    //BuffType(2002);
                 }
                 break;
         }
@@ -132,6 +132,19 @@ public class Status : MonoBehaviour
         }
 
         obj.transform.SetParent(this.transform, false);
+    }
+
+    public void Remove(E_Buff btype)
+    {
+        if (buffs.ContainsKey(btype))
+        {
+            if (buffs[btype] != null)
+            {
+                GameObject obj = buffs[btype].gameObject;
+                buffs.Remove(btype);
+                Destroy(obj);
+            }
+        }
     }
 
     public void Remove(E_StatusAbnormality eType)

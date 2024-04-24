@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 2119383640064544128}
   - component: {fileID: 8593847861628835590}
   - component: {fileID: 5123660324727557829}
-  - component: {fileID: 7988261607760635254}
-  - component: {fileID: 4196453803616073522}
   m_Layer: 0
   m_Name: PowerBuff
   m_TagString: Untagged
@@ -51,7 +49,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -4833,56 +4831,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &7988261607760635254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4730127891568640916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68c8fa89459f91744b2058532811dbdd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  offSet: {x: 0, y: 0, z: 0}
-  isRot: 0
-  RotSpeed: 0
---- !u!114 &4196453803616073522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4730127891568640916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63ab7858c80b86c429ba61260a55ca02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiSkillStatus:
-    uiSkillSprite: {fileID: 21300000, guid: e8a68fd17ce42174e9b24babd0ae6629, type: 3}
-    uiSkillName: "\uC6A9\uC758 \uBD84\uB178"
-    uiSkillDesc: "\uD50C\uB808\uC774\uC5B4\uAC00 \uACB0\uC758\uB97C \uB2E4\uC9C0\uBA70
-      \uACF5\uACA9\uB825\uC744 \uC0C1\uC2B9\uC2DC\uD0A4\uB294 \uAE30\uC220\uC774\uB2E4."
-    uiSkillDetailDesc: "\uD50C\uB808\uC774\uC5B4\uAC00 \uACB0\uC758\uB97C \uB2E4\uC9C0\uBA70
-      <color=\"red\">\uACF5\uACA9\uB82530%</color>\uB97C \uC0C1\uC2B9\uC2DC\uD0A4\uB294
-      \uAE30\uC220\uC774\uB2E4."
-  index: 0
-  SimpleAttack: 0
-  EnergyGage: 20
-  Damage: 0
-  SkillCalculation: 0
-  WeaponType: 1
-  Level: 10
-  CoolTime: 20
-  CoolTimeCheck: 0
-  aType: 0
-  Buff: 30
-  BTime: 10
 --- !u!1 &7580699392718119294
 GameObject:
   m_ObjectHideFlags: 0
