@@ -1,9 +1,9 @@
 {
     "index": 0,
-    "Character_Hp": 500,
-    "Character_AttackPower": 20,
-    "Character_CurrentExp": 0,
-    "Character_CurrentLevel": 1,
+    "Character_Hp": 540,
+    "Character_AttackPower": 40,
+    "Character_CurrentExp": 850,
+    "Character_CurrentLevel": 4,
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
@@ -13,8 +13,8 @@
     "Armor_Ability": 10,
     "WeaponType": 0,
     "ArmorType": 10,
-    "Weapon_Duration": 100,
-    "Armor_Duration": 100,
+    "Weapon_Duration": 78,
+    "Armor_Duration": 98,
     "UiSkillList": [
         "",
         "",
@@ -127,8 +127,8 @@
         false,
         false
     ],
-    "PlayerGold": 0,
+    "PlayerGold": 1850,
     "PlayerInven": [],
     "PlayerInvenDuraion": [],
-    "PlayTime": 0
+    "PlayTime": 59
 }

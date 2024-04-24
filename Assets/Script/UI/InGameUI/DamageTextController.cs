@@ -27,8 +27,16 @@ public class DamageTextController : MonoBehaviour
     public GameObject DmgTxt;
     Vector2 ScreenPos;
 
-    public void DmgTxtPrint(Vector3 point,int Dmg)
+    public void DmgTxtPrint(Vector3 point,int Dmg, string name)
     {
+        if(name == "Player")
+        {
+            DmgTxt.GetComponent<TMP_Text>().color= Color.red;
+        }
+        else
+        {
+            DmgTxt.GetComponent<TMP_Text>().color = Color.yellow;   //new Color32(255,169,0,255);
+        }
         ScreenPos = Camera.main.WorldToScreenPoint(point);
         GameObject dmg = Instantiate(DmgTxt,ScreenPos,Quaternion.identity,transform);
         dmg.GetComponent<TMP_Text>().text = Dmg.ToString();

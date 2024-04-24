@@ -20,6 +20,11 @@ public class BroadCastCamControll : MonoBehaviour
 
     bool flip = false;
 
+    Vector3 plPos;
+    Vector3 moPos;
+    Vector3 plOff;
+    Vector3 moOff;
+
     void Start()
     {
         
@@ -37,11 +42,6 @@ public class BroadCastCamControll : MonoBehaviour
         {
             monsterObject = monsterColliders[0].transform;
         }
-        else if (monsterColliders.Length < 1)
-        {
-            monsterObject = this.transform;
-            Debug.Log(monsterObject.position);
-        }
         Traking();
     }
 
@@ -54,11 +54,11 @@ public class BroadCastCamControll : MonoBehaviour
     {
         if (playerObject != null && monsterObject != null)
         {
-            Vector3 plPos = new Vector3(playerObject.position.x, 0, playerObject.position.z);
-            Vector3 moPos = new Vector3(monsterObject.position.x, 0, monsterObject.position.z);
+            plPos = new Vector3(playerObject.position.x, 0, playerObject.position.z);
+            moPos = new Vector3(monsterObject.position.x, 0, monsterObject.position.z);
 
-            Vector3 plOff = new Vector3(playerOffset.x, playerOffset.y, Vector3.Distance(transform.position, plPos) - playerOffset.z);
-            Vector3 moOff = new Vector3(monsterOffset.x, monsterOffset.y, -Vector3.Distance(transform.position, moPos) - monsterOffset.z);
+            plOff = new Vector3(playerOffset.x, playerOffset.y, Vector3.Distance(transform.position, plPos) - playerOffset.z);
+            moOff = new Vector3(monsterOffset.x, monsterOffset.y, -Vector3.Distance(transform.position, moPos) - monsterOffset.z);
 
             transform.position = plPos + (moPos - plPos) * 0.5f;
             transform.rotation = Quaternion.LookRotation(plPos - moPos);
@@ -85,6 +85,18 @@ public class BroadCastCamControll : MonoBehaviour
                 plCam.transform.localRotation = Quaternion.Euler(0f, -90f, 0f);
                 moCam.transform.localRotation = Quaternion.Euler(0f, -90f, 0f);
             }
+        }
+        else
+        {
+            plPos = new Vector3(playerObject.position.x, 0, playerObject.position.z);
+            moCam.transform.position = Vector3.zero;
+
+            transform.position = plPos + (moPos - plPos) * 0.5f;
+            transform.rotation = Quaternion.LookRotation(plPos - moPos);
+
+            plOff = new Vector3(0, playerOffset.y, Vector3.Distance(transform.position, plPos) - playerOffset.z*6);
+            plCam.transform.localPosition = plOff;
+            plCam.rotation = Quaternion.LookRotation(plPos - moPos);
         }
     }
     
