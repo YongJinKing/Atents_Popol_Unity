@@ -11,6 +11,7 @@ public class RiggingItemChange : MonoBehaviour
     public UnityEvent EventChangeItem;
     public UnityEvent PlayerAbilityUpdate;
     public UnityEvent CleanSlot;
+    public GameObject SkillPopup;
     public GameObject RiggingPopup;
     int SlotIndex;
     Coroutine CorMouseControll;
@@ -55,6 +56,7 @@ public class RiggingItemChange : MonoBehaviour
             EventChangeItem?.Invoke();
             PlayerAbilityUpdate?.Invoke();
             CleanSlot?.Invoke();
+            SkillPopup.transform.GetComponent<SkillPopup>().WeaponChange();
         }
         RiggingPopup.gameObject.SetActive(false);
     }

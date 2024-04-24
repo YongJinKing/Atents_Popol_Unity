@@ -12,6 +12,7 @@ public class InvenPopup : MonoBehaviour
     public GameObject PlayerItem;
     public GameObject DisInven;
     public GameObject Inven;
+    public GameObject SkillPopup;
     
 
 
@@ -154,6 +155,7 @@ public class InvenPopup : MonoBehaviour
         {
             EventChangeItem?.Invoke();
             PlayerAbilityUpdate();
+            SkillPopup.transform.GetComponent<SkillPopup>().WeaponChange();
         }
         RiggingPopup.gameObject.SetActive(false);
     }

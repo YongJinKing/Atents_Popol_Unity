@@ -94,10 +94,15 @@ public class SkillPopup : MonoBehaviour
                 Resources.Load<Sprite>("UI/UserSkill/Grey");
             }
         }
+    }
+    public void WeaponChange()
+    {
+        var inst = DataManager.instance.playerData;
+        for(int i = 0; i < inst.InGameSkill.Length; i++)
+        {
+            inst.InGameSkill[i] = inst.UiSkillList[i + (10 * inst.WeaponType)];
+        }
 
-       
-        
-        
     }
     public void DisplaySlot()
     {
@@ -133,6 +138,7 @@ public class SkillPopup : MonoBehaviour
 
     public void SkillChange(string SkillName, int index)
     {
+        Debug.Log("checkSkillChange");
         var inst = DataManager.instance.playerData;
         for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)
         {
@@ -159,11 +165,9 @@ public class SkillPopup : MonoBehaviour
                 inst.InGameSkill[i] = null;
                 inst.UiSkillList[i + (10 * inst.WeaponType)] = null;
             }
-                
-            
         }
-        
     }
+    
     public void MouseInSlotCheck(int index, bool InCheck)
     {
         isMouseInSlot[index] = InCheck;

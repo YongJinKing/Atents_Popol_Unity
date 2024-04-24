@@ -16,9 +16,10 @@
     "Weapon_Duration": 40,
     "Armor_Duration": 100,
     "UiSkillList": [
-        "ShadowDot",
         "EvilList",
-        "DancingOf",
+        "ShadowDot",
+        "",
+        "",
         "",
         "",
         "",
@@ -28,8 +29,7 @@
         "",
         "PowerBuff",
         "",
-        "SwordDown",
-        "Slash",
+        "",
         "",
         "",
         "",
@@ -118,9 +118,9 @@
         ""
     ],
     "InGameSkill": [
-        "ShadowDot",
-        "EvilList",
-        "DancingOf",
+        "",
+        "PowerBuff",
+        "",
         ""
     ],
     "clearStage": [
