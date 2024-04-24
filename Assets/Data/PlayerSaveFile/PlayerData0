@@ -7,11 +7,11 @@
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
-    "Weapon_Id": 1202,
+    "Weapon_Id": 1000,
     "Armor_Id": 1001,
-    "Weapon_Ability": 90,
+    "Weapon_Ability": 10,
     "Armor_Ability": 10,
-    "WeaponType": 1,
+    "WeaponType": 0,
     "ArmorType": 10,
     "Weapon_Duration": 100,
     "Armor_Duration": 100,
@@ -118,8 +118,8 @@
         ""
     ],
     "InGameSkill": [
+        "ShadowDot",
         "",
-        "SwordDown",
         "",
         ""
     ],
@@ -129,7 +129,7 @@
     ],
     "PlayerGold": 1122,
     "PlayerInven": [
-        1000
+        1202
     ],
     "PlayerInvenDuraion": [
         100

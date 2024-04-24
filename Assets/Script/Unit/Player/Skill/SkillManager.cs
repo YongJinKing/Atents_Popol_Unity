@@ -49,7 +49,7 @@ public class SkillManager : PlayerSkill
                 Ray ray = new Ray(startPos - dir.normalized * 1.0f, dir);
                 StartCoroutine(tempDebuging(ray));
                 RaycastHit[] hits;
-                if ((hits = Physics.RaycastAll(ray , col.bounds.extents.magnitude, 1 << LayerMask.NameToLayer("Monster_Body"))) != null)
+                if ((hits = Physics.RaycastAll(ray , col.bounds.extents.magnitude + 1.0f, 1 << LayerMask.NameToLayer("Monster_Body"))) != null)
                 {
                     foreach(RaycastHit data in hits)
                     {
@@ -129,16 +129,16 @@ public class SkillManager : PlayerSkill
     IEnumerator tempDebuging(Ray ray)
     {
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 1000.0f, 1 << 15))
+        if (Physics.Raycast(ray, out RaycastHit hit, col.bounds.extents.magnitude, 1 << 15))
         {
             Debug.Log("Debug Hit");
         }
 
-        float time = 2.0f;
+        float time = 5.0f;
         while(time > 0.0f)
         {
             time -= Time.deltaTime;
-            Debug.DrawRay(ray.origin, ray.direction * 1000f, Color.red);
+            Debug.DrawRay(ray.origin, ray.direction * (col.bounds.extents.magnitude + 1.0f), Color.red);
             yield return null;
         }
     }
