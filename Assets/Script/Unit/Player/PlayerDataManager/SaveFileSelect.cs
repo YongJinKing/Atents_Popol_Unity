@@ -71,7 +71,7 @@ public class SaveFileSelect : MonoBehaviour
                 else PLayTimeText[i].text = (datamanager.playerData.PlayTime / 60).ToString() + ":" + (datamanager.playerData.PlayTime % 60).ToString("D2");
 
                 ProgressText[i].text = (100*count/datamanager.playerData.clearStage.Length).ToString()+"%";
-                GoldText[i].text = datamanager.playerData.PlayerGold.ToString();
+                GoldText[i].text = UnitCalculate.GetInstance().Calculate(datamanager.playerData.PlayerGold);
                 LevelText[i].text = datamanager.playerData.Character_CurrentLevel.ToString() + "Lv";
             }
             else	// IF Data Null
