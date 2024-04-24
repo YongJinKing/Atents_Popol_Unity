@@ -224,6 +224,8 @@ public class SmithUi : MonoBehaviour
                         else
                         {
                             StartCoroutine(CantDesPopup(NomoneyPopup));
+                            NomoneyPopup.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TMP_Text>().text =
+                            UnitCalculate.GetInstance().Calculate(RepairCalculate(go.ItemPrice, go.ItemDuration)) + "만큼 필요합니다.";
                         }
                     }
                     else
@@ -261,6 +263,8 @@ public class SmithUi : MonoBehaviour
                         else
                         {
                             StartCoroutine(CantDesPopup(NomoneyPopup));
+                            NomoneyPopup.transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<TMP_Text>().text =
+                            UnitCalculate.GetInstance().Calculate(RepairCalculate(go.ItemPrice, go.ItemDuration)) + "만큼 필요합니다.";
                         
                         }
                     }
