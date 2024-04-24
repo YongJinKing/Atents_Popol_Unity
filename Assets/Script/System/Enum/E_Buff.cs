@@ -1,4 +1,4 @@
 public enum E_Buff
 {
-    AtkUp, DotHeal, MoveSpeedUp, AttackSpeedUp
+    AtkUp, DotHeal, MoveSpeedUp, AttackSpeedUp, None
 }

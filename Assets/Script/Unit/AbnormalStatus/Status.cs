@@ -25,7 +25,7 @@ public class Status : MonoBehaviour
             case E_Buff.AtkUp:
                 {
                     //obj.AddComponent<CorrosionStatusEffect>();
-                    obj.name = "Corrosion";
+                    obj.name = "AtkUp";
                     condition.myStatusAbType = E_StatusAbnormality.Corrosion;
                     abnormals.Add(E_StatusAbnormality.Corrosion, condition);
                     BuffType(2000);

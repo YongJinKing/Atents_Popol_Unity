@@ -5,5 +5,6 @@ public enum E_StatusAbnormality
     Slow,
     Stun,
     Bondage,
-    Blind
+    Blind,
+    None
 }
