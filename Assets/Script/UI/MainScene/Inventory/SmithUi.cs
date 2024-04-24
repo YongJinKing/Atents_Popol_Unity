@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
+
 using TMPro;
-using UnityEditor.Search;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+
 
 public class SmithUi : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class SmithUi : MonoBehaviour
     public GameObject RiggigItem;
     public UnityEvent<int> InvenItemRepair;
     public UnityEvent<int> RiggingItemRepair;
+    public UnityEvent<bool, int> EventRiggingPopup;
 
     public UnityEvent<int> BtnAct2;
     bool RiggingItemSelected= false;
@@ -49,31 +51,28 @@ public class SmithUi : MonoBehaviour
     }
     public void OnHighLite(int index, bool OnCheck)
     {
-        if(OnCheck)
-        {
+        
             
-            if(SmithGridLine.transform.GetChild(index).GetComponent<UIItem>().id > 0)
-                SmithGridLine.transform.GetChild(index).Find("HLImage").gameObject.SetActive(true);
-        }
-        else
+        if(SmithGridLine.transform.GetChild(index).GetComponent<UIItem>().id > 0)
         {
-            if(SmithGridLine.transform.GetChild(index).GetComponent<UIItem>().id > 0)
-                SmithGridLine.transform.GetChild(index).Find("HLImage").gameObject.SetActive(false);
+            SmithGridLine.transform.GetChild(index).Find("HLImage").gameObject.SetActive(OnCheck);
+            EventRiggingPopup?.Invoke(OnCheck,index);
         }
+            
+        
+        
     }
     public void OnRiggingHighLite(int index, bool OnCheck)
     {
-        if(OnCheck)
-        {
-            if(RiggigItem.transform.GetChild(index).GetComponent<UIItem>().id > 0)
-                RiggigItem.transform.GetChild(index).Find("HLImage").gameObject.SetActive(true);
-        }
         
-        else
+        if(RiggigItem.transform.GetChild(index).GetComponent<UIItem>().id > 0)
         {
-            if(RiggigItem.transform.GetChild(index).GetComponent<UIItem>().id > 0)
-                RiggigItem.transform.GetChild(index).Find("HLImage").gameObject.SetActive(false);
-        }   
+            RiggigItem.transform.GetChild(index).Find("HLImage").gameObject.SetActive(OnCheck);
+        }
+       
+        
+          
+        
     }
     public void ChooseSlot(int index)
     {
@@ -132,6 +131,7 @@ public class SmithUi : MonoBehaviour
     }
     void ItemDetailShow(int type, int index)
     {
+        string WeaponType = "";
         ItemDetail.transform.GetChild(0).gameObject.SetActive(true);
         ItemDetail.transform.GetChild(1).gameObject.SetActive(true);
         UIItem DetailItem = gameObject.AddComponent<UIItem>();
@@ -141,7 +141,11 @@ public class SmithUi : MonoBehaviour
             DetailItem = RiggigItem.transform.GetChild(index).GetComponent<UIItem>();
         ItemAbility.transform.GetChild(0).GetComponent<Image>().sprite = DetailItem.icon.sprite;
         ItemAbility.transform.GetChild(1).GetComponent<TMP_Text>().text = "이름 : " + DetailItem.ItemName;
-        ItemAbility.transform.GetChild(2).GetComponent<TMP_Text>().text = "공격력 : " + DetailItem.ItemValue.ToString();
+        if(DetailItem.ItemRigging == 0)
+             WeaponType = "공격력 : ";
+        else
+            WeaponType = "체력 : ";
+        ItemAbility.transform.GetChild(2).GetComponent<TMP_Text>().text = WeaponType + DetailItem.ItemValue.ToString();
         ItemAbility.transform.GetChild(3).GetComponent<TMP_Text>().text = "내구도 : " + DetailItem.ItemDuration.ToString();
         ItemAbility.transform.GetChild(4).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = 
         DetailItem.ItemSmith;
@@ -215,7 +219,7 @@ public class SmithUi : MonoBehaviour
                         {
                             RepairPopup.transform.gameObject.SetActive(true);
                             RepairPopup.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = 
-                            RepairCalculate(go.ItemPrice, go.ItemDuration).ToString() + "Gold";
+                            UnitCalculate.GetInstance().Calculate(RepairCalculate(go.ItemPrice, go.ItemDuration)) + "Gold";
                         }
                         else
                         {

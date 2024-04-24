@@ -8,21 +8,54 @@ using UnityEngine.UI;
 public class RiggingItemChange : MonoBehaviour
 {
     public UnityEvent<int> EventSlotNum;
+    public UnityEvent EventChangeItem;
+    public UnityEvent PlayerAbilityUpdate;
+    public UnityEvent CleanSlot;
     public GameObject RiggingPopup;
-    IEnumerator OnMouseControll(int index)
+    int SlotIndex;
+    Coroutine CorMouseControll;
+    public void OnSlot(bool OnCheck, int index)
+    {   
+        
+        if(OnCheck)
+        {
+            CorMouseControll = StartCoroutine(OnMouseControll());
+        }
+        else
+        {
+            if(CorMouseControll != null)
+            {
+                StopCoroutine(CorMouseControll);
+                CorMouseControll = null;
+            }
+            
+        }
+        EventSlotNum?.Invoke(index);
+    }
+    IEnumerator OnMouseControll()
     {
         while(true)
         {
             if(Input.GetMouseButtonDown(1))
             {
-                PopupControll(index);
-                EventSlotNum?.Invoke(index);
+                PopupControll();
             }
             yield return null;
         }   
     }
-    public void PopupControll(int index)
+    public void PopupControll()
     {
         RiggingPopup.gameObject.SetActive(true);
+        
+    }
+    public void PopupYesOrNo(int index)
+    {
+        if(index == 0)
+        {
+            EventChangeItem?.Invoke();
+            PlayerAbilityUpdate?.Invoke();
+            CleanSlot?.Invoke();
+        }
+        RiggingPopup.gameObject.SetActive(false);
     }
 }

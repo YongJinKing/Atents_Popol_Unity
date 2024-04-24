@@ -8,8 +8,11 @@ public class UserSkillDataManager : MonoBehaviour
 {
     private static UserSkillDataManager instance;
     public Dictionary<int, PlayerSkill_StringTable> dicStringDatas;
+    private UserSkillDataManager()
+    {
 
-    
+    }
+
     public static UserSkillDataManager GetInstance()
     {
         if(UserSkillDataManager.instance == null)

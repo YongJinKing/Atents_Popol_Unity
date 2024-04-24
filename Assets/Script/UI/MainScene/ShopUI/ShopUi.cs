@@ -16,6 +16,7 @@ public class ShopUi : MonoBehaviour
     public GameObject GridLine;
     public GameObject RiggingItem;
     public UnityEvent<int> AddItem;
+    public UnityEvent<bool , int> EventRiggingPopup;
     string ItemRiggingStr = "";
     int InstanceCount = 0;
     int ItemPrice;
@@ -157,6 +158,7 @@ public class ShopUi : MonoBehaviour
                 DescPopup.transform.gameObject.SetActive(false);
                 
             }
+            EventRiggingPopup?.Invoke(OnCheck, index);
         }
     }
     public void OnRiggingHighLite(int index, bool OnCheck)
@@ -185,35 +187,35 @@ public class ShopUi : MonoBehaviour
             go = GridLine.transform.GetChild(index).GetComponent<UIItem>();
             if(GridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition.x <= 300)
             {
-                transform.Find("Main_Panel").Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
+                transform.GetChild(1).Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
                 GridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition + new Vector2(290 , -145);
             }
             else
             {
-                transform.Find("Main_Panel").Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
+                transform.GetChild(1).Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
                 GridLine.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition + new Vector2(-310 , -145);
             }
         } 
         if(type == 1)
         {
             go = RiggingItem.transform.GetChild(index).GetComponent<UIItem>();
-            transform.Find("Main_Panel").Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
+            transform.GetChild(1).Find("DescPopup").GetComponent<RectTransform>().anchoredPosition =
             RiggingItem.transform.GetChild(index).GetComponent<RectTransform>().anchoredPosition+ new Vector2(95 , 11);
         }
         yield return new WaitForSeconds(0.8f);
         DescPopup.transform.gameObject.SetActive(true);
-        transform.Find("Main_Panel").Find("DescPopup").gameObject.SetActive(true);
-        transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ImgBg").Find("ItemImage").GetComponent<Image>().sprite
+        transform.GetChild(1).Find("DescPopup").gameObject.SetActive(true);
+        transform.GetChild(1).Find("DescPopup").Find("Paper").Find("ImgBg").Find("ItemImage").GetComponent<Image>().sprite
         = go.icon.sprite;
-        transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemName").GetComponent<TMP_Text>().text
+        transform.GetChild(1).Find("DescPopup").Find("Paper").Find("ItemName").GetComponent<TMP_Text>().text
         = go.ItemName;
-        transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemType").GetComponent<TMP_Text>().text
+        transform.GetChild(1).Find("DescPopup").Find("Paper").Find("ItemType").GetComponent<TMP_Text>().text
         = ItemTypeIntToString.IntToStringUIDesc(go.WeaponType);
-        transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemValue").GetComponent<TMP_Text>().text
+        transform.GetChild(1).Find("DescPopup").Find("Paper").Find("ItemValue").GetComponent<TMP_Text>().text
         = RiggingTypeToString(go.ItemRigging) + go.ItemValue.ToString();
-        transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("ItemDesc").GetComponent<TMP_Text>().text
+        transform.GetChild(1).Find("DescPopup").Find("Paper").Find("ItemDesc").GetComponent<TMP_Text>().text
         = go.ItemDesc;
-         transform.Find("Main_Panel").Find("DescPopup").Find("Paper").Find("DurationDesc").Find("Value").GetComponent<TMP_Text>().text
+         transform.GetChild(1).Find("DescPopup").Find("Paper").Find("DurationDesc").Find("Value").GetComponent<TMP_Text>().text
         = go.ItemDuration.ToString();
         
         
