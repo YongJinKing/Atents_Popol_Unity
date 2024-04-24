@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8593847861628835590}
   - component: {fileID: 5123660324727557829}
   m_Layer: 0
-  m_Name: PowerBuff
+  m_Name: AtkUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

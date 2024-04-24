@@ -11,8 +11,8 @@ public class StunStatusEffect : StatusEffect
     private void Start()
     {
         LoadEffect();
+        Initailize();
 
-        target = GetComponentInParent<IStun>();
         if(target != null)
             target.GetStun();
     }
@@ -21,5 +21,10 @@ public class StunStatusEffect : StatusEffect
     {
         if(target != null)
             target.OutStun();
+    }
+
+    protected override void Initailize()
+    {
+        target = GetComponentInParent<IStun>();
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatusEffect : MonoBehaviour
+public abstract class StatusEffect : MonoBehaviour
 {
     protected string EffectPrefabName = null;
     public StatusEffect()
@@ -13,6 +13,8 @@ public class StatusEffect : MonoBehaviour
     {
         EffectPrefabName = effectPrefabName;
     }
+
+    protected abstract void Initailize();
 
     protected void LoadEffect()
     {
