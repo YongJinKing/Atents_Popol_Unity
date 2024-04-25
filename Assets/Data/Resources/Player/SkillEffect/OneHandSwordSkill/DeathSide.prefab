@@ -14742,7 +14742,7 @@ MonoBehaviour:
   Damage: 100
   SkillCalculation: 0.6
   WeaponType: 0
-  Level: 20
+  Level: 7
   CoolTime: 30
   CoolTimeCheck: 0
   Player: {fileID: 0}

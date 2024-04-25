@@ -14536,8 +14536,8 @@ MonoBehaviour:
   index: 0
   SimpleAttack: 1
   EnergyGage: 0
-  Damage: 100
-  SkillCalculation: 0.3
+  Damage: 0
+  SkillCalculation: 1
   WeaponType: 0
   Level: 0
   CoolTime: 0

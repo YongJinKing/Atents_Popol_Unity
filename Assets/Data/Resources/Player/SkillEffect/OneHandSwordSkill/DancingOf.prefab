@@ -9713,7 +9713,7 @@ MonoBehaviour:
   Damage: 50
   SkillCalculation: 0.7
   WeaponType: 0
-  Level: 15
+  Level: 10
   CoolTime: 15
   CoolTimeCheck: 0
   aType: 1

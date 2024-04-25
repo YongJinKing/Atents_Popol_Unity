@@ -14750,7 +14750,7 @@ MonoBehaviour:
   Damage: 50
   SkillCalculation: 0.2
   WeaponType: 0
-  Level: 10
+  Level: 3
   CoolTime: 7
   CoolTimeCheck: 0
   aType: 1

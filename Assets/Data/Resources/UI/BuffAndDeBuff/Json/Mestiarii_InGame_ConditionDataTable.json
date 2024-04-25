@@ -1,62 +1,68 @@
 [
-   {
-      "index":1000,
-      "Condition_Name":1000,
-      "Condition_Sprite":1000,
-      "Condition_DurationTime":5.0
-   },
-   {
-      "index":1001,
-      "Condition_Name":1001,
-      "Condition_Sprite":1001,
-      "Condition_DurationTime":5.0
-   },
-   {
-      "index":1002,
-      "Condition_Name":1002,
-      "Condition_Sprite":1002,
-      "Condition_DurationTime":5.0
-   },
-   {
-      "index":1003,
-      "Condition_Name":1003,
-      "Condition_Sprite":1003,
-      "Condition_DurationTime":5.0
-   },
-   {
-      "index":2000,
-      "Condition_Name":2000,
-      "Condition_Sprite":2000,
-      "Condition_DurationTime":5.0
-   },
-   {
-      "index":2001,
-      "Condition_Name":2001,
-      "Condition_Sprite":2001,
-      "Condition_DurationTime":5.0
-   },
-   {
-      "index":2002,
-      "Condition_Name":2002,
-      "Condition_Sprite":2002,
-      "Condition_DurationTime":5.0
-   },
-   {
-      "index":2003,
-      "Condition_Name":2003,
-      "Condition_Sprite":2003,
-      "Condition_DurationTime":5.0
-   },
-   {
-      "index":2004,
-      "Condition_Name":2004,
-      "Condition_Sprite":2004,
-      "Condition_DurationTime":5.0
-   },
-   {
-      "index":2005,
-      "Condition_Name":2005,
-      "Condition_Sprite":2005,
-      "Condition_DurationTime":5.0
-   }
+  {
+    "index": 1000,
+    "Condition_Name": 1000,
+    "Condition_Sprite": 1000,
+    "Condition_DurationTime": 10.0
+  },
+  {
+    "index": 1001,
+    "Condition_Name": 1001,
+    "Condition_Sprite": 1001,
+    "Condition_DurationTime": 10.0
+  },
+  {
+    "index": 1002,
+    "Condition_Name": 1002,
+    "Condition_Sprite": 1002,
+    "Condition_DurationTime": 10.0
+  },
+  {
+    "index": 1003,
+    "Condition_Name": 1003,
+    "Condition_Sprite": 1003,
+    "Condition_DurationTime": 10.0
+  },
+  {
+    "index": 2000,
+    "Condition_Name": 2000,
+    "Condition_Sprite": 2000,
+    "Condition_DurationTime": 5.0
+  },
+  {
+    "index": 2001,
+    "Condition_Name": 2001,
+    "Condition_Sprite": 2001,
+    "Condition_DurationTime": 3.0
+  },
+  {
+    "index": 2002,
+    "Condition_Name": 2002,
+    "Condition_Sprite": 2002,
+    "Condition_DurationTime": 5.0
+  },
+  {
+    "index": 2003,
+    "Condition_Name": 2003,
+    "Condition_Sprite": 2003,
+    "Condition_DurationTime": 1.0
+  },
+  {
+    "index": 2004,
+    "Condition_Name": 2004,
+    "Condition_Sprite": 2004,
+    "Condition_DurationTime": 1.0
+  },
+  {
+    "index": 2005,
+    "Condition_Name": 2005,
+    "Condition_Sprite": 2005,
+    "Condition_DurationTime": 5.0
+  },
+  {
+    "index": 2006,
+    "Condition_Name": 2006,
+    "Condition_Sprite": 2006,
+    "Condition_DurationTime": 3.0
+  }
 ]
