@@ -905,6 +905,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5715473411069412003, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: GridLine
+      value: 
+      objectReference: {fileID: 1128025568}
     - target: {fileID: 5914609097261703430, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3419,6 +3423,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065195230}
   m_CullTransparentMesh: 1
+--- !u!1 &1128025568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7246481460274322139, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+  m_PrefabInstance: {fileID: 179462420}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1160327993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3974,10 +3983,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: WaveUI
       objectReference: {fileID: 0}
-    - target: {fileID: 3938782882404476357, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5056948185274703275, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -4062,10 +4067,6 @@ PrefabInstance:
       propertyPath: BossOpening
       value: 
       objectReference: {fileID: 1627297828}
-    - target: {fileID: 6002581154846252743, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
-      propertyPath: txtEndPos.y
-      value: -450
-      objectReference: {fileID: 0}
     - target: {fileID: 6002581154846252743, guid: 6c26f2f0b3095f745a9eaa33e14aa591, type: 3}
       propertyPath: TimeOut.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

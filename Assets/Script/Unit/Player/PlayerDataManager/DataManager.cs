@@ -23,13 +23,11 @@ public class PlayerData
     public int Armor_Id;
     public int Weapon_Ability;
     public int Armor_Ability;
-    public int WeaponType;
-     //0 : ?�손 검, 1: ?�손 검, 2 : ?�손 ?�기, 3 : ?�손 ?�기, 4 : �? 5 : ?��?, 6 : ?�창??�?
+    public int WeaponType; 
     public int ArmorType;
-    //10 : 가�? 11 : 경갑, 12 : ?�금
-    
     public int Weapon_Duration;
     public int Armor_Duration;
+
     public string[] UiSkillList = new string[100];
     public String[] InGameSkill = new string[4];
     public bool[] clearStage = { false, false };
@@ -37,6 +35,13 @@ public class PlayerData
     public List<int> PlayerInven = new List<int>();
     public List<int> PlayerInvenDuraion = new List<int>();
     public int PlayTime;
+
+    public float Master_Volum = 0.75f;
+    public float Bgm_Volum = 0.75f;
+    public float Sfx_Volum = 0.75f;
+    public bool Master_Mute_Check = true;
+    public bool Bgm_Mute_Check = true;
+    public bool Sfx_Mute_Check = true;
 }
 
 
@@ -45,8 +50,7 @@ public class DataManager : MonoBehaviour
     public PlayerData playerData = new PlayerData();
     public string path;
     public string fileName = "PlayerData";
-    public float Bgm_Volum = 0.75f;
-    public float Sfx_Volum = 0.75f;
+
     public int StageNum;
     public int SlotNum;
 

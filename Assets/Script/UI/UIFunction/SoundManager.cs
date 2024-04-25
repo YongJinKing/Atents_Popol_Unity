@@ -38,12 +38,13 @@ public class SoundManager : MonoBehaviour
     }
     private void Start() 
     {
-        //BgmPlayer.volume = DataManager.instance.Bgm_Volum;
-
-        SetMasterVolume(0.75f);
-        SetBgmVolume(0.75f);
-        SetSfxVolume(0.75f);
-        
+        var inst = DataManager.instance.playerData;
+        MuteCheck(0, inst.Master_Mute_Check);
+        MuteCheck(1, inst.Bgm_Mute_Check);
+        MuteCheck(2, inst.Sfx_Mute_Check);
+        SetMasterVolume(inst.Master_Volum);
+        SetBgmVolume(inst.Bgm_Volum);
+        SetSfxVolume(inst.Sfx_Volum);   
     }
     public void PlayBgmMusic(string Type)
     {

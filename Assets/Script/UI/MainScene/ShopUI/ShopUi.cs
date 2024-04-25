@@ -67,7 +67,7 @@ public class ShopUi : MonoBehaviour
 
     public void PressedBuyBtn(int index)
     {
-        ItemPrice = Contents.transform.GetChild(0).GetChild(index).GetComponent<UIItem>().ItemPrice;
+        ItemPrice = Contents.transform.GetChild(index).GetChild(0).GetComponent<UIItem>().ItemPrice;
         if(DataManager.instance.playerData.PlayerGold >= ItemPrice)
         {
             BuyPopup.gameObject.SetActive(true);

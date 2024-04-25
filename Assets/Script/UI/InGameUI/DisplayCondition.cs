@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class DisplayCondition : MonoBehaviour
 {
+    public GameObject GridLine;
     private void Start() 
     {
         ConditionDataManager.GetInstance().ConditionLoadDatas();
     }
     public void Display(int Id)
     {
-        var go = transform.GetChild(0).GetChild(0).GetChild(0);//DiplayCondition//Bg/Paper/GridLine
+        var go = GridLine.transform;
         for(int i = 0; i < go.childCount; i++)
         {   
             if(go.GetChild(i).GetComponent<Condition>().ConditionId == Id)
