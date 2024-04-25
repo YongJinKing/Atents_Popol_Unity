@@ -29,12 +29,12 @@ public class DamageTextController : MonoBehaviour
 
     public void DmgTxtPrint(Vector3 point,int Dmg, string name, float computed)
     {
-        if(computed >= 1.5f)
+        if(computed >= 1.1f)
         {
             DmgTxt.transform.GetChild(0).gameObject.SetActive(true);
             DmgTxt.GetComponent<TMP_Text>().color = Color.red;
         }
-        else if (computed <= 0.7f)
+        else if (computed <= 0.9f)
         {
             DmgTxt.transform.GetChild(0).gameObject.SetActive(false);
             DmgTxt.GetComponent<TMP_Text>().color = Color.gray;
