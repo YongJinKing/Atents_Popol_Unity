@@ -9761,6 +9761,7 @@ GameObject:
   - component: {fileID: 4393400366643035633}
   - component: {fileID: 4392462068766991979}
   - component: {fileID: 5570491843397143356}
+  - component: {fileID: 2945350965900822139}
   m_Layer: 0
   m_Name: DeathSide
   m_TagString: Untagged
@@ -14744,9 +14745,8 @@ MonoBehaviour:
   Level: 20
   CoolTime: 30
   CoolTimeCheck: 0
+  Player: {fileID: 0}
   aType: 1
-  Buff: 0
-  BTime: 0
 --- !u!114 &5570491843397143356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14766,6 +14766,19 @@ MonoBehaviour:
     m_Bits: 4096
   duration: 0.1
   magnitud: 0.2
+--- !u!114 &2945350965900822139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001959025898668562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22523cd5bcd1cdc47becab6352b7d74d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBuff: 3
 --- !u!1 &4154730846457215302
 GameObject:
   m_ObjectHideFlags: 0

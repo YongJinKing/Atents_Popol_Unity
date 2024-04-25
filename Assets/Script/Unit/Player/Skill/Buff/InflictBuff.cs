@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class InflictBuff : MonoBehaviour
 {
-    public E_StatusAbnormality myab;
-    public void GetCol(Collider target)
+    SkillManager skillManager;
+    public E_Buff myBuff;
+    public void GetBuff()
     {
-        Status st = target.GetComponentInParent<Status>();
-        st.Add(myab);
+        Status st = skillManager.Player.GetComponent<Status>();
+        st.Add(myBuff);
+    }
+
+    private void Start()
+    {
+        skillManager = GetComponent<SkillManager>();
+        GetBuff();
     }
 }

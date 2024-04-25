@@ -28,7 +28,7 @@ public class Status : MonoBehaviour
                     obj.name = "AtkUp";
                     condition.myBuffType = E_Buff.AtkUp;
                     buffs.Add(E_Buff.AtkUp, condition);
-                    //BuffType(1000);
+                    BuffType(1000);
                 }
                 break;
             case E_Buff.DotHeal:
@@ -37,25 +37,25 @@ public class Status : MonoBehaviour
                     obj.name = "DotHeal";
                     condition.myBuffType = E_Buff.DotHeal;
                     buffs.Add(E_Buff.DotHeal, condition);
-                    //BuffType(1001);
+                    BuffType(1001);
                 }
                 break;
             case E_Buff.MoveSpeedUp:
                 {
-                    //obj.AddComponent<MoveSpeedUpStatusEffect>();
+                    obj.AddComponent<MoveSpeedUpStatusEffect>();
                     obj.name = "MoveSpeedUp";
                     condition.myBuffType = E_Buff.MoveSpeedUp;
                     buffs.Add(E_Buff.MoveSpeedUp, condition);
-                    //BuffType(2001);
+                    BuffType(1002);
                 }
                 break;
             case E_Buff.AttackSpeedUp:
                 {
-                    //obj.AddComponent<AttackSpeedUpStatusEffect>();
+                    obj.AddComponent<AttackSpeedUpStatusEffect>();
                     obj.name = "AttackSpeedUp";
                     condition.myBuffType = E_Buff.AttackSpeedUp;
                     buffs.Add(E_Buff.AttackSpeedUp, condition);
-                    //BuffType(2002);
+                    BuffType(1003);
                 }
                 break;
         }
