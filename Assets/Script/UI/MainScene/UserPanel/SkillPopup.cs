@@ -116,6 +116,8 @@ public class SkillPopup : MonoBehaviour
                 if(Content.transform.GetChild(i).GetComponent<UserSkillSlot>().SkillLevel > inst.Character_CurrentLevel)
                 {
                     Content.transform.GetChild(i).GetChild(1).gameObject.SetActive(true);
+                    Content.transform.GetChild(i).GetChild(1).GetChild(2).GetChild(0).GetComponent<TMP_Text>().text
+                    =Content.transform.GetChild(i).GetComponent<UserSkillSlot>().SkillLevel.ToString() +"Lv";
                 }
                 
                 else

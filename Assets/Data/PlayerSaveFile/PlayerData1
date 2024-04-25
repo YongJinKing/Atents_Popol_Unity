@@ -136,5 +136,11 @@
         40,
         100
     ],
-    "PlayTime": 1053
+    "PlayTime": 1053,
+    "Master_Volum": 0.75,
+    "Bgm_Volum": 0.75,
+    "Sfx_Volum": 0.75,
+    "Master_Mute_Check": true,
+    "Bgm_Mute_Check": true,
+    "Sfx_Mute_Check": true
 }

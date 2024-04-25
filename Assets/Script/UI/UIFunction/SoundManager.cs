@@ -54,6 +54,7 @@ public class SoundManager : MonoBehaviour
         {
             case "TitleBgm": index = 0; break;
             case "MainBgm": index = 1; break;
+            case "WaveBgm" : index = 2; break;
         }
         BgmPlayer.clip = audioBgmClips[index];
         BgmPlayer.Play();
