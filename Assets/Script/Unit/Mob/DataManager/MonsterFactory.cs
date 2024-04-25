@@ -84,12 +84,20 @@ public class MonsterFactory
         objMon.attackStartPos = new Transform[part.attackStartPos.Length];
         for (int i = 0; i < part.attackStartPos.Length; i++)
         {
+
             objMon.attackStartPos[i] = part.attackStartPos[i];
         }
         for(int i = 0; i< part.parts.Length; i++)
         {
             part.parts[i].col.gameObject.layer = LayerMask.NameToLayer("Monster_Body");
-            part.parts[i].type = (DefenceType)data.Character_DetailArmorTypeArr[i];
+            if (i < data.Character_DetailArmorTypeArr.Length)
+            {
+                part.parts[i].type = (DefenceType)data.Character_DetailArmorTypeArr[i];
+            }
+            else
+            {
+                part.parts[i].type = DefenceType.Normal;
+            }
         }
 
         MonsterAnimEvent anim = prefab.GetComponent<MonsterAnimEvent>();
@@ -334,7 +342,10 @@ public class MonsterFactory
 
                     for(int i = 0; i < data.Skill_NumOfHitBox; ++i)
                     {
-                        projectile.attackStartPos[i] = monster.attackStartPos[data.Skill_HitBoxStartPosArr[i]];
+                        if (data.Skill_HitBoxStartPosArr[i] < monster.attackStartPos.Length)
+                            projectile.attackStartPos[i] = monster.attackStartPos[data.Skill_HitBoxStartPosArr[i]];
+                        else
+                            projectile.attackStartPos[i] = monster.attackStartPos[0];
                     }
 
                     projectile.hitDuration = data.Skill_hitDuration;
@@ -461,6 +472,7 @@ public class MonsterFactory
             //Monster/MonsterPrefabs/
             case 1:
                 return Resources.Load<GameObject>($"Monster/MonsterPrefabs/{data.Prefab_Name}");
+                //return Resources.Load<GameObject>($"Monster/MonsterPrefabs/Prefab_Stage2_Turtle");
             //Monster/SkillEffect/
             case 2:
                 return Resources.Load<GameObject>($"Monster/SkillEffect/{data.Prefab_Name}");

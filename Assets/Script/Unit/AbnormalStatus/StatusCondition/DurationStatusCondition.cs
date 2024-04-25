@@ -12,8 +12,14 @@ public class DurationStatusCondition : StatusCondition
     {
         ConditionDataManager.GetInstance().ConditionLoadDatas();
         //load duration data
-        duration = ConditionDataManager.GetInstance().dicConditionDatas[(int)myStatusAbType + 2000].Condition_DurationTime;
-
+        if(myStatusAbType != E_StatusAbnormality.None)
+        {
+            duration = ConditionDataManager.GetInstance().dicConditionDatas[(int)myStatusAbType + 2000].Condition_DurationTime;
+        }
+        else if (myBuffType != E_Buff.None)
+        {
+            duration = ConditionDataManager.GetInstance().dicConditionDatas[(int)myStatusAbType + 1000].Condition_DurationTime;
+        }
 
         StartCoroutine(DurationChecking());
     }

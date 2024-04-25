@@ -244,10 +244,10 @@ public class BattleSystem : CharacterProperty, IDamage
                 switch (Dtype)
                 {
                     case DefenceType.Leather:
-                        computed = 2.0f;
+                        computed = 1.2f;
                         break;
                     case DefenceType.HeavyArmor:
-                        computed = 0.5f;
+                        computed = 0.8f;
                         break;
                     case DefenceType.CompositeArmor:
                         computed = 1.0f;
@@ -258,10 +258,10 @@ public class BattleSystem : CharacterProperty, IDamage
                 switch (Dtype)
                 {
                     case DefenceType.Leather:
-                        computed = 0.5f;
+                        computed = 0.8f;
                         break;
                     case DefenceType.HeavyArmor:
-                        computed = 2.0f;
+                        computed = 1.2f;
                         break;
                     case DefenceType.CompositeArmor:
                         computed = 1.0f;
@@ -275,10 +275,10 @@ public class BattleSystem : CharacterProperty, IDamage
                         computed = 1.0f;
                         break;
                     case DefenceType.HeavyArmor:
-                        computed = 0.5f;
+                        computed = 0.8f;
                         break;
                     case DefenceType.CompositeArmor:
-                        computed = 2.0f;
+                        computed = 1.2f;
                         break;
                 }
                 break;

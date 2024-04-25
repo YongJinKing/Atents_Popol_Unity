@@ -8,7 +8,7 @@ public class forfactorytest : MonoBehaviour
     void Awake()
     {
         MonsterFactory factory = new MonsterFactory();
-        GameObject obj = factory.CreateMonster(20002);
+        GameObject obj = factory.CreateMonster(30001);
         monster = obj.GetComponent<Monster>();
 
         //monster.idleAI = new System.Collections.Generic.List<int>();
