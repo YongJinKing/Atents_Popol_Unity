@@ -230,7 +230,7 @@ public class Slime : Monster
     #region Coroutine
     private IEnumerator ClosingToTarget()
     {
-        followEvent?.Invoke(target.transform, GetModifiedStat(E_BattleStat.Speed),
+        followEvent?.Invoke(target.transform, new Info<float, float>(GetModifiedStat(E_BattleStat.Speed), skills[saveSkill[countUsedSkill]].detectRadius),
             () => myAnim.SetBool("b_Moving",true),
             () => myAnim.SetBool("b_Moving", false));
 
@@ -289,7 +289,7 @@ public class Slime : Monster
                 break;
             case 2:
                 {
-                    followEvent?.Invoke(target.transform, GetModifiedStat(E_BattleStat.Speed),
+                    followEvent?.Invoke(target.transform, new Info<float, float>(GetModifiedStat(E_BattleStat.Speed), skills[saveSkill[countUsedSkill]].detectRadius),
                         () => myAnim.SetBool("b_Moving", true),
                         () => myAnim.SetBool("b_Moving", false));
                 }

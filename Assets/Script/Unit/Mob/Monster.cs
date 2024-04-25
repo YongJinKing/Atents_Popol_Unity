@@ -44,7 +44,7 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd, IS
 
     #region Event
     public UnityEvent<Vector3, float, UnityAction, UnityAction> onMovementEvent;
-    public UnityEvent<Transform, float, UnityAction, UnityAction> followEvent;
+    public UnityEvent<Transform, Info<float, float>, UnityAction, UnityAction> followEvent;
     public UnityEvent<Transform, Info<float, float>, UnityAction, UnityAction> sideMoveEvent;
     public UnityEvent<Vector3, float> rotateEvent;
     public UnityEvent<UnityAction> stopEvent;

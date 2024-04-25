@@ -72,7 +72,7 @@ public class UnitMovement : CharacterProperty
         move = StartCoroutine(MovingToPos(target, Speed, startAct, endAct));
     }
 
-    public void FollowTarget(Transform target, float Speed, UnityAction startAct, UnityAction endAct)
+    public void FollowTarget(Transform target, Info<float, float> info, UnityAction startAct, UnityAction endAct)
     {
         if (follow != null)
         {
@@ -80,7 +80,7 @@ public class UnitMovement : CharacterProperty
             follow = null;
         }
 
-        follow = StartCoroutine(FollowingTarget(target, Speed, startAct, endAct));
+        follow = StartCoroutine(FollowingTarget(target, info, startAct, endAct));
     }
 
     public void SideMove(Transform target, Info<float, float> info, UnityAction startAct, UnityAction endAct)
@@ -203,8 +203,11 @@ public class UnitMovement : CharacterProperty
         endAct?.Invoke();
     }
 
-    public IEnumerator FollowingTarget(Transform target, float speed, UnityAction startAct, UnityAction endAct)
+    public IEnumerator FollowingTarget(Transform target, Info<float, float> info, UnityAction startAct, UnityAction endAct)
     {
+        //info arg0 : Speed, info arg1 : Offset
+        float Offset = info.arg1;
+
         while (target != null)
         {
             //�ִϸ��̼�
@@ -212,13 +215,13 @@ public class UnitMovement : CharacterProperty
 
             Vector3 dir = target.position - transform.position;
             //0.5�� ������
-            float dist = dir.magnitude - 2.0f;
+            float dist = dir.magnitude - Offset;
             if (dist < 0.0f) dist = 0.0f;
             float delta;
 
 
             dir.Normalize();
-            delta = speed * Time.deltaTime;
+            delta = info.arg0 * Time.deltaTime;
             if (delta > dist) delta = dist;
             transform.Translate(dir * delta, Space.World);
             if (Mathf.Approximately(dist, 0.0f))
@@ -230,7 +233,7 @@ public class UnitMovement : CharacterProperty
             dir.Normalize();
             float angle = Vector3.Angle(transform.forward, dir);
             float rotDir = Vector3.Dot(transform.right, dir) < 0.0f ? -1.0f : 1.0f;
-            delta = speed * 90.0f * Time.deltaTime;
+            delta = info.arg0 * 90.0f * Time.deltaTime;
             if (delta > angle) delta = angle;
             transform.Rotate(Vector3.up * rotDir * delta);
 

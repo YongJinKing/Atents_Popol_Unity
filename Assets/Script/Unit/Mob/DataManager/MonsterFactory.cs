@@ -61,7 +61,7 @@ public class MonsterFactory
         Monster objMon = FindAI(obj,data.Character_AIType);
 
         objMon.onMovementEvent = new UnityEngine.Events.UnityEvent<Vector3, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
-        objMon.followEvent = new UnityEngine.Events.UnityEvent<Transform, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
+        objMon.followEvent = new UnityEngine.Events.UnityEvent<Transform, Info<float, float>, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objMon.rotateEvent = new UnityEngine.Events.UnityEvent<Vector3, float>();
         objMon.sideMoveEvent = new UnityEngine.Events.UnityEvent<Transform, Info<float,float>, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objMon.stopEvent = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction>();

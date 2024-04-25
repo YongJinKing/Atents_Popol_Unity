@@ -90,7 +90,7 @@ public class TurtleShell : Monster
                 {
                     followEvent?.Invoke(
                         ptarget,
-                        battleStat.Speed,
+                        new Info<float, float>(GetModifiedStat(E_BattleStat.Speed), 2.0f),
                         () => myAnim.SetBool("b_IsMoving", true),
                         () =>
                         {
