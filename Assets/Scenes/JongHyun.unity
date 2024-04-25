@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -885,6 +885,14 @@ PrefabInstance:
       value: -17.324987
       objectReference: {fileID: 0}
     - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: hitEffectPrefeb
+      value: 
+      objectReference: {fileID: 342107834183907789, guid: 2a832b14c7810374297d8a82bbfa99bf, type: 3}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      propertyPath: areaOfEffectPrefeb
+      value: 
+      objectReference: {fileID: 6276089109279745642, guid: dedb901a77a5a0f49b6811c2b91c3cfa, type: 3}
+    - target: {fileID: 8354192742209068795, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       propertyPath: onSkillHitEvent.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -985,6 +993,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 26653372638042489, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1008477215}
+    - targetCorrespondingSourceObject: {fileID: 26653372638042489, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1008477223}
   m_SourcePrefab: {fileID: 100100000, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
 --- !u!1 &869082394
 GameObject:
@@ -1222,6 +1233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38b77ee406b558f4c92ba3eaa878a1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BuffAct:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1008477214 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 26653372638042489, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
@@ -1266,6 +1280,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3644806297972782553, guid: dbef5c316ee371e4f985561d49c239de, type: 3}
   m_PrefabInstance: {fileID: 784856805}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1008477223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008477214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38b77ee406b558f4c92ba3eaa878a1bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuffAct:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1102085674
 GameObject:
   m_ObjectHideFlags: 0

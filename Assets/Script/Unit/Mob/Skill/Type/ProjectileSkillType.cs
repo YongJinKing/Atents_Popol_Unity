@@ -103,7 +103,11 @@ public class ProjectileSkillType : HitCheckSkillType
         }
         else
         {
-            StartCoroutine(LinearMovingToPos(hitBox, target.position + Vector3.up * 0.5f, () => DestroyProjectile(hitBox)));
+            Collider temp = target.GetComponent<Collider>();
+            if(temp != null)
+                StartCoroutine(LinearMovingToPos(hitBox, temp.bounds.center, () => DestroyProjectile(hitBox)));
+            else
+                StartCoroutine(LinearMovingToPos(hitBox, target.position + Vector3.up * 0.5f, () => DestroyProjectile(hitBox)));
         }
 
         //투사체 각각이 남은시간을 가지고 있어야 하므로 코루틴에다가 remainDuration을 지역변수로 재정의 했다.
@@ -176,6 +180,8 @@ public class ProjectileSkillType : HitCheckSkillType
             //xz 평면에서 가는 거리
             float xzDist = (new Vector3(dir.x, 0, dir.z)).magnitude;
 
+            //이펙트가 방향을 바라보도록
+            hitBox.transform.Rotate(dir);
             //지속시간동안 이동
             //hitBox가 HitChecking에 의해서 사라지면 그대로 빠져나옴
             while (hitBox != null && dist >= 0.0f)
@@ -185,6 +191,7 @@ public class ProjectileSkillType : HitCheckSkillType
                 dist -= xzDist * delta;
                 // 이동한다.
                 hitBox.transform.Translate(dir * delta, Space.World);
+                
 
                 yield return null;
             }
