@@ -9792,7 +9792,6 @@ GameObject:
   - component: {fileID: 5043775719404443510}
   - component: {fileID: 5822180573955553681}
   - component: {fileID: 4446428923367374699}
-  - component: {fileID: 6924976944726820686}
   m_Layer: 0
   m_Name: EvilList
   m_TagString: Untagged
@@ -14753,9 +14752,8 @@ MonoBehaviour:
   Level: 3
   CoolTime: 7
   CoolTimeCheck: 0
+  Player: {fileID: 0}
   aType: 1
-  Buff: 0
-  BTime: 0
 --- !u!114 &4446428923367374699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14775,19 +14773,6 @@ MonoBehaviour:
     m_Bits: 4096
   duration: 0.1
   magnitud: 0.2
---- !u!114 &6924976944726820686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7731061219406223486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 789af81bd9fe78e41b1dac7b9226b05e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myab: 4
 --- !u!1 &8091776548384899569
 GameObject:
   m_ObjectHideFlags: 0

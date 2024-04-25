@@ -218,11 +218,23 @@ public class BattleSystem : CharacterProperty, IDamage
         int totaldmg;
         float computed = ComputeCompatibility(Atype, Dtype);
         totaldmg = (int)((float)dmg * computed);
-        Debug.Log("BattleSystem.TakeDamage");
+        /*Debug.Log("BattleSystem.TakeDamage");
         Debug.Log($"Atype : {Atype}, Dtype: {Dtype}");
-        Debug.Log($"total : {totaldmg}");
+        Debug.Log($"total : {totaldmg}");*/
         DamageTextController.Instance.DmgTxtPrint(transform.position, totaldmg, transform.name, computed);
 
+        switch(computed)
+        {
+            case 1.2f:
+                SoundManager.instance.PlaySfxMusic("Hit");
+                break;
+            case 1.0f:
+                SoundManager.instance.PlaySfxMusic("Hit");
+                break;
+            case 0.8f:
+                SoundManager.instance.PlaySfxMusic("Hit");
+                break;
+        }
 
         curBattleStat.HP -= totaldmg;
         hpbarChangeAct?.Invoke(MaxHP, HP);

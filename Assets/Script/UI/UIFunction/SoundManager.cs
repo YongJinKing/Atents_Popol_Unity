@@ -59,6 +59,20 @@ public class SoundManager : MonoBehaviour
         BgmPlayer.clip = audioBgmClips[index];
         BgmPlayer.Play();
     }
+
+    public void PlaySfxMusic(string Type)
+    {
+        int index = 0;
+        switch (Type)
+        {
+            case "Hit": index = 0; break;
+            case "MainBgm": index = 1; break;
+            case "WaveBgm": index = 2; break;
+        }
+
+        SfxPlayer.clip = audioSfxClips[index];
+        SfxPlayer.PlayOneShot(SfxPlayer.clip);
+    }
     public void SetMasterVolume(float volume)
     {
         m_AudioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);

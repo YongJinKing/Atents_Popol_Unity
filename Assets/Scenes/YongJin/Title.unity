@@ -3181,7 +3181,8 @@ MonoBehaviour:
   audioBgmClips:
   - {fileID: 8300000, guid: ad09e5be290c71e4fa449029a9adb63f, type: 3}
   - {fileID: 8300000, guid: d0eba12bb607710469bc8719e5f5ffba, type: 3}
-  audioSfxClips: []
+  audioSfxClips:
+  - {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
   BgmPlayer: {fileID: 1664866417}
   SfxPlayer: {fileID: 430986926}
   m_AudioMixer: {fileID: 24100000, guid: 8c8d4443772d45e48a2b3b794b59df85, type: 2}
@@ -9985,10 +9986,14 @@ MonoBehaviour:
     PlayerInven: 
     PlayerInvenDuraion: 
     PlayTime: 0
+    Master_Volum: 0.75
+    Bgm_Volum: 0.75
+    Sfx_Volum: 0.75
+    Master_Mute_Check: 1
+    Bgm_Mute_Check: 1
+    Sfx_Mute_Check: 1
   path: 
   fileName: PlayerData
-  Bgm_Volum: 0
-  Sfx_Volum: 0
   StageNum: 0
   SlotNum: 0
 --- !u!4 &1782428260
