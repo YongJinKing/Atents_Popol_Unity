@@ -157,6 +157,7 @@ public class GameManager : MonoBehaviour
                     curRewardExp += curWave.Wave_Reward_Exp;
                     DataManager.instance.SaveData();
                     waveEndEvent?.Invoke();
+                    player.GetComponent<Status>().Add(E_Buff.DotHeal);
                 }
             }
 

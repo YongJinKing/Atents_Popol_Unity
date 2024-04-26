@@ -45,7 +45,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     public UnityEvent<int, int> EnergyGageAct;
     public UnityEvent<int> SkillAct;
     public UnityEvent DurabilityAct;
-    public float rotSpeed = 0.1f;
+    public float rotSpeed = 10.0f;
     public float DadgeDelay = 0;
     public float dadgePw;
     float FireDelay = 0;
@@ -316,7 +316,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
                 {
                     SkillAct?.Invoke(i);
                     ChangeState(state.Skill);
-                    rotSpeed = 0.1f;
+                    rotSpeed = 100.0f;
                     curBattleStat.EnergyGage -= sm.EnergyGage;
                     EnergyGageCal();
                     GetRaycastHit();

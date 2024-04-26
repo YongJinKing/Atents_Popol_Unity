@@ -122,7 +122,7 @@ public class Status : MonoBehaviour
                 break;
             case E_StatusAbnormality.Blind:
                 {
-                    //obj.AddComponent<CorrosionStatusEffect>();
+                    obj.AddComponent<BlindStatusEffect>();
                     obj.name = "Blind";
                     condition.myStatusAbType = E_StatusAbnormality.Blind;
                     abnormals.Add(E_StatusAbnormality.Blind, condition);

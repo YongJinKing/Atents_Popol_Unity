@@ -13,20 +13,20 @@ public abstract class DotDamageStatusEffect : StatusEffect
 
     public DotDamageStatusEffect(string s) : base(s) { }
 
-    protected void Start()
+    protected virtual void Start()
     {
         LoadEffect();
-
+        Initailize();
         target = GetComponentInParent<BattleSystem>();
         value = (int)(target.MaxHP * (dotRate / 100.0f));
         if (value <= 0)
             value = 1;
 
-        Initailize();
+        
         StartCoroutine(DotDamaging());
     }
 
-    protected void OnDestroy()
+    protected virtual void OnDestroy()
     {
         StopAllCoroutines();
     }

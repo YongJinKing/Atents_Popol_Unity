@@ -9,7 +9,7 @@ public abstract class StatValueChangeStatusEffect : StatusEffect
 
     public StatValueChangeStatusEffect(string s) : base(s) { }
 
-    protected void Start()
+    protected virtual void Start()
     {
         LoadEffect();
         Initailize();
