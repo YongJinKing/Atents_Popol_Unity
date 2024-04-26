@@ -1,23 +1,23 @@
 {
     "index": 0,
-    "Character_Hp": 600,
-    "Character_AttackPower": 70,
-    "Character_CurrentExp": 3300,
-    "Character_CurrentLevel": 6,
+    "Character_Hp": 540,
+    "Character_AttackPower": 40,
+    "Character_CurrentExp": 650,
+    "Character_CurrentLevel": 3,
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
-    "Weapon_Id": 1000,
+    "Weapon_Id": 1100,
     "Armor_Id": 1001,
-    "Weapon_Ability": 10,
+    "Weapon_Ability": 30,
     "Armor_Ability": 10,
     "WeaponType": 0,
     "ArmorType": 10,
     "Weapon_Duration": 0,
-    "Armor_Duration": 73,
+    "Armor_Duration": 64,
     "UiSkillList": [
         "ShadowDot",
-        "",
+        "EvilList",
         "",
         "",
         "",
@@ -119,18 +119,22 @@
     ],
     "InGameSkill": [
         "ShadowDot",
-        "",
+        "EvilList",
         "",
         ""
     ],
     "clearStage": [
-        true,
-        true
+        false,
+        false
     ],
-    "PlayerGold": 7050,
-    "PlayerInven": [],
-    "PlayerInvenDuraion": [],
-    "PlayTime": 710,
+    "PlayerGold": 650,
+    "PlayerInven": [
+        1000
+    ],
+    "PlayerInvenDuraion": [
+        26
+    ],
+    "PlayTime": 1165,
     "Master_Volum": 0.75,
     "Bgm_Volum": 0.75,
     "Sfx_Volum": 0.75,
