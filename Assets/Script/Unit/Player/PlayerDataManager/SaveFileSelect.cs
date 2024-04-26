@@ -28,7 +28,7 @@ public class SaveFileSelect : MonoBehaviour
 
     private void Start()
     {
-        PlayerDetaManager.GetInstance().LoadPlayerData();
+        PlayerDataManager.GetInstance().LoadPlayerData();
         SlotCheck();
     }
 
@@ -101,7 +101,7 @@ public class SaveFileSelect : MonoBehaviour
     public void GoGame()	// 게임 씬으로 이동    1 Title, 2 Loading, 3 Main
     {
         var playerdata = DataManager.instance.playerData;
-        var playerstat = PlayerDetaManager.instance.dicPlayerData[10000];
+        var playerstat = PlayerDataManager.instance.dicPlayerData[10000];
         if (!savefile[DataManager.instance.SlotNum])	// 저장되어있는 데이터가 없으면
         {
             playerdata.Character_CurrentLevel = playerstat.Character_CurrentLevel;

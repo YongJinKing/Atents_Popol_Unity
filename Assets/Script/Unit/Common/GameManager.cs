@@ -107,11 +107,11 @@ public class GameManager : MonoBehaviour
         bs.AttackDelay = pldata.Character_AttackSpeed; // float
 
         NextLevel = bs.Level + 1;
-        if(NextLevel >= PlayerDetaManager.instance.dicPlayerData[10000].Character_MaxLevel)
+        if(NextLevel >= PlayerDataManager.instance.dicPlayerData[10000].Character_MaxLevel)
         {
-            NextLevel = PlayerDetaManager.instance.dicPlayerData[10000].Character_MaxLevel;
+            NextLevel = PlayerDataManager.instance.dicPlayerData[10000].Character_MaxLevel;
         }
-        var plLvstat1 = PlayerDetaManager.instance.dicPlayerLevelData[NextLevel];
+        var plLvstat1 = PlayerDataManager.instance.dicPlayerLevelData[NextLevel];
         bs.MaxExp = plLvstat1.Total_Exp;
 
         pl.battlestat = bs;
@@ -180,9 +180,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LevelUp()
     {
-        var playerstat = PlayerDetaManager.instance.dicPlayerData[10000];
+        var playerstat = PlayerDataManager.instance.dicPlayerData[10000];
         var playerdata = DataManager.instance.playerData;
-        while(playerdata.Character_CurrentExp >= PlayerDetaManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel + 1].Total_Exp)
+        while(playerdata.Character_CurrentExp >= PlayerDataManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel + 1].Total_Exp)
         {
             playerdata.Character_CurrentLevel++;
             if (playerdata.Character_CurrentLevel >= 30)
@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
                 playerdata.Character_CurrentLevel = 30;
             }
             yield return null;
-            var plLvstat = PlayerDetaManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel];
+            var plLvstat = PlayerDataManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel];
             playerdata.Character_AttackPower = playerstat.Character_AttackPower + plLvstat.Total_AttackPower;
             playerdata.Character_Hp = playerstat.Character_Hp + plLvstat.Total_Hp;
         }

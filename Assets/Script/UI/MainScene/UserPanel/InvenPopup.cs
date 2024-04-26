@@ -113,9 +113,9 @@ public class InvenPopup : MonoBehaviour
         Inven.transform.Find("DescPopup").Find("Paper").Find("ItemName").GetComponent<TMP_Text>().text
         = go.ItemName;
         Inven.transform.Find("DescPopup").Find("Paper").Find("ItemType").GetComponent<TMP_Text>().text
-        = WeaponTypeToString(go.WeaponType);
+        = ItemTypeIntToString.IntToStringUIDesc(go.WeaponType);
         Inven.transform.Find("DescPopup").Find("Paper").Find("ItemValue").GetComponent<TMP_Text>().text
-        = RiggingTypeToString(go.ItemRigging) + go.ItemValue.ToString();
+        = ItemTypeIntToString.IntToStringRiggingType(go.ItemRigging) + go.ItemValue.ToString();
         Inven.transform.Find("DescPopup").Find("Paper").Find("ItemDesc").GetComponent<TMP_Text>().text
         = go.ItemDesc;
         Inven.transform.Find("DescPopup").Find("Paper").Find("DurationDesc").Find("Value").GetComponent<TMP_Text>().text
@@ -162,6 +162,7 @@ public class InvenPopup : MonoBehaviour
     
     public void PlayerAbilityUpdate()
     {   
+        PlayerDataManager.instance.LoadPlayerData();
         PlayerItem.transform.Find("Armor").GetComponent<UIItem>()
         .Init(InvenManager.transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().id);
 
@@ -180,52 +181,20 @@ public class InvenPopup : MonoBehaviour
         InvenManager.transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemValue).ToString();
 
         PlayerDetailAbility.transform.Find("AttackType").GetComponent<TMP_Text>().text 
-        = "무기 종류 : \n" + WeaponTypeToString(PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType);
+        = "무기 종류 : \n" + ItemTypeIntToString.IntToStringUIDesc(PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType);
 
         PlayerDetailAbility.transform.Find("ArmorType").GetComponent<TMP_Text>().text 
-        = "방어구 종류 : \n" + WeaponTypeToString(PlayerItem.transform.Find("Armor").GetComponent<UIItem>().WeaponType);
-
+        = "방어구 종류 : \n" + ItemTypeIntToString.IntToStringUIDesc(PlayerItem.transform.Find("Armor").GetComponent<UIItem>().WeaponType);
+        //PlayerDetailAbility.transform.GetChild(6).GetChild(0).GetComponent<TMP_Text>().text
+        //= $"Exp : {}"
+        
+        var NextData = PlayerDataManager.instance.dicPlayerLevelData[DataManager.instance.playerData.Character_CurrentLevel + 1];
         DataManager.instance.playerData.Weapon_Ability = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().ItemValue;
         DataManager.instance.playerData.Armor_Ability = PlayerItem.transform.Find("Armor").GetComponent<UIItem>().ItemValue;
         DataManager.instance.playerData.WeaponType = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType;
     }
 
-    public string WeaponTypeToString(int index)
-    {
-        string Rtstring = "";
-        //0 : 한손 검, 1: 양손 검, 2 : 한손 둔기, 3 : 양손 둔기, 4 : 창, 5 : 단검, 6 : 투창용 창, 10 : 가죽, 11 : 경갑, 12 : 판금
-        if(index == 0)
-            Rtstring = "한손 검";
-        if(index == 1)
-            Rtstring = "양손 검";
-        if(index == 2)
-            Rtstring = "한손 둔기";
-        if(index == 3)
-            Rtstring = "양손 둔기";
-        if(index == 4)
-            Rtstring = "창";
-        if(index == 5)
-            Rtstring = "단검";
-        if(index == 6)
-            Rtstring = "투창용 창";
-        if(index == 10)
-            Rtstring = "가죽";
-        if(index == 11)
-            Rtstring = "경갑";
-        if(index == 12)
-            Rtstring = "판금";
-        return Rtstring;
-    }
-    public string RiggingTypeToString(int index)
-    {
-        string Rtstring = "";
-        //0 : 무기 1 : 방어구
-        if(index == 0)
-            Rtstring = "공격력 : ";
-        if(index == 1)
-            Rtstring = "체력 : ";
-       
-        return Rtstring;
-    }
+    
+    
     
 }

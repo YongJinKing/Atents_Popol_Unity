@@ -30,6 +30,17 @@ public class ItemTypeIntToString : MonoBehaviour
             Rtstring = "판금";
         return Rtstring;
     }
+    public static string IntToStringRiggingType(int index)
+    {
+        string Rtstring = "";
+        //0 : 무기 1 : 방어구
+        if(index == 0)
+            Rtstring = "공격력 : ";
+        if(index == 1)
+            Rtstring = "체력 : ";
+       
+        return Rtstring;
+    }
     public static string IntToStringUISkillType(int index)
     {
         string Rtstring = "";

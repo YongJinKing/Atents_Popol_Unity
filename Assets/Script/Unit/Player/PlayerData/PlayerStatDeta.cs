@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatDeta
+public class PlayerStatData
 {
     public int index;
     public int Character_Type;
