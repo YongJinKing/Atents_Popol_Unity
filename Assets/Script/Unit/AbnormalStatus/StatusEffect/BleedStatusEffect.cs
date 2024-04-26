@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DotHealStatusEffect : DotDamageStatusEffect
+public class BleedStatusEffect : DotDamageStatusEffect
 {
-    public DotHealStatusEffect() : base("Heal") { }
+    public BleedStatusEffect() : base("Bleeding") { }
     protected override void Initailize()
     {
         dotRate = 0.5f;
-        isHeal = true;
+        isHeal = false;
     }
 }

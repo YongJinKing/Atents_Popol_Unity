@@ -18,5 +18,21 @@
   {
     "index": 20002,
     "Prefab_Name": "Effect_SlimeBallHit"
+  },
+  {
+    "index": 20003,
+    "Prefab_Name": "Effect_Needle"
+  },
+  {
+    "index": 20004,
+    "Prefab_Name": "Effect_NeedleHit"
+  },
+  {
+    "index": 20005,
+    "Prefab_Name": "Effect_SlimeRushHit"
+  },
+  {
+    "index": 20006,
+    "Prefab_Name": "Effect_StickyBall"
   }
 ]

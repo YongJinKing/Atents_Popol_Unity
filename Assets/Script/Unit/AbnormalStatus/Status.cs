@@ -129,6 +129,15 @@ public class Status : MonoBehaviour
                     BuffType(2005);
                 }
                 break;
+            case E_StatusAbnormality.Bleed:
+                {
+                    obj.AddComponent<BleedStatusEffect>();
+                    obj.name = "Bleed";
+                    condition.myStatusAbType = E_StatusAbnormality.Bleed;
+                    abnormals.Add(E_StatusAbnormality.Bleed, condition);
+                    BuffType(2006);
+                }
+                break;
         }
 
         obj.transform.SetParent(this.transform, false);
