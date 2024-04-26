@@ -140,7 +140,7 @@ public class SkillPopup : MonoBehaviour
 
     public void SkillChange(string SkillName, int index)
     {
-        Debug.Log("checkSkillChange");
+        //Debug.Log("checkSkillChange");
         var inst = DataManager.instance.playerData;
         for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)
         {
