@@ -18,7 +18,7 @@ public class DurationStatusCondition : StatusCondition
         }
         else if (myBuffType != E_Buff.None)
         {
-            duration = ConditionDataManager.GetInstance().dicConditionDatas[(int)myStatusAbType + 1000].Condition_DurationTime;
+            duration = ConditionDataManager.GetInstance().dicConditionDatas[(int)myBuffType + 1000].Condition_DurationTime;
         }
 
         StartCoroutine(DurationChecking());

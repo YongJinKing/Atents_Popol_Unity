@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
     //player loss Game
     public UnityEvent lossGameEvent;
 
-    public GameObject Player;
+    public GameObject player;
     public HpAndEnergy hpEpBar;
     public WaveUI waveUI;
 
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
     {
         mf = new MonsterFactory();
 
-        pl = Player.GetComponent<Player>();
+        pl = player.GetComponent<Player>();
         pl.hpbarChangeAct.AddListener(hpEpBar.HpGageTrigger);
 
         //Monster = mf.CreateMonster(30000);
@@ -193,6 +194,9 @@ public class GameManager : MonoBehaviour
             var plLvstat = PlayerDataManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel];
             playerdata.Character_AttackPower = playerstat.Character_AttackPower + plLvstat.Total_AttackPower;
             playerdata.Character_Hp = playerstat.Character_Hp + plLvstat.Total_Hp;
+
+            GameObject effect = Instantiate<GameObject>(Resources.Load($"Buff/LvUp") as GameObject);
+            effect.transform.SetParent(player.transform, false); 
         }
     }
     

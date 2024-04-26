@@ -174,37 +174,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         isDadgeReady = DadgeDelay < 0;
 
         ProcessState();
-        bufftime += Time.deltaTime;
-
-
-        
-
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            float HillBuffTime = 10;
-            StartCoroutine(Hill(HillBuffTime));
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            float SpeedBuffTime = 10;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            float AttackSpeedBuffTime = 10;
-            myAnim.SetFloat("AttackSpeed", 2f);
-            StartCoroutine(StopAttackSpeed(AttackSpeedBuffTime));
-
-        }
-
-    }
-
-
-    IEnumerator StopAttackSpeed(float BuffTime)
-    {
-        yield return new WaitForSeconds(BuffTime);
-        myAnim.SetFloat("AttackSpeed", 1.0f);
     }
 
     public void GetStun()
@@ -226,18 +195,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         DeBuffScr.transform.Find("Blind").gameObject.SetActive(true);
         float BlindDebuffTime = 10;
         StopScr("Blind", BlindDebuffTime);
-    }
-
-    IEnumerator Hill(float HillBufftime)
-    {
-        bufftime = 0;
-        while (bufftime < HillBufftime)
-        {
-            float tick = (float)(battleStat.HP * 0.003);
-            HP += (int)tick;
-            hpbarChangeAct?.Invoke(MaxHP, HP);
-            yield return new WaitForSeconds(0.2f);
-        }
     }
 
    
@@ -336,8 +293,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     }
 
 
-
-
     public void Skill()
     {
         for(int i = 0; i < 4; i++)
@@ -353,7 +308,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
                 }
                 else
                 {
-                    Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
+                    Debug.Log("ÇöÀç ½½·Ô¿¡ ½ºÅ³ÀÌ ¾ø½À´Ï´Ù.");
                     return;
                 }
 
@@ -409,43 +364,11 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     {
         if(!Death)
         {
-            var emission = particle.emission;
-
-            emission.rateOverTime = 0;
             deathAlarm?.Invoke(0, gameObject);
             stopAct?.Invoke(null);
-            StartCoroutine(TimeControl());
             myAnim.SetTrigger("t_Death");
 
             Death = true;
-        }
-    }
-
-    IEnumerator TimeControl()
-    {
-        float slowTime = 0.5f;
-        while (!Mathf.Approximately(slowTime, 0.1f))
-        {
-            Time.timeScale = slowTime;
-            slowTime -= Time.deltaTime * 1.5f;
-            if (slowTime < 0.1f)
-            {
-                slowTime = 0.1f;
-            }
-            yield return null;
-        }
-        yield return new WaitForSecondsRealtime(1.0f);
-
-        slowTime = 0.5f;
-        while (slowTime < 1.0f)
-        {
-            slowTime += Time.deltaTime;
-            if (slowTime > 1.0f)
-            {
-                slowTime = 1.0f;
-            }
-            Time.timeScale = slowTime;
-            yield return null;
         }
     }
 
@@ -495,16 +418,53 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         ChangeState(state.Idle);
     }
 
-    /*
-    public void SlowDebuff(float DeBuffTime)
+    public override void TakeDamage(int dmg, AttackType Atype, DefenceType Dtype)
     {
-        curBattleStat.Speed -= (float)(battleStat.Speed * 0.1);
-        StartCoroutine(SlowDown(DeBuffTime));
-    }
-    */
-    IEnumerator SlowDown(float DeBuffTime)
-    {
-        yield return new WaitForSeconds(DeBuffTime);
-        curBattleStat.Speed += (float)(battleStat.Speed * 0.1);
+        int totaldmg;
+        float computed = ComputeCompatibility(Atype, Dtype);
+        var Armor = DataManager.instance.playerData.Armor_Duration;
+        float DurationDmg = 1.0f;
+
+        if (Armor <= 50)
+        {
+            DurationDmg = 1.1f;
+            if(Armor <= 25)
+            {
+                DurationDmg = 1.25f;
+                if(Armor <= 0)
+                {
+                    DurationDmg = 1.4f;
+                }
+            }
+        }
+
+        totaldmg = (int)((float)dmg * computed * DurationDmg);
+        /*Debug.Log("BattleSystem.TakeDamage");
+        Debug.Log($"Atype : {Atype}, Dtype: {Dtype}");
+        Debug.Log($"total : {totaldmg}");*/
+        DamageTextController.Instance.DmgTxtPrint(transform.position, totaldmg, transform.name, computed);
+
+        switch (computed)
+        {
+            case 1.2f:
+                SoundManager.instance.PlaySfxMusic("Hit");
+                break;
+            case 1.0f:
+                SoundManager.instance.PlaySfxMusic("Hit");
+                break;
+            case 0.8f:
+                SoundManager.instance.PlaySfxMusic("Hit");
+                break;
+        }
+
+        curBattleStat.HP -= totaldmg;
+        hpbarChangeAct?.Invoke(MaxHP, HP);
+        DurationAct?.Invoke();
+
+        if (curBattleStat.HP <= 0.0f)
+        {
+            //Die
+            OnDead();
+        }
     }
 }

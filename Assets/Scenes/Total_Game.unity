@@ -3559,7 +3559,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Player: {fileID: 1324776926}
+  player: {fileID: 1324776926}
   hpEpBar: {fileID: 1823255449}
   waveUI: {fileID: 511627395}
   curRewardGold: 0

@@ -21,11 +21,10 @@ public abstract class StatusEffect : MonoBehaviour
         if (EffectPrefabName == null)
             return;
         
-        GameObject Effect = Instantiate(Resources.Load<GameObject>($"DeBuff/{EffectPrefabName}"));
-        if(Effect == null)
-        {
-            Effect = Instantiate(Resources.Load<GameObject>($"Buff/{EffectPrefabName}"));
-        }
+        GameObject Effect = (Resources.Load<GameObject>($"DeBuff/{EffectPrefabName}")) ?? 
+            (Resources.Load<GameObject>($"Buff/{EffectPrefabName}"));
+        
+        Effect = Instantiate(Effect);
         Effect.transform.SetParent(transform, false);
         Effect.transform.localPosition += Vector3.up * 0.5f;
     }

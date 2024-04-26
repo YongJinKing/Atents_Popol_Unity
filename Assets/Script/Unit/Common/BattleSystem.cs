@@ -213,7 +213,7 @@ public class BattleSystem : CharacterProperty, IDamage
         curBattleStat.EnergyGage = 0;
     }
     
-    public void TakeDamage(int dmg, AttackType Atype, DefenceType Dtype)
+    public virtual void TakeDamage(int dmg, AttackType Atype, DefenceType Dtype)
     {
         int totaldmg;
         float computed = ComputeCompatibility(Atype, Dtype);
@@ -247,7 +247,7 @@ public class BattleSystem : CharacterProperty, IDamage
         }
     }
 
-    private float ComputeCompatibility(AttackType Atype, DefenceType Dtype)
+    protected float ComputeCompatibility(AttackType Atype, DefenceType Dtype)
     {
         float computed = 1.0f;
         switch (Atype)
