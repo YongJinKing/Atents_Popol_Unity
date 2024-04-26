@@ -79,6 +79,19 @@ public class ProjectileSkillType : HitCheckSkillType
 
     //protected 함수들 영역
     #region ProtectedMethod
+    protected void RotateHitBox(Transform hitBox, Vector3 dir)
+    {
+        float xAngle = Vector3.Angle(hitBox.forward, new Vector3(0, dir.y, 0));
+        float rotXDir = 1.0f;
+
+
+        if (Vector3.Dot(hitBox.up, dir) < 0.0f)
+        {
+            rotXDir = -1.0f;
+        }
+
+        hitBox.rotation = Quaternion.LookRotation(dir, Vector3.right * xAngle * rotXDir);
+    }
     #endregion
 
     //public 함수들 영역
@@ -181,7 +194,7 @@ public class ProjectileSkillType : HitCheckSkillType
             float xzDist = (new Vector3(dir.x, 0, dir.z)).magnitude;
 
             //이펙트가 방향을 바라보도록
-            hitBox.transform.Rotate(dir);
+            RotateHitBox(hitBox.transform, dir);
             //지속시간동안 이동
             //hitBox가 HitChecking에 의해서 사라지면 그대로 빠져나옴
             while (hitBox != null && dist >= 0.0f)
@@ -247,6 +260,7 @@ public class ProjectileSkillType : HitCheckSkillType
                 yValue -= gValue * Time.deltaTime;
                 hitBox.transform.Translate(Vector3.up * yValue * Time.deltaTime, Space.World);
 
+                RotateHitBox(hitBox.transform, new Vector3(dir.x * moveSpeed, yValue, dir.z * moveSpeed).normalized);
                 yield return null;
             }
         }
