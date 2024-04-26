@@ -162,6 +162,7 @@ public class InvenPopup : MonoBehaviour
     
     public void PlayerAbilityUpdate()
     {   
+        var inst = DataManager.instance.playerData;
         PlayerDataManager.instance.LoadPlayerData();
         PlayerItem.transform.Find("Armor").GetComponent<UIItem>()
         .Init(InvenManager.transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().id);
@@ -170,14 +171,14 @@ public class InvenPopup : MonoBehaviour
         .Init(InvenManager.transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().id);
 
         PlayerDetailAbility.transform.Find("Level").GetComponent<TMP_Text>().text
-        = "레벨 : " + DataManager.instance.playerData.Character_CurrentLevel.ToString();
+        = "레벨 : " + inst.Character_CurrentLevel.ToString();
 
         PlayerDetailAbility.transform.Find("Hp").GetComponent<TMP_Text>().text
-        = "체력 : " + (DataManager.instance.playerData.Character_Hp + 
+        = "체력 : " + (inst.Character_Hp + 
         InvenManager.transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().ItemValue).ToString();
 
         PlayerDetailAbility.transform.Find("AttackPower").GetComponent<TMP_Text>().text
-        = "공격력 : " + (DataManager.instance.playerData.Character_AttackPower + 
+        = "공격력 : " + (inst.Character_AttackPower + 
         InvenManager.transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemValue).ToString();
 
         PlayerDetailAbility.transform.Find("AttackType").GetComponent<TMP_Text>().text 
@@ -185,13 +186,20 @@ public class InvenPopup : MonoBehaviour
 
         PlayerDetailAbility.transform.Find("ArmorType").GetComponent<TMP_Text>().text 
         = "방어구 종류 : \n" + ItemTypeIntToString.IntToStringUIDesc(PlayerItem.transform.Find("Armor").GetComponent<UIItem>().WeaponType);
-        //PlayerDetailAbility.transform.GetChild(6).GetChild(0).GetComponent<TMP_Text>().text
-        //= $"Exp : {}"
         
-        var NextData = PlayerDataManager.instance.dicPlayerLevelData[DataManager.instance.playerData.Character_CurrentLevel + 1];
-        DataManager.instance.playerData.Weapon_Ability = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().ItemValue;
-        DataManager.instance.playerData.Armor_Ability = PlayerItem.transform.Find("Armor").GetComponent<UIItem>().ItemValue;
-        DataManager.instance.playerData.WeaponType = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType;
+        
+
+        var CurrentData = PlayerDataManager.instance.dicPlayerLevelData[inst.Character_CurrentLevel];
+        var NextData = PlayerDataManager.instance.dicPlayerLevelData[inst.Character_CurrentLevel + 1];
+        int CurrnetExp = inst.Character_CurrentExp - CurrentData.Total_Exp;
+        PlayerDetailAbility.transform.GetChild(6).GetChild(0).GetComponent<Image>().fillAmount =
+        (float)CurrnetExp / (float)NextData.Exp;
+        PlayerDetailAbility.transform.GetChild(6).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text
+        = $"Exp : {Mathf.Floor(((float)CurrnetExp / (float)NextData.Exp) * 100.0f)}%";
+
+        inst.Weapon_Ability = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().ItemValue;
+        inst.Armor_Ability = PlayerItem.transform.Find("Armor").GetComponent<UIItem>().ItemValue;
+        inst.WeaponType = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType;
     }
 
     
