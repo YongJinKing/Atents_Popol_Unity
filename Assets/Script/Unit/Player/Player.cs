@@ -45,7 +45,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     public UnityEvent<int, int> EnergyGageAct;
     public UnityEvent<int> SkillAct;
     public UnityEvent DurabilityAct;
-    public float rotSpeed = 2;
+    public float rotSpeed = 0.1f;
     public float DadgeDelay = 0;
     public float dadgePw;
     float FireDelay = 0;
@@ -316,7 +316,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
                 {
                     SkillAct?.Invoke(i);
                     ChangeState(state.Skill);
-                    rotSpeed = 5.0f;
+                    rotSpeed = 0.1f;
                     curBattleStat.EnergyGage -= sm.EnergyGage;
                     EnergyGageCal();
                     GetRaycastHit();
@@ -376,12 +376,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     {
         var plData = DataManager.instance.playerData;
 
-        if(plData.Armor_Duration <= 0)
-        {
-            plData.Armor_Duration = 0;
-        }
-
-
         switch (Random.Range(0, 2))
         {
             case 0:
@@ -390,6 +384,12 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
             case 1:
                 break;
         }
+
+        if (plData.Armor_Duration <= 0)
+        {
+            plData.Armor_Duration = 0;
+        }
+
         if (plData.Armor_Duration == 40 || plData.Armor_Duration == 20 || plData.Armor_Duration == 0)
         {
             DurabilityAct?.Invoke();
