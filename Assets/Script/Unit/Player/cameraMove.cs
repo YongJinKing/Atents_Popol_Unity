@@ -50,9 +50,13 @@ public class cameraMove : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F8))
+        if (Input.GetKeyDown(KeyCode.F11))
         {
             UnitDeath(1);
+        }
+        if (Input.GetKeyDown(KeyCode.F12))
+        {
+            UnitDeath(0);
         }
 
         if (!isCine)     //마우???�력�?관?�된 코드
@@ -144,7 +148,6 @@ public class cameraMove : MonoBehaviour
             myCam.transform.position = Vector3.Lerp(myCam.transform.position, target.position, Time.deltaTime * cineCamSpeed);
             myCam.transform.rotation = Quaternion.Lerp(myCam.transform.rotation, target.rotation, Time.deltaTime * cineCamSpeed);
             float dis = Vector3.Distance(myCam.transform.position, target.position);
-
             cineCamSpeed = 60;
 
             if (dis <= 0.5f)

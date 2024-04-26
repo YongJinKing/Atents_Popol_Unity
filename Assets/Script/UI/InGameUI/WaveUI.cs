@@ -57,7 +57,7 @@ public class WaveUI : MonoBehaviour
         }*/
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
-            playTime++;
+            playTime += 10;
         }
     }
 
