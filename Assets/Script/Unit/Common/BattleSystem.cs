@@ -246,7 +246,7 @@ public class BattleSystem : CharacterProperty, IDamage
             }
         }
 
-        curBattleStat.HP -= totaldmg;
+        HP -= totaldmg;
         
         DurationAct?.Invoke();
 
