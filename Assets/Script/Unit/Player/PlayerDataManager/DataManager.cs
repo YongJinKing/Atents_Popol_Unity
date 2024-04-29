@@ -23,8 +23,8 @@ public class PlayerData
     public int Rigging_Armor_Id;
     public int Rigging_Weapon_Ability;
     public int Rigging_Armor_Ability;
-    public int Rigging_WeaponType; 
-    public int Rigging_ArmorType;
+    public int Rigging_Weapon_Type; 
+    public int Rigging_Armor_Type;
     public int Rigging_Weapon_Duration;
     public int Rigging_Armor_Duration;
 

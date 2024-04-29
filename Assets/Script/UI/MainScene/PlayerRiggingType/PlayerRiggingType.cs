@@ -78,9 +78,9 @@ public class PlayerRiggingType : MonoBehaviour
         DataManager.instance.playerData.Rigging_Armor_Duration = 
         transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().ItemDuration;
 
-        DataManager.instance.playerData.Rigging_WeaponType = 
+        DataManager.instance.playerData.Rigging_Weapon_Type = 
         transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().WeaponType;
-        DataManager.instance.playerData.Rigging_ArmorType = 
+        DataManager.instance.playerData.Rigging_Armor_Type = 
         transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().WeaponType;
     }
 }

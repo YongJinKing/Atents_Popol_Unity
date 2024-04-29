@@ -148,7 +148,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         controllKey[E_Skill.RSkill] = KeyCode.R;
 
         base.Start();
-        WeaponType = DataManager.instance.playerData.Rigging_WeaponType;
+        WeaponType = DataManager.instance.playerData.Rigging_Weapon_Type;
         switch (WeaponType)
         {
             case 0:

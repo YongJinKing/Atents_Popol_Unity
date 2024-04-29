@@ -199,7 +199,7 @@ public class InvenPopup : MonoBehaviour
 
         inst.Rigging_Weapon_Ability = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().ItemValue;
         inst.Rigging_Armor_Ability = PlayerItem.transform.Find("Armor").GetComponent<UIItem>().ItemValue;
-        inst.Rigging_WeaponType = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType;
+        inst.Rigging_Weapon_Type = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType;
     }
 
     

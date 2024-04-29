@@ -15,7 +15,7 @@ public class InGameUISkillSlot : MonoBehaviour
         for(int i = 0; i < SkillSlotList.childCount; i++)
         {
             GameObject SkillGameObject = Resources.Load<GameObject>
-            ($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(DataManager.instance.playerData.Rigging_WeaponType)}/{DataManager.instance.playerData.InGameSkillList[i]}");
+            ($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(DataManager.instance.playerData.Rigging_Weapon_Type)}/{DataManager.instance.playerData.InGameSkillList[i]}");
             
             if(SkillGameObject != null)
             {
