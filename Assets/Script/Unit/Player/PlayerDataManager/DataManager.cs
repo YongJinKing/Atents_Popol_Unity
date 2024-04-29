@@ -10,7 +10,6 @@ using System;
 [Serializable]
 public class PlayerData
 {
-    public int index;
     public int Character_Hp;
     public int Character_AttackPower;
     public int Character_CurrentExp;
