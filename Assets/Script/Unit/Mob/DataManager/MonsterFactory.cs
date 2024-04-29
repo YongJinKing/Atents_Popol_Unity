@@ -144,7 +144,6 @@ public class MonsterFactory
             }
         }
 
-
         return obj;
     }
 

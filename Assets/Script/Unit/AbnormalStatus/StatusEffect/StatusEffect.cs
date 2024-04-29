@@ -26,6 +26,6 @@ public abstract class StatusEffect : MonoBehaviour
         
         Effect = Instantiate(Effect);
         Effect.transform.SetParent(transform, false);
-        Effect.transform.localPosition += Vector3.up * 0.5f;
+        //Effect.transform.localPosition += Vector3.up * 0.5f;
     }
 }

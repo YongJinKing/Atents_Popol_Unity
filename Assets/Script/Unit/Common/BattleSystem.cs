@@ -221,19 +221,28 @@ public class BattleSystem : CharacterProperty, IDamage
         /*Debug.Log("BattleSystem.TakeDamage");
         Debug.Log($"Atype : {Atype}, Dtype: {Dtype}");
         Debug.Log($"total : {totaldmg}");*/
-        DamageTextController.Instance.DmgTxtPrint(transform.position, totaldmg, transform.name, computed);
-
-        switch(computed)
+        DamageTextController damageInstance = DamageTextController.Instance;
+        if(damageInstance != null)
         {
-            case 1.2f:
-                SoundManager.instance.PlaySfxMusic("Hit");
-                break;
-            case 1.0f:
-                SoundManager.instance.PlaySfxMusic("Hit");
-                break;
-            case 0.8f:
-                SoundManager.instance.PlaySfxMusic("Hit");
-                break;
+            DamageTextController.Instance.DmgTxtPrint(transform.position, totaldmg, transform.name, computed);
+        }
+
+
+        SoundManager soundInstance = SoundManager.instance;
+        if(soundInstance != null)
+        {
+            switch (computed)
+            {
+                case 1.2f:
+                    SoundManager.instance.PlaySfxMusic("Hit");
+                    break;
+                case 1.0f:
+                    SoundManager.instance.PlaySfxMusic("Hit");
+                    break;
+                case 0.8f:
+                    SoundManager.instance.PlaySfxMusic("Hit");
+                    break;
+            }
         }
 
         curBattleStat.HP -= totaldmg;
