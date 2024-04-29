@@ -46,12 +46,12 @@ public class SaveFileSelect : MonoBehaviour
                 datamanager.LoadData();
                 ItemDataManager.GetInstance().InvenItemLoadDatas();
                 
-                if(DataManager.instance.playerData.Weapon_Id> 0)
+                if(DataManager.instance.playerData.Rigging_Weapon_Id> 0)
                 {
                     transform.Find("SlotList").GetChild(i).GetChild(0).Find("LoadSlot").Find("ProfileSlot").Find("Weapon").GetComponent<UIItem>().
-                    Init(datamanager.playerData.Weapon_Id);
+                    Init(datamanager.playerData.Rigging_Weapon_Id);
                     transform.Find("SlotList").GetChild(i).GetChild(0).Find("LoadSlot").Find("ProfileSlot").Find("Armor").GetComponent<UIItem>().
-                    Init(datamanager.playerData.Armor_Id);
+                    Init(datamanager.playerData.Rigging_Armor_Id);
                     
                 }
 
@@ -59,7 +59,7 @@ public class SaveFileSelect : MonoBehaviour
                 transform.GetChild(0).GetChild(i).GetChild(0).GetChild(0).gameObject.SetActive(true);
 
                 int count = 0;
-                foreach (bool value in datamanager.playerData.clearStage)
+                foreach (bool value in datamanager.playerData.ClearStage)
                 {
                     if (value)
                     {
@@ -70,7 +70,7 @@ public class SaveFileSelect : MonoBehaviour
                 if (datamanager.playerData.PlayTime < 60) PLayTimeText[i].text = "<1m";
                 else PLayTimeText[i].text = (datamanager.playerData.PlayTime / 60).ToString() + ":" + (datamanager.playerData.PlayTime % 60).ToString("D2");
 
-                ProgressText[i].text = (100*count/datamanager.playerData.clearStage.Length).ToString()+"%";
+                ProgressText[i].text = (100*count/datamanager.playerData.ClearStage.Length).ToString()+"%";
                 GoldText[i].text = UnitCalculate.GetInstance().Calculate(datamanager.playerData.PlayerGold);
                 LevelText[i].text = datamanager.playerData.Character_CurrentLevel.ToString() + "Lv";
             }

@@ -8,8 +8,8 @@ public class InGameShowItem : MonoBehaviour
     void Start()
     {
         var go = transform.GetChild(0).GetChild(0).GetChild(0);
-        go.GetChild(0).GetComponent<UIItem>().Init(DataManager.instance.playerData.Armor_Id);
-        go.GetChild(1).GetComponent<UIItem>().Init(DataManager.instance.playerData.Weapon_Id);
+        go.GetChild(0).GetComponent<UIItem>().Init(DataManager.instance.playerData.Rigging_Armor_Id);
+        go.GetChild(1).GetComponent<UIItem>().Init(DataManager.instance.playerData.Rigging_Weapon_Id);
     }
 
     

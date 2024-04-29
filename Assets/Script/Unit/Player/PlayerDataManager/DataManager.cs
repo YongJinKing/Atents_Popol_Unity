@@ -17,20 +17,20 @@ public class PlayerData
     public int Character_EnergyGage;
     public float Character_MoveSpeed;
     public float Character_AttackSpeed;
-
-    public int Weapon_Id;
-    public int Armor_Id;
-    public int Weapon_Ability;
-    public int Armor_Ability;
-    public int WeaponType; 
-    public int ArmorType;
-    public int Weapon_Duration;
-    public int Armor_Duration;
-
-    public string[] UiSkillList = new string[100];
-    public String[] InGameSkill = new string[4];
-    public bool[] clearStage = { false, false };
     public int PlayerGold = 0;
+
+    public int Rigging_Weapon_Id;
+    public int Rigging_Armor_Id;
+    public int Rigging_Weapon_Ability;
+    public int Rigging_Armor_Ability;
+    public int Rigging_WeaponType; 
+    public int Rigging_ArmorType;
+    public int Rigging_Weapon_Duration;
+    public int Rigging_Armor_Duration;
+
+    public string[] SaveUISkillList = new string[100];
+    public String[] InGameSkillList = new string[4];
+    public bool[] ClearStage = { false, false };
     public List<int> PlayerInven = new List<int>();
     public List<int> PlayerInvenDuraion = new List<int>();
     public int PlayTime;

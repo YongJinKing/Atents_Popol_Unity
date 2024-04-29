@@ -58,15 +58,15 @@ public class SkillManager : PlayerSkill
                             switch (UnityEngine.Random.Range(0, 11))
                             {
                                 case 0:
-                                plData.Weapon_Duration--;
+                                plData.Rigging_Weapon_Duration--;
                                 break;
                                 default:
                                     break;
                             }
 
-                            if (plData.Weapon_Duration <= 0)
+                            if (plData.Rigging_Weapon_Duration <= 0)
                             {
-                                plData.Weapon_Duration = 0;
+                                plData.Rigging_Weapon_Duration = 0;
                             }
 
                             if(SimpleAttack)

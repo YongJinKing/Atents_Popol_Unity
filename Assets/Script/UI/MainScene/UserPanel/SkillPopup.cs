@@ -73,10 +73,10 @@ public class SkillPopup : MonoBehaviour
         }
         for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)//Road SkillSlot About RiggingWeapon
         {
-            if(inst.UiSkillList[i + (10 * inst.WeaponType)] != "")
+            if(inst.SaveUISkillList[i + (10 * inst.Rigging_WeaponType)] != "")
             {
                 //Debug.Log($"인덱스 체크  : {i + (10 * inst.WeaponType)} 배열 체크 :{inst.UiSkillList[i + (10 * inst.WeaponType)]} ");
-                GameObject gameObject = Resources.Load<GameObject>($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(inst.WeaponType)}/{inst.UiSkillList[i + (10 * inst.WeaponType)]}");
+                GameObject gameObject = Resources.Load<GameObject>($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(inst.Rigging_WeaponType)}/{inst.SaveUISkillList[i + (10 * inst.Rigging_WeaponType)]}");
                 if(gameObject != null)
                 {
                     PlayerSkill.transform.Find("GridLine").GetChild(i).GetComponent<Image>().sprite =
@@ -98,9 +98,9 @@ public class SkillPopup : MonoBehaviour
     public void WeaponChange()
     {
         var inst = DataManager.instance.playerData;
-        for(int i = 0; i < inst.InGameSkill.Length; i++)
+        for(int i = 0; i < inst.InGameSkillList.Length; i++)
         {
-            inst.InGameSkill[i] = inst.UiSkillList[i + (10 * inst.WeaponType)];
+            inst.InGameSkillList[i] = inst.SaveUISkillList[i + (10 * inst.Rigging_WeaponType)];
         }
 
     }
@@ -110,7 +110,7 @@ public class SkillPopup : MonoBehaviour
         for(int i = 0; i < Content.transform.childCount; i++)
         {
             if(Content.transform.GetChild(i).GetComponent<UserSkillSlot>().WeaponType
-                == inst.WeaponType)
+                == inst.Rigging_WeaponType)
             {
                 Content.transform.GetChild(i).gameObject.SetActive(true);
                 if(Content.transform.GetChild(i).GetComponent<UserSkillSlot>().SkillLevel > inst.Character_CurrentLevel)
@@ -135,7 +135,7 @@ public class SkillPopup : MonoBehaviour
             SkillSlotDetail.transform.GetChild(0).GetChild(i).gameObject.SetActive(false);
         }
         transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text = // Displayed WeaponType
-        ItemTypeIntToString.IntToStringUIDesc(DataManager.instance.playerData.WeaponType);
+        ItemTypeIntToString.IntToStringUIDesc(DataManager.instance.playerData.Rigging_WeaponType);
     }
 
     public void SkillChange(string SkillName, int index)
@@ -152,20 +152,20 @@ public class SkillPopup : MonoBehaviour
         }
         PlayerSkill.transform.Find("GridLine").GetChild(index).GetComponent<Image>().sprite =
         DragImage.GetComponent<Image>().sprite;
-        inst.InGameSkill = new string[4];
+        inst.InGameSkillList = new string[4];
         
         for(int i = 0; i < PlayerSkill.transform.Find("GridLine").childCount; i++)
         {
             var go = PlayerSkill.transform.Find("GridLine").GetChild(i);
             if(go.GetComponent<Image>().sprite.name != "Grey")
             {
-                inst.InGameSkill[i] = go.GetComponent<Image>().sprite.name;
-                inst.UiSkillList[i + (10 * inst.WeaponType)] =  go.GetComponent<Image>().sprite.name;
+                inst.InGameSkillList[i] = go.GetComponent<Image>().sprite.name;
+                inst.SaveUISkillList[i + (10 * inst.Rigging_WeaponType)] =  go.GetComponent<Image>().sprite.name;
             }  
             else
             {
-                inst.InGameSkill[i] = null;
-                inst.UiSkillList[i + (10 * inst.WeaponType)] = null;
+                inst.InGameSkillList[i] = null;
+                inst.SaveUISkillList[i + (10 * inst.Rigging_WeaponType)] = null;
             }
         }
     }

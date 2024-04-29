@@ -191,8 +191,8 @@ public class Inventory : MonoBehaviour
             DataManager.instance.playerData.PlayerInven.Add(ItemList[i].id);
             DataManager.instance.playerData.PlayerInvenDuraion.Add(ItemList[i].ItemDuration);
         }
-        DataManager.instance.playerData.Weapon_Duration = transform.GetChild(1).GetChild(0).GetComponent<UIItem>().ItemDuration;
-        DataManager.instance.playerData.Armor_Duration = transform.GetChild(1).GetChild(1).GetComponent<UIItem>().ItemDuration;
+        DataManager.instance.playerData.Rigging_Weapon_Duration = transform.GetChild(1).GetChild(0).GetComponent<UIItem>().ItemDuration;
+        DataManager.instance.playerData.Rigging_Armor_Duration = transform.GetChild(1).GetChild(1).GetComponent<UIItem>().ItemDuration;
     }
     
    

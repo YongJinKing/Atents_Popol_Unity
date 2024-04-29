@@ -148,7 +148,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         controllKey[E_Skill.RSkill] = KeyCode.R;
 
         base.Start();
-        WeaponType = DataManager.instance.playerData.WeaponType;
+        WeaponType = DataManager.instance.playerData.Rigging_WeaponType;
         switch (WeaponType)
         {
             case 0:
@@ -251,7 +251,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
             if (animTime > 0 && animTime < 1.0f)
             {
                 return true;
-                // ?ï¿½ë‹ˆë©”ì´???ï¿½ë ˆ??ï¿?
+                // ?ï¿½ë‹ˆë©”ì´???ï¿½ë ˆ??ï¿½?
             }
             else if (animTime >= 1.0f)
             {
@@ -300,15 +300,15 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
             if (Input.GetKeyDown(controllKey[(E_Skill)i]))
             {
                 var plskill = DataManager.instance.playerData;
-                if (!string.IsNullOrWhiteSpace(plskill.InGameSkill[i]))
+                if (!string.IsNullOrWhiteSpace(plskill.InGameSkillList[i]))
                 {
-                    Debug.Log(string.IsNullOrWhiteSpace(plskill.InGameSkill[i]));
-                    GameObject effect = Resources.Load($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(WeaponType)}/{plskill.InGameSkill[i]}") as GameObject;
+                    Debug.Log(string.IsNullOrWhiteSpace(plskill.InGameSkillList[i]));
+                    GameObject effect = Resources.Load($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(WeaponType)}/{plskill.InGameSkillList[i]}") as GameObject;
                     sm = effect.GetComponent<SkillManager>();
                 }
                 else
                 {
-                    Debug.Log("ÇöÀç ½½·Ô¿¡ ½ºÅ³ÀÌ ¾ø½À´Ï´Ù.");
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¿ï¿½ ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
                     return;
                 }
 
@@ -321,7 +321,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
                     EnergyGageCal();
                     GetRaycastHit();
                     stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-                    myAnim.SetTrigger(plskill.InGameSkill[i]);
+                    myAnim.SetTrigger(plskill.InGameSkillList[i]);
                     rotAct?.Invoke(dir, rotSpeed);
                 }
                 else
@@ -379,18 +379,18 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         switch (Random.Range(0, 2))
         {
             case 0:
-                plData.Armor_Duration--;
+                plData.Rigging_Armor_Duration--;
                 break;
             case 1:
                 break;
         }
 
-        if (plData.Armor_Duration <= 0)
+        if (plData.Rigging_Armor_Duration <= 0)
         {
-            plData.Armor_Duration = 0;
+            plData.Rigging_Armor_Duration = 0;
         }
 
-        if (plData.Armor_Duration == 40 || plData.Armor_Duration == 20 || plData.Armor_Duration == 0)
+        if (plData.Rigging_Armor_Duration == 40 || plData.Rigging_Armor_Duration == 20 || plData.Rigging_Armor_Duration == 0)
         {
             DurabilityAct?.Invoke();
         }
@@ -399,7 +399,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     public void WeaponDurability()
     {
         var plData = DataManager.instance.playerData;
-        if (plData.Weapon_Duration == 40 || plData.Weapon_Duration == 20 || plData.Weapon_Duration == 0)
+        if (plData.Rigging_Weapon_Duration == 40 || plData.Rigging_Weapon_Duration == 20 || plData.Rigging_Weapon_Duration == 0)
         {
             DurabilityAct?.Invoke();
         }
@@ -422,7 +422,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     {
         int totaldmg;
         float computed = ComputeCompatibility(Atype, Dtype);
-        var Armor = DataManager.instance.playerData.Armor_Duration;
+        var Armor = DataManager.instance.playerData.Rigging_Armor_Duration;
         float DurationDmg = 1.0f;
 
         if (Armor <= 50)

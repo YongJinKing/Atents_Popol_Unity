@@ -101,8 +101,8 @@ public class GameManager : MonoBehaviour
         //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ������ ���?����
         bs.Exp = pldata.Character_CurrentExp;
         bs.Level = pldata.Character_CurrentLevel;
-        bs.ATK = pldata.Character_AttackPower + pldata.Weapon_Ability;
-        bs.HP = pldata.Character_Hp + pldata.Armor_Ability;
+        bs.ATK = pldata.Character_AttackPower + pldata.Rigging_Weapon_Ability;
+        bs.HP = pldata.Character_Hp + pldata.Rigging_Armor_Ability;
         bs.EnergyGage = pldata.Character_EnergyGage; // int
         bs.Speed = pldata.Character_MoveSpeed; // float
         bs.AttackDelay = pldata.Character_AttackSpeed; // float
@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("StageEnd");
             DataManager.instance.SaveData();
             stageEndEvent?.Invoke();
-            go.clearStage[DataManager.instance.StageNum - 1] = true;
+            go.ClearStage[DataManager.instance.StageNum - 1] = true;
             //GameEndUI?.Invoke(1);//Monster
             pl.enabled = false;
         }

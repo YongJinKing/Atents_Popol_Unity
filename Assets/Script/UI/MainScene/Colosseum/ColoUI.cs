@@ -148,7 +148,7 @@ public class ColoUI : MonoBehaviour
         }
         if(index == 1)
         {
-            int trueCount = DataManager.instance.playerData.clearStage.Where(x => x == true).Count();
+            int trueCount = DataManager.instance.playerData.ClearStage.Where(x => x == true).Count();
             if(StageIndex - 1 < trueCount)
             {
                 StageIndex++;

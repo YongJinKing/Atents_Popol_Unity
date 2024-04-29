@@ -197,9 +197,9 @@ public class InvenPopup : MonoBehaviour
         PlayerDetailAbility.transform.GetChild(6).GetChild(0).GetChild(0).GetComponent<TMP_Text>().text
         = $"Exp : {Mathf.Floor(((float)CurrnetExp / (float)NextData.Exp) * 100.0f)}%";
 
-        inst.Weapon_Ability = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().ItemValue;
-        inst.Armor_Ability = PlayerItem.transform.Find("Armor").GetComponent<UIItem>().ItemValue;
-        inst.WeaponType = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType;
+        inst.Rigging_Weapon_Ability = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().ItemValue;
+        inst.Rigging_Armor_Ability = PlayerItem.transform.Find("Armor").GetComponent<UIItem>().ItemValue;
+        inst.Rigging_WeaponType = PlayerItem.transform.Find("Weapon").GetComponent<UIItem>().WeaponType;
     }
 
     

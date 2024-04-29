@@ -11,19 +11,19 @@ public class PlayerRiggingType : MonoBehaviour
     void Start()
     {
         ItemDataManager.GetInstance().InvenItemLoadDatas();
-        if(DataManager.instance.playerData.Armor_Id == 0 && DataManager.instance.playerData.Weapon_Id == 0)
+        if(DataManager.instance.playerData.Rigging_Armor_Id == 0 && DataManager.instance.playerData.Rigging_Weapon_Id == 0)
         {
             transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().Init(1000);
             transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().Init(1001);
-            DataManager.instance.playerData.Weapon_Id = 1000;
-            DataManager.instance.playerData.Armor_Id = 1001;
+            DataManager.instance.playerData.Rigging_Weapon_Id = 1000;
+            DataManager.instance.playerData.Rigging_Armor_Id = 1001;
         }
         else
         {
-            transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().Init(DataManager.instance.playerData.Weapon_Id);
-            transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().Init(DataManager.instance.playerData.Armor_Id);
-            transform.GetChild(1).GetChild(0).GetComponent<UIItem>().ItemDuration = DataManager.instance.playerData.Weapon_Duration;
-            transform.GetChild(1).GetChild(1).GetComponent<UIItem>().ItemDuration = DataManager.instance.playerData.Armor_Duration;
+            transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().Init(DataManager.instance.playerData.Rigging_Weapon_Id);
+            transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().Init(DataManager.instance.playerData.Rigging_Armor_Id);
+            transform.GetChild(1).GetChild(0).GetComponent<UIItem>().ItemDuration = DataManager.instance.playerData.Rigging_Weapon_Duration;
+            transform.GetChild(1).GetChild(1).GetComponent<UIItem>().ItemDuration = DataManager.instance.playerData.Rigging_Armor_Duration;
         }
     }
 
@@ -51,14 +51,14 @@ public class PlayerRiggingType : MonoBehaviour
             PlayerItem = transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().id;
             RiggingItemDur = transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemDuration;
             transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().Init(InvenItem);
-            DataManager.instance.playerData.Weapon_Id = InvenItem;
+            DataManager.instance.playerData.Rigging_Weapon_Id = InvenItem;
         }
         if(index == 1)
         {
             PlayerItem = transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().id;
             RiggingItemDur = transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().ItemDuration;
             transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().Init(InvenItem);
-            DataManager.instance.playerData.Armor_Id = InvenItem;
+            DataManager.instance.playerData.Rigging_Armor_Id = InvenItem;
         }
         transform.Find("GridLine").GetChild(SlotNum).GetComponent<UIItem>().Init(PlayerItem);
         transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemDuration = InvenItemDur;
@@ -68,19 +68,19 @@ public class PlayerRiggingType : MonoBehaviour
 
     public void SaveRiggingItemData()
     {
-        DataManager.instance.playerData.Weapon_Ability = 
+        DataManager.instance.playerData.Rigging_Weapon_Ability = 
         transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemValue;
-        DataManager.instance.playerData.Armor_Ability = 
+        DataManager.instance.playerData.Rigging_Armor_Ability = 
         transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().ItemValue;
 
-        DataManager.instance.playerData.Weapon_Duration = 
+        DataManager.instance.playerData.Rigging_Weapon_Duration = 
         transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().ItemDuration;
-        DataManager.instance.playerData.Armor_Duration = 
+        DataManager.instance.playerData.Rigging_Armor_Duration = 
         transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().ItemDuration;
 
-        DataManager.instance.playerData.WeaponType = 
+        DataManager.instance.playerData.Rigging_WeaponType = 
         transform.Find("PlayerRigging").Find("Weapon").GetComponent<UIItem>().WeaponType;
-        DataManager.instance.playerData.ArmorType = 
+        DataManager.instance.playerData.Rigging_ArmorType = 
         transform.Find("PlayerRigging").Find("Armor").GetComponent<UIItem>().WeaponType;
     }
 }

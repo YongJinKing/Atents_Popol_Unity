@@ -36,9 +36,9 @@ public class InGameDuration : MonoBehaviour
     {
         int Duration = 0;
         if(go.name == "Armor")
-            Duration = DataManager.instance.playerData.Armor_Duration;
+            Duration = DataManager.instance.playerData.Rigging_Armor_Duration;
         else
-            Duration = DataManager.instance.playerData.Weapon_Duration;
+            Duration = DataManager.instance.playerData.Rigging_Weapon_Duration;
 
        
         go.GetChild(0).gameObject.SetActive(false);

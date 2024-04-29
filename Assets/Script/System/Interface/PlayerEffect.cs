@@ -28,7 +28,7 @@ public class PlayerEffect : MonoBehaviour, I_Effect, I_SimpleEffect
     public void PlayAttackEffect(string skill)
     {
         string Weaponpos = null;
-        switch(DataManager.instance.playerData.WeaponType)
+        switch(DataManager.instance.playerData.Rigging_WeaponType)
         {
             case 0:
                 Weaponpos = "OneHandSwordSkill";
