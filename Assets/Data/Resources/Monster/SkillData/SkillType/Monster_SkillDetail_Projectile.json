@@ -53,7 +53,7 @@
   {
     "Index": 30003,
     "Skill_NumOfHitBox": 3,
-    "Skill_ObjectEffect": 20001,
+    "Skill_ObjectEffect": 20006,
     "Skill_Unpenetrable": 14,
     "Skill_TargetMask": 10,
     "Skill_hitDuration": 10,

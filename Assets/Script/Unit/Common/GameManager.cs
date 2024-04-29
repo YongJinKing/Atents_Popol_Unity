@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         BattleStat bs = default;
 
         var pldata = DataManager.instance.playerData;
-        //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½
+        //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½
         bs.Exp = pldata.Character_CurrentExp;
         bs.Level = pldata.Character_CurrentLevel;
         bs.ATK = pldata.Character_AttackPower + pldata.Rigging_Weapon_Ability;
@@ -246,12 +246,15 @@ public class GameManager : MonoBehaviour
                     }
                     else if (curWave.Wave_MonsterArr[i] / 10000 >= 3)
                     {
-                        monsters.Last().GetComponent<Monster>().CinematicStart();
-                        monsters.Last().GetComponentInChildren<Camera>().gameObject.SetActive(true);
-                        monsters.Last().transform.position = Vector3.up * 10;
-                        monsters.Last().GetComponent<Monster>().hpbarChangeAct = new UnityEvent<int, int>();
-                        monsters.Last().GetComponent<Monster>().hpbarChangeAct.AddListener(waveUI.BossHPFresh);
-
+                        Monster temp = monsters.Last().GetComponent<Monster>();
+                        temp.CinematicStart();
+                        temp.GetComponentInChildren<Camera>().gameObject.SetActive(true);
+                        temp.transform.position = Vector3.up * 10;
+                        temp.hpbarChangeAct = new UnityEvent<int, int>();
+                        temp.hpbarChangeAct.AddListener(waveUI.BossHPFresh);
+                        Status tempSt = monsters.Last().GetComponent<Status>();
+                        tempSt.BuffAct = new UnityEvent<int>();
+                        tempSt.BuffAct.AddListener(waveUI.GetComponent<DisplayCondition>().Display);
                     }
 
                     yield return new WaitForSeconds(1);
