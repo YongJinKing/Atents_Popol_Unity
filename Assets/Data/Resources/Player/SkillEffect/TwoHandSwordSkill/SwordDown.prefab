@@ -4956,18 +4956,16 @@ MonoBehaviour:
     uiSkillDetailDesc: "\uD50C\uB808\uC774\uC5B4\uAC00 \uAC80\uC744 \uC704\uC5D0\uC11C
       \uC544\uB798\uB85C \uB0B4\uB824\uCE58\uBA70 <color=\"red\">300 + \uACF5\uACA9\uB82570%</color>\uC758
       \uB370\uBBF8\uC9C0\uB97C \uC8FC\uB294 \uAE30\uC220\uC774\uB2E4."
-  index: 0
   SimpleAttack: 0
-  EnergyGage: 30
-  Damage: 300
-  SkillCalculation: 0.7
+  EnergyGage: 20
+  Damage: 140
+  SkillCalculation: 0.3
   WeaponType: 1
-  Level: 5
-  CoolTime: 10
+  Level: 1
+  CoolTime: 5
   CoolTimeCheck: 0
+  Player: {fileID: 0}
   aType: 1
-  Buff: 0
-  BTime: 0
 --- !u!114 &-6820575483922585115
 MonoBehaviour:
   m_ObjectHideFlags: 0

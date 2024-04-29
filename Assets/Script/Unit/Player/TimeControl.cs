@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class TimeControl : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public void ChangeGameTime(float value)
     {
-        
+        Time.timeScale = value;
     }
-
-    public float slowTime;
-
-    // Update is called once per frame
-    void Update()
-    {
-        Time.timeScale = slowTime;
-    }
+    
 }

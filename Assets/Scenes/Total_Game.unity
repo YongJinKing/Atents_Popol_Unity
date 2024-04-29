@@ -805,6 +805,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2534134964025578952, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534134964025578952, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1253115170}
+    - target: {fileID: 2534134964025578952, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534134964025578952, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeGameTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534134964025578952, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TimeControl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534134964025578952, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2812817085834441763, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -824,6 +848,30 @@ PrefabInstance:
     - target: {fileID: 3627028373329313217, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
       propertyPath: m_AnchorMin.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1253115170}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeGameTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TimeControl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5586645817537730550, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
       propertyPath: m_Pivot.x
@@ -2775,6 +2823,14 @@ PrefabInstance:
       propertyPath: GameEndUI.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7356268427517669075, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
+      propertyPath: slowTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7356268427517669075, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9164841429843295199, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
       propertyPath: m_Name
       value: StrongArm
@@ -3856,6 +3912,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1253115170 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7356268427517669075, guid: 8fcce1df08b487e4d95bf178c29e6ecc, type: 3}
+  m_PrefabInstance: {fileID: 865157516}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc527b6c0cca6e84386d65381f449148, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1287382576
 GameObject:
   m_ObjectHideFlags: 0

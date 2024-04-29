@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class SkillManager : PlayerSkill
 {
-    public int index;
+    
     public bool SimpleAttack;
     public int EnergyGage;
     public int Damage;

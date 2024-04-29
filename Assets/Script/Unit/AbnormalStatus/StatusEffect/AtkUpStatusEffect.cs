@@ -9,6 +9,6 @@ public class AtkUpStatusEffect : StatValueChangeStatusEffect
     protected override void Initailize()
     {
         type = E_BattleStat.ATK;
-        value = 1.2f;
+        value = 1.5f;
     }
 }

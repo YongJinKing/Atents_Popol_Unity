@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class GameSetting : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GameSetting : MonoBehaviour
     public Sprite Img_Mute;
     public GameObject Paper;
     bool[] SoundBtn = new bool[5];
-
+    public UnityEvent<float> ChangeTime;
     public Slider MasterSlider;
     public Slider BgmSlider;
     public Slider SfxSlider;
@@ -45,11 +46,11 @@ public class GameSetting : MonoBehaviour
     }
     public void PressedBtnInUI(int index)
     {
-        Time.timeScale = 0.0f;
+        
         if(index == 3)//Cancel Btn
         {
             gameObject.SetActive(false);
-            Time.timeScale = 1.0f;
+            ChangeTime?.Invoke(1.0f);
         }
         else
         {
@@ -73,6 +74,7 @@ public class GameSetting : MonoBehaviour
         else if(index == 4)//Cancel Btn
         {
             gameObject.SetActive(false);
+            ChangeTime?.Invoke(1.0f);
         }
             
         else

@@ -70,17 +70,17 @@ MonoBehaviour:
     uiSkillSprite: {fileID: 21300000, guid: e8a68fd17ce42174e9b24babd0ae6629, type: 3}
     uiSkillName: "\uC6A9\uC758 \uBD84\uB178"
     uiSkillDesc: "\uD50C\uB808\uC774\uC5B4\uAC00 \uACB0\uC758\uB97C \uB2E4\uC9C0\uBA70
-      \uACF5\uACA9\uB825\uC744 \uC0C1\uC2B9\uC2DC\uD0A4\uB294 \uAE30\uC220\uC774\uB2E4."
-    uiSkillDetailDesc: "\uD50C\uB808\uC774\uC5B4\uAC00 \uACB0\uC758\uB97C \uB2E4\uC9C0\uBA70
-      <color=\"red\">\uACF5\uACA9\uB82530%</color>\uB97C \uC0C1\uC2B9\uC2DC\uD0A4\uB294
+      10\uCD08 \uB3D9\uC548 \uACF5\uACA9\uB825\uC744 \uC0C1\uC2B9\uC2DC\uD0A4\uB294
       \uAE30\uC220\uC774\uB2E4."
-  index: 0
+    uiSkillDetailDesc: "\uD50C\uB808\uC774\uC5B4\uAC00 \uACB0\uC758\uB97C \uB2E4\uC9C0\uBA70
+      10\uCD08 \uB3D9\uC548<color=\"red\">\uACF5\uACA9\uB82530%</color>\uB97C \uC0C1\uC2B9\uC2DC\uD0A4\uB294
+      \uAE30\uC220\uC774\uB2E4."
   SimpleAttack: 0
-  EnergyGage: 20
+  EnergyGage: 40
   Damage: 0
   SkillCalculation: 0
   WeaponType: 1
-  Level: 10
+  Level: 3
   CoolTime: 20
   CoolTimeCheck: 0
   Player: {fileID: 0}
