@@ -66,8 +66,9 @@ public class SoundManager : MonoBehaviour
         switch (Type)
         {
             case "Hit": index = 0; break;
-            case "MainBgm": index = 1; break;
-            case "WaveBgm": index = 2; break;
+            case "Equip": index = 1; break;
+            case "Unequip": index = 2; break;
+            case "BtnClick": index = 3; break;
         }
 
         SfxPlayer.clip = audioSfxClips[index];

@@ -34,6 +34,7 @@ public class BtnNormalFuntion : MonoBehaviour
     {
         gameObject.transform.GetComponent<Image>().sprite = ButtonSprite[0];
         gameObject.transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 10, 0);
+        SoundManager.instance.PlaySfxMusic("BtnClick");
     }
     void PressedBtn(int index)
     {

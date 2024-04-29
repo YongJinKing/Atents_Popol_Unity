@@ -1,23 +1,24 @@
 {
-    "index": 0,
     "Character_Hp": 500,
     "Character_AttackPower": 20,
-    "Character_CurrentExp": 6350,
+    "Character_CurrentExp": 8000,
     "Character_CurrentLevel": 17,
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
-    "Weapon_Id": 1101,
-    "Armor_Id": 1001,
-    "Weapon_Ability": 50,
-    "Armor_Ability": 10,
-    "WeaponType": 0,
-    "ArmorType": 10,
-    "Weapon_Duration": 54,
-    "Armor_Duration": 74,
-    "UiSkillList": [
-        "EvilList",
+    "PlayerGold": 90889,
+    "Rigging_Weapon_Id": 1203,
+    "Rigging_Armor_Id": 3000,
+    "Rigging_Weapon_Ability": 140,
+    "Rigging_Armor_Ability": 20,
+    "Rigging_Weapon_Type": 1,
+    "Rigging_Armor_Type": 10,
+    "Rigging_Weapon_Duration": 99,
+    "Rigging_Armor_Duration": 100,
+    "SaveUISkillList": [
         "ShadowDot",
+        "EvilList",
+        "DeathSide",
         "DancingOf",
         "",
         "",
@@ -26,9 +27,8 @@
         "",
         "",
         "",
-        "SwordDown",
-        "PowerBuff",
-        "Slash",
+        "",
+        "",
         "",
         "",
         "",
@@ -117,26 +117,25 @@
         "",
         ""
     ],
-    "InGameSkill": [
-        "EvilList",
-        "ShadowDot",
-        "DancingOf",
+    "InGameSkillList": [
+        "",
+        "",
+        "",
         ""
     ],
-    "clearStage": [
+    "ClearStage": [
         true,
         false
     ],
-    "PlayerGold": 87339,
     "PlayerInven": [
-        1203,
-        3000
+        1000,
+        1001
     ],
     "PlayerInvenDuraion": [
-        99,
-        100
+        100,
+        92
     ],
-    "PlayTime": 1238,
+    "PlayTime": 1539,
     "Master_Volum": 0.75,
     "Bgm_Volum": 0.75,
     "Sfx_Volum": 0.75,

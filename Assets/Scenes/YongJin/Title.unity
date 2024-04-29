@@ -3183,6 +3183,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d0eba12bb607710469bc8719e5f5ffba, type: 3}
   audioSfxClips:
   - {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
+  - {fileID: 8300000, guid: 490bfbc72255342408984f60044487de, type: 3}
+  - {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
+  - {fileID: 8300000, guid: cc6699269b4c1d44ea1e860518b9bb73, type: 3}
   BgmPlayer: {fileID: 1664866417}
   SfxPlayer: {fileID: 430986926}
   m_AudioMixer: {fileID: 24100000, guid: 8c8d4443772d45e48a2b3b794b59df85, type: 2}
@@ -9863,7 +9866,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData:
-    index: 0
     Character_Hp: 0
     Character_AttackPower: 0
     Character_CurrentExp: 0
@@ -9871,118 +9873,122 @@ MonoBehaviour:
     Character_EnergyGage: 0
     Character_MoveSpeed: 0
     Character_AttackSpeed: 0
-    Weapon_Id: 0
-    Armor_Id: 0
-    Weapon_Ability: 0
-    Armor_Ability: 0
-    WeaponType: 0
-    ArmorType: 0
-    Weapon_Duration: 0
-    Armor_Duration: 0
-    UiSkillList:
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    InGameSkill: []
-    clearStage: 
     PlayerGold: 0
+    Rigging_Weapon_Id: 0
+    Rigging_Armor_Id: 0
+    Rigging_Weapon_Ability: 0
+    Rigging_Armor_Ability: 0
+    Rigging_Weapon_Type: 0
+    Rigging_Armor_Type: 0
+    Rigging_Weapon_Duration: 0
+    Rigging_Armor_Duration: 0
+    SaveUISkillList:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    InGameSkillList:
+    - 
+    - 
+    - 
+    - 
+    ClearStage: 0000
     PlayerInven: 
     PlayerInvenDuraion: 
     PlayTime: 0

@@ -12,7 +12,7 @@ public class Main_UI_HL : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
             transform.Find("Logo1").gameObject.GetComponent<Animator>().SetBool("SelectButton",true);
         if(transform.Find("Logo2"))
             transform.Find("Logo2").gameObject.GetComponent<Animator>().SetBool("SelectButton",true);
-        
+        SoundManager.instance.PlaySfxMusic("Equip");
     }
 
     public void OnPointerExit(PointerEventData eventData)

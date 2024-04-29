@@ -163,6 +163,7 @@ public class BattleSystem : CharacterProperty, IDamage
             {
                 value = MaxHP;
             }
+            hpbarChangeAct?.Invoke(MaxHP, curBattleStat.HP >= 0 ? curBattleStat.HP : 0 );
             this.curBattleStat.HP = value;
         }
     }
@@ -246,7 +247,7 @@ public class BattleSystem : CharacterProperty, IDamage
         }
 
         curBattleStat.HP -= totaldmg;
-        hpbarChangeAct?.Invoke(MaxHP, HP);
+        
         DurationAct?.Invoke();
 
         if (curBattleStat.HP <= 0.0f)

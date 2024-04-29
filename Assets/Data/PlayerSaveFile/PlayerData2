@@ -1,5 +1,4 @@
 {
-    "index": 0,
     "Character_Hp": 560,
     "Character_AttackPower": 50,
     "Character_CurrentExp": 1050,
@@ -7,17 +6,18 @@
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
-    "Weapon_Id": 1100,
-    "Armor_Id": 1001,
-    "Weapon_Ability": 30,
-    "Armor_Ability": 10,
-    "WeaponType": 0,
-    "ArmorType": 10,
-    "Weapon_Duration": 100,
-    "Armor_Duration": 92,
-    "UiSkillList": [
-        "ShadowDot",
-        "EvilList",
+    "PlayerGold": 350,
+    "Rigging_Weapon_Id": 1000,
+    "Rigging_Armor_Id": 1001,
+    "Rigging_Weapon_Ability": 10,
+    "Rigging_Armor_Ability": 10,
+    "Rigging_WeaponType": 0,
+    "Rigging_ArmorType": 10,
+    "Rigging_Weapon_Duration": 100,
+    "Rigging_Armor_Duration": 100,
+    "SaveUISkillList": [
+        "",
+        "",
         "",
         "",
         "",
@@ -117,17 +117,16 @@
         "",
         ""
     ],
-    "InGameSkill": [
-        "ShadowDot",
-        "EvilList",
+    "InGameSkillList": [
+        "",
+        "",
         "",
         ""
     ],
-    "clearStage": [
+    "ClearStage": [
         false,
         false
     ],
-    "PlayerGold": 350,
     "PlayerInven": [
         1000
     ],

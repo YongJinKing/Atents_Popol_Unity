@@ -558,9 +558,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: rotSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: DeBuffScr
       value: 
       objectReference: {fileID: 541144149}
+    - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
+      propertyPath: DadgeDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 485188325254013916, guid: 5c70d26be1e5983408e8f2e4529bc35e, type: 3}
       propertyPath: clickMask.m_Bits
       value: 16416
