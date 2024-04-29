@@ -15,6 +15,7 @@ public class Status : MonoBehaviour
         if(buffs.ContainsKey(buffType))
         {
             buffs[buffType].Overlap();
+            BuffType(1000 + (int)buffType);
             return;
         }
 
@@ -68,6 +69,7 @@ public class Status : MonoBehaviour
         if (abnormals.ContainsKey(eType))
         {
             abnormals[eType].Overlap();
+            BuffType(2000 + (int)eType);
             return;
         }
 
