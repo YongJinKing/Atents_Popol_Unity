@@ -14,7 +14,7 @@ public abstract class BaseSkillEffect : MonoBehaviour
     //protected 변수 영역
     #region protected
     //공격력 * power로 스킬의 배율
-    protected BattleSystem myBattleSystem;
+    protected BattleSystem myBattleSystem = null;
     #endregion
 
     //Public 변수영역
@@ -38,6 +38,11 @@ public abstract class BaseSkillEffect : MonoBehaviour
 
     //public 함수들 영역
     #region PublicMethod
+    public BaseSkillEffect() { }
+    public BaseSkillEffect(BattleSystem battleSystem)
+    {
+        myBattleSystem = battleSystem;
+    }
     #endregion
     #endregion
 
@@ -56,7 +61,8 @@ public abstract class BaseSkillEffect : MonoBehaviour
     #region MonoBehaviour
     protected virtual void Start()
     {
-        myBattleSystem = GetComponentInParent<BattleSystem>();
+        if(myBattleSystem == null)
+            myBattleSystem = GetComponentInParent<BattleSystem>();
     }
     #endregion
 

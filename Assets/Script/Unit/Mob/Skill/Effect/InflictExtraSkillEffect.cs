@@ -11,7 +11,8 @@ public class InflictExtraSkillEffect : BaseSkillEffect
 
     //protected 변수 영역
     #region protected
-    [SerializeField] LayerMask groundMask;
+    [SerializeField] LayerMask groundMask = 1 << 14;
+    [SerializeField] LayerMask targetMask = 1 << 10;
     #endregion
 
     //Public 변수영역
@@ -50,6 +51,7 @@ public class InflictExtraSkillEffect : BaseSkillEffect
     public override void OnSkillHit(Collider target)
     {
         Vector3 pos = target.transform.position;
+        GameObject temp = null;
 
         if (isOnGround)
         {
@@ -62,7 +64,12 @@ public class InflictExtraSkillEffect : BaseSkillEffect
 
         if(extraEffectObject != null)
         {
-            Instantiate<GameObject>(extraEffectObject, pos, Quaternion.identity, GetComponentInParent<BattleSystem>().transform);
+            temp = Instantiate<GameObject>(extraEffectObject, pos, Quaternion.identity);
+        }
+
+        if (temp != null)
+        {
+            temp.GetComponent<BaseHitBox>().Initialize(myBattleSystem, targetMask);
         }
     }
     #endregion
