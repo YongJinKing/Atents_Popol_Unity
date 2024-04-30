@@ -163,8 +163,8 @@ public class BattleSystem : CharacterProperty, IDamage
             {
                 value = MaxHP;
             }
-            hpbarChangeAct?.Invoke(MaxHP, curBattleStat.HP >= 0 ? curBattleStat.HP : 0 );
             this.curBattleStat.HP = value;
+            hpbarChangeAct?.Invoke(MaxHP, curBattleStat.HP >= 0 ? curBattleStat.HP : 0);
         }
     }
     public int Level

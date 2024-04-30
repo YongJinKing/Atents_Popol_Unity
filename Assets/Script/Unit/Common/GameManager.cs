@@ -252,7 +252,7 @@ public class GameManager : MonoBehaviour
                         temp.transform.position = Vector3.up * 10;
                         temp.hpbarChangeAct = new UnityEvent<int, int>();
                         temp.hpbarChangeAct.AddListener(waveUI.BossHPFresh);
-                        Status tempSt = monsters.Last().GetComponent<Status>();
+                        Status tempSt = temp.GetComponent<Status>();
                         tempSt.BuffAct = new UnityEvent<int>();
                         tempSt.BuffAct.AddListener(waveUI.GetComponent<DisplayCondition>().Display);
                     }
