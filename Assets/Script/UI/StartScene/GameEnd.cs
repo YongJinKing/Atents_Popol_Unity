@@ -13,4 +13,12 @@ public class GameEnd : MonoBehaviour
         }
         transform.gameObject.SetActive(false);
     }
+    public void PressedEscBtn()
+    {
+        if(gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+        }
+        
+    }
 }

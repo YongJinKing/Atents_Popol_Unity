@@ -31,7 +31,7 @@ public class PlayerData
     public string[] SaveUISkillList = new string[100];
     public String[] InGameSkillList = new string[4];
     public bool[] ClearStage = { false, false };
-    public List<int> PlayerInven = new List<int>();
+    public List<int> PlayerInvenItem = new List<int>();
     public List<int> PlayerInvenDuraion = new List<int>();
     public int PlayTime;
 

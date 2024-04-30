@@ -19,5 +19,13 @@ public class Title : MonoBehaviour
             Canvas.transform.Find("Title").gameObject.SetActive(false);
         Canvas.transform.GetChild(index).gameObject.SetActive(true);
     }
-    
+    public void EscButtonAct()
+    {
+        
+        if(!Canvas.transform.GetChild(3).gameObject.activeSelf)
+        {
+            MenuAct(3);
+        }
+            
+    }   
 }

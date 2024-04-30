@@ -14745,7 +14745,7 @@ MonoBehaviour:
       <color=\"red\">50 + \uACF5\uACA9\uB82520%</color>\uC758 \uB370\uBBF8\uC9C0\uB97C
       \uC8FC\uB294 \uAE30\uC220\uC774\uB2E4."
   SimpleAttack: 0
-  EnergyGage: 5
+  EnergyGage: 40
   Damage: 100
   SkillCalculation: 0.5
   WeaponType: 0

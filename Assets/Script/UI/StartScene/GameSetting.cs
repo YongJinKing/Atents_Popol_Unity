@@ -44,6 +44,22 @@ public class GameSetting : MonoBehaviour
         }
         
     }
+   
+    public void PressedEscBtn()
+    {
+        if(gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+            ChangeTime?.Invoke(1.0f);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+            ChangeTime?.Invoke(0.0f);
+        }
+    }
+
+
     public void PressedBtnInUI(int index)
     {
         

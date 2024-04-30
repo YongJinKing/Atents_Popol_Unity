@@ -13005,7 +13005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &341848533
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16522,7 +16522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &463818660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29855,6 +29855,7 @@ GameObject:
   - component: {fileID: 834949368}
   - component: {fileID: 834949370}
   - component: {fileID: 834949371}
+  - component: {fileID: 834949372}
   m_Layer: 5
   m_Name: Navigation_Panel
   m_TagString: Untagged
@@ -29955,6 +29956,36 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: NavPanel, Assembly-CSharp
         m_MethodName: PressedBtn
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &834949372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834949366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1feef884bc09084e806f713ae0174c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EscKeyUpAct:
+    m_PersistentCalls:
+      m_Calls: []
+  EscKeyDownAct:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1345168169}
+        m_TargetAssemblyTypeName: GameSetting, Assembly-CSharp
+        m_MethodName: PressedEscBtn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -49572,6 +49603,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4599384615960232568, guid: ea6701f660cfe63458647eee426d4f65, type: 3}
   m_PrefabInstance: {fileID: 735249093}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1345168169 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5764986680089728686, guid: ea6701f660cfe63458647eee426d4f65, type: 3}
+  m_PrefabInstance: {fileID: 735249093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345168167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b2ad0930c04f6458d977d65f7d6ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1347271223
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,9 +38,9 @@ public class Inventory : MonoBehaviour
         this.ItemList = new List<UIItem>();
         BackUpIdList = new List<int>();
         FreshSlot(0);
-        for(int i = 0; i < DataManager.instance.playerData.PlayerInven.Count; i++)
+        for(int i = 0; i < DataManager.instance.playerData.PlayerInvenItem.Count; i++)
         {
-            AddItem(DataManager.instance.playerData.PlayerInven[i]);
+            AddItem(DataManager.instance.playerData.PlayerInvenItem[i]);
             ItemList[i].ItemDuration = DataManager.instance.playerData.PlayerInvenDuraion[i];
         }
         
@@ -183,12 +183,12 @@ public class Inventory : MonoBehaviour
     }
     public void SaveInvenData()
     {
-        DataManager.instance.playerData.PlayerInven = new List<int>();
+        DataManager.instance.playerData.PlayerInvenItem = new List<int>();
         DataManager.instance.playerData.PlayerInvenDuraion = new List<int>(); 
         
         for(int i = 0; i < ItemList.Count; i++)
         {
-            DataManager.instance.playerData.PlayerInven.Add(ItemList[i].id);
+            DataManager.instance.playerData.PlayerInvenItem.Add(ItemList[i].id);
             DataManager.instance.playerData.PlayerInvenDuraion.Add(ItemList[i].ItemDuration);
         }
         DataManager.instance.playerData.Rigging_Weapon_Duration = transform.GetChild(1).GetChild(0).GetComponent<UIItem>().ItemDuration;

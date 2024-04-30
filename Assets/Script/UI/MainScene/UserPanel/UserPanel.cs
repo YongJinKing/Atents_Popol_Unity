@@ -24,7 +24,6 @@ public class UserPanel : MonoBehaviour
         
         if(index == 0)
         {
-
             if(!MainUi.gameObject.activeSelf)
             {
                 for(int i = 2; i < Canvas.transform.childCount; i++)
@@ -54,7 +53,6 @@ public class UserPanel : MonoBehaviour
         
     }
     void ShowPopup(int index)
-
     {
         for(int i = 0; i < UserPanelPopup.transform.childCount; i++)
         {
@@ -73,7 +71,7 @@ public class UserPanel : MonoBehaviour
         SaveInvenData?.Invoke();
         DataManager.instance.SaveData();
     }
-        
+    
 
     public void GoToPopup(int index)
     {
