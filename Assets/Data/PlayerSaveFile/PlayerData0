@@ -1,22 +1,22 @@
 {
-    "index": 0,
-    "Character_Hp": 520,
-    "Character_AttackPower": 30,
-    "Character_CurrentExp": 450,
-    "Character_CurrentLevel": 3,
+    "Character_Hp": 500,
+    "Character_AttackPower": 20,
+    "Character_CurrentExp": 0,
+    "Character_CurrentLevel": 1,
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
-    "Weapon_Id": 1000,
-    "Armor_Id": 1001,
-    "Weapon_Ability": 10,
-    "Armor_Ability": 10,
-    "WeaponType": 0,
-    "ArmorType": 10,
-    "Weapon_Duration": 88,
-    "Armor_Duration": 97,
-    "UiSkillList": [
-        "ShadowDot",
+    "PlayerGold": 0,
+    "Rigging_Weapon_Id": 1000,
+    "Rigging_Armor_Id": 1001,
+    "Rigging_Weapon_Ability": 10,
+    "Rigging_Armor_Ability": 10,
+    "Rigging_Weapon_Type": 0,
+    "Rigging_Armor_Type": 10,
+    "Rigging_Weapon_Duration": 98,
+    "Rigging_Armor_Duration": 90,
+    "SaveUISkillList": [
+        "",
         "",
         "",
         "",
@@ -117,20 +117,19 @@
         "",
         ""
     ],
-    "InGameSkill": [
-        "ShadowDot",
+    "InGameSkillList": [
+        "",
         "",
         "",
         ""
     ],
-    "clearStage": [
+    "ClearStage": [
         false,
         false
     ],
-    "PlayerGold": 1000,
     "PlayerInven": [],
     "PlayerInvenDuraion": [],
-    "PlayTime": 0,
+    "PlayTime": 67,
     "Master_Volum": 0.75,
     "Bgm_Volum": 0.75,
     "Sfx_Volum": 0.75,

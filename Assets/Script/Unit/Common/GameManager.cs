@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
         //StartCoroutine(WaveRound());
 
         LoadPlayerStat();
+        SoundManager.instance.PlayBgmMusic("WaveBgm");
     }
 
     private void LoadStageData(int stageIndex)
@@ -98,6 +99,7 @@ public class GameManager : MonoBehaviour
         BattleStat bs = default;
 
         var pldata = DataManager.instance.playerData;
+        var plLvstat = PlayerDataManager.instance.dicPlayerLevelData[pldata.Character_CurrentLevel];
         //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½
         bs.Exp = pldata.Character_CurrentExp;
         bs.Level = pldata.Character_CurrentLevel;
@@ -140,6 +142,8 @@ public class GameManager : MonoBehaviour
             lossGameEvent?.Invoke();
             pl.enabled = false;
             DataManager.instance.SaveData();
+            SoundManager.instance.StopBgmMusic();
+            SoundManager.instance.PlaySfxMusic("Death");
         }
         else // Monstar Dead
         {
@@ -192,13 +196,17 @@ public class GameManager : MonoBehaviour
                 playerdata.Character_CurrentLevel = 30;
             }
             yield return null;
+        }
+        if (playerdata.Character_CurrentExp >= PlayerDataManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel + 1].Total_Exp)
+        {
             var plLvstat = PlayerDataManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel];
             playerdata.Character_AttackPower = playerstat.Character_AttackPower + plLvstat.Total_AttackPower;
             playerdata.Character_Hp = playerstat.Character_Hp + plLvstat.Total_Hp;
 
             GameObject effect = Instantiate<GameObject>(Resources.Load($"Buff/LvUp") as GameObject);
-            effect.transform.SetParent(player.transform, false); 
+            effect.transform.SetParent(player.transform, false);
         }
+        
     }
     
     public void WaveRownd()
@@ -221,6 +229,8 @@ public class GameManager : MonoBehaviour
             {
                 bossWaveStartEvent?.Invoke();
                 pl.CinematicStart();
+                SoundManager.instance.PlayBgmMusic("BossBgm");
+
             }
 
             int count = 0;

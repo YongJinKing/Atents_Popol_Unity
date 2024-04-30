@@ -3192,11 +3192,16 @@ MonoBehaviour:
   audioBgmClips:
   - {fileID: 8300000, guid: ad09e5be290c71e4fa449029a9adb63f, type: 3}
   - {fileID: 8300000, guid: d0eba12bb607710469bc8719e5f5ffba, type: 3}
+  - {fileID: 8300000, guid: c65436c94dfbf3445a2b806efd9505c2, type: 3}
+  - {fileID: 8300000, guid: bb089ef8b7ee26b459d43d52977ce19d, type: 3}
+  - {fileID: 8300000, guid: 2fb2b5c48f49da74eb9d076b874fc160, type: 3}
   audioSfxClips:
   - {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
   - {fileID: 8300000, guid: 490bfbc72255342408984f60044487de, type: 3}
   - {fileID: 8300000, guid: 78ad99fd0a0a5144280b07bbdba84815, type: 3}
   - {fileID: 8300000, guid: cc6699269b4c1d44ea1e860518b9bb73, type: 3}
+  - {fileID: 8300000, guid: 35ce408210dfa9843ba14da86f8efb4e, type: 3}
+  - {fileID: 8300000, guid: 4dbfbd1a56081db4ca174255a4d56b1f, type: 3}
   BgmPlayer: {fileID: 1664866417}
   SfxPlayer: {fileID: 430986926}
   m_AudioMixer: {fileID: 24100000, guid: 8c8d4443772d45e48a2b3b794b59df85, type: 2}

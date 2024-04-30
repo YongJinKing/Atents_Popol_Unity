@@ -35,7 +35,9 @@ public class InGameEndUI : MonoBehaviour
             go.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text =//GoldReward/Text
             GameManager.GetComponent<GameManager>().curRewardGold.ToString();
             go.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text =//ExpReward/Text
-            GameManager.GetComponent<GameManager>().curRewardExp.ToString();   
+            GameManager.GetComponent<GameManager>().curRewardExp.ToString();
+            SoundManager.instance.StopBgmMusic();
+            SoundManager.instance.PlaySfxMusic("Victory");
         }
         if(index == 1)
         {
@@ -44,7 +46,8 @@ public class InGameEndUI : MonoBehaviour
             go.GetChild(0).GetChild(1).GetComponent<TMP_Text>().text =//GoldReward/Text
             GameManager.GetComponent<GameManager>().curRewardGold.ToString();
             go.GetChild(1).GetChild(1).GetComponent<TMP_Text>().text =//ExpReward/Text
-            GameManager.GetComponent<GameManager>().curRewardExp.ToString();   
+            GameManager.GetComponent<GameManager>().curRewardExp.ToString();
+            SoundManager.instance.PlayBgmMusic("LoseBgm");
         }
     }
 

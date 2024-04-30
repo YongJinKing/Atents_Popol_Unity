@@ -55,6 +55,8 @@ public class SoundManager : MonoBehaviour
             case "TitleBgm": index = 0; break;
             case "MainBgm": index = 1; break;
             case "WaveBgm" : index = 2; break;
+            case "BossBgm": index = 3; break;
+            case "LoseBgm": index = 4; break;
         }
         BgmPlayer.clip = audioBgmClips[index];
         BgmPlayer.Play();
@@ -69,6 +71,8 @@ public class SoundManager : MonoBehaviour
             case "Equip": index = 1; break;
             case "Unequip": index = 2; break;
             case "BtnClick": index = 3; break;
+            case "Death": index = 4; break;
+            case "Victory": index = 5; break;
         }
 
         SfxPlayer.clip = audioSfxClips[index];

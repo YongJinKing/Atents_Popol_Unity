@@ -389,7 +389,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
             plData.Rigging_Armor_Duration = 0;
         }
 
-        if (plData.Rigging_Armor_Duration == 40 || plData.Rigging_Armor_Duration == 20 || plData.Rigging_Armor_Duration == 0)
+        if (plData.Rigging_Armor_Duration == 50 || plData.Rigging_Armor_Duration == 25 || plData.Rigging_Armor_Duration == 0)
         {
             DurabilityAct?.Invoke();
         }
@@ -398,7 +398,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     public void WeaponDurability()
     {
         var plData = DataManager.instance.playerData;
-        if (plData.Rigging_Weapon_Duration == 40 || plData.Rigging_Weapon_Duration == 20 || plData.Rigging_Weapon_Duration == 0)
+        if (plData.Rigging_Weapon_Duration == 50 || plData.Rigging_Weapon_Duration == 25 || plData.Rigging_Weapon_Duration == 0)
         {
             DurabilityAct?.Invoke();
         }
