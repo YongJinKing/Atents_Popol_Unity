@@ -11,6 +11,7 @@ public class SaveFileSelect : MonoBehaviour
     public GameObject Canvas;
     public GameObject RemovePopup;
     public GameObject NewSlotPopup;
+    public GameObject SlotList;
     int SelectSlot = 0;
     public TextMeshProUGUI[] GoldText;
     public TextMeshProUGUI[] ProgressText;
@@ -52,7 +53,11 @@ public class SaveFileSelect : MonoBehaviour
                     Init(datamanager.playerData.Rigging_Weapon_Id);
                     transform.Find("SlotList").GetChild(i).GetChild(0).Find("LoadSlot").Find("ProfileSlot").Find("Armor").GetComponent<UIItem>().
                     Init(datamanager.playerData.Rigging_Armor_Id);
-                    
+                }
+                else
+                {
+                    SlotList.transform.GetChild(DataManager.instance.SlotNum).GetChild(0).GetChild(0).GetChild(0).GetChild(1).GetComponent<UIItem>().Init(1000);
+                    SlotList.transform.GetChild(DataManager.instance.SlotNum).GetChild(0).GetChild(0).GetChild(0).GetChild(2).GetComponent<UIItem>().Init(1001);
                 }
 
                 //Slot Display Data
@@ -100,6 +105,26 @@ public class SaveFileSelect : MonoBehaviour
 
     public void GoGame()	// 게임 씬으로 이동    1 Title, 2 Loading, 3 Main
     {
+       /*  var playerdata = DataManager.instance.playerData;
+        var playerstat = PlayerDataManager.instance.dicPlayerData[10000];
+        if (!savefile[DataManager.instance.SlotNum])	// 저장되어있는 데이터가 없으면
+        {
+            playerdata.Character_CurrentLevel = playerstat.Character_CurrentLevel;
+            playerdata.Character_CurrentExp = playerstat.Character_CurrentExp;
+            playerdata.Character_Hp = playerstat.Character_Hp;
+            playerdata.Character_AttackPower = playerstat.Character_AttackPower;
+            playerdata.Character_EnergyGage = playerstat.Character_EnergyGage;
+            playerdata.Character_MoveSpeed = playerstat.Character_MoveSpeed;
+            playerdata.Character_AttackSpeed = playerstat.Character_AttackSpeed;
+            
+            DataManager.instance.SaveData(); // 새로운 데이터 저장
+        }
+ */
+        SceneLoading.SceneNum(2);
+        SceneManager.LoadScene(1);
+    }
+    public void GoCinematic()
+    {
         var playerdata = DataManager.instance.playerData;
         var playerstat = PlayerDataManager.instance.dicPlayerData[10000];
         if (!savefile[DataManager.instance.SlotNum])	// 저장되어있는 데이터가 없으면
@@ -113,8 +138,9 @@ public class SaveFileSelect : MonoBehaviour
             playerdata.Character_AttackSpeed = playerstat.Character_AttackSpeed;
             DataManager.instance.SaveData(); // 새로운 데이터 저장
         }
-
-        SceneLoading.SceneNum(2);
+        
+        
+        SceneLoading.SceneNum(4);
         SceneManager.LoadScene(1);
     }
 
@@ -159,7 +185,7 @@ public class SaveFileSelect : MonoBehaviour
     {
         if(index == 0)
         {
-            GoGame();
+            GoCinematic();//GameNewStart
         }
         NewSlotPopup.gameObject.SetActive(false);
         
