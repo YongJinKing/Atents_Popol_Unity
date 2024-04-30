@@ -71,7 +71,7 @@
     "Character_DetailArmorTypeArr": [1, 2],
     "Character_Prefab": 10000,
     "Character_AIType": 0,
-    "Character_Scale": 1,
+    "Character_Scale": 2,
     "Character_IdleType": 4
   },
   {
@@ -101,7 +101,7 @@
     "Character_DetailArmorTypeArr": [1, 2],
     "Character_Prefab": 10000,
     "Character_AIType": 0,
-    "Character_Scale": 1,
+    "Character_Scale": 2,
     "Character_IdleType": 4
   }
 ]
