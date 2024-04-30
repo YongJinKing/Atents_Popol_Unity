@@ -9451,6 +9451,7 @@ MonoBehaviour:
   Canvas: {fileID: 741975331}
   RemovePopup: {fileID: 2054647110}
   NewSlotPopup: {fileID: 1639780018}
+  SlotList: {fileID: 1113169708}
   GoldText:
   - {fileID: 1535102908}
   - {fileID: 316250071}
