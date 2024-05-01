@@ -42,12 +42,15 @@ public class BroadCastCamControll : MonoBehaviour
         {
             monsterObject = monsterColliders[0].transform;
         }
-        Traking();
+        for (int i = 0; i<=3; ++i)
+        {
+            Traking();
+        }
     }
 
     void Update()
     {
-        Traking();
+        
     }
 
     void Traking()

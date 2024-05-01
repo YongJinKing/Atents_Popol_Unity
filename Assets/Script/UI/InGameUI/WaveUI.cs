@@ -47,14 +47,14 @@ public class WaveUI : MonoBehaviour
     }
     private void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.Keypad0))
+        if (Input.GetKeyDown(KeyCode.Keypad0))
         {
             nextWave();
         }
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             StartCoroutine("BossIntro");
-        }*/
+        }
         if (Input.GetKeyDown(KeyCode.Keypad2))
         {
             playTime += 10;
@@ -232,6 +232,7 @@ public class WaveUI : MonoBehaviour
             }
             --c;
         }
+        Warnning.enabled = false;
     }
 
     public void IsBossCo()
