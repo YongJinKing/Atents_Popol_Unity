@@ -18,13 +18,14 @@ public class HitOnceHitBox : BaseHitBox
         StartCoroutine(DurationChecking());
     }
 
-    protected override void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionStay(Collision collision)
     {
         if(((1 << collision.gameObject.layer) & targetMask) > 0 )
         {
             if (!calculatedObject.Contains(collision.collider))
             {
                 calculatedObject.Add(collision.collider);
+                Debug.Log("onCollisionStay in HitOnceHitBox");
                 onHitEvent?.Invoke(collision.collider);
             }
         }

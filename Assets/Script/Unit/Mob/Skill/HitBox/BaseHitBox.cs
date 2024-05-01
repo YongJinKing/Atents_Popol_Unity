@@ -24,7 +24,8 @@ public abstract class BaseHitBox : MonoBehaviour
         this.myBattleSystem = myBattleSystem;
         GetComponentsInChildren<BaseSkillEffect>(myBattleSystem);
         targetMask = mask;
+        Debug.Log($"BaseHitBox, targetMask : {targetMask.value}");
     }
 
-    protected abstract void OnCollisionEnter(Collision collision);
+    protected abstract void OnCollisionStay(Collision collision);
 }

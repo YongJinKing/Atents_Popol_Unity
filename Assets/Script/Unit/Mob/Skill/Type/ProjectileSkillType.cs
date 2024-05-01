@@ -105,7 +105,7 @@ public class ProjectileSkillType : HitCheckSkillType
     {
         hitBox.SetActive(true);
         //이미 충돌판정이 끝난 오브젝트들
-        HashSet<Collider> calculatedObject = new HashSet<Collider>();
+        HashSet<BattleSystem> calculatedObject = new HashSet<BattleSystem>();
 
         //발동 시점의 targetPos를 저장하므로 여러번 한다고 쳤을때 targetPos가 바뀌어서 나갈일은 없을 듯?
         //람다식으로 DestroyProjectile 함수를 쓰도록 했다.
@@ -142,9 +142,10 @@ public class ProjectileSkillType : HitCheckSkillType
                     DestroyProjectile(hitBox);
                     break;
                 }
+                BattleSystem temp = tempcol[i].GetComponentInParent<BattleSystem>();
                 //지금껏 충돌 해보지 못한 오브젝트와 충돌했을시
                 //스킬이 맞았다고 이벤트 발생
-                if (!calculatedObject.Contains(tempcol[i]))
+                if (!calculatedObject.Contains(temp))
                 {
                     //Debug.Log For check
                     //Debug.Log(tempcol[i].gameObject.name);
@@ -156,7 +157,7 @@ public class ProjectileSkillType : HitCheckSkillType
 
                     if (penetrable)
                     {
-                        calculatedObject.Add(tempcol[i]);
+                        calculatedObject.Add(temp);
                     }
                     else
                     {

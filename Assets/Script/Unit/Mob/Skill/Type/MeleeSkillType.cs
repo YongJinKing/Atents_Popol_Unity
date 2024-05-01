@@ -49,7 +49,7 @@ public class MeleeSkillType : HitCheckSkillType
     {
         hitBox.SetActive(true);
 
-        HashSet<Collider> calculatedObject = new HashSet<Collider>();
+        HashSet<BattleSystem> calculatedObject = new HashSet<BattleSystem>();
 
         remainDuration = hitDuration;
 
@@ -64,15 +64,16 @@ public class MeleeSkillType : HitCheckSkillType
 
             for (int i = 0; i < tempcol.Length; i++)
             {
+                BattleSystem temp = tempcol[i].GetComponentInParent<BattleSystem>();
                 //지금껏 충돌 해보지 못한 오브젝트와 충돌했을시
                 //스킬이 맞았다고 이벤트 발생
-                if (!calculatedObject.Contains(tempcol[i]))
+                if (!calculatedObject.Contains(temp))
                 {
                     //Debug.Log For check
                     //Debug.Log(tempcol[i].gameObject.name);
                     //맞췄을때 이펙트를 넣어줌
                     HitEffectPlay(hitBox.transform.position, tempcol[i].gameObject.transform.position);
-                    calculatedObject.Add(tempcol[i]);
+                    calculatedObject.Add(temp);
 
                     onSkillHitEvent?.Invoke(tempcol[i]);
                 }

@@ -17,9 +17,9 @@ public class MultiHitHitBox : HitOnceHitBox
         StartCoroutine(Refreshing());
     }
 
-    protected override void OnCollisionEnter(Collision collision)
+    protected override void OnCollisionStay(Collision collision)
     {
-        base.OnCollisionEnter(collision);
+        base.OnCollisionStay(collision);
     }
 
     protected IEnumerator Refreshing()
