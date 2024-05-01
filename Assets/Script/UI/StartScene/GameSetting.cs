@@ -12,6 +12,7 @@ public class GameSetting : MonoBehaviour
     public GameObject Paper;
     bool[] SoundBtn = new bool[5];
     public UnityEvent<float> ChangeTime;
+    public UnityEvent CinematicStart;
     public Slider MasterSlider;
     public Slider BgmSlider;
     public Slider SfxSlider;
@@ -66,6 +67,7 @@ public class GameSetting : MonoBehaviour
         if(index == 3)//Cancel Btn
         {
             gameObject.SetActive(false);
+            CinematicStart?.Invoke();
             ChangeTime?.Invoke(1.0f);
         }
         else
