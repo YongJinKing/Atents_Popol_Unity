@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TimeControl : MonoBehaviour
 {
-    
-    public void ChangeGameTime(float value)
+    public float Timescale;
+    public void Update()
     {
-        Time.timeScale = value;
+        Time.timeScale = Timescale;
     }
     
 }

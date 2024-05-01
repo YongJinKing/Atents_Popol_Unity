@@ -51,12 +51,12 @@ public class GameSetting : MonoBehaviour
         if(gameObject.activeSelf)
         {
             gameObject.SetActive(false);
-            ChangeTime?.Invoke(1.0f);
+            Time.timeScale = 1.0f;
         }
         else
         {
             gameObject.SetActive(true);
-            ChangeTime?.Invoke(0.0f);
+            Time.timeScale = 0.0f;
         }
     }
 
@@ -68,7 +68,7 @@ public class GameSetting : MonoBehaviour
         {
             gameObject.SetActive(false);
             CinematicStart?.Invoke();
-            ChangeTime?.Invoke(1.0f);
+            Time.timeScale = 1.0f;
         }
         else
         {
@@ -92,7 +92,7 @@ public class GameSetting : MonoBehaviour
         else if(index == 4)//Cancel Btn
         {
             gameObject.SetActive(false);
-            ChangeTime?.Invoke(1.0f);
+            Time.timeScale = 1.0f;
         }
             
         else

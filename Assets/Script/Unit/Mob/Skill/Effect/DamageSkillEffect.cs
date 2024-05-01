@@ -66,7 +66,7 @@ public class DamageSkillEffect : BaseSkillEffect
 
         if (damage != null)
         {
-            Debug.Log($"Dmg : {power * myBattleSystem.ATK}\nAtype : {Atype}");
+            //Debug.Log($"Dmg : {power * myBattleSystem.ATK}\nAtype : {Atype}");
 
             float temp = myBattleSystem.GetModifiedStat(E_BattleStat.ATK);
             

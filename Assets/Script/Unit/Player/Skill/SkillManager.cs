@@ -38,90 +38,80 @@ public class SkillManager : PlayerSkill
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Monster_Body"))
         {
-            BattleSystem temp = other.GetComponentInParent<BattleSystem>();
-            if (!target.Contains(temp))
+            Collider[] tempcol = Physics.OverlapSphere(col.bounds.center, col.bounds.extents.x, 1 << 12);
+            int min = 0;
+            for (int i = 0; i < tempcol.Length; ++i)
             {
-                Vector3 startPos = pl.transform.position + Vector3.up * 0.5f;
-                Vector3 dir = other.bounds.center - startPos;
-                Ray ray = new Ray(startPos - dir.normalized * 1.0f, dir);
-                StartCoroutine(tempDebuging(ray));
-                RaycastHit[] hits;
-                if ((hits = Physics.RaycastAll(ray , col.bounds.extents.magnitude + 1.0f, 1 << LayerMask.NameToLayer("Monster_Body"))) != null)
+                min = i;
+                for(int j = i; j < tempcol.Length; ++j)
                 {
-                    foreach(RaycastHit data in hits)
+                    if((pl.transform.position - tempcol[j].bounds.center).sqrMagnitude < (pl.transform.position - tempcol[min].bounds.center).sqrMagnitude)
                     {
-                        if (!target.Contains(data.collider.GetComponentInParent<BattleSystem>()))
-                        {
-                            target.Add(temp);
-                            var plData = DataManager.instance.playerData;
+                        min = j;
+                    }
+                }
+                Collider temp = tempcol[i];
+                tempcol[i] = tempcol[min];
+                tempcol[min] = temp;
+            }
 
-                            switch (UnityEngine.Random.Range(0, 11))
-                            {
-                                case 0:
-                                plData.Rigging_Weapon_Duration--;
-                                break;
-                                default:
-                                    break;
-                            }
+            foreach(Collider data in tempcol)
+            {
+                Debug.Log($"distance : {(pl.transform.position - data.bounds.center).sqrMagnitude} \nname : {data.name}");
+            }
 
-                            if (plData.Rigging_Weapon_Duration <= 0)
-                            {
-                                plData.Rigging_Weapon_Duration = 0;
-                            }
+            for (int i = 0; i < tempcol.Length; i++)
+            {
+                BattleSystem temp = tempcol[i].GetComponentInParent<BattleSystem>();
 
-                            if(SimpleAttack)
-                            {
-                                pl.EnergyGage += (int)(pl.MaxEnergyGage * 0.05);
+                if (!target.Contains(temp))
+                {
+                    target.Add(temp);
 
-                                if (pl.EnergyGage > pl.MaxEnergyGage)
-                                {
-                                    pl.EnergyGage = pl.MaxEnergyGage;
-                                }
-                                pl.EnergyGageCal();
-                            }
-                            pl.WeaponDurability();
+                    var plData = DataManager.instance.playerData;
 
-                            InflictDeBuff inflict = GetComponent<InflictDeBuff>();
-                            if (inflict != null)
-                            {
-                                inflict.GetCol(data.collider);
-                            }
-
-                            Debug.Log("Hit");
-
-                            IDamage iDamage = data.collider.GetComponentInParent<IDamage>();
-                            DefenceType dtype = data.collider.GetComponentInParent<IGetDType>().GetDType(data.collider);
-
-
-                            if (iDamage != null)
-                            {
-                                Plm.totalDamege(data.collider, (int)pl.GetModifiedStat(E_BattleStat.ATK), Damage, aType, dtype, SkillCalculation);
-                            }
-                        }
+                    switch (UnityEngine.Random.Range(0, 11))
+                    {
+                        case 0:
+                            plData.Rigging_Weapon_Duration--;
+                            break;
+                        default:
+                            break;
                     }
 
-                   
-                    
+                    if (plData.Rigging_Weapon_Duration <= 0)
+                    {
+                        plData.Rigging_Weapon_Duration = 0;
+                    }
+
+                    if (SimpleAttack)
+                    {
+                        pl.EnergyGage += (int)(pl.MaxEnergyGage * 0.05);
+
+                        if (pl.EnergyGage > pl.MaxEnergyGage)
+                        {
+                            pl.EnergyGage = pl.MaxEnergyGage;
+                        }
+                        pl.EnergyGageCal();
+                    }
+                    pl.WeaponDurability();
+
+                    InflictDeBuff inflict = GetComponent<InflictDeBuff>();
+                    if (inflict != null)
+                    {
+                        inflict.GetCol(tempcol[i]);
+                    }
+
+                    IDamage iDamage = tempcol[i].GetComponentInParent<IDamage>();
+                    DefenceType dtype = tempcol[i].GetComponentInParent<IGetDType>().GetDType(tempcol[i]);
+
+
+                    if (iDamage != null)
+                    {
+                        Plm.totalDamege(tempcol[i], (int)pl.GetModifiedStat(E_BattleStat.ATK), Damage, aType, dtype, SkillCalculation);
+                    }
                 }
             }
-        }
-    }
-
-
-    IEnumerator tempDebuging(Ray ray)
-    {
-
-        if (Physics.Raycast(ray, out RaycastHit hit, col.bounds.extents.magnitude, 1 << 15))
-        {
-            Debug.Log("Debug Hit");
-        }
-
-        float time = 5.0f;
-        while(time > 0.0f)
-        {
-            time -= Time.deltaTime;
-            Debug.DrawRay(ray.origin, ray.direction * (col.bounds.extents.magnitude + 1.0f), Color.red);
-            yield return null;
         }
     }
 

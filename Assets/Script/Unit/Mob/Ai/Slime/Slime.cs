@@ -187,11 +187,8 @@ public class Slime : Monster
         //idleAI = new List<int>();
         //idleAI.Add(0);
         
-        Debug.Log($"idleAI.Count : {idleAI.Count}");
-        foreach(int data in idleAI)
-        {
-            Debug.Log($"inside the idleAI : {data}");
-        }
+        //Debug.Log($"idleAI.Count : {idleAI.Count}");
+        
         
 
         saveMoveType = new int[idleAI.Count];

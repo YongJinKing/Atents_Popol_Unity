@@ -21,7 +21,7 @@ public class TempGizmos : MonoBehaviour
     {
         //Gizmos.matrix = transform.localToWorldMatrix;
         Gizmos.color = new Color(1f,0,0,0.5f);
-        Gizmos.DrawCube(myCol.bounds.center, myCol.bounds.size);
+        Gizmos.DrawSphere(myCol.bounds.center, myCol.bounds.extents.x);
     }
 }
 #endif
