@@ -291,7 +291,7 @@ public class MonsterFactory
                     melee.onSkillHitEvent = new UnityEngine.Events.UnityEvent<Collider>();
                     for(int i = 0; i < data.Skill_AffectOptionArr.Length; ++i)
                     {
-                        AddSkillAffect(melee, data.Skill_AffectOptionArr[i]);
+                        AddSkillAffect(melee.gameObject, data.Skill_AffectOptionArr[i]);
                     }
 
                     parent.onSkillActivatedEvent.AddListener(melee.OnSkillActivated);
@@ -352,7 +352,7 @@ public class MonsterFactory
                     projectile.onSkillHitEvent = new UnityEngine.Events.UnityEvent<Collider>();
                     for (int i = 0; i < data.Skill_AffectOptionArr.Length; ++i)
                     {
-                        AddSkillAffect(projectile, data.Skill_AffectOptionArr[i]);
+                        AddSkillAffect(projectile.gameObject, data.Skill_AffectOptionArr[i]);
                     }
                     parent.onSkillActivatedEvent.AddListener(projectile.OnSkillActivated);
                     parent.onSkillHitCheckStartEvent.AddListener(projectile.OnSkillHitCheckStartEventHandler);
@@ -382,7 +382,7 @@ public class MonsterFactory
         obj.transform.SetParent(parent.transform, false);
     }
 
-    public void AddSkillAffect(BaseSkillType parent, int index)
+    public void AddSkillAffect(GameObject parent, int index)
     {
         GameObject obj = new GameObject();
 
@@ -416,7 +416,13 @@ public class MonsterFactory
                     DamageSkillEffect damage = obj.AddComponent<DamageSkillEffect>();
                     damage.power = data.Skill_Power;
                     damage.Atype = (AttackType)data.Skill_AttackType;
-                    parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(damage.OnSkillHit);
+                    parent.GetComponent<IEnrollEvent<Collider>>().Enroll(damage.OnSkillHit);
+
+                    
+                    //if (parent.GetComponent<HitCheckSkillType>() != null)
+                    //    parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(damage.OnSkillHit);
+                    //else if (parent.GetComponent<BaseHitBox>() != null)
+                    //    parent.GetComponent<BaseHitBox>().onHitEvent.AddListener(damage.OnSkillHit);
                 }
                 break;
             case 2:
@@ -434,7 +440,12 @@ public class MonsterFactory
                     KnockBackSkillEffect knockBack = obj.AddComponent<KnockBackSkillEffect>();
                     knockBack.knockBackPower = data.Skill_KnockBackPower;
                     knockBack.knockUpPower = data.Skill_KnockUpPower;
-                    parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(knockBack.OnSkillHit);
+                    parent.GetComponent<IEnrollEvent<Collider>>().Enroll(knockBack.OnSkillHit);
+
+                    //if (parent.GetComponent<HitCheckSkillType>() != null)
+                    //    parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(knockBack.OnSkillHit);
+                    //else if (parent.GetComponent<BaseHitBox>() != null)
+                    //    parent.GetComponent<BaseHitBox>().onHitEvent.AddListener(knockBack.OnSkillHit);
                 }
                 break;
             case 3:
@@ -442,7 +453,54 @@ public class MonsterFactory
                     InflictStatusSkillEffect inflict = obj.AddComponent<InflictStatusSkillEffect>();
                     inflict.abType = (E_StatusAbnormality)(index % 10000);
                     obj.name = inflict.abType.ToString();
-                    parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(inflict.OnSkillHit);
+                    parent.GetComponent<IEnrollEvent<Collider>>().Enroll(inflict.OnSkillHit);
+
+
+                    //if (parent.GetComponent<HitCheckSkillType>() != null)
+                    //    parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(inflict.OnSkillHit);
+                    //else if (parent.GetComponent<BaseHitBox>() != null)
+                    //    parent.GetComponent<BaseHitBox>().onHitEvent.AddListener(inflict.OnSkillHit);
+                }
+                break;
+            case 4:
+                {
+                    SkillInflictExtraAffectDataTable data = default;
+                    if (monsterDataManager.dicSkillInflictExtraAffectDataTable.ContainsKey(index))
+                    {
+                        data = monsterDataManager.dicSkillInflictExtraAffectDataTable[index];
+                    }
+                    else
+                    {
+                        //nullCheck
+                    }
+                    obj.name = "InflictExtra";
+                    InflictExtraSkillEffect inflictEX = obj.AddComponent<InflictExtraSkillEffect>();
+                    inflictEX.isOnGround = data.isOnGround;
+
+                    GameObject temp = GameObject.Instantiate<GameObject>(FindPrefab(data.Skill_ObjectEffect));
+                    BaseHitBox hitBox = null;
+                    if (data.Skill_hitFrequency > 0)
+                    {
+                        Debug.Log("InflictEX start");
+                        hitBox = temp.AddComponent<MultiHitHitBox>();
+                        Debug.Log("InflictEX end");
+                        (hitBox as MultiHitHitBox).hitDuration = data.Skill_hitDuration;
+                        (hitBox as MultiHitHitBox).hitFrequency = data.Skill_hitFrequency;
+                    }
+                    else
+                    {
+                        hitBox = temp.AddComponent<HitOnceHitBox>();
+                        (hitBox as HitOnceHitBox).hitDuration = data.Skill_hitDuration;
+                    }
+                    hitBox.onHitEvent = new UnityEngine.Events.UnityEvent<Collider>();
+
+                    for(int i = 0; i < data.Skill_AffectOptionArr.Length; ++i)
+                    {
+                        AddSkillAffect(hitBox.gameObject, data.Skill_AffectOptionArr[i]);
+                    }
+
+                    temp.gameObject.SetActive(false);
+                    inflictEX.extraEffectObject = temp;
                 }
                 break;
             default:

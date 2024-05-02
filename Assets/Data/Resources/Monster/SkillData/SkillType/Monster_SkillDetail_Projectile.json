@@ -62,7 +62,7 @@
     "Skill_ParabolaHeight": 0,
     "Skill_Penetrable": false,
     "Skill_IsParabola": false,
-    "Skill_AffectOptionArr": [ 10001, 30002 ],
+    "Skill_AffectOptionArr": [ 10001, 30002, 40000 ],
     "Skill_HitBoxStartPosArr": [ 0, 1, 2 ],
     "Skill_HitEffect": 0,
     "Skill_DestroyEffect": 20002

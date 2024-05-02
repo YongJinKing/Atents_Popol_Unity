@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class BaseHitBox : MonoBehaviour
+public abstract class BaseHitBox : MonoBehaviour, IEnrollEvent<Collider>
 {
     protected Collider myCol;
     protected BattleSystem myBattleSystem;
@@ -15,6 +15,10 @@ public abstract class BaseHitBox : MonoBehaviour
     {
         myCol = GetComponent<Collider>();
     }
+
+    protected abstract void OnTriggerStay(Collider other);
+    protected abstract void OnDisable();
+
 
     public void Initialize(BattleSystem myBattleSystem, LayerMask mask)
     {
@@ -31,6 +35,8 @@ public abstract class BaseHitBox : MonoBehaviour
         //Debug.Log($"BaseHitBox, targetMask : {targetMask.value}");
     }
 
-
-    protected abstract void OnTriggerStay(Collider other);
+    public void Enroll(UnityAction<Collider> action)
+    {
+        onHitEvent.AddListener(action);
+    }
 }

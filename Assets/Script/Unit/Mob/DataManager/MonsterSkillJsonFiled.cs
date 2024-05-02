@@ -125,4 +125,15 @@ public struct SkillKnockBackAffectDataTable
     public float Skill_KnockBackPower;
     public float Skill_KnockUpPower;
 }
+
+public struct SkillInflictExtraAffectDataTable
+{
+    public int Index;
+    public bool isOnGround;
+    public float Skill_hitDuration;
+    //if hitFrequency == 0, hit event play just once
+    public float Skill_hitFrequency;
+    public int Skill_ObjectEffect;
+    public int[] Skill_AffectOptionArr;
+}
 #endregion

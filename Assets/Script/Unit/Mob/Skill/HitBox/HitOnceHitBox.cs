@@ -17,6 +17,16 @@ public class HitOnceHitBox : BaseHitBox
     {
         base.Start();
         StartCoroutine(DurationChecking());
+        if (!gameObject.activeSelf)
+        {
+            GetComponent<Collider>().enabled = true;
+        }
+    }
+
+    protected override void OnDisable()
+    {
+        GetComponent<Collider>().enabled = false;
+        StopAllCoroutines();
     }
 
     protected override void OnTriggerStay(Collider other)

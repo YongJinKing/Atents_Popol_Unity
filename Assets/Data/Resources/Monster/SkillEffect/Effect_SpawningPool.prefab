@@ -4900,7 +4900,6 @@ GameObject:
   - component: {fileID: 1873555430565560859}
   - component: {fileID: 6792035442456625380}
   - component: {fileID: 1675309632700371266}
-  - component: {fileID: 834304739399086201}
   m_Layer: 0
   m_Name: Effect_SpawningPool
   m_TagString: Untagged
@@ -9760,31 +9759,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3.5
+  m_Radius: 3
   m_Height: 0
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &834304739399086201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6480194069582467860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a71477e6de8f0440ac5f424b715c9de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onHitEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _hitDuration: 2
-  _hitFrequency: 0.5
 --- !u!1 &8473036602059014099
 GameObject:
   m_ObjectHideFlags: 0

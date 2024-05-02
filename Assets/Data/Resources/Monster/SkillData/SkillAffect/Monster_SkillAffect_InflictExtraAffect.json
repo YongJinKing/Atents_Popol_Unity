@@ -1,0 +1,10 @@
+[
+  {
+    "Index": 40000,
+    "isOnGround": true,
+    "Skill_hitDuration": 10,
+    "Skill_hitFrequency": 2,
+    "Skill_ObjectEffect": 20007,
+    "Skill_AffectOptionArr": [10005, 30002]
+  }
+]

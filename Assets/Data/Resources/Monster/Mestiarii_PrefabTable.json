@@ -34,5 +34,10 @@
   {
     "index": 20006,
     "Prefab_Name": "Effect_StickyBall"
+  },
+  {
+    "index": 20007,
+    "Prefab_Name": "Effect_SpawningPool"
   }
+
 ]
