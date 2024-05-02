@@ -20,8 +20,8 @@ public class cameraMove : MonoBehaviour
     public Vector2 zoomRange = new Vector2(1, 15);
     public float zoomSpeed = 5.0f;
     public bool wheelClickRot = true;
-    public float rotationSpeed = 0.1f; // ?�전 ?�도
-    private Vector3 lastMousePosition; // 마우???�전 ?�치
+    public float rotationSpeed = 0.1f; // ?�전 ?�도
+    private Vector3 lastMousePosition; // 마우???�전 ?�치
 
     public bool raycastDebug = false;
 
@@ -39,6 +39,7 @@ public class cameraMove : MonoBehaviour
     public GameObject BrodCastCam;
 
     public UnityEvent<int> GameEndUI; //0win 1lose
+    public UnityEvent GameClear;
     byte whoWin;
 
     void Start()
@@ -59,9 +60,9 @@ public class cameraMove : MonoBehaviour
             UnitDeath(0);
         }
 
-        if (!isCine)     //마우???�력�?관?�된 코드
+        if (!isCine)     //마우???�력�?관?�된 코드
         {
-            //?�크�?�?
+            //?�크�?�?
             targetDist -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
             targetDist = Mathf.Clamp(targetDist, zoomRange.x, zoomRange.y);
 
@@ -78,7 +79,7 @@ public class cameraMove : MonoBehaviour
 
         if (isTracking)
         {
-            //카메??�?충돌 감�?
+            //카메??�?충돌 감�?
             float offSet = 0.5f;
             Vector3 rayoffSet = new Vector3(0, -1, 0);
             if (Physics.Raycast(new Ray(transform.position + rayoffSet, -transform.forward),
@@ -94,11 +95,11 @@ public class cameraMove : MonoBehaviour
                 Debug.DrawRay(transform.position + rayoffSet, -transform.forward.normalized * zoomRange.y, Color.green);
             }
 
-            //카메???�동
+            //카메???�동
             camDist = Mathf.Lerp(camDist, targetDist, Time.deltaTime * zoomSpeed);
             transform.rotation = Quaternion.Euler(playerAngle.x, playerAngle.y, 0);
 
-            //?�레?�어 ?�레??
+            //?�레?�어 ?�레??
             transform.position = Vector3.Lerp(transform.position, playerPos.position + playeroffSet, Time.deltaTime * trackSpeed);
         }
 
@@ -141,10 +142,11 @@ public class cameraMove : MonoBehaviour
 
     IEnumerator CineCam()
     {
+        var inst = DataManager.instance;
         while (CinecamState == "CamMove")
         {
             Time.timeScale = 0.01f;
-
+            
             myCam.transform.position = Vector3.Lerp(myCam.transform.position, target.position, Time.deltaTime * cineCamSpeed);
             myCam.transform.rotation = Quaternion.Lerp(myCam.transform.rotation, target.rotation, Time.deltaTime * cineCamSpeed);
             float dis = Vector3.Distance(myCam.transform.position, target.position);
@@ -183,7 +185,15 @@ public class cameraMove : MonoBehaviour
                 CinecamState = "EndingRotate";
                 isTracking = true;
                 yield return new WaitForSeconds(3);
-                GameEndUI?.Invoke(whoWin);
+                if(inst.playerData.ClearStage.Length == inst.StageNum)
+                {
+                    GameClear?.Invoke();
+                }
+                else
+                {
+                    GameEndUI?.Invoke(whoWin);
+                }
+                
             }
             yield return null;
             //Auto return to main Scene in GameManager.cs

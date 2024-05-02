@@ -140,7 +140,12 @@ public class SoundManager : MonoBehaviour
     }
     public void StopBgmMusic()
     {
-        BgmPlayer.Stop();
+        if(BgmPlayer.isPlaying)
+        {
+            
+            BgmPlayer.Stop();
+        }
+            
     }
     
     

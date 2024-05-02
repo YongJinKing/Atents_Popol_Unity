@@ -11,13 +11,17 @@ public class InGameEndUI : MonoBehaviour
     Coroutine CorGoToClearScene;
     GameObject GameWinPopup;
     GameObject GameLosePopup;
+    GameObject GameClearPopup;
     
     void Start()
     {
         GameWinPopup = transform.GetChild(0).gameObject;//GameEndUI/GameWin
         GameLosePopup = transform.GetChild(1).gameObject;//GameEndUI/GameLose
+        GameClearPopup = transform.GetChild(2).gameObject;//GameEndUI/GameLose
         GameWinPopup.SetActive(false);
         GameLosePopup.SetActive(false);
+        GameClearPopup.SetActive(false);
+
     }
 
     public void PressedBtn(int index)
@@ -56,6 +60,7 @@ public class InGameEndUI : MonoBehaviour
     }
     public void GameClear()
     {
+        GameClearPopup.SetActive(true);
         CorGoToClearScene = StartCoroutine(ClearSceneColorChange());
     }
     IEnumerator ClearSceneColorChange()
@@ -68,6 +73,11 @@ public class InGameEndUI : MonoBehaviour
             GoToClearSceneImage.color = color;
             yield return null;
         }
+        SceneLoading.SceneNum(6);
+        SceneManager.LoadScene(5);
+        color.a = 0.0f;
+        GoToClearSceneImage.color = color;
+        GameClearPopup.SetActive(false);
         
         
     }
