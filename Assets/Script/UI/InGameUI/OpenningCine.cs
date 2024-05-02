@@ -7,6 +7,7 @@ public class OpenningCine : MonoBehaviour
 {
     public GameObject plFace;
     public GameObject moFace;
+    public TextMeshProUGUI BossName;
 
     public Vector2 plPos;
     public Vector2 moPos;
@@ -41,6 +42,13 @@ public class OpenningCine : MonoBehaviour
 
     private void Start()
     {
+        switch (DataManager.instance.StageNum)
+        {
+            case 1: BossName.text = "Slime";
+                break;
+            case 2: BossName.text = "Snail";
+                break;
+        }
         StartCoroutine(Openning());
     }
 

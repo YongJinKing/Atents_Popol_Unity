@@ -248,7 +248,7 @@ public class WaveUI : MonoBehaviour
         if (monsterColliders.Length > 0)
         {
             BossObject = monsterColliders[0].gameObject;
-            Debug.Log(BossObject.name);
+            //Debug.Log(BossObject.transform.root.name);
         }
     }
 
