@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class HitOnceHitBox : BaseHitBox
 {
     protected HashSet<Collider> calculatedObject = new HashSet<Collider>();
-    protected float _hitDuration = 2;
+    [SerializeField]protected float _hitDuration = 2;
     public float hitDuration
     {
         get { return _hitDuration; }
@@ -18,15 +19,15 @@ public class HitOnceHitBox : BaseHitBox
         StartCoroutine(DurationChecking());
     }
 
-    protected override void OnCollisionStay(Collision collision)
+    protected override void OnTriggerStay(Collider other)
     {
-        if(((1 << collision.gameObject.layer) & targetMask) > 0 )
+        //Debug.Log($"HitOnceHitBox, targetMask : {targetMask.value} \ncollision layer : {other.gameObject.layer}");
+        if (((1 << other.gameObject.layer) & targetMask) > 0)
         {
-            if (!calculatedObject.Contains(collision.collider))
+            if (!calculatedObject.Contains(other))
             {
-                calculatedObject.Add(collision.collider);
-                Debug.Log("onCollisionStay in HitOnceHitBox");
-                onHitEvent?.Invoke(collision.collider);
+                calculatedObject.Add(other);
+                onHitEvent?.Invoke(other);
             }
         }
     }

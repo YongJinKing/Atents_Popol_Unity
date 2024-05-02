@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MultiHitHitBox : HitOnceHitBox
 {
-    protected float _hitFrequency = 0.5f;
+    [SerializeField]protected float _hitFrequency = 0.5f;
     public float hitFrequency
     {
         set { _hitFrequency = value; }
@@ -15,11 +15,6 @@ public class MultiHitHitBox : HitOnceHitBox
     {
         base.Start();
         StartCoroutine(Refreshing());
-    }
-
-    protected override void OnCollisionStay(Collision collision)
-    {
-        base.OnCollisionStay(collision);
     }
 
     protected IEnumerator Refreshing()

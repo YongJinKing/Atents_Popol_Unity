@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,10 +23,14 @@ public abstract class BaseHitBox : MonoBehaviour
             return;
         }
         this.myBattleSystem = myBattleSystem;
-        GetComponentsInChildren<BaseSkillEffect>(myBattleSystem);
+        foreach(BaseSkillEffect data in GetComponentsInChildren<BaseSkillEffect>())
+        {
+            data.InitializeBattleSystem(myBattleSystem);
+        }
         targetMask = mask;
-        Debug.Log($"BaseHitBox, targetMask : {targetMask.value}");
+        //Debug.Log($"BaseHitBox, targetMask : {targetMask.value}");
     }
 
-    protected abstract void OnCollisionStay(Collision collision);
+
+    protected abstract void OnTriggerStay(Collider other);
 }

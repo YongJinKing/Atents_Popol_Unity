@@ -129,6 +129,7 @@ public class Slime : Monster
                 break;
         }
     }
+
     protected override void ProcessState()
     {
         switch (myState)

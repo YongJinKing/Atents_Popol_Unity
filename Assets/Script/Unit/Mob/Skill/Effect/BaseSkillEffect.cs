@@ -38,10 +38,9 @@ public abstract class BaseSkillEffect : MonoBehaviour
 
     //public 함수들 영역
     #region PublicMethod
-    public BaseSkillEffect() { }
-    public BaseSkillEffect(BattleSystem battleSystem)
+    public void InitializeBattleSystem(BattleSystem bs)
     {
-        myBattleSystem = battleSystem;
+        myBattleSystem = bs;
     }
     #endregion
     #endregion

@@ -120,7 +120,7 @@ public class ProjectileSkillType : HitCheckSkillType
             if(temp != null)
                 StartCoroutine(LinearMovingToPos(hitBox, temp.bounds.center, () => DestroyProjectile(hitBox)));
             else
-                StartCoroutine(LinearMovingToPos(hitBox, target.position + Vector3.up * 0.5f, () => DestroyProjectile(hitBox)));
+                StartCoroutine(LinearMovingToPos(hitBox, target.position, () => DestroyProjectile(hitBox)));
         }
 
         //투사체 각각이 남은시간을 가지고 있어야 하므로 코루틴에다가 remainDuration을 지역변수로 재정의 했다.

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4532984491013602080}
   - component: {fileID: 9017040945289770365}
   - component: {fileID: 2142756681046719783}
-  - component: {fileID: 8994654261193080868}
+  - component: {fileID: 7815674429502833800}
   m_Layer: 0
   m_Name: FireGround
   m_TagString: Untagged
@@ -110,7 +110,7 @@ CapsuleCollider:
   m_Height: 6
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8994654261193080868
+--- !u!114 &7815674429502833800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 325745496488015713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ebcdee5cd7b664ebbb50a09cffd80a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a71477e6de8f0440ac5f424b715c9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onHitEvent:

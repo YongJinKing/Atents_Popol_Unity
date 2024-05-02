@@ -60,17 +60,16 @@ public class DamageSkillEffect : BaseSkillEffect
     #region EventHandler
     public override void OnSkillHit(Collider target)
     {
-        //Debug.Log(target.name);
+        //Debug.Log(myBattleSystem.name);
         IDamage damage = target.GetComponentInParent<IDamage>();
         IGetDType Dtype = target.GetComponentInParent<IGetDType>();
 
         if (damage != null)
         {
-            //Debug.Log($"Dmg : {power * myBattleSystem.ATK}\nAtype : {Atype}");
-
             float temp = myBattleSystem.GetModifiedStat(E_BattleStat.ATK);
-            
-            if(Dtype != null)
+            //Debug.Log($"Dmg : {power * temp}\nAtype : {Atype}");
+
+            if (Dtype != null)
             {
                 damage.TakeDamage((int)(power * temp), Atype, Dtype.GetDType(target));
             }
