@@ -235,13 +235,13 @@ public class BattleSystem : CharacterProperty, IDamage
             switch (computed)
             {
                 case 1.2f:
-                    SoundManager.instance.PlaySfxMusic("Hit");
+                    SoundManager.instance.HitSfxMusic();
                     break;
                 case 1.0f:
-                    SoundManager.instance.PlaySfxMusic("Hit");
+                    SoundManager.instance.HitSfxMusic();
                     break;
                 case 0.8f:
-                    SoundManager.instance.PlaySfxMusic("Hit");
+                    SoundManager.instance.HitSfxMusic();
                     break;
             }
         }

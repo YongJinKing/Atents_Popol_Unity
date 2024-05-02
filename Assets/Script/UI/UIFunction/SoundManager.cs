@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] audioSfxClips;
     public AudioSource BgmPlayer;
     public AudioSource SfxPlayer;
+    public AudioSource SfxHit;
     public AudioMixer m_AudioMixer;
 
     public float MasterValue;
@@ -67,20 +69,24 @@ public class SoundManager : MonoBehaviour
         int index = 0;
         switch (Type)
         {
-            case "Hit": index = 0; break;
-            case "Equip": index = 1; break;
-            case "Unequip": index = 2; break;
-            case "BtnClick": index = 3; break;
-            case "Death": index = 4; break;
-            case "Victory": index = 5; break;
-            case "OneHendSwordAttack": index = 6; break;
-            case "OneHendSwordSkill": index = 7; break;
-            case "TwoHendSwordAttack": index = 8; break;
-            case "TwoHendSwordSkill": index = 9; break;
+            case "Equip": index = 0; break;
+            case "Unequip": index = 1; break;
+            case "BtnClick": index = 2; break;
+            case "Death": index = 3; break;
+            case "Victory": index = 4; break;
+            case "OneHendSwordAttack": index = 5; break;
+            case "OneHendSwordSkill": index = 6; break;
+            case "TwoHendSwordAttack": index = 7; break;
+            case "TwoHendSwordSkill": index = 8; break;
         }
 
         SfxPlayer.clip = audioSfxClips[index];
         SfxPlayer.PlayOneShot(SfxPlayer.clip);
+    }
+
+    public void HitSfxMusic()
+    {
+        SfxHit.PlayOneShot(SfxHit.clip);
     }
     public void SetMasterVolume(float volume)
     {
