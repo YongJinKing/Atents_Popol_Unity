@@ -153,6 +153,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
             case 0:
                 Weapon[0].SetActive(true);
                 myAnim.SetBool("OneHandSword", true);
+                battleStat.AttackDelay = 0.1f;
                 break;
             case 1:
                 Weapon[1].SetActive(true);
