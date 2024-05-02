@@ -73,6 +73,7 @@ public class InGameEndUI : MonoBehaviour
             GoToClearSceneImage.color = color;
             yield return null;
         }
+        yield return new WaitForSeconds(2);
         SceneLoading.SceneNum(6);
         SceneManager.LoadScene(5);
         color.a = 0.0f;

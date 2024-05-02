@@ -2088,6 +2088,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 301597091872297950, guid: e6b417fb67347124e98d0fef6f89a041, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2566740981109242930, guid: e6b417fb67347124e98d0fef6f89a041, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2175,6 +2179,14 @@ PrefabInstance:
     - target: {fileID: 6803937763081585786, guid: e6b417fb67347124e98d0fef6f89a041, type: 3}
       propertyPath: m_Name
       value: GameEndUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163339929232947022, guid: e6b417fb67347124e98d0fef6f89a041, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8536842586830709965, guid: e6b417fb67347124e98d0fef6f89a041, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
