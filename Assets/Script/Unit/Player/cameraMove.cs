@@ -187,7 +187,10 @@ public class cameraMove : MonoBehaviour
                 yield return new WaitForSeconds(3);
                 if(inst.playerData.ClearStage.Length == inst.StageNum)
                 {
-                    GameClear?.Invoke();
+                    if(whoWin == 0)
+                        GameClear?.Invoke();
+                    else
+                        GameEndUI?.Invoke(whoWin);
                 }
                 else
                 {
