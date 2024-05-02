@@ -21,7 +21,7 @@ public class DisplayCondition : MonoBehaviour
             }
         }
         Instantiate(Resources.Load<GameObject>("UI/UserSkill/Condition"), go);
-        Debug.Log(go.childCount);
+        //Debug.Log(go.childCount);
         go.GetChild(go.childCount - 1).GetComponent<Condition>().SetTrigger(Id);
 
     }

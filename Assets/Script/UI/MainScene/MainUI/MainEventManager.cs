@@ -17,7 +17,6 @@ public class MainEventManager : MonoBehaviour
         SoundManager.instance.PlayBgmMusic("MainBgm");
         for(int i = 2; i < gameCanvas.transform.childCount; i++)
                 gameCanvas.transform.GetChild(i).gameObject.SetActive(false);
-
             transform.gameObject.SetActive(true);
 
     }
