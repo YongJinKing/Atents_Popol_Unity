@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
 
         var pldata = DataManager.instance.playerData;
         var plLvstat = PlayerDataManager.instance.dicPlayerLevelData[pldata.Character_CurrentLevel];
-        //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½
+        //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½ï¿½
         bs.Exp = pldata.Character_CurrentExp;
         bs.Level = pldata.Character_CurrentLevel;
         bs.ATK = pldata.Character_AttackPower + pldata.Rigging_Weapon_Ability;
@@ -172,8 +172,9 @@ public class GameManager : MonoBehaviour
             var go = DataManager.instance.playerData;
             Debug.Log("StageEnd");
             DataManager.instance.SaveData();
-            stageEndEvent?.Invoke();
             go.ClearStage[DataManager.instance.StageNum - 1] = true;
+            stageEndEvent?.Invoke();
+            
             //GameEndUI?.Invoke(1);//Monster
             pl.enabled = false;
         }

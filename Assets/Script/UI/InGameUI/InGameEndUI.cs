@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class InGameEndUI : MonoBehaviour
 {
     public GameObject GameManager;
+    public Image GoToClearSceneImage;
+    Coroutine CorGoToClearScene;
     GameObject GameWinPopup;
     GameObject GameLosePopup;
+    
     void Start()
     {
         GameWinPopup = transform.GetChild(0).gameObject;//GameEndUI/GameWin
@@ -49,6 +53,23 @@ public class InGameEndUI : MonoBehaviour
             GameManager.GetComponent<GameManager>().curRewardExp.ToString();
             SoundManager.instance.PlayBgmMusic("LoseBgm");
         }
+    }
+    public void GameClear()
+    {
+        CorGoToClearScene = StartCoroutine(ClearSceneColorChange());
+    }
+    IEnumerator ClearSceneColorChange()
+    {
+        Color color = GoToClearSceneImage.color;
+        
+        while(color.a < 1.0f)
+        {
+            color.a += Time.deltaTime;
+            GoToClearSceneImage.color = color;
+            yield return null;
+        }
+            Debug.Log("end");
+        
     }
 
     
