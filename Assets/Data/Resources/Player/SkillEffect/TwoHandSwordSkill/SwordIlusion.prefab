@@ -9752,7 +9752,7 @@ MonoBehaviour:
   WeaponType: 1
   Level: 10
   CoolTime: 40
-  CoolTimeCheck: 1
+  CoolTimeCheck: 0
   Player: {fileID: 0}
   aType: 1
 --- !u!114 &-3751537622055009531

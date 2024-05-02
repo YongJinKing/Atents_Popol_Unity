@@ -3205,6 +3205,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f450264f9328fe4418514eeaee231b26, type: 3}
   - {fileID: 8300000, guid: 3f2d25eeb16d0e642acc33d4f0be0711, type: 3}
   - {fileID: 8300000, guid: aed664a89e403ae4d837aa80b6fcefac, type: 3}
+  - {fileID: 8300000, guid: f3b834e881c44dc4382d47d5cb802931, type: 3}
   BgmPlayer: {fileID: 1664866417}
   SfxPlayer: {fileID: 430986926}
   SfxHit: {fileID: 1851966801}

@@ -285,6 +285,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         if (Input.GetKeyDown(KeyCode.Space) && isDadgeReady)
         {
             GetRaycastHit();
+            SoundManager.instance.PlaySfxMusic("Dadge");
             stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
             ChangeState(state.Dadge);
             myAnim.SetTrigger("t_Dadge");
@@ -302,13 +303,12 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
                 var plskill = DataManager.instance.playerData;
                 if (!string.IsNullOrWhiteSpace(plskill.InGameSkillList[i]))
                 {
-                    Debug.Log(string.IsNullOrWhiteSpace(plskill.InGameSkillList[i]));
                     GameObject effect = Resources.Load($"Player/SkillEffect/{ItemTypeIntToString.IntToStringSkillFileName(WeaponType)}/{plskill.InGameSkillList[i]}") as GameObject;
                     sm = effect.GetComponent<SkillManager>();
                 }
                 else
                 {
-                    Debug.Log("���� ���Կ� ��ų�� �����ϴ�.");
+                    Debug.Log("false");
                     return;
                 }
 
