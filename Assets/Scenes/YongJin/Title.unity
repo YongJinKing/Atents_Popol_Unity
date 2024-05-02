@@ -3202,6 +3202,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: cc6699269b4c1d44ea1e860518b9bb73, type: 3}
   - {fileID: 8300000, guid: 35ce408210dfa9843ba14da86f8efb4e, type: 3}
   - {fileID: 8300000, guid: 4dbfbd1a56081db4ca174255a4d56b1f, type: 3}
+  - {fileID: 8300000, guid: 80dbcb231e1605542bba4f6ba7269548, type: 3}
+  - {fileID: 8300000, guid: 180f35aef2ea2654086bcbb52d58ec0b, type: 3}
+  - {fileID: 8300000, guid: 80502e18f68bb734b9dded7bb8d2e750, type: 3}
+  - {fileID: 8300000, guid: 2e3cfd8a4cd1afe40b6ddda869151d13, type: 3}
   BgmPlayer: {fileID: 1664866417}
   SfxPlayer: {fileID: 430986926}
   m_AudioMixer: {fileID: 24100000, guid: 8c8d4443772d45e48a2b3b794b59df85, type: 2}

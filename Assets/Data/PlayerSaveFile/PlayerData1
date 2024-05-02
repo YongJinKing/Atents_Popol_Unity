@@ -1,12 +1,12 @@
 {
     "Character_Hp": 960,
     "Character_AttackPower": 250,
-    "Character_CurrentExp": 15200,
+    "Character_CurrentExp": 15400,
     "Character_CurrentLevel": 17,
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
-    "PlayerGold": 25039,
+    "PlayerGold": 25489,
     "Rigging_Weapon_Id": 1203,
     "Rigging_Armor_Id": 3000,
     "Rigging_Weapon_Ability": 140,
@@ -14,7 +14,7 @@
     "Rigging_Weapon_Type": 1,
     "Rigging_Armor_Type": 10,
     "Rigging_Weapon_Duration": 64,
-    "Rigging_Armor_Duration": 88,
+    "Rigging_Armor_Duration": 87,
     "SaveUISkillList": [
         "ShadowDot",
         "EvilList",

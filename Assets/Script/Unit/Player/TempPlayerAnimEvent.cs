@@ -32,4 +32,21 @@ public class TempPlayerAnimEvent : MonoBehaviour
     {
         i_SimpleEffect.SimpleEffect(skill);
     }
+
+    public void OneHendSwordAttackSound()
+    {
+        SoundManager.instance.PlaySfxMusic("OneHendSwordAttack");
+    }
+    public void OneHendSwordSkillSound()
+    {
+        SoundManager.instance.PlaySfxMusic("OneHendSwordSkill");
+    }
+    public void TwoHendSwordAttackSound()
+    {
+        SoundManager.instance.PlaySfxMusic("TwoHendSwordAttack");
+    }
+    public void TwoHendSwordSkillSound()
+    {
+        SoundManager.instance.PlaySfxMusic("TwoHendSwordSkill");
+    }
 }
