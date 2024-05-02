@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Total_Game.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/YongJin/Cinematic.unity
+    path: Assets/Scenes/YongJin/StartCinematic.unity
     guid: 18710a147f7cd094d903385418de4748
+  - enabled: 1
+    path: Assets/Scenes/YongJin/Loading(Black).unity
+    guid: 82d11ea24c012e24ca7670365619d0b6
+  - enabled: 1
+    path: Assets/Scenes/YongJin/EndCinematic.unity
+    guid: 02e650a566890b94bbe8e0a794dc8f80
   m_configObjects: {}

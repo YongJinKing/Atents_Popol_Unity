@@ -68,7 +68,7 @@ public class InGameEndUI : MonoBehaviour
             GoToClearSceneImage.color = color;
             yield return null;
         }
-            Debug.Log("end");
+        
         
     }
 
