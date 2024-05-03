@@ -180,6 +180,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
 
     public void OutStun()
     {
+        Debug.Log("IStun DIsActive");
         myAnim.SetBool("b_Stun", false);
         ChangeState(state.Idle);
         
