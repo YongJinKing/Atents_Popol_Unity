@@ -491,9 +491,7 @@ public class MonsterFactory
                     BaseHitBox hitBox = null;
                     if (data.Skill_hitFrequency > 0)
                     {
-                        Debug.Log("InflictEX start");
                         hitBox = temp.AddComponent<MultiHitHitBox>();
-                        Debug.Log("InflictEX end");
                         (hitBox as MultiHitHitBox).hitDuration = data.Skill_hitDuration;
                         (hitBox as MultiHitHitBox).hitFrequency = data.Skill_hitFrequency;
                     }
@@ -511,6 +509,8 @@ public class MonsterFactory
 
                     temp.gameObject.SetActive(false);
                     inflictEX.extraEffectObject = temp;
+
+                    parent.GetComponent<IEnrollEvent<Collider>>().Enroll(inflictEX.OnSkillHit);
                 }
                 break;
             default:

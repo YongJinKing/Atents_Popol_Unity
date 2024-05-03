@@ -62,7 +62,7 @@ public class InflictExtraSkillEffect : BaseSkillEffect
             }
         }
 
-        if(extraEffectObject != null)
+        if (extraEffectObject != null)
         {
             temp = Instantiate<GameObject>(extraEffectObject, pos, Quaternion.identity);
         }
@@ -70,6 +70,7 @@ public class InflictExtraSkillEffect : BaseSkillEffect
         if (temp != null)
         {
             temp.GetComponent<BaseHitBox>().Initialize(myBattleSystem, targetMask);
+            temp.SetActive(true);
         }
     }
     #endregion
