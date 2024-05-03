@@ -4928,7 +4928,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 2
   m_Center: {x: 0, y: 1, z: 1.3}
@@ -4959,7 +4959,7 @@ MonoBehaviour:
   WeaponType: 0
   Level: 1
   CoolTime: 5
-  CoolTimeCheck: 1
+  CoolTimeCheck: 0
   Player: {fileID: 0}
   aType: 1
 --- !u!114 &3352596408234033343
