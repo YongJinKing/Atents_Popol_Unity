@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageSkillEffect : BaseSkillEffect
@@ -8,7 +6,7 @@ public class DamageSkillEffect : BaseSkillEffect
     #region Properties / Field
     //private ���� ����
     #region Private
-
+    private float lastStoredValue;
     #endregion
 
     //protected ���� ����
@@ -66,16 +64,21 @@ public class DamageSkillEffect : BaseSkillEffect
 
         if (damage != null)
         {
-            float temp = myBattleSystem.GetModifiedStat(E_BattleStat.ATK);
+            float temp = 0;
+            if (myBattleSystem != null)
+            {
+                temp = myBattleSystem.GetModifiedStat(E_BattleStat.ATK);
+                lastStoredValue = temp;
+            }
             //Debug.Log($"Dmg : {power * temp}\nAtype : {Atype}");
 
             if (Dtype != null)
             {
-                damage.TakeDamage((int)(power * temp), Atype, Dtype.GetDType(target));
+                damage.TakeDamage((int)(power * lastStoredValue), Atype, Dtype.GetDType(target));
             }
             else
             {
-                damage.TakeDamage((int)(power * temp), Atype, DefenceType.HeavyArmor);
+                damage.TakeDamage((int)(power * lastStoredValue), Atype, DefenceType.HeavyArmor);
             }
         }
     }
