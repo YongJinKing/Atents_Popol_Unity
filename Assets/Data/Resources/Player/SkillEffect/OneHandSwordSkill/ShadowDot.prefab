@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 23500761469823831}
   - component: {fileID: 844677524500811323}
   - component: {fileID: 3352596408234033343}
+  - component: {fileID: -6495971053231583443}
   m_Layer: 0
   m_Name: ShadowDot
   m_TagString: Untagged
@@ -4907,7 +4908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52df49c8c36e4e848bc286e57da5b967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDelay: 0
+  startDelay: 0.15
   colCount: 2
   colDelay: 0.2
 --- !u!135 &23500761469823831
@@ -4958,7 +4959,7 @@ MonoBehaviour:
   WeaponType: 0
   Level: 1
   CoolTime: 5
-  CoolTimeCheck: 0
+  CoolTimeCheck: 1
   Player: {fileID: 0}
   aType: 1
 --- !u!114 &3352596408234033343
@@ -4980,6 +4981,25 @@ MonoBehaviour:
     m_Bits: 4096
   duration: 0.1
   magnitud: 0.2
+--- !u!114 &-6495971053231583443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262484512595820567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c8fa89459f91744b2058532811dbdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  offSet: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
+  isRot: 0
+  RotSpeed: 0
 --- !u!1 &1604432522506000583
 GameObject:
   m_ObjectHideFlags: 0

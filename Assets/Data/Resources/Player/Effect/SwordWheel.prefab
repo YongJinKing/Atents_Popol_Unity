@@ -14648,6 +14648,7 @@ GameObject:
   - component: {fileID: 8429795697937341255}
   - component: {fileID: 3543373995549375955}
   - component: {fileID: 8856199668242290619}
+  - component: {fileID: 5017421754529984011}
   m_Layer: 0
   m_Name: SwordWheel
   m_TagString: Untagged
@@ -19553,6 +19554,25 @@ MonoBehaviour:
   startDelay: 0
   colCount: 2
   colDelay: 0.2
+--- !u!114 &5017421754529984011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5399032899458382669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68c8fa89459f91744b2058532811dbdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  offSet: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
+  isRot: 0
+  RotSpeed: 0
 --- !u!1 &8852224782999665746
 GameObject:
   m_ObjectHideFlags: 0

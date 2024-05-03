@@ -52,6 +52,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   offSet: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
   isRot: 0
   RotSpeed: 0
 --- !u!114 &4196453803616073522
