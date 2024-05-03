@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+
 
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using System.ComponentModel.Design;
+
 
 
 public class SlotDrop : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerEnterHandler, IPointerExitHandler

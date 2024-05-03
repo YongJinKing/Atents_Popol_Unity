@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.Timeline;
-using UnityEngine.Events;
-using Unity.VisualScripting;
-using TMPro;
+
 
 
 public class UserSkillSlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
