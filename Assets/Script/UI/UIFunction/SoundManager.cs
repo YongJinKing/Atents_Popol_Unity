@@ -91,17 +91,20 @@ public class SoundManager : MonoBehaviour
     }
     public void SetMasterVolume(float volume)
     {
-        m_AudioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
+        if(MasterMuteCheck)
+            m_AudioMixer.SetFloat("Master", Mathf.Log10(volume) * 20);
         MasterValue = volume;
     }
     public void SetBgmVolume(float volume)
     {
-        m_AudioMixer.SetFloat("BgmMusic", Mathf.Log10(volume) * 20);
+        if(BgmMuteCheck)
+            m_AudioMixer.SetFloat("BgmMusic", Mathf.Log10(volume) * 20);
         BgmValue = volume;
     }
     public void SetSfxVolume(float volume)
     {
-        m_AudioMixer.SetFloat("SfxMusic", Mathf.Log10(volume) * 20);
+        if(SfxMuteCheck)
+            m_AudioMixer.SetFloat("SfxMusic", Mathf.Log10(volume) * 20);
         SfxValue = volume;
     }
     

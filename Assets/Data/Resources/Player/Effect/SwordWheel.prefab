@@ -19509,7 +19509,6 @@ MonoBehaviour:
     uiSkillName: SwordWheel
     uiSkillDesc: 
     uiSkillDetailDesc: 
-  index: 0
   SimpleAttack: 1
   EnergyGage: 0
   Damage: 0
@@ -19518,9 +19517,8 @@ MonoBehaviour:
   Level: 0
   CoolTime: 0
   CoolTimeCheck: 0
+  Player: {fileID: 0}
   aType: 1
-  Buff: 0
-  BTime: 0
 --- !u!114 &3543373995549375955
 MonoBehaviour:
   m_ObjectHideFlags: 0
