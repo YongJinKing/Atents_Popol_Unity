@@ -71,7 +71,7 @@
     "Index": 30004,
     "Skill_NumOfHitBox": 1,
     "Skill_ObjectEffect": 20003,
-    "Skill_Unpenetrable": 0,
+    "Skill_Unpenetrable": -1,
     "Skill_TargetMask": 10,
     "Skill_hitDuration": 10,
     "Skill_LongRangeAttackSpeed": 20,

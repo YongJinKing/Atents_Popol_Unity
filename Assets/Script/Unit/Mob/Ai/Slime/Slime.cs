@@ -156,7 +156,11 @@ public class Slime : Monster
                 //myAnim.SetTrigger("t_ChannelingSkill");
                 //Skill Start hitCheck after delayMotion
                 onSkillStartAct?.Invoke(target.transform,
-                    () => myAnim.SetTrigger("t_AttackStart"),
+                    () => 
+                    {
+                        myAnim.SetTrigger("t_AttackStart");
+                        rotateEvent?.Invoke(target.transform.position - transform.position, 10.0f);
+                    },
                     () => myAnim.SetTrigger("t_AttackEnd"),
                     () =>
                     {

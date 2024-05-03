@@ -38,8 +38,6 @@ public abstract class BaseHitBox : MonoBehaviour, IEnrollEvent<Collider>
 
     public void Enroll(UnityAction<Collider> action)
     {
-        Debug.Log("BaseHitBox, Enroll");
         onHitEvent.AddListener(action);
-        Debug.Log($"Enrolled Count : {onHitEvent.GetPersistentEventCount()}");
     }
 }
