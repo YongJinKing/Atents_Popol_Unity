@@ -62,6 +62,10 @@ public class GameManager : MonoBehaviour
         //StartCoroutine(WaveRound());
 
         LoadPlayerStat();
+        
+    }
+    private void Start() 
+    {
         SoundManager.instance.PlayBgmMusic("WaveBgm");
     }
 

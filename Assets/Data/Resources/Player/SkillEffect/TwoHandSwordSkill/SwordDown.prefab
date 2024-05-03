@@ -4963,7 +4963,7 @@ MonoBehaviour:
   WeaponType: 1
   Level: 1
   CoolTime: 5
-  CoolTimeCheck: 1
+  CoolTimeCheck: 0
   Player: {fileID: 0}
   aType: 1
 --- !u!114 &-6820575483922585115
