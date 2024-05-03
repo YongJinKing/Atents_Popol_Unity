@@ -2,6 +2,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System;
 
 public class MonsterFactory
 {
@@ -45,7 +46,7 @@ public class MonsterFactory
         }
         */
 
-
+        //Collider, Rigidbody, Scale Set
         float scale = data.Character_Scale;
         obj.transform.localScale = new Vector3(scale, scale, scale);
         obj.name = "Slime2";
@@ -59,27 +60,35 @@ public class MonsterFactory
 
         //need exl
         Monster objMon = FindAI(obj,data.Character_AIType);
-
+        //init Events
         objMon.onMovementEvent = new UnityEngine.Events.UnityEvent<Vector3, float, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objMon.followEvent = new UnityEngine.Events.UnityEvent<Transform, Info<float, float>, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objMon.rotateEvent = new UnityEngine.Events.UnityEvent<Vector3, float>();
         objMon.sideMoveEvent = new UnityEngine.Events.UnityEvent<Transform, Info<float,float>, UnityEngine.Events.UnityAction, UnityEngine.Events.UnityAction>();
         objMon.stopEvent = new UnityEngine.Events.UnityEvent<UnityEngine.Events.UnityAction>();
         objMon.DeadEvent = new UnityEngine.Events.UnityEvent();
-
+        //UnitMovement Set
         UnitMovement objMove = obj.AddComponent<UnitMovement>();
         objMon.onMovementEvent.AddListener(objMove.MoveToPos);
         objMon.followEvent.AddListener(objMove.FollowTarget);
         objMon.rotateEvent.AddListener(objMove.Rotate);
         objMon.sideMoveEvent.AddListener(objMove.SideMove);
         objMon.stopEvent.AddListener(objMove.StopMove);
-
+        //Status Set
         Status objStatus = obj.AddComponent<Status>();
         objMon.DeadEvent.AddListener(objStatus.RemoveAll);
 
+        //Find Mesh Prefab
         GameObject prefab = GameObject.Instantiate(FindPrefab(data.Character_Prefab));
         //GameObject prefab = GameObject.Instantiate(Resources.Load<GameObject>("Monster/MonsterPrefabs/Prefab_Stage1_Slime"));
         prefab.transform.SetParent(obj.transform, false);
+        //Material Set
+        Material tempMat = FindMaterial(data.Character_Prefab, data.Character_MaterialType);
+        if(tempMat != null)
+        {
+            prefab.GetComponentInChildren<Renderer>().material = tempMat;
+        }
+        //Part Manager Set
         MonsterPartManager part = prefab.GetComponent<MonsterPartManager>();
         objMon.attackStartPos = new Transform[part.attackStartPos.Length];
         for (int i = 0; i < part.attackStartPos.Length; i++)
@@ -99,7 +108,7 @@ public class MonsterFactory
                 part.parts[i].type = DefenceType.Normal;
             }
         }
-
+        //Animation Event Set
         MonsterAnimEvent anim = prefab.GetComponent<MonsterAnimEvent>();
         anim.onAttackStartEvent = new UnityEngine.Events.UnityEvent();
         anim.onAttackEndEvent = new UnityEngine.Events.UnityEvent();
@@ -110,14 +119,14 @@ public class MonsterFactory
         anim.onAttackAnimEndEvent.AddListener(objMon.OnSkillAnimEnd);
 
         
-
+        //Stat Set
         BattleStat bs = default;
         bs.HP = data.Character_Hp;
         bs.ATK = data.Character_AttackPower;
         bs.Speed = data.Character_MoveSpeed;
         objMon.battlestat = bs;
 
-
+        //Skill Set
         objMon.skills = new Skill[data.Skill_IndexArr.Length];
 
         for (int i = 0; i < data.Skill_IndexArr.Length; ++i)
@@ -125,6 +134,7 @@ public class MonsterFactory
             objMon.skills[i] = CreateMonsterSkill(objMon, data.Skill_IndexArr[i]);
         }
 
+        //AI Set
         objMon.idleAI = new List<int>();
         int temp = data.Character_IdleType;
         if (temp > Mathf.Pow(2, 11))
@@ -147,7 +157,7 @@ public class MonsterFactory
         return obj;
     }
 
-    public Skill CreateMonsterSkill(Monster parent ,int index)
+    private Skill CreateMonsterSkill(Monster parent ,int index)
     {
         
         SkillDataTable data = default;
@@ -205,7 +215,7 @@ public class MonsterFactory
         return objSkill;
     }
 
-    public void AddSkillType(Monster monster, Skill parent, int index)
+    private void AddSkillType(Monster monster, Skill parent, int index)
     {
         GameObject obj = new GameObject();
 
@@ -382,7 +392,7 @@ public class MonsterFactory
         obj.transform.SetParent(parent.transform, false);
     }
 
-    public void AddSkillAffect(GameObject parent, int index)
+    private void AddSkillAffect(GameObject parent, int index)
     {
         GameObject obj = new GameObject();
 
@@ -512,7 +522,7 @@ public class MonsterFactory
         obj.transform.SetParent(parent.transform, false);
     }
 
-    public GameObject FindPrefab(int index)
+    private GameObject FindPrefab(int index)
     {
         PrefabTable data = default;
         if (monsterDataManager.dicPrefabTable.ContainsKey(index))
@@ -538,7 +548,22 @@ public class MonsterFactory
         }
     }
 
-    public Monster FindAI(GameObject obj, int index)
+    private Material FindMaterial(int prefabIndex, int materialIndex)
+    {
+        //prefabIndex is not monster mesh prefab
+        if (prefabIndex / 10000 != 1)
+            return null;
+
+        PrefabTable Pdata = default;
+        if (monsterDataManager.dicPrefabTable.ContainsKey(prefabIndex))
+        {
+            Pdata = monsterDataManager.dicPrefabTable[prefabIndex];
+        }
+
+        return Resources.Load<Material>($"Monster/MonsterPrefabs/Materials/{Pdata.Prefab_Name}/{materialIndex}");
+    }
+
+    private Monster FindAI(GameObject obj, int index)
     {
         switch (index)
         {
