@@ -56,7 +56,7 @@ public class DamageSkillEffect : BaseSkillEffect
 
     //�̺�Ʈ�� �Ͼ���� ����Ǵ�?On~~�Լ�
     #region EventHandler
-    public override void OnSkillHit(Collider target)
+    public override void OnSkillHit(Collider target, Vector3 pos)
     {
         //Debug.Log(target.name);
         IDamage damage = target.GetComponentInParent<IDamage>();

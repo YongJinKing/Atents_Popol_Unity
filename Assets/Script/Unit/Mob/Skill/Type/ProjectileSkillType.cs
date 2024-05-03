@@ -152,7 +152,15 @@ public class ProjectileSkillType : HitCheckSkillType
                     HitEffectPlay(hitBox.transform.position, tempcol[i].gameObject.transform.position);
 
                     //맞췄으니 효과 적용용으로 히트 이벤트 발생
-                    onSkillHitEvent?.Invoke(tempcol[i]);
+                    if (Physics.Raycast(hitBox.transform.position, tempcol[i].bounds.center - hitBox.transform.position, out RaycastHit hit, hitBoxCol.bounds.extents.magnitude, targetMask))
+                    {
+                        onSkillHitEvent?.Invoke(tempcol[i], hit.point);
+                    }
+                    else if(Physics.Raycast(hitBox.transform.position, Vector3.down, out hit, hitBoxCol.bounds.extents.magnitude, targetMask))
+                    {
+                        onSkillHitEvent?.Invoke(tempcol[i], hit.point);
+                        //Debug.Log("projectile Ground hit");
+                    }
 
                     if (penetrable)
                     {

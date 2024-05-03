@@ -295,7 +295,7 @@ public class MonsterFactory
                     }
                     melee.hitDuration = data.Skill_hitDuration;
 
-                    melee.onSkillHitEvent = new UnityEngine.Events.UnityEvent<Collider>();
+                    melee.onSkillHitEvent = new UnityEngine.Events.UnityEvent<Collider, Vector3>();
                     for(int i = 0; i < data.Skill_AffectOptionArr.Length; ++i)
                     {
                         AddSkillAffect(melee.gameObject, data.Skill_AffectOptionArr[i]);
@@ -356,7 +356,7 @@ public class MonsterFactory
 
                     projectile.hitDuration = data.Skill_hitDuration;
 
-                    projectile.onSkillHitEvent = new UnityEngine.Events.UnityEvent<Collider>();
+                    projectile.onSkillHitEvent = new UnityEngine.Events.UnityEvent<Collider, Vector3>();
                     for (int i = 0; i < data.Skill_AffectOptionArr.Length; ++i)
                     {
                         AddSkillAffect(projectile.gameObject, data.Skill_AffectOptionArr[i]);
@@ -423,7 +423,7 @@ public class MonsterFactory
                     DamageSkillEffect damage = obj.AddComponent<DamageSkillEffect>();
                     damage.power = data.Skill_Power;
                     damage.Atype = (AttackType)data.Skill_AttackType;
-                    parent.GetComponent<IEnrollEvent<Collider>>().Enroll(damage.OnSkillHit);
+                    parent.GetComponent<IEnrollEvent<Collider, Vector3>>().Enroll(damage.OnSkillHit);
 
                     
                     //if (parent.GetComponent<HitCheckSkillType>() != null)
@@ -447,7 +447,7 @@ public class MonsterFactory
                     KnockBackSkillEffect knockBack = obj.AddComponent<KnockBackSkillEffect>();
                     knockBack.knockBackPower = data.Skill_KnockBackPower;
                     knockBack.knockUpPower = data.Skill_KnockUpPower;
-                    parent.GetComponent<IEnrollEvent<Collider>>().Enroll(knockBack.OnSkillHit);
+                    parent.GetComponent<IEnrollEvent<Collider, Vector3>>().Enroll(knockBack.OnSkillHit);
 
                     //if (parent.GetComponent<HitCheckSkillType>() != null)
                     //    parent.GetComponent<HitCheckSkillType>().onSkillHitEvent.AddListener(knockBack.OnSkillHit);
@@ -460,7 +460,7 @@ public class MonsterFactory
                     InflictStatusSkillEffect inflict = obj.AddComponent<InflictStatusSkillEffect>();
                     inflict.abType = (E_StatusAbnormality)(index % 10000);
                     obj.name = inflict.abType.ToString();
-                    parent.GetComponent<IEnrollEvent<Collider>>().Enroll(inflict.OnSkillHit);
+                    parent.GetComponent<IEnrollEvent<Collider, Vector3>>().Enroll(inflict.OnSkillHit);
 
 
                     //if (parent.GetComponent<HitCheckSkillType>() != null)
@@ -497,7 +497,7 @@ public class MonsterFactory
                         hitBox = temp.AddComponent<HitOnceHitBox>();
                         (hitBox as HitOnceHitBox).hitDuration = data.Skill_hitDuration;
                     }
-                    hitBox.onHitEvent = new UnityEngine.Events.UnityEvent<Collider>();
+                    hitBox.onHitEvent = new UnityEngine.Events.UnityEvent<Collider, Vector3>();
 
                     for(int i = 0; i < data.Skill_AffectOptionArr.Length; ++i)
                     {
@@ -507,7 +507,7 @@ public class MonsterFactory
                     temp.gameObject.SetActive(false);
                     inflictEX.extraEffectObject = temp;
 
-                    parent.GetComponent<IEnrollEvent<Collider>>().Enroll(inflictEX.OnSkillHit);
+                    parent.GetComponent<IEnrollEvent<Collider, Vector3>>().Enroll(inflictEX.OnSkillHit);
                 }
                 break;
             default:

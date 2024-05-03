@@ -44,7 +44,7 @@ public class InflictStatusSkillEffect : BaseSkillEffect
 
     //이벤트가 일어났을때 실행되는 On~~함수
     #region EventHandler
-    public override void OnSkillHit(Collider target)
+    public override void OnSkillHit(Collider target, Vector3 pos)
     {
         Status tStatus = target.GetComponentInParent<Status>();
         if(tStatus != null) 

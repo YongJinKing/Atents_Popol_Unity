@@ -74,7 +74,8 @@ public class MeleeSkillType : HitCheckSkillType
                     HitEffectPlay(hitBox.transform.position, tempcol[i].gameObject.transform.position);
                     calculatedObject.Add(temp);
 
-                    onSkillHitEvent?.Invoke(tempcol[i]);
+                    if (Physics.Raycast(hitBox.transform.position, tempcol[i].bounds.center - hitBox.transform.position, out RaycastHit hit, hitBoxCol.bounds.extents.magnitude, targetMask))
+                        onSkillHitEvent?.Invoke(tempcol[i], hit.point);
                 }
             }
             yield return null;

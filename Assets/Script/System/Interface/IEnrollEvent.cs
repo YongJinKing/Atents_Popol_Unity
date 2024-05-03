@@ -9,3 +9,8 @@ public interface IEnrollEvent<T>
 {
     public void Enroll(UnityAction<T> action);
 }
+
+public interface IEnrollEvent<T0, T1>
+{
+    public void Enroll(UnityAction<T0, T1> action);
+}

@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class BaseHitBox : MonoBehaviour, IEnrollEvent<Collider>
+public abstract class BaseHitBox : MonoBehaviour, IEnrollEvent<Collider, Vector3>
 {
     protected Collider myCol;
     protected BattleSystem myBattleSystem;
     protected LayerMask targetMask;
-    public UnityEvent<Collider> onHitEvent;
+    public UnityEvent<Collider, Vector3> onHitEvent;
 
     protected virtual void Start()
     {
@@ -33,7 +33,7 @@ public abstract class BaseHitBox : MonoBehaviour, IEnrollEvent<Collider>
         //Debug.Log($"BaseHitBox, targetMask : {targetMask.value}");
     }
 
-    public void Enroll(UnityAction<Collider> action)
+    public void Enroll(UnityAction<Collider, Vector3> action)
     {
         //Debug.Log("BaseHitBox Enroll");
         onHitEvent.AddListener(action);

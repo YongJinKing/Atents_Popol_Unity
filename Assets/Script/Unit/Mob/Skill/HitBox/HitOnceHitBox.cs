@@ -44,7 +44,8 @@ public class HitOnceHitBox : BaseHitBox
             if (!calculatedObject.Contains(other))
             {
                 calculatedObject.Add(other);
-                onHitEvent?.Invoke(other);
+                if (Physics.Raycast(transform.position, other.bounds.center - transform.position, out RaycastHit hit, myCol.bounds.extents.magnitude, targetMask))
+                    onHitEvent?.Invoke(other, hit.point);
             }
         }
     }

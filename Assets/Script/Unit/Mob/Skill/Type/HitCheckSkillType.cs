@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class HitCheckSkillType : BaseSkillType, IEnrollEvent<Collider>
+public abstract class HitCheckSkillType : BaseSkillType, IEnrollEvent<Collider, Vector3>
 {
     #region Properties / Field
     #region Private
@@ -38,7 +38,7 @@ public abstract class HitCheckSkillType : BaseSkillType, IEnrollEvent<Collider>
     #endregion
 
     #region Event
-    public UnityEvent<Collider> onSkillHitEvent;
+    public UnityEvent<Collider, Vector3> onSkillHitEvent;
     #endregion
     #endregion
 
@@ -76,7 +76,7 @@ public abstract class HitCheckSkillType : BaseSkillType, IEnrollEvent<Collider>
     #endregion
 
     #region PublicMethod
-    public void Enroll(UnityAction<Collider> action)
+    public void Enroll(UnityAction<Collider, Vector3> action)
     {
         onSkillHitEvent.AddListener(action);
     }
