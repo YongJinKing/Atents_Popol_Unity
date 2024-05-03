@@ -114,6 +114,7 @@ public class Slime : Monster
                 break;
             case State.Stun:
                 onDeadAct?.Invoke();
+                stopEvent?.Invoke(null);
                 myAnim.SetBool("b_Stun", true);
                 break;
             case State.Death:
