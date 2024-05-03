@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class HitOnceHitBox : BaseHitBox
@@ -21,6 +20,15 @@ public class HitOnceHitBox : BaseHitBox
     protected override void OnEnable()
     {
         GetComponent<Collider>().enabled = true;
+        if(onHitEvent != null)
+        {
+            onHitEvent.RemoveAllListeners();
+            BaseSkillEffect[] effects = GetComponentsInChildren<BaseSkillEffect>();
+            for (int i = 0; i < effects.Length; ++i)
+            {
+                onHitEvent.AddListener(effects[i].OnSkillHit);
+            }
+        }
     }
 
     protected override void OnDisable()

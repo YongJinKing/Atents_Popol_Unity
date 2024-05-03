@@ -49,7 +49,10 @@ public class InflictStatusSkillEffect : BaseSkillEffect
     public override void OnSkillHit(Collider target)
     {
         Status tStatus = target.GetComponentInParent<Status>();
-        tStatus.Add(abType);
+        if(tStatus != null) 
+        {
+            tStatus.Add(abType);
+        }
     }
     #endregion
 

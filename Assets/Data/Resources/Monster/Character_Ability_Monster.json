@@ -7,7 +7,7 @@
     "Character_MoveSpeed": 4,
     "Character_AttackPower": 60,
     "Character_SkillVisibleRange": 20,
-    "Skill_IndexArr": [ 30000, 30001, 30002, 30003 ],
+    "Skill_IndexArr": [ 30000, 30001, 30002, 30003, 30005 ],
     "Character_DetailArmorTypeArr": [ 1, 2 ],
     "Character_Prefab": 10000,
     "Character_AIType": 0,
