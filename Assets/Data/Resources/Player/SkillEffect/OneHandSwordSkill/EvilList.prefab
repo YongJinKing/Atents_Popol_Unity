@@ -14747,8 +14747,8 @@ MonoBehaviour:
       \uC8FC\uB294 \uAE30\uC220\uC774\uB2E4."
   SimpleAttack: 0
   EnergyGage: 40
-  Damage: 100
-  SkillCalculation: 0.5
+  Damage: 90
+  SkillCalculation: 0.45
   WeaponType: 0
   Level: 3
   CoolTime: 7

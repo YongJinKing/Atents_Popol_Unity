@@ -19513,7 +19513,7 @@ MonoBehaviour:
   SimpleAttack: 1
   EnergyGage: 0
   Damage: 0
-  SkillCalculation: 1
+  SkillCalculation: 0.7
   WeaponType: 1
   Level: 0
   CoolTime: 0

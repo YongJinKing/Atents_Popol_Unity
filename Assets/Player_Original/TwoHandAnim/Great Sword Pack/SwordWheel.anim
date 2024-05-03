@@ -42845,7 +42845,7 @@ AnimationClip:
   m_Events:
   - time: 0.43333334
     functionName: TwoHendSwordAttackSound
-    data: 
+    data: TwoHandSwordAttack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
@@ -42859,7 +42859,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0.73333335
     functionName: TwoHendSwordAttackSound
-    data: 
+    data: TwoHandSwordAttack
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

@@ -4960,7 +4960,7 @@ MonoBehaviour:
   SimpleAttack: 0
   EnergyGage: 20
   Damage: 140
-  SkillCalculation: 0.3
+  SkillCalculation: 1
   WeaponType: 1
   Level: 1
   CoolTime: 5

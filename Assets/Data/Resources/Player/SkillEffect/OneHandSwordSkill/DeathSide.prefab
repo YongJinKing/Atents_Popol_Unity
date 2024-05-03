@@ -14738,8 +14738,8 @@ MonoBehaviour:
       </color>\uC758 \uB370\uBBF8\uC9C0\uB97C \uC8FC\uB294 \uAE30\uC220\uC774\uB2E4."
   SimpleAttack: 0
   EnergyGage: 80
-  Damage: 150
-  SkillCalculation: 0.7
+  Damage: 70
+  SkillCalculation: 0.4
   WeaponType: 0
   Level: 7
   CoolTime: 10

@@ -74,11 +74,13 @@ public class SoundManager : MonoBehaviour
             case "BtnClick": index = 2; break;
             case "Death": index = 3; break;
             case "Victory": index = 4; break;
-            case "OneHendSwordAttack": index = 5; break;
-            case "OneHendSwordSkill": index = 6; break;
-            case "TwoHendSwordAttack": index = 7; break;
-            case "TwoHendSwordSkill": index = 8; break;
+            case "OneHandSwordAttack": index = 5; break;
+            case "OneHandSwordSkill": index = 6; break;
+            case "TwoHandSwordAttack": index = 7; break;
+            case "TwoHandSwordSkill": index = 8; break;
             case "Dadge": index = 9; break;
+            case "Swing": index = 10; break;
+            case "SwordDown": index = 11; break;
         }
 
         SfxPlayer.clip = audioSfxClips[index];
