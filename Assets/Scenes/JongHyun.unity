@@ -1468,7 +1468,7 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 1024
-  extraEffectObject: {fileID: 6480194069582467860, guid: 00dd42dd534329f4897930090a0c8c16, type: 3}
+  extraEffectObject: {fileID: 325745496488015713, guid: dd872401809de8c428884d3e3d768d61, type: 3}
   isOnGround: 0
 --- !u!4 &1454926774 stripped
 Transform:
@@ -1787,6 +1787,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 1008477216}
+  index: 30010
+  isFactoryTest: 1
 --- !u!1 &2113840210
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -38,6 +35,7 @@ public abstract class BaseHitBox : MonoBehaviour, IEnrollEvent<Collider>
 
     public void Enroll(UnityAction<Collider> action)
     {
+        //Debug.Log("BaseHitBox Enroll");
         onHitEvent.AddListener(action);
     }
 }

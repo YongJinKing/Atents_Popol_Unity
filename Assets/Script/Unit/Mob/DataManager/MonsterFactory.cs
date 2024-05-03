@@ -1,8 +1,5 @@
 using UnityEngine;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using System;
 
 public class MonsterFactory
 {
@@ -504,7 +501,7 @@ public class MonsterFactory
 
                     for(int i = 0; i < data.Skill_AffectOptionArr.Length; ++i)
                     {
-                        AddSkillAffect(hitBox.gameObject, data.Skill_AffectOptionArr[i]);
+                        AddSkillAffect(temp, data.Skill_AffectOptionArr[i]);
                     }
 
                     temp.gameObject.SetActive(false);
