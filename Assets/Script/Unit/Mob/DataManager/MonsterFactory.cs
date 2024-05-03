@@ -190,7 +190,7 @@ public class MonsterFactory
         objSkill.preDelay = data.Skill_PreDelay;
         objSkill.postDelay = data.Skill_PostDelay;
         objSkill.detectRadius = data.Skill_DetectRange;
-        objSkill.targetMask = 1 << data.Skill_TargetMask;
+        objSkill.targetMask = data.Skill_TargetMask;
         objSkill.animType = data.Skill_AnimType;
 
         objSkill.onSkillActivatedEvent = new UnityEngine.Events.UnityEvent<Transform>();
@@ -287,7 +287,7 @@ public class MonsterFactory
                     melee.maxIndex = data.Skill_NumOfHitBox;
                     melee.areaOfEffectPrefeb = FindPrefab(data.Skill_ObjectEffect);
                     melee.hitEffectPrefeb = FindPrefab(data.Skill_HitEffect);
-                    melee.targetMask = 1 << data.Skill_TargetMask;
+                    melee.targetMask = data.Skill_TargetMask;
                     melee.attackStartPos = new Transform[data.Skill_NumOfHitBox];
                     for(int i = 0; i < data.Skill_NumOfHitBox; i++)
                     {
@@ -337,8 +337,8 @@ public class MonsterFactory
                     projectile.areaOfEffectPrefeb = FindPrefab(data.Skill_ObjectEffect);
                     projectile.hitEffectPrefeb = FindPrefab(data.Skill_HitEffect);
                     projectile.destroyEffectPrefeb = FindPrefab(data.Skill_DestroyEffect);
-                    projectile.unPenetrableMask = 1 << data.Skill_Unpenetrable;
-                    projectile.targetMask = 1 << data.Skill_TargetMask;
+                    projectile.unPenetrableMask = data.Skill_Unpenetrable;
+                    projectile.targetMask = data.Skill_TargetMask;
                     projectile.moveSpeed = data.Skill_LongRangeAttackSpeed;
                     projectile.maxDist = data.Skill_LongRangeAttackDist;
                     projectile.parabolaHeight = data.Skill_ParabolaHeight;

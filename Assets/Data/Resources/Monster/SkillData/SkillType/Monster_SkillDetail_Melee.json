@@ -4,7 +4,7 @@
     "Skill_NumOfHitBox": 1,
     "Skill_ObjectEffect": 20000,
     "Skill_hitDuration": 10,
-    "Skill_TargetMask": 10,
+    "Skill_TargetMask": 1024,
     "Skill_AffectOptionArr": [ 10000 ],
     "Skill_HitEffect": 0
   },
@@ -13,7 +13,7 @@
     "Skill_NumOfHitBox": 1,
     "Skill_ObjectEffect": 20000,
     "Skill_hitDuration": 10,
-    "Skill_TargetMask": 10,
+    "Skill_TargetMask": 1024,
     "Skill_AffectOptionArr": [ 10001, 20000, 30003 ],
     "Skill_HitEffect": 20005
   }

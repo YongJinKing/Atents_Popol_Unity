@@ -1787,7 +1787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster: {fileID: 1008477216}
-  index: 30010
+  index: 30000
   isFactoryTest: 1
 --- !u!1 &2113840210
 GameObject:
