@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 
 //스킬의 히트박스와 피격박스를 위한 클래스
 public abstract class BaseSkillType : MonoBehaviour
