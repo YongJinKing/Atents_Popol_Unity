@@ -372,12 +372,12 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     {
         var plData = DataManager.instance.playerData;
 
-        switch (Random.Range(0, 2))
+        switch (Random.Range(0, 11))
         {
             case 0:
                 plData.Rigging_Armor_Duration--;
                 break;
-            case 1:
+            default:
                 break;
         }
 
