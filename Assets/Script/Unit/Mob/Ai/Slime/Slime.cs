@@ -222,8 +222,11 @@ public class Slime : Monster
     }
     public override void OutStun()
     {
-        myAnim.SetBool("b_Stun", false);
-        ChangeState(State.Idle);
+        if(myState != State.Death)
+        {
+            myAnim.SetBool("b_Stun", false);
+            ChangeState(State.Idle);
+        }
     }
     #endregion
     #endregion
