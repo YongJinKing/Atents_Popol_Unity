@@ -159,7 +159,7 @@ public class Slime : Monster
                     () => 
                     {
                         myAnim.SetTrigger("t_AttackStart");
-                        rotateEvent?.Invoke(target.transform.position, 10.0f);
+                        rotateEvent?.Invoke(target.transform.position - transform.position, 10.0f);
                     },
                     () => myAnim.SetTrigger("t_AttackEnd"),
                     () =>
