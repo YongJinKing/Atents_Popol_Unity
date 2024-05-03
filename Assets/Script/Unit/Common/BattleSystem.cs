@@ -1,9 +1,6 @@
-
-using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Unity.VisualScripting;
 
 [System.Serializable]
 public struct BattleStat

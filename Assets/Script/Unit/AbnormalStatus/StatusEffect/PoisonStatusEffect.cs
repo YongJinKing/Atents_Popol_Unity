@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using UnityEngine.UIElements;
-
-public class PoisonStatusEffect : DotDamageStatusEffect
+﻿public class PoisonStatusEffect : DotDamageStatusEffect
 {
     Player pl;
     public PoisonStatusEffect() : base("Poison") { }
