@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -79,6 +78,7 @@ public class SoundManager : MonoBehaviour
             case "Dadge": index = 9; break;
             case "Swing": index = 10; break;
             case "SwordDown": index = 11; break;
+            case "PowerBuff": index = 12; break;
         }
 
         SfxPlayer.clip = audioSfxClips[index];

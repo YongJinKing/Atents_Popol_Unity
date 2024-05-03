@@ -3208,6 +3208,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f3b834e881c44dc4382d47d5cb802931, type: 3}
   - {fileID: 8300000, guid: 28406bf68add30e4e89d6cd063fb84e6, type: 3}
   - {fileID: 8300000, guid: fc96116dc3c141440aabb5605744fea2, type: 3}
+  - {fileID: 8300000, guid: 04d33fe904f3fee47bf857f37f79d0bf, type: 3}
   BgmPlayer: {fileID: 1664866417}
   SfxPlayer: {fileID: 430986926}
   SfxHit: {fileID: 1851966801}
