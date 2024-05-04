@@ -149,7 +149,7 @@ public class ColoUI : MonoBehaviour
         if(index == 1)
         {
             int trueCount = DataManager.instance.playerData.ClearStage.Where(x => x == true).Count();
-            if(StageIndex - 1 < trueCount)
+            if(StageIndex - 1 < trueCount&& StageIndex < DataManager.instance.playerData.ClearStage.Length)
             {
                 StageIndex++;
                 if(BossAbility.transform.Find("BossMonster").GetChild(0).gameObject)
