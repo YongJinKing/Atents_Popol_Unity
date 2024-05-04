@@ -14,13 +14,14 @@ public class ShopUi : MonoBehaviour
     public GameObject DescPopup;
     public GameObject GridLine;
     public GameObject RiggingItem;
+    public GameObject ManyItemItem;
     public UnityEvent<int> AddItem;
     public UnityEvent<bool , int> EventRiggingPopup;
     string ItemRiggingStr = "";
     int InstanceCount = 0;
     int ItemPrice;
     int SelectItem;
-    Coroutine CorMoneyPopup;
+    
     Coroutine CorSlotHL;
     // Start is called before the first frame update
     void Start()
@@ -66,17 +67,30 @@ public class ShopUi : MonoBehaviour
 
     public void PressedBuyBtn(int index)
     {
-        ItemPrice = Contents.transform.GetChild(index).GetChild(0).GetComponent<UIItem>().ItemPrice;
-        if(DataManager.instance.playerData.PlayerGold >= ItemPrice)
+        int itemCount = 0;
+        for(int i = 0; i < GridLine.transform.childCount; i++)
         {
-            BuyPopup.gameObject.SetActive(true);
-            SelectItem = index;
+            if(GridLine.transform.GetChild(i).GetComponent<UIItem>().id > 0)
+                itemCount++;
+        }
+        if(itemCount < GridLine.transform.childCount)
+        {
+            ItemPrice = Contents.transform.GetChild(index).GetChild(0).GetComponent<UIItem>().ItemPrice;
+            if(DataManager.instance.playerData.PlayerGold >= ItemPrice)
+            {
+                BuyPopup.gameObject.SetActive(true);
+                SelectItem = index;
+            }
+            else
+            {
+                StartCoroutine(OnCorPopup(MoneyPopup));
+            }
         }
         else
         {
-            MoneyPopup.gameObject.SetActive(true);
-            CorMoneyPopup = StartCoroutine(OnCorMoneyPopup());
+            StartCoroutine(OnCorPopup(ManyItemItem));
         }
+        
     }
     public void SortRiggingType(int index)
     {
@@ -108,10 +122,12 @@ public class ShopUi : MonoBehaviour
             }
         }
     }
-    IEnumerator OnCorMoneyPopup()
+    IEnumerator OnCorPopup(GameObject popup)
     {
+        popup.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.8f);
-        MoneyPopup.gameObject.SetActive(false);
+        popup.gameObject.SetActive(false);
+       
     }
     public void BuyPopupYesOrNo(int index)
     {
