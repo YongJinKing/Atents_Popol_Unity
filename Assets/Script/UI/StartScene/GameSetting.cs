@@ -86,7 +86,7 @@ public class GameSetting : MonoBehaviour
         if(index == 3)//giveUp Btn
         {
             transform.GetChild(1).gameObject.SetActive(true);
-            Time.timeScale = 1.0f;
+            
         }
         else if(index == 4)//Cancel Btn
         {
@@ -114,9 +114,9 @@ public class GameSetting : MonoBehaviour
     {
         if(index == 0)//씬체인지
         {
-            Time.timeScale = 1;
             SceneLoading.SceneNum(2);
             SceneManager.LoadScene(1);
+            Time.timeScale = 1.0f;
             gameObject.SetActive(false);
         }
         transform.GetChild(1).gameObject.SetActive(false);
