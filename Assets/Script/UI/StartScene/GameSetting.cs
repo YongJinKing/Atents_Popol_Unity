@@ -114,9 +114,9 @@ public class GameSetting : MonoBehaviour
     {
         if(index == 0)//씬체인지
         {
+            Time.timeScale = 1.0f;
             SceneLoading.SceneNum(2);
             SceneManager.LoadScene(1);
-            Time.timeScale = 1.0f;
             gameObject.SetActive(false);
         }
         transform.GetChild(1).gameObject.SetActive(false);
