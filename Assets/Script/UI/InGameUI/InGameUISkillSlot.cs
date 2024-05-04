@@ -31,6 +31,7 @@ public class InGameUISkillSlot : MonoBehaviour
                 color.a = 0.0f;
                 SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().color = color;
             }
+            InGameSkillList[i].CoolTimeCheck = false;
         }
     }
     private void Update() 
