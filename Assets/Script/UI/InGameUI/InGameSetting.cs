@@ -8,6 +8,7 @@ public class InGameSetting : MonoBehaviour
     public void PressedSettingBtn()
     {
         GameSettingPopup.SetActive(true);
+        Time.timeScale = 0.0f;
         ChangeTime?.Invoke(0.0f);
         
     }
