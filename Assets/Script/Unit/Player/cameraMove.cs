@@ -132,6 +132,7 @@ public class cameraMove : MonoBehaviour
         }
         originPos = new Vector3(0, 0, myCam.transform.localPosition.z);
         StartCoroutine(CineCam());
+        Time.timeScale = 0.01f;
     }
 
 
@@ -142,8 +143,6 @@ public class cameraMove : MonoBehaviour
         var inst = DataManager.instance;
         while (CinecamState == "CamMove")
         {
-            Time.timeScale = 0.01f;
-            
             myCam.transform.position = Vector3.Lerp(myCam.transform.position, target.position, Time.deltaTime * cineCamSpeed);
             myCam.transform.rotation = Quaternion.Lerp(myCam.transform.rotation, target.rotation, Time.deltaTime * cineCamSpeed);
             float dis = Vector3.Distance(myCam.transform.position, target.position);
