@@ -20,7 +20,7 @@ public class InGameUISkillSlot : MonoBehaviour
                 SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().sprite
                 = SkillGameObject.GetComponent<SkillManager>().uiSkillStatus.uiSkillSprite;
                 InGameSkillList[i] = SkillGameObject.GetComponent<SkillManager>();
-                
+                InGameSkillList[i].CoolTimeCheck = false;
                 Color color = SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().color;
                 color.a = 1.0f;
                 SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().color = color;
@@ -31,7 +31,7 @@ public class InGameUISkillSlot : MonoBehaviour
                 color.a = 0.0f;
                 SkillSlotList.GetChild(i).Find("SkillImage").GetComponent<Image>().color = color;
             }
-            InGameSkillList[i].CoolTimeCheck = false;
+            
         }
     }
     private void Update() 
