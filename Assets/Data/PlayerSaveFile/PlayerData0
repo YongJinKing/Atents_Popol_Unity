@@ -1,23 +1,23 @@
 {
     "Character_Hp": 500,
     "Character_AttackPower": 20,
-    "Character_CurrentExp": 1450,
-    "Character_CurrentLevel": 5,
+    "Character_CurrentExp": 400,
+    "Character_CurrentLevel": 3,
     "Character_EnergyGage": 100,
     "Character_MoveSpeed": 5.0,
     "Character_AttackSpeed": 0.5,
-    "PlayerGold": 2150,
-    "Rigging_Weapon_Id": 1200,
+    "PlayerGold": 850,
+    "Rigging_Weapon_Id": 1000,
     "Rigging_Armor_Id": 1001,
-    "Rigging_Weapon_Ability": 50,
+    "Rigging_Weapon_Ability": 10,
     "Rigging_Armor_Ability": 10,
-    "Rigging_Weapon_Type": 1,
+    "Rigging_Weapon_Type": 0,
     "Rigging_Armor_Type": 10,
-    "Rigging_Weapon_Duration": 92,
-    "Rigging_Armor_Duration": 91,
+    "Rigging_Weapon_Duration": 89,
+    "Rigging_Armor_Duration": 100,
     "SaveUISkillList": [
+        "",
         "ShadowDot",
-        "EvilList",
         "",
         "",
         "",
@@ -26,8 +26,8 @@
         "",
         "",
         "",
-        "SwordDown",
-        "PowerBuff",
+        "",
+        "",
         "",
         "",
         "",
@@ -118,22 +118,18 @@
         ""
     ],
     "InGameSkillList": [
-        "SwordDown",
-        "PowerBuff",
+        "",
+        "ShadowDot",
         "",
         ""
     ],
     "ClearStage": [
-        true,
+        false,
         false
     ],
-    "PlayerInvenItem": [
-        1000
-    ],
-    "PlayerInvenDuraion": [
-        75
-    ],
-    "PlayTime": 89,
+    "PlayerInvenItem": [],
+    "PlayerInvenDuraion": [],
+    "PlayTime": 0,
     "Master_Volum": 0.75,
     "Bgm_Volum": 0.75,
     "Sfx_Volum": 0.75,
