@@ -20,7 +20,7 @@
   {
     "index": 11000,
     "Stage_Index": 2,
-    "Wave_MonsterArr": [20000, 20002],
+    "Wave_MonsterArr": [20004, 20006],
     "Wave_Monster_CountArr": [2, 2],
     "Wave_Reward_Gold": 400,
     "Wave_Reward_Exp": 200,
@@ -29,7 +29,7 @@
   {
     "index": 11001,
     "Stage_Index": 2,
-    "Wave_MonsterArr": [20001, 20003],
+    "Wave_MonsterArr": [20005, 20007],
     "Wave_Monster_CountArr": [4, 1],
     "Wave_Reward_Gold": 500,
     "Wave_Reward_Exp": 250,

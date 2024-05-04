@@ -28,5 +28,10 @@
     "Index": 10005,
     "Skill_Power": 0.1,
     "Skill_AttackType": 0
+  },
+  {
+    "Index": 10006,
+    "Skill_Power": 1,
+    "Skill_AttackType": 2
   }
 ]

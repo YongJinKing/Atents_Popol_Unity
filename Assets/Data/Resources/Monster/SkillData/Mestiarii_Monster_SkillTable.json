@@ -75,5 +75,27 @@
     "Skill_OptionArr": [ 30004 ],
     "Skill_DescComponent": 10006,
     "Skill_AnimType": 0
+  },
+  {
+    "Index": 30007,
+    "Skill_Name": 10007,
+    "Skill_PreDelay": 2,
+    "Skill_PostDelay": 2,
+    "Skill_DetectRange": 10,
+    "Skill_TargetMask": 1024,
+    "Skill_OptionArr": [ 30005 ],
+    "Skill_DescComponent": 10007,
+    "Skill_AnimType": 0
+  },
+  {
+    "Index": 30008,
+    "Skill_Name": 10008,
+    "Skill_PreDelay": 2,
+    "Skill_PostDelay": 2,
+    "Skill_DetectRange": 10,
+    "Skill_TargetMask": 1024,
+    "Skill_OptionArr": [ 30006 ],
+    "Skill_DescComponent": 10007,
+    "Skill_AnimType": 0
   }
 ]

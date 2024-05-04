@@ -83,5 +83,39 @@
     "Skill_HitBoxStartPosArr": [ 0 ],
     "Skill_HitEffect": 20004,
     "Skill_DestroyEffect": 0
+  },
+  {
+    "Index": 30005,
+    "Skill_NumOfHitBox": 1,
+    "Skill_ObjectEffect": 20003,
+    "Skill_Unpenetrable": 0,
+    "Skill_TargetMask": 1024,
+    "Skill_hitDuration": 10,
+    "Skill_LongRangeAttackSpeed": 10,
+    "Skill_LongRangeAttackDist": 30,
+    "Skill_ParabolaHeight": 5,
+    "Skill_Penetrable": true,
+    "Skill_IsParabola": true,
+    "Skill_AffectOptionArr": [ 10006 ],
+    "Skill_HitBoxStartPosArr": [ 0 ],
+    "Skill_HitEffect": 20004,
+    "Skill_DestroyEffect": 0
+  },
+  {
+    "Index": 30006,
+    "Skill_NumOfHitBox": 1,
+    "Skill_ObjectEffect": 20003,
+    "Skill_Unpenetrable": 0,
+    "Skill_TargetMask": 1024,
+    "Skill_hitDuration": 10,
+    "Skill_LongRangeAttackSpeed": 20,
+    "Skill_LongRangeAttackDist": 30,
+    "Skill_ParabolaHeight": 0,
+    "Skill_Penetrable": true,
+    "Skill_IsParabola": false,
+    "Skill_AffectOptionArr": [ 10006, 30006 ],
+    "Skill_HitBoxStartPosArr": [ 0 ],
+    "Skill_HitEffect": 20004,
+    "Skill_DestroyEffect": 0
   }
 ]
