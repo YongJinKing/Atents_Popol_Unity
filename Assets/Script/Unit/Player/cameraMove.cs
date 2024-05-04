@@ -108,33 +108,37 @@ public class cameraMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(playerAngle.x, playerAngle.y * rotateSpeed, 0);
         }
     }
-    
+    bool cine = true;
     public void UnitDeath(int Unit)
     {
-        BrodCastCam.SetActive(true);
-        isCine = true;
-        isTracking = false;
-        //WaveUI w = new WaveUI(); w.saveTime();
-        switch (Unit)
+        if (cine)
         {
-            case 0:
-                target = PlayerCam;
-                targetDist = 5;
-                playerAngle.x = 70;
-                playeroffSet.y = 1f;
-                whoWin = 1;
-                break;
-            case 1:
-                target = MonsterCam;
-                targetDist = 2;
-                playerAngle.x = 0;
-                playeroffSet.y = 1f;
-                whoWin = 0;
-                break;
+            BrodCastCam.SetActive(true);
+            isCine = true;
+            isTracking = false;
+            //WaveUI w = new WaveUI(); w.saveTime();
+            switch (Unit)
+            {
+                case 0:
+                    target = PlayerCam;
+                    targetDist = 5;
+                    playerAngle.x = 70;
+                    playeroffSet.y = 1f;
+                    whoWin = 1;
+                    break;
+                case 1:
+                    target = MonsterCam;
+                    targetDist = 2;
+                    playerAngle.x = 0;
+                    playeroffSet.y = 1f;
+                    whoWin = 0;
+                    break;
+            }
+            originPos = new Vector3(0, 0, myCam.transform.localPosition.z);
+            cine = false;
+            StartCoroutine(CineCam());
+            Time.timeScale = 0.01f;
         }
-        originPos = new Vector3(0, 0, myCam.transform.localPosition.z);
-        StartCoroutine(CineCam());
-        Time.timeScale = 0.01f;
     }
 
 
