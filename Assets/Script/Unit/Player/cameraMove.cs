@@ -44,6 +44,8 @@ public class cameraMove : MonoBehaviour
         //myCam = GetComponentInChildren<Camera>().transform;
         camDist = targetDist = Mathf.Abs(myCam.localPosition.z - camDist);
         transform.rotation = Quaternion.Euler(playerAngle.x, playerAngle.y, 0);
+        isTracking = true;
+        isCine = false;
     }
 
     void Update()
