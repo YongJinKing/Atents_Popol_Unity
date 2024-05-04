@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SkillManager : PlayerSkill
 {
-    
     public bool SimpleAttack;
+    public bool isBoxCol;
     public int EnergyGage;
     public int Damage;
     public float SkillCalculation;
@@ -34,7 +34,15 @@ public class SkillManager : PlayerSkill
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Monster_Body"))
         {
-            Collider[] tempcol = Physics.OverlapSphere(col.bounds.center, col.bounds.extents.x, 1 << 12);
+            Collider[] tempcol;
+            if(isBoxCol)
+            {
+                tempcol = Physics.OverlapBox(col.bounds.center, col.bounds.extents, col.transform.rotation,1 << 12);
+            }
+            else
+            {
+                tempcol = Physics.OverlapSphere(col.bounds.center, col.bounds.extents.x, 1 << 12);
+            }
             int min = 0;
             for (int i = 0; i < tempcol.Length; ++i)
             {
