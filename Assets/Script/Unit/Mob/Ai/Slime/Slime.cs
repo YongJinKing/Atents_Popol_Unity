@@ -199,6 +199,7 @@ public class Slime : Monster
 
         saveMoveType = new int[idleAI.Count];
         IdleProcessRandomSet();
+        GetComponentInChildren<MonsterPartManager>().SetActiveCol(true);
 
         ChangeState(State.Idle);
     }
@@ -208,6 +209,7 @@ public class Slime : Monster
     #region PublicMethod
     public override void CinematicStart()
     {
+        GetComponentInChildren<MonsterPartManager>().SetActiveCol(false);
         myAnim.SetTrigger("t_CinematicStart");
     }
     public override void CinematicEnd()

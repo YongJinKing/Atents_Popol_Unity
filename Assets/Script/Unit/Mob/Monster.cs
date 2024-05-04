@@ -71,7 +71,7 @@ public abstract class Monster : BattleSystem, ICinematicStart, ICinematicEnd, IS
     {
         deathAlarm?.Invoke(1, gameObject);
         ChangeState(State.Death);
-        transform.GetComponentInChildren<MonsterPartManager>().DisActiveCol();
+        transform.GetComponentInChildren<MonsterPartManager>().SetActiveCol(false);
     }
     #endregion
 

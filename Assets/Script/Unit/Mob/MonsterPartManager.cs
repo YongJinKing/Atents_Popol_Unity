@@ -23,18 +23,18 @@ public class MonsterPartManager : MonoBehaviour, IGetDType
         return type;
     }
 
-    public void DisActiveCol()
+    public void SetActiveCol(bool active)
     {
-        StartCoroutine(DisAcivating());
+        StartCoroutine(SetAcivating(active));
     }
 
-    private IEnumerator DisAcivating()
+    private IEnumerator SetAcivating(bool active)
     {
         yield return new WaitForSeconds(0.1f);
 
         foreach (Part part in parts)
         {
-            part.col.enabled = false;
+            part.col.enabled = active;
         }
     }
 }
