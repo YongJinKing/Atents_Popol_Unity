@@ -1197,6 +1197,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3239649771701035603, guid: 9a8da39989fb00343853f656a0327338, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111780651035663881, guid: 9a8da39989fb00343853f656a0327338, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5606910292560004544, guid: 9a8da39989fb00343853f656a0327338, type: 3}
       propertyPath: cineEndEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1

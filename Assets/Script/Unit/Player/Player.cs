@@ -94,7 +94,6 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
 
     protected void ProcessState()
     {
-
         switch (playerstate)
         {
             case state.Skill:
@@ -174,35 +173,21 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
     public void GetStun()
     {
         Debug.Log("IStun Active");
-        stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
-        ChangeState(state.Stun);
+        if(!Death)
+        {
+            stopAct?.Invoke((float stop) => myAnim.SetFloat("Move", stop));
+            ChangeState(state.Stun);
+        }
     }
 
     public void OutStun()
     {
         Debug.Log("IStun DIsActive");
         myAnim.SetBool("b_Stun", false);
-        ChangeState(state.Idle);
-        
-    }
-
-    private void Blind()
-    {
-        DeBuffScr.transform.Find("Blind").gameObject.SetActive(true);
-        float BlindDebuffTime = 10;
-        StopScr("Blind", BlindDebuffTime);
-    }
-
-   
-    void StopScr(string name, float Time)
-    {
-        StartCoroutine(C_Stopscr(name, Time));
-    }
-
-    IEnumerator C_Stopscr(string name, float Debufftime)
-    {
-        yield return new WaitForSeconds(Debufftime);
-        DeBuffScr.transform.Find(name).gameObject.SetActive(false);
+        if(!Death)
+        {
+            ChangeState(state.Idle);
+        }
     }
 
     public bool GetRaycastHit()
@@ -362,6 +347,7 @@ public class Player : BattleSystem, IGetDType, ICinematicStart, ICinematicEnd, I
         {
             deathAlarm?.Invoke(0, gameObject);
             stopAct?.Invoke(null);
+            myAnim.SetBool("b_Stun", false);
             myAnim.SetTrigger("t_Death");
 
             Death = true;

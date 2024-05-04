@@ -102,8 +102,6 @@ public class GameManager : MonoBehaviour
         BattleStat bs = default;
 
         var pldata = DataManager.instance.playerData;
-        var plLvstat = PlayerDataManager.instance.dicPlayerLevelData[pldata.Character_CurrentLevel];
-        //var unitname = PlayerDetaManager.instance.dicStringData[playerstat.Character_Name]; // UI ������ ���?����
         bs.Exp = pldata.Character_CurrentExp;
         bs.Level = pldata.Character_CurrentLevel;
         bs.ATK = pldata.Character_AttackPower + pldata.Rigging_Weapon_Ability;
@@ -165,10 +163,9 @@ public class GameManager : MonoBehaviour
                     DataManager.instance.SaveData();
                     waveEndEvent?.Invoke();
                     player.GetComponent<Status>().Add(E_Buff.DotHeal);
+                    StartCoroutine(LevelUp());
                 }
             }
-
-            StartCoroutine(LevelUp());
         }
         if (curWave.index / 10000 >= 2 && monsters.Count <= 0) //Boss Wave End
         {
@@ -190,6 +187,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LevelUp()
     {
+        bool LvUp = false;
         var playerstat = PlayerDataManager.instance.dicPlayerData[10000];
         var playerdata = DataManager.instance.playerData;
         while(playerdata.Character_CurrentExp >= PlayerDataManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel + 1].Total_Exp)
@@ -199,18 +197,24 @@ public class GameManager : MonoBehaviour
             {
                 playerdata.Character_CurrentLevel = 30;
             }
+            LvUp = true;
             yield return null;
         }
-        if (playerdata.Character_CurrentExp >= PlayerDataManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel + 1].Total_Exp)
+        if(LvUp)
         {
+            GameObject effect = Instantiate<GameObject>(Resources.Load($"Buff/LvUp") as GameObject);
+            effect.transform.SetParent(player.transform, false);
             var plLvstat = PlayerDataManager.instance.dicPlayerLevelData[playerdata.Character_CurrentLevel];
             playerdata.Character_AttackPower = playerstat.Character_AttackPower + plLvstat.Total_AttackPower;
             playerdata.Character_Hp = playerstat.Character_Hp + plLvstat.Total_Hp;
 
-            GameObject effect = Instantiate<GameObject>(Resources.Load($"Buff/LvUp") as GameObject);
-            effect.transform.SetParent(player.transform, false);
+            pl.Exp = playerdata.Character_CurrentExp;
+            pl.Level = playerdata.Character_CurrentLevel;
+            pl.ATK = playerdata.Character_AttackPower + playerdata.Rigging_Weapon_Ability;
+            pl.HP = playerdata.Character_Hp + playerdata.Rigging_Armor_Ability;
         }
         
+
     }
     
     public void WaveRownd()

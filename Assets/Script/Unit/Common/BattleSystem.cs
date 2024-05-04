@@ -67,7 +67,6 @@ public class BattleSystem : CharacterProperty, IDamage
     protected virtual void Start()
     {
         Initialize();
-        
     }
 
     public BattleStat battlestat
