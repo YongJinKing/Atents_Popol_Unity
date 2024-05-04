@@ -9763,7 +9763,7 @@ GameObject:
   - component: {fileID: 5570491843397143356}
   - component: {fileID: 2945350965900822139}
   m_Layer: 0
-  m_Name: DeathSide
+  m_Name: StarRush
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14728,14 +14728,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiSkillStatus:
     uiSkillSprite: {fileID: 1782276901, guid: 9613adf97591e3f44bbbc6fa946707b7, type: 3}
-    uiSkillName: "\uB370\uC2A4\uC0AC\uC774\uB4DC"
-    uiSkillDesc: "\uD50C\uB808\uC774\uC5B4\uAC00 \uC77C\uC9C1\uC120\uC73C\uB85C \uBE60\uB974\uAC8C
-      \uC774\uB3D9\uD558\uBA70, \uC774\uB3D9\uD55C \uC790\uB9AC\uC5D0 \uAC80\uC0C1\uC744
-      \uB0A8\uAE30\uB294 \uAE30\uC220\uC774\uB2E4."
-    uiSkillDetailDesc: "\uD50C\uB808\uC774\uC5B4\uAC00 \uC77C\uC9C1\uC120\uC73C\uB85C
-      \uBE60\uB974\uAC8C \uC774\uB3D9\uD558\uBA70, \uC774\uB3D9\uD55C \uC790\uB9AC\uC5D0
-      \uAC80\uC0C1\uC744 \uB0A8\uACA8<color=\"red\">100 + \uACF5\uACA9\uB825 60%
-      </color>\uC758 \uB370\uBBF8\uC9C0\uB97C \uC8FC\uB294 \uAE30\uC220\uC774\uB2E4."
+    uiSkillName: "\uC2A4\uD0C0\uB7EC\uC26C"
+    uiSkillDesc: "\uD50C\uB808\uC774\uC5B4\uAC00 \uBCC4\uC758 \uADA4\uB3C4\uB97C
+      \uB530\uB77C \uAC80\uC220\uC744 \uD3BC\uCCD0 \uB370\uBBF8\uC9C0\uB97C \uC8FC\uB294
+      \uAE30\uC220\uC774\uB2E4."
+    uiSkillDetailDesc: "\uD50C\uB808\uC774\uC5B4\uAC00 \uBCC4\uC758 \uADA4\uB3C4\uB97C
+      \uB530\uB77C \uAC80\uC220\uC744 \uD3BC\uCCD0 <color=\"red\">100 + \uACF5\uACA9\uB825
+      60% </color> \uB370\uBBF8\uC9C0\uB97C \uC8FC\uB294 \uAE30\uC220\uC774\uB2E4."
   SimpleAttack: 0
   EnergyGage: 80
   Damage: 70

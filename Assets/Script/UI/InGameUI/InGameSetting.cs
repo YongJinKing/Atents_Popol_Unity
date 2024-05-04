@@ -9,7 +9,6 @@ public class InGameSetting : MonoBehaviour
     {
         GameSettingPopup.SetActive(true);
         Time.timeScale = 0.0f;
-        ChangeTime?.Invoke(0.0f);
         
     }
 }
