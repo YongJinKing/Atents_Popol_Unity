@@ -35,26 +35,22 @@ public class Slime : Monster
 
 
     #region Method
-    //private �Լ��� ����
+    //private
     #region PrivateMethod
     private void SkillRandomSet()
     {
-        //��ų�� �ٽ�����
-        for(int i = 0; i < skills.Length; i++)
+        //save 0, 1, 2, 3, 4, ....
+        for(int i = 0; i < skills.Length; ++i)
         {
-            saveSkill[i] = UnityEngine.Random.Range(0, skills.Length);
-            
-            //�����?�� ������ �ٽ�
-            for(int j = 0; j < i; j++)
-            {
-                if (saveSkill[j] == saveSkill[i])
-                {
-                    saveSkill[i] = UnityEngine.Random.Range(0, 
-                        skills.Length);
-                    j = 0;
-                }
-            }
+            saveSkill[i] = i;
         }
+        //Shuffle Array
+        for(int i = 0; i < skills.Length; ++i) 
+        {
+            int j = UnityEngine.Random.Range(0, skills.Length);
+            (saveSkill[i], saveSkill[j]) = (saveSkill[j], saveSkill[i]);
+        }
+
         countUsedSkill = 0;
     }
 
@@ -62,19 +58,15 @@ public class Slime : Monster
     {
         for (int i = 0; i < saveMoveType.Length; ++i)
         {
-            saveMoveType[i] = UnityEngine.Random.Range(0, saveMoveType.Length);
-
-            //�����?�� ������ �ٽ�
-            for (int j = 0; j < i; ++j)
-            {
-                if (saveMoveType[j] == saveMoveType[i])
-                {
-                    saveMoveType[i] = UnityEngine.Random.Range(0,
-                        saveMoveType.Length);
-                    j = 0;
-                }
-            }
+            saveMoveType[i] = i;
         }
+        //Shuffle Array
+        for (int i = 0; i < saveMoveType.Length; ++i)
+        {
+            int j = UnityEngine.Random.Range(0, saveMoveType.Length);
+            (saveMoveType[i], saveMoveType[j]) = (saveMoveType[j], saveMoveType[i]);
+        }
+
         countIdle = 0;
     }
     #endregion
