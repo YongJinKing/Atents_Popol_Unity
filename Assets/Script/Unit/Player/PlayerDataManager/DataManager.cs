@@ -66,6 +66,10 @@ public class DataManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
         path = Application.dataPath + "/Data/PlayerSaveFile/";      // json?�일 ?�??경로
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
     }
 
     public void Start()
