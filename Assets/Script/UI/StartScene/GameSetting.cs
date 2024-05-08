@@ -14,6 +14,7 @@ public class GameSetting : MonoBehaviour
     public Slider MasterSlider;
     public Slider BgmSlider;
     public Slider SfxSlider;
+    bool EscControllCheck;
     private void Start() 
     {
         for(int i = 0; i < 3; i++)
@@ -30,6 +31,7 @@ public class GameSetting : MonoBehaviour
         SoundBtn[1] = SoundManager.instance.BgmMuteCheck;
         SoundBtn[2] = SoundManager.instance.SfxMuteCheck;
         SoundMuteImageChange();
+        EscControllCheck = false;
     }
     void SoundMuteImageChange()
     {
@@ -43,19 +45,27 @@ public class GameSetting : MonoBehaviour
         }
         
     }
-   
+    
+    public void GameEnd()
+    {
+        EscControllCheck = true;
+    }
     public void PressedEscBtn()
     {
-        if(gameObject.activeSelf)
+        if(!EscControllCheck)
         {
-            gameObject.SetActive(false);
-            Time.timeScale = 1.0f;
+            if(gameObject.activeSelf)
+            {
+                gameObject.SetActive(false);
+                Time.timeScale = 1.0f;
+            }
+            else
+            {
+                gameObject.SetActive(true);
+                Time.timeScale = 0.0f;
+            }
         }
-        else
-        {
-            gameObject.SetActive(true);
-            Time.timeScale = 0.0f;
-        }
+        
     }
 
 

@@ -1,4 +1,4 @@
-using UnityEditor.SceneManagement;
+/* using UnityEditor.SceneManagement;
 using UnityEditor;
 
 public class SceneStartOption
@@ -18,4 +18,4 @@ public class SceneStartOption
         EditorSceneManager.playModeStartScene = null;
         UnityEditor.EditorApplication.isPlaying = true;
     }
-}
+} */

@@ -436,11 +436,27 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: PressedEsc.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: PressedEsc.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
       propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1253115170}
     - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: PressedEsc.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 854627676}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
       propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: PressedEsc.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
@@ -448,11 +464,23 @@ PrefabInstance:
       value: ChangeGameTime
       objectReference: {fileID: 0}
     - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: PressedEsc.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PressedEscBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
       propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: TimeControl, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: PressedEsc.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameSetting, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
       propertyPath: ChangeTime.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708836795078523015, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
+      propertyPath: PressedEsc.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5586645817537730550, guid: 68614111db49cff4cbda81d1090711d2, type: 3}
@@ -1570,6 +1598,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 854627676}
+        m_TargetAssemblyTypeName: GameSetting, Assembly-CSharp
+        m_MethodName: GameEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   lossGameEvent:
     m_PersistentCalls:
       m_Calls:
@@ -1588,6 +1628,18 @@ MonoBehaviour:
       - m_Target: {fileID: 511627395}
         m_TargetAssemblyTypeName: WaveUI, Assembly-CSharp
         m_MethodName: saveTime
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 854627676}
+        m_TargetAssemblyTypeName: GameSetting, Assembly-CSharp
+        m_MethodName: GameEnd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

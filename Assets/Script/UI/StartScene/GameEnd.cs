@@ -7,7 +7,7 @@ public class GameEnd : MonoBehaviour
         if(index == 0)
         {
             Application.Quit();
-            UnityEditor.EditorApplication.isPlaying = false;
+            //UnityEditor.EditorApplication.isPlaying = false;
         }
         transform.gameObject.SetActive(false);
     }
